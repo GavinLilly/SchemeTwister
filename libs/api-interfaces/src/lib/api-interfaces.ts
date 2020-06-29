@@ -1,9 +1,10 @@
-import { Team, GameSet } from "./constants";
+export interface IGameSet {
+  id: string;
+  name: string;
+}
 
-type numPlayers = 2 | 3 | 4 | 5;
-
-interface IBase {
-  gameSet: GameSet;
+export interface IBase {
+  gameSet: IGameSet;
   id: string;
 }
 
@@ -23,7 +24,7 @@ export interface IBystander extends IBase {
 
 export interface IHero extends IBase {
   name: string;
-  team?: Team
+  team?: string
 }
 
 export interface IMastermind extends IBase {
@@ -31,18 +32,10 @@ export interface IMastermind extends IBase {
   always_leads: IHenchmen | IVillainGroup
 }
 
-export interface IRules {
-  numVillains: Record<numPlayers, number>;
-  numHenchmen: Record<numPlayers, number>;
-  numBystanders: Record<numPlayers, number>;
-  numHeroes: Record<numPlayers, number>;
-  numTwists: Record<numPlayers, number>;
-}
-
 export interface IScheme extends IBase {
   name: string;
-  rules: IRules;
-  twist: Map<number, string>;
+  setup: string;
+  twist: string;
   evilWins: string;
   specialRules?: string;
 }
