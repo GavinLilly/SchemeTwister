@@ -1,7 +1,10 @@
 import { Base } from './base.model';
+import { IsString, IsPositive, IsNumber } from 'class-validator';
 
 export class Bystander extends Base {
-  name: string;
+  @IsPositive()
   copies: number;
+
+  @IsNumber()
   victory_points: number;
 }

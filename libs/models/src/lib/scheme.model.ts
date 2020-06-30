@@ -3,28 +3,34 @@ import { Type } from 'class-transformer';
 import { IScheme } from '@legendizer/api-interfaces';
 import { Rules } from './rules.model';
 
-import { VillainGroup } from './villainGroup.model';
 import { Base } from './base.model';
+import { IsString, IsNumber, IsPositive, IsUUID } from 'class-validator';
 
 export class Scheme extends Base implements IScheme {
   // API public members
-  name: string;
-
+  @IsString()
   twist: string;
 
+  @IsString()
   evilWins: string;
 
+  @IsString()
   setup: string;
 
+  @IsString()
   specialRules?: string;
 
   // API private members
+  @IsNumber()
+  @IsPositive()
   numWounds?: number;
 
+  @IsNumber()
+  @IsPositive()
   numBystandersInVillainDeck?: number;
 
-  @Type(() => VillainGroup)
-  requiredVillains?: Array<VillainGroup>;
+  @IsUUID()
+  requiredVillainsID: string;
 
   @Type(() => Rules)
   rules: Rules = {

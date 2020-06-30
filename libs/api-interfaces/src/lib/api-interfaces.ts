@@ -4,7 +4,7 @@ export interface IGameSet {
 }
 
 export interface IBase {
-  gameSet: IGameSet;
+  gameSetID: string;
   id: string;
 }
 
@@ -29,7 +29,7 @@ export interface IHero extends IBase {
 
 export interface IMastermind extends IBase {
   name: string;
-  always_leads: IHenchmen | IVillainGroup
+  alwaysLeadsID: string
 }
 
 export interface IScheme extends IBase {
