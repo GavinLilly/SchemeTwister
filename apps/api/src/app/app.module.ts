@@ -13,9 +13,9 @@ import { VillainsModule } from "@legendizer/villains";
   imports: [
     HenchmenModule,
     HeroesModule,
+    VillainsModule,
     MastermindsModule,
     SchemesModule,
-    VillainsModule
   ],
   controllers: [AppController],
   providers: [AppService],
