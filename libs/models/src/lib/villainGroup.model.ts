@@ -1,4 +1,4 @@
 import { IVillainGroup } from '@legendizer/api-interfaces';
-import { Base } from './base.model';
+import { BaseModel } from './base.model';
 
-export class VillainGroup extends Base implements IVillainGroup { }
+export class VillainGroupModel extends BaseModel implements IVillainGroup { }

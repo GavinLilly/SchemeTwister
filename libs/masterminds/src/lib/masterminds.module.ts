@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
-import { MastermindsService } from './masterminds.service';
 import { MastermindsController } from './masterminds.controller';
+import { BoilerplateModule } from "@legendizer/boilerplate";
 
 @Module({
   controllers: [MastermindsController],
-  providers: [MastermindsService],
-  exports: [MastermindsService],
+  imports: [BoilerplateModule]
 })
 export class MastermindsModule {}

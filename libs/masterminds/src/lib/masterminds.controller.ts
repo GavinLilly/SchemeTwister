@@ -1,23 +1,13 @@
-import { Controller, Get, Res, Param } from '@nestjs/common';
-import { MastermindsService } from './masterminds.service';
-import { IMastermind } from "@legendizer/api-interfaces";
+import { Controller } from '@nestjs/common';
+import { MastermindModel } from "@legendizer/models";
+import { Masterminds } from "@legendizer/data-repository";
+import { BoilerplateController, BoilerplateService } from "@legendizer/boilerplate";
+import { plainToClass } from 'class-transformer';
 
 @Controller('masterminds')
-export class MastermindsController {
-  constructor(private mastermindsService: MastermindsService) {}
-
-  @Get()
-  async findAll() : Promise<Array<IMastermind>>{
-    return await this.mastermindsService.find();
-  }
-
-  @Get('random')
-  async findRandom(@Res() res) : Promise<string> {
-    return res.redirect(303, `/api/masterminds/${await this.mastermindsService.findRandom()}`)
-  }
-
-  @Get(':id')
-  async findOne(@Param('id') id: string) : Promise<IMastermind> {
-    return await this.mastermindsService.findOne(id);
+export class MastermindsController extends BoilerplateController<MastermindModel> {
+  constructor(protected mastermindsService: BoilerplateService<MastermindModel>) {
+    super(mastermindsService);
+    mastermindsService.records = plainToClass(MastermindModel, Masterminds);
   }
 }

@@ -1,8 +1,8 @@
 import { IHero } from '@legendizer/api-interfaces';
-import { Base } from './base.model';
+import { BaseModel } from './base.model';
 import { IsString } from 'class-validator';
 
-export class Hero extends Base implements IHero {
+export class HeroModel extends BaseModel implements IHero {
   @IsString()
   team?: string;
 }

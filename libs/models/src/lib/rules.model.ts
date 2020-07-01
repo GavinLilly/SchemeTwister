@@ -1,6 +1,6 @@
 type numPlayers = 2 | 3 | 4 | 5;
 
-export class Rules {
+export class RulesModel {
   numVillains: Record<numPlayers, number>;
 
   numHenchmen: Record<numPlayers, number>;

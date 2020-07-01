@@ -454,6 +454,32 @@
           }
         }
       }
+    },
+    "boilerplate": {
+      "root": "libs/boilerplate",
+      "sourceRoot": "libs/boilerplate/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/boilerplate/tsconfig.lib.json",
+              "libs/boilerplate/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/boilerplate/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/boilerplate/jest.config.js",
+            "tsConfig": "libs/boilerplate/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

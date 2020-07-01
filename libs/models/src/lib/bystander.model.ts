@@ -1,7 +1,7 @@
-import { Base } from './base.model';
+import { BaseModel } from './base.model';
 import { IsString, IsPositive, IsNumber } from 'class-validator';
 
-export class Bystander extends Base {
+export class BystanderModel extends BaseModel {
   @IsPositive()
   copies: number;
 

@@ -1,23 +1,13 @@
-import { Controller, Get, Param, Res } from '@nestjs/common';
-import { HeroesService } from './heroes.service';
-import { IHero } from "@legendizer/api-interfaces";
+import { Controller } from '@nestjs/common';
+import { BoilerplateController, BoilerplateService } from "@legendizer/boilerplate";
+import { HeroModel } from '@legendizer/models';
+import { Heroes } from '@legendizer/data-repository';
+import { plainToClass } from 'class-transformer';
 
 @Controller('heroes')
-export class HeroesController {
-  constructor(private heroesService: HeroesService) {}
-
-  @Get()
-  async findAll() : Promise<Array<IHero>>{
-    return await this.heroesService.find();
-  }
-
-  @Get('random')
-  async findRandom(@Res() res) : Promise<string> {
-    return res.redirect(303, `/api/heroes/${await this.heroesService.findRandom()}`)
-  }
-
-  @Get(':id')
-  async findOne(@Param('id') id: string) : Promise<IHero> {
-    return await this.heroesService.findOne(id);
+export class HeroesController extends BoilerplateController<HeroModel> {
+  constructor(protected heroService: BoilerplateService<HeroModel>) {
+    super(heroService);
+    heroService.records = plainToClass(HeroModel, Heroes);
   }
 }

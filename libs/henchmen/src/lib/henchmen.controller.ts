@@ -1,23 +1,13 @@
-import { Controller, Get, Res, Param } from '@nestjs/common';
-import { HenchmenService } from './henchmen.service';
-import { IHenchmen } from '@legendizer/api-interfaces';
+import { Controller } from '@nestjs/common';
+import { BoilerplateController, BoilerplateService } from "@legendizer/boilerplate";
+import { HenchmenModel } from "@legendizer/models";
+import { Henchmen } from "@legendizer/data-repository";
+import { plainToClass } from 'class-transformer';
 
 @Controller('henchmen')
-export class HenchmenController {
-  constructor(private henchmenService: HenchmenService) {}
-
-  @Get()
-  async findAll() : Promise<Array<IHenchmen>>{
-    return await this.henchmenService.find();
-  }
-
-  @Get('random')
-  async findRandom(@Res() res) : Promise<string> {
-    return res.redirect(303, `/api/henchmen/${await this.henchmenService.findRandom()}`)
-  }
-
-  @Get(':id')
-  async findOne(@Param('id') id: string) : Promise<IHenchmen> {
-    return await this.henchmenService.findOne(id);
+export class HenchmenController extends BoilerplateController<HenchmenModel> {
+  constructor(protected henchmenService: BoilerplateService<HenchmenModel>) {
+    super(henchmenService);
+    henchmenService.records = plainToClass(HenchmenModel, Henchmen);
   }
 }

@@ -1,14 +1,18 @@
-import { Length, Matches, IsString, IsUUID } from 'class-validator';
+import { IsString, IsUUID } from 'class-validator';
 
 import { IBase } from '@legendizer/api-interfaces';
+import { Expose } from 'class-transformer';
 
-export class Base implements IBase {
+export class BaseModel implements IBase {
+  @Expose()
   @IsUUID()
   gameSetID: string;
 
+  @Expose()
   @IsUUID()
   id: string;
 
+  @Expose()
   @IsString()
   name: string;
 }

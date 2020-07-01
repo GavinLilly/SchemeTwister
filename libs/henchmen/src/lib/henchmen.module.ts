@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
-import { HenchmenService } from './henchmen.service';
 import { HenchmenController } from './henchmen.controller';
+import { BoilerplateModule } from "@legendizer/boilerplate";
 
 @Module({
   controllers: [HenchmenController],
-  providers: [HenchmenService],
-  exports: [HenchmenService],
+  imports: [BoilerplateModule]
 })
 export class HenchmenModule {}

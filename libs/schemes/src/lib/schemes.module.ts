@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
-import { SchemesService } from './schemes.service';
+import { BoilerplateModule } from "@legendizer/boilerplate";
 import { SchemesController } from './schemes.controller';
 
 @Module({
   controllers: [SchemesController],
-  providers: [SchemesService],
-  exports: [SchemesService],
+  imports: [BoilerplateModule]
 })
 export class SchemesModule {}

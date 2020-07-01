@@ -1,12 +1,12 @@
 import { Type } from 'class-transformer';
 
 import { IScheme } from '@legendizer/api-interfaces';
-import { Rules } from './rules.model';
+import { RulesModel } from './rules.model';
 
-import { Base } from './base.model';
+import { BaseModel } from './base.model';
 import { IsString, IsNumber, IsPositive, IsUUID } from 'class-validator';
 
-export class Scheme extends Base implements IScheme {
+export class SchemeModel extends BaseModel implements IScheme {
   // API public members
   @IsString()
   twist: string;
@@ -32,8 +32,8 @@ export class Scheme extends Base implements IScheme {
   @IsUUID()
   requiredVillainsID: string;
 
-  @Type(() => Rules)
-  rules: Rules = {
+  @Type(() => RulesModel)
+  rules: RulesModel = {
     numVillains: {
       2: 2,
       3: 3,
