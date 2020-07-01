@@ -2,8 +2,9 @@ import { IsString, IsUUID } from 'class-validator';
 
 import { IBase } from '@legendizer/api-interfaces';
 import { Expose } from 'class-transformer';
+import { InMemoryDBEntity } from "in-memory-db-uuid";
 
-export class BaseModel implements IBase {
+export class BaseModel implements IBase, InMemoryDBEntity {
   @Expose()
   @IsUUID()
   gameSetID: string;

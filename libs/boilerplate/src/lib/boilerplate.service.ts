@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Optional } from '@nestjs/common';
+import { InMemoryDBService, InMemoryDBEntity, InMemoryDBConfig } from "in-memory-db-uuid";
 
 import { BaseModel } from "@legendizer/models";
 
@@ -7,52 +8,8 @@ import { BaseModel } from "@legendizer/models";
  * https://github.com/nestjs-addons/in-memory-db/blob/master/lib/services/in-memory-db.service.ts
  */
 @Injectable()
-export class BoilerplateService<T extends BaseModel> {
-  private recordMap: { [id: string]: T } = {};
-  constructor() {}
-
-  set records(records: T[]) {
-    if (!records || records.length === 0) {
-      this.recordMap = {};
-    }
-
-    this.recordMap = records.reduce(
-      (previous: { [id: number]: T }, current: T) => {
-        return {
-          ...previous,
-          [current.id]: current,
-        };
-      },
-      this.recordMap,
-    );
-  }
-  get records(): T[] {
-    return Object.keys(this.recordMap).map(key => this.recordMap[key]);
-  }
-
-  public get(id: string): T {
-    return this.recordMap[id];
-  }
-
-  public getMany(ids: string[]): T[] {
-    const records = ids
-      .filter(id => this.recordMap[id])
-      .map(id => {
-        return this.recordMap[id];
-      });
-
-    return records;
-  }
-
-  public getAll(): T[] {
-    return this.records || [];
-  }
-
-  public getRandom(): T {
-    return this.records[Math.floor(Math.random() * this.records.length)];
-  }
-
-  public query(predicate: (record: T) => boolean) {
-    return this.records.filter(predicate);
+export class BoilerplateService<T extends InMemoryDBEntity> extends InMemoryDBService<T> {
+  constructor(@Optional() private readonly boilerConfig: InMemoryDBConfig) {
+    super(boilerConfig);
   }
 }

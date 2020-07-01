@@ -1,9 +1,8 @@
-import { Get, Body, Param, Res } from '@nestjs/common';
-import { BoilerplateService } from './boilerplate.service';
-import { BaseModel } from '@legendizer/models';
+import { Get, Body, Param, Req, Res } from '@nestjs/common';
+import { InMemoryDBEntity, InMemoryDBService } from "in-memory-db-uuid";
 
-export abstract class BoilerplateController<T extends BaseModel> {
-  constructor(protected readonly boilerplateService: BoilerplateService<T>) {}
+export abstract class BoilerplateController<T extends InMemoryDBEntity> {
+  constructor(protected readonly boilerplateService: InMemoryDBService<T>) {}
 
   @Get()
   public getMany(@Body() ids?: Array<T['id']>): T[] {
@@ -14,8 +13,10 @@ export abstract class BoilerplateController<T extends BaseModel> {
   }
 
   @Get('random')
-  public getRandom(@Res() res): string {
-    return this.boilerplateService.getRandom().id;
+  public getRandom(@Req() req, @Res() res): string {
+    const id = this.boilerplateService.getRandom().id;
+    const urlParts = req.url.replace('random', id);
+    return res.redirect(303, urlParts);
   }
 
   @Get(':id')
