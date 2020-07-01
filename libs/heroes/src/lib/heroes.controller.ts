@@ -3,11 +3,12 @@ import { BoilerplateController, BoilerplateService } from "@legendizer/boilerpla
 import { HeroModel } from '@legendizer/models';
 import { Heroes } from '@legendizer/data-repository';
 import { plainToClass } from 'class-transformer';
+import { InjectInMemoryDBService } from 'in-memory-db-uuid';
 
 @Controller('heroes')
 export class HeroesController extends BoilerplateController<HeroModel> {
-  constructor(protected heroService: BoilerplateService<HeroModel>) {
-    super(heroService);
-    heroService.records = plainToClass(HeroModel, Heroes);
+  constructor(@InjectInMemoryDBService('heroes') protected readonly heroesService: BoilerplateService<HeroModel>) {
+    super(heroesService);
+    heroesService.records = plainToClass(HeroModel, Heroes);
   }
 }
