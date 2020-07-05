@@ -480,6 +480,32 @@
           }
         }
       }
+    },
+    "gamesets": {
+      "root": "libs/gamesets",
+      "sourceRoot": "libs/gamesets/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/gamesets/tsconfig.lib.json",
+              "libs/gamesets/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/gamesets/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/gamesets/jest.config.js",
+            "tsConfig": "libs/gamesets/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

@@ -1,7 +1,7 @@
 import * as Legendary from "./lib/legendary";
 
 const Bystanders = Legendary.Bystanders
-const GameSets = Legendary.GameSet;
+const GameSets = [ Legendary.GameSet ];
 const Henchmen = Legendary.Henchmen;
 const Heroes = Legendary.Heroes;
 const Masterminds = Legendary.Masterminds;

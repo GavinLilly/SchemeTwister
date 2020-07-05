@@ -6,3 +6,4 @@ export * from './lib/mastermind.model';
 export * from './lib/scheme.model';
 export * from './lib/villainGroup.model';
 export * from './lib/base.model';
+export * from './lib/gameSet.model';
