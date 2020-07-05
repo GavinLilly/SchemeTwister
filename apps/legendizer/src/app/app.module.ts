@@ -4,13 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import {
-  LegendizerHomeScreenModule,
+  WebHomeScreenModule,
   legendizerHomeScreenRoutes,
-} from '@legendizer/legendizer/home-screen';
+} from '@legendizer/web/home-screen';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, HttpClientModule, LegendizerHomeScreenModule],
+  imports: [BrowserModule, HttpClientModule, WebHomeScreenModule],
   providers: [],
   bootstrap: [AppComponent],
 })

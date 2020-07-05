@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'legendizer-home-screen',
+  name: 'web-home-screen',
   preset: '../../../jest.config.js',
-  coverageDirectory: '../../../coverage/libs/legendizer/home-screen',
+  coverageDirectory: '../../../coverage/libs/web/home-screen',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',

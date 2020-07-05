@@ -15,4 +15,4 @@ import { SchemeComponent } from './scheme/scheme.component';
   declarations: [HeroComponent, SchemeComponent],
   exports: [HeroComponent, SchemeComponent],
 })
-export class LegendizerRandomizeModule {}
+export class WebRandomizeModule {}

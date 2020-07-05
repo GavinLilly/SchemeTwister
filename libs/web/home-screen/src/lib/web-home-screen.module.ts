@@ -7,4 +7,4 @@ export const legendizerHomeScreenRoutes: Route[] = [];
 @NgModule({
   imports: [CommonModule, RouterModule],
 })
-export class LegendizerHomeScreenModule {}
+export class WebHomeScreenModule {}

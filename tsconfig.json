@@ -10,31 +10,59 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "paths": {
-      "@legendizer/api-interfaces": ["libs/api-interfaces/src/index.ts"],
-      "@legendizer/heroes": ["libs/heroes/src/index.ts"],
-      "@legendizer/legendizer/home-screen": [
-        "libs/legendizer/home-screen/src/index.ts"
+      "@legendizer/api-interfaces": [
+        "libs/api-interfaces/src/index.ts"
       ],
-      "@legendizer/legendizer/randomize": [
-        "libs/legendizer/randomize/src/index.ts"
+      "@legendizer/heroes": [
+        "libs/heroes/src/index.ts"
       ],
-      "@legendizer/schemes": ["libs/schemes/src/index.ts"],
-      "@legendizer/villains": ["libs/villains/src/index.ts"],
-      "@legendizer/models": ["libs/models/src/index.ts"],
-      "@legendizer/data-repository": ["libs/data-repository/src/index.ts"],
-      "@legendizer/henchmen": ["libs/henchmen/src/index.ts"],
-      "@legendizer/masterminds": ["libs/masterminds/src/index.ts"],
-      "@legendizer/boilerplate": ["libs/boilerplate/src/index.ts"],
-      "@legendizer/gamesets": ["libs/gamesets/src/index.ts"]
+      "@legendizer/schemes": [
+        "libs/schemes/src/index.ts"
+      ],
+      "@legendizer/villains": [
+        "libs/villains/src/index.ts"
+      ],
+      "@legendizer/models": [
+        "libs/models/src/index.ts"
+      ],
+      "@legendizer/data-repository": [
+        "libs/data-repository/src/index.ts"
+      ],
+      "@legendizer/henchmen": [
+        "libs/henchmen/src/index.ts"
+      ],
+      "@legendizer/masterminds": [
+        "libs/masterminds/src/index.ts"
+      ],
+      "@legendizer/boilerplate": [
+        "libs/boilerplate/src/index.ts"
+      ],
+      "@legendizer/gamesets": [
+        "libs/gamesets/src/index.ts"
+      ],
+      "@legendizer/web/home-screen": [
+        "libs/web/home-screen/src/index.ts"
+      ],
+      "@legendizer/web/randomize": [
+        "libs/web/randomize/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

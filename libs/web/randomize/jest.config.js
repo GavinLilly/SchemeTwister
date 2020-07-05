@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'legendizer-randomize',
+  name: 'web-randomize',
   preset: '../../../jest.config.js',
-  coverageDirectory: '../../../coverage/libs/legendizer/randomize',
+  coverageDirectory: '../../../coverage/libs/web/randomize',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',

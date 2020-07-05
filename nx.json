@@ -14,7 +14,12 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
@@ -24,7 +29,9 @@
     },
     "legendizer-e2e": {
       "tags": [],
-      "implicitDependencies": ["legendizer"]
+      "implicitDependencies": [
+        "legendizer"
+      ]
     },
     "api": {
       "tags": []
@@ -33,12 +40,6 @@
       "tags": []
     },
     "heroes": {
-      "tags": []
-    },
-    "legendizer-home-screen": {
-      "tags": []
-    },
-    "legendizer-randomize": {
       "tags": []
     },
     "schemes": {
@@ -63,6 +64,12 @@
       "tags": []
     },
     "gamesets": {
+      "tags": []
+    },
+    "web-home-screen": {
+      "tags": []
+    },
+    "web-randomize": {
       "tags": []
     }
   }
