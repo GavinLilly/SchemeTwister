@@ -14,12 +14,7 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ]
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
   },
@@ -29,9 +24,7 @@
     },
     "legendizer-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "legendizer"
-      ]
+      "implicitDependencies": ["legendizer"]
     },
     "api": {
       "tags": []
@@ -46,12 +39,6 @@
       "tags": []
     },
     "villains": {
-      "tags": []
-    },
-    "models": {
-      "tags": []
-    },
-    "data-repository": {
       "tags": []
     },
     "henchmen": {
@@ -71,6 +58,54 @@
     },
     "web-randomize": {
       "tags": []
+    },
+    "shared-gameset-types": {
+      "tags": ["type:types", "scope:shared"]
+    },
+    "shared-bystander-types": {
+      "tags": ["type:types", "scope:shared"]
+    },
+    "shared-henchmen-types": {
+      "tags": ["type:types", "scope:shared"]
+    },
+    "shared-hero-types": {
+      "tags": ["type:types", "scope:shared"]
+    },
+    "shared-mastermind-types": {
+      "tags": ["type:types", "scope:shared"]
+    },
+    "shared-scheme-types": {
+      "tags": ["type:types", "scope:shared"]
+    },
+    "shared-villaingroup-types": {
+      "tags": ["type:types", "scope:shared"]
+    },
+    "shared-base-types": {
+      "tags": ["type:types", "scope:shared"]
+    },
+    "shared-bystander-data": {
+      "tags": ["type:data", "scope:shared"]
+    },
+    "shared-gameset-data": {
+      "tags": ["type:data", "scope:shared"]
+    },
+    "shared-henchmen-data": {
+      "tags": ["type:data", "scope:shared"]
+    },
+    "shared-hero-data": {
+      "tags": ["type:data", "scope:shared"]
+    },
+    "shared-mastermind-data": {
+      "tags": ["type:data", "scope:shared"]
+    },
+    "shared-villaingroup-data": {
+      "tags": ["type:data", "scope:shared"]
+    },
+    "shared-scheme-data": {
+      "tags": ["type:data", "scope:shared"]
+    },
+    "legendizer-feature-home": {
+      "tags": ["type:feature scope:legendizer"]
     }
   }
 }

@@ -7,14 +7,16 @@ import { WebHomeScreenModule } from '@legendizer/web/home-screen';
 import { WebRandomizeModule } from '@legendizer/web/randomize';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from "@legendizer/web/home-screen";
-import { MainComponent } from "@legendizer/web/randomize";
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'randomize', component: MainComponent },
-  { path: '', component: HomeComponent },
-]
+  {
+    path: 'legendizer-feature-home',
+    loadChildren: () =>
+      import('@legendizer/legendizer/feature-home').then(
+        (module) => module.LegendizerFeatureHomeModule
+      ),
+  },
+];
 
 @NgModule({
   declarations: [AppComponent],

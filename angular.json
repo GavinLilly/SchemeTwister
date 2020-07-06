@@ -25,9 +25,7 @@
               "apps/legendizer/src/favicon.ico",
               "apps/legendizer/src/assets"
             ],
-            "styles": [
-              "apps/legendizer/src/styles.scss"
-            ],
+            "styles": ["apps/legendizer/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -86,10 +84,7 @@
               "apps/legendizer/tsconfig.app.json",
               "apps/legendizer/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/legendizer/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/legendizer/**/*"]
           }
         },
         "test": {
@@ -124,13 +119,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/legendizer-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/legendizer-e2e/**/*"
-            ]
+            "tsConfig": ["apps/legendizer-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/legendizer-e2e/**/*"]
           }
         }
       }
@@ -148,9 +138,7 @@
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": [
-              "apps/api/src/assets"
-            ]
+            "assets": ["apps/api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -179,10 +167,7 @@
               "apps/api/tsconfig.app.json",
               "apps/api/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/api/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/api/**/*"]
           }
         },
         "test": {
@@ -208,10 +193,7 @@
               "libs/api-interfaces/tsconfig.lib.json",
               "libs/api-interfaces/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/api-interfaces/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/api-interfaces/**/*"]
           }
         },
         "test": {
@@ -237,10 +219,7 @@
               "libs/heroes/tsconfig.lib.json",
               "libs/heroes/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/heroes/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/heroes/**/*"]
           }
         },
         "test": {
@@ -266,10 +245,7 @@
               "libs/schemes/tsconfig.lib.json",
               "libs/schemes/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/schemes/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/schemes/**/*"]
           }
         },
         "test": {
@@ -295,10 +271,7 @@
               "libs/villains/tsconfig.lib.json",
               "libs/villains/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/villains/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/villains/**/*"]
           }
         },
         "test": {
@@ -306,64 +279,6 @@
           "options": {
             "jestConfig": "libs/villains/jest.config.js",
             "tsConfig": "libs/villains/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "models": {
-      "root": "libs/models",
-      "sourceRoot": "libs/models/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/models/tsconfig.lib.json",
-              "libs/models/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/models/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/models/jest.config.js",
-            "tsConfig": "libs/models/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "data-repository": {
-      "root": "libs/data-repository",
-      "sourceRoot": "libs/data-repository/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/data-repository/tsconfig.lib.json",
-              "libs/data-repository/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/data-repository/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/data-repository/jest.config.js",
-            "tsConfig": "libs/data-repository/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -382,10 +297,7 @@
               "libs/henchmen/tsconfig.lib.json",
               "libs/henchmen/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/henchmen/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/henchmen/**/*"]
           }
         },
         "test": {
@@ -411,10 +323,7 @@
               "libs/masterminds/tsconfig.lib.json",
               "libs/masterminds/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/masterminds/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/masterminds/**/*"]
           }
         },
         "test": {
@@ -440,10 +349,7 @@
               "libs/boilerplate/tsconfig.lib.json",
               "libs/boilerplate/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/boilerplate/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/boilerplate/**/*"]
           }
         },
         "test": {
@@ -469,10 +375,7 @@
               "libs/gamesets/tsconfig.lib.json",
               "libs/gamesets/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/gamesets/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/gamesets/**/*"]
           }
         },
         "test": {
@@ -498,10 +401,7 @@
               "libs/web/home-screen/tsconfig.lib.json",
               "libs/web/home-screen/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/web/home-screen/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/web/home-screen/**/*"]
           }
         },
         "test": {
@@ -533,10 +433,7 @@
               "libs/web/randomize/tsconfig.lib.json",
               "libs/web/randomize/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/web/randomize/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/web/randomize/**/*"]
           }
         },
         "test": {
@@ -546,6 +443,287 @@
             "tsConfig": "libs/web/randomize/tsconfig.spec.json",
             "passWithNoTests": true,
             "setupFile": "libs/web/randomize/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-gameset-types": {
+      "root": "libs/shared/gameSet/types",
+      "sourceRoot": "libs/shared/gameSet/types/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/gameSet/types/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**", "!libs/shared/gameSet/types/**/*"]
+          }
+        }
+      }
+    },
+    "shared-bystander-types": {
+      "root": "libs/shared/bystander/types",
+      "sourceRoot": "libs/shared/bystander/types/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/bystander/types/tsconfig.lib.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/bystander/types/**/*"
+            ]
+          }
+        }
+      }
+    },
+    "shared-henchmen-types": {
+      "root": "libs/shared/henchmen/types",
+      "sourceRoot": "libs/shared/henchmen/types/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/henchmen/types/tsconfig.lib.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/henchmen/types/**/*"
+            ]
+          }
+        }
+      }
+    },
+    "shared-hero-types": {
+      "root": "libs/shared/hero/types",
+      "sourceRoot": "libs/shared/hero/types/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/hero/types/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**", "!libs/shared/hero/types/**/*"]
+          }
+        }
+      }
+    },
+    "shared-mastermind-types": {
+      "root": "libs/shared/mastermind/types",
+      "sourceRoot": "libs/shared/mastermind/types/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/mastermind/types/tsconfig.lib.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/mastermind/types/**/*"
+            ]
+          }
+        }
+      }
+    },
+    "shared-scheme-types": {
+      "root": "libs/shared/scheme/types",
+      "sourceRoot": "libs/shared/scheme/types/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/scheme/types/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**", "!libs/shared/scheme/types/**/*"]
+          }
+        }
+      }
+    },
+    "shared-villaingroup-types": {
+      "root": "libs/shared/villainGroup/types",
+      "sourceRoot": "libs/shared/villainGroup/types/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/villainGroup/types/tsconfig.lib.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/villainGroup/types/**/*"
+            ]
+          }
+        }
+      }
+    },
+    "shared-base-types": {
+      "root": "libs/shared/base/types",
+      "sourceRoot": "libs/shared/base/types/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/base/types/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**", "!libs/shared/base/types/**/*"]
+          }
+        }
+      }
+    },
+    "shared-bystander-data": {
+      "root": "libs/shared/bystander/data",
+      "sourceRoot": "libs/shared/bystander/data/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/bystander/data/tsconfig.lib.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/bystander/data/**/*"
+            ]
+          }
+        }
+      }
+    },
+    "shared-gameset-data": {
+      "root": "libs/shared/gameSet/data",
+      "sourceRoot": "libs/shared/gameSet/data/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/gameSet/data/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**", "!libs/shared/gameSet/data/**/*"]
+          }
+        }
+      }
+    },
+    "shared-henchmen-data": {
+      "root": "libs/shared/henchmen/data",
+      "sourceRoot": "libs/shared/henchmen/data/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/henchmen/data/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**", "!libs/shared/henchmen/data/**/*"]
+          }
+        }
+      }
+    },
+    "shared-hero-data": {
+      "root": "libs/shared/hero/data",
+      "sourceRoot": "libs/shared/hero/data/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/hero/data/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**", "!libs/shared/hero/data/**/*"]
+          }
+        }
+      }
+    },
+    "shared-mastermind-data": {
+      "root": "libs/shared/mastermind/data",
+      "sourceRoot": "libs/shared/mastermind/data/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/mastermind/data/tsconfig.lib.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/mastermind/data/**/*"
+            ]
+          }
+        }
+      }
+    },
+    "shared-villaingroup-data": {
+      "root": "libs/shared/villainGroup/data",
+      "sourceRoot": "libs/shared/villainGroup/data/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/villainGroup/data/tsconfig.lib.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/villainGroup/data/**/*"
+            ]
+          }
+        }
+      }
+    },
+    "shared-scheme-data": {
+      "root": "libs/shared/scheme/data",
+      "sourceRoot": "libs/shared/scheme/data/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/scheme/data/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**", "!libs/shared/scheme/data/**/*"]
+          }
+        }
+      }
+    },
+    "legendizer-feature-home": {
+      "projectType": "library",
+      "root": "libs/legendizer/feature-home",
+      "sourceRoot": "libs/legendizer/feature-home/src",
+      "prefix": "legendizer",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/legendizer/feature-home/tsconfig.lib.json",
+              "libs/legendizer/feature-home/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/legendizer/feature-home/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/legendizer/feature-home/jest.config.js",
+            "tsConfig": "libs/legendizer/feature-home/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/legendizer/feature-home/src/test-setup.ts"
           }
         }
       },

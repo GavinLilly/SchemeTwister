@@ -10,59 +10,67 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "paths": {
-      "@legendizer/api-interfaces": [
-        "libs/api-interfaces/src/index.ts"
+      "@legendizer/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@legendizer/heroes": ["libs/heroes/src/index.ts"],
+      "@legendizer/schemes": ["libs/schemes/src/index.ts"],
+      "@legendizer/villains": ["libs/villains/src/index.ts"],
+      "@legendizer/henchmen": ["libs/henchmen/src/index.ts"],
+      "@legendizer/masterminds": ["libs/masterminds/src/index.ts"],
+      "@legendizer/boilerplate": ["libs/boilerplate/src/index.ts"],
+      "@legendizer/gamesets": ["libs/gamesets/src/index.ts"],
+      "@legendizer/web/home-screen": ["libs/web/home-screen/src/index.ts"],
+      "@legendizer/web/randomize": ["libs/web/randomize/src/index.ts"],
+      "@legendizer/shared/gameSet/types": [
+        "libs/shared/gameSet/types/src/index.ts"
       ],
-      "@legendizer/heroes": [
-        "libs/heroes/src/index.ts"
+      "@legendizer/shared/bystander/types": [
+        "libs/shared/bystander/types/src/index.ts"
       ],
-      "@legendizer/schemes": [
-        "libs/schemes/src/index.ts"
+      "@legendizer/shared/henchmen/types": [
+        "libs/shared/henchmen/types/src/index.ts"
       ],
-      "@legendizer/villains": [
-        "libs/villains/src/index.ts"
+      "@legendizer/shared/hero/types": ["libs/shared/hero/types/src/index.ts"],
+      "@legendizer/shared/mastermind/types": [
+        "libs/shared/mastermind/types/src/index.ts"
       ],
-      "@legendizer/models": [
-        "libs/models/src/index.ts"
+      "@legendizer/shared/scheme/types": [
+        "libs/shared/scheme/types/src/index.ts"
       ],
-      "@legendizer/data-repository": [
-        "libs/data-repository/src/index.ts"
+      "@legendizer/shared/villainGroup/types": [
+        "libs/shared/villainGroup/types/src/index.ts"
       ],
-      "@legendizer/henchmen": [
-        "libs/henchmen/src/index.ts"
+      "@legendizer/shared/base/types": ["libs/shared/base/types/src/index.ts"],
+      "@legendizer/shared/bystander/data": [
+        "libs/shared/bystander/data/src/index.ts"
       ],
-      "@legendizer/masterminds": [
-        "libs/masterminds/src/index.ts"
+      "@legendizer/shared/gameSet/data": [
+        "libs/shared/gameSet/data/src/index.ts"
       ],
-      "@legendizer/boilerplate": [
-        "libs/boilerplate/src/index.ts"
+      "@legendizer/shared/henchmen/data": [
+        "libs/shared/henchmen/data/src/index.ts"
       ],
-      "@legendizer/gamesets": [
-        "libs/gamesets/src/index.ts"
+      "@legendizer/shared/hero/data": ["libs/shared/hero/data/src/index.ts"],
+      "@legendizer/shared/mastermind/data": [
+        "libs/shared/mastermind/data/src/index.ts"
       ],
-      "@legendizer/web/home-screen": [
-        "libs/web/home-screen/src/index.ts"
+      "@legendizer/shared/villainGroup/data": [
+        "libs/shared/villainGroup/data/src/index.ts"
       ],
-      "@legendizer/web/randomize": [
-        "libs/web/randomize/src/index.ts"
+      "@legendizer/shared/scheme/data": [
+        "libs/shared/scheme/data/src/index.ts"
+      ],
+      "@legendizer/legendizer/feature-home": [
+        "libs/legendizer/feature-home/src/index.ts"
       ]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }
