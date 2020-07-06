@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card">
+      <h5 class="card-header">Randomize</h5>
+      <div class="card-body">
+        <h6 class="card-title">Number of players</h6>
+        <select class="custom-select" id="numPlayers">
+          <option>1</option>
+          <option selected>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        <a (click)="getSetup()" class="btn btn-primary">Go!</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<legendizer-scheme></legendizer-scheme>

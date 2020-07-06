@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'legendizer-root',
@@ -7,5 +8,6 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private http: HttpClient) {}
+  public isMenuCollapsed = true;
+  constructor(private http: HttpClient, public route: ActivatedRoute) {}
 }
