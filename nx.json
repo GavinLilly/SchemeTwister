@@ -32,33 +32,6 @@
     "api-interfaces": {
       "tags": []
     },
-    "heroes": {
-      "tags": []
-    },
-    "schemes": {
-      "tags": []
-    },
-    "villains": {
-      "tags": []
-    },
-    "henchmen": {
-      "tags": []
-    },
-    "masterminds": {
-      "tags": []
-    },
-    "boilerplate": {
-      "tags": []
-    },
-    "gamesets": {
-      "tags": []
-    },
-    "web-home-screen": {
-      "tags": []
-    },
-    "web-randomize": {
-      "tags": []
-    },
     "shared-gameset-types": {
       "tags": ["type:types", "scope:shared"]
     },
@@ -109,6 +82,9 @@
     },
     "legendizer-ui": {
       "tags": ["type:ui scope:legendizer"]
+    },
+    "legendizer-feature-randomize": {
+      "tags": ["type:feature scope:legendizer"]
     }
   }
 }

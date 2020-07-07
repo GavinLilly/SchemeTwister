@@ -8,6 +8,5 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  public isMenuCollapsed = true;
   constructor(private http: HttpClient, public route: ActivatedRoute) {}
 }

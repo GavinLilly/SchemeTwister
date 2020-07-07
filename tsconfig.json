@@ -19,15 +19,6 @@
     "esModuleInterop": true,
     "paths": {
       "@legendizer/api-interfaces": ["libs/api-interfaces/src/index.ts"],
-      "@legendizer/heroes": ["libs/heroes/src/index.ts"],
-      "@legendizer/schemes": ["libs/schemes/src/index.ts"],
-      "@legendizer/villains": ["libs/villains/src/index.ts"],
-      "@legendizer/henchmen": ["libs/henchmen/src/index.ts"],
-      "@legendizer/masterminds": ["libs/masterminds/src/index.ts"],
-      "@legendizer/boilerplate": ["libs/boilerplate/src/index.ts"],
-      "@legendizer/gamesets": ["libs/gamesets/src/index.ts"],
-      "@legendizer/web/home-screen": ["libs/web/home-screen/src/index.ts"],
-      "@legendizer/web/randomize": ["libs/web/randomize/src/index.ts"],
       "@legendizer/shared/gameSet/types": [
         "libs/shared/gameSet/types/src/index.ts"
       ],
@@ -70,7 +61,10 @@
       "@legendizer/legendizer/feature-home": [
         "libs/legendizer/feature-home/src/index.ts"
       ],
-      "@legendizer/legendizer/ui": ["libs/legendizer/ui/src/index.ts"]
+      "@legendizer/legendizer/ui": ["libs/legendizer/ui/src/index.ts"],
+      "@legendizer/legendizer/feature-randomize": [
+        "libs/legendizer/feature-randomize/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
