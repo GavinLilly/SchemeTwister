@@ -69,7 +69,8 @@
       ],
       "@legendizer/legendizer/feature-home": [
         "libs/legendizer/feature-home/src/index.ts"
-      ]
+      ],
+      "@legendizer/legendizer/ui": ["libs/legendizer/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

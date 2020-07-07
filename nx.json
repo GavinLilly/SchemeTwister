@@ -106,6 +106,9 @@
     },
     "legendizer-feature-home": {
       "tags": ["type:feature scope:legendizer"]
+    },
+    "legendizer-ui": {
+      "tags": ["type:ui scope:legendizer"]
     }
   }
 }
