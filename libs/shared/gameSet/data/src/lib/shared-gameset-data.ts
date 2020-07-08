@@ -1,4 +1,4 @@
-import { GameSet } from "@legendizer/shared/gameset/types";
+import { GameSet } from "@legendizer/shared/gameSet/types";
 
 export const gameSets: GameSet[] =[
   {
