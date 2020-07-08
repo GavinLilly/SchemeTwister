@@ -13,9 +13,17 @@
             <option>4</option>
             <option>5</option>
           </select>
-          <a href="#" class="btn btn-primary mt-1">Randomize!</a>
+          <button (click)="randomize()" class="btn btn-primary mt-1" role="button">Randomize!</button>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <legendizer-scheme></legendizer-scheme>
+    </div>
+    <div class="col-6">
+      <legendizer-mastermind></legendizer-mastermind>
     </div>
   </div>
 </div>
