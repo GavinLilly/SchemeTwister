@@ -19,7 +19,6 @@ export interface Scheme extends Base {
   setup: string;
   specialRules?: string;
   numWounds?: number;
-  numBystandersInVillainDeck?: number;
   requiredVillains?: VillainGroup;
   rules: Rules;
 }

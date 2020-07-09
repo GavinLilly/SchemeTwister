@@ -58,10 +58,10 @@ export const schemes: Scheme[] = [
       ...defaultRules,
       ...{
         numWounds: {
-          2: 6,
-          3: 12,
-          4: 18,
-          5: 24,
+          2: 12,
+          3: 18,
+          4: 24,
+          5: 30,
         },
       },
     },
@@ -74,9 +74,18 @@ export const schemes: Scheme[] = [
     twist:
       'Any Villain in the Bank captures 2 Bystanders. Then play the top card of the Villain Deck.',
     evilWins: 'When 8 Bystanders are carried away by escaping Villains.',
-    numBystandersInVillainDeck: 12,
     gameSet: legGameSet,
-    rules: defaultRules,
+    rules: {
+      ...defaultRules,
+      ...{
+        numBystanders: {
+          2: 12,
+          3: 12,
+          4: 12,
+          5: 12,
+        }
+      }
+    }
   },
   {
     id: '7ad1b3ed-efd8-4b2a-bd6a-ca500fc0f1af',
@@ -137,10 +146,15 @@ export const schemes: Scheme[] = [
           4: 5,
           5: 5,
         },
+        numBystanders: {
+          2: 18,
+          3: 18,
+          4: 18,
+          5: 18,
+        }
       },
     },
-    gameSet: legGameSet,
-    numBystandersInVillainDeck: 18,
+    gameSet: legGameSet
   },
   {
     id: '81a8b233-aa28-4258-833e-4cd9fe5d051a',
