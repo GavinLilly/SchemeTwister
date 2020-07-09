@@ -9,7 +9,7 @@
           <select
             class="custom-select mb-1"
             [(ngModel)]="numPlayers"
-            (change)="randomize()"
+            (change)="generateDecks()"
           >
             <option [value]="2">2</option>
             <option [value]="3">3</option>
@@ -22,22 +22,25 @@
   </div>
   <div class="row">
     <div class="card-deck">
-      <legendizer-scheme [scheme]="scheme"></legendizer-scheme>
-      <legendizer-setup
-        [strikes]="strikes"
-        [twists]="twists"
-        [bystanders]="bystanders"
-        [wounds]="wounds"
-      ></legendizer-setup>
       <legendizer-mastermind [mastermind]="mastermind"></legendizer-mastermind>
+      <legendizer-scheme [scheme]="scheme"></legendizer-scheme>
     </div>
   </div>
   <div class="row">
     <div class="card-group">
+      <legendizer-additional-cards
+        [strikes]="strikes"
+        [twists]="twists"
+        [bystanders]="bystanders"
+      ></legendizer-additional-cards>
       <legendizer-villain-group
         [villainGroup]="item"
         *ngFor="let item of villains"
       ></legendizer-villain-group>
+      <legendizer-henchmen
+        [henchmen]="item"
+        *ngFor="let item of henchmen"
+      ></legendizer-henchmen>
     </div>
   </div>
 </div>

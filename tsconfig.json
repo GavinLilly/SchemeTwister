@@ -64,6 +64,9 @@
       "@legendizer/legendizer/ui": ["libs/legendizer/ui/src/index.ts"],
       "@legendizer/legendizer/feature-randomize": [
         "libs/legendizer/feature-randomize/src/index.ts"
+      ],
+      "@legendizer/legendizer/ui-villain-deck": [
+        "libs/legendizer/ui-villain-deck/src/index.ts"
       ]
     }
   },

@@ -85,6 +85,9 @@
     },
     "legendizer-feature-randomize": {
       "tags": ["type:feature scope:legendizer"]
+    },
+    "legendizer-ui-villain-deck": {
+      "tags": ["type:ui scope:legendizer"]
     }
   }
 }

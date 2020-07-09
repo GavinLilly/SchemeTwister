@@ -1,15 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'legendizer-setup',
-  templateUrl: './setup.component.html',
-  styleUrls: ['./setup.component.scss']
+  selector: 'legendizer-additional-cards',
+  templateUrl: './additional-cards.component.html',
+  styleUrls: ['./additional-cards.component.scss']
 })
-export class SetupComponent implements OnInit {
+export class AdditionalCardsComponent implements OnInit {
   @Input() strikes: number;
   @Input() twists: number;
   @Input() bystanders: number;
-  @Input() wounds?: number;
 
   constructor() { }
 

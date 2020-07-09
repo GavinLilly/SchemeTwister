@@ -553,6 +553,41 @@
           "style": "scss"
         }
       }
+    },
+    "legendizer-ui-villain-deck": {
+      "projectType": "library",
+      "root": "libs/legendizer/ui-villain-deck",
+      "sourceRoot": "libs/legendizer/ui-villain-deck/src",
+      "prefix": "legendizer",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/legendizer/ui-villain-deck/tsconfig.lib.json",
+              "libs/legendizer/ui-villain-deck/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/legendizer/ui-villain-deck/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/legendizer/ui-villain-deck/jest.config.js",
+            "tsConfig": "libs/legendizer/ui-villain-deck/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/legendizer/ui-villain-deck/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
