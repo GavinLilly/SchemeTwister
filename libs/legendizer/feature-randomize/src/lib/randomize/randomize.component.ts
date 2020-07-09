@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { SchemeService } from '../services/scheme.service';
 
 // Types
 import { Scheme } from '@legendizer/shared/scheme/types';
@@ -9,9 +8,11 @@ import { Henchmen } from '@legendizer/shared/henchmen/types';
 import { Hero } from '@legendizer/shared/hero/types';
 
 // Services
-import { MastermindService } from '../services/mastermind.service';
+import { MastermindsService } from '../services/masterminds.service';
 import { VillainGroupsService } from '../services/villain-groups.service';
 import { HenchmenService } from '../services/henchmen.service';
+import { SchemesService } from '../services/schemes.service';
+import { HeroesService } from '../services/heroes.service';
 
 @Component({
   selector: 'legendizer-randomize',
@@ -35,27 +36,27 @@ export class RandomizeComponent implements OnInit {
   bystanders: number;
   villains: VillainGroup[] = [];
   henchmen: Henchmen[] = [];
+  heroes: Hero[] = [];
 
   constructor(
-    private schemeService: SchemeService,
-    private mastermindService: MastermindService,
-    private villainGroupService: VillainGroupsService,
-    private henchmenService: HenchmenService
+    private schemesService: SchemesService,
+    private mastermindsService: MastermindsService,
+    private villainGroupsService: VillainGroupsService,
+    private henchmenService: HenchmenService,
+    private heroesService: HeroesService
   ) {}
 
   ngOnInit(): void {
-    this.availableSchemes = this.schemeService.get();
-    this.availableMasterminds = this.mastermindService.get();
-    this.availableVillainGroups = this.villainGroupService.get();
+    this.availableSchemes = this.schemesService.get();
+    this.availableMasterminds = this.mastermindsService.get();
+    this.availableVillainGroups = this.villainGroupsService.get();
     this.availableHenchmen = this.henchmenService.get();
-    //this.hero.get().subscribe((records) => this.availableSchemes = records);
+    this.availableHeroes = this.heroesService.get();
 
     this.generateDecks();
   }
 
-  private isHenchmen(
-    object: VillainGroup | Henchmen
-  ): object is Henchmen {
+  private isHenchmen(object: VillainGroup | Henchmen): object is Henchmen {
     return (<Henchmen>object).fight !== undefined;
   }
 
@@ -114,8 +115,20 @@ export class RandomizeComponent implements OnInit {
       this.availableHenchmen,
       this.henchmen
     );
+
+    // Generate heroes
+    this.heroes = this.getRandom(
+      this.scheme.rules.numHeroes[this.numPlayers],
+      this.availableHeroes
+    );
   }
 
+  /**
+   * getRandom will recursively pick a number of records based on the passed in count and return an array of the picked records
+   * @param count The number of records required
+   * @param records An array of records to select from
+   * @param elements An optional array of records to include in the returned records. This ensures that the same entry isn't chosen twice
+   */
   getRandom<T>(count: number, records: T[], elements: T[] = []): T[] {
     function getRandomElement(arr: T[]) {
       if (elements.length < count) {

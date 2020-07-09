@@ -3,7 +3,7 @@
     <div class="col-3 mx-auto">
       <div class="card text-center">
         <div class="card-header">
-          Select number of players
+          Number of players
         </div>
         <div class="card-body">
           <select
@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="card-group">
+    <div class="card-deck">
       <legendizer-additional-cards
         [strikes]="strikes"
         [twists]="twists"
@@ -41,6 +41,14 @@
         [henchmen]="item"
         *ngFor="let item of henchmen"
       ></legendizer-henchmen>
+    </div>
+  </div>
+  <div class="row">
+    <div class="card-group">
+      <legendizer-heroes
+        [hero]="item"
+        *ngFor="let item of heroes"
+      ></legendizer-heroes>
     </div>
   </div>
 </div>

@@ -5,18 +5,21 @@ import { HeaderComponent } from './header/header.component';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { SchemeComponent } from './scheme/scheme.component';
 import { MastermindComponent } from './mastermind/mastermind.component';
+import { HeroesComponent } from './heroes/heroes.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, NgbCollapseModule],
   declarations: [
     HeaderComponent,
     SchemeComponent,
-    MastermindComponent
+    MastermindComponent,
+    HeroesComponent
   ],
   exports: [
     HeaderComponent,
     SchemeComponent,
-    MastermindComponent
+    MastermindComponent,
+    HeroesComponent
   ],
 })
 export class LegendizerUiModule {}

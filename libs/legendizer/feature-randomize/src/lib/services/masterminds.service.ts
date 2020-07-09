@@ -6,7 +6,7 @@ import { Mastermind } from "@legendizer/shared/mastermind/types";
 @Injectable({
   providedIn: 'root'
 })
-export class MastermindService extends BaseDataService<Mastermind> {
+export class MastermindsService extends BaseDataService<Mastermind> {
 
   constructor() {
     super(masterminds);

@@ -6,7 +6,7 @@ import { Scheme } from "@legendizer/shared/scheme/types";
 @Injectable({
   providedIn: 'root'
 })
-export class SchemeService extends BaseDataService<Scheme> {
+export class SchemesService extends BaseDataService<Scheme> {
 
   constructor() {
     super(schemes);
