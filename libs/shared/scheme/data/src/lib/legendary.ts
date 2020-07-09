@@ -1,7 +1,7 @@
 import { Rules } from '@legendizer/shared/scheme/types';
 import { Scheme } from '@legendizer/shared/scheme/types';
 import { gameSets } from '@legendizer/shared/gameSet/data';
-import { villainGroup } from '@legendizer/shared/villainGroup/data';
+import { villainGroups } from '@legendizer/shared/villainGroup/data';
 
 const legGameSet = gameSets.find(
   (record) => record.id === 'aa4eb824-5316-4f0d-bca7-a072b58dee5d'
@@ -38,6 +38,12 @@ const defaultRules: Rules = {
     4: 8,
     5: 8,
   },
+  numMasterStrikes: {
+    2: 5,
+    3: 5,
+    4: 5,
+    5: 5
+  }
 };
 
 export const schemes: Scheme[] = [
@@ -158,7 +164,7 @@ export const schemes: Scheme[] = [
         },
       },
     },
-    requiredVillains: villainGroup.find(
+    requiredVillains: villainGroups.find(
       (record) => record.id === 'a3ee145c-54a6-4f76-8593-423a0a3360f0'
     ),
   },

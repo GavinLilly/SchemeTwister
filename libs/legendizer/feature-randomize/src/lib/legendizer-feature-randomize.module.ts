@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from "@angular/forms";
 import { RouterModule } from '@angular/router';
 import { RandomizeComponent } from './randomize/randomize.component';
-import { SchemeComponent } from './scheme/scheme.component';
-import { MastermindComponent } from './mastermind/mastermind.component';
+import { LegendizerUiModule } from "@legendizer/legendizer/ui";
 
 @NgModule({
   imports: [
     CommonModule,
-
+    FormsModule,
+    LegendizerUiModule,
     RouterModule.forChild([
-      {path: '', pathMatch: 'full', component: RandomizeComponent}
+      { path: '', pathMatch: 'full', component: RandomizeComponent },
     ]),
   ],
-  declarations: [RandomizeComponent, SchemeComponent, MastermindComponent],
+  declarations: [
+    RandomizeComponent
+  ],
 })
 export class LegendizerFeatureRandomizeModule {}

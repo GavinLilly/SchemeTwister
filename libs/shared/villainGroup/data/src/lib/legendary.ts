@@ -5,7 +5,7 @@ const legGameSet = gameSets.find(
   (record) => record.id === 'aa4eb824-5316-4f0d-bca7-a072b58dee5d'
 );
 
-export const villainGroup: VillainGroup[] = [
+export const villainGroups: VillainGroup[] = [
   {
     id: '1777054a-5b47-49c5-a951-fadb598b0265',
     name: 'Brotherhood',

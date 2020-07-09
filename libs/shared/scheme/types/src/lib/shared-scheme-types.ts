@@ -10,6 +10,7 @@ export interface Rules {
   numHeroes: Record<numPlayers, number>;
   numTwists: Record<numPlayers, number>;
   numWounds?: Record<numPlayers, number>;
+  numMasterStrikes: Record<numPlayers, number>;
 }
 
 export interface Scheme extends Base {

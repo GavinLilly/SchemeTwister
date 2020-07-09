@@ -1,27 +1,53 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { SchemeComponent } from '../scheme/scheme.component';
-import { MastermindComponent } from '../mastermind/mastermind.component';
+import { SchemeService } from '../services/scheme.service';
+import { Scheme } from '@legendizer/shared/scheme/types';
+import { Mastermind } from '@legendizer/shared/mastermind/types';
+import { MastermindService } from '../services/mastermind.service';
+import { VillainGroupsService } from '../services/villain-groups.service';
+import { VillainGroup } from '@legendizer/shared/villainGroup/types';
 
 @Component({
   selector: 'legendizer-randomize',
   templateUrl: './randomize.component.html',
-  styleUrls: ['./randomize.component.scss']
+  styleUrls: ['./randomize.component.scss'],
 })
 export class RandomizeComponent implements OnInit {
-  @ViewChild(SchemeComponent)
-  private schemeComponent: SchemeComponent;
+  numPlayers = 2;
+  scheme: Scheme;
+  mastermind: Mastermind;
+  strikes: number;
+  twists: number;
+  bystanders: number;
+  wounds?: number;
+  villains: VillainGroup[];
 
-  @ViewChild(MastermindComponent)
-  private mastermindComponent: MastermindComponent;
-
-  constructor() { }
+  constructor(
+    private schemeService: SchemeService,
+    private mastermindService: MastermindService,
+    private villainGroupService: VillainGroupsService
+  ) {}
 
   ngOnInit(): void {
+    this.randomize();
   }
 
   randomize() {
-    this.schemeComponent.randomize();
-    this.mastermindComponent.randomize();
-  }
+    this.schemeService
+      .getRandom(1)
+      .subscribe((record) => (this.scheme = record[0]));
 
+    this.strikes = this.scheme.rules.numMasterStrikes[this.numPlayers];
+    this.twists = this.scheme.rules.numTwists[this.numPlayers];
+    this.bystanders = this.scheme.rules.numBystanders[this.numPlayers];
+    if (this.scheme.rules.numWounds)
+      this.wounds = this.scheme.rules.numWounds[this.numPlayers];
+
+    this.mastermindService
+      .getRandom(1)
+      .subscribe((record) => (this.mastermind = record[0]));
+
+    this.villainGroupService
+      .getRandom(this.scheme.rules.numVillains[this.numPlayers])
+      .subscribe((record) => (this.villains = record));
+  }
 }

@@ -6,24 +6,38 @@
           Select number of players
         </div>
         <div class="card-body">
-          <select class="custom-select mb-1" id="numPlayers">
-            <option>1</option>
-            <option selected>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+          <select
+            class="custom-select mb-1"
+            [(ngModel)]="numPlayers"
+            (change)="randomize()"
+          >
+            <option [value]="2">2</option>
+            <option [value]="3">3</option>
+            <option [value]="4">4</option>
+            <option [value]="5">5</option>
           </select>
-          <button (click)="randomize()" class="btn btn-primary mt-1" role="button">Randomize!</button>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-6">
-      <legendizer-scheme></legendizer-scheme>
+    <div class="card-deck">
+      <legendizer-scheme [scheme]="scheme"></legendizer-scheme>
+      <legendizer-setup
+        [strikes]="strikes"
+        [twists]="twists"
+        [bystanders]="bystanders"
+        [wounds]="wounds"
+      ></legendizer-setup>
+      <legendizer-mastermind [mastermind]="mastermind"></legendizer-mastermind>
     </div>
-    <div class="col-6">
-      <legendizer-mastermind></legendizer-mastermind>
+  </div>
+  <div class="row">
+    <div class="card-group">
+      <legendizer-villain-group
+        [villainGroup]="item"
+        *ngFor="let item of villains"
+      ></legendizer-villain-group>
     </div>
   </div>
 </div>

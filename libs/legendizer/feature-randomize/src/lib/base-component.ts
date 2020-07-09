@@ -1,13 +1,13 @@
-import { BaseDataService } from './base-data-service';
+import { BaseDataService } from './services/base-data-service';
 
 export abstract class BaseComponent<T> {
-  public selectedRecord: T = {} as T;
+  public selectedRecords: T[] = []
 
   constructor(protected service: BaseDataService<T>) {}
 
-  public randomize() {
+  public randomize(count: number) {
     this.service
-      .getRandom(1)
-      .subscribe((mastermind) => (this.selectedRecord = mastermind[0]));
+      .getRandom(count)
+      .subscribe((record) => (this.selectedRecords = record));
   }
 }
