@@ -20,35 +20,33 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="card-deck">
+  <div class="row row-cols-1 row-cols-md-2">
+    <div class="col mb-4">
       <legendizer-mastermind [mastermind]="mastermind"></legendizer-mastermind>
+    </div>
+    <div class="col mb-4">
       <legendizer-scheme [scheme]="scheme"></legendizer-scheme>
     </div>
   </div>
-  <div class="row">
-    <div class="card-deck">
-      <legendizer-additional-cards
-        [strikes]="strikes"
-        [twists]="twists"
-        [bystanders]="bystanders"
-      ></legendizer-additional-cards>
-      <legendizer-villain-group
-        [villainGroup]="item"
-        *ngFor="let item of villains"
-      ></legendizer-villain-group>
-      <legendizer-henchmen
-        [henchmen]="item"
-        *ngFor="let item of henchmen"
-      ></legendizer-henchmen>
-    </div>
+  <div class="row row-cols-1 row-cols-md-5 row-cols-xl-6">
+    <legendizer-additional-cards
+      [strikes]="strikes"
+      [twists]="twists"
+      [bystanders]="bystanders"
+    ></legendizer-additional-cards>
+    <legendizer-villain-group
+      [villainGroup]="item"
+      *ngFor="let item of villains"
+    ></legendizer-villain-group>
+    <legendizer-henchmen
+      [henchmen]="item"
+      *ngFor="let item of henchmen"
+    ></legendizer-henchmen>
   </div>
-  <div class="row">
-    <div class="card-group">
-      <legendizer-heroes
-        [hero]="item"
-        *ngFor="let item of heroes"
-      ></legendizer-heroes>
-    </div>
+  <div class="row row-cols-1 row-cols-md-5 row-cols-xl-6">
+    <legendizer-heroes
+      [hero]="item"
+      *ngFor="let item of heroes"
+    ></legendizer-heroes>
   </div>
 </div>
