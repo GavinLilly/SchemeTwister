@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { VillainGroup } from '@legendizer/shared/villainGroup/types';
+import { faRedo } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'legendizer-villain-group',
@@ -8,10 +9,15 @@ import { VillainGroup } from '@legendizer/shared/villainGroup/types';
 })
 export class VillainGroupComponent implements OnInit {
   @Input() villainGroup: VillainGroup;
+  @Output() villainID = new EventEmitter<string>();
+  faRedo = faRedo;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  shuffle() {
+    this.villainID.emit(this.villainGroup.id);
+  }
 }

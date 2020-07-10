@@ -101,13 +101,9 @@ export class RandomizeComponent implements OnInit {
         starterDeck.push(this.mastermind.alwaysLeads);
     }
 
-    // Find out how many henchmen still need to be generated
-    const remainingHenchmenCount =
-      this.scheme.rules.numHenchmen[this.numPlayers] - starterDeck.length;
-
     // Add remaining henchmen
     this.henchmen = this.getRandom(
-      remainingHenchmenCount,
+      this.scheme.rules.numHenchmen[this.numPlayers],
       this.availableHenchmen,
       starterDeck
     );
@@ -154,13 +150,9 @@ export class RandomizeComponent implements OnInit {
         starterDeck.push(this.mastermind.alwaysLeads);
     }
 
-    // Find out how many henchmen still need to be generated
-    const remainingVillainCount =
-      this.scheme.rules.numVillains[this.numPlayers] - starterDeck.length;
-
     // Add remaining henchmen
     this.villains = this.getRandom(
-      remainingVillainCount,
+      this.scheme.rules.numVillains[this.numPlayers],
       this.availableVillainGroups,
       starterDeck
     );

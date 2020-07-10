@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { HenchmenComponent } from './henchmen/henchmen.component';
 import { AdditionalCardsComponent } from './additional-cards/additional-cards.component';
 import { VillainGroupComponent } from './villain-group/villain-group.component';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, FontAwesomeModule],
   declarations: [
     HenchmenComponent,
     AdditionalCardsComponent,

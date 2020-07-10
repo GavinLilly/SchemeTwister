@@ -1,6 +1,17 @@
 <div class="col mb-4">
   <div class="card h-100">
-    <div class="card-header bg-danger text-white">Villain Group</div>
+    <div class="card-header bg-danger text-white text-center">
+      <div class="d-flex align-items-center">
+        <p class="mx-auto w-100 mb-1">Villain Group</p>
+        <a
+          (click)="shuffle()"
+          href="javascript:void(0)"
+          class="mb-1 text-white"
+        >
+          <fa-icon [icon]="faRedo" class="ml-auto"></fa-icon>
+        </a>
+      </div>
+    </div>
     <div class="card-body">
       <h5 class="card-title">{{ villainGroup.name }}</h5>
     </div>

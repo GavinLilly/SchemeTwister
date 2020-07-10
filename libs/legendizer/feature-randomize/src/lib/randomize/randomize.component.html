@@ -37,10 +37,12 @@
     ></legendizer-additional-cards>
     <legendizer-villain-group
       [villainGroup]="item"
+      (villainID)="onShuffleItem($event, 'VILLAINGROUP')"
       *ngFor="let item of villains"
     ></legendizer-villain-group>
     <legendizer-henchmen
       [henchmen]="item"
+      (henchmenID)="onShuffleItem($event, 'HENCHMEN')"
       *ngFor="let item of henchmen"
     ></legendizer-henchmen>
   </div>
