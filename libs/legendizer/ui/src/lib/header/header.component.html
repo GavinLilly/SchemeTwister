@@ -1,0 +1,45 @@
+<header class="navbar navbar-expand-lg navbar-light navbar-fixed-top bg-light">
+  <a
+    class="navbar-brand"
+    [routerLink]="'/home'"
+    (click)="isMenuCollapsed = true"
+    >Legendizer</a
+  >
+
+  <button
+    class="navbar-toggler navbar-toggler-right"
+    type="button"
+    (click)="isMenuCollapsed = !isMenuCollapsed"
+    [attr.aria-expanded]="!isMenuCollapsed"
+    aria-controls="navbarContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div
+    [ngbCollapse]="isMenuCollapsed"
+    class="navbar-collapse"
+    id="navbarContent"
+  >
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a
+          class="nav-link"
+          [routerLink]="'/home'"
+          (click)="isMenuCollapsed = true"
+          >Home</a
+        >
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a
+          class="nav-link"
+          [routerLink]="'/randomize'"
+          (click)="isMenuCollapsed = true"
+          >Randomize</a
+        >
+      </li>
+    </ul>
+  </div>
+</header>

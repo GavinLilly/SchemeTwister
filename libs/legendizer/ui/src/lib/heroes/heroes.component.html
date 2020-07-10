@@ -1,0 +1,21 @@
+<div class="col mb-4">
+  <div class="card h-100">
+    <div class="card-header text-center bg-success text-white">
+      <div class="d-flex align-items-center">
+        <p class="mx-auto w-100 mb-1">Hero</p>
+        <a
+          (click)="shuffle()"
+          href="javascript:void(0)"
+          class="mb-1 text-white"
+        >
+          <fa-icon [icon]="faRedo" class="ml-auto"></fa-icon>
+        </a>
+      </div>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ hero.name }}</h5>
+      <p class="card-text">{{ hero.team }}</p>
+    </div>
+    <div class="card-footer">{{ hero.gameSet.name }}</div>
+  </div>
+</div>

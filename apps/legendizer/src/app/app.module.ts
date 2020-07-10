@@ -3,18 +3,34 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { WebHomeScreenModule } from '@legendizer/web/home-screen';
-import { WebRandomizeModule } from '@legendizer/web/randomize';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from "@legendizer/web/home-screen";
-import { MainComponent } from "@legendizer/web/randomize";
+import { LegendizerUiModule } from '@legendizer/legendizer/ui';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'randomize', component: MainComponent },
-  { path: '', component: HomeComponent },
-]
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('@legendizer/legendizer/feature-home').then(
+        (module) => module.LegendizerFeatureHomeModule
+      ),
+  },
+  {
+    path: '',
+    loadChildren: () =>
+      import('@legendizer/legendizer/feature-home').then(
+        (module) => module.LegendizerFeatureHomeModule
+      ),
+  },
+  {
+    path: 'randomize',
+    loadChildren: () =>
+      import('@legendizer/legendizer/feature-randomize').then(
+        (module) => module.LegendizerFeatureRandomizeModule
+      ),
+  },
+];
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,9 +38,9 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes, {}),
-    WebHomeScreenModule,
-    WebRandomizeModule,
     NgbModule,
+    LegendizerUiModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

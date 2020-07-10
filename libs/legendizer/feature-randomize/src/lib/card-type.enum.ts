@@ -1,0 +1,7 @@
+export enum CardType {
+  SCHEME = "SCHEME",
+  MASTERMIND = "MASTERMIND",
+  VILLAINGROUP = "VILLAINGROUP",
+  HENCHMEN = "HENCHMEN",
+  HERO = "HERO"
+}

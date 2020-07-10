@@ -14,12 +14,7 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ]
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
   },
@@ -29,9 +24,7 @@
     },
     "legendizer-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "legendizer"
-      ]
+      "implicitDependencies": ["legendizer"]
     },
     "api": {
       "tags": []
@@ -39,38 +32,62 @@
     "api-interfaces": {
       "tags": []
     },
-    "heroes": {
-      "tags": []
+    "shared-gameset-types": {
+      "tags": ["type:types", "scope:shared"]
     },
-    "schemes": {
-      "tags": []
+    "shared-bystander-types": {
+      "tags": ["type:types", "scope:shared"]
     },
-    "villains": {
-      "tags": []
+    "shared-henchmen-types": {
+      "tags": ["type:types", "scope:shared"]
     },
-    "models": {
-      "tags": []
+    "shared-hero-types": {
+      "tags": ["type:types", "scope:shared"]
     },
-    "data-repository": {
-      "tags": []
+    "shared-mastermind-types": {
+      "tags": ["type:types", "scope:shared"]
     },
-    "henchmen": {
-      "tags": []
+    "shared-scheme-types": {
+      "tags": ["type:types", "scope:shared"]
     },
-    "masterminds": {
-      "tags": []
+    "shared-villaingroup-types": {
+      "tags": ["type:types", "scope:shared"]
     },
-    "boilerplate": {
-      "tags": []
+    "shared-base-types": {
+      "tags": ["type:types", "scope:shared"]
     },
-    "gamesets": {
-      "tags": []
+    "shared-bystander-data": {
+      "tags": ["type:data", "scope:shared"]
     },
-    "web-home-screen": {
-      "tags": []
+    "shared-gameset-data": {
+      "tags": ["type:data", "scope:shared"]
     },
-    "web-randomize": {
-      "tags": []
+    "shared-henchmen-data": {
+      "tags": ["type:data", "scope:shared"]
+    },
+    "shared-hero-data": {
+      "tags": ["type:data", "scope:shared"]
+    },
+    "shared-mastermind-data": {
+      "tags": ["type:data", "scope:shared"]
+    },
+    "shared-villaingroup-data": {
+      "tags": ["type:data", "scope:shared"]
+    },
+    "shared-scheme-data": {
+      "tags": ["type:data", "scope:shared"]
+    },
+    "legendizer-feature-home": {
+      "tags": ["type:feature scope:legendizer"]
+    },
+    "legendizer-ui": {
+      "tags": ["type:ui scope:legendizer"]
+    },
+    "legendizer-feature-randomize": {
+      "tags": ["type:feature scope:legendizer"]
+    },
+    "legendizer-ui-villain-deck": {
+      "tags": ["type:ui scope:legendizer"]
     }
   }
 }
