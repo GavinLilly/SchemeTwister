@@ -50,7 +50,6 @@
     "bootstrap": "^4.4.0",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.12.2",
-    "in-memory-db-uuid": "file:../in-memory-db-uuid",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.4",
     "uuid": "^8.2.0",
