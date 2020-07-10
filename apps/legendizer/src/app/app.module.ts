@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { LegendizerUiModule } from '@legendizer/legendizer/ui';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const appRoutes: Routes = [
   {
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, {}),
     NgbModule,
     LegendizerUiModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

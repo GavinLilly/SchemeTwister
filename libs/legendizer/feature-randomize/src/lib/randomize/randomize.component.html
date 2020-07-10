@@ -16,6 +16,7 @@
             <option [value]="4">4</option>
             <option [value]="5">5</option>
           </select>
+          <a href="javascript:void(0)" class="btn btn-primary" (click)="generateDecks()">Re-shuffle</a>
         </div>
       </div>
     </div>
@@ -46,6 +47,7 @@
   <div class="row row-cols-1 row-cols-md-5 row-cols-xl-6">
     <legendizer-heroes
       [hero]="item"
+      (heroID)="onShuffleItem($event, 'HERO')"
       *ngFor="let item of heroes"
     ></legendizer-heroes>
   </div>

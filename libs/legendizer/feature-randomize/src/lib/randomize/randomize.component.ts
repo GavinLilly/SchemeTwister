@@ -6,6 +6,7 @@ import { Mastermind } from '@legendizer/shared/mastermind/types';
 import { VillainGroup } from '@legendizer/shared/villainGroup/types';
 import { Henchmen } from '@legendizer/shared/henchmen/types';
 import { Hero } from '@legendizer/shared/hero/types';
+import { Base } from "@legendizer/shared/base/types";
 
 // Services
 import { MastermindsService } from '../services/masterminds.service';
@@ -13,6 +14,8 @@ import { VillainGroupsService } from '../services/villain-groups.service';
 import { HenchmenService } from '../services/henchmen.service';
 import { SchemesService } from '../services/schemes.service';
 import { HeroesService } from '../services/heroes.service';
+
+import { CardType } from '../card-type.enum';
 
 @Component({
   selector: 'legendizer-randomize',
@@ -29,6 +32,7 @@ export class RandomizeComponent implements OnInit {
   availableHenchmen: Henchmen[];
   availableHeroes: Hero[];
 
+  // Chose records
   scheme: Scheme;
   mastermind: Mastermind;
   strikes: number;
@@ -56,71 +60,118 @@ export class RandomizeComponent implements OnInit {
     this.generateDecks();
   }
 
+  onShuffleItem(id: string, cardType: string): void {
+    switch (cardType) {
+      case CardType.HENCHMEN:
+        this.generateHenchmen(
+          this.henchmen.filter((record) => record.id !== id)
+        );
+        break;
+      case CardType.HERO:
+        const tmpHeroes = this.heroes.filter((record) => record.id !== id);
+        this.generateHeroes(tmpHeroes);
+        break;
+      case CardType.VILLAINGROUP:
+        this.generateVillainGroups(
+          this.villains.filter((record) => record.id !== id)
+        );
+        break;
+      default:
+        console.warn(
+          'Tried shuffling a card type that isn\'t accepted. Use the "Re-shuffle" button instead'
+        );
+        break;
+    }
+  }
+
   private isHenchmen(object: VillainGroup | Henchmen): object is Henchmen {
     return (<Henchmen>object).fight !== undefined;
   }
 
-  generateDecks(): void {
-    // Clear existing villain and henchmen arrays
-    this.villains = [];
-    this.henchmen = [];
-
-    // Get scheme
-    this.scheme = this.getRandom(1, this.availableSchemes)[0];
-
-    // Get Mastermind
-    this.mastermind = this.getRandom(1, this.availableMasterminds)[0];
-
-    // Generate villain deck
-
-    // Add setup cards
-    this.strikes = this.scheme.rules.numMasterStrikes[this.numPlayers];
-    this.twists = this.scheme.rules.numTwists[this.numPlayers];
-    this.bystanders = this.scheme.rules.numBystanders[this.numPlayers];
-
-    // Check scheme for required villains/henchmen
-    if (this.scheme.requiredVillains) {
-      if (this.isHenchmen(this.scheme.requiredVillains)) {
-        this.henchmen.push(this.scheme.requiredVillains);
-      } else {
-        this.villains.push(this.scheme.requiredVillains);
+  generateHenchmen(starterDeck: Henchmen[] = []): void {
+    if (starterDeck.length === 0) {
+      // Check scheme for required henchmen
+      if (this.scheme.requiredVillains) {
+        if (this.isHenchmen(this.scheme.requiredVillains))
+          starterDeck.push(this.scheme.requiredVillains);
       }
+
+      // Check mastermind for required henchmen
+      if (this.isHenchmen(this.mastermind.alwaysLeads))
+        starterDeck.push(this.mastermind.alwaysLeads);
     }
-
-    // Check mastermind for required villains/henchment
-    if (this.isHenchmen(this.mastermind.alwaysLeads)) {
-      this.henchmen.push(this.mastermind.alwaysLeads);
-    } else {
-      this.villains.push(this.mastermind.alwaysLeads);
-    }
-
-    // Find out how many villains still need to be generated
-    const remainingVillainCount =
-      this.scheme.rules.numVillains[this.numPlayers] - this.villains.length;
-
-    // Add remaining villains
-    this.villains = this.getRandom(
-      remainingVillainCount,
-      this.availableVillainGroups,
-      this.villains
-    );
 
     // Find out how many henchmen still need to be generated
     const remainingHenchmenCount =
-      this.scheme.rules.numHenchmen[this.numPlayers] - this.henchmen.length;
+      this.scheme.rules.numHenchmen[this.numPlayers] - starterDeck.length;
 
     // Add remaining henchmen
     this.henchmen = this.getRandom(
       remainingHenchmenCount,
       this.availableHenchmen,
-      this.henchmen
+      starterDeck
     );
+  }
+
+  generateHeroes(starterDeck: Hero[] = []): void {
+    // Find out how many heroes still need to be generated
+    const remainingHeroes =
+      this.scheme.rules.numHeroes[this.numPlayers] - starterDeck.length;
 
     // Generate heroes
     this.heroes = this.getRandom(
       this.scheme.rules.numHeroes[this.numPlayers],
-      this.availableHeroes
+      this.availableHeroes,
+      starterDeck
     );
+  }
+
+  generateMastermind(): void {
+    // Get Mastermind
+    this.mastermind = this.getRandom(1, this.availableMasterminds)[0];
+  }
+
+  generateScheme(): void {
+    // Get scheme
+    this.scheme = this.getRandom(1, this.availableSchemes)[0];
+
+    // Add setup cards
+    this.strikes = this.scheme.rules.numMasterStrikes[this.numPlayers];
+    this.twists = this.scheme.rules.numTwists[this.numPlayers];
+    this.bystanders = this.scheme.rules.numBystanders[this.numPlayers];
+  }
+
+  generateVillainGroups(starterDeck: VillainGroup[] = []): void {
+    if (starterDeck.length === 0) {
+      // Check scheme for required villains
+      if (this.scheme.requiredVillains) {
+        if (!this.isHenchmen(this.scheme.requiredVillains))
+          starterDeck.push(this.scheme.requiredVillains);
+      }
+
+      // Check mastermind for required villains
+      if (!this.isHenchmen(this.mastermind.alwaysLeads))
+        starterDeck.push(this.mastermind.alwaysLeads);
+    }
+
+    // Find out how many henchmen still need to be generated
+    const remainingVillainCount =
+      this.scheme.rules.numVillains[this.numPlayers] - starterDeck.length;
+
+    // Add remaining henchmen
+    this.villains = this.getRandom(
+      remainingVillainCount,
+      this.availableVillainGroups,
+      starterDeck
+    );
+  }
+
+  generateDecks(): void {
+    this.generateScheme();
+    this.generateMastermind();
+    this.generateVillainGroups();
+    this.generateHenchmen();
+    this.generateHeroes();
   }
 
   /**
@@ -129,7 +180,7 @@ export class RandomizeComponent implements OnInit {
    * @param records An array of records to select from
    * @param elements An optional array of records to include in the returned records. This ensures that the same entry isn't chosen twice
    */
-  getRandom<T>(count: number, records: T[], elements: T[] = []): T[] {
+  getRandom<T extends Base>(count: number, records: T[], elements: T[] = []): T[] {
     function getRandomElement(arr: T[]) {
       if (elements.length < count) {
         elements.push(arr.splice(Math.floor(Math.random() * arr.length), 1)[0]);
@@ -140,6 +191,9 @@ export class RandomizeComponent implements OnInit {
       }
     }
 
-    return getRandomElement([...records]);
+    if (elements.length > 0)
+      return getRandomElement(records.filter((record) => !elements.includes(record)));
+    else
+      return getRandomElement([...records]);
   }
 }

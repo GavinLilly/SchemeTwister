@@ -6,9 +6,10 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { SchemeComponent } from './scheme/scheme.component';
 import { MastermindComponent } from './mastermind/mastermind.component';
 import { HeroesComponent } from './heroes/heroes.component';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 @NgModule({
-  imports: [CommonModule, RouterModule, NgbCollapseModule],
+  imports: [CommonModule, RouterModule, NgbCollapseModule, FontAwesomeModule],
   declarations: [
     HeaderComponent,
     SchemeComponent,

@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Hero } from "@legendizer/shared/hero/types";
+import { faRedo } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'legendizer-heroes',
@@ -8,9 +9,15 @@ import { Hero } from "@legendizer/shared/hero/types";
 })
 export class HeroesComponent implements OnInit {
   @Input() hero: Hero;
+  @Output() heroID = new EventEmitter<string>();
+  faRedo = faRedo;
 
   constructor() { }
 
   ngOnInit(): void { }
+
+  shuffle() {
+    this.heroID.emit(this.hero.id);
+  }
 
 }
