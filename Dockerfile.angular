@@ -1,0 +1,23 @@
+FROM node as builder
+
+WORKDIR /build
+
+COPY package.json ./
+RUN npm install
+
+COPY . .
+
+ARG node_env=production
+ENV NODE_ENV ${node_env}
+
+RUN ng build legendizer
+
+FROM nginx:alpine
+
+WORKDIR /dist
+
+COPY --from=builder /build/dist/apps/legendizer /usr/share/nginx/html
+
+ARG port=80
+ENV PORT ${port}
+EXPOSE ${port}
