@@ -1,98 +1,117 @@
 # Legendizer
 
-This project was generated using [Nx](https://nx.dev).
+A tool for generating setups for the Legendary: Marvel board game
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![Node.js CI](https://github.com/GavinLilly/legendizer/workflows/Node.js%20CI/badge.svg)
 
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
+---
 
-## Quick Start & Documentation
+## Table of Contents (Optional)
 
-[Nx Documentation](https://nx.dev/angular)
+> If your `README` has a lot of info, section headers might be nice.
 
-[10-minute video showing all Nx features](https://nx.dev/angular/getting-started/what-is-nx)
+- [Installation](#installation)
+- [Features](#features)
+- [Contributing](#contributing)
+- [Team](#team)
+- [FAQ](#faq)
+- [Support](#support)
+- [License](#license)
 
-[Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
+---
 
-## Adding capabilities to your workspace
+## Installation
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+### Production
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+- Use docker to run in production
 
-Below are our core plugins:
+```shell
+docker pull gavtherav/legendizer
+docker run --publish 80:80 --detach --name legendizer gavtherav/legendizer:latest
+```
 
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
+### Development
 
-There are also many [community plugins](https://nx.dev/nx-community) you could add.
+- Clone this repo
 
-## Generate an application
+```shell
+git clone https://github.com/GavinLilly/legendizer.git
+```
 
-Run `ng g @nrwl/angular:app my-app` to generate an application.
+- Install dependencies
 
-> You can use any of the plugins above to generate applications as well.
+```shell
+npm install
+```
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+- Run legendizer
 
-## Generate a library
+```shell
+ng serve legendizer
+```
 
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
+---
 
-> You can also use any of the plugins above to generate libraries as well.
+## Features
 
-Libraries are sharable across libraries and applications. They can be imported from `@legendizer/mylib`.
+To be filled
 
-## Development server
+## Documentation (Optional)
 
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+To be filled
 
-## Code scaffolding
+## Tests (Optional)
 
-Run `ng g component my-component --project=my-app` to generate a new component.
+To run tests just run
 
-## Build
+```shell
+npm test
+```
 
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+---
 
-## Running unit tests
+## Contributing
 
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+> To get started...
 
-Run `nx affected:test` to execute the unit tests affected by a change.
+### Step 1
 
-## Running end-to-end tests
+- **Option 1**
+    - 🍴 Fork this repo!
 
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
+- **Option 2**
+    - 👯 Clone this repo to your local machine using `https://github.com/GavinLilly/legendizer.git`
 
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
+### Step 2
 
-## Understand your workspace
+- **HACK AWAY!** 🔨🔨🔨
 
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
+### Step 3
 
-## Further help
+- 🔃 Create a new pull request using <a href="https://github.com/GavinLilly/legendizer/compare/" target="_blank">`https://github.com/GavinLilly/legendizer/compare/`</a>.
 
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
+---
 
-## ☁ Nx Cloud
+## Contributors
 
-### Computation Memoization in the Cloud
+| <a href="https://github.com/GavinLilly" target="_blank">**Gavin Lilly**</a> |
+| :---: |
+| [![GavinLilly](https://avatars2.githubusercontent.com/u/29777802?s=460&v=4&s=200)](https://github.com/GavinLilly)    |
+| <a href="https://github.com/GavinLilly" target="_blank">`github.com/GavinLilly`</a> |
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
+---
 
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
+## Support
 
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
+Reach out to me at one of the following places!
 
-Visit [Nx Cloud](https://nx.app/) to learn more.
+- Twitter at <a href="http://twitter.com/GavinLilly" target="_blank">`@gavinlilly`</a>
+
+---
+
+## License
+
+[![License](https://img.shields.io/github/license/gavinlilly/legendizer)](https://opensource.org/licenses/GPL-3.0)
+
+- **[GPL 3.0](https://opensource.org/licenses/GPL-3.0)**
