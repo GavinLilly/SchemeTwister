@@ -61,6 +61,8 @@
     "@angular/cli": "9.1.0",
     "@angular/compiler-cli": "^9.1.0",
     "@angular/language-service": "^9.1.0",
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
     "@nestjs/schematics": "^6.7.0",
     "@nestjs/testing": "^6.8.3",
     "@nrwl/cypress": "9.4.5",
@@ -72,11 +74,14 @@
     "@types/jest": "25.1.4",
     "@types/node": "~8.9.4",
     "codelyzer": "~5.0.1",
+    "commitiquette": "^1.0.4",
     "commitizen": "^4.1.2",
+    "conventional-changelog-conventionalcommits": "^4.3.0",
     "cypress": "^4.1.0",
     "cz-conventional-changelog": "^3.2.0",
     "dotenv": "6.2.0",
     "eslint": "6.8.0",
+    "husky": "^4.2.5",
     "jest": "25.2.3",
     "jest-preset-angular": "8.1.2",
     "prettier": "2.0.4",
@@ -89,35 +94,45 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "commitiquette"
     }
   },
   "release": {
-    "branches": [
-      "master"
-    ],
     "plugins": [
       [
-        "@semantic-release/commit-analyzer"
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "conventionalcommits"
+        }
       ],
       [
         "@semantic-release/release-notes-generator"
       ],
       [
-        "@semantic-release/github"
+        "@semantic-release/npm",
+        {
+          "npmPublish": false,
+          "tarballDir": "dist"
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "assets": "dist/*.tgz"
+        }
       ],
       [
         "@semantic-release/exec",
         {
           "prepareCmd": "docker build --file Dockerfile.angular -t gavtherav/legendizer ."
         }
-      ],
-      [
-        "semantic-release-docker",
-        {
-          "name": "gavtherav/legendizer"
-        }
       ]
     ]
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
