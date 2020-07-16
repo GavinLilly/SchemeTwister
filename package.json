@@ -53,6 +53,7 @@
     "class-validator": "^0.12.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.4",
+    "semantic-release": "^17.1.1",
     "uuid": "^8.2.0",
     "zone.js": "^0.10.2"
   },
@@ -88,5 +89,16 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "release": {
+    "branches": ["master"],
+    "plugins": [
+      ["@semantic-release/commit-analyzer"],
+      ["@semantic-release/release-notes-generator"],
+      ["@semantic-release/github"],
+      ["semantic-release-docker", {
+        "name": "gavtherav/legendizer"
+      }]
+    ]
   }
 }
