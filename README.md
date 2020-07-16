@@ -2,19 +2,16 @@
 
 A tool for generating setups for the Legendary: Marvel board game
 
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![Release](https://github.com/GavinLilly/legendizer/workflows/Release/badge.svg)
+![Release](https://github.com/GavinLilly/legendizer/workflows/Release/badge.svg) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 ---
 
-## Table of Contents (Optional)
-
-> If your `README` has a lot of info, section headers might be nice.
+## Table of Contents
 
 - [Installation](#installation)
 - [Features](#features)
 - [Contributing](#contributing)
-- [Team](#team)
-- [FAQ](#faq)
+- [Contributors](#contributors)
 - [Support](#support)
 - [License](#license)
 
@@ -57,11 +54,11 @@ ng serve legendizer
 
 To be filled
 
-## Documentation (Optional)
+## Documentation
 
 To be filled
 
-## Tests (Optional)
+## Tests
 
 To run tests just run
 
@@ -72,8 +69,6 @@ npm test
 ---
 
 ## Contributing
-
-> To get started...
 
 ### Step 1
 
