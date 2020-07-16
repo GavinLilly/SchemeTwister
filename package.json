@@ -96,6 +96,9 @@
       ["@semantic-release/commit-analyzer"],
       ["@semantic-release/release-notes-generator"],
       ["@semantic-release/github"],
+      ["@semantic-release/exec", {
+        "prepareCmd": "docker build --file Dockerfile.angular -t gavtherav/legendizer ."
+      }],
       ["semantic-release-docker", {
         "name": "gavtherav/legendizer"
       }]
