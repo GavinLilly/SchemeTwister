@@ -2,7 +2,7 @@
 
 A tool for generating setups for the Legendary: Marvel board game
 
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![Node.js CI](https://github.com/GavinLilly/legendizer/workflows/Node.js%20CI/badge.svg)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![Release](https://github.com/GavinLilly/legendizer/workflows/Release/badge.svg)
 
 ---
 
