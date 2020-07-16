@@ -53,7 +53,6 @@
     "class-validator": "^0.12.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.4",
-    "semantic-release": "^17.1.1",
     "uuid": "^8.2.0",
     "zone.js": "^0.10.2"
   },
@@ -69,6 +68,7 @@
     "@nrwl/nest": "9.4.5",
     "@nrwl/node": "9.4.5",
     "@nrwl/workspace": "9.4.5",
+    "@semantic-release/exec": "^5.0.0",
     "@types/jest": "25.1.4",
     "@types/node": "~8.9.4",
     "codelyzer": "~5.0.1",
@@ -80,6 +80,8 @@
     "jest": "25.2.3",
     "jest-preset-angular": "8.1.2",
     "prettier": "2.0.4",
+    "semantic-release": "^17.1.1",
+    "semantic-release-docker": "^2.2.0",
     "ts-jest": "25.2.1",
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
@@ -91,17 +93,31 @@
     }
   },
   "release": {
-    "branches": ["master"],
+    "branches": [
+      "master"
+    ],
     "plugins": [
-      ["@semantic-release/commit-analyzer"],
-      ["@semantic-release/release-notes-generator"],
-      ["@semantic-release/github"],
-      ["@semantic-release/exec", {
-        "prepareCmd": "docker build --file Dockerfile.angular -t gavtherav/legendizer ."
-      }],
-      ["semantic-release-docker", {
-        "name": "gavtherav/legendizer"
-      }]
+      [
+        "@semantic-release/commit-analyzer"
+      ],
+      [
+        "@semantic-release/release-notes-generator"
+      ],
+      [
+        "@semantic-release/github"
+      ],
+      [
+        "@semantic-release/exec",
+        {
+          "prepareCmd": "docker build --file Dockerfile.angular -t gavtherav/legendizer ."
+        }
+      ],
+      [
+        "semantic-release-docker",
+        {
+          "name": "gavtherav/legendizer"
+        }
+      ]
     ]
   }
 }
