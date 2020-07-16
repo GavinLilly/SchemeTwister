@@ -26,7 +26,8 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "class-to-json": "ts-node --project tools/tsconfig.tools.json tools/scripts/classToJSON.ts"
+    "class-to-json": "ts-node --project tools/tsconfig.tools.json tools/scripts/classToJSON.ts",
+    "commit": "git-cz"
   },
   "private": true,
   "dependencies": {
