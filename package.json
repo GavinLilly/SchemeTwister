@@ -26,7 +26,8 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "class-to-json": "ts-node --project tools/tsconfig.tools.json tools/scripts/classToJSON.ts"
+    "class-to-json": "ts-node --project tools/tsconfig.tools.json tools/scripts/classToJSON.ts",
+    "commit": "git-cz"
   },
   "private": true,
   "dependencies": {
@@ -52,33 +53,52 @@
     "class-validator": "^0.12.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.4",
+    "semantic-release": "^17.1.1",
     "uuid": "^8.2.0",
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "0.901.0",
     "@angular/cli": "9.1.0",
-    "@nrwl/workspace": "9.4.5",
-    "@types/node": "~8.9.4",
-    "dotenv": "6.2.0",
-    "ts-node": "~7.0.0",
-    "tslint": "~6.0.0",
-    "eslint": "6.8.0",
-    "typescript": "~3.8.3",
-    "prettier": "2.0.4",
-    "@nrwl/nest": "9.4.5",
     "@angular/compiler-cli": "^9.1.0",
     "@angular/language-service": "^9.1.0",
-    "@angular-devkit/build-angular": "0.901.0",
-    "codelyzer": "~5.0.1",
-    "jest-preset-angular": "8.1.2",
-    "@nrwl/jest": "9.4.5",
-    "jest": "25.2.3",
-    "@types/jest": "25.1.4",
-    "ts-jest": "25.2.1",
-    "cypress": "^4.1.0",
-    "@nrwl/cypress": "9.4.5",
-    "@nrwl/node": "9.4.5",
     "@nestjs/schematics": "^6.7.0",
-    "@nestjs/testing": "^6.8.3"
+    "@nestjs/testing": "^6.8.3",
+    "@nrwl/cypress": "9.4.5",
+    "@nrwl/jest": "9.4.5",
+    "@nrwl/nest": "9.4.5",
+    "@nrwl/node": "9.4.5",
+    "@nrwl/workspace": "9.4.5",
+    "@types/jest": "25.1.4",
+    "@types/node": "~8.9.4",
+    "codelyzer": "~5.0.1",
+    "commitizen": "^4.1.2",
+    "cypress": "^4.1.0",
+    "cz-conventional-changelog": "^3.2.0",
+    "dotenv": "6.2.0",
+    "eslint": "6.8.0",
+    "jest": "25.2.3",
+    "jest-preset-angular": "8.1.2",
+    "prettier": "2.0.4",
+    "ts-jest": "25.2.1",
+    "ts-node": "~7.0.0",
+    "tslint": "~6.0.0",
+    "typescript": "~3.8.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "release": {
+    "branches": ["master"],
+    "plugins": [
+      ["@semantic-release/commit-analyzer"],
+      ["@semantic-release/release-notes-generator"],
+      ["@semantic-release/github"],
+      ["semantic-release-docker", {
+        "name": "gavtherav/legendizer"
+      }]
+    ]
   }
 }
