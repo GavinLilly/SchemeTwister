@@ -126,6 +126,12 @@
         {
           "prepareCmd": "docker build --file Dockerfile.angular -t gavtherav/legendizer ."
         }
+      ],
+      [
+        "semantic-release-docker",
+        {
+          "name": "gavtherav/legendizer"
+        }
       ]
     ]
   },
