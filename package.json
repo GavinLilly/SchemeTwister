@@ -73,6 +73,7 @@
     "@types/node": "~8.9.4",
     "codelyzer": "~5.0.1",
     "commitizen": "^4.1.2",
+    "conventional-changelog-conventionalcommits": "^4.3.0",
     "cypress": "^4.1.0",
     "cz-conventional-changelog": "^3.2.0",
     "dotenv": "6.2.0",
@@ -95,7 +96,8 @@
   "release": {
     "plugins": [
       [
-        "@semantic-release/commit-analyzer", {
+        "@semantic-release/commit-analyzer",
+        {
           "preset": "conventionalcommits"
         }
       ],
@@ -103,13 +105,15 @@
         "@semantic-release/release-notes-generator"
       ],
       [
-        "@semantic-release/npm", {
+        "@semantic-release/npm",
+        {
           "npmPublish": false,
           "tarballDir": "dist"
         }
       ],
       [
-        "@semantic-release/github", {
+        "@semantic-release/github",
+        {
           "assets": "dist/*.tgz"
         }
       ],
