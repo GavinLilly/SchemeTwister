@@ -6,7 +6,8 @@ module.exports = {
       'app',
       'api',
       'lib',
-      'misc'
+      'misc',
+      '*'
     ]]
   }
 };
