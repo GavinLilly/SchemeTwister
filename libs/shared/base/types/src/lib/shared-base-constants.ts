@@ -12,3 +12,17 @@ export enum Team {
   SHIELD = "S.H.I.E.L.D.",
   SPIDERFRIENDS = "Spider Friends"
 }
+
+export enum CardType {
+  BYSTANDER = "Bystander",
+  HENCHMEN = "Henchmen",
+  HERO = "Hero",
+  MASTERMIND = "Mastermind",
+  SCHEME = "Scheme",
+  VILLAINGROUP = "Villain Group"
+}
+
+export enum Keyword {
+  BRIBE = "Bribe",
+  TELEPORT = "Teleport"
+}
