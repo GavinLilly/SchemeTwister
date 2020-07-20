@@ -1,1 +1,2 @@
-export * from './lib/shared-scheme-types';
+export * from './lib/scheme.model';
+export * from './lib/rules.interface';
