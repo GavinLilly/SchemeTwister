@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { HeroModel } from "@legendizer/shared/hero/types";
+import { IHero } from "@legendizer/shared/hero/types";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -8,7 +8,7 @@ import { faRedo } from "@fortawesome/free-solid-svg-icons";
   styleUrls: ['./heroes.component.scss']
 })
 export class HeroesComponent implements OnInit {
-  @Input() hero: HeroModel;
+  @Input() hero: IHero;
   @Output() heroID = new EventEmitter<string>();
   faRedo = faRedo;
 

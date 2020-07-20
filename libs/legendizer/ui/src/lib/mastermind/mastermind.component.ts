@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MastermindModel } from "@legendizer/shared/mastermind/types";
+import { IMastermind } from "@legendizer/shared/mastermind/types";
 
 @Component({
   selector: 'legendizer-mastermind',
@@ -7,7 +7,7 @@ import { MastermindModel } from "@legendizer/shared/mastermind/types";
   styleUrls: ['./mastermind.component.scss']
 })
 export class MastermindComponent implements OnInit {
-  @Input() mastermind: MastermindModel
+  @Input() mastermind: IMastermind
 
   constructor() { }
 
