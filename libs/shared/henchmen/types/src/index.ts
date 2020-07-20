@@ -1,1 +1,1 @@
-export * from './lib/shared-henchmen-types';
+export * from './lib/henchmen.model';
