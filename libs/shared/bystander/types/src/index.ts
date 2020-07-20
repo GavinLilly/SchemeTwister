@@ -1,1 +1,1 @@
-export * from './lib/shared-bystander-types';
+export * from './lib/bystander.model';
