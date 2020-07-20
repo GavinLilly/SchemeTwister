@@ -1,1 +1,1 @@
-export * from './lib/mastermind.model';
+export * from './lib/mastermind.interface';

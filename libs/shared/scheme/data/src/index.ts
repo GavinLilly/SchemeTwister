@@ -1,8 +1,8 @@
 import { LegendarySchemes } from "./lib/legendary";
-import { SchemeModel } from '../../types/src/lib/scheme.model';
+import { IScheme } from "@legendizer/shared/scheme/types";
 
 export { LegendarySchemes };
 
-export const ALL_SCHEMES: SchemeModel[] = [
-  ...LegendarySchemes.values()
-]
+export const ALL_SCHEMES: IScheme[] = Object.values(
+  LegendarySchemes
+) as IScheme[];

@@ -1,5 +1,6 @@
 import { IBase } from "@legendizer/shared/base/types";
-import { VillainGroupModel } from "@legendizer/shared/villainGroup/types";
+import { IVillainGroup } from "@legendizer/shared/villainGroup/types";
+import { IHenchmen } from "@legendizer/shared/henchmen/types";
 import { IRules } from "./rules.interface";
 
 export interface IScheme extends IBase {
@@ -8,6 +9,6 @@ export interface IScheme extends IBase {
   setup: string;
   specialRules?: string;
   numWounds?: number;
-  requiredVillains?: VillainGroupModel;
+  requiredVillains?: IVillainGroup | IHenchmen;
   rules: IRules;
 }

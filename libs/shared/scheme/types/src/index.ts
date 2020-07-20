@@ -1,2 +1,2 @@
-export * from './lib/scheme.model';
+export * from './lib/scheme.interface';
 export * from './lib/rules.interface';

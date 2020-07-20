@@ -1,11 +1,21 @@
-import { SchemeModel } from '@legendizer/shared/scheme/types';
-import { GameSet } from '@legendizer/shared/gameSet/data';
+import { IScheme } from '@legendizer/shared/scheme/types';
+import { GameSets } from '@legendizer/shared/gameSet/data';
 import { LegendaryVillainGroups } from '@legendizer/shared/villainGroup/data';
 import { defaultRules } from './defaultRules.data';
 import { CardType } from '@legendizer/shared/base/types';
 
-export class LegendarySchemes extends SchemeModel {
-  public static THE_LEGACY_VIRUS = new LegendarySchemes({
+type SchemeNames =
+  | 'THE_LEGACY_VIRUS'
+  | 'MIDTOWN_BANK_ROBBERY'
+  | 'NEGATIVE_ZONE_PRISON_BREAKOUT'
+  | 'PORTALS_TO_THE_DARK_DIMENSION'
+  | 'REPLACE_EARTHS_LEADERS_WITH_KILLBOTS'
+  | 'SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS'
+  | 'SUPER_HERO_CIVIL_WAR'
+  | 'UNLEASH_THE_POWER_OF_THE_COSMIC_CUBE';
+
+export const LegendarySchemes: Record<SchemeNames, IScheme> = {
+  THE_LEGACY_VIRUS: {
     id: 'b9171c60-c3c3-4482-91e5-38ba1d2b3a6a',
     name: 'The Legacy Virus',
     setup: '8 Twists. Wound stack holds 6 Wounds per player.',
@@ -22,11 +32,10 @@ export class LegendarySchemes extends SchemeModel {
         },
       },
     },
-    gameSet: GameSet.LEGENDARY,
+    gameSet: GameSets.LEGENDARY,
     cardType: CardType.SCHEME,
-  });
-
-  public static MIDTOWN_BANK_ROBBERY = new LegendarySchemes({
+  },
+  MIDTOWN_BANK_ROBBERY: {
     id: '7d06db7a-d3d0-48fe-be7a-dbe6a273ad03',
     name: 'Midtown Bank Robbery',
     setup: '8 Twists. 12 total Bystanders in the Villain Deck.',
@@ -45,11 +54,10 @@ export class LegendarySchemes extends SchemeModel {
         },
       },
     },
-    gameSet: GameSet.LEGENDARY,
+    gameSet: GameSets.LEGENDARY,
     cardType: CardType.SCHEME,
-  });
-
-  public static NGEATIVE_ZONE_PRISON_BREAKOUT = new LegendarySchemes({
+  },
+  NEGATIVE_ZONE_PRISON_BREAKOUT: {
     id: '7ad1b3ed-efd8-4b2a-bd6a-ca500fc0f1af',
     name: 'Negative Zone Prison Breakout',
     setup: '8 Twists. Add an extra Henchman group to the Villain Deck.',
@@ -66,11 +74,10 @@ export class LegendarySchemes extends SchemeModel {
         },
       },
     },
-    gameSet: GameSet.LEGENDARY,
+    gameSet: GameSets.LEGENDARY,
     cardType: CardType.SCHEME,
-  });
-
-  public static PORTALS_TO_THE_DARK_DIMENSION = new LegendarySchemes({
+  },
+  PORTALS_TO_THE_DARK_DIMENSION: {
     id: '9fd584fc-f6d5-4027-9a86-b1a2e11408de',
     name: 'Portals to the Dark Dimension',
     setup: '7 Twists. Each Twist is a Dark Portal.',
@@ -90,11 +97,10 @@ export class LegendarySchemes extends SchemeModel {
       },
     },
     specialRules: 'Each Twist is a Dark Portal.',
-    gameSet: GameSet.LEGENDARY,
+    gameSet: GameSets.LEGENDARY,
     cardType: CardType.SCHEME,
-  });
-
-  public static REPLACE_EARTHS_LEADERS_WITH_KILLBOTS = new LegendarySchemes({
+  },
+  REPLACE_EARTHS_LEADERS_WITH_KILLBOTS: {
     id: '34543e98-d863-4395-a1ec-c6a190b2fb08',
     name: "Replace Earth's Leaders with Killbots",
     setup:
@@ -120,39 +126,35 @@ export class LegendarySchemes extends SchemeModel {
         },
       },
     },
-    gameSet: GameSet.LEGENDARY,
+    gameSet: GameSets.LEGENDARY,
     cardType: CardType.SCHEME,
-  });
-
-  public static SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS = new LegendarySchemes(
-    {
-      id: '81a8b233-aa28-4258-833e-4cd9fe5d051a',
-      name: 'Secret Invasion of the Skrull Shapeshifters',
-      setup:
-        '8 Twists. 6 Heroes. Skrull Villain Group required. Shuffle 12 random Heroes from the Hero Deck into the Villain Deck.',
-      specialRules:
-        "Heroes in the Villain Deck count as Skrull Villains with Attack equal to the Hero's Cost +2. If you defeat that Hero, you gain it.",
-      twist:
-        'The highest-cost Hero from the HQ moves into the Sewers as a Skrull Villain, as above.',
-      evilWins: 'If 6 Heroes get into the Escaped Villains pile.',
-      rules: {
-        ...defaultRules,
-        ...{
-          numHeroes: {
-            2: 6,
-            3: 6,
-            4: 6,
-            5: 6,
-          },
+  },
+  SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS: {
+    id: '81a8b233-aa28-4258-833e-4cd9fe5d051a',
+    name: 'Secret Invasion of the Skrull Shapeshifters',
+    setup:
+      '8 Twists. 6 Heroes. Skrull Villain Group required. Shuffle 12 random Heroes from the Hero Deck into the Villain Deck.',
+    specialRules:
+      "Heroes in the Villain Deck count as Skrull Villains with Attack equal to the Hero's Cost +2. If you defeat that Hero, you gain it.",
+    twist:
+      'The highest-cost Hero from the HQ moves into the Sewers as a Skrull Villain, as above.',
+    evilWins: 'If 6 Heroes get into the Escaped Villains pile.',
+    rules: {
+      ...defaultRules,
+      ...{
+        numHeroes: {
+          2: 6,
+          3: 6,
+          4: 6,
+          5: 6,
         },
       },
-      requiredVillains: LegendaryVillainGroups.SKRULLS,
-      gameSet: GameSet.LEGENDARY,
-      cardType: CardType.SCHEME,
-    }
-  );
-
-  public static SUPER_HERO_CIVIL_WAR = new LegendarySchemes({
+    },
+    requiredVillains: LegendaryVillainGroups.SKRULLS,
+    gameSet: GameSets.LEGENDARY,
+    cardType: CardType.SCHEME,
+  },
+  SUPER_HERO_CIVIL_WAR: {
     id: '8d8eb57c-ec8a-402c-b0de-8afd8805f00f',
     name: 'Super Hero Civil War',
     setup:
@@ -176,11 +178,10 @@ export class LegendarySchemes extends SchemeModel {
         },
       },
     },
-    gameSet: GameSet.LEGENDARY,
+    gameSet: GameSets.LEGENDARY,
     cardType: CardType.SCHEME,
-  });
-
-  public static UNLEASH_THE_POWER_OF_THE_COSMIC_CUBE = new LegendarySchemes({
+  },
+  UNLEASH_THE_POWER_OF_THE_COSMIC_CUBE: {
     id: '6fc89682-eb0f-45b4-88c7-5f0e3dc8fcc0',
     name: 'Unleash the Power of the Cosmic Cube',
     setup: '8 twists',
@@ -190,7 +191,7 @@ export class LegendarySchemes extends SchemeModel {
 8: Evil Wins!`,
     evilWins: 'If 8 twists are revealed',
     rules: defaultRules,
-    gameSet: GameSet.LEGENDARY,
+    gameSet: GameSets.LEGENDARY,
     cardType: CardType.SCHEME,
-  });
-}
+  },
+};
