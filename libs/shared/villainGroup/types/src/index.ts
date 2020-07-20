@@ -1,1 +1,1 @@
-export * from './lib/shared-villains-types';
+export * from './lib/villainGroup.model';

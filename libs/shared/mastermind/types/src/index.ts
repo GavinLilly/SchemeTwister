@@ -1,1 +1,1 @@
-export * from './lib/shared-mastermind-types';
+export * from './lib/mastermind.model';
