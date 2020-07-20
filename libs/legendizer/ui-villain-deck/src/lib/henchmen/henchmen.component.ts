@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { HenchmenModel } from '@legendizer/shared/henchmen/types';
+import { IHenchmen } from '@legendizer/shared/henchmen/types';
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -8,7 +8,7 @@ import { faRedo } from "@fortawesome/free-solid-svg-icons";
   styleUrls: ['./henchmen.component.scss']
 })
 export class HenchmenComponent implements OnInit {
-  @Input() henchmen: HenchmenModel
+  @Input() henchmen: IHenchmen
   @Output() henchmenID = new EventEmitter<string>();
   faRedo = faRedo;
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SchemeModel } from "@legendizer/shared/scheme/types";
+import { IScheme } from "@legendizer/shared/scheme/types";
 
 @Component({
   selector: 'legendizer-scheme',
@@ -7,7 +7,7 @@ import { SchemeModel } from "@legendizer/shared/scheme/types";
   styleUrls: ['./scheme.component.scss']
 })
 export class SchemeComponent implements OnInit {
-  @Input() scheme: SchemeModel;
+  @Input() scheme: IScheme;
 
   constructor() { }
 
