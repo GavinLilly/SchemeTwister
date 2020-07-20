@@ -1,4 +1,4 @@
-export interface GameSet {
+export interface IGameSet {
   id: string;
   name: string;
 }

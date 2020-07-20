@@ -1,1 +1,1 @@
-export * from './lib/shared-gameset-types';
+export * from './lib/gameset.interface';

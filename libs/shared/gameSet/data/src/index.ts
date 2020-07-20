@@ -1,1 +1,1 @@
-export * from './lib/shared-gameset-data';
+export * from './lib/gameset.data';
