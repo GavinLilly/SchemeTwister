@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BaseDataService } from "./base-data-service";
-import { masterminds } from "@legendizer/shared/mastermind/data";
-import { Mastermind } from "@legendizer/shared/mastermind/types";
+import { ALL_MASTERMINDS } from "@legendizer/shared/mastermind/data";
+import { IMastermind } from "@legendizer/shared/mastermind/types";
 
 @Injectable({
   providedIn: 'root'
 })
-export class MastermindsService extends BaseDataService<Mastermind> {
+export class MastermindsService extends BaseDataService<IMastermind> {
 
   constructor() {
-    super(masterminds);
+    super(ALL_MASTERMINDS);
   }
 }

@@ -1,1 +1,1 @@
-export * from './lib/villainGroup.model';
+export * from './lib/villainGroup.interface';

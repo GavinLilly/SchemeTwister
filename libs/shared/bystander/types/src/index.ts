@@ -1,1 +1,1 @@
-export * from './lib/bystander.model';
+export * from './lib/bystander.interface';

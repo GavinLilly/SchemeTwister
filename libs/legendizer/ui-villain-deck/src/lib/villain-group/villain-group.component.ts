@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { VillainGroup } from '@legendizer/shared/villainGroup/types';
+import { VillainGroupModel } from '@legendizer/shared/villainGroup/types';
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -8,7 +8,7 @@ import { faRedo } from "@fortawesome/free-solid-svg-icons";
   styleUrls: ['./villain-group.component.scss']
 })
 export class VillainGroupComponent implements OnInit {
-  @Input() villainGroup: VillainGroup;
+  @Input() villainGroup: VillainGroupModel;
   @Output() villainID = new EventEmitter<string>();
   faRedo = faRedo;
 

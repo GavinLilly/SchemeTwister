@@ -1,15 +1,14 @@
-import { Observable, of } from 'rxjs';
-import { GameSet } from '@legendizer/shared/gameSet/types';
-import { Base } from '@legendizer/shared/base/types';
+import { IGameSet } from '@legendizer/shared/gameSet/types';
+import { IBase } from '@legendizer/shared/base/types';
 
-export class BaseDataService<T extends Base> {
+export abstract class BaseDataService<T extends IBase> {
   private records: T[];
 
   constructor(dataSet: T[]) {
     this.records = dataSet;
   }
 
-  get(limitGamesets?: GameSet[]): T[] {
+  get(limitGamesets?: IGameSet[]): T[] {
     if (limitGamesets) {
       return this.records.filter((record) =>
         limitGamesets.includes(record.gameSet)

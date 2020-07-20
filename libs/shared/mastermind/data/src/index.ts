@@ -1,8 +1,8 @@
 import { LegendaryMasterminds } from "./lib/legendary";
-import { MastermindModel } from '../../types/src/lib/mastermind.model';
+import { IMastermind } from "@legendizer/shared/mastermind/types";
 
 export { LegendaryMasterminds };
 
-export const ALL_MASTERMINDS: MastermindModel[] = [
-  ...LegendaryMasterminds.values()
-]
+export const ALL_MASTERMINDS: IMastermind[] = Object.values(
+  LegendaryMasterminds
+) as IMastermind[];
