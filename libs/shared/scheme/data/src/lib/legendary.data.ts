@@ -3,6 +3,7 @@ import { GameSets } from '@legendizer/shared/gameSet/data';
 import { LegendaryVillainGroups } from '@legendizer/shared/villainGroup/data';
 import { defaultRules } from './defaultRules.data';
 import { CardType } from '@legendizer/shared/base/types';
+import { HeroClass } from "@legendizer/shared/hero/types";
 
 type SchemeNames =
   | 'THE_LEGACY_VIRUS'
@@ -19,17 +20,15 @@ export const LegendarySchemes: Record<SchemeNames, IScheme> = {
     id: 'b9171c60-c3c3-4482-91e5-38ba1d2b3a6a',
     name: 'The Legacy Virus',
     setup: '8 Twists. Wound stack holds 6 Wounds per player.',
-    twist: 'Each player reveals a Tech Hero or gains a Wound.',
+    twist: `Each player reveals a ${HeroClass.TECH} Hero or gains a Wound.`,
     evilWins: 'If the Wound stack runs out.',
     rules: {
       ...defaultRules,
-      ...{
-        numWounds: {
-          2: 12,
-          3: 18,
-          4: 24,
-          5: 30,
-        },
+      numWounds: {
+        2: 12,
+        3: 18,
+        4: 24,
+        5: 30,
       },
     },
     gameSet: GameSets.LEGENDARY,
@@ -45,7 +44,8 @@ export const LegendarySchemes: Record<SchemeNames, IScheme> = {
     evilWins: 'When 8 Bystanders are carried away by escaping Villains.',
     rules: {
       ...defaultRules,
-      ...{
+      villainDeck: {
+        ...defaultRules.villainDeck,
         numBystanders: {
           2: 12,
           3: 12,
@@ -65,8 +65,9 @@ export const LegendarySchemes: Record<SchemeNames, IScheme> = {
     evilWins: 'If 12 Villains escape.',
     rules: {
       ...defaultRules,
-      ...{
-        numHenchmen: {
+      villainDeck: {
+        ...defaultRules.villainDeck,
+        numHenchmenGroups: {
           2: 2,
           3: 2,
           4: 3,
@@ -87,7 +88,8 @@ export const LegendarySchemes: Record<SchemeNames, IScheme> = {
     evilWins: 'If 7 twists are revealed',
     rules: {
       ...defaultRules,
-      ...{
+      villainDeck: {
+        ...defaultRules.villainDeck,
         numTwists: {
           2: 7,
           3: 7,
@@ -111,7 +113,8 @@ export const LegendarySchemes: Record<SchemeNames, IScheme> = {
     evilWins: 'If 5 "Killbots" escape.',
     rules: {
       ...defaultRules,
-      ...{
+      villainDeck: {
+        ...defaultRules.villainDeck,
         numTwists: {
           2: 5,
           3: 5,
@@ -141,7 +144,7 @@ export const LegendarySchemes: Record<SchemeNames, IScheme> = {
     evilWins: 'If 6 Heroes get into the Escaped Villains pile.',
     rules: {
       ...defaultRules,
-      ...{
+      heroDeck: {
         numHeroes: {
           2: 6,
           3: 6,
@@ -150,7 +153,9 @@ export const LegendarySchemes: Record<SchemeNames, IScheme> = {
         },
       },
     },
-    requiredVillains: LegendaryVillainGroups.SKRULLS,
+    requiredCards: {
+      inVillainDeck: LegendaryVillainGroups.SKRULLS
+    },
     gameSet: GameSets.LEGENDARY,
     cardType: CardType.SCHEME,
   },
@@ -163,13 +168,16 @@ export const LegendarySchemes: Record<SchemeNames, IScheme> = {
     evilWins: 'If the Hero Deck runs out.',
     rules: {
       ...defaultRules,
-      ...{
+      villainDeck: {
+        ...defaultRules.villainDeck,
         numTwists: {
           2: 8,
           3: 8,
           4: 5,
           5: 5,
-        },
+        }
+      },
+      heroDeck: {
         numHeroes: {
           2: 4,
           3: 5,
