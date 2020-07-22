@@ -35,7 +35,6 @@ export class RandomizeComponent implements OnInit {
   // Chosen records
   scheme: IScheme;
   mastermind: IMastermind;
-  strikes: number;
   twists: number;
   bystanders: number;
   villains: IVillainGroup[] = [];
@@ -87,9 +86,11 @@ export class RandomizeComponent implements OnInit {
   generateHenchmen(starterDeck: IHenchmen[] = []): void {
     if (starterDeck.length === 0) {
       // Check scheme for required henchmen
-      if (this.scheme.requiredVillains !== undefined &&
-        this.scheme.requiredVillains.cardType === CardType.HENCHMEN) {
-        starterDeck.push(this.scheme.requiredVillains as IHenchmen);
+      if (this.scheme.requiredCards !== undefined) {
+        if (this.scheme.requiredCards !== undefined) {
+          if (this.scheme.requiredCards.inVillainDeck.cardType === CardType.HENCHMEN)
+            starterDeck.push(this.scheme.requiredCards.inVillainDeck as IHenchmen);
+        }
       }
 
       // Check mastermind for required henchmen
@@ -99,7 +100,7 @@ export class RandomizeComponent implements OnInit {
 
     // Add remaining henchmen
     this.henchmen = this.getRandom(
-      this.scheme.rules.numHenchmen[this.numPlayers],
+      this.scheme.rules.villainDeck.numHenchmenGroups[this.numPlayers],
       this.availableHenchmen,
       starterDeck
     );
@@ -108,11 +109,11 @@ export class RandomizeComponent implements OnInit {
   generateHeroes(starterDeck: IHero[] = []): void {
     // Find out how many heroes still need to be generated
     const remainingHeroes =
-      this.scheme.rules.numHeroes[this.numPlayers] - starterDeck.length;
+      this.scheme.rules.heroDeck.numHeroes[this.numPlayers] - starterDeck.length;
 
     // Generate heroes
     this.heroes = this.getRandom(
-      this.scheme.rules.numHeroes[this.numPlayers],
+      this.scheme.rules.heroDeck.numHeroes[this.numPlayers],
       this.availableHeroes,
       starterDeck
     );
@@ -128,17 +129,18 @@ export class RandomizeComponent implements OnInit {
     this.scheme = this.getRandom(1, this.availableSchemes)[0];
 
     // Add setup cards
-    this.strikes = this.scheme.rules.numMasterStrikes[this.numPlayers];
-    this.twists = this.scheme.rules.numTwists[this.numPlayers];
-    this.bystanders = this.scheme.rules.numBystanders[this.numPlayers];
+    this.twists = this.scheme.rules.villainDeck.numTwists[this.numPlayers];
+    this.bystanders = this.scheme.rules.villainDeck.numBystanders[this.numPlayers];
   }
 
   generateVillainGroups(starterDeck: IVillainGroup[] = []): void {
     if (starterDeck.length === 0) {
       // Check scheme for required villains
-      if (this.scheme.requiredVillains !== undefined &&
-        this.scheme.requiredVillains.cardType === CardType.VILLAINGROUP) {
-        starterDeck.push(this.scheme.requiredVillains as IVillainGroup);
+      if (this.scheme.requiredCards !== undefined) {
+        if (this.scheme.requiredCards.inVillainDeck !== undefined) {
+          if (this.scheme.requiredCards.inVillainDeck.cardType === CardType.VILLAINGROUP)
+            starterDeck.push(this.scheme.requiredCards.inVillainDeck as IVillainGroup);
+        }
       }
 
       // Check mastermind for required villains
@@ -148,7 +150,7 @@ export class RandomizeComponent implements OnInit {
 
     // Add remaining henchmen
     this.villains = this.getRandom(
-      this.scheme.rules.numVillains[this.numPlayers],
+      this.scheme.rules.villainDeck.numVillainGroups[this.numPlayers],
       this.availableVillainGroups,
       starterDeck
     );

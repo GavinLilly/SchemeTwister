@@ -6,7 +6,6 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./additional-cards.component.scss']
 })
 export class AdditionalCardsComponent implements OnInit {
-  @Input() strikes: number;
   @Input() twists: number;
   @Input() bystanders: number;
 
