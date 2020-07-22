@@ -1,8 +1,2 @@
-import { LegendaryBystanders } from './lib/legendary';
-import { IBystander } from '@legendizer/shared/bystander/types';
-
-export { LegendaryBystanders };
-
-export const ALL_BYSTANDERS: IBystander[] = Object.values(
-  LegendaryBystanders
-) as IBystander[];
+export * from './lib/legendary.data';
+export * from "./lib/darkCity.data";

@@ -1,4 +1,5 @@
 export enum Keyword {
   BRIBE = "Bribe",
-  TELEPORT = "Teleport"
+  TELEPORT = "Teleport",
+  VERSATILE = "Versatile"
 }

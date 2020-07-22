@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseDataService } from "./base-data-service";
-import { ALL_VILLAIN_GROUPS } from "@legendizer/shared/villainGroup/data";
+import { LegendaryVillainGroups, DarkCityVillainGroups } from "@legendizer/shared/villainGroup/data";
 import { IVillainGroup } from '@legendizer/shared/villainGroup/types';
 
 
@@ -10,6 +10,9 @@ import { IVillainGroup } from '@legendizer/shared/villainGroup/types';
 export class VillainGroupsService extends BaseDataService<IVillainGroup> {
 
   constructor() {
-    super(ALL_VILLAIN_GROUPS);
+    super([
+      ...Object.values(LegendaryVillainGroups),
+      ...Object.values(DarkCityVillainGroups)
+    ]);
   }
 }

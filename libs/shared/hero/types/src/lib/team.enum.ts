@@ -1,6 +1,8 @@
 export enum Team {
   AVENGERS = "Avengers",
-  XMEN = "X-Men",
+  MARVEL_KNIGHTS = "Marvel Knights",
   SHIELD = "S.H.I.E.L.D.",
-  SPIDERFRIENDS = "Spider Friends"
+  SPIDER_FRIENDS = "Spider Friends",
+  XFORCE = "X-Force",
+  XMEN = "X-Men"
 }

@@ -99,7 +99,7 @@ export const LegendaryHeroes: Record<HeroNames, IHero> = {
   SPIDER_MAN: {
     id: 'c31229d3-cfbb-4ab2-a984-21aa8ad11db9',
     name: 'Spider-Man',
-    team: Team.SPIDERFRIENDS,
+    team: Team.SPIDER_FRIENDS,
     gameSet: GameSets.LEGENDARY,
     cardType: CardType.HERO,
   },
