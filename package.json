@@ -49,7 +49,7 @@
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
     "@nrwl/angular": "9.4.5",
     "bootstrap": "^4.4.0",
-    "class-transformer": "^0.2.3",
+    "class-transformer": "^0.3.1",
     "class-validator": "^0.12.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.4",
