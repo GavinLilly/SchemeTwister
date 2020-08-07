@@ -1,7 +1,7 @@
 import { IScheme } from '../../interfaces';
 import { defaultRules } from './defaultRules.data';
 import { GameSet, CardType, HeroClass } from '../../enums';
-import { VillainGroups } from "../villains/legendary.villains";
+import { Legendary as LegendaryVillains } from "../villains/legendary.villains";
 
 type SchemeNames =
   | 'THE_LEGACY_VIRUS'
@@ -152,7 +152,7 @@ export const Legendary: Record<SchemeNames, IScheme> = {
       },
     },
     requiredCards: {
-      inVillainDeck: VillainGroups.SKRULLS,
+      inVillainDeck: LegendaryVillains.SKRULLS,
     },
     gameSet: GameSet.LEGENDARY,
     cardType: CardType.SCHEME,

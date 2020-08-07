@@ -52,7 +52,7 @@ export class Shuffler {
         records.filter((record) => !elements.includes(record))
       );
     } else {
-      if ((count = 1)) return getRandomElement([...records])[0];
+      if ((count === 1)) return getRandomElement([...records])[0];
       else return getRandomElement([...records]);
     }
   }
@@ -77,8 +77,14 @@ export class Shuffler {
     exclude: T[] = []
   ) {
     const schemeSet = this.getDeckSubset(set);
-    if (count == 1) {
+    if (count === 1) {
       return this.getRandom(schemeSet);
+    } else if (count < 0) {
+      throw new RangeError('Count must be 0 or higher');
+    } else if (count > schemeSet.length) {
+      throw new RangeError('Count must be lower than the total deck size');
+    } else if (include.some((item) => exclude.includes(item))) {
+      throw new Error("Cannot include and exclude the same item");
     } else {
       return this.getRandom(
         schemeSet.filter((item) => {
