@@ -7,10 +7,8 @@ export class Schemes extends CardSet<IScheme> {
   public static readonly LEGENDARY = Legendary;
   public static readonly DARK_CITY = DarkCity;
 
-  public static GetAllSchemes(): IScheme[] {
-    return [
-      ...Object.values(Schemes.LEGENDARY),
-      ...Object.values(Schemes.DARK_CITY)
-    ]
-  }
+  public static readonly ALL = [
+    ...Object.values(Schemes.LEGENDARY),
+    ...Object.values(Schemes.DARK_CITY)
+  ];
 }

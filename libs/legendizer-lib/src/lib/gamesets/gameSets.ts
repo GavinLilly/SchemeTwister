@@ -11,10 +11,8 @@ export class GameSets {
     name: 'Dark City'
   }
 
-  public static GetAllGameSets(): IGameSet[] {
-    return [
-      ...Object.values(GameSets.LEGENDARY),
-      ...Object.values(GameSets.DARK_CITY)
-    ]
-  }
+  public static readonly ALL = [
+    ...Object.values(GameSets.LEGENDARY),
+    ...Object.values(GameSets.DARK_CITY)
+  ]
 }

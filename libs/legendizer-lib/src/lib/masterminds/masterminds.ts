@@ -7,10 +7,8 @@ export class Masterminds extends CardSet<IMastermind> {
   public static readonly LEGENDARY = Legendary;
   public static readonly DARK_CITY = DarkCity;
 
-  public static GetAllMasterminds(): IMastermind[] {
-    return [
-      ...Object.values(Masterminds.LEGENDARY),
-      ...Object.values(Masterminds.DARK_CITY)
-    ]
-  }
+  public static readonly ALL = [
+    ...Object.values(Masterminds.LEGENDARY),
+    ...Object.values(Masterminds.DARK_CITY)
+  ];
 }
