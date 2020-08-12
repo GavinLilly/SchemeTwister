@@ -7,10 +7,8 @@ export class Henchmen extends CardSet<IHenchmen> {
   public static readonly LEGENDARY = Legendary;
   public static readonly DARK_CITY = DarkCity;
 
-  public static GetAllHenchmen(): IHenchmen[] {
-    return [
-      ...Object.values(Henchmen.LEGENDARY),
-      ...Object.values(Henchmen.DARK_CITY)
-    ]
-  }
+  public static readonly ALL = [
+    ...Object.values(Henchmen.LEGENDARY),
+    ...Object.values(Henchmen.DARK_CITY)
+  ]
 }

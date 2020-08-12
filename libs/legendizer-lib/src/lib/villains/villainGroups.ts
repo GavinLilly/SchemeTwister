@@ -7,10 +7,8 @@ export class VillainGroups extends CardSet<IVillainGroup> {
   public static readonly LEGENDARY = Legendary;
   public static readonly DARK_CITY = DarkCity;
 
-  public static GetAllVillainGroups(): IVillainGroup[] {
-    return [
-      ...Object.values(VillainGroups.LEGENDARY),
-      ...Object.values(VillainGroups.DARK_CITY)
-    ]
-  }
+  public static readonly ALL = [
+    ...Object.values(VillainGroups.LEGENDARY),
+    ...Object.values(VillainGroups.DARK_CITY)
+  ];
 }
