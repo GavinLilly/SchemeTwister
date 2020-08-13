@@ -12,7 +12,7 @@ export class GameSets {
   }
 
   public static readonly ALL = [
-    ...Object.values(GameSets.LEGENDARY),
-    ...Object.values(GameSets.DARK_CITY)
+    GameSets.LEGENDARY,
+    GameSets.DARK_CITY
   ]
 }
