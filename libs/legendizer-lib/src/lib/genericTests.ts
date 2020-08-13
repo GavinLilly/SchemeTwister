@@ -7,7 +7,7 @@ export function cardSetTest<T extends ICard, C extends CardSet<T>>(cardObject: C
       const chosen: T[] = cardObject.shuffle(2);
       expect(
         chosen.every((item) => item.gameSet === gameSet)
-      ).toEqual(true);
+      ).toBeTruthy();
     });
 
     it(`should have ${cardNum} entries`, () =>

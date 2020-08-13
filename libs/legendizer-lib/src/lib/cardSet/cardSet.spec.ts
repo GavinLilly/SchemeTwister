@@ -85,7 +85,7 @@ describe('Class creation', () => {
     const dummy: DummySet = new DummySet(DummySet.ALL, [GameSets.LEGENDARY]);
     expect(dummy).toBeTruthy();
     expect(dummy.getCards()).toHaveLength(
-      Object.values(DummySet.dummyDataLegendary).length
+      DummySet.dummyDataLegendary.length
     );
   });
 
