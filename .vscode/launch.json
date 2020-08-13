@@ -10,6 +10,20 @@
         "name": "Launch Firefox against localhost",
         "url": "http://localhost:4200",
         "webRoot": "${workspaceFolder}"
-      }
+      },
+      {
+        "name": "debug-legendizer-lib",
+         "type": "node",
+         "request": "launch",
+         "program": "${workspaceFolder}/node_modules/@nrwl/cli/bin/nx",
+         "args": [
+           "test",
+           "legendizer-lib",
+           "--codeCoverage=false",
+           "--testFile=libs/legendizer-lib/src/lib/gameSetup/gameSetup.spec.ts"
+         ],
+         "cwd": "${workspaceFolder}",
+         "console": "internalConsole"
+       }
     ]
 }
