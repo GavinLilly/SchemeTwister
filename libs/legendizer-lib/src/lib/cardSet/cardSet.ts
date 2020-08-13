@@ -4,8 +4,6 @@ import { IGameSet } from '../gamesets';
 export abstract class CardSet<T extends ICard> {
   protected availableRecords: T[] = [];
 
-  constructor(allRecords: T[]);
-  constructor(allRecords: T[], gameSets: IGameSet[]);
   constructor(
     private allRecords?: T[],
     private gameSets?: IGameSet[]
