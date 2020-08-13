@@ -58,8 +58,6 @@ export abstract class CardSet<T extends ICard> {
   }
 
   public shuffle(): T;
-  public shuffle(count: number): T[];
-  public shuffle(count: number, include?: T[]): T[];
   public shuffle(count: number, include?: T[], exclude?: T[]): T[];
   public shuffle(count: number = 1, include: T[] = [], exclude: T[] = []) {
     if (count === 1) {

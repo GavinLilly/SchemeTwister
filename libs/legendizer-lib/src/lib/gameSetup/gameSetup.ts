@@ -7,19 +7,32 @@ import { CardType } from '../cardSet';
 import { Henchmen } from '../henchmen';
 import { IHenchmen } from '../henchmen/henchmen.interface';
 import { IVillainGroup, VillainGroups } from '../villains';
+import { isArray } from 'util';
+
+type numPlayersRange = 2 | 3 | 4 | 5;
 
 export class GameSetup {
-  constructor(private gameSets: IGameSet[], private numPlayers: number) {}
+  private gameSets: IGameSet[];
+
+  constructor(
+    gameSets: IGameSet[] | IGameSet,
+    private numPlayers: numPlayersRange
+    ) {
+    if (gameSets === undefined || (isArray(gameSets) && gameSets.length === 0))
+      throw new Error('At least 1 game set must be chosen');
+
+    if (isArray(gameSets))
+      this.gameSets = gameSets
+    else
+      this.gameSets = [gameSets]
+  }
 
   public generateGame(): IGameSetup {
-    const schemes: Schemes = new Schemes(
-      Schemes.GetAllSchemes(),
-      this.gameSets
-    );
+    const schemes: Schemes = new Schemes(Schemes.ALL, this.gameSets);
     const scheme: IScheme = schemes.shuffle();
 
     const masterminds: Masterminds = new Masterminds(
-      Masterminds.GetAllMasterminds(),
+      Masterminds.ALL,
       this.gameSets
     );
     const mastermind: IMastermind = masterminds.shuffle();
@@ -28,7 +41,10 @@ export class GameSetup {
     const requiredHenchmen: IHenchmen[] = [];
     const requiredVillains: IVillainGroup[] = [];
 
-    if (scheme.requiredCards.inVillainDeck !== undefined) {
+    if (
+      scheme.requiredCards !== undefined &&
+      scheme.requiredCards.inVillainDeck !== undefined
+    ) {
       switch (scheme.requiredCards.inVillainDeck.cardType) {
         case CardType.HERO:
           requiredHero.push(scheme.requiredCards.inVillainDeck);
@@ -46,35 +62,28 @@ export class GameSetup {
       }
     }
 
-    switch (mastermind.alwaysLeads.cardType) {
-      case CardType.HENCHMEN:
-        requiredHenchmen.push(scheme.requiredCards.inVillainDeck as IHenchmen);
-        break;
-      case CardType.VILLAINGROUP:
-        requiredVillains.push(
-          scheme.requiredCards.inVillainDeck as IVillainGroup
-        );
-        break;
-    }
+    if (mastermind.alwaysLeads.cardType === CardType.HENCHMEN)
+      requiredHenchmen.push(mastermind.alwaysLeads as IHenchmen);
+    else if (mastermind.alwaysLeads.cardType === CardType.VILLAINGROUP)
+      requiredVillains.push(mastermind.alwaysLeads as IVillainGroup);
 
-    const heroes: Heroes = new Heroes(Heroes.GetAllHeroes(), this.gameSets);
+    const heroes: Heroes = new Heroes(Heroes.ALL, this.gameSets);
     const selectedHeroes: IHero[] = heroes.shuffle(
       scheme.rules.heroDeck.numHeroes[this.numPlayers],
       undefined,
       requiredHero
     );
 
-    const henchmen: Henchmen = new Henchmen(
-      Henchmen.GetAllHenchmen(),
-      this.gameSets
-    );
-    const selectedHenchmen: IHenchmen[] = henchmen.shuffle(
+    const henchmen: Henchmen = new Henchmen(Henchmen.ALL, this.gameSets);
+    let selectedHenchmen: IHenchmen[] = henchmen.shuffle(
       scheme.rules.villainDeck.numHenchmenGroups[this.numPlayers],
       requiredHenchmen
     );
+    if (!isArray(selectedHenchmen))
+      selectedHenchmen = [selectedHenchmen]
 
     const villains: VillainGroups = new VillainGroups(
-      VillainGroups.GetAllVillainGroups(),
+      VillainGroups.ALL,
       this.gameSets
     );
     const selectedVillains: IVillainGroup[] = villains.shuffle(
@@ -89,6 +98,8 @@ export class GameSetup {
       heroDeck: selectedHeroes,
       villainDeck: {
         hero:
+          scheme.requiredCards !== undefined &&
+          scheme.requiredCards.inVillainDeck !== undefined &&
           scheme.requiredCards.inVillainDeck.cardType === CardType.HERO
             ? scheme.requiredCards.inVillainDeck
             : undefined,
