@@ -4,10 +4,7 @@ import { IGameSet } from '../gamesets';
 export abstract class CardSet<T extends ICard> {
   protected availableRecords: T[] = [];
 
-  constructor(
-    private allRecords?: T[],
-    private gameSets?: IGameSet[]
-  ) {
+  constructor(private allRecords?: T[], private gameSets?: IGameSet[]) {
     if (allRecords !== undefined) {
       if (allRecords.length > 0) {
         if (gameSets !== undefined) {
@@ -15,13 +12,12 @@ export abstract class CardSet<T extends ICard> {
             this.availableRecords.push(
               ...allRecords.filter((item) => gameSets.includes(item.gameSet))
             );
-          else
-            throw new Error("Empty array of gameSets not allowed");
+          else throw new Error('Empty array of gameSets not allowed');
         } else {
           this.availableRecords.push(...allRecords);
         }
       } else {
-        throw new Error("Empty array of records not allowed");
+        throw new Error('Empty array of records not allowed');
       }
     }
   }
@@ -58,14 +54,29 @@ export abstract class CardSet<T extends ICard> {
   public shuffle(): T;
   public shuffle(count: number, include?: T[], exclude?: T[]): T[];
   public shuffle(count: number = 1, include: T[] = [], exclude: T[] = []) {
-    if (count === 1) {
-      return this.getRandom();
-    } else if (count < 0) {
+    if (count < 0) {
       throw new RangeError('Count must be 0 or higher');
     } else if (count > this.availableRecords.length) {
       throw new RangeError('Count must be lower than the total deck size');
     } else if (include.some((item) => exclude.includes(item))) {
       throw new Error('Cannot include and exclude the same item');
+    } else if (
+      include !== undefined &&
+      !include.every((item) => {
+        return this.availableRecords.some(
+          (record) => record.gameSet === item.gameSet
+        );
+      })
+    ) {
+      throw new Error(
+        'Gamesets of included cards must be in the pre-set list of gamesets'
+      );
+    } else if (include.length > count) {
+      throw new RangeError(
+        'The number of included cards cannot be more than the number of requested cards'
+      );
+    } else if (count === 1) {
+      return this.getRandom();
     } else {
       return this.getRandom(count, include);
     }

@@ -84,9 +84,7 @@ describe('Class creation', () => {
   it('should create with a gameset filter and be filtered', () => {
     const dummy: DummySet = new DummySet(DummySet.ALL, [GameSets.LEGENDARY]);
     expect(dummy).toBeTruthy();
-    expect(dummy.getCards()).toHaveLength(
-      DummySet.dummyDataLegendary.length
-    );
+    expect(dummy.getCards()).toHaveLength(DummySet.dummyDataLegendary.length);
   });
 
   it('should fail with an empty data set defined', () => {
@@ -143,5 +141,15 @@ describe('Check shuffling logic', () => {
     expect(() => dummy.shuffle(DummySet.dummyDataLegendary.length + 1)).toThrow(
       RangeError
     );
+  });
+
+  it('should fail when included items are not in the selected gameset', () => {
+    expect(() => dummy.shuffle(2, [DummySet.dummyDataDarkCity[0]])).toThrow(
+      Error
+    );
+  });
+
+  it('should fail when the number of included cards is more than what is requested', () => {
+    expect(() => dummy.shuffle(1, DummySet.dummyDataLegendary)).toThrow(RangeError);
   });
 });
