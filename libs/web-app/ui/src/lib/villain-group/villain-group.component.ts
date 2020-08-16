@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { IVillainGroup } from '@legendizer/shared/models';
+import { IVillainGroup } from '@legendizer/legendizer-lib';
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 
 @Component({

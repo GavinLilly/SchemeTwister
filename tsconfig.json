@@ -25,28 +25,7 @@
       "@legendizer/web-app/feature-home": [
         "libs/web-app/feature-home/src/index.ts"
       ],
-      "@legendizer/web-app/data-access/gamesets": [
-        "libs/web-app/data-access/gamesets/src/index.ts"
-      ],
-      "@legendizer/web-app/data-access/henchmen": [
-        "libs/web-app/data-access/henchmen/src/index.ts"
-      ],
-      "@legendizer/web-app/data-access/heroes": [
-        "libs/web-app/data-access/heroes/src/index.ts"
-      ],
-      "@legendizer/web-app/data-access/mastermind": [
-        "libs/web-app/data-access/mastermind/src/index.ts"
-      ],
-      "@legendizer/web-app/data-access/scheme": [
-        "libs/web-app/data-access/scheme/src/index.ts"
-      ],
-      "@legendizer/web-app/data-access/villains": [
-        "libs/web-app/data-access/villains/src/index.ts"
-      ],
       "@legendizer/web-app/ui": ["libs/web-app/ui/src/index.ts"],
-      "@legendizer/web-app/data-access/num-players": [
-        "libs/web-app/data-access/num-players/src/index.ts"
-      ],
       "@legendizer/legendizer-lib": ["libs/legendizer-lib/src/index.ts"]
     }
   },

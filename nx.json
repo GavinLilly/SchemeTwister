@@ -37,29 +37,8 @@
     "web-app-feature-home": {
       "tags": ["type:feature scope:legendizer"]
     },
-    "web-app-data-access-gamesets": {
-      "tags": []
-    },
-    "web-app-data-access-henchmen": {
-      "tags": []
-    },
-    "web-app-data-access-heroes": {
-      "tags": []
-    },
-    "web-app-data-access-mastermind": {
-      "tags": []
-    },
-    "web-app-data-access-scheme": {
-      "tags": []
-    },
-    "web-app-data-access-villains": {
-      "tags": []
-    },
     "web-app-ui": {
       "tags": ["type:ui scope:legendizer"]
-    },
-    "web-app-data-access-num-players": {
-      "tags": []
     },
     "legendizer-lib": {
       "tags": []
