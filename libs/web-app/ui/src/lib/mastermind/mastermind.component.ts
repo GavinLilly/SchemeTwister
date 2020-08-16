@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IMastermind } from "@legendizer/shared/models";
+import { IMastermind } from "@legendizer/legendizer-lib";
 
 @Component({
   selector: 'legendizer-mastermind',

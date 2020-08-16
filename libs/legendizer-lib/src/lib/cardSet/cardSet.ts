@@ -1,5 +1,6 @@
 import { ICard } from './card.interface';
 import { IGameSet } from '../gamesets';
+import { CardType } from './cardType.enum';
 
 export abstract class CardSet<T extends ICard> {
   protected availableRecords: T[] = [];

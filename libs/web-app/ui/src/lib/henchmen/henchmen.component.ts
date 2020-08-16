@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IHenchmen } from '@legendizer/shared/models';
+import { IHenchmen } from '@legendizer/legendizer-lib';
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 
 @Component({

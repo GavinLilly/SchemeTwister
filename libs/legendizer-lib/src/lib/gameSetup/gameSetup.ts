@@ -1,5 +1,5 @@
 import { IGameSet } from '../gamesets';
-import { IGameSetup } from './gameSetup.interface';
+import { IGameSetup, IHeroDeck, IVillainDeck } from './gameSetup.interface';
 import { Schemes, IScheme } from '../schemes';
 import { Masterminds, IMastermind } from '../masterminds';
 import { Heroes, IHero } from '../heroes';
@@ -7,14 +7,7 @@ import { CardType } from '../cardSet';
 import { Henchmen } from '../henchmen';
 import { IHenchmen } from '../henchmen/henchmen.interface';
 import { IVillainGroup, VillainGroups } from '../villains';
-import { isArray } from 'util';
-
-type numPlayersRange = 2 | 3 | 4 | 5;
-type DeepPartial<T> = T extends Function
-  ? T
-  : T extends object
-  ? { [P in keyof T]?: DeepPartial<T[P]> }
-  : T;
+import { numPlayers } from "../schemes";
 
 export class GameSetup {
   private schemes: Schemes;
@@ -22,49 +15,32 @@ export class GameSetup {
   private heroes: Heroes;
   private henchmen: Henchmen;
   private villains: VillainGroups;
+  private gameSets: IGameSet[] = [];
 
-  constructor(
-    gameSets: IGameSet[] | IGameSet,
-    private numPlayers: numPlayersRange
-  ) {
-    if (gameSets === undefined || (isArray(gameSets) && gameSets.length === 0))
-      throw new Error('At least 1 game set must be chosen');
+  constructor(...gameSets: IGameSet[]) {
+    if (gameSets.length === 0 || gameSets.includes(undefined))
+      throw new Error('A game set or game sets must be chosen');
 
-    if (!isArray(gameSets)) gameSets = [gameSets];
+    this.gameSets = this.gameSets.concat(gameSets);
 
-    this.schemes = new Schemes(Schemes.ALL, gameSets);
-    this.masterminds = new Masterminds(Masterminds.ALL, gameSets);
-    this.heroes = new Heroes(Heroes.ALL, gameSets);
-    this.henchmen = new Henchmen(Henchmen.ALL, gameSets);
-    this.villains = new VillainGroups(VillainGroups.ALL, gameSets);
+    this.schemes = new Schemes(Schemes.ALL, this.gameSets);
+    this.masterminds = new Masterminds(Masterminds.ALL, this.gameSets);
+    this.heroes = new Heroes(Heroes.ALL, this.gameSets);
+    this.henchmen = new Henchmen(Henchmen.ALL, this.gameSets);
+    this.villains = new VillainGroups(VillainGroups.ALL, this.gameSets);
   }
 
   /**
    * @todo Allow for heroes, henchemen and villains to be seeded
    * @param existingSetup An IGameSetup object containing a scheme and/or mastermind to seed a new setup
    */
-  public generateGame(existingSetup: Partial<IGameSetup> = {}): IGameSetup {
-    // We currently only support pre-setting the scheme or mastermind
-    if (
-      existingSetup.heroDeck !== undefined ||
-      existingSetup.villainDeck !== undefined
-    ) {
-      throw new Error(
-        'Currently only pre-setting the scheme or mastermind is supported'
-      );
-    }
-
-    // Only shuffle the scheme if it's not already defined
-    const scheme: IScheme =
-      existingSetup.scheme === undefined
-        ? (existingSetup.scheme = this.schemes.shuffle())
-        : existingSetup.scheme;
-
-    // Only shuffle the mastermind if it's not already defined
-    const mastermind: IMastermind =
-      existingSetup.mastermind === undefined
-        ? (existingSetup.mastermind = this.masterminds.shuffle())
-        : existingSetup.mastermind;
+  public generateGame(
+    numberPlayers: numPlayers,
+    scheme: IScheme = this.schemes.shuffle(),
+    mastermind: IMastermind = this.masterminds.shuffle()
+  ): IGameSetup {
+    if (numberPlayers === undefined)
+      throw new RangeError('Number of players must be between 2 and 5');
 
     let requiredHero: IHero;
     const requiredHenchmen: IHenchmen[] = [];
@@ -99,48 +75,50 @@ export class GameSetup {
       requiredVillains.push(mastermind.alwaysLeads as IVillainGroup);
 
     // Shuffle our hero deck while excluding heroes required for the villain deck
-    const heroDeck: IHero[] = this.heroes.shuffle(
-      existingSetup.scheme.rules.heroDeck.numHeroes[this.numPlayers],
-      undefined,
-      [requiredHero]
-    );
-
-    const villainDeck: {
-      henchmen: IHenchmen[];
-      villains: IVillainGroup[];
-      hero: IHero;
-    } = {
-      // Shuffle our henchmen deck and include any required henchemen
-      henchmen: this.henchmen.shuffle(
-        existingSetup.scheme.rules.villainDeck.numHenchmenGroups[
-          this.numPlayers
-        ],
-        requiredHenchmen
+    const heroDeck: IHeroDeck = {
+      heroes: this.heroes.shuffle(
+        scheme.rules.heroDeck.numHeroes[numberPlayers],
+        undefined,
+        [requiredHero]
       ),
-      // Shuffle our villain deck and include any required villains
-      villains: this.villains.shuffle(
-        scheme.rules.villainDeck.numVillainGroups[this.numPlayers],
-        requiredVillains
-      ),
-      hero:
-        existingSetup.scheme.requiredCards !== undefined &&
-        existingSetup.scheme.requiredCards.inVillainDeck !== undefined &&
-        existingSetup.scheme.requiredCards.inVillainDeck.cardType ===
-          CardType.HERO
-          ? existingSetup.scheme.requiredCards.inVillainDeck
-          : undefined,
+      bystanders: scheme.rules.heroDeck.numBystanders
+        ? scheme.rules.heroDeck.numBystanders[numberPlayers]
+        : undefined,
     };
 
-    // A small hack to ensure that Henchmen is an array rather than a single entry
-    if (!isArray(villainDeck.henchmen))
-      villainDeck.henchmen = [villainDeck.henchmen];
+    let selectedHenchmen: IHenchmen[] = [];
+    selectedHenchmen = selectedHenchmen.concat(this.henchmen.shuffle(
+      scheme.rules.villainDeck.numHenchmenGroups[numberPlayers],
+      requiredHenchmen
+    ));
+
+    let selectedVillains: IVillainGroup[] = [];
+    selectedVillains = selectedVillains.concat(this.villains.shuffle(
+      scheme.rules.villainDeck.numVillainGroups[numberPlayers],
+      requiredVillains
+    ));
+
+    const villainDeck: IVillainDeck = {
+      bystanders: scheme.rules.villainDeck.numBystanders[numberPlayers],
+      // Shuffle our henchmen deck and include any required henchemen
+      henchmen: selectedHenchmen,
+      hero:
+        scheme.requiredCards !== undefined &&
+        scheme.requiredCards.inVillainDeck !== undefined &&
+        scheme.requiredCards.inVillainDeck.cardType === CardType.HERO
+          ? scheme.requiredCards.inVillainDeck
+          : undefined,
+      twists: scheme.rules.villainDeck.numTwists[numberPlayers],
+      // Shuffle our villain deck and include any required villains
+      villains: selectedVillains
+    };
 
     return {
       scheme: scheme,
       mastermind: mastermind,
-      numPlayers: this.numPlayers,
+      numPlayers: numberPlayers,
       heroDeck: heroDeck,
-      villainDeck: villainDeck
+      villainDeck: villainDeck,
     };
   }
 }

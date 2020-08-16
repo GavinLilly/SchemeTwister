@@ -32,8 +32,10 @@
         </div>
         <div class="card-body">
           <legendizer-additional-cards
-            [twists]="twists"
-            [bystanders]="bystanders"
+            [twists]="(gameSetupStore.gameSetup | async).villainDeck.twists"
+            [bystanders]="
+              (gameSetupStore.gameSetup | async).villainDeck.bystanders
+            "
           ></legendizer-additional-cards>
         </div>
       </div>
@@ -41,10 +43,14 @@
   </div>
   <div class="row row-cols-1 row-cols-md-2">
     <div class="col mb-4">
-      <legendizer-mastermind [mastermind]="mastermind"></legendizer-mastermind>
+      <legendizer-mastermind
+        [mastermind]="(gameSetupStore.gameSetup | async).mastermind"
+      ></legendizer-mastermind>
     </div>
     <div class="col mb-4">
-      <legendizer-scheme [scheme]="scheme"></legendizer-scheme>
+      <legendizer-scheme
+        [scheme]="(gameSetupStore.gameSetup | async).scheme"
+      ></legendizer-scheme>
     </div>
   </div>
   <div class="row row-cols-1 row-cols-md-2">
@@ -54,7 +60,10 @@
         <div class="card-body p-0">
           <ngb-accordion [closeOthers]="true">
             <ngb-panel
-              *ngFor="let item of henchmen"
+              *ngFor="
+                let item of (gameSetupStore.gameSetup | async).villainDeck
+                  .henchmen
+              "
               title="{{ item.name }}"
               id="panel-{{ item.id }}"
             >
@@ -63,12 +72,28 @@
               </ng-template>
             </ngb-panel>
             <ngb-panel
-              *ngFor="let item of villains"
+              *ngFor="
+                let item of (gameSetupStore.gameSetup | async).villainDeck
+                  .villains
+              "
               title="{{ item.name }}"
               id="panel-{{ item.id }}"
             >
               <ng-template ngbPanelContent>
-                <legendizer-villain-group [villainGroup]="item"></legendizer-villain-group>
+                <legendizer-villain-group
+                  [villainGroup]="item"
+                ></legendizer-villain-group>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel
+              *ngIf="
+                (gameSetupStore.gameSetup | async).villainDeck.hero as item
+              "
+              title="{{ item.name }}"
+              id="panel-{{ item.id }}"
+            >
+              <ng-template ngbPanelContent>
+                <legendizer-heroes [hero]="item"></legendizer-heroes>
               </ng-template>
             </ngb-panel>
           </ngb-accordion>
@@ -81,13 +106,15 @@
         <div class="card-body p-0">
           <ngb-accordion [closeOthers]="true">
             <ngb-panel
-              *ngFor="let item of heroes"
+              *ngFor="
+                let item of (gameSetupStore.gameSetup | async).heroDeck.heroes
+              "
               title="{{ item.name }}"
               id="panel-{{ item.id }}"
             >
-            <ng-template ngbPanelContent>
-              <legendizer-heroes [hero]="item"></legendizer-heroes>
-            </ng-template>
+              <ng-template ngbPanelContent>
+                <legendizer-heroes [hero]="item"></legendizer-heroes>
+              </ng-template>
             </ngb-panel>
           </ngb-accordion>
         </div>

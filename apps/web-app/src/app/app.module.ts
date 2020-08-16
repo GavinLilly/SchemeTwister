@@ -8,10 +8,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { WebAppUiModule } from '@legendizer/web-app/ui';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { WebAppFeatureRandomizeModule } from "@legendizer/web-app/feature-randomize";
 
 const appRoutes: Routes = [
   {
@@ -56,9 +55,8 @@ const appRoutes: Routes = [
         },
       }
     ),
-    EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    StoreRouterConnectingModule.forRoot(),
+    WebAppFeatureRandomizeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

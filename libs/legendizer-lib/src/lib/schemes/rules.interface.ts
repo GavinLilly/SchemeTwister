@@ -1,4 +1,4 @@
-type numPlayers = 2 | 3 | 4 | 5;
+export type numPlayers = 2 | 3 | 4 | 5;
 
 interface IHeroDeck {
   numHeroes: Record<numPlayers, number>;
