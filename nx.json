@@ -19,75 +19,29 @@
     }
   },
   "projects": {
-    "legendizer": {
-      "tags": []
-    },
-    "legendizer-e2e": {
-      "tags": [],
-      "implicitDependencies": ["legendizer"]
-    },
-    "api": {
-      "tags": []
-    },
     "api-interfaces": {
       "tags": []
     },
-    "shared-gameset-types": {
-      "tags": ["type:types", "scope:shared"]
+    "web-app": {
+      "tags": []
     },
-    "shared-bystander-types": {
-      "tags": ["type:types", "scope:shared"]
+    "web-app-e2e": {
+      "tags": []
     },
-    "shared-henchmen-types": {
-      "tags": ["type:types", "scope:shared"]
+    "web-api": {
+      "tags": []
     },
-    "shared-hero-types": {
-      "tags": ["type:types", "scope:shared"]
-    },
-    "shared-mastermind-types": {
-      "tags": ["type:types", "scope:shared"]
-    },
-    "shared-scheme-types": {
-      "tags": ["type:types", "scope:shared"]
-    },
-    "shared-villaingroup-types": {
-      "tags": ["type:types", "scope:shared"]
-    },
-    "shared-base-types": {
-      "tags": ["type:types", "scope:shared"]
-    },
-    "shared-bystander-data": {
-      "tags": ["type:data", "scope:shared"]
-    },
-    "shared-gameset-data": {
-      "tags": ["type:data", "scope:shared"]
-    },
-    "shared-henchmen-data": {
-      "tags": ["type:data", "scope:shared"]
-    },
-    "shared-hero-data": {
-      "tags": ["type:data", "scope:shared"]
-    },
-    "shared-mastermind-data": {
-      "tags": ["type:data", "scope:shared"]
-    },
-    "shared-villaingroup-data": {
-      "tags": ["type:data", "scope:shared"]
-    },
-    "shared-scheme-data": {
-      "tags": ["type:data", "scope:shared"]
-    },
-    "legendizer-feature-home": {
+    "web-app-feature-randomize": {
       "tags": ["type:feature scope:legendizer"]
     },
-    "legendizer-ui": {
-      "tags": ["type:ui scope:legendizer"]
-    },
-    "legendizer-feature-randomize": {
+    "web-app-feature-home": {
       "tags": ["type:feature scope:legendizer"]
     },
-    "legendizer-ui-villain-deck": {
+    "web-app-ui": {
       "tags": ["type:ui scope:legendizer"]
+    },
+    "legendizer-lib": {
+      "tags": []
     }
   }
 }
