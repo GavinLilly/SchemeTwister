@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-2">
+    <div class="col-3 mx-auto">
+      <div class="card text-center">
+        <div class="card-header">
+          Number of players
+        </div>
+        <div class="card-body">
+          <select
+            class="custom-select mb-1"
+            [(ngModel)]="numPlayers"
+            (change)="generateDecks()"
+          >
+            <option [value]="2">2</option>
+            <option [value]="3">3</option>
+            <option [value]="4">4</option>
+            <option [value]="5">5</option>
+          </select>
+          <a
+            href="javascript:void(0)"
+            class="btn btn-primary"
+            (click)="generateDecks()"
+            >Re-shuffle</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-3 mx-auto">
+      <div class="card">
+        <div class="card-header">
+          Setup
+        </div>
+        <div class="card-body">
+          <legendizer-additional-cards
+            [twists]="(gameSetupStore.gameSetup | async).villainDeck.twists"
+            [bystanders]="
+              (gameSetupStore.gameSetup | async).villainDeck.bystanders
+            "
+          ></legendizer-additional-cards>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row row-cols-1 row-cols-md-2">
+    <div class="col mb-4">
+      <legendizer-mastermind
+        [mastermind]="(gameSetupStore.gameSetup | async).mastermind"
+      ></legendizer-mastermind>
+    </div>
+    <div class="col mb-4">
+      <legendizer-scheme
+        [scheme]="(gameSetupStore.gameSetup | async).scheme"
+      ></legendizer-scheme>
+    </div>
+  </div>
+  <div class="row row-cols-1 row-cols-md-2">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">Villain Deck</div>
+        <div class="card-body p-0">
+          <ngb-accordion [closeOthers]="true">
+            <ngb-panel
+              *ngFor="
+                let item of (gameSetupStore.gameSetup | async).villainDeck
+                  .henchmen
+              "
+              title="{{ item.name }}"
+              id="panel-{{ item.id }}"
+            >
+              <ng-template ngbPanelContent>
+                <legendizer-henchmen [henchmen]="item"></legendizer-henchmen>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel
+              *ngFor="
+                let item of (gameSetupStore.gameSetup | async).villainDeck
+                  .villains
+              "
+              title="{{ item.name }}"
+              id="panel-{{ item.id }}"
+            >
+              <ng-template ngbPanelContent>
+                <legendizer-villain-group
+                  [villainGroup]="item"
+                ></legendizer-villain-group>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel
+              *ngIf="
+                (gameSetupStore.gameSetup | async).villainDeck.hero as item
+              "
+              title="{{ item.name }}"
+              id="panel-{{ item.id }}"
+            >
+              <ng-template ngbPanelContent>
+                <legendizer-heroes [hero]="item"></legendizer-heroes>
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-header">Hero Deck</div>
+        <div class="card-body p-0">
+          <ngb-accordion [closeOthers]="true">
+            <ngb-panel
+              *ngFor="
+                let item of (gameSetupStore.gameSetup | async).heroDeck.heroes
+              "
+              title="{{ item.name }}"
+              id="panel-{{ item.id }}"
+            >
+              <ng-template ngbPanelContent>
+                <legendizer-heroes [hero]="item"></legendizer-heroes>
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
