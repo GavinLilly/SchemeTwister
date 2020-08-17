@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
 import { TestBed, async } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
+import { WebAppUiModule } from "@legendizer/web-app/ui";
+import { RouterTestingModule } from "@angular/router/testing";
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent],
-      imports: [HttpClientModule],
+      imports: [HttpClientModule, WebAppUiModule, RouterTestingModule],
     }).compileComponents();
   }));
 
