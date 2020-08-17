@@ -37,3 +37,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Footer version file
+/libs/web-app/ui/src/lib/footer/version.ts
