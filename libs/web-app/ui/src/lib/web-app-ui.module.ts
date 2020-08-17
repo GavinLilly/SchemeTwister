@@ -11,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AdditionalCardsComponent } from './additional-cards/additional-cards.component';
 import { HenchmenComponent } from './henchmen/henchmen.component';
 import { VillainGroupComponent } from './villain-group/villain-group.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { VillainGroupComponent } from './villain-group/villain-group.component';
     AdditionalCardsComponent,
     HenchmenComponent,
     VillainGroupComponent,
+    FooterComponent,
   ],
   exports: [
     HeaderComponent,
@@ -37,6 +39,7 @@ import { VillainGroupComponent } from './villain-group/villain-group.component';
     AdditionalCardsComponent,
     HenchmenComponent,
     VillainGroupComponent,
+    FooterComponent
   ],
 })
 export class WebAppUiModule {}
