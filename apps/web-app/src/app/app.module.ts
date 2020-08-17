@@ -10,7 +10,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { WebAppFeatureRandomizeModule } from "@legendizer/web-app/feature-randomize";
 
 const appRoutes: Routes = [
   {
@@ -55,8 +54,7 @@ const appRoutes: Routes = [
         },
       }
     ),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
-    WebAppFeatureRandomizeModule
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [],
   bootstrap: [AppComponent],
