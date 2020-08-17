@@ -1,7 +1,7 @@
 import { IHero } from './hero.interface';
 import { Legendary } from './legendary.heroes';
 import { DarkCity } from "./darkCity.heroes";
-import { CardSet } from '../cardset/cardSet';
+import { CardSet } from '../cardSet';
 
 export class Heroes extends CardSet<IHero> {
   public static readonly LEGENDARY = Legendary;
