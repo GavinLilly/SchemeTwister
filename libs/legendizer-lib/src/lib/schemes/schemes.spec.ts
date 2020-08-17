@@ -38,10 +38,10 @@ describe('Specific scheme checks', () => {
     Schemes.GUARDIANS_OF_THE_GALAXY.THE_KREE_SKRULL_WAR
   );
   it('should have Kree and Skrull villains', () => {
-    expect(gameSetup.villainDeck).toContain(
+    expect(gameSetup.villainDeck.villains).toContain(
       VillainGroups.GUARDIANS_OF_THE_GALAXY.KREE_STARFORCE
     );
-    expect(gameSetup.villainDeck).toContain(VillainGroups.LEGENDARY.SKRULLS);
+    expect(gameSetup.villainDeck.villains).toContain(VillainGroups.LEGENDARY.SKRULLS);
   });
 });
 
