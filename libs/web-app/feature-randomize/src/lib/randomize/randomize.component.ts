@@ -17,7 +17,6 @@ export class RandomizeComponent implements OnInit {
   }
 
   generateDecks() {
-    console.log(this.numPlayers)
     this.gameSetupStore.shuffle(this.numPlayers);
   }
 }
