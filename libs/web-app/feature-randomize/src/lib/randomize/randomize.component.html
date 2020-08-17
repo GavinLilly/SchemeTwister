@@ -3,13 +3,20 @@
     <div class="col-3 mx-auto">
       <div class="card text-center">
         <div class="card-header">
-          Number of players
+          <div class="d-flex align-items-center">
+            <p class="mx-auto w-100 mb-1">
+              Setup
+            </p>
+            <a (click)="pickGameSets()" href="javascript:void(0)" class="mb-1 text-black">
+              <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
+            </a>
+          </div>
         </div>
         <div class="card-body">
           <select
             class="custom-select mb-1"
             [(ngModel)]="numPlayers"
-            (change)="generateDecks()"
+            (change)="setPlayers()"
           >
             <option [value]="2">2</option>
             <option [value]="3">3</option>
@@ -20,7 +27,7 @@
             href="javascript:void(0)"
             class="btn btn-primary"
             (click)="generateDecks()"
-            >Re-shuffle</a
+            >Shuffle</a
           >
         </div>
       </div>

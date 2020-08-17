@@ -1,0 +1,14 @@
+<div class="modal-header">
+  <h4 class="modal-title">Select game sets</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true" style="font-family: Arial">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <select multiple="true" [(ngModel)]="selectedGameSets">
+    <option *ngFor="let gameSet of gameSets" [value]="gameSet">{{ gameSet.name }}</option>
+  </select>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="gameSetupStore.setGameSets(selectedGameSets);activeModal.close('Close click')">Save</button>
+</div>
