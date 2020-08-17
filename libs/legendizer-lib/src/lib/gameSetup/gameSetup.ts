@@ -7,7 +7,7 @@ import { CardType } from '../cardSet';
 import { Henchmen } from '../henchmen';
 import { IHenchmen } from '../henchmen/henchmen.interface';
 import { IVillainGroup, VillainGroups } from '../villains';
-import { numPlayers } from "../schemes";
+import { numPlayers } from '../schemes';
 
 export class GameSetup {
   private schemes: Schemes;
@@ -87,30 +87,43 @@ export class GameSetup {
     };
 
     let selectedHenchmen: IHenchmen[] = [];
-    selectedHenchmen = selectedHenchmen.concat(this.henchmen.shuffle(
-      scheme.rules.villainDeck.numHenchmenGroups[numberPlayers],
-      requiredHenchmen
-    ));
+    selectedHenchmen = selectedHenchmen.concat(
+      this.henchmen.shuffle(
+        scheme.rules.villainDeck.numHenchmenGroups[numberPlayers],
+        requiredHenchmen
+      )
+    );
 
     let selectedVillains: IVillainGroup[] = [];
-    selectedVillains = selectedVillains.concat(this.villains.shuffle(
-      scheme.rules.villainDeck.numVillainGroups[numberPlayers],
-      requiredVillains
-    ));
+    selectedVillains = selectedVillains.concat(
+      this.villains.shuffle(
+        scheme.rules.villainDeck.numVillainGroups[numberPlayers],
+        requiredVillains
+      )
+    );
+
+    let villainHero: IHero;
+    if (scheme.rules.villainDeck.numHeroes !== undefined) {
+      villainHero =
+        scheme.requiredCards !== undefined &&
+        scheme.requiredCards.inVillainDeck !== undefined &&
+        scheme.requiredCards.inVillainDeck.cardType === CardType.HERO
+          ? scheme.requiredCards.inVillainDeck
+          : this.heroes.shuffle(
+              scheme.rules.villainDeck.numHeroes[numberPlayers],
+              undefined,
+              heroDeck.heroes
+            )[0];
+    }
 
     const villainDeck: IVillainDeck = {
       bystanders: scheme.rules.villainDeck.numBystanders[numberPlayers],
       // Shuffle our henchmen deck and include any required henchemen
       henchmen: selectedHenchmen,
-      hero:
-        scheme.requiredCards !== undefined &&
-        scheme.requiredCards.inVillainDeck !== undefined &&
-        scheme.requiredCards.inVillainDeck.cardType === CardType.HERO
-          ? scheme.requiredCards.inVillainDeck
-          : undefined,
+      hero: villainHero,
       twists: scheme.rules.villainDeck.numTwists[numberPlayers],
       // Shuffle our villain deck and include any required villains
-      villains: selectedVillains
+      villains: selectedVillains,
     };
 
     return {

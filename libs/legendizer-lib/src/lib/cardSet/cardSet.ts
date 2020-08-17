@@ -25,13 +25,17 @@ export abstract class CardSet<T extends ICard> {
 
   /**
    * getRandom will recursively pick a number of records based on the passed in count and return an array of the picked records
-   * @param {T[]} records An array of records to select from
    * @param {number} [count] The number of records required
    * @param {T[]} [elements] An array of records to include in the returned records. This ensures that the same entry isn't chosen twice
+   * @param {T[]} [exclude] An optional array of records to select from
    */
   private getRandom(): T;
-  private getRandom(count: number, elements: T[]): T[];
-  private getRandom(count: number = 1, elements: T[] = []): T | T[] {
+  private getRandom(count: number, elements: T[], exclude?: T[]): T[];
+  private getRandom(
+    count: number = 1,
+    elements: T[] = [],
+    exclude: T[] = []
+  ): T | T[] {
     function getRandomElement(arr: T[]) {
       if (elements.length < count) {
         elements.push(arr.splice(Math.floor(Math.random() * arr.length), 1)[0]);
@@ -42,13 +46,19 @@ export abstract class CardSet<T extends ICard> {
       }
     }
 
+    const filteredRecords =
+      exclude.length > 0
+        ? this.availableRecords.filter((record) => !exclude.includes(record))
+        : this.availableRecords;
+
     if (elements.length > 0) {
       return getRandomElement(
-        this.availableRecords.filter((record) => !elements.includes(record))
+        filteredRecords.filter((record) => !elements.includes(record))
       );
     } else {
-      if (count === 1) return getRandomElement([...this.availableRecords])[0];
-      else return getRandomElement([...this.availableRecords]);
+      if (count === 1 && elements.length === 0 && exclude.length === 0)
+        return getRandomElement([...filteredRecords])[0];
+      else return getRandomElement([...filteredRecords]);
     }
   }
 
@@ -76,10 +86,10 @@ export abstract class CardSet<T extends ICard> {
       throw new RangeError(
         'The number of included cards cannot be more than the number of requested cards'
       );
-    } else if (count === 1) {
+    } else if (count === 1 && include.length === 0 && exclude.length === 0) {
       return this.getRandom();
     } else {
-      return this.getRandom(count, include);
+      return this.getRandom(count, include, exclude);
     }
   }
 
