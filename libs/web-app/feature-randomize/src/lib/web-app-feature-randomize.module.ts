@@ -8,6 +8,7 @@ import { WebAppUiModule } from '@legendizer/web-app/ui';
 import { GameSetupStore } from './game-setup-store';
 import { GameSetSelectComponent } from './game-set-select/game-set-select.component';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { CookieService } from "ngx-cookie-service";
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
     FontAwesomeModule
   ],
   declarations: [RandomizeComponent, GameSetSelectComponent],
-  providers: [GameSetupStore],
+  providers: [GameSetupStore, CookieService],
   entryComponents: [GameSetSelectComponent]
 })
 export class WebAppFeatureRandomizeModule {}
