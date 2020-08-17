@@ -3,7 +3,7 @@ import { IGameSetup, IHeroDeck, IVillainDeck } from './gameSetup.interface';
 import { Schemes, IScheme } from '../schemes';
 import { Masterminds, IMastermind } from '../masterminds';
 import { Heroes, IHero } from '../heroes';
-import { CardType } from '../cardSet';
+import { CardType, ICard } from '../cardSet';
 import { Henchmen } from '../henchmen';
 import { IHenchmen } from '../henchmen/henchmen.interface';
 import { IVillainGroup, VillainGroups } from '../villains';
@@ -23,9 +23,8 @@ export class GameSetup {
     } else if (!gameSets.some((item) => item.essential)) {
       throw new Error(`A big box game set must be chosen. These include:
 ${GameSets.ALL.map((item) => {
-  if (item.essential)
-    return item.name
-})}`)
+  if (item.essential) return item.name;
+})}`);
     }
 
     this.gameSets = this.gameSets.concat(gameSets);
@@ -48,6 +47,15 @@ ${GameSets.ALL.map((item) => {
   ): IGameSetup {
     if (numberPlayers === undefined)
       throw new RangeError('Number of players must be between 2 and 5');
+
+    const sortNameComparator = function(item1: ICard, item2: ICard) {
+      if (item1.name < item2.name)
+        return -1;
+      else if (item1.name > item2.name)
+        return 1;
+      else
+        return 0;
+    }
 
     let requiredHero: IHero;
     const requiredHenchmen: IHenchmen[] = [];
@@ -76,9 +84,17 @@ ${GameSets.ALL.map((item) => {
     }
 
     // Check to see if there are any mastermind required cards in the villain deck
-    if (mastermind.alwaysLeads.cardType === CardType.HENCHMEN)
+    if (
+      requiredHenchmen.length <
+        scheme.rules.villainDeck.numHenchmenGroups[numberPlayers] &&
+      mastermind.alwaysLeads.cardType === CardType.HENCHMEN
+    )
       requiredHenchmen.push(mastermind.alwaysLeads as IHenchmen);
-    else if (mastermind.alwaysLeads.cardType === CardType.VILLAINGROUP)
+    else if (
+      requiredVillains.length <
+        scheme.rules.villainDeck.numVillainGroups[numberPlayers] &&
+      mastermind.alwaysLeads.cardType === CardType.VILLAINGROUP
+    )
       requiredVillains.push(mastermind.alwaysLeads as IVillainGroup);
 
     // Shuffle our hero deck while excluding heroes required for the villain deck
@@ -87,7 +103,7 @@ ${GameSets.ALL.map((item) => {
         scheme.rules.heroDeck.numHeroes[numberPlayers],
         undefined,
         [requiredHero]
-      ),
+      ).sort(sortNameComparator),
       bystanders: scheme.rules.heroDeck.numBystanders
         ? scheme.rules.heroDeck.numBystanders[numberPlayers]
         : undefined,
@@ -126,11 +142,11 @@ ${GameSets.ALL.map((item) => {
     const villainDeck: IVillainDeck = {
       bystanders: scheme.rules.villainDeck.numBystanders[numberPlayers],
       // Shuffle our henchmen deck and include any required henchemen
-      henchmen: selectedHenchmen,
+      henchmen: selectedHenchmen.sort(sortNameComparator),
       hero: villainHero,
       twists: scheme.rules.villainDeck.numTwists[numberPlayers],
       // Shuffle our villain deck and include any required villains
-      villains: selectedVillains,
+      villains: selectedVillains.sort(sortNameComparator),
     };
 
     return {
