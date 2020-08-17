@@ -14,10 +14,17 @@ cardSetTest(
   GameSets.DARK_CITY
 );
 
+cardSetTest(
+  new VillainGroups(Object.values(VillainGroups.HEROES_OF_ASGARD)),
+  2,
+  GameSets.HEROES_OF_ASGARD
+);
+
 describe('Total Schemes sets', () => {
   const total: number = [
     ...Object.values(VillainGroups.LEGENDARY),
     ...Object.values(VillainGroups.DARK_CITY),
+    ...Object.values(VillainGroups.HEROES_OF_ASGARD)
   ].length;
   it(`should have ${total} entries`, () =>
     expect(VillainGroups.ALL).toHaveLength(total));

@@ -1,5 +1,5 @@
 import { GameSets } from "./gameSets";
 
 describe('Gamesets', () => {
-  it('should have 2 entries', () => expect(GameSets.ALL).toHaveLength(2))
+  it('should have 3 entries', () => expect(GameSets.ALL).toHaveLength(3))
 })
