@@ -10,13 +10,13 @@ COPY . .
 ARG node_env=production
 ENV NODE_ENV ${node_env}
 
-RUN npm run build legendizer
+RUN npm run build web-app
 
 FROM nginx:alpine
 
 WORKDIR /dist
 
-COPY --from=builder /build/dist/apps/legendizer /usr/share/nginx/html
+COPY --from=builder /build/dist/apps/web-app /usr/share/nginx/html
 
 ARG port=80
 ENV PORT ${port}
