@@ -1,10 +1,7 @@
 import { IScheme } from "./scheme.interface";
-import { HeroClass } from "../heroes";
 import { CardType } from "../cardSet";
 import { GameSets } from "../gamesets";
 import { defaultRules } from "./defaultRules.data";
-import { Henchmen } from "../henchmen";
-import { Heroes } from "../heroes";
 
 type SchemeNames =
   | 'ASGARDIAN_TEST_OF_WORTH'

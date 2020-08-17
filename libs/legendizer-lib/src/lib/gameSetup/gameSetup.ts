@@ -8,6 +8,7 @@ import { Henchmen } from '../henchmen';
 import { IHenchmen } from '../henchmen/henchmen.interface';
 import { IVillainGroup, VillainGroups } from '../villains';
 import { numPlayers } from '../schemes';
+import { isArray } from 'util';
 
 export class GameSetup {
   private schemes: Schemes;
@@ -66,20 +67,24 @@ ${GameSets.ALL.map((item) => {
       scheme.requiredCards !== undefined &&
       scheme.requiredCards.inVillainDeck !== undefined
     ) {
-      switch (scheme.requiredCards.inVillainDeck.cardType) {
-        case CardType.HERO:
-          requiredHero = scheme.requiredCards.inVillainDeck;
-          break;
-        case CardType.HENCHMEN:
-          requiredHenchmen.push(
-            scheme.requiredCards.inVillainDeck as IHenchmen
-          );
-          break;
-        case CardType.VILLAINGROUP:
-          requiredVillains.push(
-            scheme.requiredCards.inVillainDeck as IVillainGroup
-          );
-          break;
+      if (!isArray(scheme.requiredCards.inVillainDeck)) {
+        switch (scheme.requiredCards.inVillainDeck.cardType) {
+          case CardType.HERO:
+            requiredHero = scheme.requiredCards.inVillainDeck;
+            break;
+          case CardType.HENCHMEN:
+            requiredHenchmen.push(
+              scheme.requiredCards.inVillainDeck as IHenchmen
+            );
+            break;
+          case CardType.VILLAINGROUP:
+            requiredVillains.push(
+              scheme.requiredCards.inVillainDeck as IVillainGroup
+            );
+            break;
+        }
+      } else {
+        requiredVillains.push(...scheme.requiredCards.inVillainDeck);
       }
     }
 
@@ -97,7 +102,7 @@ ${GameSets.ALL.map((item) => {
     )
       requiredVillains.push(mastermind.alwaysLeads as IVillainGroup);
 
-    // Shuffle our hero deck while excluding heroes required for the villain deck
+    // Shuffle our hero deck while excluding# heroes required for the villain deck
     const heroDeck: IHeroDeck = {
       heroes: this.heroes.shuffle(
         scheme.rules.heroDeck.numHeroes[numberPlayers],
@@ -130,6 +135,7 @@ ${GameSets.ALL.map((item) => {
       villainHero =
         scheme.requiredCards !== undefined &&
         scheme.requiredCards.inVillainDeck !== undefined &&
+        !isArray(scheme.requiredCards.inVillainDeck) &&
         scheme.requiredCards.inVillainDeck.cardType === CardType.HERO
           ? scheme.requiredCards.inVillainDeck
           : this.heroes.shuffle(
