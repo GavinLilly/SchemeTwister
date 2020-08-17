@@ -2,7 +2,7 @@ import { GameSetup } from './gameSetup';
 import { IGameSetup } from './gameSetup.interface';
 import { GameSets, IGameSet } from '../gamesets';
 
-function testGameSet(gameSet: IGameSet) {
+function testBigBox(gameSet: IGameSet) {
   const setup: GameSetup = new GameSetup(gameSet);
   const game:IGameSetup = setup.generateGame(2);
   describe(`Test ${gameSet.name} setup`, () => {
@@ -34,6 +34,12 @@ describe('Class creation', () => {
       const gameSetup = new GameSetup(...[]);
     }).toThrow(Error);
   });
+
+  it('should fail without a big box game set', () => {
+    expect(() => {
+      const gameSetup = new GameSetup(...GameSets.ALL.filter((item) => !item.essential));
+    }).toThrow(Error)
+  })
 });
 
 describe('Game creation', () => {
@@ -58,5 +64,7 @@ describe('Game creation', () => {
   it('should have 2 players', () => expect(game.numPlayers).toEqual(2))
 });
 
-testGameSet(GameSets.LEGENDARY);
-testGameSet(GameSets.DARK_CITY);
+GameSets.ALL.forEach(element => {
+  if (element.essential)
+    testBigBox(element)
+});

@@ -1,4 +1,4 @@
-import { IGameSet } from '../gamesets';
+import { IGameSet, GameSets } from '../gamesets';
 import { IGameSetup, IHeroDeck, IVillainDeck } from './gameSetup.interface';
 import { Schemes, IScheme } from '../schemes';
 import { Masterminds, IMastermind } from '../masterminds';
@@ -18,8 +18,15 @@ export class GameSetup {
   private gameSets: IGameSet[] = [];
 
   constructor(...gameSets: IGameSet[]) {
-    if (gameSets.length === 0 || gameSets.includes(undefined))
+    if (gameSets.length === 0 || gameSets.includes(undefined)) {
       throw new Error('A game set or game sets must be chosen');
+    } else if (!gameSets.some((item) => item.essential)) {
+      throw new Error(`A big box game set must be chosen. These include:
+${GameSets.ALL.map((item) => {
+  if (item.essential)
+    return item.name
+})}`)
+    }
 
     this.gameSets = this.gameSets.concat(gameSets);
 
