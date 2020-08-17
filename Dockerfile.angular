@@ -16,7 +16,7 @@ FROM nginx:alpine
 
 WORKDIR /dist
 
-COPY --from=builder /build/dist/apps/legendizer /usr/share/nginx/html
+COPY --from=builder /build/dist/apps/web-app /usr/share/nginx/html
 
 ARG port=80
 ENV PORT ${port}
