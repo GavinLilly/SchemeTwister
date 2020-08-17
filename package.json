@@ -4,7 +4,7 @@
   "license": "GPL-3.0-or-later",
   "scripts": {
     "ng": "nx",
-    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
+    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points && npm run build-version",
     "nx": "nx",
     "start": "ng serve",
     "build": "ng build",
@@ -27,7 +27,8 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "class-to-json": "ts-node --project tools/tsconfig.tools.json tools/scripts/classToJSON.ts",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "build-version": "genversion --es6 --semi libs/web-app/ui/src/lib/footer/version.ts"
   },
   "private": true,
   "dependencies": {
@@ -47,18 +48,19 @@
     "@nestjs/core": "^6.8.3",
     "@nestjs/platform-express": "^6.8.3",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
+    "@ngrx/effects": "9.1.0",
+    "@ngrx/entity": "9.1.0",
+    "@ngrx/router-store": "9.1.0",
     "@ngrx/store": "^9.2.0",
     "@nrwl/angular": "9.4.5",
     "bootstrap": "^4.4.0",
     "class-transformer": "^0.3.1",
     "class-validator": "^0.12.2",
+    "genversion": "^2.2.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.4",
     "uuid": "^8.2.0",
-    "zone.js": "^0.10.2",
-    "@ngrx/effects": "9.1.0",
-    "@ngrx/entity": "9.1.0",
-    "@ngrx/router-store": "9.1.0"
+    "zone.js": "^0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.901.0",
