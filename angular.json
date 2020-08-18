@@ -21,7 +21,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/api-interfaces/jest.config.js",
-            "tsConfig": "libs/api-interfaces/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -117,9 +116,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/web-app/jest.config.js",
-            "tsConfig": "apps/web-app/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/web-app/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -200,7 +197,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/web-api/jest.config.js",
-            "tsConfig": "apps/web-api/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -229,9 +225,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/web-app/feature-randomize/jest.config.js",
-            "tsConfig": "libs/web-app/feature-randomize/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/web-app/feature-randomize/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -261,9 +255,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/web-app/feature-home/jest.config.js",
-            "tsConfig": "libs/web-app/feature-home/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/web-app/feature-home/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -293,9 +285,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/web-app/ui/jest.config.js",
-            "tsConfig": "libs/web-app/ui/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/web-app/ui/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -325,7 +315,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/legendizer-lib/jest.config.js",
-            "tsConfig": "libs/legendizer-lib/tsconfig.spec.json",
             "passWithNoTests": true
           }
         },
