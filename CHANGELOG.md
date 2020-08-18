@@ -1,3 +1,16 @@
+# [1.5.0](https://github.com/GavinLilly/legendizer/compare/v1.4.0...v1.5.0) (2020-08-18)
+
+
+### Bug Fixes
+
+* fix bugs stopping multiple villains groups in a scheme ([21d8d7d](https://github.com/GavinLilly/legendizer/commit/21d8d7da36d44cd4f12e0fd5b72750d2e1739d74))
+* **app:** fix bug on game set picker init ([0b202ca](https://github.com/GavinLilly/legendizer/commit/0b202ca571d10b027396987285fc93b0a3e546b3))
+
+
+### Features
+
+* **legendizer-lib:** add Guardians of the Galaxy small box ([629380a](https://github.com/GavinLilly/legendizer/commit/629380ace52e186aa59d82d8bddcaae61372f370))
+
 # [1.4.0](https://github.com/GavinLilly/legendizer/compare/v1.3.0...v1.4.0) (2020-08-17)
 
 
