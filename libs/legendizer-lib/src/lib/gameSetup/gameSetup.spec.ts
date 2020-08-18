@@ -12,8 +12,8 @@ function testBigBox(gameSet: IGameSet) {
       expect(game.heroDeck.heroes.every((item) => item.gameSet === gameSet)).toBeTruthy();
       expect(game.villainDeck.henchmen.every((item) => item.gameSet === gameSet)).toBeTruthy();
       expect(game.villainDeck.villains.every((item) => item.gameSet === gameSet)).toBeTruthy();
-      if (game.villainDeck.hero !== undefined)
-        expect(game.villainDeck.hero.gameSet).toBe(gameSet);
+      if (game.villainDeck.heroes !== undefined)
+        expect(game.villainDeck.heroes.every((hero) => hero.gameSet === gameSet)).toBeTruthy()
     })
   })
 }
