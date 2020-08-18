@@ -49,16 +49,13 @@ ${GameSets.ALL.map((item) => {
     if (numberPlayers === undefined)
       throw new RangeError('Number of players must be between 2 and 5');
 
-    const sortNameComparator = function(item1: ICard, item2: ICard) {
-      if (item1.name < item2.name)
-        return -1;
-      else if (item1.name > item2.name)
-        return 1;
-      else
-        return 0;
-    }
+    const sortNameComparator = function (item1: ICard, item2: ICard) {
+      if (item1.name < item2.name) return -1;
+      else if (item1.name > item2.name) return 1;
+      else return 0;
+    };
 
-    let requiredHero: IHero;
+    const requiredVillainHeroes: IHero[] = [];
     const requiredHenchmen: IHenchmen[] = [];
     const requiredVillains: IVillainGroup[] = [];
 
@@ -67,24 +64,12 @@ ${GameSets.ALL.map((item) => {
       scheme.requiredCards !== undefined &&
       scheme.requiredCards.inVillainDeck !== undefined
     ) {
-      if (!isArray(scheme.requiredCards.inVillainDeck)) {
-        switch (scheme.requiredCards.inVillainDeck.cardType) {
-          case CardType.HERO:
-            requiredHero = scheme.requiredCards.inVillainDeck;
-            break;
-          case CardType.HENCHMEN:
-            requiredHenchmen.push(
-              scheme.requiredCards.inVillainDeck as IHenchmen
-            );
-            break;
-          case CardType.VILLAINGROUP:
-            requiredVillains.push(
-              scheme.requiredCards.inVillainDeck as IVillainGroup
-            );
-            break;
-        }
-      } else {
-        requiredVillains.push(...scheme.requiredCards.inVillainDeck);
+      if (scheme.requiredCards.inVillainDeck.heroes !== undefined) {
+        requiredVillainHeroes.push(...scheme.requiredCards.inVillainDeck.heroes);
+      } else if (scheme.requiredCards.inVillainDeck.henchmen !== undefined) {
+        requiredHenchmen.push(...scheme.requiredCards.inVillainDeck.henchmen);
+      } else if (scheme.requiredCards.inVillainDeck.villains !== undefined) {
+        requiredVillains.push(...scheme.requiredCards.inVillainDeck.villains);
       }
     }
 
@@ -104,11 +89,13 @@ ${GameSets.ALL.map((item) => {
 
     // Shuffle our hero deck while excluding# heroes required for the villain deck
     const heroDeck: IHeroDeck = {
-      heroes: this.heroes.shuffle(
-        scheme.rules.heroDeck.numHeroes[numberPlayers],
-        undefined,
-        [requiredHero]
-      ).sort(sortNameComparator),
+      heroes: this.heroes
+        .shuffle(
+          scheme.rules.heroDeck.numHeroes[numberPlayers],
+          undefined,
+          requiredVillainHeroes
+        )
+        .sort(sortNameComparator),
       bystanders: scheme.rules.heroDeck.numBystanders
         ? scheme.rules.heroDeck.numBystanders[numberPlayers]
         : undefined,
@@ -130,26 +117,19 @@ ${GameSets.ALL.map((item) => {
       )
     );
 
-    let villainHero: IHero;
-    if (scheme.rules.villainDeck.numHeroes !== undefined) {
-      villainHero =
-        scheme.requiredCards !== undefined &&
-        scheme.requiredCards.inVillainDeck !== undefined &&
-        !isArray(scheme.requiredCards.inVillainDeck) &&
-        scheme.requiredCards.inVillainDeck.cardType === CardType.HERO
-          ? scheme.requiredCards.inVillainDeck
-          : this.heroes.shuffle(
-              scheme.rules.villainDeck.numHeroes[numberPlayers],
-              undefined,
-              heroDeck.heroes
-            )[0];
+    if (scheme.rules.villainDeck.numHeroes !== undefined && requiredVillainHeroes.length < scheme.rules.villainDeck.numHeroes[numberPlayers]) {
+      requiredVillainHeroes.push(...this.heroes.shuffle(
+        scheme.rules.villainDeck.numHeroes[numberPlayers] - requiredVillainHeroes.length,
+        undefined,
+        [...heroDeck.heroes, ...requiredVillainHeroes]
+      ))
     }
 
     const villainDeck: IVillainDeck = {
       bystanders: scheme.rules.villainDeck.numBystanders[numberPlayers],
       // Shuffle our henchmen deck and include any required henchemen
       henchmen: selectedHenchmen.sort(sortNameComparator),
-      hero: villainHero,
+      heroes: requiredVillainHeroes,
       twists: scheme.rules.villainDeck.numTwists[numberPlayers],
       // Shuffle our villain deck and include any required villains
       villains: selectedVillains.sort(sortNameComparator),

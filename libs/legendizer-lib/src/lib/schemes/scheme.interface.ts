@@ -5,7 +5,11 @@ import { IHero } from "../heroes/hero.interface";
 import { IRules } from "./rules.interface";
 
 interface IRequiredCards {
-  inVillainDeck: IVillainGroup | IVillainGroup[] | IHenchmen | IHero;
+  inVillainDeck: {
+    villains?: IVillainGroup[];
+    henchmen?: IHenchmen[];
+    heroes?: IHero[];
+  }
 }
 
 export interface IScheme extends ICard {

@@ -7,7 +7,11 @@
             <p class="mx-auto w-100 mb-1">
               Setup
             </p>
-            <a (click)="pickGameSets()" href="javascript:void(0)" class="mb-1 text-black">
+            <a
+              (click)="pickGameSets()"
+              href="javascript:void(0)"
+              class="mb-1 text-black"
+            >
               <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
             </a>
           </div>
@@ -93,8 +97,9 @@
               </ng-template>
             </ngb-panel>
             <ngb-panel
-              *ngIf="
-                (gameSetupStore.gameSetup | async).villainDeck.hero as item
+              *ngFor="
+                let item of (gameSetupStore.gameSetup | async).villainDeck
+                  .heroes
               "
               title="{{ item.name }}"
               id="panel-{{ item.id }}"

@@ -1,8 +1,8 @@
-import { IScheme } from "./scheme.interface";
-import { CardType } from "../cardSet";
-import { GameSets } from "../gamesets";
-import { defaultRules } from "./defaultRules.data";
-import { VillainGroups } from "../villains";
+import { IScheme } from './scheme.interface';
+import { CardType } from '../cardSet';
+import { GameSets } from '../gamesets';
+import { defaultRules } from './defaultRules.data';
+import { VillainGroups } from '../villains';
 
 type SchemeNames =
   | 'FORGE_THE_INFINITY_GAUNTLET'
@@ -20,20 +20,23 @@ export const GuardiansOfTheGalaxy: Record<SchemeNames, IScheme> = {
     When a player controls 4 Infinity Gem Artifacts, that player is corrupted by power. That player wins, Evil wins, and all other players lose.`,
     rules: defaultRules,
     requiredCards: {
-      inVillainDeck: VillainGroups.GUARDIANS_OF_THE_GALAXY.INFINITY_GEMS
+      inVillainDeck: {
+        villains: [VillainGroups.GUARDIANS_OF_THE_GALAXY.INFINITY_GEMS],
+      },
     },
     gameSet: GameSets.GUARDIANS_OF_THE_GALAXY,
-    cardType: CardType.SCHEME
+    cardType: CardType.SCHEME,
   },
   INTERGALACTIC_KREE_NEGA_BOMB: {
     id: '129b64e2-e2ec-4662-944c-cfd1688497a4',
     name: 'Intergalactic Kree Nega-Bomb',
-    setup: '8 Twists. Make a face down \'Nega-Bomb Deck\' of 6 Bystanders.',
-    twist: 'Shuffle this Twist into the Nega-Bomb Deck. Then reveal a random card from that deck. If it\'s a Bystander, rescue it. If it\'s a Twist, KO it, KO all Heroes from the HQ, and each player gains a Wound.',
+    setup: "8 Twists. Make a face down 'Nega-Bomb Deck' of 6 Bystanders.",
+    twist:
+      "Shuffle this Twist into the Nega-Bomb Deck. Then reveal a random card from that deck. If it's a Bystander, rescue it. If it's a Twist, KO it, KO all Heroes from the HQ, and each player gains a Wound.",
     evilWins: 'When 16 non-grey Heroes are in the KO pile.',
     rules: defaultRules,
     gameSet: GameSets.GUARDIANS_OF_THE_GALAXY,
-    cardType: CardType.SCHEME
+    cardType: CardType.SCHEME,
   },
   THE_KREE_SKRULL_WAR: {
     id: 'b0c2aafe-3df2-4fdb-813f-1493eec6e379',
@@ -44,21 +47,26 @@ export const GuardiansOfTheGalaxy: Record<SchemeNames, IScheme> = {
     evilWins: 'When there are 4 Kree Conquests or 4 Skrull Conquests.',
     rules: defaultRules,
     requiredCards: {
-      inVillainDeck: [
-        VillainGroups.GUARDIANS_OF_THE_GALAXY.KREE_STARFORCE,
-        VillainGroups.LEGENDARY.SKRULLS
-      ]
+      inVillainDeck: {
+        villains: [
+          VillainGroups.GUARDIANS_OF_THE_GALAXY.KREE_STARFORCE,
+          VillainGroups.LEGENDARY.SKRULLS,
+        ],
+      },
     },
     gameSet: GameSets.GUARDIANS_OF_THE_GALAXY,
-    cardType: CardType.SCHEME
+    cardType: CardType.SCHEME,
   },
   UNITE_THE_SHARDS: {
     id: '3a4b7112-91dd-4f8d-9707-a3b447f231b6',
     name: 'Unite the Shards',
-    setup: '30 Shards in the supply. Twists equal to the number of players plus 5.',
+    setup:
+      '30 Shards in the supply. Twists equal to the number of players plus 5.',
     twist: `Stack this Twist next to the Scheme. Then for each Twist in that stack, the Mastermind gains a Shard.`,
-    specialRules: 'During your turn, any number of times, you may spend 2 Recruit to gain one of the Mastermind\'s Shards.',
-    evilWins: 'When the Mastermind has 10 Shards or when there are no more Shards in the supply.',
+    specialRules:
+      "During your turn, any number of times, you may spend 2 Recruit to gain one of the Mastermind's Shards.",
+    evilWins:
+      'When the Mastermind has 10 Shards or when there are no more Shards in the supply.',
     rules: {
       ...defaultRules,
       villainDeck: {
@@ -67,11 +75,11 @@ export const GuardiansOfTheGalaxy: Record<SchemeNames, IScheme> = {
           2: 7,
           3: 8,
           4: 9,
-          5: 10
-        }
-      }
+          5: 10,
+        },
+      },
     },
     gameSet: GameSets.GUARDIANS_OF_THE_GALAXY,
-    cardType: CardType.SCHEME
-  }
-}
+    cardType: CardType.SCHEME,
+  },
+};

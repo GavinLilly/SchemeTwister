@@ -68,7 +68,9 @@ export const DarkCity: Record<SchemeNames, IScheme> = {
     evilWins: 'When 5 Goons escape.',
     rules: defaultRules,
     requiredCards: {
-      inVillainDeck: Henchmen.DARK_CITY.MAGGIA_GOONS
+      inVillainDeck: {
+        henchmen: [Henchmen.DARK_CITY.MAGGIA_GOONS]
+      }
     },
     gameSet: GameSets.DARK_CITY,
     cardType: CardType.SCHEME
@@ -143,7 +145,9 @@ export const DarkCity: Record<SchemeNames, IScheme> = {
       }
     },
     requiredCards: {
-      inVillainDeck: Heroes.DARK_CITY.JEAN_GREY
+      inVillainDeck: {
+        heroes: [Heroes.DARK_CITY.JEAN_GREY]
+      }
     },
     gameSet: GameSets.DARK_CITY,
     cardType: CardType.SCHEME
