@@ -2,7 +2,7 @@
 
 A tool for generating setups for the Legendary: Marvel board game
 
-![Release](https://github.com/GavinLilly/legendizer/workflows/Release/badge.svg) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+![Release](https://github.com/GavinLilly/legendizer/workflows/Release/badge.svg) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/gavtherav/legendizer) ![Docker Pulls](https://img.shields.io/docker/pulls/gavtherav/legendizer)
 
 ---
 
@@ -42,10 +42,10 @@ git clone https://github.com/GavinLilly/legendizer.git
 npm install
 ```
 
-- Run legendizer
+- Run legendizer web app
 
 ```shell
-ng serve legendizer
+nx serve web-app
 ```
 
 ---
