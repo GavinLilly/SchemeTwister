@@ -154,7 +154,9 @@ export const Legendary: Record<SchemeNames, IScheme> = {
       },
     },
     requiredCards: {
-      inVillainDeck: VillainGroups.LEGENDARY.SKRULLS,
+      inVillainDeck: {
+        villains: [VillainGroups.LEGENDARY.SKRULLS]
+      }
     },
     gameSet: GameSets.LEGENDARY,
     cardType: CardType.SCHEME,

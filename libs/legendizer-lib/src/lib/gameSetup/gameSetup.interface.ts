@@ -12,7 +12,7 @@ export interface IHeroDeck {
 export interface IVillainDeck {
   henchmen: IHenchmen[],
   villains: IVillainGroup[]
-  hero?: IHero,
+  heroes?: IHero[],
   bystanders: number,
   twists: number
 }
