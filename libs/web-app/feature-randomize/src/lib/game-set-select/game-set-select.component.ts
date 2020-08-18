@@ -18,24 +18,28 @@ export class GameSetSelectComponent implements OnInit {
     public gameSetupStore: GameSetupStore,
     public activeModal: NgbActiveModal,
     private cookieService: CookieService
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     this.selectedGameSets = this.cookieService.check(this.COOKIE_NAME)
       ? this.cookieToArray(this.cookieService.get(this.COOKIE_NAME))
-      : GameSets.ALL
+      : GameSets.ALL;
 
     this.setGameSets();
   }
 
+  ngOnInit(): void {
+
+  }
+
   private cookieToArray(idString: string): IGameSet[] {
     const idArray: string[] = idString.split('|');
-    return GameSets.ALL.filter((item) => idArray.includes(item.id))
+    return GameSets.ALL.filter((item) => idArray.includes(item.id));
   }
 
   setGameSets() {
-    console.log(this.selectedGameSets.map((item) => item.id))
-    this.cookieService.set(this.COOKIE_NAME, this.selectedGameSets.map((item) => item.id).join('|'));
+    this.cookieService.set(
+      this.COOKIE_NAME,
+      this.selectedGameSets.map((item) => item.id).join('|')
+    );
     this.gameSetupStore.setGameSets(this.selectedGameSets);
   }
 }
