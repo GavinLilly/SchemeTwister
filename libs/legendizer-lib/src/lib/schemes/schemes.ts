@@ -1,9 +1,9 @@
 import { CardSet } from '../cardSet';
-import { Legendary } from './legendary.schemes';
 import { DarkCity } from './darkCity.schemes';
-import { HeroesOfAsgard } from "./heroesOfAsgard.schemes";
-import { IScheme } from './scheme.interface';
 import { GuardiansOfTheGalaxy } from './guardiansOfTheGalaxy.schemes';
+import { HeroesOfAsgard } from "./heroesOfAsgard.schemes";
+import { Legendary } from './legendary.schemes';
+import { IScheme } from './scheme.interface';
 
 export class Schemes extends CardSet<IScheme> {
   public static readonly LEGENDARY = Legendary;

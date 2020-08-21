@@ -1,6 +1,6 @@
-import { Henchmen } from './henchmen';
 import { GameSets } from '../gamesets';
 import { cardSetTest } from '../genericTests';
+import { Henchmen } from './henchmen';
 
 cardSetTest(
   new Henchmen(Object.values(Henchmen.LEGENDARY)),

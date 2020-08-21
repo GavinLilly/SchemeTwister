@@ -1,9 +1,9 @@
 import { CardSet } from '../cardSet';
-import { IVillainGroup } from './villainGroup.interface';
-import { Legendary } from './legendary.villains';
 import { DarkCity } from './darkCity.villains';
-import { HeroesOfAsgard } from "./heroesOfAsgard.villains";
 import { GuardiansOfTheGalaxy } from './guardiansOfTheGalaxy.villains';
+import { HeroesOfAsgard } from "./heroesOfAsgard.villains";
+import { Legendary } from './legendary.villains';
+import { IVillainGroup } from './villainGroup.interface';
 
 export class VillainGroups extends CardSet<IVillainGroup> {
   public static readonly LEGENDARY = Legendary;

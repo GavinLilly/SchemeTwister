@@ -1,10 +1,9 @@
-import { IScheme } from "./scheme.interface";
-import { HeroClass } from "../heroes";
 import { CardType } from "../cardSet";
 import { GameSets } from "../gamesets";
-import { defaultRules } from "./defaultRules.data";
 import { Henchmen } from "../henchmen";
-import { Heroes } from "../heroes";
+import { HeroClass, Heroes } from "../heroes";
+import { defaultRules } from "./defaultRules.data";
+import { IScheme } from "./scheme.interface";
 
 type SchemeNames =
   | 'CAPTURE_BABY_HOPE'

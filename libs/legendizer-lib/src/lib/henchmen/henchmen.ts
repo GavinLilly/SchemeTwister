@@ -1,7 +1,7 @@
 import { CardSet } from '../cardSet';
+import { DarkCity } from './darkCity.henchmen';
 import { IHenchmen } from './henchmen.interface';
 import { Legendary } from './legendary.henchmen';
-import { DarkCity } from './darkCity.henchmen';
 
 export class Henchmen extends CardSet<IHenchmen> {
   public static readonly LEGENDARY = Legendary;

@@ -1,7 +1,7 @@
-import { IScheme } from "./scheme.interface";
 import { CardType } from "../cardSet";
 import { GameSets } from "../gamesets";
 import { defaultRules } from "./defaultRules.data";
+import { IScheme } from "./scheme.interface";
 
 type SchemeNames =
   | 'ASGARDIAN_TEST_OF_WORTH'

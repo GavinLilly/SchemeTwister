@@ -1,6 +1,6 @@
-import { Masterminds } from './masterminds';
 import { GameSets } from '../gamesets';
 import { cardSetTest } from '../genericTests';
+import { Masterminds } from './masterminds';
 
 cardSetTest(
   new Masterminds(Object.values(Masterminds.LEGENDARY)),

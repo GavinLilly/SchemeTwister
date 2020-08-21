@@ -1,8 +1,8 @@
-import { IMastermind } from "./mastermind.interface";
 import { CardType } from "../cardSet";
+import { GameSets } from "../gamesets";
 import { Henchmen } from "../henchmen";
 import { VillainGroups } from "../villains";
-import { GameSets } from "../gamesets";
+import { IMastermind } from "./mastermind.interface";
 
 type MastermindNames = 'DR_DOOM' | 'LOKI' | 'MAGNETO' | 'RED_SKULL'
 

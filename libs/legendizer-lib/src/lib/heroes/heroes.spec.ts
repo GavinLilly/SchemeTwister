@@ -1,6 +1,6 @@
-import { Heroes } from './heroes';
 import { GameSets } from '../gamesets';
 import { cardSetTest } from '../genericTests';
+import { Heroes } from './heroes';
 
 cardSetTest(
   new Heroes(Object.values(Heroes.LEGENDARY)),

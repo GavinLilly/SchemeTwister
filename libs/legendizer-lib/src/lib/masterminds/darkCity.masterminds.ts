@@ -1,7 +1,7 @@
-import { IMastermind } from './mastermind.interface';
 import { CardType, Keyword } from "../cardSet";
-import { VillainGroups } from "../villains";
 import { GameSets } from "../gamesets";
+import { VillainGroups } from "../villains";
+import { IMastermind } from './mastermind.interface';
 
 type MastermindNames =
   | 'APOCALYPSE'

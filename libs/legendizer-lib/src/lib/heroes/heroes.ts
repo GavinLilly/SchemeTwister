@@ -1,9 +1,9 @@
-import { IHero } from './hero.interface';
-import { Legendary } from './legendary.heroes';
-import { DarkCity } from "./darkCity.heroes";
 import { CardSet } from '../cardSet';
-import { HeroesOfAsgard } from './heroesOfAsgard.heroes';
+import { DarkCity } from "./darkCity.heroes";
 import { GuardiansOfTheGalaxy } from './guardiansOfTheGalaxy.heroes';
+import { IHero } from './hero.interface';
+import { HeroesOfAsgard } from './heroesOfAsgard.heroes';
+import { Legendary } from './legendary.heroes';
 
 export class Heroes extends CardSet<IHero> {
   public static readonly LEGENDARY = Legendary;

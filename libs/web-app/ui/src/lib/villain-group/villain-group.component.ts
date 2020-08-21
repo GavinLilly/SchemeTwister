@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { IVillainGroup } from '@legendizer/legendizer-lib';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
+
+import { IVillainGroup } from '@legendizer/legendizer-lib';
 
 @Component({
   selector: 'legendizer-villain-group',

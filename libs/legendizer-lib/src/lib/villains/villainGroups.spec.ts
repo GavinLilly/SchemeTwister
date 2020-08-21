@@ -1,6 +1,6 @@
-import { VillainGroups } from './villainGroups';
 import { GameSets } from '../gamesets';
 import { cardSetTest } from '../genericTests';
+import { VillainGroups } from './villainGroups';
 
 cardSetTest(
   new VillainGroups(Object.values(VillainGroups.LEGENDARY)),

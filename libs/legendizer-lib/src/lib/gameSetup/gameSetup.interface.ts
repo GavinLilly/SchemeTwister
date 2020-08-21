@@ -1,7 +1,7 @@
-import { IScheme } from '../schemes/scheme.interface';
-import { IMastermind } from '../masterminds/mastermind.interface';
-import { IHero } from '../heroes/hero.interface';
 import { IHenchmen } from '../henchmen/henchmen.interface';
+import { IHero } from '../heroes/hero.interface';
+import { IMastermind } from '../masterminds/mastermind.interface';
+import { IScheme } from '../schemes/scheme.interface';
 import { IVillainGroup } from '../villains/villainGroup.interface';
 
 export interface IHeroDeck {
