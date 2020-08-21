@@ -1,7 +1,8 @@
 {
   "rulesDirectory": [
     "node_modules/@nrwl/workspace/src/tslint",
-    "node_modules/codelyzer"
+    "node_modules/codelyzer",
+    "node_modules/tslint-origin-ordered-imports-rule/dist"
   ],
   "linterOptions": {
     "exclude": ["**/*"]
@@ -80,6 +81,15 @@
     "template-banana-in-box": true,
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
-    "use-pipe-transform-interface": true
+    "use-pipe-transform-interface": true,
+    "origin-ordered-imports": [
+      true,
+      "one-blank-line",
+      [
+        "lib",
+        "^@legendizer/.+",
+        "user"
+      ]
+    ]
   }
 }
