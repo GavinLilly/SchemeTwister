@@ -1,7 +1,7 @@
-import { IHero } from "./hero.interface";
 import { CardType } from "../cardSet";
-import { Team } from "./team.enum";
 import { GameSets } from "../gamesets";
+import { IHero } from "./hero.interface";
+import { Team } from "./team.enum";
 
 type HeroNames =
   | 'ANGEL'

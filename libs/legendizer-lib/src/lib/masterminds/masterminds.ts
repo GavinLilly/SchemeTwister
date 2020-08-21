@@ -1,9 +1,9 @@
 import { CardSet } from '../cardSet';
-import { IMastermind } from './mastermind.interface';
-import { Legendary } from './legendary.masterminds';
 import { DarkCity } from './darkCity.masterminds';
-import { HeroesOfAsgard } from "./heroesOfAsgard.masterminds";
 import { GuardiansOfTheGalaxy } from './guardiansOfTheGalaxy.masterminds';
+import { HeroesOfAsgard } from "./heroesOfAsgard.masterminds";
+import { Legendary } from './legendary.masterminds';
+import { IMastermind } from './mastermind.interface';
 
 export class Masterminds extends CardSet<IMastermind> {
   public static readonly LEGENDARY = Legendary;

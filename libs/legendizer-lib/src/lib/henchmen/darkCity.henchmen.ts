@@ -1,7 +1,7 @@
-import { IHenchmen } from './henchmen.interface';
-import { Keyword, CardType } from "../cardSet";
+import { CardType, Keyword } from "../cardSet";
 import { GameSets } from "../gamesets";
 import { HeroClass } from "../heroes";
+import { IHenchmen } from './henchmen.interface';
 
 type HenchmenNames = 'MAGGIA_GOONS' | 'PHALANX';
 

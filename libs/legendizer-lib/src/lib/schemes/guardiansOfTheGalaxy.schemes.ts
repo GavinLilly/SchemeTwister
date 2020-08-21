@@ -1,8 +1,8 @@
-import { IScheme } from './scheme.interface';
 import { CardType } from '../cardSet';
 import { GameSets } from '../gamesets';
-import { defaultRules } from './defaultRules.data';
 import { VillainGroups } from '../villains';
+import { defaultRules } from './defaultRules.data';
+import { IScheme } from './scheme.interface';
 
 type SchemeNames =
   | 'FORGE_THE_INFINITY_GAUNTLET'

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { GameSets, IGameSet } from '@legendizer/legendizer-lib';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { GameSetupStore } from '../game-setup-store';
 import { CookieService } from 'ngx-cookie-service';
+
+import { GameSets, IGameSet } from '@legendizer/legendizer-lib';
+
+import { GameSetupStore } from '../game-setup-store';
 
 @Component({
   selector: 'legendizer-game-set-select',

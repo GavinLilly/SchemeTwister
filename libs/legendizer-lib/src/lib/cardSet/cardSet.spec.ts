@@ -1,7 +1,7 @@
-import { CardSet } from './cardSet';
-import { ICard } from './card.interface';
-import { CardType } from './cardType.enum';
 import { GameSets } from '../gamesets';
+import { ICard } from './card.interface';
+import { CardSet } from './cardSet';
+import { CardType } from './cardType.enum';
 
 class DummySet extends CardSet<ICard> {
   public static readonly dummyDataLegendary: ICard[] = [
@@ -88,21 +88,15 @@ describe('Class creation', () => {
   });
 
   it('should fail with an empty data set defined', () => {
-    expect(() => {
-      const dummy: DummySet = new DummySet([]);
-    }).toThrow(Error);
+    expect(() => new DummySet([])).toThrow(Error);
   });
 
   it('should fail with no game sets defined', () => {
-    expect(() => {
-      const dummy: DummySet = new DummySet(DummySet.ALL, []);
-    }).toThrow(Error);
+    expect(() => new DummySet(DummySet.ALL, [])).toThrow(Error);
   });
 
   it('should fail with no records and no game sets defined', () => {
-    expect(() => {
-      const dummy: DummySet = new DummySet([], []);
-    }).toThrow(Error);
+    expect(() => new DummySet([], [])).toThrow(Error);
   });
 });
 
@@ -150,6 +144,8 @@ describe('Check shuffling logic', () => {
   });
 
   it('should fail when the number of included cards is more than what is requested', () => {
-    expect(() => dummy.shuffle(1, DummySet.dummyDataLegendary)).toThrow(RangeError);
+    expect(() => dummy.shuffle(1, DummySet.dummyDataLegendary)).toThrow(
+      RangeError
+    );
   });
 });

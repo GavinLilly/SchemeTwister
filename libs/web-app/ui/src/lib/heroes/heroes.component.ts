@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IHero } from "@legendizer/legendizer-lib";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
+
+import { IHero } from "@legendizer/legendizer-lib";
 
 @Component({
   selector: 'legendizer-heroes',

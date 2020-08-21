@@ -1,6 +1,5 @@
-import { Legendary } from "./legendary.bystanders";
 import { DarkCity } from "./darkCity.bystanders";
-import { IBystander } from './bystander.interface';
+import { Legendary } from "./legendary.bystanders";
 
 export class Bystanders {
   public static readonly LEGENDARY = Legendary;

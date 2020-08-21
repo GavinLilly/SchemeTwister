@@ -1,8 +1,8 @@
-import { Schemes } from './schemes';
 import { GameSets } from '../gamesets';
-import { cardSetTest } from '../genericTests';
 import { GameSetup } from '../gameSetup';
+import { cardSetTest } from '../genericTests';
 import { VillainGroups } from '../villains';
+import { Schemes } from './schemes';
 
 cardSetTest(
   new Schemes(Object.values(Schemes.LEGENDARY)),

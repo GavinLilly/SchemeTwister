@@ -1,9 +1,9 @@
-import { IScheme } from './scheme.interface';
-import { defaultRules } from './defaultRules.data';
-import { GameSets } from '../gamesets';
 import { CardType } from "../cardSet";
+import { GameSets } from '../gamesets';
 import { HeroClass } from "../heroes";
 import { VillainGroups } from "../villains";
+import { defaultRules } from './defaultRules.data';
+import { IScheme } from './scheme.interface';
 
 type SchemeNames =
   | 'THE_LEGACY_VIRUS'

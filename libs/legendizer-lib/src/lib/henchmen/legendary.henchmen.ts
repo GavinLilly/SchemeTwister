@@ -1,6 +1,6 @@
-import { IHenchmen } from './henchmen.interface';
 import { CardType } from "../cardSet";
 import { GameSets } from "../gamesets";
+import { IHenchmen } from './henchmen.interface';
 
 type HenchmenNames =
   | 'DOOMBOT_LEGION'

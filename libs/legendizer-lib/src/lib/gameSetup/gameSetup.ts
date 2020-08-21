@@ -1,14 +1,12 @@
-import { IGameSet, GameSets } from '../gamesets';
-import { IGameSetup, IHeroDeck, IVillainDeck } from './gameSetup.interface';
-import { Schemes, IScheme } from '../schemes';
-import { Masterminds, IMastermind } from '../masterminds';
-import { Heroes, IHero } from '../heroes';
 import { CardType, ICard } from '../cardSet';
-import { Henchmen } from '../henchmen';
-import { IHenchmen } from '../henchmen/henchmen.interface';
+import { GameSets, IGameSet } from '../gamesets';
+import { Henchmen, IHenchmen } from '../henchmen';
+import { Heroes, IHero } from '../heroes';
+import { IMastermind, Masterminds } from '../masterminds';
+import { IScheme, numPlayers, Schemes } from '../schemes';
 import { IVillainGroup, VillainGroups } from '../villains';
-import { numPlayers } from '../schemes';
-import { isArray } from 'util';
+import { IGameSetup, IHeroDeck, IVillainDeck } from './gameSetup.interface';
+
 
 export class GameSetup {
   private schemes: Schemes;

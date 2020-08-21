@@ -1,15 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { WebAppUiModule } from '@legendizer/web-app/ui';
 
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { RouterModule, Routes } from '@angular/router';
-import { WebAppUiModule } from '@legendizer/web-app/ui';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
 
 const appRoutes: Routes = [
   {
@@ -43,18 +41,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, {}),
     NgbModule,
     WebAppUiModule,
-    FontAwesomeModule,
-    StoreModule.forRoot(
-      {},
-      {
-        metaReducers: !environment.production ? [] : [],
-        runtimeChecks: {
-          strictActionImmutability: true,
-          strictStateImmutability: true,
-        },
-      }
-    ),
-    !environment.production ? StoreDevtoolsModule.instrument() : []
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { GameSetupStore } from '../game-setup-store';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { GameSetSelectComponent } from '../game-set-select/game-set-select.component';
 import { CookieService } from 'ngx-cookie-service';
+
+import { GameSetSelectComponent } from '../game-set-select/game-set-select.component';
+import { GameSetupStore } from '../game-setup-store';
 
 @Component({
   selector: 'legendizer-randomize',

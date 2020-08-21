@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+
 import {
-  IGameSetup,
-  GameSetup,
   GameSets,
-  IScheme,
-  IMastermind,
-  numPlayers,
+  GameSetup,
   IGameSet,
+  IGameSetup,
+  IMastermind,
+  IScheme,
+  numPlayers,
 } from '@legendizer/legendizer-lib';
 
 @Injectable()
