@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CookieService } from 'ngx-cookie-service';
 
 import { GameSetSelectComponent } from '../game-set-select/game-set-select.component';
 import { GameSetupStore } from '../game-setup-store';
@@ -12,21 +11,18 @@ import { GameSetupStore } from '../game-setup-store';
   styleUrls: ['./randomize.component.scss'],
 })
 export class RandomizeComponent implements OnInit {
-  private COOKIE_NAME = 'NumberPlayers';
   numPlayers: number;
   faCog = faCog;
 
   constructor(
     public gameSetupStore: GameSetupStore,
-    private modalService: NgbModal,
-    private cookieService: CookieService
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
-    this.numPlayers = this.cookieService.check(this.COOKIE_NAME)
-      ? parseInt(this.cookieService.get(this.COOKIE_NAME), 10)
-      : 2;
-    this.setPlayers();
+    this.gameSetupStore.numPlayers.subscribe(
+      (value) => (this.numPlayers = value)
+    );
     this.generateDecks();
   }
 
@@ -35,7 +31,6 @@ export class RandomizeComponent implements OnInit {
   }
 
   setPlayers() {
-    this.cookieService.set(this.COOKIE_NAME, this.numPlayers.toString());
     this.gameSetupStore.setNumPlayers(this.numPlayers);
   }
 
