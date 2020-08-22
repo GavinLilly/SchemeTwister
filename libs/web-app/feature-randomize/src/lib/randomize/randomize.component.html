@@ -121,9 +121,21 @@
               *ngFor="
                 let item of (gameSetupStore.gameSetup | async).heroDeck.heroes
               "
-              title="{{ item.name }}"
               id="panel-{{ item.id }}"
             >
+              <ng-template ngbPanelHeader>
+                <div class="d-flex align-items-center justify-content-between">
+                  <button ngbPanelToggle class="btn btn-link m-0">
+                    {{ item.name }}
+                  </button>
+                  <img *ngIf="item.team"
+                    src="{{ item.team.icon }}"
+                    alt="{{ item.team.name }}"
+                    class="img-fluid"
+                    id="hero-team"
+                  />
+                </div>
+              </ng-template>
               <ng-template ngbPanelContent>
                 <legendizer-heroes [hero]="item"></legendizer-heroes>
               </ng-template>

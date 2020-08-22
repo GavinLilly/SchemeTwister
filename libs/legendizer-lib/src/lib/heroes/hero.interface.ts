@@ -1,6 +1,6 @@
 import { ICard } from "../cardSet/card.interface";
-import { Team } from "./team.enum";
+import { ITeam } from "../teams";
 
 export interface IHero extends ICard {
-  team?: Team;
+  team?: ITeam;
 }
