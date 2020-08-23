@@ -4,7 +4,7 @@ import { ICard } from './card.interface';
 export abstract class CardSet<T extends ICard> {
   protected availableRecords: T[] = [];
 
-  constructor(private allRecords?: T[], private gameSets?: IGameSet[]) {
+  constructor(private allRecords: T[], private gameSets?: IGameSet[]) {
     if (allRecords !== undefined) {
       if (allRecords.length > 0) {
         if (gameSets !== undefined) {
@@ -19,6 +19,8 @@ export abstract class CardSet<T extends ICard> {
       } else {
         throw new Error('Empty array of records not allowed');
       }
+    } else {
+      throw new Error('An array of records must be passed to the constructor')
     }
   }
 
