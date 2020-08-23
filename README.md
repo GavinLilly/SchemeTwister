@@ -10,8 +10,11 @@ A tool for generating setups for the Legendary: Marvel board game
 
 - [Installation](#installation)
 - [Features](#features)
+- [Documentation](#documentation)
+- [Tests](#tests)
 - [Contributing](#contributing)
 - [Contributors](#contributors)
+- [Thanks](#thanks)
 - [Support](#support)
 - [License](#license)
 
@@ -94,6 +97,12 @@ npm test
 | :---: |
 | [![GavinLilly](https://avatars2.githubusercontent.com/u/29777802?s=460&v=4&s=200)](https://github.com/GavinLilly)    |
 | <a href="https://github.com/GavinLilly" target="_blank">`github.com/GavinLilly`</a> |
+
+---
+
+## Thanks
+
+Icons courtesy of (https://github.com/fostorial/Legedit2) and the [Board Game Geek forum](https://boardgamegeek.com/thread/1442493/team-icon-image-sharing).
 
 ---
 
