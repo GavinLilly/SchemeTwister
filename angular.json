@@ -21,7 +21,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/api-interfaces/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "codeCoverage": true
           }
         }
       }
@@ -116,7 +117,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/web-app/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "codeCoverage": true
           }
         }
       }
@@ -197,7 +199,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/web-api/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "codeCoverage": true
           }
         }
       }
@@ -225,7 +228,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/web-app/feature-randomize/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "codeCoverage": true
           }
         }
       },
@@ -255,7 +259,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/web-app/feature-home/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "codeCoverage": true
           }
         }
       },
@@ -285,7 +290,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/web-app/ui/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "codeCoverage": true
           }
         }
       },
@@ -315,7 +321,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/legendizer-lib/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "codeCoverage": true
           }
         },
         "build": {
