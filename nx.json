@@ -32,13 +32,13 @@
       "tags": []
     },
     "web-app-feature-randomize": {
-      "tags": ["type:feature scope:legendizer"]
+      "tags": ["type:feature", "scope:web-app"]
     },
     "web-app-feature-home": {
-      "tags": ["type:feature scope:legendizer"]
+      "tags": ["type:feature", "scope:web-app"]
     },
     "web-app-ui": {
-      "tags": ["type:ui scope:legendizer"]
+      "tags": ["type:ui", "scope:web-app"]
     },
     "legendizer-lib": {
       "tags": []
