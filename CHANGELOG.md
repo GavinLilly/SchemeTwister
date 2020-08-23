@@ -1,3 +1,15 @@
+# [1.6.0](https://github.com/GavinLilly/legendizer/compare/v1.5.0...v1.6.0) (2020-08-23)
+
+
+### Bug Fixes
+
+* **app:** fix bug where game sets were not set on launch ([e40bca9](https://github.com/GavinLilly/legendizer/commit/e40bca985a8ded2d5a21e01d554cd3895abb96fa))
+
+
+### Features
+
+* add icons for hero teams ([b908c46](https://github.com/GavinLilly/legendizer/commit/b908c4631185ea811aa5eff29e4b27c50e5d9ff1))
+
 # [1.5.0](https://github.com/GavinLilly/legendizer/compare/v1.4.0...v1.5.0) (2020-08-18)
 
 
