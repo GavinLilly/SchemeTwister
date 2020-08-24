@@ -25,10 +25,17 @@ export class GameSets {
     size: GameSetSize.SMALL
   }
 
+  public static readonly ANT_MAN: IGameSet = {
+    id: 'dfc6f919-c107-4ff0-9855-c84377fb90ca',
+    name: 'Ant-Man',
+    size: GameSetSize.SMALL
+  }
+
   public static readonly ALL = [
     GameSets.LEGENDARY,
     GameSets.DARK_CITY,
     GameSets.HEROES_OF_ASGARD,
-    GameSets.GUARDIANS_OF_THE_GALAXY
+    GameSets.GUARDIANS_OF_THE_GALAXY,
+    GameSets.ANT_MAN
   ];
 }
