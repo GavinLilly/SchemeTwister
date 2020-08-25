@@ -14,10 +14,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
+        fetch-depth: 0
     - name: Setup Node.js
       uses: actions/setup-node@v1
       with:
         node-version: 12
+    - run: git fetch --no-tags --prune --depth=5 origin master
     - run: npm ci
-    - run: npm run affected:build --if-present
-    - run: npm run affected:lint
+    - run: npm run affected:build -- --base=origin/master
+    - run: npm run affected:lint -- --base=origin/master
