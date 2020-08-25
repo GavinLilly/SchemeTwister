@@ -31,11 +31,18 @@ export class GameSets {
     size: GameSetSize.SMALL
   }
 
+  public static readonly FANTASTIC_FOUR: IGameSet = {
+    id: '8fb1c42f-41e2-4c25-ad63-b7cbdbf47972',
+    name: 'Fantastic Four',
+    size: GameSetSize.SMALL
+  }
+
   public static readonly ALL = [
     GameSets.LEGENDARY,
     GameSets.DARK_CITY,
     GameSets.HEROES_OF_ASGARD,
     GameSets.GUARDIANS_OF_THE_GALAXY,
-    GameSets.ANT_MAN
+    GameSets.ANT_MAN,
+    GameSets.FANTASTIC_FOUR
   ];
 }
