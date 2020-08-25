@@ -1,3 +1,20 @@
+# [1.7.0](https://github.com/GavinLilly/legendizer/compare/v1.6.0...v1.7.0) (2020-08-25)
+
+
+### Bug Fixes
+
+* **legendizer-lib:** fix game setup to work with box size attribute ([0584779](https://github.com/GavinLilly/legendizer/commit/05847790059cb9d203daca01f96829b82cb533bb))
+
+
+### Features
+
+* **legendizer-lib:** add Ant Man gameset ([2abfb73](https://github.com/GavinLilly/legendizer/commit/2abfb73151efc3cb918b68dd1f3244467f6c4df4))
+* **legendizer-lib:** add Ant Man heroes ([283a305](https://github.com/GavinLilly/legendizer/commit/283a30548d71f9cfdf1b81d302d47d57006c0637))
+* **legendizer-lib:** add Ant Man villains ([22c3d9f](https://github.com/GavinLilly/legendizer/commit/22c3d9fb2a9a121b9e072a19cfdee4c3e10ae355))
+* **legendizer-lib:** add Ant-Man Masterminds ([3f7f0fe](https://github.com/GavinLilly/legendizer/commit/3f7f0fe814cf39c8837aae9f549d85f2d1defbc5))
+* **legendizer-lib:** add Ant-Man schemes ([4609d35](https://github.com/GavinLilly/legendizer/commit/4609d35497e3a4dd4f439d25136f250c86d7339b))
+* **legendizer-lib:** add keywords for Ant-Man ([c2b5ab1](https://github.com/GavinLilly/legendizer/commit/c2b5ab1014a24d6cb6e4f69dc6e79f0ff8ace4c5))
+
 # [1.6.0](https://github.com/GavinLilly/legendizer/compare/v1.5.0...v1.6.0) (2020-08-23)
 
 
