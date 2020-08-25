@@ -71,8 +71,8 @@ class DummySet extends CardSet<ICard> {
   ];
 
   public static readonly ALL = [
-    ...Object.values(DummySet.dummyDataLegendary),
-    ...Object.values(DummySet.dummyDataDarkCity),
+    ...DummySet.dummyDataLegendary,
+    ...DummySet.dummyDataDarkCity
   ];
 }
 
@@ -86,6 +86,10 @@ describe('Class creation', () => {
     expect(dummy).toBeTruthy();
     expect(dummy.getCards()).toHaveLength(DummySet.dummyDataLegendary.length);
   });
+
+  it('should fail with an undefined data set', () => {
+    expect(() => new DummySet(undefined)).toThrow(Error);
+  })
 
   it('should fail with an empty data set defined', () => {
     expect(() => new DummySet([])).toThrow(Error);

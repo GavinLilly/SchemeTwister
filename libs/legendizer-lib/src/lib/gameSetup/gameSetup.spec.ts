@@ -1,4 +1,9 @@
-import { GameSets, IGameSet, GameSetSize } from '../gamesets';
+import { GameSets, GameSetSize, IGameSet } from '../gamesets';
+import { Henchmen } from '../henchmen';
+import { Heroes } from '../heroes';
+import { Masterminds } from '../masterminds';
+import { Schemes } from '../schemes';
+import { VillainGroups } from '../villains';
 import { GameSetup } from './gameSetup';
 import { IGameSetup } from './gameSetup.interface';
 
@@ -67,6 +72,58 @@ describe('Game creation', () => {
   it('should have some henchmen', () =>
     expect(game.villainDeck.henchmen.length).toBeGreaterThan(0));
   it('should have 2 players', () => expect(game.numPlayers).toEqual(2));
+});
+
+describe('Test villain deck setup', () => {
+  const setup: GameSetup = new GameSetup(
+    GameSets.LEGENDARY,
+    GameSets.DARK_CITY
+  );
+  let game: IGameSetup;
+
+  // Check scheme setups
+  it('should put Jean Grey in the villain deck', () => {
+    game = setup.generateGame(
+      2,
+      Schemes.DARK_CITY.TRANSFORM_CITIZENS_INTO_DEMONS
+    );
+    expect(game.villainDeck.heroes).toContain(Heroes.DARK_CITY.JEAN_GREY);
+    expect(game.heroDeck.heroes).not.toContain(Heroes.DARK_CITY.JEAN_GREY);
+  });
+  it('should put Skrulls in the villain deck', () => {
+    game = setup.generateGame(
+      2,
+      Schemes.LEGENDARY.SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS
+    );
+    expect(game.villainDeck.villains).toContain(
+      VillainGroups.LEGENDARY.SKRULLS
+    );
+  });
+  it('should put Maggia Goons in the villain deck', () => {
+    game = setup.generateGame(2, Schemes.DARK_CITY.ORGANIZED_CRIME_WAVE);
+    expect(game.villainDeck.henchmen).toContain(
+      Henchmen.DARK_CITY.MAGGIA_GOONS
+    );
+  });
+  it('should put a hero in the villain deck', () => {
+    game = setup.generateGame(2, Schemes.DARK_CITY.XCUTIONERS_SONG);
+    expect(game.villainDeck.heroes.length).toBeGreaterThan(0);
+  })
+  it('should contain bystanders in the hero deck', () => {
+    game = setup.generateGame(2, Schemes.DARK_CITY.SAVE_HUMANITY);
+    expect(game.heroDeck.bystanders).toBeTruthy();
+  })
+
+  // Check Mastermind setups
+  it('should put Doombots in the villain deck', () => {
+    game = setup.generateGame(2, undefined, Masterminds.LEGENDARY.DR_DOOM);
+    expect(game.villainDeck.henchmen).toContain(Henchmen.LEGENDARY.DOOMBOT_LEGION);
+  })
+  it('should put Four Horsemen in the villain deck', () => {
+    game = setup.generateGame(2, undefined, Masterminds.DARK_CITY.APOCALYPSE);
+    expect(game.villainDeck.villains).toContain(VillainGroups.DARK_CITY.FOUR_HORSEMEN);
+  })
+
 });
 
 GameSets.ALL.forEach((element) => {
