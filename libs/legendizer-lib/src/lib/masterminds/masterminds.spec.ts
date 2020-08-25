@@ -32,13 +32,20 @@ cardSetTest(
   GameSets.ANT_MAN
 );
 
+cardSetTest(
+  new Masterminds(Object.values(Masterminds.FANTASTIC_FOUR)),
+  2,
+  GameSets.FANTASTIC_FOUR
+);
+
 describe('Total Masterminds sets', () => {
   const total: number = [
     ...Object.values(Masterminds.LEGENDARY),
     ...Object.values(Masterminds.DARK_CITY),
     ...Object.values(Masterminds.HEROES_OF_ASGARD),
     ...Object.values(Masterminds.GUARDIANS_OF_THE_GALAXY),
-    ...Object.values(Masterminds.ANT_MAN)
+    ...Object.values(Masterminds.ANT_MAN),
+    ...Object.values(Masterminds.FANTASTIC_FOUR)
   ].length;
   it(`should have ${total} entries`, () =>
     expect(Masterminds.ALL).toHaveLength(total));
