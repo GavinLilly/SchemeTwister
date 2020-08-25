@@ -1,4 +1,4 @@
-import { GameSets, IGameSet } from '../gamesets';
+import { GameSets, GameSetSize, IGameSet } from '../gamesets';
 import { Henchmen } from '../henchmen';
 import { Heroes } from '../heroes';
 import { Masterminds } from '../masterminds';
@@ -46,7 +46,7 @@ describe('Class creation', () => {
 
   it('should fail without a big box game set', () => {
     expect(
-      () => new GameSetup(...GameSets.ALL.filter((item) => !item.essential))
+      () => new GameSetup(...GameSets.ALL.filter((item) => item.size !== GameSetSize.LARGE))
     ).toThrow(Error);
   });
 });
@@ -127,5 +127,5 @@ describe('Test villain deck setup', () => {
 });
 
 GameSets.ALL.forEach((element) => {
-  if (element.essential) testBigBox(element);
+  if (element.size === GameSetSize.LARGE) testBigBox(element);
 });

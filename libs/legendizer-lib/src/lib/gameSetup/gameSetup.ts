@@ -1,5 +1,5 @@
 import { CardType, ICard } from '../cardSet';
-import { GameSets, IGameSet } from '../gamesets';
+import { GameSets, GameSetSize, IGameSet } from '../gamesets';
 import { Henchmen, IHenchmen } from '../henchmen';
 import { Heroes, IHero } from '../heroes';
 import { IMastermind, Masterminds } from '../masterminds';
@@ -19,10 +19,10 @@ export class GameSetup {
   constructor(...gameSets: IGameSet[]) {
     if (gameSets.length === 0 || gameSets.includes(undefined)) {
       throw new Error('A game set or game sets must be chosen');
-    } else if (!gameSets.some((item) => item.essential)) {
+    } else if (!gameSets.some((item) => item.size === GameSetSize.LARGE)) {
       throw new Error(`A big box game set must be chosen. These include:
 ${GameSets.ALL.map((item) => {
-  if (item.essential) return item.name;
+  if (item.size === GameSetSize.LARGE) return item.name;
 })}`);
     }
 

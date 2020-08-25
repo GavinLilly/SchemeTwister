@@ -26,12 +26,19 @@ cardSetTest(
   GameSets.GUARDIANS_OF_THE_GALAXY
 );
 
+cardSetTest(
+  new Heroes(Object.values(Heroes.ANT_MAN)),
+  5,
+  GameSets.ANT_MAN
+);
+
 describe('Total Heroes sets', () => {
   const total: number = [
     ...Object.values(Heroes.LEGENDARY),
     ...Object.values(Heroes.DARK_CITY),
     ...Object.values(Heroes.HEROES_OF_ASGARD),
-    ...Object.values(Heroes.GUARDIANS_OF_THE_GALAXY)
+    ...Object.values(Heroes.GUARDIANS_OF_THE_GALAXY),
+    ...Object.values(Heroes.ANT_MAN)
   ].length;
   it(`should have ${total} entries`, () =>
     expect(Heroes.ALL).toHaveLength(total));

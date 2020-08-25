@@ -28,6 +28,12 @@ cardSetTest(
   GameSets.GUARDIANS_OF_THE_GALAXY
 );
 
+cardSetTest(
+  new Schemes(Object.values(Schemes.ANT_MAN)),
+  4,
+  GameSets.ANT_MAN
+);
+
 describe('Specific scheme checks', () => {
   const setup: GameSetup = new GameSetup(
     GameSets.LEGENDARY,
@@ -51,6 +57,7 @@ describe('Total Schemes sets', () => {
     ...Object.values(Schemes.DARK_CITY),
     ...Object.values(Schemes.HEROES_OF_ASGARD),
     ...Object.values(Schemes.GUARDIANS_OF_THE_GALAXY),
+    ...Object.values(Schemes.ANT_MAN)
   ].length;
   it(`should have ${total} entries`, () =>
     expect(Schemes.ALL).toHaveLength(total));

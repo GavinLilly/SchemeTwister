@@ -26,12 +26,19 @@ cardSetTest(
   GameSets.GUARDIANS_OF_THE_GALAXY
 );
 
+cardSetTest(
+  new VillainGroups(Object.values(VillainGroups.ANT_MAN)),
+  2,
+  GameSets.ANT_MAN
+);
+
 describe('Total Schemes sets', () => {
   const total: number = [
     ...Object.values(VillainGroups.LEGENDARY),
     ...Object.values(VillainGroups.DARK_CITY),
     ...Object.values(VillainGroups.HEROES_OF_ASGARD),
-    ...Object.values(VillainGroups.GUARDIANS_OF_THE_GALAXY)
+    ...Object.values(VillainGroups.GUARDIANS_OF_THE_GALAXY),
+    ...Object.values(VillainGroups.ANT_MAN)
   ].length;
   it(`should have ${total} entries`, () =>
     expect(VillainGroups.ALL).toHaveLength(total));
