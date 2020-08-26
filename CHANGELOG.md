@@ -1,3 +1,15 @@
+# [1.8.0](https://github.com/GavinLilly/legendizer/compare/v1.7.0...v1.8.0) (2020-08-26)
+
+
+### Features
+
+* **legendizer-lib:** add Fantastic Four game set ([d3df233](https://github.com/GavinLilly/legendizer/commit/d3df23327c2d4fde92cd8e54f82c35391041aa1d))
+* **legendizer-lib:** add Fantastic Four heroes ([1d9a65b](https://github.com/GavinLilly/legendizer/commit/1d9a65b195d3aed9023d5c4a6168c2f10e6ac517))
+* **legendizer-lib:** add Fantastic Four masterminds ([50eeabe](https://github.com/GavinLilly/legendizer/commit/50eeabea17f832456e7bdd707105d19d2df73ea9))
+* **legendizer-lib:** add Fantastic Four schemes ([afa39c0](https://github.com/GavinLilly/legendizer/commit/afa39c0d3d5f14b3415de400681c6ff88792207e))
+* **legendizer-lib:** add Fantastic Four team with icon ([0d8258d](https://github.com/GavinLilly/legendizer/commit/0d8258da630a049b223c7a8ae85d097993165fe8))
+* **legendizer-lib:** add Fantastic Four villains ([12f7837](https://github.com/GavinLilly/legendizer/commit/12f7837b15856b8f6fb80a32ded09179695cb9b5))
+
 # [1.7.0](https://github.com/GavinLilly/legendizer/compare/v1.6.0...v1.7.0) (2020-08-25)
 
 
