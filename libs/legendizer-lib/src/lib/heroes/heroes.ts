@@ -1,6 +1,7 @@
 import { CardSet } from '../cardSet';
 import { AntMan } from './antMan.heroes';
 import { DarkCity } from "./darkCity.heroes";
+import { FantasticFour } from './fantasticFour.heroes';
 import { GuardiansOfTheGalaxy } from './guardiansOfTheGalaxy.heroes';
 import { IHero } from './hero.interface';
 import { HeroesOfAsgard } from './heroesOfAsgard.heroes';
@@ -12,12 +13,14 @@ export class Heroes extends CardSet<IHero> {
   public static readonly HEROES_OF_ASGARD = HeroesOfAsgard
   public static readonly GUARDIANS_OF_THE_GALAXY = GuardiansOfTheGalaxy
   public static readonly ANT_MAN = AntMan
+  public static readonly FANTASTIC_FOUR = FantasticFour
 
   public static readonly ALL = [
     ...Object.values(Heroes.LEGENDARY),
     ...Object.values(Heroes.DARK_CITY),
     ...Object.values(Heroes.HEROES_OF_ASGARD),
     ...Object.values(Heroes.GUARDIANS_OF_THE_GALAXY),
-    ...Object.values(Heroes.ANT_MAN)
+    ...Object.values(Heroes.ANT_MAN),
+    ...Object.values(Heroes.FANTASTIC_FOUR)
   ]
 }

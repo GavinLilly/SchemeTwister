@@ -32,13 +32,20 @@ cardSetTest(
   GameSets.ANT_MAN
 );
 
+cardSetTest(
+  new VillainGroups(Object.values(VillainGroups.FANTASTIC_FOUR)),
+  2,
+  GameSets.FANTASTIC_FOUR
+);
+
 describe('Total Schemes sets', () => {
   const total: number = [
     ...Object.values(VillainGroups.LEGENDARY),
     ...Object.values(VillainGroups.DARK_CITY),
     ...Object.values(VillainGroups.HEROES_OF_ASGARD),
     ...Object.values(VillainGroups.GUARDIANS_OF_THE_GALAXY),
-    ...Object.values(VillainGroups.ANT_MAN)
+    ...Object.values(VillainGroups.ANT_MAN),
+    ...Object.values(VillainGroups.FANTASTIC_FOUR)
   ].length;
   it(`should have ${total} entries`, () =>
     expect(VillainGroups.ALL).toHaveLength(total));

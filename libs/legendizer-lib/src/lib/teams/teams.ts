@@ -2,6 +2,7 @@ import { ITeam } from './team.interface';
 
 type Teams =
   | 'AVENGERS'
+  | 'FANTASTIC_FOUR'
   | 'GUARDIANS_OF_THE_GALAXY'
   | 'HEROES_OF_ASGARD'
   | 'MARVEL_KNIGHTS'
@@ -14,6 +15,10 @@ export const Teams: Record<Teams, ITeam> = {
   AVENGERS: {
     name: 'Avengers',
     icon: '/assets/icons/teams/avengers.png',
+  },
+  FANTASTIC_FOUR: {
+    name: 'Fantastic Four',
+    icon: '/assets/icons/teams/fantastic-four.png'
   },
   GUARDIANS_OF_THE_GALAXY: {
     name: 'Guardians of the Galaxy',
