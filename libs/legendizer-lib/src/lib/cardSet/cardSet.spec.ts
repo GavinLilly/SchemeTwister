@@ -76,8 +76,8 @@ class DummySet extends CardSet<ICard> {
   ];
 }
 
-describe('Class creation', () => {
-  it('should create from static class henchmen sets', () => {
+describe('cardset', () => {
+  it('should create from static class hero sets', () => {
     expect(new DummySet(DummySet.dummyDataLegendary)).toBeTruthy();
   });
 
@@ -104,7 +104,7 @@ describe('Class creation', () => {
   });
 });
 
-describe('Check shuffling logic', () => {
+describe('Shuffling', () => {
   const dummy: DummySet = new DummySet(DummySet.dummyDataLegendary);
 
   it('should return 2 records', () => {
