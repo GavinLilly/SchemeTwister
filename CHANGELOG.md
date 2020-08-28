@@ -1,3 +1,21 @@
+# [1.9.0](https://github.com/GavinLilly/legendizer/compare/v1.8.0...v1.9.0) (2020-08-28)
+
+
+### Bug Fixes
+
+* **legendizer-lib:** allow a game setup to include henchmen in the hero deck ([6c019c4](https://github.com/GavinLilly/legendizer/commit/6c019c43b2b68ca46873f3b996468ef7d060bbcb))
+* **legendizer-lib:** language fix for Ant Man scheme ([09171bc](https://github.com/GavinLilly/legendizer/commit/09171bc456ef140b865d01358b51dc2840b74bfe))
+
+
+### Features
+
+* **legendizer-lib:** add Paint the Town Red game set ([c78a14a](https://github.com/GavinLilly/legendizer/commit/c78a14aa6146279f9e6960e72beff22e793bf84d))
+* **legendizer-lib:** add Paint the Town Red heroes ([814e38c](https://github.com/GavinLilly/legendizer/commit/814e38c00e7f73227c3350ba2c97db687597c259))
+* **legendizer-lib:** add Paint the Town Red keywords ([49480bc](https://github.com/GavinLilly/legendizer/commit/49480bcddbb97931a244ce84092b218f01a69f3a))
+* **legendizer-lib:** add Paint the Town Red masterminds ([47481e9](https://github.com/GavinLilly/legendizer/commit/47481e988cdae45d4678504100a9be5f967fff29))
+* **legendizer-lib:** add Paint the Town Red schemes ([51018d9](https://github.com/GavinLilly/legendizer/commit/51018d999e96c3094f96f5346d2f41cd88dd495b))
+* **legendizer-lib:** add Paint the Town Red villains ([7021e01](https://github.com/GavinLilly/legendizer/commit/7021e012aec09a272edb3e33d034543931bfee78))
+
 # [1.8.0](https://github.com/GavinLilly/legendizer/compare/v1.7.0...v1.8.0) (2020-08-26)
 
 
