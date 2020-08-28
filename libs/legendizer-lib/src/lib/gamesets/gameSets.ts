@@ -37,12 +37,19 @@ export class GameSets {
     size: GameSetSize.SMALL
   }
 
+  public static readonly PAINT_THE_TOWN_RED: IGameSet = {
+    id: 'a4849376-1467-4e32-ad74-f63ff17f6979',
+    name: 'Paint the Town Red',
+    size: GameSetSize.SMALL
+  }
+
   public static readonly ALL = [
     GameSets.LEGENDARY,
     GameSets.DARK_CITY,
     GameSets.HEROES_OF_ASGARD,
     GameSets.GUARDIANS_OF_THE_GALAXY,
     GameSets.ANT_MAN,
-    GameSets.FANTASTIC_FOUR
+    GameSets.FANTASTIC_FOUR,
+    GameSets.PAINT_THE_TOWN_RED
   ];
 }

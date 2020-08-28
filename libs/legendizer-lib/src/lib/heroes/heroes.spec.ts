@@ -38,6 +38,12 @@ cardSetTest(
   GameSets.FANTASTIC_FOUR
 );
 
+cardSetTest(
+  new Heroes(Object.values(Heroes.PAINT_THE_TOWN_RED)),
+  5,
+  GameSets.PAINT_THE_TOWN_RED
+);
+
 describe('Total Heroes sets', () => {
   const total: number = [
     ...Object.values(Heroes.LEGENDARY),
@@ -45,7 +51,8 @@ describe('Total Heroes sets', () => {
     ...Object.values(Heroes.HEROES_OF_ASGARD),
     ...Object.values(Heroes.GUARDIANS_OF_THE_GALAXY),
     ...Object.values(Heroes.ANT_MAN),
-    ...Object.values(Heroes.FANTASTIC_FOUR)
+    ...Object.values(Heroes.FANTASTIC_FOUR),
+    ...Object.values(Heroes.PAINT_THE_TOWN_RED)
   ].length;
   it(`should have ${total} entries`, () =>
     expect(Heroes.ALL).toHaveLength(total));
