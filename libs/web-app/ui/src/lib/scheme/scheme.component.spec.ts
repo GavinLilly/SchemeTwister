@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { Schemes } from '@legendizer/legendizer-lib';
+
 import { SchemeComponent } from './scheme.component';
 
 describe('SchemeComponent', () => {
@@ -16,6 +18,7 @@ describe('SchemeComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SchemeComponent);
     component = fixture.componentInstance;
+    component.scheme = Schemes.LEGENDARY.MIDTOWN_BANK_ROBBERY
     fixture.detectChanges();
   });
 
