@@ -7,7 +7,6 @@ import { IScheme, numPlayers, Schemes } from '../schemes';
 import { IVillainGroup, VillainGroups } from '../villains';
 import { IGameSetup, IHeroDeck, IVillainDeck } from './gameSetup.interface';
 
-
 export class GameSetup {
   private schemes: Schemes;
   private masterminds: Masterminds;
@@ -63,7 +62,9 @@ ${GameSets.ALL.map((item) => {
       scheme.requiredCards.inVillainDeck !== undefined
     ) {
       if (scheme.requiredCards.inVillainDeck.heroes !== undefined) {
-        requiredVillainHeroes.push(...scheme.requiredCards.inVillainDeck.heroes);
+        requiredVillainHeroes.push(
+          ...scheme.requiredCards.inVillainDeck.heroes
+        );
       } else if (scheme.requiredCards.inVillainDeck.henchmen !== undefined) {
         requiredHenchmen.push(...scheme.requiredCards.inVillainDeck.henchmen);
       } else if (scheme.requiredCards.inVillainDeck.villains !== undefined) {
@@ -85,7 +86,7 @@ ${GameSets.ALL.map((item) => {
     )
       requiredVillains.push(mastermind.alwaysLeads as IVillainGroup);
 
-    // Shuffle our hero deck while excluding# heroes required for the villain deck
+    // Shuffle our hero deck while excluding heroes required for the villain deck
     const heroDeck: IHeroDeck = {
       heroes: this.heroes
         .shuffle(
@@ -107,6 +108,14 @@ ${GameSets.ALL.map((item) => {
       )
     );
 
+    heroDeck.henchmen = scheme.rules.heroDeck.numHenchmen
+      ? this.henchmen.shuffle(
+          scheme.rules.heroDeck.numHenchmen[numberPlayers],
+          undefined,
+          [...requiredHenchmen, ...selectedHenchmen]
+        )
+      : undefined;
+
     let selectedVillains: IVillainGroup[] = [];
     selectedVillains = selectedVillains.concat(
       this.villains.shuffle(
@@ -115,12 +124,19 @@ ${GameSets.ALL.map((item) => {
       )
     );
 
-    if (scheme.rules.villainDeck.numHeroes !== undefined && requiredVillainHeroes.length < scheme.rules.villainDeck.numHeroes[numberPlayers]) {
-      requiredVillainHeroes.push(...this.heroes.shuffle(
-        scheme.rules.villainDeck.numHeroes[numberPlayers] - requiredVillainHeroes.length,
-        undefined,
-        [...heroDeck.heroes, ...requiredVillainHeroes]
-      ))
+    if (
+      scheme.rules.villainDeck.numHeroes !== undefined &&
+      requiredVillainHeroes.length <
+        scheme.rules.villainDeck.numHeroes[numberPlayers]
+    ) {
+      requiredVillainHeroes.push(
+        ...this.heroes.shuffle(
+          scheme.rules.villainDeck.numHeroes[numberPlayers] -
+            requiredVillainHeroes.length,
+          undefined,
+          [...heroDeck.heroes, ...requiredVillainHeroes]
+        )
+      );
     }
 
     const villainDeck: IVillainDeck = {

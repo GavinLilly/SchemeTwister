@@ -6,7 +6,8 @@ import { IVillainGroup } from '../villains/villainGroup.interface';
 
 export interface IHeroDeck {
   heroes: IHero[],
-  bystanders: number
+  bystanders: number,
+  henchmen?: IHenchmen[]
 }
 
 export interface IVillainDeck {
