@@ -86,7 +86,7 @@ export const AntMan: Record<SchemeNames, IScheme> = {
   TRAP_HEROES_IN_THE_MICROVERSE: {
     id: 'cd5baad9-5ec9-4b40-b8a7-a3b20ec560d0',
     name: 'Trap Heroes in the Microverse',
-    setup: '11 Twists. Add all 14 cards for and extra Hero the Villain Deck..',
+    setup: '11 Twists. Add all 14 cards for an extra Hero to the Villain Deck.',
     twist: `Play two cards from the Villain Deck.`,
     specialRules: 'Heroes in the Villain Deck are "Micro-Sized Villains with Attack equal to their printed cost. They have Size-Changing for their card color and no outher abilites while in the city. When you fight one, choose any player to gain it as a Hero.',
     evilWins: 'When 3 Villains per player have escaped or the Villain Deck runs out.',
