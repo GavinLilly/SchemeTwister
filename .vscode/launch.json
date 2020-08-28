@@ -12,15 +12,15 @@
         "webRoot": "${workspaceFolder}"
       },
       {
-        "name": "debug-legendizer-lib",
+        "name": "debug-web-app-feature-randomize",
          "type": "node",
          "request": "launch",
          "program": "${workspaceFolder}/node_modules/@nrwl/cli/bin/nx",
          "args": [
            "test",
-           "legendizer-lib",
+           "web-app-feature-randomize",
            "--codeCoverage=false",
-           "--testFile=libs/legendizer-lib/src/lib/gameSetup/gameSetup.spec.ts"
+           "--testFile=libs/web-app/feature-randomize/src/lib/game-setup-store.spec.ts"
          ],
          "cwd": "${workspaceFolder}",
          "console": "internalConsole"
