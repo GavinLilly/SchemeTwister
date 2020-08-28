@@ -1,8 +1,8 @@
 import { CardType } from "../cardSet";
 import { GameSets } from "../gamesets";
+import { VillainGroups } from '../villains';
 import { defaultRules } from "./defaultRules.data";
 import { IScheme } from "./scheme.interface";
-import { VillainGroups } from '../villains';
 
 type SchemeNames =
   | 'THE_CLONE_SAGA'
