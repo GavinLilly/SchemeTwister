@@ -38,6 +38,12 @@ cardSetTest(
   GameSets.FANTASTIC_FOUR
 );
 
+cardSetTest(
+  new VillainGroups(Object.values(VillainGroups.PAINT_THE_TOWN_RED)),
+  2,
+  GameSets.PAINT_THE_TOWN_RED
+);
+
 describe('Total Schemes sets', () => {
   const total: number = [
     ...Object.values(VillainGroups.LEGENDARY),
@@ -45,7 +51,8 @@ describe('Total Schemes sets', () => {
     ...Object.values(VillainGroups.HEROES_OF_ASGARD),
     ...Object.values(VillainGroups.GUARDIANS_OF_THE_GALAXY),
     ...Object.values(VillainGroups.ANT_MAN),
-    ...Object.values(VillainGroups.FANTASTIC_FOUR)
+    ...Object.values(VillainGroups.FANTASTIC_FOUR),
+    ...Object.values(VillainGroups.PAINT_THE_TOWN_RED)
   ].length;
   it(`should have ${total} entries`, () =>
     expect(VillainGroups.ALL).toHaveLength(total));
