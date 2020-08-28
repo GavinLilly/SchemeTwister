@@ -5,6 +5,7 @@ import { FantasticFour } from './fantasticFour.schemes';
 import { GuardiansOfTheGalaxy } from './guardiansOfTheGalaxy.schemes';
 import { HeroesOfAsgard } from "./heroesOfAsgard.schemes";
 import { Legendary } from './legendary.schemes';
+import { PaintTheTownRed } from './paintTheTown.schemes';
 import { IScheme } from './scheme.interface';
 
 export class Schemes extends CardSet<IScheme> {
@@ -14,6 +15,7 @@ export class Schemes extends CardSet<IScheme> {
   public static readonly GUARDIANS_OF_THE_GALAXY = GuardiansOfTheGalaxy
   public static readonly ANT_MAN = AntMan;
   public static readonly FANTASTIC_FOUR = FantasticFour
+  public static readonly PAINT_THE_TOWN_RED = PaintTheTownRed
 
   public static readonly ALL = [
     ...Object.values(Schemes.LEGENDARY),
@@ -21,6 +23,7 @@ export class Schemes extends CardSet<IScheme> {
     ...Object.values(Schemes.HEROES_OF_ASGARD),
     ...Object.values(Schemes.GUARDIANS_OF_THE_GALAXY),
     ...Object.values(Schemes.ANT_MAN),
-    ...Object.values(Schemes.FANTASTIC_FOUR)
+    ...Object.values(Schemes.FANTASTIC_FOUR),
+    ...Object.values(Schemes.PAINT_THE_TOWN_RED)
   ];
 }

@@ -3,6 +3,7 @@ export type numPlayers = 2 | 3 | 4 | 5;
 interface IHeroDeck {
   numHeroes: Record<numPlayers, number>;
   numBystanders?: Record<numPlayers, number>;
+  numHenchmen?: Record<numPlayers, number>;
 }
 
 interface IVillainDeck {
