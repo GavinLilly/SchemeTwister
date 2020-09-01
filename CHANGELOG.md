@@ -1,3 +1,11 @@
+## [1.9.1](https://github.com/GavinLilly/legendizer/compare/v1.9.0...v1.9.1) (2020-09-01)
+
+
+### Bug Fixes
+
+* **app:** fix footer sticking to bottom of viewport ([bf39c2c](https://github.com/GavinLilly/legendizer/commit/bf39c2cc78837bd3ed70f170806c4337525be81e))
+* **app:** fix game setup layout ([eb09ef0](https://github.com/GavinLilly/legendizer/commit/eb09ef0182e629d4eef60b9c9107cfbc321d8e67)), closes [#25](https://github.com/GavinLilly/legendizer/issues/25)
+
 # [1.9.0](https://github.com/GavinLilly/legendizer/compare/v1.8.0...v1.9.0) (2020-08-28)
 
 
