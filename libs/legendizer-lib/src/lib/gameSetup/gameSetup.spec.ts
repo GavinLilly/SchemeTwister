@@ -73,7 +73,11 @@ describe('Villain deck', () => {
       );
     });
     it('should put Four Horsemen in the villain deck', () => {
-      game = setup.generateGame(2, undefined, Masterminds.DARK_CITY.APOCALYPSE);
+      game = setup.generateGame(
+        2,
+        Schemes.LEGENDARY.MIDTOWN_BANK_ROBBERY,
+        Masterminds.DARK_CITY.APOCALYPSE
+      );
       expect(game.villainDeck.villains).toContain(
         VillainGroups.DARK_CITY.FOUR_HORSEMEN
       );
@@ -109,7 +113,11 @@ describe('Villain deck', () => {
       );
     });
     it('should put Doombots in the villain deck', () => {
-      game = setup.generateGame(2, undefined, Masterminds.LEGENDARY.DR_DOOM);
+      game = setup.generateGame(
+        2,
+        Schemes.LEGENDARY.MIDTOWN_BANK_ROBBERY,
+        Masterminds.LEGENDARY.DR_DOOM
+      );
       expect(game.villainDeck.henchmen).toContain(
         Henchmen.LEGENDARY.DOOMBOT_LEGION
       );
