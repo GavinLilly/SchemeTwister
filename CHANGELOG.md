@@ -1,3 +1,11 @@
+# [1.10.0](https://github.com/GavinLilly/legendizer/compare/v1.9.1...v1.10.0) (2020-09-02)
+
+
+### Features
+
+* **app:** separate game sets by size ([331bf6d](https://github.com/GavinLilly/legendizer/commit/331bf6d480917e7b68ca7aac2b9a3c1026abafcb))
+* **legendizer-lib:** add the release year for each game set ([89c97a6](https://github.com/GavinLilly/legendizer/commit/89c97a6b1b74a150a9366562b12d3f695c3b2be8))
+
 ## [1.9.1](https://github.com/GavinLilly/legendizer/compare/v1.9.0...v1.9.1) (2020-09-01)
 
 

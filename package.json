@@ -1,6 +1,6 @@
 {
   "name": "legendizer",
-  "version": "1.9.1",
+  "version": "1.10.0",
   "license": "GPL-3.0-or-later",
   "scripts": {
     "ng": "nx",
