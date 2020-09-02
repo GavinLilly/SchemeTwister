@@ -7,6 +7,7 @@ export enum Keyword {
   FEAST = "Feast",
   MICROSCOPIC_SIZE_CHANGING = "Microscopic Size-Changing",
   SIZE_CHANGING = "Size-Changing",
+  SOARING_FLIGHT = "Soaring Flight",
   TELEPORT = "Teleport",
   THROWN_ARTIFACTS = "Thrown Artifacts",
   VERSATILE = "Versatile",
