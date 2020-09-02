@@ -7,6 +7,7 @@ import { HeroesOfAsgard } from "./heroesOfAsgard.villains";
 import { Legendary } from './legendary.villains';
 import { PaintTheTownRed } from './paintTheTown.villains';
 import { IVillainGroup } from './villainGroup.interface';
+import { X_Men } from './xMen.villains';
 
 export class VillainGroups extends CardSet<IVillainGroup> {
   public static readonly LEGENDARY = Legendary;
@@ -16,6 +17,7 @@ export class VillainGroups extends CardSet<IVillainGroup> {
   public static readonly ANT_MAN = AntMan;
   public static readonly FANTASTIC_FOUR = FantasticFour;
   public static readonly PAINT_THE_TOWN_RED = PaintTheTownRed
+  public static readonly X_MEN = X_Men;
 
   public static readonly ALL = [
     ...Object.values(VillainGroups.LEGENDARY),
@@ -24,6 +26,7 @@ export class VillainGroups extends CardSet<IVillainGroup> {
     ...Object.values(VillainGroups.GUARDIANS_OF_THE_GALAXY),
     ...Object.values(VillainGroups.ANT_MAN),
     ...Object.values(VillainGroups.FANTASTIC_FOUR),
-    ...Object.values(VillainGroups.PAINT_THE_TOWN_RED)
+    ...Object.values(VillainGroups.PAINT_THE_TOWN_RED),
+    ...Object.values(VillainGroups.X_MEN)
   ];
 }
