@@ -1,4 +1,5 @@
-import { GameSets, GameSetSize, IGameSet } from '../gamesets';
+import { Bystanders } from '../bystanders/bystanders';
+import { GameSets, GameSetSize } from '../gamesets';
 import { Henchmen } from '../henchmen';
 import { Heroes } from '../heroes';
 import { Masterminds } from '../masterminds';
@@ -51,6 +52,23 @@ describe('Game creation', () => {
   it('should have some henchmen', () =>
     expect(game.villainDeck.henchmen.length).toBeGreaterThan(0));
   it('should have 2 players', () => expect(game.numPlayers).toEqual(2));
+});
+
+describe('All cards', () => {
+  const iDs: string[] = [
+    ...Bystanders.ALL,
+    ...Henchmen.ALL,
+    ...Heroes.ALL,
+    ...Masterminds.ALL,
+    ...Schemes.ALL,
+    ...VillainGroups.ALL,
+    ...GameSets.ALL
+  ].map((item) => item.id)
+  const uniqueIDs: Set<string> = new Set(iDs);
+
+  it('should have unique IDs', () => {
+    expect(iDs).toHaveLength(uniqueIDs.size);
+  });
 });
 
 describe('Villain deck', () => {

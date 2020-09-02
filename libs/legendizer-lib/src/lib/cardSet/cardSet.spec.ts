@@ -72,7 +72,7 @@ class DummySet extends CardSet<ICard> {
 
   public static readonly ALL = [
     ...DummySet.dummyDataLegendary,
-    ...DummySet.dummyDataDarkCity
+    ...DummySet.dummyDataDarkCity,
   ];
 }
 
@@ -89,7 +89,7 @@ describe('cardset', () => {
 
   it('should fail with an undefined data set', () => {
     expect(() => new DummySet(undefined)).toThrow(Error);
-  })
+  });
 
   it('should fail with an empty data set defined', () => {
     expect(() => new DummySet([])).toThrow(Error);
