@@ -40,6 +40,8 @@ cardSetTest(
   GameSets.PAINT_THE_TOWN_RED
 );
 
+cardSetTest(new Schemes(Object.values(Schemes.X_MEN)), 8, GameSets.X_MEN);
+
 describe('Total Schemes sets', () => {
   const total: number = [
     ...Object.values(Schemes.LEGENDARY),
@@ -48,7 +50,8 @@ describe('Total Schemes sets', () => {
     ...Object.values(Schemes.GUARDIANS_OF_THE_GALAXY),
     ...Object.values(Schemes.ANT_MAN),
     ...Object.values(Schemes.FANTASTIC_FOUR),
-    ...Object.values(Schemes.PAINT_THE_TOWN_RED)
+    ...Object.values(Schemes.PAINT_THE_TOWN_RED),
+    ...Object.values(Schemes.X_MEN),
   ].length;
   it(`should have ${total} entries`, () =>
     expect(Schemes.ALL).toHaveLength(total));
