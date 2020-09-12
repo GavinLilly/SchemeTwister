@@ -121,7 +121,7 @@ export const DarkCity: Record<SchemeNames, IScheme> = {
   TRANSFORM_CITIZENS_INTO_DEMONS: {
     id: '2b991381-f7fe-44a4-adb5-99d10f936bb6',
     name: 'Transform Citizens Into Demons',
-    setup: ' 8 Twists. Villain Deck includes 14 extra Jean Grey cards and no Bystanders.',
+    setup: '8 Twists. Villain Deck includes 14 extra Jean Grey cards and no Bystanders.',
     twist: 'Stack 5 Bystanders face down next to the Scheme. Bystanders stacked here are "Demon Goblin" Villains. They have 2 Attack. Players can fight these Demon Goblins to rescue them as Bystanders.',
     specialRules: 'Each Jean Grey card counts as a "Goblin Queen" Villain. It\'s worth 4 VP. It has Attack equal to its Cost plus the number of Demon Goblins stacked next to the Scheme.',
     evilWins: 'When 4 Goblin Queen cards escape.',
