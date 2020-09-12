@@ -18,11 +18,15 @@ export class GameSetup {
   constructor(...gameSets: IGameSet[]) {
     if (gameSets.length === 0 || gameSets.includes(undefined)) {
       throw new Error('A game set or game sets must be chosen');
-    } else if (!gameSets.some((item) => item.size === GameSetSize.LARGE)) {
-      throw new Error(`A big box game set must be chosen. These include:
-${GameSets.ALL.map((item) => {
-  if (item.size === GameSetSize.LARGE) return item.name;
-})}`);
+    } else if (
+      !gameSets.some((item) =>
+        [GameSetSize.LARGE, GameSetSize.CORE].includes(item.size)
+      )
+    ) {
+      throw new Error(`A core box or big box game set must be chosen. These include:
+${GameSets.ALL.filter((item) =>
+  [GameSetSize.LARGE, GameSetSize.CORE].includes(item.size)
+).map((item) => item.name)}`);
     }
 
     this.gameSets = this.gameSets.concat(gameSets);
@@ -46,6 +50,11 @@ ${GameSets.ALL.map((item) => {
     if (numberPlayers === undefined)
       throw new RangeError('Number of players must be between 2 and 5');
 
+    if (!this.gameSets.includes(scheme.gameSet))
+      throw new Error(
+        'The specified scheme is not in the list of selected game sets'
+      );
+
     const sortNameComparator = function (item1: ICard, item2: ICard) {
       if (item1.name < item2.name) return -1;
       else if (item1.name > item2.name) return 1;
@@ -62,29 +71,41 @@ ${GameSets.ALL.map((item) => {
       scheme.requiredCards.inVillainDeck !== undefined
     ) {
       if (scheme.requiredCards.inVillainDeck.heroes !== undefined) {
-        requiredVillainHeroes.push(
-          ...scheme.requiredCards.inVillainDeck.heroes
-        );
-      } else if (scheme.requiredCards.inVillainDeck.henchmen !== undefined) {
+        if (
+          scheme === Schemes.X_MEN.THE_DARK_PHOENIX_SAGA &&
+          !this.gameSets.includes(GameSets.DARK_CITY)
+        )
+          requiredVillainHeroes.push(Heroes.X_MEN.PHOENIX);
+        else {}
+          requiredVillainHeroes.push(
+            ...scheme.requiredCards.inVillainDeck.heroes
+          );
+      }
+
+      if (scheme.requiredCards.inVillainDeck.henchmen !== undefined) {
         requiredHenchmen.push(...scheme.requiredCards.inVillainDeck.henchmen);
-      } else if (scheme.requiredCards.inVillainDeck.villains !== undefined) {
+      }
+
+      if (scheme.requiredCards.inVillainDeck.villains !== undefined) {
         requiredVillains.push(...scheme.requiredCards.inVillainDeck.villains);
       }
     }
 
     // Check to see if there are any mastermind required cards in the villain deck
-    if (
-      requiredHenchmen.length <
-        scheme.rules.villainDeck.numHenchmenGroups[numberPlayers] &&
-      mastermind.alwaysLeads.cardType === CardType.HENCHMEN
-    )
-      requiredHenchmen.push(mastermind.alwaysLeads as IHenchmen);
-    else if (
-      requiredVillains.length <
-        scheme.rules.villainDeck.numVillainGroups[numberPlayers] &&
-      mastermind.alwaysLeads.cardType === CardType.VILLAINGROUP
-    )
-      requiredVillains.push(mastermind.alwaysLeads as IVillainGroup);
+    mastermind.alwaysLeads.forEach((item) => {
+      if (
+        requiredHenchmen.length <
+          scheme.rules.villainDeck.numHenchmenGroups[numberPlayers] &&
+        item.cardType === CardType.HENCHMEN
+      )
+        requiredHenchmen.push(item as IHenchmen);
+      else if (
+        requiredVillains.length <
+          scheme.rules.villainDeck.numVillainGroups[numberPlayers] &&
+        item.cardType === CardType.VILLAINGROUP
+      )
+        requiredVillains.push(item as IVillainGroup);
+    });
 
     // Shuffle our hero deck while excluding heroes required for the villain deck
     const heroDeck: IHeroDeck = {

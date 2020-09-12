@@ -15,7 +15,7 @@ export const PaintTheTownRed: Record<VillainGroupNames, IVillainGroup> = {
   },
   SINISTER_SIX: {
     id: '13e916d4-f3f3-4fd1-9d27-f22987b009e2',
-    name: 'Sinister Siz',
+    name: 'Sinister Six',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.PAINT_THE_TOWN_RED
   }

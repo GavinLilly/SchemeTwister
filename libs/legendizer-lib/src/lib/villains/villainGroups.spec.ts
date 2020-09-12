@@ -44,16 +44,28 @@ cardSetTest(
   GameSets.PAINT_THE_TOWN_RED
 );
 
+cardSetTest(
+  new VillainGroups(Object.values(VillainGroups.X_MEN)),
+  7,
+  GameSets.X_MEN
+);
+
 describe('Total Schemes sets', () => {
-  const total: number = [
-    ...Object.values(VillainGroups.LEGENDARY),
-    ...Object.values(VillainGroups.DARK_CITY),
-    ...Object.values(VillainGroups.HEROES_OF_ASGARD),
-    ...Object.values(VillainGroups.GUARDIANS_OF_THE_GALAXY),
-    ...Object.values(VillainGroups.ANT_MAN),
-    ...Object.values(VillainGroups.FANTASTIC_FOUR),
-    ...Object.values(VillainGroups.PAINT_THE_TOWN_RED)
-  ].length;
+  let total: number;
+
+  beforeAll(() => {
+    total = [
+      ...Object.values(VillainGroups.LEGENDARY),
+      ...Object.values(VillainGroups.DARK_CITY),
+      ...Object.values(VillainGroups.HEROES_OF_ASGARD),
+      ...Object.values(VillainGroups.GUARDIANS_OF_THE_GALAXY),
+      ...Object.values(VillainGroups.ANT_MAN),
+      ...Object.values(VillainGroups.FANTASTIC_FOUR),
+      ...Object.values(VillainGroups.PAINT_THE_TOWN_RED),
+      ...Object.values(VillainGroups.X_MEN)
+    ].length
+  });
+
   it(`should have ${total} entries`, () =>
     expect(VillainGroups.ALL).toHaveLength(total));
 });

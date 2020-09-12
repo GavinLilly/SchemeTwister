@@ -4,6 +4,6 @@ import { IHenchmen } from "../henchmen/henchmen.interface";
 import { IVillainGroup } from "../villains/villainGroup.interface";
 
 export interface IMastermind extends IBadGuyCard {
-  alwaysLeads: IHenchmen | IVillainGroup;
+  alwaysLeads: Array<IHenchmen | IVillainGroup>;
   keyword?: Keyword;
 }

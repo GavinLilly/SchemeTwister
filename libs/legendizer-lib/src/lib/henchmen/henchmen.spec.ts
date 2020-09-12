@@ -14,11 +14,23 @@ cardSetTest(
   GameSets.DARK_CITY
 );
 
+cardSetTest(
+  new Henchmen(Object.values(Henchmen.X_MEN)),
+  5,
+  GameSets.X_MEN
+);
+
 describe('Total Henchmen sets', () => {
-  const total: number = [
-    ...Object.values(Henchmen.LEGENDARY),
-    ...Object.values(Henchmen.DARK_CITY),
-  ].length;
+  let total: number;
+
+  beforeAll(() => {
+    total = [
+      ...Object.values(Henchmen.LEGENDARY),
+      ...Object.values(Henchmen.DARK_CITY),
+      ...Object.values(Henchmen.X_MEN)
+    ].length;
+  });
+
   it(`should have ${total} entries`, () =>
     expect(Henchmen.ALL).toHaveLength(total));
 });

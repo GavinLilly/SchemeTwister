@@ -44,16 +44,28 @@ cardSetTest(
   GameSets.PAINT_THE_TOWN_RED
 );
 
+cardSetTest(
+  new Masterminds(Object.values(Masterminds.X_MEN)),
+  12,
+  GameSets.X_MEN
+);
+
 describe('Total Masterminds sets', () => {
-  const total: number = [
-    ...Object.values(Masterminds.LEGENDARY),
-    ...Object.values(Masterminds.DARK_CITY),
-    ...Object.values(Masterminds.HEROES_OF_ASGARD),
-    ...Object.values(Masterminds.GUARDIANS_OF_THE_GALAXY),
-    ...Object.values(Masterminds.ANT_MAN),
-    ...Object.values(Masterminds.FANTASTIC_FOUR),
-    ...Object.values(Masterminds.PAINT_THE_TOWN_RED)
-  ].length;
+  let total: number;
+
+  beforeAll(() => {
+    total = [
+      ...Object.values(Masterminds.LEGENDARY),
+      ...Object.values(Masterminds.DARK_CITY),
+      ...Object.values(Masterminds.HEROES_OF_ASGARD),
+      ...Object.values(Masterminds.GUARDIANS_OF_THE_GALAXY),
+      ...Object.values(Masterminds.ANT_MAN),
+      ...Object.values(Masterminds.FANTASTIC_FOUR),
+      ...Object.values(Masterminds.PAINT_THE_TOWN_RED),
+      ...Object.values(Masterminds.X_MEN)
+    ].length
+  });
+
   it(`should have ${total} entries`, () =>
     expect(Masterminds.ALL).toHaveLength(total));
 });
