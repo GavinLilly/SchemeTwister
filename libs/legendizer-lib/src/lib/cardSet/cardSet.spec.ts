@@ -105,7 +105,11 @@ describe('cardset', () => {
 });
 
 describe('Shuffling', () => {
-  const dummy: DummySet = new DummySet(DummySet.dummyDataLegendary);
+  let dummy: DummySet;
+
+  beforeAll(() => {
+    dummy = new DummySet(DummySet.dummyDataLegendary);
+  })
 
   it('should return 2 records', () => {
     expect(dummy.shuffle(2)).toHaveLength(2);

@@ -13,7 +13,12 @@ describe('Dark City set', () => {
 });
 
 describe('X-Men set', () => {
-  const xMenBystanders: IHero[] = Object.values(Bystanders.X_MEN);
+  let xMenBystanders: IHero[];
+
+  beforeAll(() => {
+    xMenBystanders = Object.values(Bystanders.X_MEN);
+  });
+
   it('should have 10 entries', () => expect(xMenBystanders).toHaveLength(10));
   it('should only contain bystander type cards', () =>
     expect(

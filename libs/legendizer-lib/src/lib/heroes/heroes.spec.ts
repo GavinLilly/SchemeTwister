@@ -52,16 +52,21 @@ describe('X-Men heroes', () => {
 });
 
 describe('Total Heroes sets', () => {
-  const total: number = [
-    ...Object.values(Heroes.LEGENDARY),
-    ...Object.values(Heroes.DARK_CITY),
-    ...Object.values(Heroes.HEROES_OF_ASGARD),
-    ...Object.values(Heroes.GUARDIANS_OF_THE_GALAXY),
-    ...Object.values(Heroes.ANT_MAN),
-    ...Object.values(Heroes.FANTASTIC_FOUR),
-    ...Object.values(Heroes.PAINT_THE_TOWN_RED),
-    ...Object.values(Heroes.X_MEN),
-  ].length;
+  let total: number;
+
+  beforeAll(() => {
+    total = [
+      ...Object.values(Heroes.LEGENDARY),
+      ...Object.values(Heroes.DARK_CITY),
+      ...Object.values(Heroes.HEROES_OF_ASGARD),
+      ...Object.values(Heroes.GUARDIANS_OF_THE_GALAXY),
+      ...Object.values(Heroes.ANT_MAN),
+      ...Object.values(Heroes.FANTASTIC_FOUR),
+      ...Object.values(Heroes.PAINT_THE_TOWN_RED),
+      ...Object.values(Heroes.X_MEN),
+    ].length
+  });
+
   it(`should have ${total} entries`, () =>
     expect(Heroes.ALL).toHaveLength(total));
 });
