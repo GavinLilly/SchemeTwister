@@ -1,3 +1,23 @@
+# [1.11.0](https://github.com/GavinLilly/legendizer/compare/v1.10.0...v1.11.0) (2020-09-12)
+
+
+### Bug Fixes
+
+* **legendizer-lib:** correct spelling mistakes in schemes ([d28af41](https://github.com/GavinLilly/legendizer/commit/d28af4155e57ecaca2a37f083521bb903b50ee63))
+* **legendizer-lib:** fix game setup to work with X-Men gameset ([b6c23d8](https://github.com/GavinLilly/legendizer/commit/b6c23d8decdb7cec839c466d6f15b09d41843859))
+
+
+### Features
+
+* **legendizer-lib:** add X-Men bystanders ([54b150e](https://github.com/GavinLilly/legendizer/commit/54b150ef80cc6c4d057f7ededcfd832c3f74b84e))
+* **legendizer-lib:** add X-Men gameset ([9e1f0be](https://github.com/GavinLilly/legendizer/commit/9e1f0bea0fd62a043530ff69a86937ed4a1b609c))
+* **legendizer-lib:** add X-Men henchmen ([d1883c6](https://github.com/GavinLilly/legendizer/commit/d1883c61652de737167a20462d00044a46b05944))
+* **legendizer-lib:** add X-Men heroes ([f4040fd](https://github.com/GavinLilly/legendizer/commit/f4040fd5230f8c58c63bfe67116def6734ad4849))
+* **legendizer-lib:** add X-Men masterminds ([f359725](https://github.com/GavinLilly/legendizer/commit/f3597253bb78861d75a84224609bf8ec54a850b7))
+* **legendizer-lib:** add X-Men schemes ([f8ecdb1](https://github.com/GavinLilly/legendizer/commit/f8ecdb1b98028538c3343bf64f2e1d35a65c2d2a))
+* **legendizer-lib:** add X-Men villains ([6d0568e](https://github.com/GavinLilly/legendizer/commit/6d0568effe6fec50762546010e5115fa5349a524))
+* **legendizer-lib:** allow masterminds to lead multiple villain groups ([c208d25](https://github.com/GavinLilly/legendizer/commit/c208d25bbc6b5f274656d3f2539a1c31674ca705))
+
 # [1.10.0](https://github.com/GavinLilly/legendizer/compare/v1.9.1...v1.10.0) (2020-09-02)
 
 
