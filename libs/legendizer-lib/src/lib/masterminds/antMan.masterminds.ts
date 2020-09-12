@@ -13,7 +13,7 @@ export const AntMan: Record<MastermindNames, IMastermind> = {
   ULTRON: {
     id: '90f9437a-04b6-4efb-85af-829896a83ac8',
     name: 'Ultron',
-    alwaysLeads: VillainGroups.ANT_MAN.ULTRONS_LEGACY,
+    alwaysLeads: [VillainGroups.ANT_MAN.ULTRONS_LEGACY],
     attackPoints: 9,
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
@@ -22,7 +22,7 @@ export const AntMan: Record<MastermindNames, IMastermind> = {
   EPIC_ULTRON: {
     id: '89167683-86c8-497b-95af-17838c3d7021',
     name: 'Epic Ultron',
-    alwaysLeads: VillainGroups.ANT_MAN.ULTRONS_LEGACY,
+    alwaysLeads: [VillainGroups.ANT_MAN.ULTRONS_LEGACY],
     attackPoints: 10,
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
@@ -31,7 +31,7 @@ export const AntMan: Record<MastermindNames, IMastermind> = {
   MORGAN_LE_FAY: {
     id: 'eadae97c-473e-46db-bf18-ac871d378031',
     name: 'Morgan Le Fay',
-    alwaysLeads: VillainGroups.ANT_MAN.QUEENS_VENGEANCE,
+    alwaysLeads: [VillainGroups.ANT_MAN.QUEENS_VENGEANCE],
     attackPoints: 7,
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
@@ -40,7 +40,7 @@ export const AntMan: Record<MastermindNames, IMastermind> = {
   EPIC_MORGAN_LE_FAY: {
     id: 'b2adb1bc-d44f-4fdb-8860-67c4f539f825',
     name: 'Epic Morgan Le Fay',
-    alwaysLeads: VillainGroups.ANT_MAN.QUEENS_VENGEANCE,
+    alwaysLeads: [VillainGroups.ANT_MAN.QUEENS_VENGEANCE],
     attackPoints: 9,
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,

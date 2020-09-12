@@ -11,7 +11,7 @@ export const PaintTheTownRed: Record<MastermindNames, IMastermind> = {
   CARNAGE: {
     id: '9e4870e5-7137-4c2f-994f-aa70876a8dae',
     name: 'Carnage',
-    alwaysLeads: VillainGroups.PAINT_THE_TOWN_RED.MAXIMUM_CARNAGE,
+    alwaysLeads: [VillainGroups.PAINT_THE_TOWN_RED.MAXIMUM_CARNAGE],
     attackPoints: 9,
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
@@ -20,7 +20,7 @@ export const PaintTheTownRed: Record<MastermindNames, IMastermind> = {
   MYSTERIO: {
     id: '41e155a1-92e7-4c76-992f-319cd55c47f0',
     name: 'Mysterio',
-    alwaysLeads: VillainGroups.PAINT_THE_TOWN_RED.SINISTER_SIX,
+    alwaysLeads: [VillainGroups.PAINT_THE_TOWN_RED.SINISTER_SIX],
     attackPoints: 8,
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
