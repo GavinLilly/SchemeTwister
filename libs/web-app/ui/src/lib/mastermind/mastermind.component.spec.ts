@@ -21,7 +21,7 @@ describe('MastermindComponent', () => {
     component.mastermind = {
       id: '15020091-de17-4d7a-85e6-bf420b845812',
       name: 'Test mastermind',
-      alwaysLeads: Henchmen.LEGENDARY.DOOMBOT_LEGION,
+      alwaysLeads: [Henchmen.LEGENDARY.DOOMBOT_LEGION],
       attackPoints: 1,
       cardType: CardType.MASTERMIND,
       gameSet: GameSets.LEGENDARY,
