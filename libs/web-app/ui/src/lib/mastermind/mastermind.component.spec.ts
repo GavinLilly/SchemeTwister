@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CardType, GameSets, Henchmen } from '@legendizer/legendizer-lib';
 
@@ -10,7 +11,8 @@ describe('MastermindComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MastermindComponent ]
+      declarations: [ MastermindComponent ],
+      imports: [ NgbModule ]
     })
     .compileComponents();
   }));

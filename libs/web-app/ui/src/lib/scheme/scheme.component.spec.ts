@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { Schemes } from '@legendizer/legendizer-lib';
 
@@ -10,7 +11,8 @@ describe('SchemeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SchemeComponent ]
+      declarations: [ SchemeComponent ],
+      imports: [ NgbModule ]
     })
     .compileComponents();
   }));
