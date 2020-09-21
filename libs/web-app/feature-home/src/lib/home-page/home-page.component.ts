@@ -1,15 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 
+import {
+  GameSets,
+  Henchmen,
+  Heroes,
+  Masterminds,
+  VillainGroups,
+} from '@legendizer/legendizer-lib';
+
 @Component({
   selector: 'legendizer-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss']
+  styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
+  numGameSets: number = GameSets.ALL.length;
+  numHenchmen: number = Henchmen.ALL.length;
+  numHeroes: number = Heroes.ALL.length;
+  numMasterminds: number = Masterminds.ALL.length;
+  numVillains: number = VillainGroups.ALL.length;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

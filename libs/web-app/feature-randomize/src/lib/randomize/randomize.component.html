@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row row-cols-1 row-cols-md-2">
-    <div class="col mb-4">
+    <div class="col mx-auto">
       <div class="card text-center">
         <div class="card-header">
           <div class="d-flex align-items-center">
@@ -36,21 +36,6 @@
         </div>
       </div>
     </div>
-    <div class="col mb-4">
-      <div class="card">
-        <div class="card-header">
-          Setup
-        </div>
-        <div class="card-body">
-          <legendizer-additional-cards
-            [twists]="(gameSetupStore.gameSetup | async).villainDeck.twists"
-            [bystanders]="
-              (gameSetupStore.gameSetup | async).villainDeck.bystanders
-            "
-          ></legendizer-additional-cards>
-        </div>
-      </div>
-    </div>
   </div>
   <div class="row row-cols-1 row-cols-md-2">
     <div class="col mb-4">
@@ -69,15 +54,42 @@
       <div class="card">
         <div class="card-header">Villain Deck</div>
         <div class="card-body p-0">
+          <ngb-accordion [closeOthers]="true" activeIds="additional-cards">
+            <ngb-panel id="additional-cards">
+              <ng-template ngbPanelHeader>
+                <div class="d-flex align-items-center justify-content-between">
+                  <button ngbPanelToggle class="btn btn-link m-0">
+                    Setup Cards
+                  </button>
+                </div>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                <legendizer-additional-cards
+                  [twists]="
+                    (gameSetupStore.gameSetup | async).villainDeck.twists
+                  "
+                  [bystanders]="
+                    (gameSetupStore.gameSetup | async).villainDeck.bystanders
+                  "
+                ></legendizer-additional-cards>
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
           <ngb-accordion [closeOthers]="true">
             <ngb-panel
               *ngFor="
                 let item of (gameSetupStore.gameSetup | async).villainDeck
                   .henchmen
               "
-              title="{{ item.name }}"
               id="panel-{{ item.id }}"
             >
+              <ng-template ngbPanelHeader>
+                <div class="d-flex align-items-center justify-content-between">
+                  <button ngbPanelToggle class="btn btn-link m-0">
+                    {{ item.name }}
+                  </button>
+                </div>
+              </ng-template>
               <ng-template ngbPanelContent>
                 <legendizer-henchmen [henchmen]="item"></legendizer-henchmen>
               </ng-template>
@@ -87,9 +99,15 @@
                 let item of (gameSetupStore.gameSetup | async).villainDeck
                   .villains
               "
-              title="{{ item.name }}"
               id="panel-{{ item.id }}"
             >
+              <ng-template ngbPanelHeader>
+                <div class="d-flex align-items-center justify-content-between">
+                  <button ngbPanelToggle class="btn btn-link m-0">
+                    {{ item.name }}
+                  </button>
+                </div>
+              </ng-template>
               <ng-template ngbPanelContent>
                 <legendizer-villain-group
                   [villainGroup]="item"
@@ -101,9 +119,15 @@
                 let item of (gameSetupStore.gameSetup | async).villainDeck
                   .heroes
               "
-              title="{{ item.name }}"
               id="panel-{{ item.id }}"
             >
+              <ng-template ngbPanelHeader>
+                <div class="d-flex align-items-center justify-content-between">
+                  <button ngbPanelToggle class="btn btn-link m-0">
+                    {{ item.name }}
+                  </button>
+                </div>
+              </ng-template>
               <ng-template ngbPanelContent>
                 <legendizer-heroes [hero]="item"></legendizer-heroes>
               </ng-template>
@@ -128,7 +152,8 @@
                   <button ngbPanelToggle class="btn btn-link m-0">
                     {{ item.name }}
                   </button>
-                  <img *ngIf="item.team"
+                  <img
+                    *ngIf="item.team"
                     src="{{ item.team.icon }}"
                     alt="{{ item.team.name }}"
                     class="img-fluid"
