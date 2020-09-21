@@ -1,3 +1,17 @@
+# [1.12.0](https://github.com/GavinLilly/legendizer/compare/v1.11.0...v1.12.0) (2020-09-21)
+
+
+### Bug Fixes
+
+* **app:** show team name instead of [Object object] ([628b50c](https://github.com/GavinLilly/legendizer/commit/628b50c4b4f22eec3f8f819125ec6453ceba724c))
+
+
+### Features
+
+* **app:** add simple stats to home page ([ed3aa2c](https://github.com/GavinLilly/legendizer/commit/ed3aa2ce38c34c5dca94583341a3a56a6aa57fa2))
+* **app:** do not use Bangers font throughout app ([ab30468](https://github.com/GavinLilly/legendizer/commit/ab30468e696239440d00677f1dd6aa0950415fa4))
+* **app:** use accordion for all content and move setup cards into villain deck ([c5764cf](https://github.com/GavinLilly/legendizer/commit/c5764cfcc314d69198847edd6ca8cb6c602c6e19))
+
 # [1.11.0](https://github.com/GavinLilly/legendizer/compare/v1.10.0...v1.11.0) (2020-09-12)
 
 
