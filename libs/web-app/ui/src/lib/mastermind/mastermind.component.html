@@ -1,17 +1,28 @@
-<div class="card h-100">
-  <div class="card-header">Mastermind</div>
-  <div class="card-body">
-    <h5 class="card-title">{{ mastermind.name }}</h5>
-    <div class="card-text">
-      <b>Always leads: </b>
-      <ul *ngFor="let item of mastermind.alwaysLeads">
-        <li>{{ item.name }}</li>
-      </ul>
-    </div>
-    <p class="card-text"><b>Attack Points: </b>{{ mastermind.attackPoints }}</p>
-    <p class="card-text">
-      <b>Victory Points: </b>{{ mastermind.victoryPoints }}
-    </p>
-  </div>
-  <div class="card-footer">{{ mastermind.gameSet.name }}</div>
-</div>
+<ngb-accordion>
+  <ngb-panel>
+    <ng-template ngbPanelHeader>
+      <div class="d-flex align-items-center justify-content-between">
+        <button ngbPanelToggle class="btn btn-link m-0">
+          {{ mastermind.name }}
+        </button>
+      </div>
+    </ng-template>
+    <ng-template ngbPanelContent>
+      <div class="card-text">
+        <b>Always leads: </b>
+        <ul *ngFor="let item of mastermind.alwaysLeads">
+          <li>{{ item.name }}</li>
+        </ul>
+      </div>
+      <p class="card-text">
+        <b>Attack Points: </b>{{ mastermind.attackPoints }}
+      </p>
+      <p class="card-text">
+        <b>Victory Points: </b>{{ mastermind.victoryPoints }}
+      </p>
+      <p class="card-text">
+        <b>Game set: </b>{{ mastermind.gameSet.name }}
+      </p>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
