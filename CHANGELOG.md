@@ -4,6 +4,14 @@
 ### Bug Fixes
 
 * fix strict mode assertions ([e81a3ab](https://github.com/GavinLilly/legendizer/commit/e81a3ab0c2c106c9afa52d7019228a00c081f7b4))
+* **app:** check to see if the hero has a team ([e2977f7](https://github.com/GavinLilly/legendizer/commit/e2977f7117483228c9579bc4c9fb5346e52fca21))
+
+## [1.12.1](https://github.com/GavinLilly/legendizer/compare/v1.12.0...v1.12.1) (2020-09-22)
+
+
+### Bug Fixes
+
+* fix strict mode assertions ([e81a3ab](https://github.com/GavinLilly/legendizer/commit/e81a3ab0c2c106c9afa52d7019228a00c081f7b4))
 
 # [1.12.0](https://github.com/GavinLilly/legendizer/compare/v1.11.0...v1.12.0) (2020-09-21)
 
