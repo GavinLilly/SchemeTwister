@@ -67,6 +67,7 @@ describe('Total Heroes sets', () => {
     ].length
   });
 
+  // @ts-ignore
   it(`should have ${total} entries`, () =>
     expect(Heroes.ALL).toHaveLength(total));
 });

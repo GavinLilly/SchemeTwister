@@ -31,6 +31,7 @@ describe('Total Henchmen sets', () => {
     ].length;
   });
 
+  // @ts-ignore
   it(`should have ${total} entries`, () =>
     expect(Henchmen.ALL).toHaveLength(total));
 });

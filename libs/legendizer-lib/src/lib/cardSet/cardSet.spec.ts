@@ -87,10 +87,6 @@ describe('cardset', () => {
     expect(dummy.getCards()).toHaveLength(DummySet.dummyDataLegendary.length);
   });
 
-  it('should fail with an undefined data set', () => {
-    expect(() => new DummySet(undefined)).toThrow(Error);
-  });
-
   it('should fail with an empty data set defined', () => {
     expect(() => new DummySet([])).toThrow(Error);
   });

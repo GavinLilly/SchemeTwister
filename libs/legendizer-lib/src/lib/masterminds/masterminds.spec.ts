@@ -66,6 +66,7 @@ describe('Total Masterminds sets', () => {
     ].length
   });
 
+  // @ts-ignore
   it(`should have ${total} entries`, () =>
     expect(Masterminds.ALL).toHaveLength(total));
 });

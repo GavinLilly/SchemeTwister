@@ -66,6 +66,7 @@ describe('Total Schemes sets', () => {
     ].length
   });
 
+  // @ts-ignore
   it(`should have ${total} entries`, () =>
     expect(VillainGroups.ALL).toHaveLength(total));
 });

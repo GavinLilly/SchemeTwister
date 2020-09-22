@@ -13,10 +13,6 @@ describe('GameSetup', () => {
     expect(new GameSetup(...GameSets.ALL)).toBeTruthy();
   });
 
-  it('should fail with no Gameset', () => {
-    expect(() => new GameSetup(undefined)).toThrow(Error);
-  });
-
   it('should fail with an empty Gameset', () => {
     expect(() => new GameSetup(...[])).toThrow(Error);
   });
@@ -42,11 +38,6 @@ describe('Game creation', () => {
   });
 
   describe('should fail', () => {
-    it('if number of players is undefined', () => {
-      expect(() => {
-        game = setup.generateGame(undefined);
-      }).toThrow(Error);
-    });
     it('if the scheme is not in the list of game sets', () => {
       setup = new GameSetup(GameSets.LEGENDARY);
       expect(() =>
@@ -175,7 +166,8 @@ describe('Villain deck', () => {
     });
     it('should put a hero in the villain deck', () => {
       game = setup.generateGame(2, Schemes.DARK_CITY.XCUTIONERS_SONG);
-      expect(game.villainDeck.heroes.length).toBeGreaterThan(0);
+      expect(game.villainDeck.heroes).toBeDefined();
+      expect(game.villainDeck.heroes?.length).toBeGreaterThan(0);
     });
     it('should contain bystanders in the hero deck', () => {
       game = setup.generateGame(2, Schemes.DARK_CITY.SAVE_HUMANITY);
@@ -186,8 +178,8 @@ describe('Villain deck', () => {
         2,
         Schemes.PAINT_THE_TOWN_RED.INVADE_THE_DAILY_BUGLE_NEWS_HQ
       );
-      expect(gameSetup.heroDeck.henchmen).toBeTruthy();
-      expect(gameSetup.heroDeck.henchmen.length).toBeGreaterThan(0);
+      expect(gameSetup.heroDeck.henchmen).toBeDefined();
+      expect(gameSetup.heroDeck.henchmen?.length).toBeGreaterThan(0);
     });
   });
 

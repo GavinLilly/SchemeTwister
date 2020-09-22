@@ -58,6 +58,7 @@ describe('Total Schemes sets', () => {
     ].length
   });
 
+  // @ts-ignore
   it(`should have ${total} entries`, () =>
     expect(Schemes.ALL).toHaveLength(total));
 });
