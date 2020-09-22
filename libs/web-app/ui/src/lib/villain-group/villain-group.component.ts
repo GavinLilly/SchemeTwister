@@ -9,7 +9,7 @@ import { IVillainGroup } from '@legendizer/legendizer-lib';
   styleUrls: ['./villain-group.component.scss']
 })
 export class VillainGroupComponent implements OnInit {
-  @Input() villainGroup: IVillainGroup;
+  @Input() villainGroup!: IVillainGroup;
   @Output() villainID = new EventEmitter<string>();
   faRedo = faRedo;
 

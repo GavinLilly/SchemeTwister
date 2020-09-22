@@ -8,7 +8,7 @@ import { IMastermind } from "@legendizer/legendizer-lib";
   styleUrls: ['./mastermind.component.scss']
 })
 export class MastermindComponent implements OnInit {
-  @Input() mastermind: IMastermind
+  @Input() mastermind!: IMastermind
 
   constructor() { }
 

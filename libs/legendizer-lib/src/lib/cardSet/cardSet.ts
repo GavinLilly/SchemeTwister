@@ -37,7 +37,7 @@ export abstract class CardSet<T extends ICard> {
     elements: T[] = [],
     exclude: T[] = []
   ): T | T[] {
-    function getRandomElement(arr: T[]) {
+    function getRandomElement(arr: T[]): T[] {
       if (elements.length < count) {
         elements.push(arr.splice(Math.floor(Math.random() * arr.length), 1)[0]);
 

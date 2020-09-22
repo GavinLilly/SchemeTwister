@@ -11,7 +11,7 @@ import { GameSetupStore } from '../game-setup-store';
   styleUrls: ['./randomize.component.scss'],
 })
 export class RandomizeComponent implements OnInit {
-  numPlayers: number;
+  numPlayers = 2;
   faCog = faCog;
 
   constructor(

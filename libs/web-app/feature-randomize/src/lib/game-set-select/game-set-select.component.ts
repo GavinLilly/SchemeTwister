@@ -11,7 +11,7 @@ import { GameSetupStore } from '../game-setup-store';
   styleUrls: ['./game-set-select.component.scss'],
 })
 export class GameSetSelectComponent implements OnInit {
-  selectedGameSets: IGameSet[];
+  selectedGameSets: IGameSet[] = [];
   coreSets: IGameSet[] = GameSets.ALL.filter(
     (item) => item.size === GameSetSize.CORE
   );

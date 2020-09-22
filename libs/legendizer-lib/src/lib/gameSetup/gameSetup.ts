@@ -16,7 +16,7 @@ export class GameSetup {
   private gameSets: IGameSet[] = [];
 
   constructor(...gameSets: IGameSet[]) {
-    if (gameSets.length === 0 || gameSets.includes(undefined)) {
+    if (gameSets.length === 0) {
       throw new Error('A game set or game sets must be chosen');
     } else if (
       !gameSets.some((item) =>
@@ -76,10 +76,11 @@ ${GameSets.ALL.filter((item) =>
           !this.gameSets.includes(GameSets.DARK_CITY)
         )
           requiredVillainHeroes.push(Heroes.X_MEN.PHOENIX);
-        else {}
-          requiredVillainHeroes.push(
-            ...scheme.requiredCards.inVillainDeck.heroes
-          );
+        else {
+        }
+        requiredVillainHeroes.push(
+          ...scheme.requiredCards.inVillainDeck.heroes
+        );
       }
 
       if (scheme.requiredCards.inVillainDeck.henchmen !== undefined) {

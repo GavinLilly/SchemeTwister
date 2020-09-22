@@ -9,7 +9,7 @@ import { IHenchmen } from '@legendizer/legendizer-lib';
   styleUrls: ['./henchmen.component.scss']
 })
 export class HenchmenComponent implements OnInit {
-  @Input() henchmen: IHenchmen;
+  @Input() henchmen!: IHenchmen;
   @Output() henchmenID = new EventEmitter<string>();
   faRedo = faRedo;
 

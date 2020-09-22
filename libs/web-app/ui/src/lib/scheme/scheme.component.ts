@@ -8,7 +8,7 @@ import { IScheme } from "@legendizer/legendizer-lib";
   styleUrls: ['./scheme.component.scss']
 })
 export class SchemeComponent implements OnInit {
-  @Input() scheme: IScheme;
+  @Input() scheme!: IScheme;
 
   constructor() { }
 

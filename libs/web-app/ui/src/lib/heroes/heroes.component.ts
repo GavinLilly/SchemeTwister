@@ -9,7 +9,7 @@ import { IHero } from "@legendizer/legendizer-lib";
   styleUrls: ['./heroes.component.scss']
 })
 export class HeroesComponent implements OnInit {
-  @Input() hero: IHero;
+  @Input() hero!: IHero;
   @Output() heroID = new EventEmitter<string>();
   faRedo = faRedo;
 

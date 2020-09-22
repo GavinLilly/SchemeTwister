@@ -1,12 +1,12 @@
 export class CookieService {
-  _cookieReg = {};
+  _cookieReg: { [name: string]: string } = {}
   constructor() {}
 
-  check(name) {
+  check(name: string) {
     return this._cookieReg[name] ? true : false;
   }
 
-  get(name) {
+  get(name: string) {
     return this._cookieReg[name];
   }
 
@@ -14,15 +14,21 @@ export class CookieService {
     return this._cookieReg;
   }
 
-  set(name, value, expires, path, domain, secure, sameSite) {
+  set(name: string,
+    value: string,
+    expires?: number | Date,
+    path?: string,
+    domain?: string,
+    secure?: boolean,
+    sameSite: 'Lax' | 'None' | 'Strict' = 'Lax') {
     this._cookieReg[name] = name + '=' + value;
   }
 
-  delete(name, path, domain) {
+  delete(name: string, path?: string, domain?: string, secure?: boolean, sameSite: 'Lax' | 'None' | 'Strict' = 'Lax') {
     delete this._cookieReg[name];
   }
 
-  deleteAll(path, domain) {
+  deleteAll(path?: string, domain?: string, secure?: boolean, sameSite: 'Lax' | 'None' | 'Strict' = 'Lax') {
     this._cookieReg = {};
   }
 }
