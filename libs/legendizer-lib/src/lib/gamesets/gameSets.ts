@@ -57,6 +57,13 @@ export class GameSets {
     releaseYear: 2017
   }
 
+  public static readonly SHIELD: IGameSet = {
+    id: 'b5672b69-d1a8-4d74-a0ad-f8488c32b488',
+    name: 'S.H.I.E.L.D.',
+    size: GameSetSize.SMALL,
+    releaseYear: 2019
+  }
+
   public static readonly ALL = [
     GameSets.LEGENDARY,
     GameSets.DARK_CITY,
@@ -65,7 +72,8 @@ export class GameSets {
     GameSets.ANT_MAN,
     GameSets.FANTASTIC_FOUR,
     GameSets.PAINT_THE_TOWN_RED,
-    GameSets.X_MEN
+    GameSets.X_MEN,
+    GameSets.SHIELD
   ].sort((a, b) => {
     if (a.size > b.size) return -1;
     if (a.size < b.size) return 1;
