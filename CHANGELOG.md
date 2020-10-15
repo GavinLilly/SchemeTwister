@@ -1,3 +1,19 @@
+# [1.13.0](https://github.com/GavinLilly/legendizer/compare/v1.12.1...v1.13.0) (2020-10-15)
+
+
+### Bug Fixes
+
+* **legendizer-lib:** ensure that a villain group is not selected twice ([9d8e9f5](https://github.com/GavinLilly/legendizer/commit/9d8e9f518c3b26cfdbf82af56a782e72e58dfb86))
+
+
+### Features
+
+* **legendizer-lib:** add SHIELD gameset ([c78a734](https://github.com/GavinLilly/legendizer/commit/c78a73430a33565c99ba3361e164f98fe256cbe0))
+* **legendizer-lib:** add SHIELD heroes ([9201f1e](https://github.com/GavinLilly/legendizer/commit/9201f1e44368e6b217fbf41d275c71ced749918f))
+* **legendizer-lib:** add SHIELD masterminds ([5df969a](https://github.com/GavinLilly/legendizer/commit/5df969af34260730a891d50c140e120358f27567))
+* **legendizer-lib:** add SHIELD schemes ([70366cd](https://github.com/GavinLilly/legendizer/commit/70366cddab238fa01537301124e5d8fecf16f9c6))
+* **legendizer-lib:** add SHIELD villains ([2474076](https://github.com/GavinLilly/legendizer/commit/2474076f0d96098f38b6671f53c3bc148db0776a))
+
 ## [1.12.1](https://github.com/GavinLilly/legendizer/compare/v1.12.0...v1.12.1) (2020-09-22)
 
 
