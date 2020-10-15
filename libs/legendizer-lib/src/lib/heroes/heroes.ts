@@ -7,6 +7,7 @@ import { IHero } from './hero.interface';
 import { HeroesOfAsgard } from './heroesOfAsgard.heroes';
 import { Legendary } from './legendary.heroes';
 import { PaintTheTownRed } from './paintTheTown.heroes';
+import { Shield } from './shield.heroes'
 import { X_Men } from './xMen.heroes';
 
 export class Heroes extends CardSet<IHero> {
@@ -18,6 +19,7 @@ export class Heroes extends CardSet<IHero> {
   public static readonly FANTASTIC_FOUR = FantasticFour
   public static readonly PAINT_THE_TOWN_RED = PaintTheTownRed
   public static readonly X_MEN = X_Men
+  public static readonly SHIELD = Shield
 
   public static readonly ALL = [
     ...Object.values(Heroes.LEGENDARY),
@@ -27,6 +29,7 @@ export class Heroes extends CardSet<IHero> {
     ...Object.values(Heroes.ANT_MAN),
     ...Object.values(Heroes.FANTASTIC_FOUR),
     ...Object.values(Heroes.PAINT_THE_TOWN_RED),
-    ...Object.values(Heroes.X_MEN)
+    ...Object.values(Heroes.X_MEN),
+    ...Object.values(Heroes.SHIELD)
   ]
 }

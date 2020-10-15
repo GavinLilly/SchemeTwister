@@ -40,6 +40,12 @@ cardSetTest(
   GameSets.PAINT_THE_TOWN_RED
 );
 
+cardSetTest(
+  new Schemes(Object.values(Schemes.SHIELD)),
+  4,
+  GameSets.SHIELD
+);
+
 cardSetTest(new Schemes(Object.values(Schemes.X_MEN)), 8, GameSets.X_MEN);
 
 describe('Total Schemes sets', () => {
@@ -55,6 +61,7 @@ describe('Total Schemes sets', () => {
       ...Object.values(Schemes.FANTASTIC_FOUR),
       ...Object.values(Schemes.PAINT_THE_TOWN_RED),
       ...Object.values(Schemes.X_MEN),
+      ...Object.values(Schemes.SHIELD)
     ].length
   });
 

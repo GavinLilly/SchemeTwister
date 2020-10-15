@@ -88,7 +88,19 @@ ${GameSets.ALL.filter((item) =>
       }
 
       if (scheme.requiredCards.inVillainDeck.villains !== undefined) {
-        requiredVillains.push(...scheme.requiredCards.inVillainDeck.villains);
+        // Hacky method to ensure that one of the supported villains is selected
+        // rather than both
+        if (scheme === Schemes.SHIELD.SHIELD_VS_HYDRA_WAR)
+          requiredVillains.push(
+            scheme.requiredCards.inVillainDeck.villains[
+              Math.floor(
+                Math.random() *
+                  scheme.requiredCards.inVillainDeck.villains.length
+              )
+            ]
+          );
+        else
+          requiredVillains.push(...scheme.requiredCards.inVillainDeck.villains);
       }
     }
 
@@ -97,13 +109,15 @@ ${GameSets.ALL.filter((item) =>
       if (
         requiredHenchmen.length <
           scheme.rules.villainDeck.numHenchmenGroups[numberPlayers] &&
-        item.cardType === CardType.HENCHMEN
+        item.cardType === CardType.HENCHMEN &&
+        !requiredHenchmen.includes(item as IHenchmen)
       )
         requiredHenchmen.push(item as IHenchmen);
       else if (
         requiredVillains.length <
           scheme.rules.villainDeck.numVillainGroups[numberPlayers] &&
-        item.cardType === CardType.VILLAINGROUP
+        item.cardType === CardType.VILLAINGROUP &&
+        !requiredVillains.includes(item as IVillainGroup)
       )
         requiredVillains.push(item as IVillainGroup);
     });

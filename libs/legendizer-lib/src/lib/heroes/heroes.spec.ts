@@ -41,6 +41,12 @@ cardSetTest(
   GameSets.PAINT_THE_TOWN_RED
 );
 
+cardSetTest(
+  new Heroes(Object.values(Heroes.SHIELD)),
+  4,
+  GameSets.SHIELD
+);
+
 cardSetTest(new Heroes(Object.values(Heroes.X_MEN)), 15, GameSets.X_MEN);
 
 describe('X-Men heroes', () => {
@@ -64,6 +70,7 @@ describe('Total Heroes sets', () => {
       ...Object.values(Heroes.FANTASTIC_FOUR),
       ...Object.values(Heroes.PAINT_THE_TOWN_RED),
       ...Object.values(Heroes.X_MEN),
+      ...Object.values(Heroes.SHIELD)
     ].length
   });
 
