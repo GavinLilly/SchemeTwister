@@ -1,4 +1,5 @@
 export enum Keyword {
+  ADAPT = "Adapt",
   ARTIFACTS = "Artifacts",
   BRIBE = "Bribe",
   CHIVALROUS_DUEL = "Chivalrous Duel",
