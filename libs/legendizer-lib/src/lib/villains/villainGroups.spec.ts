@@ -50,6 +50,12 @@ cardSetTest(
   GameSets.X_MEN
 );
 
+cardSetTest(
+  new VillainGroups(Object.values(VillainGroups.SHIELD)),
+  2,
+  GameSets.SHIELD
+);
+
 describe('Total Schemes sets', () => {
   let total: number;
 
@@ -62,7 +68,8 @@ describe('Total Schemes sets', () => {
       ...Object.values(VillainGroups.ANT_MAN),
       ...Object.values(VillainGroups.FANTASTIC_FOUR),
       ...Object.values(VillainGroups.PAINT_THE_TOWN_RED),
-      ...Object.values(VillainGroups.X_MEN)
+      ...Object.values(VillainGroups.X_MEN),
+      ...Object.values(VillainGroups.SHIELD)
     ].length
   });
 
