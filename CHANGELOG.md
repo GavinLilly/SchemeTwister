@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/GavinLilly/legendizer/compare/v1.13.0...v1.13.1) (2020-11-02)
+
+
+### Bug Fixes
+
+* **app:** set an expiry and path for our cookies ([880d4ef](https://github.com/GavinLilly/legendizer/commit/880d4efedaaee0b7b29175b28ed284b114b0900c))
+
 # [1.13.0](https://github.com/GavinLilly/legendizer/compare/v1.12.1...v1.13.0) (2020-10-15)
 
 
