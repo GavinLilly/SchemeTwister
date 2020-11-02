@@ -332,7 +332,8 @@
             "tsConfig": "libs/legendizer-lib/tsconfig.lib.json",
             "packageJson": "libs/legendizer-lib/package.json",
             "main": "libs/legendizer-lib/src/index.ts",
-            "assets": ["libs/legendizer-lib/*.md"]
+            "assets": ["libs/legendizer-lib/*.md"],
+            "srcRootForCompilationRoot": "libs\\legendizer-lib\\src"
           }
         }
       }
