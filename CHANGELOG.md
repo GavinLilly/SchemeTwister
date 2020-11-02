@@ -1,3 +1,15 @@
+# [1.14.0](https://github.com/GavinLilly/legendizer/compare/v1.13.0...v1.14.0) (2020-11-02)
+
+
+### Bug Fixes
+
+* **app:** set an expiry and path for our cookies ([880d4ef](https://github.com/GavinLilly/legendizer/commit/880d4efedaaee0b7b29175b28ed284b114b0900c))
+
+
+### Features
+
+* update codelyzer before Angular update ([0caf760](https://github.com/GavinLilly/legendizer/commit/0caf760038224b9a6ca806811c1e33c1b05aeba5))
+
 ## [1.13.1](https://github.com/GavinLilly/legendizer/compare/v1.13.0...v1.13.1) (2020-11-02)
 
 
