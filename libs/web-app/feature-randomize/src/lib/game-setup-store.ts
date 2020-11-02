@@ -63,7 +63,11 @@ export class GameSetupStore {
     this._gameSets.next(gameSets);
     this.cookieService.set(
       this.GAMESET_COOKIE_NAME,
-      gameSets.map((item) => item.id).join('|')
+      gameSets.map((item) => item.id).join('|'),
+      {
+        expires: 365,
+        path: '/',
+      }
     );
   }
 
@@ -71,7 +75,11 @@ export class GameSetupStore {
     this._numPlayers.next(numberPlayers);
     this.cookieService.set(
       this.NUMPLAYERS_COOKIE_NAME,
-      numberPlayers.toString()
+      numberPlayers.toString(),
+      {
+        expires: 365,
+        path: '/',
+      }
     );
   }
 
