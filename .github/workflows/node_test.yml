@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [14.x, 15.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -26,5 +26,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
+    - run: npm run build-version
     - run: npm run affected:build -- --base=origin/master
     - run: npm run affected:test -- --base=origin/master

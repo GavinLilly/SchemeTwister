@@ -1,9 +1,11 @@
 module.exports = {
-  testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
-  transform: {
-    '^.+\\.(ts|js|html)$': 'ts-jest',
-  },
-  resolver: '@nrwl/jest/plugins/resolver',
-  moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageReporters: ['html'],
+  projects: [
+    '<rootDir>/libs/api-interfaces',
+    '<rootDir>/apps/web-app',
+    '<rootDir>/apps/web-api',
+    '<rootDir>/libs/web-app/feature-randomize',
+    '<rootDir>/libs/web-app/feature-home',
+    '<rootDir>/libs/web-app/ui',
+    '<rootDir>/libs/legendizer-lib',
+  ],
 };
