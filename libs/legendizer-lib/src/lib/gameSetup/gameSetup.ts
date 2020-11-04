@@ -5,7 +5,12 @@ import { Heroes, IHero } from '../heroes';
 import { IMastermind, Masterminds } from '../masterminds';
 import { IScheme, numPlayers, Schemes } from '../schemes';
 import { IVillainGroup, VillainGroups } from '../villains';
-import { IGameSetup, IHeroDeck, IVillainDeck } from './gameSetup.interface';
+import {
+  IAdditionalDeck,
+  IGameSetup,
+  IHeroDeck,
+  IVillainDeck,
+} from './gameSetup.interface';
 
 export class GameSetup {
   private schemes: Schemes;
@@ -185,12 +190,26 @@ ${GameSets.ALL.filter((item) =>
       villains: selectedVillains.sort(sortNameComparator),
     };
 
-    return {
+    const gameSetup: IGameSetup = {
       scheme: scheme,
       mastermind: mastermind,
       numPlayers: numberPlayers,
       heroDeck: heroDeck,
       villainDeck: villainDeck,
     };
+
+    // Select random heroes for the additional deck, if it's specified
+    if (scheme.rules.additionalDeck !== undefined) {
+      gameSetup.additionalDeck = {
+        name: scheme.rules.additionalDeck.name,
+        heroes: this.heroes.shuffle(
+          scheme.rules.additionalDeck.cards.numHeroes,
+          undefined,
+          [...heroDeck.heroes, ...requiredVillainHeroes]
+        ),
+      };
+    }
+
+    return gameSetup;
   }
 }

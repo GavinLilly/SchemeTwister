@@ -1,3 +1,5 @@
+import { ICard } from '../cardSet';
+
 export type numPlayers = 2 | 3 | 4 | 5;
 
 interface IHeroDeck {
@@ -14,8 +16,16 @@ interface IVillainDeck {
   numHeroes?: Record<numPlayers, number>;
 }
 
+interface IAdditionalDeck {
+  name: string;
+  cards: {
+    numHeroes: number;
+  }
+}
+
 export interface IRules {
   heroDeck: IHeroDeck,
   villainDeck: IVillainDeck
   numWounds?: Record<numPlayers, number>;
+  additionalDeck?: IAdditionalDeck
 }

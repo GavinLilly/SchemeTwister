@@ -18,6 +18,11 @@ export interface IVillainDeck {
   twists: number
 }
 
+export interface IAdditionalDeck {
+  name: string;
+  heroes: IHero[];
+}
+
 export interface IGameSetup {
   numPlayers: number,
   scheme: IScheme,
@@ -25,4 +30,5 @@ export interface IGameSetup {
   heroDeck: IHeroDeck,
   villainDeck: IVillainDeck,
   numWounds?: number
+  additionalDeck?: IAdditionalDeck
 }
