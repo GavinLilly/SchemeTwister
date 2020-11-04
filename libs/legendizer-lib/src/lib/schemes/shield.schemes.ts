@@ -104,6 +104,12 @@ Twist 10: Evil Wins!`,
           5: 11,
         },
       },
+      additionalDeck: {
+        name: "Dark Loyalty",
+        cards: {
+          numHeroes: 1
+        }
+      }
     },
     gameSet: GameSets.SHIELD,
     cardType: CardType.SCHEME,
