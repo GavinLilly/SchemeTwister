@@ -170,4 +170,39 @@
       </div>
     </div>
   </div>
+  <div *ngIf="(gameSetupStore.gameSetup | async).additionalDeck" class="row row-cols-1">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">{{ (gameSetupStore.gameSetup | async).additionalDeck?.name }}</div>
+        <div class="card-body p-0">
+          <ngb-accordion [closeOthers]="true">
+            <ngb-panel
+              *ngFor="
+                let item of (gameSetupStore.gameSetup | async).additionalDeck?.heroes
+              "
+              id="panel-{{ item.id }}"
+            >
+              <ng-template ngbPanelHeader>
+                <div class="d-flex align-items-center justify-content-between">
+                  <button ngbPanelToggle class="btn btn-link m-0">
+                    {{ item.name }}
+                  </button>
+                  <img
+                    *ngIf="item.team"
+                    src="{{ item.team.icon }}"
+                    alt="{{ item.team.name }}"
+                    class="img-fluid"
+                    id="hero-team"
+                  />
+                </div>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                <legendizer-heroes [hero]="item"></legendizer-heroes>
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
