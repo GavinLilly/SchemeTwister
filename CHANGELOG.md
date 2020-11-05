@@ -1,3 +1,16 @@
+# [1.15.0](https://github.com/GavinLilly/legendizer/compare/v1.14.0...v1.15.0) (2020-11-05)
+
+
+### Bug Fixes
+
+* **legendizer-lib:** add missing 'Dark Loyalty' deck ([fedcc14](https://github.com/GavinLilly/legendizer/commit/fedcc14c4c6d3d0019f2949650f0e915a2870638))
+
+
+### Features
+
+* **app:** add UI element for additional deck ([3baceb6](https://github.com/GavinLilly/legendizer/commit/3baceb626665d7ed725e7c9182fb6e1197c36c87))
+* **legendizer-lib:** allow an additional deck to be defined ([af02956](https://github.com/GavinLilly/legendizer/commit/af029568939f6766a18f8a947e2db1371fa81588))
+
 # [1.14.0](https://github.com/GavinLilly/legendizer/compare/v1.13.0...v1.14.0) (2020-11-02)
 
 
