@@ -89,7 +89,8 @@ describe('Villain deck', () => {
       GameSets.DARK_CITY,
       GameSets.GUARDIANS_OF_THE_GALAXY,
       GameSets.PAINT_THE_TOWN_RED,
-      GameSets.X_MEN
+      GameSets.X_MEN,
+      GameSets.SHIELD
     );
   });
 
@@ -203,6 +204,24 @@ describe('Villain deck', () => {
         Schemes.X_MEN.THE_DARK_PHOENIX_SAGA
       );
       expect(game.villainDeck.heroes).toContain(Heroes.X_MEN.PHOENIX);
+    });
+  });
+
+  describe('Secret Empire of Betrayal', () => {
+    beforeAll(() => {
+      game = setup.generateGame(2, Schemes.SHIELD.SECRET_EMPIRE_OF_BETRAYAL);
+    });
+
+    describe('additional deck', () => {
+      it('should be defined', () => expect(game.additionalDeck).toBeDefined());
+      it('should be called "Dark Loyalty"', () =>
+        expect(game.additionalDeck?.name).toEqual('Dark Loyalty'));
+      it('should contain a hero', () =>
+        expect(game.additionalDeck?.heroes.length).toEqual(1));
+      it('should contain a hero not in the main hero deck', () =>
+        expect(game.heroDeck.heroes).not.toContain(
+          game.additionalDeck?.heroes
+        ));
     });
   });
 });
