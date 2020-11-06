@@ -10,7 +10,7 @@
             <a
               (click)="pickGameSets()"
               href="javascript:void(0)"
-              class="mb-1 text-black"
+              class="text-black"
             >
               <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
             </a>
@@ -44,9 +44,51 @@
       ></legendizer-mastermind>
     </div>
     <div class="col mb-4">
-      <legendizer-scheme
-        [scheme]="(gameSetupStore.gameSetup | async).scheme"
-      ></legendizer-scheme>
+      <ngb-accordion>
+        <ngb-panel>
+          <ng-template ngbPanelHeader>
+            <div class="d-flex align-items-center justify-content-between">
+              <button ngbPanelToggle class="btn btn-link m-0">
+                {{ (gameSetupStore.gameSetup | async).scheme.name }}
+              </button>
+              <fa-icon *ngIf="schemeLocked"
+                [icon]="faLock"
+                class="ml-auto"
+                id="scheme-lock"
+              ></fa-icon>
+              <a
+                (click)="pickScheme()"
+                href="javascript:void(0)"
+                class="text-black"
+              >
+                <fa-icon
+                  [icon]="faCog"
+                  class="ml-auto"
+                  id="set-scheme"
+                ></fa-icon>
+              </a>
+            </div>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <p class="card-text">
+              <b>Setup: </b
+              >{{ (gameSetupStore.gameSetup | async).scheme.setup }}
+            </p>
+            <p class="card-text">
+              <b>Twist: </b
+              >{{ (gameSetupStore.gameSetup | async).scheme.twist }}
+            </p>
+            <p class="card-text">
+              <b>Evil Wins: </b
+              >{{ (gameSetupStore.gameSetup | async).scheme.evilWins }}
+            </p>
+            <p class="card-text">
+              <b>Game set: </b
+              >{{ (gameSetupStore.gameSetup | async).scheme.gameSet.name }}
+            </p>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
     </div>
   </div>
   <div class="row row-cols-1 row-cols-md-2">
@@ -170,15 +212,21 @@
       </div>
     </div>
   </div>
-  <div *ngIf="(gameSetupStore.gameSetup | async).additionalDeck" class="row row-cols-1">
+  <div
+    *ngIf="(gameSetupStore.gameSetup | async).additionalDeck"
+    class="row row-cols-1"
+  >
     <div class="col">
       <div class="card">
-        <div class="card-header">{{ (gameSetupStore.gameSetup | async).additionalDeck?.name }}</div>
+        <div class="card-header">
+          {{ (gameSetupStore.gameSetup | async).additionalDeck?.name }}
+        </div>
         <div class="card-body p-0">
           <ngb-accordion [closeOthers]="true">
             <ngb-panel
               *ngFor="
-                let item of (gameSetupStore.gameSetup | async).additionalDeck?.heroes
+                let item of (gameSetupStore.gameSetup | async).additionalDeck
+                  ?.heroes
               "
               id="panel-{{ item.id }}"
             >
