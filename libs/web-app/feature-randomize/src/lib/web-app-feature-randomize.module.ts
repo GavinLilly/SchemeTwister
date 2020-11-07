@@ -11,7 +11,7 @@ import { WebAppUiModule } from '@legendizer/web-app/ui';
 import { GameSetSelectComponent } from './game-set-select/game-set-select.component';
 import { GameSetupStore } from './game-setup-store';
 import { RandomizeComponent } from './randomize/randomize.component';
-import { SchemeSelectComponent } from './scheme-select/scheme-select.component';
+import { SchemeMastermindSelectComponent } from './scheme-mastermind-select/scheme-mastermind-select.component';
 
 @NgModule({
   imports: [
@@ -27,7 +27,7 @@ import { SchemeSelectComponent } from './scheme-select/scheme-select.component';
   declarations: [
     RandomizeComponent,
     GameSetSelectComponent,
-    SchemeSelectComponent,
+    SchemeMastermindSelectComponent,
   ],
   providers: [GameSetupStore, CookieService],
   entryComponents: [GameSetSelectComponent],

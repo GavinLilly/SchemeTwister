@@ -4,22 +4,22 @@ import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
 
 import { GameSetupStore } from '../game-setup-store';
-import { SchemeSelectComponent } from './scheme-select.component';
+import { SchemeMastermindSelectComponent } from './scheme-mastermind-select.component';
 
-describe('SchemeSelectComponent', () => {
-  let component: SchemeSelectComponent;
-  let fixture: ComponentFixture<SchemeSelectComponent>;
+describe('SchemeMastermindSelectComponent', () => {
+  let component: SchemeMastermindSelectComponent;
+  let fixture: ComponentFixture<SchemeMastermindSelectComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SchemeSelectComponent],
+      declarations: [SchemeMastermindSelectComponent],
       imports: [NgbModule, FormsModule],
       providers: [GameSetupStore, CookieService, NgbActiveModal],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SchemeSelectComponent);
+    fixture = TestBed.createComponent(SchemeMastermindSelectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { faCog, faLock } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
+import { CardType } from '@legendizer/legendizer-lib';
+
 import { GameSetSelectComponent } from '../game-set-select/game-set-select.component';
 import { GameSetupStore } from '../game-setup-store';
-import { SchemeSelectComponent } from '../scheme-select/scheme-select.component';
+import { SchemeMastermindSelectComponent } from '../scheme-mastermind-select/scheme-mastermind-select.component';
 
 @Component({
   selector: 'legendizer-randomize',
@@ -16,6 +18,7 @@ export class RandomizeComponent implements OnInit {
   faCog = faCog;
   faLock = faLock;
   schemeLocked = false;
+  mastermindLocked = false;
 
   constructor(
     public gameSetupStore: GameSetupStore,
@@ -28,7 +31,10 @@ export class RandomizeComponent implements OnInit {
     );
     this.gameSetupStore.definedScheme.subscribe(
       (value) => (this.schemeLocked = !value.random)
-    )
+    );
+    this.gameSetupStore.definedMastermind.subscribe(
+      (value) => (this.mastermindLocked = !value.random)
+    );
     this.generateDecks();
   }
 
@@ -45,6 +51,17 @@ export class RandomizeComponent implements OnInit {
   }
 
   pickScheme() {
-    const modalRef = this.modalService.open(SchemeSelectComponent);
+    const modalRef = this.modalService.open(SchemeMastermindSelectComponent);
+    modalRef.componentInstance.itemType = CardType.SCHEME;
+  }
+
+  pickMastermind() {
+    const modalRef = this.modalService.open(SchemeMastermindSelectComponent);
+    modalRef.componentInstance.itemType = CardType.MASTERMIND;
+  }
+
+  reset() {
+    this.gameSetupStore.setDefinedItem({ random: true }, CardType.SCHEME);
+    this.gameSetupStore.setDefinedItem({ random: true }, CardType.MASTERMIND);
   }
 }

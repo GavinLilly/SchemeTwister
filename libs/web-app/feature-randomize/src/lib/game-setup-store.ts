@@ -3,13 +3,14 @@ import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import {
+  CardType,
   GameSets,
   GameSetup,
   IGameSet,
   IGameSetup,
   IMastermind,
   IScheme,
-  numPlayers
+  numPlayers,
 } from '@legendizer/legendizer-lib';
 
 import { IDefinedItem } from './defined-item.interface';
@@ -36,6 +37,10 @@ export class GameSetupStore {
   // Our variables for storing defined schemes or random choice
   private _definedScheme: BehaviorSubject<IDefinedItem>;
   public readonly definedScheme: Observable<IDefinedItem>;
+
+  // Our variables for storing defined schemes or random choice
+  private _definedMastermind: BehaviorSubject<IDefinedItem>;
+  public readonly definedMastermind: Observable<IDefinedItem>;
 
   constructor(private cookieService: CookieService) {
     this._gameSets = new BehaviorSubject(
@@ -64,6 +69,11 @@ export class GameSetupStore {
     } as IDefinedItem);
     this.definedScheme = this._definedScheme.asObservable();
 
+    this._definedMastermind = new BehaviorSubject({
+      random: true,
+    } as IDefinedItem);
+    this.definedMastermind = this._definedMastermind.asObservable();
+
     this.gameSetup = this._gameSetup.asObservable();
 
     this.numPlayers.subscribe(() => {
@@ -87,8 +97,10 @@ export class GameSetupStore {
     );
   }
 
-  setScheme(scheme: IDefinedItem) {
-    this._definedScheme.next(scheme);
+  setDefinedItem(item: IDefinedItem, cardType: CardType) {
+    if (cardType === CardType.SCHEME) this._definedScheme.next(item);
+    else if (cardType === CardType.MASTERMIND)
+      this._definedMastermind.next(item);
 
     this.shuffle();
   }
@@ -107,12 +119,17 @@ export class GameSetupStore {
 
   shuffle(mastermind?: IMastermind) {
     const definedScheme: IDefinedItem = this._definedScheme.getValue();
+    const definedMastermind: IDefinedItem = this._definedMastermind.getValue();
 
     this._gameSetup.next(
       this._setup.generateGame(
         this._numPlayers.getValue() as numPlayers,
-        definedScheme.random ? undefined : definedScheme.definedItem as IScheme,
-        mastermind
+        definedScheme.random
+          ? undefined
+          : (definedScheme.definedItem as IScheme),
+        definedMastermind.random
+          ? undefined
+          : (definedMastermind.definedItem as IMastermind)
       )
     );
   }
