@@ -1,3 +1,11 @@
+# [1.16.0](https://github.com/GavinLilly/legendizer/compare/v1.15.0...v1.16.0) (2020-11-07)
+
+
+### Features
+
+* **app:** add ability to pick the Mastermind ([241ca15](https://github.com/GavinLilly/legendizer/commit/241ca15acb98817473215b6eb403dba507dad101))
+* **app:** add ability to select a scheme manually ([a15ab2a](https://github.com/GavinLilly/legendizer/commit/a15ab2add4443b0553757a253c3c861b5650b138))
+
 # [1.15.0](https://github.com/GavinLilly/legendizer/compare/v1.14.0...v1.15.0) (2020-11-05)
 
 
