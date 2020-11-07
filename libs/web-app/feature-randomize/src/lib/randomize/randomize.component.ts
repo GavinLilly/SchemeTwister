@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faLock } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { CardType } from '@legendizer/legendizer-lib';
 
 import { GameSetSelectComponent } from '../game-set-select/game-set-select.component';
 import { GameSetupStore } from '../game-setup-store';
+import { SchemeMastermindSelectComponent } from '../scheme-mastermind-select/scheme-mastermind-select.component';
 
 @Component({
   selector: 'legendizer-randomize',
@@ -13,6 +16,9 @@ import { GameSetupStore } from '../game-setup-store';
 export class RandomizeComponent implements OnInit {
   numPlayers = 2;
   faCog = faCog;
+  faLock = faLock;
+  schemeLocked = false;
+  mastermindLocked = false;
 
   constructor(
     public gameSetupStore: GameSetupStore,
@@ -22,6 +28,12 @@ export class RandomizeComponent implements OnInit {
   ngOnInit(): void {
     this.gameSetupStore.numPlayers.subscribe(
       (value) => (this.numPlayers = value)
+    );
+    this.gameSetupStore.definedScheme.subscribe(
+      (value) => (this.schemeLocked = !value.random)
+    );
+    this.gameSetupStore.definedMastermind.subscribe(
+      (value) => (this.mastermindLocked = !value.random)
     );
     this.generateDecks();
   }
@@ -36,5 +48,20 @@ export class RandomizeComponent implements OnInit {
 
   pickGameSets() {
     const modalRef = this.modalService.open(GameSetSelectComponent);
+  }
+
+  pickScheme() {
+    const modalRef = this.modalService.open(SchemeMastermindSelectComponent);
+    modalRef.componentInstance.itemType = CardType.SCHEME;
+  }
+
+  pickMastermind() {
+    const modalRef = this.modalService.open(SchemeMastermindSelectComponent);
+    modalRef.componentInstance.itemType = CardType.MASTERMIND;
+  }
+
+  reset() {
+    this.gameSetupStore.setDefinedItem({ random: true }, CardType.SCHEME);
+    this.gameSetupStore.setDefinedItem({ random: true }, CardType.MASTERMIND);
   }
 }

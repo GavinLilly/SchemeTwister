@@ -3,6 +3,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import {
+  CardType,
   GameSets,
   GameSetup,
   IGameSet,
@@ -12,19 +13,34 @@ import {
   numPlayers,
 } from '@legendizer/legendizer-lib';
 
+import { IDefinedItem } from './defined-item.interface';
+
 @Injectable()
 export class GameSetupStore {
+  // Variables for storing selected game sets
   private GAMESET_COOKIE_NAME = 'SelectedGameSets';
   private _gameSets: BehaviorSubject<IGameSet[]>;
   public readonly gameSets: Observable<IGameSet[]>;
 
+  // Variables for storing the number of players
   private NUMPLAYERS_COOKIE_NAME = 'NumberPlayers';
   private _numPlayers: BehaviorSubject<number>;
   public readonly numPlayers: Observable<number>;
 
+  // Our class for generating game setups
   private _setup: GameSetup;
+
+  // Our variables for storing the generated setup
   private _gameSetup: BehaviorSubject<IGameSetup>;
   public readonly gameSetup: Observable<IGameSetup>;
+
+  // Our variables for storing defined schemes or random choice
+  private _definedScheme: BehaviorSubject<IDefinedItem>;
+  public readonly definedScheme: Observable<IDefinedItem>;
+
+  // Our variables for storing defined schemes or random choice
+  private _definedMastermind: BehaviorSubject<IDefinedItem>;
+  public readonly definedMastermind: Observable<IDefinedItem>;
 
   constructor(private cookieService: CookieService) {
     this._gameSets = new BehaviorSubject(
@@ -47,6 +63,16 @@ export class GameSetupStore {
     this._gameSetup = new BehaviorSubject(
       this._setup.generateGame(this._numPlayers.getValue() as numPlayers)
     );
+
+    this._definedScheme = new BehaviorSubject({
+      random: true,
+    } as IDefinedItem);
+    this.definedScheme = this._definedScheme.asObservable();
+
+    this._definedMastermind = new BehaviorSubject({
+      random: true,
+    } as IDefinedItem);
+    this.definedMastermind = this._definedMastermind.asObservable();
 
     this.gameSetup = this._gameSetup.asObservable();
 
@@ -71,6 +97,14 @@ export class GameSetupStore {
     );
   }
 
+  setDefinedItem(item: IDefinedItem, cardType: CardType) {
+    if (cardType === CardType.SCHEME) this._definedScheme.next(item);
+    else if (cardType === CardType.MASTERMIND)
+      this._definedMastermind.next(item);
+
+    this.shuffle();
+  }
+
   setNumPlayers(numberPlayers: number) {
     this._numPlayers.next(numberPlayers);
     this.cookieService.set(
@@ -83,12 +117,19 @@ export class GameSetupStore {
     );
   }
 
-  shuffle(scheme?: IScheme, mastermind?: IMastermind) {
+  shuffle(mastermind?: IMastermind) {
+    const definedScheme: IDefinedItem = this._definedScheme.getValue();
+    const definedMastermind: IDefinedItem = this._definedMastermind.getValue();
+
     this._gameSetup.next(
       this._setup.generateGame(
         this._numPlayers.getValue() as numPlayers,
-        scheme,
-        mastermind
+        definedScheme.random
+          ? undefined
+          : (definedScheme.definedItem as IScheme),
+        definedMastermind.random
+          ? undefined
+          : (definedMastermind.definedItem as IMastermind)
       )
     );
   }

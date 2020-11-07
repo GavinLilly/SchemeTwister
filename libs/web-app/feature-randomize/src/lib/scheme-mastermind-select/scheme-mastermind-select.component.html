@@ -1,0 +1,28 @@
+<div class="modal-header">
+  <h4 class="modal-title">Select {{ itemType }}</h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  >
+    <span aria-hidden="true" style="font-family: Arial;">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <select class="form-control" [(ngModel)]="selectedItem">
+    <option>**Random**</option>
+    <option *ngFor="let scheme of availableItems" [ngValue]="scheme.id">{{
+      scheme.name
+    }}</option>
+  </select>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-outline-dark"
+    (click)="setItem(); activeModal.close('Close click')"
+  >
+    Save
+  </button>
+</div>
