@@ -1,3 +1,10 @@
+## [1.16.1](https://github.com/GavinLilly/legendizer/compare/v1.16.0...v1.16.1) (2020-11-14)
+
+
+### Bug Fixes
+
+* **app:** fix accessing the randomize URI immediately ([cb01afb](https://github.com/GavinLilly/legendizer/commit/cb01afb3755b4dc8b2587ea8e64f30ef384728a7)), closes [#30](https://github.com/GavinLilly/legendizer/issues/30)
+
 # [1.16.0](https://github.com/GavinLilly/legendizer/compare/v1.15.0...v1.16.0) (2020-11-07)
 
 
