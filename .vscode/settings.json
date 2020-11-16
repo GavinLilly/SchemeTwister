@@ -1,5 +1,6 @@
 {
   "editor.rulers": [
     80
-  ]
+  ],
+  "commitizen.subjectLength": 72
 }
