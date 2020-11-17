@@ -30,7 +30,7 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "class-to-json": "ts-node --project tools/tsconfig.tools.json tools/scripts/classToJSON.ts",
-    "commit": "git-cz",
+    "commit": "cz",
     "build-version": "genversion --es6 --semi libs/web-app/ui/src/lib/footer/version.ts"
   },
   "private": true,
@@ -90,10 +90,10 @@
     "@types/node": "~8.9.4",
     "codelyzer": "~6.0.1",
     "commitiquette": "^1.0.4",
-    "commitizen": "^4.1.2",
+    "commitizen": "^4.2.2",
     "conventional-changelog-conventionalcommits": "^4.4.0",
     "cypress": "^4.1.0",
-    "cz-conventional-changelog": "^3.2.0",
+    "cz-conventional-changelog": "^3.3.0",
     "dotenv": "6.2.0",
     "eslint": "7.10.0",
     "husky": "^4.2.5",
@@ -110,7 +110,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "commitiquette"
+      "path": "./node_modules/commitiquette"
     }
   },
   "release": {
@@ -169,7 +169,6 @@
   },
   "husky": {
     "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }

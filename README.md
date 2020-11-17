@@ -51,6 +51,12 @@ npm install
 nx serve web-app
 ```
 
+- Commit your changes
+
+```shell
+npm run cm
+```
+
 ---
 
 ## Features
