@@ -18,6 +18,6 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          CI_REGISTRY_USER: ${{ secrets.DOCKER_USERNAME }}
+          CI_REGISTRY_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: npx semantic-release
