@@ -153,12 +153,7 @@
         }
       ],
       [
-        "@alexbabel/semantic-release-docker",
-        {
-          "CI_REGISTRY": "docker.io",
-          "CI_REGISTRY_NAME": "$CI_REGISTRY/gavtherav/legendizer",
-          "CI_REGISTRY_IMAGE": "Dockerfile.angular"
-        }
+        "@alexbabel/semantic-release-docker"
       ]
     ]
   },
