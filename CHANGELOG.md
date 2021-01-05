@@ -1,3 +1,10 @@
+## [1.16.2](https://github.com/GavinLilly/legendizer/compare/v1.16.1...v1.16.2) (2021-01-05)
+
+
+### Bug Fixes
+
+* **app:** correct villain group term on home page ([6731399](https://github.com/GavinLilly/legendizer/commit/67313996c22e9266933a659f637f064d1f0dde15))
+
 ## [1.16.1](https://github.com/GavinLilly/legendizer/compare/v1.16.0...v1.16.1) (2020-11-14)
 
 
