@@ -1,0 +1,50 @@
+.card {
+  margin: 1rem;
+}
+
+#hero-team {
+  height: 32px;
+}
+
+.card-header,
+button.btn.btn-link {
+  font-family: Bangers;
+  font-size: 1.05rem;
+}
+
+::ng-deep .card {
+  .accordion {
+    .Henchmen {
+      .card-header {
+        background-color: rgb(255, 254, 197);
+      }
+    }
+
+    .Hero {
+      .card-header {
+        background-color: rgb(204, 250, 204);
+      }
+    }
+
+    .Mastermind {
+      .card-header {
+        background-color: rgb(255, 227, 227);
+      }
+    }
+
+    .Villain {
+      .card-header {
+        background-color: rgb(255, 236, 199);
+      }
+    }
+  }
+}
+
+.lock-item {
+  margin-right: 1rem;
+}
+
+.btn {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}

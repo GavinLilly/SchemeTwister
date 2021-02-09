@@ -1,12 +1,40 @@
 import { Bystanders } from '../bystanders/bystanders';
+import { CardType } from '../cardSet';
 import { GameSets, GameSetSize } from '../gamesets';
 import { Henchmen } from '../henchmen';
-import { Heroes } from '../heroes';
-import { Masterminds } from '../masterminds';
-import { Schemes } from '../schemes';
+import { Heroes, IHero } from '../heroes';
+import { IMastermind, Masterminds } from '../masterminds';
+import { numPlayers, Schemes } from '../schemes';
+import { Teams } from '../teams';
 import { VillainGroups } from '../villains';
 import { GameSetup } from './gameSetup';
 import { IGameSetup } from './gameSetup.interface';
+
+describe('All cards', () => {
+  it('should have unique IDs', () => {
+    const iDs: string[] = [
+      ...Bystanders.ALL,
+      ...Henchmen.ALL,
+      ...Heroes.ALL,
+      ...Masterminds.ALL,
+      ...Schemes.ALL,
+      ...VillainGroups.ALL,
+      ...GameSets.ALL,
+    ].map((item) => item.id);
+
+    const findDupes = (arr: string[]) => {
+      const sortedArr = arr.slice().sort();
+      let results = [];
+      for (let i = 0; i < sortedArr.length - 1; i++) {
+        if (sortedArr[i + 1] == sortedArr[i]) results.push(sortedArr[i]);
+      }
+      return results;
+    };
+
+    const dupes = findDupes(iDs);
+    expect(dupes).toHaveLength(0);
+  });
+});
 
 describe('GameSetup', () => {
   it('should create with all Gamesets', () => {
@@ -29,324 +57,636 @@ describe('GameSetup', () => {
   });
 });
 
+let setup: GameSetup;
+let game: IGameSetup;
+
 describe('Game creation', () => {
-  let setup: GameSetup;
-  let game: IGameSetup;
+  beforeAll(() => {
+    setup = new GameSetup(GameSets.LEGENDARY, GameSets.DARK_CITY);
+  });
+  it('should fail if the scheme is not in the list of game sets', () => {
+    expect(() =>
+      setup.generateGame(2, Schemes.X_MEN.THE_DARK_PHOENIX_SAGA)
+    ).toThrow();
+  });
+
+  it('should fail without any players specified', () =>
+    expect(() => setup.generateGame(1 as numPlayers)).toThrow());
+});
+
+describe.each([
+  [2, 5, 2, 1, 2, 8],
+  [3, 5, 3, 1, 8, 8],
+  [4, 5, 3, 2, 8, 8],
+  [5, 6, 4, 2, 12, 8],
+])(
+  'A game created with default rules, with %i players',
+  (players, heroes, villains, henchmen, bystanders, twists) => {
+    beforeAll(() => {
+      setup = new GameSetup(GameSets.LEGENDARY);
+      game = setup.generateGame(
+        players as numPlayers,
+        Schemes.LEGENDARY.UNLEASH_THE_POWER_OF_THE_COSMIC_CUBE
+      );
+    });
+
+    it(`should have ${players} players`, () =>
+      expect(game.numPlayers).toEqual(players));
+
+    it('should have a scheme', () => expect(game.scheme).toBeTruthy());
+
+    it('should have a mastermind', () => expect(game.mastermind).toBeTruthy());
+
+    it(`should have ${heroes} heroes`, () =>
+      expect(
+        game.heroDeck.cards.filter((card) => card.cardType === CardType.HERO)
+      ).toHaveLength(heroes));
+
+    it(`should have ${villains} villains`, () =>
+      expect(
+        game.villainDeck.cards.filter(
+          (card) => card.cardType === CardType.VILLAINGROUP
+        )
+      ).toHaveLength(villains));
+
+    it(`should have ${henchmen} henchmen`, () =>
+      expect(
+        game.villainDeck.cards.filter(
+          (card) => card.cardType === CardType.HENCHMEN
+        )
+      ).toHaveLength(henchmen));
+
+    it(`should have ${bystanders} bystanders`, () =>
+      expect(game.villainDeck.numBystanders).toEqual(bystanders));
+
+    it(`should have ${twists} twists`, () =>
+      expect(game.villainDeck.numTwists).toEqual(twists));
+  }
+);
+
+describe('Specific scheme tests', () => {
+  const playerCounts = [2, 3, 4, 5];
 
   beforeAll(() => {
     setup = new GameSetup(...GameSets.ALL);
   });
 
-  describe('should fail', () => {
-    it('if the scheme is not in the list of game sets', () => {
-      setup = new GameSetup(GameSets.LEGENDARY);
-      expect(() =>
-        setup.generateGame(2, Schemes.X_MEN.THE_DARK_PHOENIX_SAGA)
-      ).toThrow();
-    });
-  });
+  describe.each(playerCounts)(
+    'Secret Invasion of the Skrull Shapeshifters',
+    (players) => {
+      it('should include Skrulls in the villain deck', () => {
+        game = setup.generateGame(
+          players as numPlayers,
+          Schemes.LEGENDARY.SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS
+        );
+        expect(game.villainDeck.cards).toContain(
+          VillainGroups.LEGENDARY.SKRULLS
+        );
+      });
+    }
+  );
 
-  describe('should have', () => {
+  describe.each(playerCounts)('The Kree-Skrull War', (players) => {
     beforeAll(() => {
-      game = setup.generateGame(2);
-    });
-
-    it('a scheme', () => expect(game.scheme).toBeTruthy());
-    it('a mastermind', () => expect(game.mastermind).toBeTruthy());
-    it('some heroes', () =>
-      expect(game.heroDeck.heroes.length).toBeGreaterThan(0));
-    it('some villains', () =>
-      expect(game.villainDeck.villains.length).toBeGreaterThan(0));
-    it('some henchmen', () =>
-      expect(game.villainDeck.henchmen.length).toBeGreaterThan(0));
-    it('2 players', () => expect(game.numPlayers).toEqual(2));
-  });
-});
-
-describe('All cards', () => {
-  it('should have unique IDs', () => {
-    const iDs: string[] = [
-      ...Bystanders.ALL,
-      ...Henchmen.ALL,
-      ...Heroes.ALL,
-      ...Masterminds.ALL,
-      ...Schemes.ALL,
-      ...VillainGroups.ALL,
-      ...GameSets.ALL,
-    ].map((item) => item.id);
-    const uniqueIDs: Set<string> = new Set(iDs);
-    expect(iDs).toHaveLength(uniqueIDs.size);
-  });
-});
-
-describe('Villain deck', () => {
-  let setup: GameSetup;
-  let game: IGameSetup;
-
-  beforeAll(() => {
-    setup = new GameSetup(
-      GameSets.LEGENDARY,
-      GameSets.DARK_CITY,
-      GameSets.GUARDIANS_OF_THE_GALAXY,
-      GameSets.PAINT_THE_TOWN_RED
-    );
-  });
-
-  describe('Villain groups', () => {
-    it('should include Skrulls', () => {
       game = setup.generateGame(
-        2,
-        Schemes.LEGENDARY.SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS
-      );
-      expect(game.villainDeck.villains).toContain(
-        VillainGroups.LEGENDARY.SKRULLS
-      );
-    });
-
-    it('should include Four Horsemen', () => {
-      game = setup.generateGame(
-        2,
-        Schemes.LEGENDARY.MIDTOWN_BANK_ROBBERY,
-        Masterminds.DARK_CITY.APOCALYPSE
-      );
-      expect(game.villainDeck.villains).toContain(
-        VillainGroups.DARK_CITY.FOUR_HORSEMEN
-      );
-    });
-
-    it('should include Kree and Skrull', () => {
-      game = setup.generateGame(
-        2,
+        players as numPlayers,
         Schemes.GUARDIANS_OF_THE_GALAXY.THE_KREE_SKRULL_WAR
       );
-      expect(game.villainDeck.villains).toContain(
-        VillainGroups.GUARDIANS_OF_THE_GALAXY.KREE_STARFORCE
-      );
-      expect(game.villainDeck.villains).toContain(
-        VillainGroups.LEGENDARY.SKRULLS
-      );
     });
 
-    it('should include the Sinister Six', () => {
+    it('should contain the Kree Startforce in the villain deck', () =>
+      expect(game.villainDeck.cards).toContain(
+        VillainGroups.GUARDIANS_OF_THE_GALAXY.KREE_STARFORCE
+      ));
+
+    it('should contain the Skrull in the villain deck', () =>
+      expect(game.villainDeck.cards).toContain(
+        VillainGroups.LEGENDARY.SKRULLS
+      ));
+  });
+
+  describe.each(playerCounts)('Splice Humans with Spider-DNA', (players) => {
+    it('should contain the Sinister Six in the villain deck', () => {
       game = setup.generateGame(
-        2,
+        players as numPlayers,
         Schemes.PAINT_THE_TOWN_RED.SPLICE_HUMANS_WITH_SPIDER_DNA
       );
-      expect(game.villainDeck.villains).toContain(
+      expect(game.villainDeck.cards).toContain(
         VillainGroups.PAINT_THE_TOWN_RED.SINISTER_SIX
       );
     });
   });
 
-  describe('Henchmen', () => {
-    it('should include Maggia Goons', () => {
-      game = setup.generateGame(2, Schemes.DARK_CITY.ORGANIZED_CRIME_WAVE);
-      expect(game.villainDeck.henchmen).toContain(
-        Henchmen.DARK_CITY.MAGGIA_GOONS
-      );
-    });
-    it('should include Doombots', () => {
+  describe.each(playerCounts)('Organized Crime Wave', (players) => {
+    it('should contain Maggia Goons in the villain deck', () => {
       game = setup.generateGame(
-        2,
-        Schemes.LEGENDARY.MIDTOWN_BANK_ROBBERY,
-        Masterminds.LEGENDARY.DR_DOOM
+        players as numPlayers,
+        Schemes.DARK_CITY.ORGANIZED_CRIME_WAVE
       );
-      expect(game.villainDeck.henchmen).toContain(
-        Henchmen.LEGENDARY.DOOMBOT_LEGION
-      );
+      expect(game.villainDeck.cards).toContain(Henchmen.DARK_CITY.MAGGIA_GOONS);
     });
   });
 
-  describe('Heroes', () => {
-    it('should include Jean Grey', () => {
+  describe.each(playerCounts)('Transform Citizens into Demons', (players) => {
+    beforeAll(() => {
       game = setup.generateGame(
-        2,
+        players as numPlayers,
         Schemes.DARK_CITY.TRANSFORM_CITIZENS_INTO_DEMONS
       );
-      expect(game.villainDeck.heroes).toContain(Heroes.DARK_CITY.JEAN_GREY);
-      expect(game.heroDeck.heroes).not.toContain(Heroes.DARK_CITY.JEAN_GREY);
     });
+
+    it('should contain Jean Grey in the villain deck', () =>
+      expect(game.villainDeck.cards).toContain(Heroes.DARK_CITY.JEAN_GREY));
+
+    it('should not contain Jean Grey in the hero deck', () =>
+      expect(game.heroDeck.cards).not.toContain(Heroes.DARK_CITY.JEAN_GREY));
+  });
+
+  describe.each(playerCounts)("X-cutioner's song", (players) => {
     it('should put a hero in the villain deck', () => {
-      game = setup.generateGame(2, Schemes.DARK_CITY.XCUTIONERS_SONG);
-      expect(game.villainDeck.heroes).toBeDefined();
-      expect(game.villainDeck.heroes?.length).toBeGreaterThan(0);
+      game = setup.generateGame(
+        players as numPlayers,
+        Schemes.DARK_CITY.XCUTIONERS_SONG
+      );
+
+      expect(
+        game.villainDeck.cards.find((card) => card.cardType === CardType.HERO)
+      ).toBeDefined();
     });
   });
-});
 
-describe('Hero deck', () => {
-  let setup: GameSetup;
-  let game: IGameSetup;
+  describe.each(playerCounts)('Symbiotic Absorption', (players) => {
+    it('should include the villain group from the "Drained" mastermind in the villain deck', () => {
+      game = setup.generateGame(
+        players as numPlayers,
+        Schemes.VENOM.SYMBIOTIC_ABSORPTION
+      );
 
-  beforeAll(() => {
-    setup = new GameSetup(
-      GameSets.LEGENDARY,
-      GameSets.DARK_CITY,
-      GameSets.PAINT_THE_TOWN_RED
-    );
+      expect(game.villainDeck.cards).toContain(
+        (game.additionalDeck?.deck.cards.find(
+          (card) => card.cardType === CardType.MASTERMIND
+        ) as IMastermind).alwaysLeads[0]
+      );
+    });
   });
 
-  it('should contain bystanders in the hero deck', () => {
-    game = setup.generateGame(2, Schemes.DARK_CITY.SAVE_HUMANITY);
-    expect(game.heroDeck.bystanders).toBeTruthy();
+  describe.each(playerCounts)('Save Humanity', (players) => {
+    it('should contain bystanders in the hero deck', () => {
+      game = setup.generateGame(
+        players as numPlayers,
+        Schemes.DARK_CITY.SAVE_HUMANITY
+      );
+
+      expect(game.heroDeck.numBystanders).toBeGreaterThan(0);
+    });
   });
 
-  it('should contain a henchmen group in the hero deck', () => {
-    const gameSetup = setup.generateGame(
-      2,
-      Schemes.PAINT_THE_TOWN_RED.INVADE_THE_DAILY_BUGLE_NEWS_HQ
-    );
-    expect(gameSetup.heroDeck.henchmen).toBeDefined();
-    expect(gameSetup.heroDeck.henchmen?.length).toBeGreaterThan(0);
-  });
-});
+  describe.each(playerCounts)('Invade the Daily Bugle News HQ', (players) => {
+    it('should contain a henchmen group in the hero deck', () => {
+      game = setup.generateGame(
+        players as numPlayers,
+        Schemes.PAINT_THE_TOWN_RED.INVADE_THE_DAILY_BUGLE_NEWS_HQ
+      );
 
-describe('Additional deck', () => {
-  let setup: GameSetup;
-  let game: IGameSetup;
-
-  beforeAll(() => {
-    setup = new GameSetup(
-      GameSets.LEGENDARY,
-      GameSets.SHIELD,
-      GameSets.WORLD_WAR_HULK
-    );
+      expect(
+        game.heroDeck.cards.filter(
+          (card) => card.cardType === CardType.HENCHMEN
+        ).length
+      ).toBeGreaterThan(0);
+    });
   });
 
-  describe('Secret Empire of Betrayal', () => {
+  describe.each(playerCounts)('House of M', (players) => {
+    let heroes: IHero[];
     beforeAll(() => {
-      game = setup.generateGame(2, Schemes.SHIELD.SECRET_EMPIRE_OF_BETRAYAL);
+      game = setup.generateGame(
+        players as numPlayers,
+        Schemes.REVELATIONS.HOUSE_OF_M
+      );
+
+      heroes = game.heroDeck.cards.filter(
+        (card) => card.cardType === CardType.HERO
+      );
     });
 
-    it('should be defined', () => expect(game.additionalDeck).toBeDefined());
-    it('should be called "Dark Loyalty"', () =>
-      expect(game.additionalDeck?.name).toEqual('Dark Loyalty'));
-    it('should contain a hero', () =>
-      expect(game.additionalDeck?.cards.heroes?.length).toEqual(1));
-    it('should contain a hero not in the main hero deck', () =>
-      expect(game.heroDeck.heroes).not.toContain(
-        game.additionalDeck?.cards.heroes
+    it('should contain 4 X-Men heroes in the hero deck', () =>
+      expect(heroes.filter((hero) => hero.team === Teams.X_MEN)).toHaveLength(
+        4
+      ));
+
+    it('should contain 2 non-X-Men heroes in the hero deck', () =>
+      expect(heroes.filter((hero) => hero.team !== Teams.X_MEN)).toHaveLength(
+        2
       ));
   });
 
-  describe('Cytoplasm Spike Invasion', () => {
+  describe.each(playerCounts)(
+    'Deadpool kills the Marvel Universe',
+    (players) => {
+      it('should contain Deadpool in the hero deck', () => {
+        game = setup.generateGame(
+          players as numPlayers,
+          Schemes.DEADPOOL.DEADPOOL_KILLS_THE_MARVEL_UNIVERSE
+        );
+
+        expect(game.heroDeck.cards).toContain(Heroes.DEADPOOL.DEADPOOL);
+      });
+    }
+  );
+
+  describe.each(playerCounts)('Deadpool writes a scheme', (players) => {
+    it('should contain Deadpool in the hero deck', () => {
+      game = setup.generateGame(
+        players as numPlayers,
+        Schemes.DEADPOOL.DEADPOOL_WRITES_A_SCHEME
+      );
+
+      expect(game.heroDeck.cards).toContain(Heroes.DEADPOOL.DEADPOOL);
+    });
+  });
+
+  describe.each(playerCounts)('Destroy the Nova Corps', (players) => {
+    it('should contain only 1 Nova hero in the hero deck', () => {
+      game = setup.generateGame(
+        players as numPlayers,
+        Schemes.INTO_THE_COSMOS.DESTROY_THE_NOVA_CORPS
+      );
+
+      expect(
+        game.heroDeck.cards.filter((hero) =>
+          [Heroes.INTO_THE_COSMOS.NOVA, Heroes.CHAMPIONS.NOVA].includes(hero)
+        )
+      ).toHaveLength(1);
+    });
+  });
+
+  describe.each(playerCounts)('Secret Empire of Betrayal', (players) => {
     beforeAll(() => {
       game = setup.generateGame(
-        2,
+        players as numPlayers,
+        Schemes.SHIELD.SECRET_EMPIRE_OF_BETRAYAL
+      );
+    });
+
+    describe('should have an additional deck', () => {
+      it('called "Dark Loyalty"', () =>
+        expect(game.additionalDeck?.name).toEqual('Dark Loyalty'));
+
+      it('with 1 hero', () =>
+        expect(
+          game.additionalDeck?.deck.cards.filter(
+            (card) => card.cardType === CardType.HERO
+          )
+        ).toHaveLength(1));
+      it('with a hero that is not in the hero deck', () =>
+        expect(game.heroDeck.cards).not.toContain(
+          game.additionalDeck?.deck.cards
+        ));
+    });
+  });
+
+  describe.each(playerCounts)('Cytoplasm Spike Invasion', (players) => {
+    beforeAll(() => {
+      game = setup.generateGame(
+        players as numPlayers,
         Schemes.WORLD_WAR_HULK.CYTOPLASM_SPIKE_INVASION
       );
     });
 
-    it('additional deck should be defined', () =>
-      expect(game.additionalDeck).toBeDefined());
-    it('should be called "Infected Deck"', () =>
-      expect(game.additionalDeck?.name).toEqual('Infected Deck'));
-    it('henchmen should be defined', () =>
-      expect(game.additionalDeck?.cards.henchmen).toBeDefined());
-    it('should contain Cytoplasm Spike henchmen', () =>
-      expect(game.additionalDeck?.cards.henchmen).toContain(
-        Henchmen.WORLD_WAR_HULK.CYTOPLASM_SPIKES
-      ));
-    it('should require 20 bystanders', () =>
-      expect(game.additionalDeck?.cards.numBystanders).toEqual(20));
-  });
+    describe('should have an additional deck', () => {
+      it('called "Infected Deck"', () =>
+        expect(game.additionalDeck?.name).toEqual('Infected Deck'));
 
-  describe('Mutating Gamma Rays', () => {
-    beforeAll(() => {
-      game = setup.generateGame(2, Schemes.WORLD_WAR_HULK.MUTATING_GAMMA_RAYS);
+      it('should contain Cytoplasm Spike henchmen', () =>
+        expect(game.additionalDeck?.deck.cards).toContain(
+          Henchmen.WORLD_WAR_HULK.CYTOPLASM_SPIKES
+        ));
+
+      it('should require 20 bystanders', () =>
+        expect(game.additionalDeck?.deck.numBystanders).toEqual(20));
     });
-
-    it('additional deck should be defined', () =>
-      expect(game.additionalDeck).toBeDefined());
-    it('should be called "Mutation Pile"', () =>
-      expect(game.additionalDeck?.name).toEqual('Mutation Pile'));
-    it('heroes should be defined', () =>
-      expect(game.additionalDeck?.cards.heroes).toBeDefined());
-    it('should contain 1 hero', () =>
-      expect(game.additionalDeck?.cards.heroes).toHaveLength(1));
-    it('should contain a hero with a "Hulk" name', () =>
-      expect(
-        game.additionalDeck?.cards.heroes?.every((hero) =>
-          hero.name.toUpperCase().includes('HULK')
-        )
-      ).toBeTruthy());
-    it('should contain a hero not in the main hero deck', () =>
-      expect(game.heroDeck.heroes).not.toContain(
-        game.additionalDeck?.cards.heroes
-      ));
   });
 
-  describe('Shoot Hulk into Space', () => {
+  describe.each(playerCounts)('Avengers vs X-Men', (players) => {
+    let teamCount: { [team: string]: number };
+
     beforeAll(() => {
       game = setup.generateGame(
-        2,
+        players as numPlayers,
+        Schemes.CIVIL_WAR.AVENGERS_VS_XMEN
+      );
+
+      teamCount = {};
+      game.heroDeck.cards
+        .filter((card) => card.cardType === CardType.HERO)
+        .forEach((hero: IHero) => {
+          if (hero.team !== undefined)
+            if (teamCount[hero.team.name] !== undefined) {
+              teamCount[hero.team.name]++;
+            } else {
+              teamCount[hero.team.name] = 1;
+            }
+        });
+    });
+
+    it('should contain 2 hero teams in the hero deck', () => {
+      expect(Object.keys(teamCount)).toHaveLength(2);
+    });
+
+    it('should have 3 heroes from each team', () => {
+      expect(Object.values(teamCount)[0]).toEqual(3);
+      expect(Object.values(teamCount)[1]).toEqual(3);
+    });
+  });
+
+  describe.each(playerCounts)('Mutating Gamma Rays', (players) => {
+    let hulkHeroes: IHero[];
+    beforeAll(() => {
+      game = setup.generateGame(
+        players as numPlayers,
+        Schemes.WORLD_WAR_HULK.MUTATING_GAMMA_RAYS
+      );
+
+      hulkHeroes = game.additionalDeck?.deck.cards.filter(
+        (card) => card.cardType === CardType.HERO
+      ) as IHero[];
+    });
+
+    describe('should have an additional deck', () => {
+      it('called "Mutation Pile"', () =>
+        expect(game.additionalDeck?.name).toEqual('Mutation Pile'));
+
+      it('that contains 1 hero', () => expect(hulkHeroes).toHaveLength(1));
+
+      it('that contains a hero with a "Hulk" name', () =>
+        expect(
+          hulkHeroes?.every((hero) => hero.name.toUpperCase().includes('HULK'))
+        ).toBeTruthy());
+
+      it('that contains a hero not in the hero deck', () =>
+        expect(game.heroDeck.cards).not.toContain(hulkHeroes));
+    });
+  });
+
+  describe.each(playerCounts)('Shoot Hulk into Space', (players) => {
+    let hulkHeroes: IHero[];
+    beforeAll(() => {
+      game = setup.generateGame(
+        players as numPlayers,
         Schemes.WORLD_WAR_HULK.SHOOT_HULK_INTO_SPACE
+      );
+
+      hulkHeroes = game.additionalDeck?.deck.cards.filter(
+        (card) => card.cardType === CardType.HERO
+      ) as IHero[];
+    });
+
+    describe('should have an additional deck', () => {
+      it('called "Hulk Deck"', () =>
+        expect(game.additionalDeck?.name).toEqual('Hulk Deck'));
+
+      it('that contains 1 hero', () => expect(hulkHeroes).toHaveLength(1));
+
+      it('that contains a hero with a "Hulk" name', () =>
+        expect(
+          hulkHeroes?.every((hero) => hero.name.toUpperCase().includes('HULK'))
+        ).toBeTruthy());
+
+      it('that contains a hero not in the hero deck', () =>
+        expect(game.heroDeck.cards).not.toContain(hulkHeroes));
+    });
+  });
+
+  describe.each(playerCounts)('World War Hulk', (players) => {
+    beforeAll(() => {
+      game = setup.generateGame(
+        players as numPlayers,
+        Schemes.WORLD_WAR_HULK.WORLD_WAR_HULK
       );
     });
 
-    it('additional deck should be defined', () =>
-      expect(game.additionalDeck).toBeDefined());
-    it('should be called "Hulk Deck"', () =>
-      expect(game.additionalDeck?.name).toEqual('Hulk Deck'));
-    it('heroes should be defined', () =>
-      expect(game.additionalDeck?.cards.heroes).toBeDefined());
-    it('should contain 1 hero', () =>
-      expect(game.additionalDeck?.cards.heroes).toHaveLength(1));
-    it('should contain a hero with a "Hulk" name', () =>
-      expect(
-        game.additionalDeck?.cards.heroes?.every((hero) =>
-          hero.name.toUpperCase().includes('HULK')
-        )
-      ).toBeTruthy());
-    it('should contain a hero not in the main hero deck', () =>
-      expect(game.heroDeck.heroes).not.toContain(
-        game.additionalDeck?.cards.heroes
-      ));
+    describe('should have an additional deck', () => {
+      it('called "Lurking"', () =>
+        expect(game.additionalDeck?.name).toEqual('Lurking'));
+
+      it('that contains 3 masterminds', () =>
+        expect(
+          game.additionalDeck?.deck.cards.filter(
+            (card) => card.cardType === CardType.MASTERMIND
+          )
+        ).toHaveLength(3));
+
+      it('that does not contain the main mastermind', () =>
+        expect(game.additionalDeck?.deck.cards).not.toContain(game.mastermind));
+    });
   });
 
-  describe('World War Hulk', () => {
+  describe.each(playerCounts)(
+    'The Dark Phoenix Saga, with the Dark City deck',
+    (players) => {
+      beforeAll(() => {
+        game = setup.generateGame(
+          players as numPlayers,
+          Schemes.X_MEN.THE_DARK_PHOENIX_SAGA
+        );
+      });
+
+      it('should include the Hellfire club in the villain deck', () => {
+        expect(game.villainDeck.cards).toContain(
+          VillainGroups.X_MEN.HELLFIRE_CLUB
+        );
+      });
+
+      it('should include Jean Grey in the villain deck', () => {
+        expect(game.villainDeck.cards).toContain(Heroes.DARK_CITY.JEAN_GREY);
+      });
+    }
+  );
+
+  describe.each(playerCounts)(
+    'The Dark Phoenix Saga, without the Dark City deck',
+    (players) => {
+      beforeAll(() => {
+        game = new GameSetup(GameSets.LEGENDARY, GameSets.X_MEN).generateGame(
+          players as numPlayers,
+          Schemes.X_MEN.THE_DARK_PHOENIX_SAGA
+        );
+      });
+
+      it('should include the Hellfire club in the villain deck', () => {
+        expect(game.villainDeck.cards).toContain(
+          VillainGroups.X_MEN.HELLFIRE_CLUB
+        );
+      });
+
+      it('should include Phoenix in the villain deck', () => {
+        expect(game.villainDeck.cards).toContain(Heroes.X_MEN.PHOENIX);
+      });
+    }
+  );
+
+  describe.each(playerCounts)('Build an Army of Annihilation', (players) => {
     beforeAll(() => {
-      game = setup.generateGame(2, Schemes.WORLD_WAR_HULK.WORLD_WAR_HULK);
+      game = setup.generateGame(
+        players as numPlayers,
+        Schemes.SECRET_WARS_VOLUME_1.BUILD_AN_ARMY_OF_ANNIHILATION
+      );
     });
 
-    it('additional deck should be defined', () =>
-      expect(game.additionalDeck).toBeDefined());
-    it('should be called "Lurking"', () =>
-      expect(game.additionalDeck?.name).toEqual('Lurking'));
-    it('masterminds should be defined', () =>
-      expect(game.additionalDeck?.cards.masterminds).toBeDefined());
-    it('should contain 3 masterminds', () =>
-      expect(game.additionalDeck?.cards.masterminds).toHaveLength(3));
-    it('should not contain the main mastermind', () =>
-      expect(game.additionalDeck?.cards.masterminds).not.toContain(
-        game.mastermind
-      ));
+    it('should include 9 twists in the villain deck', () =>
+      expect(game.villainDeck.numTwists).toEqual(9));
+
+    describe('should have an additional deck', () => {
+      it('called "KO pile"', () =>
+        expect(game.additionalDeck?.name).toEqual('KO pile'));
+
+      it('that contains 1 henchmen group', () =>
+        expect(
+          game.additionalDeck?.deck.cards.filter(
+            (card) => card.cardType === CardType.HENCHMEN
+          )
+        ).toHaveLength(1));
+    });
+  });
+
+  describe.each(playerCounts)(
+    'Corrupt the next generaton of heroes',
+    (players) => {
+      beforeAll(() => {
+        game = setup.generateGame(
+          players as numPlayers,
+          Schemes.SECRET_WARS_VOLUME_1.CORRUPT_THE_NEXT_GENERATION_OF_HEROES
+        );
+      });
+
+      it('should include 10 sidekicks in the villain deck', () =>
+        expect(game.villainDeck.numSidekicks).toEqual(10));
+    }
+  );
+
+  describe.each(playerCounts)('Sinister Ambitions', (players) => {
+    beforeAll(() => {
+      game = setup.generateGame(
+        players as numPlayers,
+        Schemes.SECRET_WARS_VOLUME_2.SINISTER_AMBITIONS
+      );
+    });
+
+    it('should include 6 twists in the villain deck', () =>
+      expect(game.villainDeck.numTwists).toEqual(6));
+
+    it('should include 10 ambitions in the villain deck', () =>
+      expect(game.villainDeck.numAmbitions).toEqual(10));
+  });
+
+  describe.each(playerCounts)('Ruin the Perfect Wedding', (players) => {
+    beforeAll(() => {
+      game = setup.generateGame(
+        players as numPlayers,
+        Schemes.REALM_OF_KINGS.RUIN_THE_PERFECT_WEDDING
+      );
+    });
+
+    it('should include 11 twists in the villain deck', () =>
+      expect(game.villainDeck.numTwists).toEqual(11));
+
+    describe('should have an additional deck', () => {
+      it('called "Wedding Decks"', () =>
+        expect(game.additionalDeck?.name).toEqual('Wedding Decks'));
+
+      it('that contains 2 heroes', () =>
+        expect(
+          game.additionalDeck?.deck.cards.filter(
+            (card) => card.cardType === CardType.HERO
+          )
+        ).toHaveLength(2));
+    });
+  });
+
+  describe.each(playerCounts)('Distract the Hero', (players) => {
+    beforeAll(() => {
+      game = setup.generateGame(
+        players as numPlayers,
+        Schemes.SPIDERMAN_HOMECOMING.DISTRACT_THE_HERO
+      );
+    });
+
+    it('should include a Spider Friends hero in the hero deck', () =>
+      expect(
+        game.heroDeck.cards.filter(
+          (hero) => (hero as IHero).team === Teams.SPIDER_FRIENDS
+        )
+      ).toBeTruthy());
+  });
+
+  describe.each(playerCounts)('S.H.I.E.L.D vs Hydra War', (players) => {
+    beforeAll(() => {
+      game = setup.generateGame(
+        players as numPlayers,
+        Schemes.SHIELD.SHIELD_VS_HYDRA_WAR
+      );
+    });
+
+    const hydraVillains = [
+      VillainGroups.SHIELD.AIM_HYDRA_OFFSHOOT,
+      VillainGroups.SHIELD.HYDRA_ELITE,
+    ];
+    it('should include AIM or Hydra Elite in the villain deck', () => {
+      expect(
+        game.villainDeck.cards.filter((item) => hydraVillains.includes(item))
+      ).toHaveLength(1);
+    });
+  });
+
+  describe.each(playerCounts)('Fall of the Hulks', (players) => {
+    beforeAll(() => {
+      game = setup.generateGame(
+        players as numPlayers,
+        Schemes.WORLD_WAR_HULK.FALL_OF_THE_HULKS
+      );
+    });
+
+    it('should include 2 Hulk heroes in the hero deck', () => {
+      expect(
+        game.heroDeck.cards.filter((item) =>
+          item.name.toUpperCase().includes('HULK')
+        )
+      ).toHaveLength(2);
+    });
   });
 });
 
-describe('The Dark Phoenix Saga', () => {
-  let setup: GameSetup;
-  let game: IGameSetup;
+describe('Specific Mastermind tests', () => {
+  const playerCounts = [2, 3, 4, 5];
 
   beforeAll(() => {
-    setup = new GameSetup(GameSets.LEGENDARY, GameSets.X_MEN);
-    game = setup.generateGame(2, Schemes.X_MEN.THE_DARK_PHOENIX_SAGA);
+    setup = new GameSetup(...GameSets.ALL);
   });
 
-  it('should include the Hellfire club', () => {
-    expect(game.villainDeck.villains).toContain(
-      VillainGroups.X_MEN.HELLFIRE_CLUB
-    );
-  });
-  it('should include Jean Grey in the villain deck', () => {
-    expect(game.villainDeck.heroes).toContain(Heroes.DARK_CITY.JEAN_GREY);
+  describe.each(playerCounts)('Apocalypse', (players) => {
+    it('should contain the Four Horsemen in the villain deck', () => {
+      game = setup.generateGame(
+        players as numPlayers,
+        Schemes.LEGENDARY.MIDTOWN_BANK_ROBBERY,
+        Masterminds.DARK_CITY.APOCALYPSE
+      );
+
+      expect(game.villainDeck.cards).toContain(
+        VillainGroups.DARK_CITY.FOUR_HORSEMEN
+      );
+    });
   });
 
-  it('should include Phoenix', () => {
-    game = new GameSetup(GameSets.LEGENDARY, GameSets.X_MEN).generateGame(
-      2,
-      Schemes.X_MEN.THE_DARK_PHOENIX_SAGA
-    );
-    expect(game.villainDeck.heroes).toContain(Heroes.X_MEN.PHOENIX);
+  describe.each(playerCounts)('Dr Doom', (players) => {
+    it('should contain Doombots in the villain deck', () => {
+      game = setup.generateGame(
+        players as numPlayers,
+        Schemes.LEGENDARY.MIDTOWN_BANK_ROBBERY,
+        Masterminds.LEGENDARY.DR_DOOM
+      );
+      expect(game.villainDeck.cards).toContain(
+        Henchmen.LEGENDARY.DOOMBOT_LEGION
+      );
+    });
   });
 });

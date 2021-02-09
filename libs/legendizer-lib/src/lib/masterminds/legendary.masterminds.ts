@@ -1,10 +1,10 @@
-import { CardType } from "../cardSet";
-import { GameSets } from "../gamesets";
-import { Henchmen } from "../henchmen";
-import { VillainGroups } from "../villains";
-import { IMastermind } from "./mastermind.interface";
+import { CardType } from '../cardSet';
+import { GameSets } from '../gamesets';
+import { Henchmen } from '../henchmen';
+import { VillainGroups } from '../villains';
+import { IMastermind } from './mastermind.interface';
 
-type MastermindNames = 'DR_DOOM' | 'LOKI' | 'MAGNETO' | 'RED_SKULL'
+type MastermindNames = 'DR_DOOM' | 'LOKI' | 'MAGNETO' | 'RED_SKULL';
 
 export const Legendary: Record<MastermindNames, IMastermind> = {
   DR_DOOM: {
@@ -14,7 +14,7 @@ export const Legendary: Record<MastermindNames, IMastermind> = {
     attackPoints: 9,
     victoryPoints: 5,
     gameSet: GameSets.LEGENDARY,
-    cardType: CardType.MASTERMIND
+    cardType: CardType.MASTERMIND,
   },
   LOKI: {
     id: '2d54ba0e-d2f8-40ba-a685-0853ce7201ea',
@@ -23,7 +23,7 @@ export const Legendary: Record<MastermindNames, IMastermind> = {
     attackPoints: 10,
     victoryPoints: 5,
     gameSet: GameSets.LEGENDARY,
-    cardType: CardType.MASTERMIND
+    cardType: CardType.MASTERMIND,
   },
   MAGNETO: {
     id: 'ddf93b06-2e71-4a4b-99bf-02dd54f0d0c2',
@@ -32,7 +32,7 @@ export const Legendary: Record<MastermindNames, IMastermind> = {
     attackPoints: 8,
     victoryPoints: 5,
     gameSet: GameSets.LEGENDARY,
-    cardType: CardType.MASTERMIND
+    cardType: CardType.MASTERMIND,
   },
   RED_SKULL: {
     id: '9ed63c18-275f-4cfe-977e-c49efc391b9e',
@@ -41,6 +41,6 @@ export const Legendary: Record<MastermindNames, IMastermind> = {
     attackPoints: 7,
     victoryPoints: 5,
     gameSet: GameSets.LEGENDARY,
-    cardType: CardType.MASTERMIND
-  }
-}
+    cardType: CardType.MASTERMIND,
+  },
+};

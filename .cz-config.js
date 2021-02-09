@@ -36,6 +36,10 @@ module.exports = {
       name: "chore:    Other changes that don't modify src or test files",
     },
     { value: 'revert', name: 'revert:   Reverts a previous commit' },
+    {
+      value: 'wip',
+      name: 'wip: a temporary commit that will be rewritten later',
+    },
   ],
   scopes: [
     { name: 'docs' },

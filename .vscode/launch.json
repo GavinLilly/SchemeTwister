@@ -24,6 +24,19 @@
          ],
          "cwd": "${workspaceFolder}",
          "console": "internalConsole"
+       },
+       {
+        "name": "debug-legendizer-lib",
+         "type": "node",
+         "request": "launch",
+         "program": "${workspaceFolder}/node_modules/@nrwl/cli/bin/nx",
+         "args": [
+           "test",
+           "legendizer-lib",
+           "--codeCoverage=false",
+         ],
+         "cwd": "${workspaceFolder}",
+         "console": "internalConsole"
        }
     ]
 }

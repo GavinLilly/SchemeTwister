@@ -10,6 +10,7 @@ import { WebAppUiModule } from '@legendizer/web-app/ui';
 
 import { GameSetSelectComponent } from './game-set-select/game-set-select.component';
 import { GameSetupStore } from './game-setup-store';
+import { IterateDeckComponent } from './iterate-deck/iterate-deck.component';
 import { RandomizeComponent } from './randomize/randomize.component';
 import { SchemeMastermindSelectComponent } from './scheme-mastermind-select/scheme-mastermind-select.component';
 
@@ -28,6 +29,7 @@ import { SchemeMastermindSelectComponent } from './scheme-mastermind-select/sche
     RandomizeComponent,
     GameSetSelectComponent,
     SchemeMastermindSelectComponent,
+    IterateDeckComponent,
   ],
   providers: [GameSetupStore, CookieService],
   entryComponents: [GameSetSelectComponent],
