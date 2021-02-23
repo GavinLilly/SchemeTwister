@@ -219,9 +219,15 @@ ${GameSets.ALL.filter((item) =>
             ...this.heroes.shuffle(
               scheme.rules.additionalDeck.cards.numHeroes,
               this.getRandomElementsFromArray(
-                this.heroes
-                  .getCards()
-                  .filter((hero) => hero.name.toUpperCase().includes('HULK')),
+                this.heroes.getCards().filter((hero) => {
+                  if (
+                    gameSetup.heroDeck.heroes.includes(hero) ||
+                    requiredVillainHeroes.includes(hero)
+                  )
+                    return false;
+
+                  return hero.name.toUpperCase().includes('HULK');
+                }),
                 1
               ),
               [...gameSetup.heroDeck.heroes, ...requiredVillainHeroes]
@@ -264,6 +270,7 @@ ${GameSets.ALL.filter((item) =>
           heroes: additionalHeroes,
           henchmen: additionalHenchmen,
           masterminds: additionalMasterminds,
+          numBystanders: scheme.rules.additionalDeck.cards.numBystanders,
         },
       };
     }

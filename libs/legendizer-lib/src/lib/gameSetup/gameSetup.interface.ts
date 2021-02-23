@@ -24,6 +24,7 @@ export interface IAdditionalDeck {
     heroes?: IHero[];
     henchmen?: IHenchmen[];
     masterminds?: IMastermind[];
+    numBystanders?: number;
   };
 }
 
