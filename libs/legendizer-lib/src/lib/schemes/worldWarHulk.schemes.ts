@@ -1,7 +1,6 @@
 import { CardType } from '../cardSet';
 import { GameSets } from '../gamesets';
 import { Henchmen } from '../henchmen';
-import { VillainGroups } from '../villains';
 import { defaultRules } from './defaultRules.data';
 import { IScheme } from './scheme.interface';
 
