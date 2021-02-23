@@ -14,10 +14,12 @@ cardSetTest(
   GameSets.DARK_CITY
 );
 
+cardSetTest(new Henchmen(Object.values(Henchmen.X_MEN)), 5, GameSets.X_MEN);
+
 cardSetTest(
-  new Henchmen(Object.values(Henchmen.X_MEN)),
-  5,
-  GameSets.X_MEN
+  new Henchmen(Object.values(Henchmen.WORLD_WAR_HULK)),
+  3,
+  GameSets.WORLD_WAR_HULK
 );
 
 describe('Total Henchmen sets', () => {
@@ -27,7 +29,8 @@ describe('Total Henchmen sets', () => {
     total = [
       ...Object.values(Henchmen.LEGENDARY),
       ...Object.values(Henchmen.DARK_CITY),
-      ...Object.values(Henchmen.X_MEN)
+      ...Object.values(Henchmen.X_MEN),
+      ...Object.values(Henchmen.WORLD_WAR_HULK),
     ].length;
   });
 
