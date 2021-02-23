@@ -41,13 +41,15 @@ cardSetTest(
   GameSets.PAINT_THE_TOWN_RED
 );
 
-cardSetTest(
-  new Heroes(Object.values(Heroes.SHIELD)),
-  4,
-  GameSets.SHIELD
-);
+cardSetTest(new Heroes(Object.values(Heroes.SHIELD)), 4, GameSets.SHIELD);
 
 cardSetTest(new Heroes(Object.values(Heroes.X_MEN)), 15, GameSets.X_MEN);
+
+cardSetTest(
+  new Heroes(Object.values(Heroes.WORLD_WAR_HULK)),
+  15,
+  GameSets.WORLD_WAR_HULK
+);
 
 describe('X-Men heroes', () => {
   it('should all be in the X-Men team', () => {
@@ -70,8 +72,9 @@ describe('Total Heroes sets', () => {
       ...Object.values(Heroes.FANTASTIC_FOUR),
       ...Object.values(Heroes.PAINT_THE_TOWN_RED),
       ...Object.values(Heroes.X_MEN),
-      ...Object.values(Heroes.SHIELD)
-    ].length
+      ...Object.values(Heroes.SHIELD),
+      ...Object.values(Heroes.WORLD_WAR_HULK),
+    ].length;
   });
 
   // @ts-ignore
