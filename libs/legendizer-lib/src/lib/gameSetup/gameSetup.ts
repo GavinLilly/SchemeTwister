@@ -122,39 +122,25 @@ ${GameSets.ALL.filter((item) =>
         requiredVillains.push(item as IVillainGroup);
     });
 
-    let heroDeck: IHeroDeck;
+    let selectedHeroes: IHero[];
     if (scheme === Schemes.WORLD_WAR_HULK.FALL_OF_THE_HULKS) {
-      heroDeck = {
-        heroes: this.heroes
-          .shuffle(
-            scheme.rules.heroDeck.numHeroes[numberPlayers],
-            this.getRandomElementsFromArray(
-              this.heroes
-                .getCards()
-                .filter((hero) => hero.name.toUpperCase().includes('HULK')),
-              2
-            ),
-            requiredVillainHeroes
-          )
-          .sort(sortNameComparator),
-        bystanders: scheme.rules.heroDeck.numBystanders
-          ? scheme.rules.heroDeck.numBystanders[numberPlayers]
-          : undefined,
-      };
+      selectedHeroes = this.heroes.shuffle(
+        scheme.rules.heroDeck.numHeroes[numberPlayers],
+        this.getRandomElementsFromArray(
+          this.heroes
+            .getCards()
+            .filter((hero) => hero.name.toUpperCase().includes('HULK')),
+          2
+        ),
+        requiredVillainHeroes
+      );
     } else {
       // Shuffle our hero deck while excluding heroes required for the villain deck
-      heroDeck = {
-        heroes: this.heroes
-          .shuffle(
-            scheme.rules.heroDeck.numHeroes[numberPlayers],
-            undefined,
-            requiredVillainHeroes
-          )
-          .sort(sortNameComparator),
-        bystanders: scheme.rules.heroDeck.numBystanders
-          ? scheme.rules.heroDeck.numBystanders[numberPlayers]
-          : undefined,
-      };
+      selectedHeroes = this.heroes.shuffle(
+        scheme.rules.heroDeck.numHeroes[numberPlayers],
+        undefined,
+        requiredVillainHeroes
+      );
     }
 
     let selectedHenchmen: IHenchmen[] = [];
@@ -165,7 +151,7 @@ ${GameSets.ALL.filter((item) =>
       )
     );
 
-    heroDeck.henchmen = scheme.rules.heroDeck.numHenchmen
+    const heroHenchmen = scheme.rules.heroDeck.numHenchmen
       ? this.henchmen.shuffle(
           scheme.rules.heroDeck.numHenchmen[numberPlayers],
           undefined,
@@ -191,30 +177,32 @@ ${GameSets.ALL.filter((item) =>
           scheme.rules.villainDeck.numHeroes[numberPlayers] -
             requiredVillainHeroes.length,
           undefined,
-          [...heroDeck.heroes, ...requiredVillainHeroes]
+          [...selectedHeroes, ...requiredVillainHeroes]
         )
       );
     }
-
-    const villainDeck: IVillainDeck = {
-      bystanders: scheme.rules.villainDeck.numBystanders[numberPlayers],
-      // Shuffle our henchmen deck and include any required henchemen
-      henchmen: selectedHenchmen.sort(sortNameComparator),
-      heroes: requiredVillainHeroes,
-      twists: scheme.rules.villainDeck.numTwists[numberPlayers],
-      // Shuffle our villain deck and include any required villains
-      villains: selectedVillains.sort(sortNameComparator),
-    };
 
     const gameSetup: IGameSetup = {
       scheme: scheme,
       mastermind: mastermind,
       numPlayers: numberPlayers,
-      heroDeck: heroDeck,
-      villainDeck: villainDeck,
+      heroDeck: {
+        bystanders: scheme.rules.heroDeck.numBystanders
+          ? scheme.rules.heroDeck.numBystanders[numberPlayers]
+          : undefined,
+        heroes: selectedHeroes.sort(sortNameComparator),
+        henchmen: heroHenchmen?.sort(sortNameComparator),
+      },
+      villainDeck: {
+        bystanders: scheme.rules.villainDeck.numBystanders[numberPlayers],
+        henchmen: selectedHenchmen.sort(sortNameComparator),
+        heroes: requiredVillainHeroes,
+        twists: scheme.rules.villainDeck.numTwists[numberPlayers],
+        villains: selectedVillains.sort(sortNameComparator),
+      },
     };
 
-    // Select random heroes for the additional deck, if it's specified
+    // Select random cards for the additional deck, if it's specified
     if (scheme.rules.additionalDeck !== undefined) {
       const additionalHeroes: IHero[] = [];
       const additionalHenchmen: IHenchmen[] = [];
@@ -236,7 +224,7 @@ ${GameSets.ALL.filter((item) =>
                   .filter((hero) => hero.name.toUpperCase().includes('HULK')),
                 1
               ),
-              [...heroDeck.heroes, ...requiredVillainHeroes]
+              [...gameSetup.heroDeck.heroes, ...requiredVillainHeroes]
             )
           );
         } else {
@@ -244,7 +232,7 @@ ${GameSets.ALL.filter((item) =>
             ...this.heroes.shuffle(
               scheme.rules.additionalDeck.cards.numHeroes,
               undefined,
-              [...heroDeck.heroes, ...requiredVillainHeroes]
+              [...gameSetup.heroDeck.heroes, ...requiredVillainHeroes]
             )
           );
         }
@@ -255,7 +243,7 @@ ${GameSets.ALL.filter((item) =>
           ...this.henchmen.shuffle(
             scheme.rules.additionalDeck.cards.numHenchmenGroups,
             scheme.requiredCards?.inAdditionalDeck?.henchmen,
-            villainDeck.henchmen
+            gameSetup.villainDeck.henchmen
           )
         );
       }
