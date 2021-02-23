@@ -9,7 +9,10 @@ type Teams =
   | 'SHIELD'
   | 'SPIDER_FRIENDS'
   | 'X_FORCE'
-  | 'X_MEN';
+  | 'X_MEN'
+  | 'CHAMPIONS'
+  | 'WARBOUND'
+  | 'CRIME_SYNDICATE';
 
 export const Teams: Record<Teams, ITeam> = {
   AVENGERS: {
@@ -18,7 +21,7 @@ export const Teams: Record<Teams, ITeam> = {
   },
   FANTASTIC_FOUR: {
     name: 'Fantastic Four',
-    icon: '/assets/icons/teams/fantastic-four.png'
+    icon: '/assets/icons/teams/fantastic-four.png',
   },
   GUARDIANS_OF_THE_GALAXY: {
     name: 'Guardians of the Galaxy',
@@ -47,5 +50,17 @@ export const Teams: Record<Teams, ITeam> = {
   X_MEN: {
     name: 'X-Men',
     icon: '/assets/icons/teams/x-men.png',
+  },
+  CHAMPIONS: {
+    name: 'Champions',
+    icon: '/assets/icons/teams/champions.svg',
+  },
+  WARBOUND: {
+    name: 'Warbound',
+    icon: '/assets/icons/teams/warbound.svg',
+  },
+  CRIME_SYNDICATE: {
+    name: 'Crime Syndicate',
+    icon: '/assets/icons/teams/crime-syndicate.svg',
   },
 };

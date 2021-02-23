@@ -88,13 +88,11 @@ describe('Villain deck', () => {
       GameSets.LEGENDARY,
       GameSets.DARK_CITY,
       GameSets.GUARDIANS_OF_THE_GALAXY,
-      GameSets.PAINT_THE_TOWN_RED,
-      GameSets.X_MEN,
-      GameSets.SHIELD
+      GameSets.PAINT_THE_TOWN_RED
     );
   });
 
-  describe('Villains', () => {
+  describe('Villain groups', () => {
     it('should include Skrulls', () => {
       game = setup.generateGame(
         2,
@@ -104,7 +102,8 @@ describe('Villain deck', () => {
         VillainGroups.LEGENDARY.SKRULLS
       );
     });
-    it('should put Four Horsemen in the villain deck', () => {
+
+    it('should include Four Horsemen', () => {
       game = setup.generateGame(
         2,
         Schemes.LEGENDARY.MIDTOWN_BANK_ROBBERY,
@@ -114,7 +113,8 @@ describe('Villain deck', () => {
         VillainGroups.DARK_CITY.FOUR_HORSEMEN
       );
     });
-    it('should have Kree and Skrull villains', () => {
+
+    it('should include Kree and Skrull', () => {
       game = setup.generateGame(
         2,
         Schemes.GUARDIANS_OF_THE_GALAXY.THE_KREE_SKRULL_WAR
@@ -126,7 +126,8 @@ describe('Villain deck', () => {
         VillainGroups.LEGENDARY.SKRULLS
       );
     });
-    it('should contain the Sinister Six villains', () => {
+
+    it('should include the Sinister Six', () => {
       game = setup.generateGame(
         2,
         Schemes.PAINT_THE_TOWN_RED.SPLICE_HUMANS_WITH_SPIDER_DNA
@@ -144,7 +145,7 @@ describe('Villain deck', () => {
         Henchmen.DARK_CITY.MAGGIA_GOONS
       );
     });
-    it('should put Doombots in the villain deck', () => {
+    it('should include Doombots', () => {
       game = setup.generateGame(
         2,
         Schemes.LEGENDARY.MIDTOWN_BANK_ROBBERY,
@@ -170,41 +171,46 @@ describe('Villain deck', () => {
       expect(game.villainDeck.heroes).toBeDefined();
       expect(game.villainDeck.heroes?.length).toBeGreaterThan(0);
     });
-    it('should contain bystanders in the hero deck', () => {
-      game = setup.generateGame(2, Schemes.DARK_CITY.SAVE_HUMANITY);
-      expect(game.heroDeck.bystanders).toBeTruthy();
-    });
-    it('should contain a henchmen group in the hero deck', () => {
-      const gameSetup = setup.generateGame(
-        2,
-        Schemes.PAINT_THE_TOWN_RED.INVADE_THE_DAILY_BUGLE_NEWS_HQ
-      );
-      expect(gameSetup.heroDeck.henchmen).toBeDefined();
-      expect(gameSetup.heroDeck.henchmen?.length).toBeGreaterThan(0);
-    });
+  });
+});
+
+describe('Hero deck', () => {
+  let setup: GameSetup;
+  let game: IGameSetup;
+
+  beforeAll(() => {
+    setup = new GameSetup(
+      GameSets.LEGENDARY,
+      GameSets.DARK_CITY,
+      GameSets.PAINT_THE_TOWN_RED
+    );
   });
 
-  describe('The Dark Phoenix Saga', () => {
-    beforeAll(() => {
-      game = setup.generateGame(2, Schemes.X_MEN.THE_DARK_PHOENIX_SAGA);
-    });
+  it('should contain bystanders in the hero deck', () => {
+    game = setup.generateGame(2, Schemes.DARK_CITY.SAVE_HUMANITY);
+    expect(game.heroDeck.bystanders).toBeTruthy();
+  });
 
-    it('should include the Hellfire club', () => {
-      expect(game.villainDeck.villains).toContain(
-        VillainGroups.X_MEN.HELLFIRE_CLUB
-      );
-    });
-    it('should include Jean Grey in the villain deck', () => {
-      expect(game.villainDeck.heroes).toContain(Heroes.DARK_CITY.JEAN_GREY);
-    });
+  it('should contain a henchmen group in the hero deck', () => {
+    const gameSetup = setup.generateGame(
+      2,
+      Schemes.PAINT_THE_TOWN_RED.INVADE_THE_DAILY_BUGLE_NEWS_HQ
+    );
+    expect(gameSetup.heroDeck.henchmen).toBeDefined();
+    expect(gameSetup.heroDeck.henchmen?.length).toBeGreaterThan(0);
+  });
+});
 
-    it('should include Phoenix', () => {
-      game = new GameSetup(GameSets.LEGENDARY, GameSets.X_MEN).generateGame(
-        2,
-        Schemes.X_MEN.THE_DARK_PHOENIX_SAGA
-      );
-      expect(game.villainDeck.heroes).toContain(Heroes.X_MEN.PHOENIX);
-    });
+describe('Additional deck', () => {
+  let setup: GameSetup;
+  let game: IGameSetup;
+
+  beforeAll(() => {
+    setup = new GameSetup(
+      GameSets.LEGENDARY,
+      GameSets.SHIELD,
+      GameSets.WORLD_WAR_HULK
+    );
   });
 
   describe('Secret Empire of Betrayal', () => {
@@ -212,16 +218,135 @@ describe('Villain deck', () => {
       game = setup.generateGame(2, Schemes.SHIELD.SECRET_EMPIRE_OF_BETRAYAL);
     });
 
-    describe('additional deck', () => {
-      it('should be defined', () => expect(game.additionalDeck).toBeDefined());
-      it('should be called "Dark Loyalty"', () =>
-        expect(game.additionalDeck?.name).toEqual('Dark Loyalty'));
-      it('should contain a hero', () =>
-        expect(game.additionalDeck?.heroes.length).toEqual(1));
-      it('should contain a hero not in the main hero deck', () =>
-        expect(game.heroDeck.heroes).not.toContain(
-          game.additionalDeck?.heroes
-        ));
+    it('should be defined', () => expect(game.additionalDeck).toBeDefined());
+    it('should be called "Dark Loyalty"', () =>
+      expect(game.additionalDeck?.name).toEqual('Dark Loyalty'));
+    it('should contain a hero', () =>
+      expect(game.additionalDeck?.cards.heroes?.length).toEqual(1));
+    it('should contain a hero not in the main hero deck', () =>
+      expect(game.heroDeck.heroes).not.toContain(
+        game.additionalDeck?.cards.heroes
+      ));
+  });
+
+  describe('Cytoplasm Spike Invasion', () => {
+    beforeAll(() => {
+      game = setup.generateGame(
+        2,
+        Schemes.WORLD_WAR_HULK.CYTOPLASM_SPIKE_INVASION
+      );
     });
+
+    it('additional deck should be defined', () =>
+      expect(game.additionalDeck).toBeDefined());
+    it('should be called "Infected Deck"', () =>
+      expect(game.additionalDeck?.name).toEqual('Infected Deck'));
+    it('henchmen should be defined', () =>
+      expect(game.additionalDeck?.cards.henchmen).toBeDefined());
+    it('should contain Cytoplasm Spike henchmen', () =>
+      expect(game.additionalDeck?.cards.henchmen).toContain(
+        Henchmen.WORLD_WAR_HULK.CYTOPLASM_SPIKES
+      ));
+    it('should require 20 bystanders', () =>
+      expect(game.additionalDeck?.cards.numBystanders).toEqual(20));
+  });
+
+  describe('Mutating Gamma Rays', () => {
+    beforeAll(() => {
+      game = setup.generateGame(2, Schemes.WORLD_WAR_HULK.MUTATING_GAMMA_RAYS);
+    });
+
+    it('additional deck should be defined', () =>
+      expect(game.additionalDeck).toBeDefined());
+    it('should be called "Mutation Pile"', () =>
+      expect(game.additionalDeck?.name).toEqual('Mutation Pile'));
+    it('heroes should be defined', () =>
+      expect(game.additionalDeck?.cards.heroes).toBeDefined());
+    it('should contain 1 hero', () =>
+      expect(game.additionalDeck?.cards.heroes).toHaveLength(1));
+    it('should contain a hero with a "Hulk" name', () =>
+      expect(
+        game.additionalDeck?.cards.heroes?.every((hero) =>
+          hero.name.toUpperCase().includes('HULK')
+        )
+      ).toBeTruthy());
+    it('should contain a hero not in the main hero deck', () =>
+      expect(game.heroDeck.heroes).not.toContain(
+        game.additionalDeck?.cards.heroes
+      ));
+  });
+
+  describe('Shoot Hulk into Space', () => {
+    beforeAll(() => {
+      game = setup.generateGame(
+        2,
+        Schemes.WORLD_WAR_HULK.SHOOT_HULK_INTO_SPACE
+      );
+    });
+
+    it('additional deck should be defined', () =>
+      expect(game.additionalDeck).toBeDefined());
+    it('should be called "Hulk Deck"', () =>
+      expect(game.additionalDeck?.name).toEqual('Hulk Deck'));
+    it('heroes should be defined', () =>
+      expect(game.additionalDeck?.cards.heroes).toBeDefined());
+    it('should contain 1 hero', () =>
+      expect(game.additionalDeck?.cards.heroes).toHaveLength(1));
+    it('should contain a hero with a "Hulk" name', () =>
+      expect(
+        game.additionalDeck?.cards.heroes?.every((hero) =>
+          hero.name.toUpperCase().includes('HULK')
+        )
+      ).toBeTruthy());
+    it('should contain a hero not in the main hero deck', () =>
+      expect(game.heroDeck.heroes).not.toContain(
+        game.additionalDeck?.cards.heroes
+      ));
+  });
+
+  describe('World War Hulk', () => {
+    beforeAll(() => {
+      game = setup.generateGame(2, Schemes.WORLD_WAR_HULK.WORLD_WAR_HULK);
+    });
+
+    it('additional deck should be defined', () =>
+      expect(game.additionalDeck).toBeDefined());
+    it('should be called "Lurking"', () =>
+      expect(game.additionalDeck?.name).toEqual('Lurking'));
+    it('masterminds should be defined', () =>
+      expect(game.additionalDeck?.cards.masterminds).toBeDefined());
+    it('should contain 3 masterminds', () =>
+      expect(game.additionalDeck?.cards.masterminds).toHaveLength(3));
+    it('should not contain the main mastermind', () =>
+      expect(game.additionalDeck?.cards.masterminds).not.toContain(
+        game.mastermind
+      ));
+  });
+});
+
+describe('The Dark Phoenix Saga', () => {
+  let setup: GameSetup;
+  let game: IGameSetup;
+
+  beforeAll(() => {
+    setup = new GameSetup(GameSets.LEGENDARY, GameSets.X_MEN);
+    game = setup.generateGame(2, Schemes.X_MEN.THE_DARK_PHOENIX_SAGA);
+  });
+
+  it('should include the Hellfire club', () => {
+    expect(game.villainDeck.villains).toContain(
+      VillainGroups.X_MEN.HELLFIRE_CLUB
+    );
+  });
+  it('should include Jean Grey in the villain deck', () => {
+    expect(game.villainDeck.heroes).toContain(Heroes.DARK_CITY.JEAN_GREY);
+  });
+
+  it('should include Phoenix', () => {
+    game = new GameSetup(GameSets.LEGENDARY, GameSets.X_MEN).generateGame(
+      2,
+      Schemes.X_MEN.THE_DARK_PHOENIX_SAGA
+    );
+    expect(game.villainDeck.heroes).toContain(Heroes.X_MEN.PHOENIX);
   });
 });

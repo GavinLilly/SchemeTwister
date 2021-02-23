@@ -54,15 +54,22 @@ export class GameSets {
     id: 'f1a6e975-0785-491f-9ab3-712bc05f9a34',
     name: 'X-Men',
     size: GameSetSize.LARGE,
-    releaseYear: 2017
-  }
+    releaseYear: 2017,
+  };
 
   public static readonly SHIELD: IGameSet = {
     id: 'b5672b69-d1a8-4d74-a0ad-f8488c32b488',
     name: 'S.H.I.E.L.D.',
     size: GameSetSize.SMALL,
-    releaseYear: 2019
-  }
+    releaseYear: 2019,
+  };
+
+  public static readonly WORLD_WAR_HULK: IGameSet = {
+    id: '485cf58f-e75d-4cb3-9bb3-d80e04448745',
+    name: 'World War Hulk',
+    size: GameSetSize.LARGE,
+    releaseYear: 2018,
+  };
 
   public static readonly ALL = [
     GameSets.LEGENDARY,
@@ -73,7 +80,8 @@ export class GameSets {
     GameSets.FANTASTIC_FOUR,
     GameSets.PAINT_THE_TOWN_RED,
     GameSets.X_MEN,
-    GameSets.SHIELD
+    GameSets.SHIELD,
+    GameSets.WORLD_WAR_HULK,
   ].sort((a, b) => {
     if (a.size > b.size) return -1;
     if (a.size < b.size) return 1;

@@ -5,12 +5,7 @@ import { Heroes, IHero } from '../heroes';
 import { IMastermind, Masterminds } from '../masterminds';
 import { IScheme, numPlayers, Schemes } from '../schemes';
 import { IVillainGroup, VillainGroups } from '../villains';
-import {
-  IAdditionalDeck,
-  IGameSetup,
-  IHeroDeck,
-  IVillainDeck,
-} from './gameSetup.interface';
+import { IGameSetup, IHeroDeck, IVillainDeck } from './gameSetup.interface';
 
 export class GameSetup {
   private schemes: Schemes;
@@ -127,29 +122,37 @@ ${GameSets.ALL.filter((item) =>
         requiredVillains.push(item as IVillainGroup);
     });
 
-    // Shuffle our hero deck while excluding heroes required for the villain deck
-    const heroDeck: IHeroDeck = {
-      heroes: this.heroes
-        .shuffle(
-          scheme.rules.heroDeck.numHeroes[numberPlayers],
-          undefined,
-          requiredVillainHeroes
-        )
-        .sort(sortNameComparator),
-      bystanders: scheme.rules.heroDeck.numBystanders
-        ? scheme.rules.heroDeck.numBystanders[numberPlayers]
-        : undefined,
-    };
+    let selectedHeroes: IHero[];
+    if (scheme === Schemes.WORLD_WAR_HULK.FALL_OF_THE_HULKS) {
+      selectedHeroes = this.heroes.shuffle(
+        scheme.rules.heroDeck.numHeroes[numberPlayers],
+        this.getRandomElementsFromArray(
+          this.heroes
+            .getCards()
+            .filter((hero) => hero.name.toUpperCase().includes('HULK')),
+          2
+        ),
+        requiredVillainHeroes
+      );
+    } else {
+      // Shuffle our hero deck while excluding heroes required for the villain deck
+      selectedHeroes = this.heroes.shuffle(
+        scheme.rules.heroDeck.numHeroes[numberPlayers],
+        undefined,
+        requiredVillainHeroes
+      );
+    }
 
     let selectedHenchmen: IHenchmen[] = [];
     selectedHenchmen = selectedHenchmen.concat(
       this.henchmen.shuffle(
         scheme.rules.villainDeck.numHenchmenGroups[numberPlayers],
-        requiredHenchmen
+        requiredHenchmen,
+        scheme.requiredCards?.inAdditionalDeck?.henchmen
       )
     );
 
-    heroDeck.henchmen = scheme.rules.heroDeck.numHenchmen
+    const heroHenchmen = scheme.rules.heroDeck.numHenchmen
       ? this.henchmen.shuffle(
           scheme.rules.heroDeck.numHenchmen[numberPlayers],
           undefined,
@@ -175,41 +178,122 @@ ${GameSets.ALL.filter((item) =>
           scheme.rules.villainDeck.numHeroes[numberPlayers] -
             requiredVillainHeroes.length,
           undefined,
-          [...heroDeck.heroes, ...requiredVillainHeroes]
+          [...selectedHeroes, ...requiredVillainHeroes]
         )
       );
     }
-
-    const villainDeck: IVillainDeck = {
-      bystanders: scheme.rules.villainDeck.numBystanders[numberPlayers],
-      // Shuffle our henchmen deck and include any required henchemen
-      henchmen: selectedHenchmen.sort(sortNameComparator),
-      heroes: requiredVillainHeroes,
-      twists: scheme.rules.villainDeck.numTwists[numberPlayers],
-      // Shuffle our villain deck and include any required villains
-      villains: selectedVillains.sort(sortNameComparator),
-    };
 
     const gameSetup: IGameSetup = {
       scheme: scheme,
       mastermind: mastermind,
       numPlayers: numberPlayers,
-      heroDeck: heroDeck,
-      villainDeck: villainDeck,
+      heroDeck: {
+        bystanders: scheme.rules.heroDeck.numBystanders
+          ? scheme.rules.heroDeck.numBystanders[numberPlayers]
+          : undefined,
+        heroes: selectedHeroes.sort(sortNameComparator),
+        henchmen: heroHenchmen?.sort(sortNameComparator),
+      },
+      villainDeck: {
+        bystanders: scheme.rules.villainDeck.numBystanders[numberPlayers],
+        henchmen: selectedHenchmen.sort(sortNameComparator),
+        heroes: requiredVillainHeroes,
+        twists: scheme.rules.villainDeck.numTwists[numberPlayers],
+        villains: selectedVillains.sort(sortNameComparator),
+      },
     };
 
-    // Select random heroes for the additional deck, if it's specified
+    // Select random cards for the additional deck, if it's specified
     if (scheme.rules.additionalDeck !== undefined) {
+      const additionalHeroes: IHero[] = [];
+      const additionalHenchmen: IHenchmen[] = [];
+      const additionalMasterminds: IMastermind[] = [];
+
+      if (scheme.rules.additionalDeck.cards.numHeroes !== undefined) {
+        if (
+          [
+            Schemes.WORLD_WAR_HULK.MUTATING_GAMMA_RAYS,
+            Schemes.WORLD_WAR_HULK.SHOOT_HULK_INTO_SPACE,
+          ].includes(scheme)
+        ) {
+          additionalHeroes.push(
+            ...this.heroes.shuffle(
+              scheme.rules.additionalDeck.cards.numHeroes,
+              this.getRandomElementsFromArray(
+                this.heroes.getCards().filter((hero) => {
+                  if (
+                    gameSetup.heroDeck.heroes.includes(hero) ||
+                    requiredVillainHeroes.includes(hero)
+                  )
+                    return false;
+
+                  return hero.name.toUpperCase().includes('HULK');
+                }),
+                1
+              ),
+              [...gameSetup.heroDeck.heroes, ...requiredVillainHeroes]
+            )
+          );
+        } else {
+          additionalHeroes.push(
+            ...this.heroes.shuffle(
+              scheme.rules.additionalDeck.cards.numHeroes,
+              undefined,
+              [...gameSetup.heroDeck.heroes, ...requiredVillainHeroes]
+            )
+          );
+        }
+      }
+
+      if (scheme.rules.additionalDeck.cards.numHenchmenGroups !== undefined) {
+        additionalHenchmen.push(
+          ...this.henchmen.shuffle(
+            scheme.rules.additionalDeck.cards.numHenchmenGroups,
+            scheme.requiredCards?.inAdditionalDeck?.henchmen,
+            gameSetup.villainDeck.henchmen
+          )
+        );
+      }
+
+      if (scheme.rules.additionalDeck.cards.numMasterminds !== undefined) {
+        additionalMasterminds.push(
+          ...this.masterminds.shuffle(
+            scheme.rules.additionalDeck.cards.numMasterminds,
+            undefined,
+            [mastermind]
+          )
+        );
+      }
+
       gameSetup.additionalDeck = {
         name: scheme.rules.additionalDeck.name,
-        heroes: this.heroes.shuffle(
-          scheme.rules.additionalDeck.cards.numHeroes,
-          undefined,
-          [...heroDeck.heroes, ...requiredVillainHeroes]
-        ),
+        cards: {
+          heroes: additionalHeroes,
+          henchmen: additionalHenchmen,
+          masterminds: additionalMasterminds,
+          numBystanders: scheme.rules.additionalDeck.cards.numBystanders,
+        },
       };
     }
 
     return gameSetup;
+  }
+
+  private getRandomElementsFromArray<T extends ICard>(
+    array: T[],
+    numberOfRandomElementsToExtract = 1
+  ) {
+    const elements: T[] = [];
+    function getRandomElement(arr: T[]): T[] {
+      if (elements.length < numberOfRandomElementsToExtract) {
+        elements.push(arr.splice(Math.floor(Math.random() * arr.length), 1)[0]);
+
+        return getRandomElement(arr);
+      } else {
+        return elements;
+      }
+    }
+
+    return getRandomElement([...array]);
   }
 }
