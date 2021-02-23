@@ -147,7 +147,8 @@ ${GameSets.ALL.filter((item) =>
     selectedHenchmen = selectedHenchmen.concat(
       this.henchmen.shuffle(
         scheme.rules.villainDeck.numHenchmenGroups[numberPlayers],
-        requiredHenchmen
+        requiredHenchmen,
+        scheme.requiredCards?.inAdditionalDeck?.henchmen
       )
     );
 
