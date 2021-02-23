@@ -217,10 +217,10 @@ describe('Villain deck', () => {
       it('should be called "Dark Loyalty"', () =>
         expect(game.additionalDeck?.name).toEqual('Dark Loyalty'));
       it('should contain a hero', () =>
-        expect(game.additionalDeck?.heroes.length).toEqual(1));
+        expect(game.additionalDeck?.cards.heroes?.length).toEqual(1));
       it('should contain a hero not in the main hero deck', () =>
         expect(game.heroDeck.heroes).not.toContain(
-          game.additionalDeck?.heroes
+          game.additionalDeck?.cards.heroes
         ));
     });
   });
