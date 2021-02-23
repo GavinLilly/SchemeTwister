@@ -1,3 +1,24 @@
+# [1.17.0](https://github.com/GavinLilly/legendizer/compare/v1.16.1...v1.17.0) (2021-02-23)
+
+
+### Bug Fixes
+
+* **app:** correct villain group term on home page ([6731399](https://github.com/GavinLilly/legendizer/commit/67313996c22e9266933a659f637f064d1f0dde15))
+* **legendizer-lib:** additional deck fixes ([95dfdea](https://github.com/GavinLilly/legendizer/commit/95dfdea5468bca60153df3c887445f212f570c0f))
+* **legendizer-lib:** ensure a henchmen isn't selected twice ([936b6c1](https://github.com/GavinLilly/legendizer/commit/936b6c17b464d9251e9440227dcd683e38992413))
+* **legendizer-lib:** ensure additional deck shows masterminds correctly ([ab6a6be](https://github.com/GavinLilly/legendizer/commit/ab6a6beb823e14b35ba3c418638b2fc7e9b7ea05))
+* **legendizer-lib:** fix gamesetup to work with WW Hulk schemes ([1c06a87](https://github.com/GavinLilly/legendizer/commit/1c06a874599860dad8ee9a2279f13335e85b4734))
+
+
+### Features
+
+* **legendizer-lib:** add World War Hulk gameset ([c286893](https://github.com/GavinLilly/legendizer/commit/c286893fb89453c3273fbac8dac277f157e346ba))
+* **legendizer-lib:** add World War Hulk henchmen ([ffe4ce3](https://github.com/GavinLilly/legendizer/commit/ffe4ce33dcccaf1dc925403cb8ddc9dc7d54aa61))
+* **legendizer-lib:** add World War Hulk heroes ([c3eb73d](https://github.com/GavinLilly/legendizer/commit/c3eb73dd7fa3cb1e9fda1bb269e014cdbc1f5c11))
+* **legendizer-lib:** add World War Hulk masterminds ([f6dda0d](https://github.com/GavinLilly/legendizer/commit/f6dda0db7206d8096d5d1f97b95ea9e172bc8669))
+* **legendizer-lib:** add World War Hulk schemes ([d9b34c3](https://github.com/GavinLilly/legendizer/commit/d9b34c33ca09e675ba93453cf6347e2c641f5ce2))
+* **legendizer-lib:** add World War Hulk villains ([285ecf8](https://github.com/GavinLilly/legendizer/commit/285ecf8f4b4a0bb5bab13dfc8b300fde42e30767))
+
 ## [1.16.2](https://github.com/GavinLilly/legendizer/compare/v1.16.1...v1.16.2) (2021-01-05)
 
 
