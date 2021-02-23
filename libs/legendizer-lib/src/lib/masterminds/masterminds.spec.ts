@@ -56,6 +56,12 @@ cardSetTest(
   GameSets.SHIELD
 );
 
+cardSetTest(
+  new Masterminds(Object.values(Masterminds.WORLD_WAR_HULK)),
+  6,
+  GameSets.WORLD_WAR_HULK
+);
+
 describe('Total Masterminds sets', () => {
   let total: number;
 
@@ -69,8 +75,9 @@ describe('Total Masterminds sets', () => {
       ...Object.values(Masterminds.FANTASTIC_FOUR),
       ...Object.values(Masterminds.PAINT_THE_TOWN_RED),
       ...Object.values(Masterminds.X_MEN),
-      ...Object.values(Masterminds.SHIELD)
-    ].length
+      ...Object.values(Masterminds.SHIELD),
+      ...Object.values(Masterminds.WORLD_WAR_HULK),
+    ].length;
   });
 
   // @ts-ignore
