@@ -1,15 +1,19 @@
-import { ICard } from "../cardSet/card.interface";
-import { IHenchmen } from "../henchmen/henchmen.interface";
-import { IHero } from "../heroes/hero.interface";
-import { IVillainGroup } from "../villains/villainGroup.interface";
-import { IRules } from "./rules.interface";
+import { ICard } from '../cardSet/card.interface';
+import { IHenchmen } from '../henchmen/henchmen.interface';
+import { IHero } from '../heroes/hero.interface';
+import { IVillainGroup } from '../villains/villainGroup.interface';
+import { IRules } from './rules.interface';
 
 interface IRequiredCards {
-  inVillainDeck: {
+  inVillainDeck?: {
     villains?: IVillainGroup[];
     henchmen?: IHenchmen[];
     heroes?: IHero[];
-  }
+  };
+  inAdditionalDeck?: {
+    henchmen?: IHenchmen[];
+    heroes?: IHero[];
+  };
 }
 
 export interface IScheme extends ICard {

@@ -40,13 +40,15 @@ cardSetTest(
   GameSets.PAINT_THE_TOWN_RED
 );
 
-cardSetTest(
-  new Schemes(Object.values(Schemes.SHIELD)),
-  4,
-  GameSets.SHIELD
-);
+cardSetTest(new Schemes(Object.values(Schemes.SHIELD)), 4, GameSets.SHIELD);
 
 cardSetTest(new Schemes(Object.values(Schemes.X_MEN)), 8, GameSets.X_MEN);
+
+cardSetTest(
+  new Schemes(Object.values(Schemes.WORLD_WAR_HULK)),
+  8,
+  GameSets.WORLD_WAR_HULK
+);
 
 describe('Total Schemes sets', () => {
   let total: number;
@@ -61,8 +63,9 @@ describe('Total Schemes sets', () => {
       ...Object.values(Schemes.FANTASTIC_FOUR),
       ...Object.values(Schemes.PAINT_THE_TOWN_RED),
       ...Object.values(Schemes.X_MEN),
-      ...Object.values(Schemes.SHIELD)
-    ].length
+      ...Object.values(Schemes.SHIELD),
+      ...Object.values(Schemes.WORLD_WAR_HULK),
+    ].length;
   });
 
   // @ts-ignore
