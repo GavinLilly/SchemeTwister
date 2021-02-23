@@ -3,23 +3,25 @@ import { AntMan } from './antMan.villains';
 import { DarkCity } from './darkCity.villains';
 import { FantasticFour } from './fantasticFour.villains';
 import { GuardiansOfTheGalaxy } from './guardiansOfTheGalaxy.villains';
-import { HeroesOfAsgard } from "./heroesOfAsgard.villains";
+import { HeroesOfAsgard } from './heroesOfAsgard.villains';
 import { Legendary } from './legendary.villains';
 import { PaintTheTownRed } from './paintTheTown.villains';
-import { Shield } from "./shield.villains";
+import { Shield } from './shield.villains';
 import { IVillainGroup } from './villainGroup.interface';
+import { WorldWarHulk } from './worldWarHulk.villains';
 import { X_Men } from './xMen.villains';
 
 export class VillainGroups extends CardSet<IVillainGroup> {
   public static readonly LEGENDARY = Legendary;
   public static readonly DARK_CITY = DarkCity;
-  public static readonly HEROES_OF_ASGARD = HeroesOfAsgard
-  public static readonly GUARDIANS_OF_THE_GALAXY = GuardiansOfTheGalaxy
+  public static readonly HEROES_OF_ASGARD = HeroesOfAsgard;
+  public static readonly GUARDIANS_OF_THE_GALAXY = GuardiansOfTheGalaxy;
   public static readonly ANT_MAN = AntMan;
   public static readonly FANTASTIC_FOUR = FantasticFour;
-  public static readonly PAINT_THE_TOWN_RED = PaintTheTownRed
+  public static readonly PAINT_THE_TOWN_RED = PaintTheTownRed;
   public static readonly X_MEN = X_Men;
   public static readonly SHIELD = Shield;
+  public static readonly WORLD_WAR_HULK = WorldWarHulk;
 
   public static readonly ALL = [
     ...Object.values(VillainGroups.LEGENDARY),
@@ -30,6 +32,7 @@ export class VillainGroups extends CardSet<IVillainGroup> {
     ...Object.values(VillainGroups.FANTASTIC_FOUR),
     ...Object.values(VillainGroups.PAINT_THE_TOWN_RED),
     ...Object.values(VillainGroups.X_MEN),
-    ...Object.values(VillainGroups.SHIELD)
+    ...Object.values(VillainGroups.SHIELD),
+    ...Object.values(VillainGroups.WORLD_WAR_HULK),
   ];
 }

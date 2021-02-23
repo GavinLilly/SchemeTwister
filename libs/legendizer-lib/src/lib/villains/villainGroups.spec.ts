@@ -56,6 +56,12 @@ cardSetTest(
   GameSets.SHIELD
 );
 
+cardSetTest(
+  new VillainGroups(Object.values(VillainGroups.WORLD_WAR_HULK)),
+  7,
+  GameSets.WORLD_WAR_HULK
+);
+
 describe('Total Schemes sets', () => {
   let total: number;
 
@@ -69,8 +75,9 @@ describe('Total Schemes sets', () => {
       ...Object.values(VillainGroups.FANTASTIC_FOUR),
       ...Object.values(VillainGroups.PAINT_THE_TOWN_RED),
       ...Object.values(VillainGroups.X_MEN),
-      ...Object.values(VillainGroups.SHIELD)
-    ].length
+      ...Object.values(VillainGroups.SHIELD),
+      ...Object.values(VillainGroups.WORLD_WAR_HULK),
+    ].length;
   });
 
   // @ts-ignore
