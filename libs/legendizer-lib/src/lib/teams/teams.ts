@@ -11,8 +11,18 @@ type Teams =
   | 'X_FORCE'
   | 'X_MEN'
   | 'CHAMPIONS'
-  | 'WARBOUND'
-  | 'CRIME_SYNDICATE';
+  | 'NEW_WARRIORS'
+  | 'HYDRA'
+  | 'MERCS_FOR_MONEY'
+  | 'FOES_OF_ASGARD'
+  | 'INHUMANS'
+  | 'ILLUMINATI'
+  | 'CABAL'
+  | 'VENOMVERSE'
+  | 'CRIME_SYNDICATE'
+  | 'SINISTER_SIX'
+  | 'BROTHERHOOD'
+  | 'WARBOUND';
 
 export const Teams: Record<Teams, ITeam> = {
   AVENGERS: {
@@ -51,16 +61,56 @@ export const Teams: Record<Teams, ITeam> = {
     name: 'X-Men',
     icon: '/assets/icons/teams/x-men.png',
   },
+  BROTHERHOOD: {
+    name: 'Brotherhood',
+    icon: '/assets/icons/teams/brotherhood.png',
+  },
+  CABAL: {
+    name: 'Cabal',
+    icon: '/assets/icons/teams/cabal.png',
+  },
   CHAMPIONS: {
     name: 'Champions',
-    icon: '/assets/icons/teams/champions.svg',
-  },
-  WARBOUND: {
-    name: 'Warbound',
-    icon: '/assets/icons/teams/warbound.svg',
+    icon: '/assets/icons/teams/champions.png',
   },
   CRIME_SYNDICATE: {
     name: 'Crime Syndicate',
-    icon: '/assets/icons/teams/crime-syndicate.svg',
+    icon: '/assets/icons/teams/crime-syndicate.png',
+  },
+  FOES_OF_ASGARD: {
+    name: 'Foes of Asgard',
+    icon: '/assets/icons/teams/foes-of-asgard.png',
+  },
+  HYDRA: {
+    name: 'Hydra',
+    icon: '/assets/icons/teams/hydra.png',
+  },
+  ILLUMINATI: {
+    name: 'Illuminati',
+    icon: '/assets/icons/teams/illuminati.png',
+  },
+  INHUMANS: {
+    name: 'Inhumans',
+    icon: '/assets/icons/teams/inhumans.png',
+  },
+  MERCS_FOR_MONEY: {
+    name: 'Mercs for Money',
+    icon: '/assets/icons/teams/mercs-for-money.png',
+  },
+  NEW_WARRIORS: {
+    name: 'New Warriors',
+    icon: '/assets/icons/teams/new-warriors.png',
+  },
+  SINISTER_SIX: {
+    name: 'Sinister Six',
+    icon: '/assets/icons/teams/sinister-six.png',
+  },
+  VENOMVERSE: {
+    name: 'Venomverse',
+    icon: '/assets/icons/teams/venomverse.png',
+  },
+  WARBOUND: {
+    name: 'Warbound',
+    icon: '/assets/icons/teams/warbound.png',
   },
 };

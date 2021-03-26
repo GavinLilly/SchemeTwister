@@ -1,12 +1,13 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
 
-import { WebAppUiModule } from "@legendizer/web-app/ui";
+import { WebAppUiModule } from '@legendizer/web-app/ui';
 
 import { GameSetupStore } from '../game-setup-store';
+import { IterateDeckComponent } from '../iterate-deck/iterate-deck.component';
 import { RandomizeComponent } from './randomize.component';
 
 jest.genMockFromModule('ngx-cookie-service');
@@ -15,13 +16,15 @@ describe('RandomizeComponent', () => {
   let component: RandomizeComponent;
   let fixture: ComponentFixture<RandomizeComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [RandomizeComponent],
-      imports: [NgbModule, FontAwesomeModule, FormsModule, WebAppUiModule],
-      providers: [NgbModal, GameSetupStore, CookieService, ]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [RandomizeComponent, IterateDeckComponent],
+        imports: [NgbModule, FontAwesomeModule, FormsModule, WebAppUiModule],
+        providers: [NgbModal, GameSetupStore, CookieService],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(RandomizeComponent);

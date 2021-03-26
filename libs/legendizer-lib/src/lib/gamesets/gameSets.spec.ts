@@ -2,17 +2,21 @@ import { GameSetSize } from './gameset.interface';
 import { GameSets } from './gameSets';
 
 describe('Gamesets', () => {
-  it('should have 10 entries', () => expect(GameSets.ALL).toHaveLength(10));
-  it('should have no more than 9 big boxes', () =>
+  it('should have 28 entries', () => expect(GameSets.ALL).toHaveLength(28));
+  it('should have no more than 6 big boxes', () =>
     expect(
       GameSets.ALL.filter((item) => item.size === GameSetSize.LARGE).length
-    ).toBeLessThanOrEqual(9));
+    ).toBeLessThanOrEqual(6));
   it('should have no more than 16 small boxes', () =>
     expect(
       GameSets.ALL.filter((item) => item.size === GameSetSize.SMALL).length
     ).toBeLessThanOrEqual(16));
-  it('should have no more than 1 medium box', () =>
+  it('should have no more than 2 medium box', () =>
     expect(
       GameSets.ALL.filter((item) => item.size === GameSetSize.MEDIUM).length
-    ).toBeLessThanOrEqual(1));
+    ).toBeLessThanOrEqual(2));
+  it('should have no more than 3 core sets', () =>
+    expect(
+      GameSets.ALL.filter((item) => item.size === GameSetSize.CORE).length
+    ).toBeLessThanOrEqual(3));
 });

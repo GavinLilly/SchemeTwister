@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row row-cols-1 row-cols-md-2">
     <div class="col mx-auto">
+      <!--Picker-->
       <div class="card text-center">
         <div class="card-header">
           <div class="d-flex align-items-center">
@@ -43,8 +44,9 @@
   </div>
   <div class="row row-cols-1 row-cols-md-2">
     <div class="col mb-4">
+      <!--Mastermind-->
       <ngb-accordion>
-        <ngb-panel>
+        <ngb-panel cardClass="Mastermind">
           <ng-template ngbPanelHeader>
             <div class="d-flex align-items-center justify-content-between">
               <button ngbPanelToggle class="btn btn-link m-0">
@@ -65,34 +67,15 @@
             </div>
           </ng-template>
           <ng-template ngbPanelContent>
-            <div class="card-text">
-              <b>Always leads: </b>
-              <ul
-                *ngFor="
-                  let item of (gameSetupStore.gameSetup | async).mastermind
-                    .alwaysLeads
-                "
-              >
-                <li>{{ item.name }}</li>
-              </ul>
-            </div>
-            <p class="card-text">
-              <b>Attack Points: </b
-              >{{ (gameSetupStore.gameSetup | async).mastermind.attackPoints }}
-            </p>
-            <p class="card-text">
-              <b>Victory Points: </b
-              >{{ (gameSetupStore.gameSetup | async).mastermind.victoryPoints }}
-            </p>
-            <p class="card-text">
-              <b>Game set: </b
-              >{{ (gameSetupStore.gameSetup | async).mastermind.gameSet.name }}
-            </p>
+            <legendizer-mastermind
+              [mastermind]="(gameSetupStore.gameSetup | async).mastermind"
+            ></legendizer-mastermind>
           </ng-template>
         </ngb-panel>
       </ngb-accordion>
     </div>
     <div class="col mb-4">
+      <!--Scheme-->
       <ngb-accordion>
         <ngb-panel>
           <ng-template ngbPanelHeader>
@@ -138,123 +121,18 @@
   </div>
   <div class="row row-cols-1 row-cols-md-2">
     <div class="col">
-      <div class="card">
-        <div class="card-header">Villain Deck</div>
-        <div class="card-body p-0">
-          <ngb-accordion [closeOthers]="true" activeIds="additional-cards">
-            <ngb-panel id="additional-cards">
-              <ng-template ngbPanelHeader>
-                <div class="d-flex align-items-center justify-content-between">
-                  <button ngbPanelToggle class="btn btn-link m-0">
-                    Setup Cards
-                  </button>
-                </div>
-              </ng-template>
-              <ng-template ngbPanelContent>
-                <legendizer-additional-cards
-                  [twists]="
-                    (gameSetupStore.gameSetup | async).villainDeck.twists
-                  "
-                  [bystanders]="
-                    (gameSetupStore.gameSetup | async).villainDeck.bystanders
-                  "
-                ></legendizer-additional-cards>
-              </ng-template>
-            </ngb-panel>
-          </ngb-accordion>
-          <ngb-accordion [closeOthers]="true">
-            <ngb-panel
-              *ngFor="
-                let item of (gameSetupStore.gameSetup | async).villainDeck
-                  .henchmen
-              "
-              id="panel-{{ item.id }}"
-            >
-              <ng-template ngbPanelHeader>
-                <div class="d-flex align-items-center justify-content-between">
-                  <button ngbPanelToggle class="btn btn-link m-0">
-                    {{ item.name }}
-                  </button>
-                </div>
-              </ng-template>
-              <ng-template ngbPanelContent>
-                <legendizer-henchmen [henchmen]="item"></legendizer-henchmen>
-              </ng-template>
-            </ngb-panel>
-            <ngb-panel
-              *ngFor="
-                let item of (gameSetupStore.gameSetup | async).villainDeck
-                  .villains
-              "
-              id="panel-{{ item.id }}"
-            >
-              <ng-template ngbPanelHeader>
-                <div class="d-flex align-items-center justify-content-between">
-                  <button ngbPanelToggle class="btn btn-link m-0">
-                    {{ item.name }}
-                  </button>
-                </div>
-              </ng-template>
-              <ng-template ngbPanelContent>
-                <legendizer-villain-group
-                  [villainGroup]="item"
-                ></legendizer-villain-group>
-              </ng-template>
-            </ngb-panel>
-            <ngb-panel
-              *ngFor="
-                let item of (gameSetupStore.gameSetup | async).villainDeck
-                  .heroes
-              "
-              id="panel-{{ item.id }}"
-            >
-              <ng-template ngbPanelHeader>
-                <div class="d-flex align-items-center justify-content-between">
-                  <button ngbPanelToggle class="btn btn-link m-0">
-                    {{ item.name }}
-                  </button>
-                </div>
-              </ng-template>
-              <ng-template ngbPanelContent>
-                <legendizer-heroes [hero]="item"></legendizer-heroes>
-              </ng-template>
-            </ngb-panel>
-          </ngb-accordion>
-        </div>
-      </div>
+      <!--Villain deck-->
+      <legendizer-iterate-deck
+        [deckName]="villainDeck"
+        [deck]="(gameSetupStore.gameSetup | async).villainDeck"
+      ></legendizer-iterate-deck>
     </div>
     <div class="col">
-      <div class="card">
-        <div class="card-header">Hero Deck</div>
-        <div class="card-body p-0">
-          <ngb-accordion [closeOthers]="true">
-            <ngb-panel
-              *ngFor="
-                let item of (gameSetupStore.gameSetup | async).heroDeck.heroes
-              "
-              id="panel-{{ item.id }}"
-            >
-              <ng-template ngbPanelHeader>
-                <div class="d-flex align-items-center justify-content-between">
-                  <button ngbPanelToggle class="btn btn-link m-0">
-                    {{ item.name }}
-                  </button>
-                  <img
-                    *ngIf="item.team"
-                    src="{{ item.team.icon }}"
-                    alt="{{ item.team.name }}"
-                    class="img-fluid"
-                    id="hero-team"
-                  />
-                </div>
-              </ng-template>
-              <ng-template ngbPanelContent>
-                <legendizer-heroes [hero]="item"></legendizer-heroes>
-              </ng-template>
-            </ngb-panel>
-          </ngb-accordion>
-        </div>
-      </div>
+      <!--Hero deck-->
+      <legendizer-iterate-deck
+        [deckName]="heroDeck"
+        [deck]="(gameSetupStore.gameSetup | async).heroDeck"
+      ></legendizer-iterate-deck>
     </div>
   </div>
   <div
@@ -262,90 +140,15 @@
     class="row row-cols-1"
   >
     <div class="col">
-      <div class="card">
-        <div class="card-header">
-          {{ (gameSetupStore.gameSetup | async).additionalDeck?.name }}
-        </div>
-        <div class="card-body p-0">
-          <ngb-accordion [closeOthers]="true">
-            <ngb-panel
-              *ngFor="
-                let item of (gameSetupStore.gameSetup | async).additionalDeck
-                  ?.cards.heroes
-              "
-              id="panel-{{ item.id }}"
-            >
-              <ng-template ngbPanelHeader>
-                <div class="d-flex align-items-center justify-content-between">
-                  <button ngbPanelToggle class="btn btn-link m-0">
-                    {{ item.name }}
-                  </button>
-                  <img
-                    *ngIf="item.team"
-                    src="{{ item.team.icon }}"
-                    alt="{{ item.team.name }}"
-                    class="img-fluid"
-                    id="hero-team"
-                  />
-                </div>
-              </ng-template>
-              <ng-template ngbPanelContent>
-                <legendizer-heroes [hero]="item"></legendizer-heroes>
-              </ng-template>
-            </ngb-panel>
-            <ngb-panel
-              *ngFor="
-                let item of (gameSetupStore.gameSetup | async).additionalDeck
-                  ?.cards.henchmen
-              "
-              id="panel-{{ item.id }}"
-            >
-              <ng-template ngbPanelHeader>
-                <div class="d-flex align-items-center justify-content-between">
-                  <button ngbPanelToggle class="btn btn-link m-0">
-                    {{ item.name }}
-                  </button>
-                </div>
-              </ng-template>
-              <ng-template ngbPanelContent>
-                <legendizer-henchmen [henchmen]="item"></legendizer-henchmen>
-              </ng-template>
-            </ngb-panel>
-            <ngb-panel
-              *ngFor="
-                let item of (gameSetupStore.gameSetup | async).additionalDeck
-                  ?.cards.masterminds
-              "
-              id="panel-{{ item.id }}"
-            >
-              <ng-template ngbPanelHeader>
-                <div class="d-flex align-items-center justify-content-between">
-                  <button ngbPanelToggle class="btn btn-link m-0">
-                    {{ item.name }}
-                  </button>
-                </div>
-              </ng-template>
-              <ng-template ngbPanelContent>
-                <div class="card-text">
-                  <b>Always leads: </b>
-                  <ul *ngFor="let leads of item.alwaysLeads">
-                    <li>{{ leads.name }}</li>
-                  </ul>
-                </div>
-                <p class="card-text">
-                  <b>Attack Points: </b>{{ item.attackPoints }}
-                </p>
-                <p class="card-text">
-                  <b>Victory Points: </b>{{ item.victoryPoints }}
-                </p>
-                <p class="card-text">
-                  <b>Game set: </b>{{ item.gameSet.name }}
-                </p>
-              </ng-template>
-            </ngb-panel>
-          </ngb-accordion>
-        </div>
-      </div>
+      <!--Additional deck-->
+      <legendizer-iterate-deck
+        [deckName]="
+          (gameSetupStore.gameSetup | async).additionalDeck?.name
+            ? (gameSetupStore.gameSetup | async).additionalDeck?.name
+            : 'Additional deck'
+        "
+        [deck]="(gameSetupStore.gameSetup | async).additionalDeck?.deck"
+      ></legendizer-iterate-deck>
     </div>
   </div>
 </div>

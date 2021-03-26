@@ -20,7 +20,7 @@ export abstract class CardSet<T extends ICard> {
         throw new Error('Empty array of records not allowed');
       }
     } else {
-      throw new Error('An array of records must be passed to the constructor')
+      throw new Error('An array of records must be passed to the constructor');
     }
   }
 
@@ -30,13 +30,12 @@ export abstract class CardSet<T extends ICard> {
    * @param {T[]} [elements] An array of records to include in the returned records. This ensures that the same entry isn't chosen twice
    * @param {T[]} [exclude] An optional array of records to select from
    */
-  private getRandom(): T;
   private getRandom(count: number, elements: T[], exclude?: T[]): T[];
   private getRandom(
     count: number = 1,
     elements: T[] = [],
     exclude: T[] = []
-  ): T | T[] {
+  ): T[] {
     function getRandomElement(arr: T[]): T[] {
       if (elements.length < count) {
         elements.push(arr.splice(Math.floor(Math.random() * arr.length), 1)[0]);
@@ -57,19 +56,19 @@ export abstract class CardSet<T extends ICard> {
         filteredRecords.filter((record) => !elements.includes(record))
       );
     } else {
-      if (count === 1 && elements.length === 0 && exclude.length === 0)
-        return getRandomElement([...filteredRecords])[0];
-      else return getRandomElement([...filteredRecords]);
+      return getRandomElement([...filteredRecords]);
     }
   }
 
-  public shuffle(): T;
-  public shuffle(count: number, include?: T[], exclude?: T[]): T[];
-  public shuffle(count: number = 1, include: T[] = [], exclude: T[] = []) {
+  public shuffle(count: number, include: T[] = [], exclude: T[] = []) {
     if (count < 0) {
-      throw new RangeError('Count must be 0 or higher');
+      throw new RangeError(
+        `${this.allRecords[0].cardType}: Count must be 0 or higher`
+      );
     } else if (count > this.availableRecords.length) {
-      throw new RangeError('Count must be lower than the total deck size');
+      throw new RangeError(
+        `${this.allRecords[0].cardType}: Count must be lower than the total deck size`
+      );
     } else if (include.some((item) => exclude.includes(item))) {
       throw new Error('Cannot include and exclude the same item');
     } else if (
@@ -87,8 +86,6 @@ export abstract class CardSet<T extends ICard> {
       throw new RangeError(
         'The number of included cards cannot be more than the number of requested cards'
       );
-    } else if (count === 1 && include.length === 0 && exclude.length === 0) {
-      return this.getRandom();
     } else {
       return this.getRandom(count, include, exclude);
     }

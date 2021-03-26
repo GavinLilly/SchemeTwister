@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CardType, GameSets, Henchmen } from '@legendizer/legendizer-lib';
@@ -9,13 +9,14 @@ describe('MastermindComponent', () => {
   let component: MastermindComponent;
   let fixture: ComponentFixture<MastermindComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ MastermindComponent ],
-      imports: [ NgbModule ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [MastermindComponent],
+        imports: [NgbModule],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MastermindComponent);
@@ -27,8 +28,8 @@ describe('MastermindComponent', () => {
       attackPoints: 1,
       cardType: CardType.MASTERMIND,
       gameSet: GameSets.LEGENDARY,
-      victoryPoints: 1
-    }
+      victoryPoints: 1,
+    };
     fixture.detectChanges();
   });
 

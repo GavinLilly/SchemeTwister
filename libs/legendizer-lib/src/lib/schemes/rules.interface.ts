@@ -1,32 +1,44 @@
 export type numPlayers = 2 | 3 | 4 | 5;
 
-interface IHeroDeck {
-  numHeroes: Record<numPlayers, number>;
-  numBystanders?: Record<numPlayers, number>;
-  numHenchmen?: Record<numPlayers, number>;
+export interface IDeckRequirements {
+  numHeroes?: number;
+  numVillainGroups?: number;
+  numHenchmenGroups?: number;
+  numBystanders?: number;
+  numWounds?: number;
 }
 
-interface IVillainDeck {
-  numVillainGroups: Record<numPlayers, number>;
-  numHenchmenGroups: Record<numPlayers, number>;
-  numBystanders: Record<numPlayers, number>;
-  numTwists: Record<numPlayers, number>;
-  numHeroes?: Record<numPlayers, number>;
+interface IVillainDeckRequirements extends IDeckRequirements {
+  numTwists: number;
+  numSidekicks?: number;
+  numShieldOfficers?: number;
+  numVillainGroups: number;
+  numHenchmenGroups: number;
+  numMasterminds?: number;
+  numAmbitions?: number;
 }
 
-interface IAdditionalDeck {
-  name: string;
-  cards: {
-    numHeroes?: number;
-    numBystanders?: number;
-    numHenchmenGroups?: number;
-    numMasterminds?: number;
+interface IHeroDeckRequirements extends IDeckRequirements {
+  numHeroes: number;
+}
+
+interface IAdditionalDeckRequirements extends IDeckRequirements {
+  numMasterminds?: number;
+  numTwists?: number;
+}
+
+export interface INumPlayerRules {
+  heroDeck: IHeroDeckRequirements;
+  villainDeck: IVillainDeckRequirements;
+
+  additionalDeck?: {
+    name: string;
+    instruction?: string;
+    deck: IAdditionalDeckRequirements;
   };
+  numWounds?: number;
+  numShieldOfficers?: number;
+  numShards?: number;
 }
 
-export interface IRules {
-  heroDeck: IHeroDeck;
-  villainDeck: IVillainDeck;
-  numWounds?: Record<numPlayers, number>;
-  additionalDeck?: IAdditionalDeck;
-}
+export type IRules = Record<numPlayers, INumPlayerRules>;

@@ -1,39 +1,35 @@
-import { IHenchmen } from '../henchmen/henchmen.interface';
-import { IHero } from '../heroes/hero.interface';
+import { ICard } from '../cardSet';
 import { IMastermind } from '../masterminds/mastermind.interface';
-import { IScheme } from '../schemes/scheme.interface';
-import { IVillainGroup } from '../villains/villainGroup.interface';
+import { IScheme } from '../schemes';
 
-export interface IHeroDeck {
-  heroes: IHero[];
-  bystanders?: number;
-  henchmen?: IHenchmen[];
+export interface IDeck {
+  cards: ICard[];
+  numBystanders?: number;
+  numWounds?: number;
+  numTwists?: number;
 }
 
-export interface IVillainDeck {
-  henchmen: IHenchmen[];
-  villains: IVillainGroup[];
-  heroes?: IHero[];
-  bystanders: number;
-  twists: number;
+export interface IVillainDeck extends IDeck {
+  numTwists: number;
+  numSidekicks?: number;
+  numShieldOfficers?: number;
+  numAmbitions?: number;
+  numMasterStrikes: number;
 }
 
 export interface IAdditionalDeck {
   name: string;
-  cards: {
-    heroes?: IHero[];
-    henchmen?: IHenchmen[];
-    masterminds?: IMastermind[];
-    numBystanders?: number;
-  };
+  instructions?: string;
+  deck: IDeck;
 }
 
 export interface IGameSetup {
   numPlayers: number;
   scheme: IScheme;
   mastermind: IMastermind;
-  heroDeck: IHeroDeck;
+  heroDeck: IDeck;
   villainDeck: IVillainDeck;
   numWounds?: number;
   additionalDeck?: IAdditionalDeck;
+  numShieldOfficers?: number;
 }

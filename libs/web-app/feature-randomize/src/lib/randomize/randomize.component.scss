@@ -6,7 +6,8 @@
   height: 32px;
 }
 
-.card-header, button.btn.btn-link {
+.card-header,
+button.btn.btn-link {
   font-family: Bangers;
   font-size: 1.05rem;
 }
@@ -18,4 +19,12 @@
 .btn {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+}
+
+::ng-deep .accordion {
+  .Mastermind {
+    .card-header {
+      background-color: rgb(255, 227, 227);
+    }
+  }
 }

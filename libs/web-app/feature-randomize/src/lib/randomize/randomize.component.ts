@@ -20,6 +20,9 @@ export class RandomizeComponent implements OnInit {
   schemeLocked = false;
   mastermindLocked = false;
 
+  villainDeck = 'Villain Deck';
+  heroDeck = 'Hero Deck';
+
   constructor(
     public gameSetupStore: GameSetupStore,
     private modalService: NgbModal
