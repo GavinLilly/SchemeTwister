@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/GavinLilly/legendizer/compare/v1.17.0...v1.18.0) (2021-03-26)
+
+
+### Features
+
+* **legendizer-lib:** add remaining cards ([f418518](https://github.com/GavinLilly/legendizer/commit/f418518027d75ed9ce9fe86a9d8942184e547959))
+
 # [1.17.0](https://github.com/GavinLilly/legendizer/compare/v1.16.1...v1.17.0) (2021-02-23)
 
 
