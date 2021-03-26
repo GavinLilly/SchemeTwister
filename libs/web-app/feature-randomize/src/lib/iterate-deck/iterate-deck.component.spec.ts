@@ -4,6 +4,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CardType, GameSets } from '@legendizer/legendizer-lib';
 
 import { IterateDeckComponent } from './iterate-deck.component';
+import { HenchmenComponent } from 'libs/web-app/ui/src/lib/henchmen/henchmen.component';
+import { VillainGroupComponent } from 'libs/web-app/ui/src/lib/villain-group/villain-group.component';
+import { HeroesComponent } from 'libs/web-app/ui/src/lib/heroes/heroes.component';
+import { MastermindComponent } from 'libs/web-app/ui/src/lib/mastermind/mastermind.component';
 
 describe('IterateDeckComponent', () => {
   let component: IterateDeckComponent;
@@ -12,7 +16,13 @@ describe('IterateDeckComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [IterateDeckComponent],
+        declarations: [
+          IterateDeckComponent,
+          HenchmenComponent,
+          VillainGroupComponent,
+          HeroesComponent,
+          MastermindComponent,
+        ],
         imports: [NgbModule],
       }).compileComponents();
     })
