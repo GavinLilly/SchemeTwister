@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CardType, GameSets } from '@legendizer/legendizer-lib';
 
@@ -8,12 +8,13 @@ describe('VillainGroupComponent', () => {
   let component: VillainGroupComponent;
   let fixture: ComponentFixture<VillainGroupComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ VillainGroupComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [VillainGroupComponent],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(VillainGroupComponent);
@@ -22,8 +23,8 @@ describe('VillainGroupComponent', () => {
       id: '1310ca31-a8d5-46dc-90f0-b3f4a83f6c6f',
       name: 'Test villains',
       cardType: CardType.VILLAINGROUP,
-      gameSet: GameSets.LEGENDARY
-    }
+      gameSet: GameSets.LEGENDARY,
+    };
     fixture.detectChanges();
   });
 

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CardType, GameSets } from '@legendizer/legendizer-lib';
 
@@ -8,12 +8,13 @@ describe('HenchmenComponent', () => {
   let component: HenchmenComponent;
   let fixture: ComponentFixture<HenchmenComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ HenchmenComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [HenchmenComponent],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HenchmenComponent);
@@ -25,8 +26,8 @@ describe('HenchmenComponent', () => {
       cardType: CardType.HENCHMEN,
       attackPoints: 1,
       fight: 'No effect',
-      victoryPoints: 1
-    }
+      victoryPoints: 1,
+    };
     fixture.detectChanges();
   });
 

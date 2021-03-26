@@ -24,9 +24,9 @@ describe('All cards', () => {
 
     const findDupes = (arr: string[]) => {
       const sortedArr = arr.slice().sort();
-      let results = [];
+      const results = [];
       for (let i = 0; i < sortedArr.length - 1; i++) {
-        if (sortedArr[i + 1] == sortedArr[i]) results.push(sortedArr[i]);
+        if (sortedArr[i + 1] === sortedArr[i]) results.push(sortedArr[i]);
       }
       return results;
     };
