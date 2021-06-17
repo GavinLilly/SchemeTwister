@@ -23,26 +23,26 @@
     "api-interfaces": {
       "tags": []
     },
+    "legendizer-lib": {
+      "tags": []
+    },
+    "web-api": {
+      "tags": []
+    },
     "web-app": {
       "tags": []
     },
     "web-app-e2e": {
       "tags": []
     },
-    "web-api": {
-      "tags": []
+    "web-app-feature-home": {
+      "tags": ["type:feature", "scope:web-app"]
     },
     "web-app-feature-randomize": {
       "tags": ["type:feature", "scope:web-app"]
     },
-    "web-app-feature-home": {
-      "tags": ["type:feature", "scope:web-app"]
-    },
     "web-app-ui": {
       "tags": ["type:ui", "scope:web-app"]
-    },
-    "legendizer-lib": {
-      "tags": []
     }
   },
   "affected": {

@@ -20,14 +20,14 @@
     "esModuleInterop": true,
     "paths": {
       "@legendizer/api-interfaces": ["libs/api-interfaces/src/index.ts"],
-      "@legendizer/web-app/feature-randomize": [
-        "libs/web-app/feature-randomize/src/index.ts"
-      ],
+      "@legendizer/legendizer-lib": ["libs/legendizer-lib/src/index.ts"],
       "@legendizer/web-app/feature-home": [
         "libs/web-app/feature-home/src/index.ts"
       ],
-      "@legendizer/web-app/ui": ["libs/web-app/ui/src/index.ts"],
-      "@legendizer/legendizer-lib": ["libs/legendizer-lib/src/index.ts"]
+      "@legendizer/web-app/feature-randomize": [
+        "libs/web-app/feature-randomize/src/index.ts"
+      ],
+      "@legendizer/web-app/ui": ["libs/web-app/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

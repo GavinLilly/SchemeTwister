@@ -7,4 +7,5 @@ module.exports = {
   coverageDirectory: '../../coverage/libs/legendizer-lib',
   globals: { 'ts-jest': { tsconfig: '<rootDir>/tsconfig.spec.json' } },
   displayName: 'legendizer-lib',
+  testEnvironment: 'node',
 };
