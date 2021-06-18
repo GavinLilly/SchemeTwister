@@ -91,6 +91,10 @@ ${GameSets.ALL.filter((item) =>
             );
           }
         } else if (scheme === Schemes.SHIELD.SHIELD_VS_HYDRA_WAR) {
+          /**
+           * @todo Ensure that it's not possible to pick both villain groups. Currently it's possible that the other group gets picked lower down in this class
+           * @todo https://github.com/GavinLilly/legendizer/pull/45/checks?check_run_id=2858775412
+           */
           // Shield vs Hydra War reqires either AIM or Hydra Elite but not both
           const possibleVillains = [
             VillainGroups.SHIELD.AIM_HYDRA_OFFSHOOT,
