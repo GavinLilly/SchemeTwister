@@ -5,10 +5,10 @@ import {
   ICard,
   IDeck,
   IVillainDeck,
-} from '@legendizer/legendizer-lib';
+} from '@schemetwister/libtwister';
 
 @Component({
-  selector: 'legendizer-iterate-deck',
+  selector: 'schemetwister-iterate-deck',
   templateUrl: './iterate-deck.component.html',
   styleUrls: ['./iterate-deck.component.scss'],
 })

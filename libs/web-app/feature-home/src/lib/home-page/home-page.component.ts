@@ -6,10 +6,10 @@ import {
   Heroes,
   Masterminds,
   VillainGroups,
-} from '@legendizer/legendizer-lib';
+} from '@schemetwister/libtwister';
 
 @Component({
-  selector: 'legendizer-home-page',
+  selector: 'schemetwister-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })

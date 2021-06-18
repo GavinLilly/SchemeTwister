@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { async, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { WebAppUiModule } from '@legendizer/web-app/ui';
+import { WebAppUiModule } from '@schemetwister/web-app/ui';
 
 import { AppComponent } from './app.component';
 

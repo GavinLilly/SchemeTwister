@@ -1,8 +1,8 @@
 {
   "extends": "../../tslint.json",
   "rules": {
-    "directive-selector": [true, "attribute", "legendizer", "camelCase"],
-    "component-selector": [true, "element", "legendizer", "kebab-case"]
+    "directive-selector": [true, "attribute", "schemetwister", "camelCase"],
+    "component-selector": [true, "element", "schemetwister", "kebab-case"]
   },
   "linterOptions": {
     "exclude": ["!**/*"]

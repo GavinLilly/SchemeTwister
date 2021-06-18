@@ -6,7 +6,7 @@ This contribution guideline is based on the one from [conventionalcommits](https
 
 Be friendly! If you find a problem with the application, please raise an issue.
 
-Follow the guidelines in the [Code of Conduct](https://github.com/GavinLilly/legendizer/blob/master/CODE_OF_CONDUCT.md)
+Follow the guidelines in the [Code of Conduct](https://github.com/GavinLilly/schemetwister/blob/master/CODE_OF_CONDUCT.md)
 
 ## Pull Request process
 

@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { faCog, faLock } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { CardType } from '@legendizer/legendizer-lib';
+import { CardType } from '@schemetwister/libtwister';
 
 import { GameSetSelectComponent } from '../game-set-select/game-set-select.component';
 import { GameSetupStore } from '../game-setup-store';
 import { SchemeMastermindSelectComponent } from '../scheme-mastermind-select/scheme-mastermind-select.component';
 
 @Component({
-  selector: 'legendizer-randomize',
+  selector: 'schemetwister-randomize',
   templateUrl: './randomize.component.html',
   styleUrls: ['./randomize.component.scss'],
 })

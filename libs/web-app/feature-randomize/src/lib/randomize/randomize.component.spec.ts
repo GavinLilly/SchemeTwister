@@ -4,7 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
 
-import { WebAppUiModule } from '@legendizer/web-app/ui';
+import { WebAppUiModule } from '@schemetwister/web-app/ui';
 
 import { GameSetupStore } from '../game-setup-store';
 import { IterateDeckComponent } from '../iterate-deck/iterate-deck.component';

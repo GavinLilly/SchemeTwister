@@ -87,7 +87,7 @@
       "one-blank-line",
       [
         "lib",
-        "^@legendizer/.+",
+        "^@schemetwister/.+",
         "user"
       ]
     ]

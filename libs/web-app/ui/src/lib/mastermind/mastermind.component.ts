@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { IMastermind } from "@legendizer/legendizer-lib";
+import { IMastermind } from "@schemetwister/libtwister";
 
 @Component({
-  selector: 'legendizer-mastermind',
+  selector: 'schemetwister-mastermind',
   templateUrl: './mastermind.component.html',
   styleUrls: ['./mastermind.component.scss']
 })

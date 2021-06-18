@@ -21,6 +21,6 @@ jobs:
           CI_REGISTRY_USER: ${{ secrets.DOCKER_USERNAME }}
           CI_REGISTRY_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           CI_REGISTRY: docker.io
-          CI_REGISTRY_NAME: $CI_REGISTRY/gavtherav/legendizer
+          CI_REGISTRY_NAME: $CI_REGISTRY/gavtherav/schemetwister
           CI_REGISTRY_IMAGE: Dockerfile.angular
         run: npx semantic-release

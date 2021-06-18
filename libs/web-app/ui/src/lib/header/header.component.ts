@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'legendizer-header',
+  selector: 'schemetwister-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

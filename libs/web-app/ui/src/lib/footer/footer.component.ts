@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { version } from "./version";
 
 @Component({
-  selector: 'legendizer-footer',
+  selector: 'schemetwister-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })

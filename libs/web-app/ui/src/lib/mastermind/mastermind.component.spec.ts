@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { CardType, GameSets, Henchmen } from '@legendizer/legendizer-lib';
+import { CardType, GameSets, Henchmen } from '@schemetwister/libtwister';
 
 import { MastermindComponent } from './mastermind.component';
 

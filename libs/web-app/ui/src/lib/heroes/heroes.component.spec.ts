@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { GameSets } from '@legendizer/legendizer-lib';
-import { CardType } from '@legendizer/legendizer-lib';
-import { Teams } from '@legendizer/legendizer-lib';
+import { GameSets } from '@schemetwister/libtwister';
+import { CardType } from '@schemetwister/libtwister';
+import { Teams } from '@schemetwister/libtwister';
 
 import { HeroesComponent } from './heroes.component';
 

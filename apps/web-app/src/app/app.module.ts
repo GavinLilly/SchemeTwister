@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { WebAppUiModule } from '@legendizer/web-app/ui';
+import { WebAppUiModule } from '@schemetwister/web-app/ui';
 
 import { AppComponent } from './app.component';
 
@@ -13,21 +13,21 @@ const appRoutes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
-      import('@legendizer/web-app/feature-home').then(
+      import('@schemetwister/web-app/feature-home').then(
         (module) => module.WebAppFeatureHomeModule
       ),
   },
   {
     path: '',
     loadChildren: () =>
-      import('@legendizer/web-app/feature-home').then(
+      import('@schemetwister/web-app/feature-home').then(
         (module) => module.WebAppFeatureHomeModule
       ),
   },
   {
     path: 'randomize',
     loadChildren: () =>
-      import('@legendizer/web-app/feature-randomize').then(
+      import('@schemetwister/web-app/feature-randomize').then(
         (module) => module.WebAppFeatureRandomizeModule
       ),
   },

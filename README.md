@@ -1,8 +1,8 @@
-# Legendizer
+# SchemeTwister
 
 A tool for generating setups for the Legendary: Marvel board game
 
-![Release](https://github.com/GavinLilly/legendizer/workflows/Release/badge.svg) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![Docker Pulls](https://img.shields.io/docker/pulls/gavtherav/legendizer)
+![Release](https://github.com/GavinLilly/schemetwister/workflows/Release/badge.svg) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![Docker Pulls](https://img.shields.io/docker/pulls/gavtherav/schemetwister)
 
 ---
 
@@ -27,8 +27,8 @@ A tool for generating setups for the Legendary: Marvel board game
 - Use docker to run in production
 
 ```shell
-docker pull gavtherav/legendizer
-docker run --publish 80:80 --detach --name legendizer gavtherav/legendizer:latest
+docker pull gavtherav/schemetwister
+docker run --publish 80:80 --detach --name schemetwister gavtherav/schemetwister:latest
 ```
 
 ### Development
@@ -36,7 +36,7 @@ docker run --publish 80:80 --detach --name legendizer gavtherav/legendizer:lates
 - Clone this repo
 
 ```shell
-git clone https://github.com/GavinLilly/legendizer.git
+git clone https://github.com/GavinLilly/schemetwister.git
 ```
 
 - Install dependencies
@@ -45,7 +45,7 @@ git clone https://github.com/GavinLilly/legendizer.git
 npm install
 ```
 
-- Run legendizer web app
+- Run schemetwister web app
 
 ```shell
 nx serve web-app
@@ -85,7 +85,7 @@ npm test
     - 🍴 Fork this repo!
 
 - **Option 2**
-    - 👯 Clone this repo to your local machine using `https://github.com/GavinLilly/legendizer.git`
+    - 👯 Clone this repo to your local machine using `https://github.com/GavinLilly/schemetwister.git`
 
 ### Step 2
 
@@ -93,7 +93,7 @@ npm test
 
 ### Step 3
 
-- 🔃 Create a new pull request using <a href="https://github.com/GavinLilly/legendizer/compare/" target="_blank">`https://github.com/GavinLilly/legendizer/compare/`</a>.
+- 🔃 Create a new pull request using <a href="https://github.com/GavinLilly/schemetwister/compare/" target="_blank">`https://github.com/GavinLilly/schemetwister/compare/`</a>.
 
 ---
 
@@ -122,6 +122,6 @@ Reach out to me at one of the following places!
 
 ## License
 
-[![License](https://img.shields.io/github/license/gavinlilly/legendizer)](https://opensource.org/licenses/GPL-3.0)
+[![License](https://img.shields.io/github/license/gavinlilly/schemetwister)](https://opensource.org/licenses/GPL-3.0)
 
 - **[GPL 3.0](https://opensource.org/licenses/GPL-3.0)**

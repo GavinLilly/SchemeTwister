@@ -1,5 +1,5 @@
 {
-  "npmScope": "legendizer",
+  "npmScope": "schemetwister",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": {
@@ -23,7 +23,7 @@
     "api-interfaces": {
       "tags": []
     },
-    "legendizer-lib": {
+    "libtwister": {
       "tags": []
     },
     "web-api": {

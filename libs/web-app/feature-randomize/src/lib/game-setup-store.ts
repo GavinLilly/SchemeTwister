@@ -11,7 +11,7 @@ import {
   IMastermind,
   IScheme,
   numPlayers,
-} from '@legendizer/legendizer-lib';
+} from '@schemetwister/libtwister';
 
 import { IDefinedItem } from './defined-item.interface';
 

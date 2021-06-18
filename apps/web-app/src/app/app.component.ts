@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'legendizer-root',
+  selector: 'schemetwister-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

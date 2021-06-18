@@ -7,12 +7,12 @@ import {
   IScheme,
   Masterminds,
   Schemes,
-} from '@legendizer/legendizer-lib';
+} from '@schemetwister/libtwister';
 
 import { GameSetupStore } from '../game-setup-store';
 
 @Component({
-  selector: 'legendizer-scheme-select',
+  selector: 'schemetwister-scheme-select',
   templateUrl: './scheme-mastermind-select.component.html',
   styleUrls: ['./scheme-mastermind-select.component.scss'],
 })

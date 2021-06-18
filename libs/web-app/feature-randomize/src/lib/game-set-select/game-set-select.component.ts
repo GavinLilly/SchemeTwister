@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { GameSets, GameSetSize, IGameSet } from '@legendizer/legendizer-lib';
+import { GameSets, GameSetSize, IGameSet } from '@schemetwister/libtwister';
 
 import { GameSetupStore } from '../game-setup-store';
 
 @Component({
-  selector: 'legendizer-game-set-select',
+  selector: 'schemetwister-game-set-select',
   templateUrl: './game-set-select.component.html',
   styleUrls: ['./game-set-select.component.scss'],
 })
