@@ -25,6 +25,8 @@ export class GameSetSelectComponent implements OnInit {
     (item) => item.size === GameSetSize.SMALL
   );
 
+  gameSelectError: string = '';
+
   constructor(
     public gameSetupStore: GameSetupStore,
     public activeModal: NgbActiveModal
@@ -32,12 +34,26 @@ export class GameSetSelectComponent implements OnInit {
 
   ngOnInit(): void {
     this.gameSetupStore.gameSets.subscribe(
-      (value) => (this.selectedGameSets = value)
+      (value) => (this.selectedGameSets = value),
+      (error) => (this.gameSelectError = error)
     );
   }
 
   setGameSets() {
-    this.gameSetupStore.setGameSets(this.selectedGameSets);
+    if (
+      this.selectedGameSets.every((item) => {
+        return [
+          GameSetSize.SMALL,
+          GameSetSize.MEDIUM,
+          GameSetSize.PROMO,
+        ].includes(item.size);
+      })
+    )
+      this.gameSelectError = 'At least one core box or big box game set must be chosen.';
+    else {
+      this.gameSetupStore.setGameSets(this.selectedGameSets);
+      this.activeModal.close('Close click')
+    }
   }
 
   getPickerSize(): number {
