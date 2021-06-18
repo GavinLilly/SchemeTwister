@@ -8,13 +8,12 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/api-interfaces/tsconfig.lib.json",
-              "libs/api-interfaces/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/api-interfaces/**/*"]
+            "lintFilePatterns": [
+              "libs/api-interfaces/src/**/*.ts",
+              "libs/api-interfaces/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -35,13 +34,12 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/libtwister/tsconfig.lib.json",
-              "libs/libtwister/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/libtwister/**/*"]
+            "lintFilePatterns": [
+              "libs/libtwister/src/**/*.ts",
+              "libs/libtwister/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -104,13 +102,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "apps/web-api/tsconfig.app.json",
-              "apps/web-api/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/web-api/**/*"]
+            "lintFilePatterns": [
+              "apps/web-api/src/**/*.ts",
+              "apps/web-api/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -201,13 +198,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "apps/web-app/tsconfig.app.json",
-              "apps/web-app/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/web-app/**/*"]
+            "lintFilePatterns": [
+              "apps/web-app/src/**/*.ts",
+              "apps/web-app/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -240,10 +236,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["apps/web-app-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/web-app-e2e/**/*"]
+            "lintFilePatterns": ["apps/web-app-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -255,13 +250,12 @@
       "prefix": "schemetwister",
       "architect": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/web-app/feature-home/tsconfig.lib.json",
-              "libs/web-app/feature-home/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/web-app/feature-home/**/*"]
+            "lintFilePatterns": [
+              "libs/web-app/feature-home/src/**/*.ts",
+              "libs/web-app/feature-home/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -287,15 +281,11 @@
       "prefix": "schemetwister",
       "architect": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/web-app/feature-randomize/tsconfig.lib.json",
-              "libs/web-app/feature-randomize/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/web-app/feature-randomize/**/*"
+            "lintFilePatterns": [
+              "libs/web-app/feature-randomize/src/**/*.ts",
+              "libs/web-app/feature-randomize/src/**/*.html"
             ]
           }
         },
@@ -322,13 +312,12 @@
       "prefix": "schemetwister",
       "architect": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/web-app/ui/tsconfig.lib.json",
-              "libs/web-app/ui/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/web-app/ui/**/*"]
+            "lintFilePatterns": [
+              "libs/web-app/ui/src/**/*.ts",
+              "libs/web-app/ui/src/**/*.html"
+            ]
           }
         },
         "test": {
