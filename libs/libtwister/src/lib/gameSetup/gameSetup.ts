@@ -1,5 +1,5 @@
 import { CardType, ICard } from '../cardSet';
-import { GameSets, GameSetSize, IGameSet } from '../gamesets';
+import { GameSetSize, GameSets, IGameSet } from '../gamesets';
 import { Henchmen, IHenchmen } from '../henchmen';
 import { Heroes } from '../heroes';
 import { IMastermind, Masterminds } from '../masterminds';
@@ -8,11 +8,12 @@ import {
   INumPlayerRules,
   IRequiredTeam,
   IScheme,
-  numPlayers,
   Schemes,
+  numPlayers,
 } from '../schemes';
 import { ITeam, Teams } from '../teams';
 import { VillainGroups } from '../villains';
+
 import { IAdditionalDeck, IGameSetup } from './gameSetup.interface';
 
 export class GameSetup {
@@ -44,6 +45,13 @@ ${GameSets.ALL.filter((item) =>
     this.heroes = new Heroes(Heroes.ALL, this.gameSets);
     this.henchmen = new Henchmen(Henchmen.ALL, this.gameSets);
     this.villains = new VillainGroups(VillainGroups.ALL, this.gameSets);
+  }
+
+  // Type guard to check if the we're requiring teams or specific cards
+  private isRequiredTeam(
+    inHeroDeck: ICard[] | IRequiredTeam
+  ): inHeroDeck is IRequiredTeam {
+    return (inHeroDeck as IRequiredTeam).team !== undefined;
   }
 
   /**
@@ -113,14 +121,7 @@ ${GameSets.ALL.filter((item) =>
       }
 
       if (scheme.requiredCards.inHeroDeck !== undefined) {
-        // Type guard to check if the we're requiring teams or specific cards
-        function isRequiredTeam(
-          inHeroDeck: ICard[] | IRequiredTeam
-        ): inHeroDeck is IRequiredTeam {
-          return (inHeroDeck as IRequiredTeam).team !== undefined;
-        }
-
-        if (isRequiredTeam(scheme.requiredCards.inHeroDeck)) {
+        if (this.isRequiredTeam(scheme.requiredCards.inHeroDeck)) {
           // If we require  heroes from a specific team then push them into our deck
           const numHeroes = scheme.requiredCards.inHeroDeck.numHeroes;
           const team = scheme.requiredCards.inHeroDeck.team;

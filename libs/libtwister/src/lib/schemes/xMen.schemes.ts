@@ -2,6 +2,7 @@ import { GameSets } from '../gamesets';
 import { Henchmen } from '../henchmen';
 import { Heroes } from '../heroes';
 import { VillainGroups } from '../villains';
+
 import { IScheme, Scheme } from './scheme';
 
 type SchemeNames =
@@ -180,8 +181,7 @@ export const X_Men: Record<SchemeNames, IScheme> = {
       id: 'dbd34724-305b-4e40-8983-3478c34f443a',
       name: 'Televised Deathtraps of Mojoworld',
       setup: '11 Twists. 6 Wounds per player in Wound Stack.',
-      twist:
-        'Stack this Twist next to the Scheme as a "Deathtrap." This turn, you may pay 1 Attack for each Deathtrap stacked there. If you don\'t, each player gains a Wound.',
+      twist: `Stack this Twist next to the Scheme as a "Deathtrap." This turn, you may pay 1 Attack for each Deathtrap stacked there. If you don't, each player gains a Wound.`,
       evilWins: 'When the Wound Stack or Villain Deck runs out.',
       gameSet: GameSets.X_MEN,
     },

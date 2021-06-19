@@ -1,5 +1,6 @@
 import { CardType } from '../cardSet';
 import { GameSets } from '../gamesets';
+
 import { IBystander } from './bystander.interface';
 
 type BystanderNames = 'NEWS_REPORTER' | 'PARAMEDIC' | 'RADIATION_SCIENTIST';

@@ -1,5 +1,6 @@
 import { CardType } from '../cardSet';
 import { GameSets } from '../gamesets';
+
 import { IVillainGroup } from './villainGroup.interface';
 
 type VillainGroupNames = 'THE_MIGHTY';

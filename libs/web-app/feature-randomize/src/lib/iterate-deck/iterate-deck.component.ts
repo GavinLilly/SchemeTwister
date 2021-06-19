@@ -20,8 +20,6 @@ export class IterateDeckComponent implements OnInit {
 
   CardType = CardType;
 
-  constructor() {}
-
   ngOnInit(): void {
     this.deckUnderscore = this.deckName.split(' ').join('_');
   }

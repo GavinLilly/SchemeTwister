@@ -1,4 +1,5 @@
 import { IGameSet } from '../gamesets';
+
 import { CardType } from './cardType.enum';
 
 export interface ICard {

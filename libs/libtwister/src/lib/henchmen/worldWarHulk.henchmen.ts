@@ -1,5 +1,6 @@
 import { CardType } from '../cardSet';
 import { GameSets } from '../gamesets';
+
 import { IHenchmen } from './henchmen.interface';
 
 type HenchmenNames = 'CYTOPLASM_SPIKES' | 'DEATHS_HEADS' | 'SAKAARAN_HIVELINGS';

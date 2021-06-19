@@ -1,6 +1,7 @@
 import { GameSets } from '../gamesets';
 import { Heroes } from '../heroes';
 import { Teams } from '../teams';
+
 import { IScheme, Scheme } from './scheme';
 
 type SchemeNames =
@@ -63,8 +64,7 @@ export const Deadpool: Record<SchemeNames, IScheme> = {
     {
       id: 'de2d8afe-5342-48e8-95de-f0e42390f898',
       name: 'Deadpool Wants a Chimichanga',
-      setup:
-        '6 Twists. 12 total Bystanders in the Villain Deck. All Bystanders represent "Chimichangas." (They\'re Bystanders too). 3-5 players Add a Villain Group.',
+      setup: `6 Twists. 12 total Bystanders in the Villain Deck. All Bystanders represent "Chimichangas." (They're Bystanders too). 3-5 players Add a Villain Group.`,
       twist: `Put each Chimichanga from the city into the Escape Pile. Then, each player shuffles a Chimichanga from their Victory Pile back into the Villain Deck. Any player who cannot do so gains a Wound.`,
       evilWins: 'When 6 Chimichangas are in the Escape Pile.',
       gameSet: GameSets.DEADPOOL,
@@ -106,9 +106,9 @@ export const Deadpool: Record<SchemeNames, IScheme> = {
     twist: `Twist 1: Everybody draw 1 card. Wait, are these supposed to be bad?
 Twist 2: Anyone without a Deadpool in hand is doing it wrong -- discard 2 cards.
 Twist 3: Play 3 cards from the Villain Deck. That sounds pretty bad, right?
-Twist 4: Each Villain captures 4 Bystanders. Hey, I\'m not a balance expert.
+Twist 4: Each Villain captures 4 Bystanders. Hey, I'm not a balance expert.
 Twist 5: Each player gains 5 Wounds. Is that a good number?
-Twist 6: Deadpool wins 6 times! Wow, I\'m way better at this game than you.`,
+Twist 6: Deadpool wins 6 times! Wow, I'm way better at this game than you.`,
     evilWins: 'When 6 twists revealed',
     requiredCards: {
       inHeroDeck: [Heroes.DEADPOOL.DEADPOOL],

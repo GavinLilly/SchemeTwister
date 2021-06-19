@@ -117,7 +117,7 @@ export class GameSetupStore {
     );
   }
 
-  shuffle(mastermind?: IMastermind) {
+  shuffle() {
     const definedScheme: IDefinedItem = this._definedScheme.getValue();
     const definedMastermind: IDefinedItem = this._definedMastermind.getValue();
 

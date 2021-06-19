@@ -1,4 +1,5 @@
 import { GameSets } from '../gamesets';
+
 import { IScheme, Scheme } from './scheme';
 
 type SchemeNames =
@@ -13,7 +14,7 @@ export const Noir: Record<SchemeNames, IScheme> = {
     name: 'Find the Split Personality Killer',
     setup: '8 Twists.',
     twist: `Twist 1-5: Shuffle 3 Bystanders from the Bystander Stack and the top card of the Hero Deck face down next to this Scheme as a deck of "Murder Suspects."
-Twist 6: Each player writes down their guess for which Hero Name is the Split Personality Killer. Reveal the entire Murder Suspects Deck. The Hero Name with the most cards in the Murder Suspect Deck ,[object Object], is the Split Personality Killer. Each player who guessed right wins. All other players lose.`,
+Twist 6: Each player writes down their guess for which Hero Name is the Split Personality Killer. Reveal the entire Murder Suspects Deck. The Hero Name with the most cards in the Murder Suspect Deck (or tied for most) is the Split Personality Killer. Each player who guessed right wins. All other players lose.`,
     evilWins: '',
     specialRules:
       'Whenever you defeat a Villain, you may pay 1 Attack extra to Investigate the Murder Suspects for a Bystander and rescue it.',
@@ -75,7 +76,7 @@ Twist 6: Each player writes down their guess for which Hero Name is the Split Pe
     name: 'Hidden Heart of Darkness',
     setup:
       '8 Twists. Shuffle the Mastermind Tactics into the Villain Deck as Villains.',
-    twist: `Each player shuffles a Tactic from their Victory Pile into the Villain Deck. Any player who did so draws two cards. Then, ,[object Object], the Villain Deck for a Tactic and that Tactic enters the city. Reveal all the cards you ,[object Object],.`,
+    twist: `Each player shuffles a Tactic from their victory pile into the Villain Deck. Any player who did so draws two cards. Then, Investigate the Villain Deck for a Tactic and that Tactic enters the city. Reveal all the cards you Investigated.`,
     evilWins: 'When 2 Tactics escape.',
     specialRules:
       'If there are no Tactics in the city, you can win the game by fighting the Mastermind card.',

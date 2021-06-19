@@ -1,5 +1,6 @@
 import { DeepPartial } from '../deepPartial.type';
 import { GameSets } from '../gamesets';
+
 import { IRules, numPlayers } from './rules.interface';
 import { Scheme, SchemeParams } from './scheme';
 

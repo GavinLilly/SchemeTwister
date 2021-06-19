@@ -1,5 +1,6 @@
 import { GameSets } from '../gamesets';
 import { Heroes } from '../heroes';
+
 import { IScheme, Scheme } from './scheme';
 
 type SchemeNames =
@@ -59,7 +60,7 @@ Twist 9-11: Same effect, but in the Contest, Evil selects from 6 cards from the 
       name: 'Turn the Soul of Adam Warlock',
       setup:
         '14 Twists (using 3 Wounds to represent extra Scheme Twists). Put 14 Adam Warlock Hero cards in a face up stack, ordered from lowest-cost on top, to highest-cost on the bottom.',
-      twist: `Set aside the top card of the Adam Warlock stack. This turn you may "Purify" it by spending Attack equal to double its cost. If you do, choose a player to gain that card, then you rescue a Bystander, and you may KO one of your Heroes. If you don\'t do this by the end of your turn, put that Adam Warlock card into a "Soul\'s Corruption" stack next to the Scheme.`,
+      twist: `Set aside the top card of the Adam Warlock stack. This turn you may "Purify" it by spending Attack equal to double its cost. If you do, choose a player to gain that card, then you rescue a Bystander, and you may KO one of your Heroes. If you don't do this by the end of your turn, put that Adam Warlock card into a "Soul's Corruption" stack next to the Scheme.`,
       evilWins: 'When there are 8 Souls Corruptions.',
       requiredCards: {
         inAdditionalDeck: [Heroes.INTO_THE_COSMOS.ADAM_WARLOCK],
@@ -83,7 +84,7 @@ Twist 9-11: Same effect, but in the Contest, Evil selects from 6 cards from the 
       name: 'Destroy the Nova Corps',
       setup:
         "9 Twists. Exactly one Hero must be a Nova Hero. 1 player: 5 Heroes. Each player's starting deck adds 2 Wounds, 1 S.H.I.E.L.D. Officer, and a Nova card that costs 2.",
-      twist: `Twist 1-5: Each player must reveal their hand and discard a Nova Centurion. Each player that discarded this way gains a ,[object Object],. Each player that didn\'t discard this way must KO a card from the S.H.I.E.L.D. Officer Stack.
+      twist: `Each player must reveal their hand and discard a Nova Centurion. Each player that discarded this way gains a Shard. Each player that didn't discard this way must KO a card from the S.H.I.E.L.D. Officer Stack.
 Twist 6-9: Each player must KO a Nova Centurion from the S.H.I.E.L.D. Officer Stack or from their hand or discard pile.`,
       evilWins: "When there are 5 KO'd Nova Centurions per player.",
       specialRules:

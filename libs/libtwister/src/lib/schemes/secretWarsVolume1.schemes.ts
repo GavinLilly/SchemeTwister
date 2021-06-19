@@ -1,4 +1,5 @@
 import { GameSets } from '../gamesets';
+
 import { IScheme, Scheme } from './scheme';
 
 type SchemeNames =
@@ -18,7 +19,7 @@ export const SecretWarsVolume1: Record<SchemeNames, IScheme> = {
       name: 'Build an Army of Annihilation',
       setup:
         '9 Twists. Put 10 extra Annihilation Wave Henchmen in that KO pile.',
-      twist: `KO all Annihilation Henchmen from the players\' Victory Piles. Stack this Twist next to the Scheme. Then, for each Twist in that stack, put an Annihilation Henchman from the KO pile next to the Mastermind. Players can fight those Henchmen.`,
+      twist: `KO all Annihilation Henchmen from the players' Victory Piles. Stack this Twist next to the Scheme. Then, for each Twist in that stack, put an Annihilation Henchman from the KO pile next to the Mastermind. Players can fight those Henchmen.`,
       evilWins:
         'When there are 10 Annihilation Henchmen next to the Mastermind.',
       gameSet: GameSets.SECRET_WARS_VOLUME_1,

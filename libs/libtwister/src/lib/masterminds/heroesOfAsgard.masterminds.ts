@@ -1,6 +1,7 @@
 import { CardType } from '../cardSet';
 import { GameSets } from '../gamesets';
 import { VillainGroups } from '../villains';
+
 import { IMastermind } from './mastermind.interface';
 
 type MastermindNames = 'MALEKITH' | 'EPIC_MALEKITH' | 'HELA' | 'EPIC_HELA';

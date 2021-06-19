@@ -1,12 +1,13 @@
 import { Bystanders } from '../bystanders/bystanders';
 import { CardType } from '../cardSet';
-import { GameSets, GameSetSize } from '../gamesets';
+import { GameSetSize, GameSets } from '../gamesets';
 import { Henchmen } from '../henchmen';
 import { Heroes, IHero } from '../heroes';
 import { IMastermind, Masterminds } from '../masterminds';
-import { numPlayers, Schemes } from '../schemes';
+import { Schemes, numPlayers } from '../schemes';
 import { Teams } from '../teams';
 import { VillainGroups } from '../villains';
+
 import { GameSetup } from './gameSetup';
 import { IGameSetup } from './gameSetup.interface';
 

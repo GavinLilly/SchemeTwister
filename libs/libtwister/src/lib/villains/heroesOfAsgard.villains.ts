@@ -1,5 +1,6 @@
 import { CardType } from '../cardSet';
 import { GameSets } from '../gamesets';
+
 import { IVillainGroup } from './villainGroup.interface';
 
 type VillainGroupNames = 'DARK_COUNCIL' | 'OMENS_OF_RAGNAROK';

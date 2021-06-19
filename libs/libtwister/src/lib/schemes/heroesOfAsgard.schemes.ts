@@ -1,4 +1,5 @@
 import { GameSets } from '../gamesets';
+
 import { IScheme, Scheme } from './scheme';
 
 type SchemeNames =
@@ -29,8 +30,7 @@ export const HeroesOfAsgard: Record<SchemeNames, IScheme> = {
       id: '00502896-c385-4f84-8097-880804ef203b',
       name: 'The Dark World of Svartalfheim',
       setup: '10 twists.',
-      twist:
-        'Put this Twist next to a city space of HQ space that doesn\'t already have one, as "Eternal Darkness."',
+      twist: `Put this Twist next to a city space of HQ space that doesn't already have one, as "Eternal Darkness."`,
       specialRules:
         'Villains in city spaces with Eternal Darkness get +1 Attack. To recruit a Hero in an HQ space with Eternal Darkness, you must pay an extra 1 Recruit.',
       evilWins:

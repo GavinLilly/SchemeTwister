@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { faRedo } from '@fortawesome/free-solid-svg-icons';
 
 import { IHero } from '@schemetwister/libtwister';
@@ -8,14 +8,10 @@ import { IHero } from '@schemetwister/libtwister';
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.scss'],
 })
-export class HeroesComponent implements OnInit {
+export class HeroesComponent {
   @Input() hero!: IHero;
   @Output() heroID = new EventEmitter<string>();
   faRedo = faRedo;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   shuffle() {
     this.heroID.emit(this.hero.id);

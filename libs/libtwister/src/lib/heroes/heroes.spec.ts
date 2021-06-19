@@ -1,6 +1,7 @@
 import { GameSets } from '../gamesets';
 import { cardSetTest } from '../genericTests';
 import { Teams } from '../teams';
+
 import { Heroes } from './heroes';
 
 cardSetTest(new Heroes(Object.values(Heroes.ANT_MAN)), 5, GameSets.ANT_MAN);
@@ -184,7 +185,6 @@ describe('Total Heroes sets', () => {
     ].length;
   });
 
-  // @ts-ignore
   it(`should include all entries`, () =>
     expect(Heroes.ALL).toHaveLength(total));
 });

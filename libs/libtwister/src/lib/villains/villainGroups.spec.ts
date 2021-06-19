@@ -1,5 +1,6 @@
 import { GameSets } from '../gamesets';
 import { cardSetTest } from '../genericTests';
+
 import { VillainGroups } from './villainGroups';
 
 cardSetTest(
@@ -159,7 +160,7 @@ cardSetTest(
 );
 
 describe('Total Schemes sets', () => {
-  let total: number;
+  let total = 0;
 
   beforeAll(() => {
     total = [
@@ -192,7 +193,6 @@ describe('Total Schemes sets', () => {
     ].length;
   });
 
-  // @ts-ignore
   it(`should have ${total} entries`, () =>
     expect(VillainGroups.ALL).toHaveLength(total));
 });

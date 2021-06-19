@@ -1,5 +1,6 @@
 import { CardType } from '../cardSet';
 import { IHero } from '../heroes';
+
 import { Bystanders } from './bystanders';
 
 describe('Legendary base set', () => {

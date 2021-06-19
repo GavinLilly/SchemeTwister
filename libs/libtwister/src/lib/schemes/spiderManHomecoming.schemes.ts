@@ -1,5 +1,6 @@
 import { GameSets } from '../gamesets';
 import { Teams } from '../teams';
+
 import { IScheme, Scheme } from './scheme';
 
 type SchemeNames =
@@ -29,7 +30,7 @@ export const SpiderManHomecoming: Record<SchemeNames, IScheme> = {
       name: 'Explosion at the Washington Monument',
       setup:
         '8 Twists. Shuffle 18 Bystanders and 14 Wounds, then deal them evenly into eight decks. Put these decks in a row, as Floors of the Washington Monument.',
-      twist: `KO the topmost Floor of the Washington Monument. You gain one of the Wounds KO\'d this way.`,
+      twist: `KO the topmost Floor of the Washington Monument. You gain one of the Wounds KO'd this way.`,
       evilWins:
         "When 10 Bystanders are in the KO pile and/or Escape Pile, or all Floors are KO'd.",
       specialRules:
@@ -53,7 +54,7 @@ export const SpiderManHomecoming: Record<SchemeNames, IScheme> = {
       name: 'Ferry Disaster',
       setup:
         '9 Twists. Put the Bystander Stack above the Sewers as the "Ferry."',
-      twist: `Twist 1-4: If there\'s a Villain in the city space below the Ferry, KO 2 Bystanders from the Ferry. Whether you KO\'d or not, the Ferry moves one space left.
+      twist: `Twist 1-4: If there's a Villain in the city space below the Ferry, KO 2 Bystanders from the Ferry. Whether you KO'd or not, the Ferry moves one space left.
 Twist 5-8: Same effect, but it moves right.
 Twist 9: KO half the Bystanders from the Bystander deck, rounding up.`,
       evilWins: 'When 7 Bystanders are in the KO pile and/or Escape Pile.',

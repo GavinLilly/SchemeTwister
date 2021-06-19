@@ -1,4 +1,5 @@
 import { GameSets } from '../gamesets';
+
 import { IScheme, Scheme } from './scheme';
 
 type SchemeNames =
@@ -45,7 +46,7 @@ export const FearItself: Record<SchemeNames, IScheme> = {
       name: 'The Traitor',
       setup:
         "2+ players only. 8 Twists. Shuffle a 'Betrayal Deck' of 3 Bindings per player and a 9th Twist.",
-      twist: `Twists 1-3: If there is no revealed Traitor, each player puts a \'Betrayal Card\' from the Betrayal Deck face down in front of them and looks at it.
+      twist: `Twists 1-3: If there is no revealed Traitor, each player puts a 'Betrayal Card' from the Betrayal Deck face down in front of them and looks at it.
 Twists 8: Good wins! The Traitor reveals themself and also wins.`,
       evilWins: 'When twist 8 revealed',
       specialRules:

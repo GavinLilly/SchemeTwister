@@ -1,6 +1,7 @@
 import { CardType } from '../cardSet';
 import { GameSets } from '../gamesets';
 import { Henchmen } from '../henchmen';
+
 import { IMastermind } from './mastermind.interface';
 
 type MastermindNames = 'J_JONAH_JAMESON' | 'EPIC_J_JONAH_JAMESON';

@@ -1,6 +1,7 @@
 import { GameSets } from '../gamesets';
 import { HeroClass } from '../heroes';
 import { VillainGroups } from '../villains';
+
 import { IScheme, Scheme } from './scheme';
 
 type SchemeNames =
@@ -73,7 +74,7 @@ Twist 4-8: KO one of the Hero Decks.`,
       name: 'Hypnotize Every Human',
       setup:
         '8 Twists. Add another Henchman Villain Group. No Bystanders in the Villain Deck.',
-      twist: `Twist 1-6: Put a Bystander from the Bystander Stack above each city space as a facedown 2 Attack "Hypno-Thrall" Villain. They don\'t move. When you fight one, rescue it as a Bystander. You can\'t fight a Villain in a city space that has any Hypno-Thralls above it.
+      twist: `Twist 1-6: Put a Bystander from the Bystander Stack above each city space as a facedown 2 Attack "Hypno-Thrall" Villain. They don't move. When you fight one, rescue it as a Bystander. You can't fight a Villain in a city space that has any Hypno-Thralls above it.
 Twist 7-8: Each player puts a Villain from their Victory Pile into the Escape pile.`,
       evilWins: 'When 8 Villains are in the Escape pile.',
       gameSet: GameSets.CHAMPIONS,

@@ -1,6 +1,7 @@
 import { GameSets } from '../gamesets';
 import { HeroClass } from '../heroes';
 import { VillainGroups } from '../villains';
+
 import { IScheme, Scheme } from './scheme';
 
 type SchemeNames =
@@ -71,8 +72,7 @@ export const MarvelStudios: Record<SchemeNames, IScheme> = {
         '8 Twists. 6 Heroes. Chitauri Villain Group required. Shuffle 12 random Heroes from the Hero Deck into the Villain Deck.',
       twist: `The highest-cost Hero from the HQ moves into the Sewers as an "Enslaved" Villain as above.`,
       evilWins: 'If 6 Heroes get into the Escaped Villains pile.',
-      specialRules:
-        'Heroes in the Villain Deck count as "Enslaved" Villains with Attack equal to the Hero\'s Cost +2. If you defeat that Hero, you gain it.',
+      specialRules: `Heroes in the Villain Deck count as "Enslaved" Villains with Attack equal to the Hero's Cost +2. If you defeat that Hero, you gain it.`,
       requiredCards: {
         inVillainDeck: [VillainGroups.MARVEL_STUDIOS.CHITAURI],
       },
@@ -90,7 +90,7 @@ export const MarvelStudios: Record<SchemeNames, IScheme> = {
       name: 'Invade Asgard',
       setup: '7 Twists. Each Twist is a Dark Portal.',
       twist: `Put the Dark Portal above the Mastermind. The Mastermind gets +1 Attack.
-Twists 2-6: Put the Dark Portal in the leftmost city space that doesn\'t yet have a Dark Portal. Villains in that city space get ,[object Object],[object Object],.
+Twists 2-6: Put the Dark Portal in the leftmost city space that doesn't yet have a Dark Portal. Villains in that city space get +1 Attack.
 Twist 7: Evil Wins!`,
       evilWins: 'When 7 twists revealed',
       gameSet: GameSets.MARVEL_STUDIOS,

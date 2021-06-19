@@ -1,5 +1,6 @@
 import { CardType } from '../cardSet';
 import { GameSets } from '../gamesets';
+
 import { IHero } from './hero.interface';
 
 type HeroNames = 'HOWARD_THE_DUCK' | 'MANTHING';

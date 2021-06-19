@@ -1,5 +1,6 @@
 import { CardType } from '../cardSet';
 import { GameSets } from '../gamesets';
+
 import { IVillainGroup } from './villainGroup.interface';
 
 type VillainGroupNames = 'INHUMAN_REBELLION' | 'SHIAR_IMPERIAL_ELITE';

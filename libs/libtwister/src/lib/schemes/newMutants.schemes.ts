@@ -1,5 +1,6 @@
 import { GameSets } from '../gamesets';
 import { VillainGroups } from '../villains';
+
 import { IScheme, Scheme } from './scheme';
 
 type SchemeNames =
@@ -14,7 +15,7 @@ export const NewMutants: Record<SchemeNames, IScheme> = {
     name: 'The Demon Bear Saga',
     setup:
       '8 Twists. Include Demons of Limbo as one of the Villain Groups. Put the Demon Bear Villain from that group next to the Scheme.',
-    twist: `If the Demon Bear is in the city, it escapes. Otherwise, the Demon Bear enters the city from wherever it is. If it was in a player\'s Victory Pile, that player rescues 4 Bystanders.`,
+    twist: `If the Demon Bear is in the city, it escapes. Otherwise, the Demon Bear enters the city from wherever it is. If it was in a player's Victory Pile, that player rescues 4 Bystanders.`,
     evilWins: 'When there are 3 Dream Horrors.',
     specialRules:
       'Whenever the Demon Bear escapes, stack a Twist next to the Scheme as a "Dream Horror."',
@@ -80,8 +81,9 @@ Twist 9,10,11: Same effect.`,
       id: 'e292f8a2-58c0-466b-97c8-5ca44e25ae61',
       name: 'Superhuman Baseball Game',
       setup: '9 Twists. Add an extra Villain Group.',
-      twist: `Play the top card of the Villain Deck. If it\'s a Bystander, rescue that "Cheering Fan." If it\'s a Master Strike, then after it resolves, any Villain on Third Base "Steals Home" and Escapes. If it\'s a Villain, it "Hits a Double," pushes to Second Base ,[object Object], and you play the top card from the Villain Deck.`,
-      evilWins: 'When Evil has 4 "runs" ,[object Object], per player.',
+      twist: `Play the top card of the Villain Deck. If it's a Bystander, rescue that "Cheering Fan." If it's a Master Strike, then after it resolves, any Villain on Third Base "Steals Home" and Escapes. If it's a Villain, it "Hits a Double," pushes to Second Base (the Rooftops) and you play the top card from the Villain Deck.`,
+      evilWins:
+        'When Evil has 4 "runs" (Villains in the Escape Pile) per player',
       specialRules:
         'The Bank nd the Streets do not exist. Put the Villain Deck under the HQ as "Home Plate." The Sewers, Rooftops, and Bridge are First, Second, and Third Base.',
       gameSet: GameSets.NEW_MUTANTS,

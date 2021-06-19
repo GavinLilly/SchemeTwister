@@ -1,5 +1,6 @@
 import { GameSets } from '../gamesets';
 import { cardSetTest } from '../genericTests';
+
 import { Schemes } from './schemes';
 
 cardSetTest(new Schemes(Object.values(Schemes.ANT_MAN)), 4, GameSets.ANT_MAN);
@@ -131,7 +132,7 @@ cardSetTest(
 cardSetTest(new Schemes(Object.values(Schemes.X_MEN)), 8, GameSets.X_MEN);
 
 describe('Total Schemes sets', () => {
-  let total: number;
+  let total = 0;
 
   beforeAll(() => {
     total = [
@@ -164,7 +165,6 @@ describe('Total Schemes sets', () => {
     ].length;
   });
 
-  // @ts-ignore
   it(`should have ${total} entries`, () =>
     expect(Schemes.ALL).toHaveLength(total));
 });

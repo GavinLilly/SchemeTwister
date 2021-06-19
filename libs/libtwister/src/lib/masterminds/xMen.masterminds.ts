@@ -1,7 +1,8 @@
-import { CardType, Keyword } from '../cardSet';
+import { CardType } from '../cardSet';
 import { GameSets } from '../gamesets';
 import { Henchmen } from '../henchmen';
 import { VillainGroups } from '../villains';
+
 import { IMastermind } from './mastermind.interface';
 
 type MastermindNames =

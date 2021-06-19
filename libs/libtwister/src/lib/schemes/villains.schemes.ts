@@ -1,6 +1,7 @@
 import { GameSets } from '../gamesets';
 import { Henchmen } from '../henchmen';
 import { VillainGroups } from '../villains';
+
 import { IScheme, Scheme } from './scheme';
 
 type SchemeNames =
@@ -122,7 +123,7 @@ Twist 8: Put all captured Allies from the city into the Overrun Pile.`,
     name: 'Mass Produce War Machine Armor',
     setup:
       '8 Twists, Include 10 S.H.I.E.L.D. Assault Squads as one of the Backup Adversary groups.',
-    twist: `Stack this Twist next to the Plot as "War Machine Technology." An Assault Squad from the current player\'s Victory Pile enters the Bridge.`,
+    twist: `Stack this Twist next to the Plot as "War Machine Technology." An Assault Squad from the current player's Victory Pile enters the Bridge.`,
     evilWins: 'When there are 3 Assault Squads in the Overrun Pile.',
     specialRules:
       'Assault Squads get +1 Attack for each War Machine Technology next to the Plot.',
@@ -135,7 +136,7 @@ Twist 8: Put all captured Allies from the city into the Overrun Pile.`,
     id: 'd673d8f2-c240-4e6b-aebb-df32af35045f',
     name: 'Resurrect Heroes with Norn Stones',
     setup: '8 Twists.',
-    twist: `Twists 1-6: An Adversary from the current player\'s Victory Pile enters the Bridge. Then play the top card of the Adversary Deck.
+    twist: `Twists 1-6: An Adversary from the current player's Victory Pile enters the Bridge. Then play the top card of the Adversary Deck.
 Twists 7-8: Each player puts an Adversary from their Victory Pile into the Overrun Pile.`,
     evilWins: 'When there are 3 Adversaries per player in the Overrun Pile.',
     gameSet: GameSets.VILLAINS,

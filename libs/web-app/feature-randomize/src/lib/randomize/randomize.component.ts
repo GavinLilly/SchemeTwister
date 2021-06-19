@@ -50,7 +50,7 @@ export class RandomizeComponent implements OnInit {
   }
 
   pickGameSets() {
-    const modalRef = this.modalService.open(GameSetSelectComponent);
+    this.modalService.open(GameSetSelectComponent);
   }
 
   pickScheme() {

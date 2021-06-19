@@ -1,6 +1,7 @@
 import { GameSets } from '../gamesets';
 import { Henchmen } from '../henchmen';
 import { HeroClass, Heroes } from '../heroes';
+
 import { IScheme, Scheme } from './scheme';
 
 type SchemeNames =
@@ -130,8 +131,7 @@ export const DarkCity: Record<SchemeNames, IScheme> = {
         '8 Twists. Villain Deck includes 14 extra Jean Grey cards and no Bystanders.',
       twist:
         'Stack 5 Bystanders face down next to the Scheme. Bystanders stacked here are "Demon Goblin" Villains. They have 2 Attack. Players can fight these Demon Goblins to rescue them as Bystanders.',
-      specialRules:
-        'Each Jean Grey card counts as a "Goblin Queen" Villain. It\'s worth 4 VP. It has Attack equal to its Cost plus the number of Demon Goblins stacked next to the Scheme.',
+      specialRules: `Each Jean Grey card counts as a "Goblin Queen" Villain. It's worth 4 VP. It has Attack equal to its Cost plus the number of Demon Goblins stacked next to the Scheme.`,
       evilWins: 'When 4 Goblin Queen cards escape.',
       requiredCards: {
         inVillainDeck: [Heroes.DARK_CITY.JEAN_GREY],

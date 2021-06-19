@@ -1,4 +1,5 @@
 import { GameSets } from '../gamesets';
+
 import { IScheme, Scheme } from './scheme';
 
 type SchemeNames =
@@ -105,7 +106,7 @@ Twist 6: Evil Wins!`,
       setup:
         '11 Twists. Set aside a second "Drained" Mastermind and its 4 Tactics, out of play. Add its "Always Leads" Villains as an extra Villain Group.',
       twist: `
-Twist 1-4: Shuffle one of the Drained Mastermind\'s Tactics into the main Mastermind\'s Tactics.
+Twist 1-4: Shuffle one of the Drained Mastermind's Tactics into the main Mastermind's Tactics.
 Twist 6, 8, 10: The Mastermind uses this Twist to copy the Master Strike ability of the Drained Mastermind.
 Twist 11: Evil Wins!`,
       evilWins: 'When 11 twists revealed',

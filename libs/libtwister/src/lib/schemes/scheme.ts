@@ -4,6 +4,7 @@ import { CardType, ICard } from '../cardSet';
 import { DeepPartial } from '../deepPartial.type';
 import { IGameSet } from '../gamesets';
 import { ITeam } from '../teams';
+
 import { INumPlayerRules, IRules, numPlayers } from './rules.interface';
 
 export interface IRequiredTeam {

@@ -1,5 +1,6 @@
 import { GameSets } from '../gamesets';
 import { cardSetTest } from '../genericTests';
+
 import { Henchmen } from './henchmen';
 
 cardSetTest(
@@ -71,7 +72,7 @@ cardSetTest(
 );
 
 describe('Total Henchmen sets', () => {
-  let total: number;
+  let total = 0;
 
   beforeAll(() => {
     total = [
@@ -90,7 +91,6 @@ describe('Total Henchmen sets', () => {
     ].length;
   });
 
-  // @ts-ignore
   it(`should have ${total} entries`, () =>
     expect(Henchmen.ALL).toHaveLength(total));
 });

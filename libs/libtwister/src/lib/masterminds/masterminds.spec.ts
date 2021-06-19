@@ -1,5 +1,6 @@
 import { GameSets } from '../gamesets';
 import { cardSetTest } from '../genericTests';
+
 import { Masterminds } from './masterminds';
 
 cardSetTest(
@@ -161,7 +162,7 @@ cardSetTest(
 );
 
 describe('Total Masterminds sets', () => {
-  let total: number;
+  let total = 0;
 
   beforeAll(() => {
     total = [
@@ -195,7 +196,6 @@ describe('Total Masterminds sets', () => {
     ].length;
   });
 
-  // @ts-ignore
   it(`should have ${total} entries`, () =>
     expect(Masterminds.ALL).toHaveLength(total));
 });

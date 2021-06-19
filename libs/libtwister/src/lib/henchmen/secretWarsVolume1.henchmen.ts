@@ -1,6 +1,7 @@
-import { CardType, Keyword } from '../cardSet';
+import { CardType } from '../cardSet';
 import { GameSets } from '../gamesets';
 import { HeroClass } from '../heroes';
+
 import { IHenchmen } from './henchmen.interface';
 
 type HenchmenNames = 'GHOST_RACERS' | 'MODOKS' | 'THOR_CORPS';

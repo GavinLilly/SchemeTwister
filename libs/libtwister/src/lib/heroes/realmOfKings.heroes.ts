@@ -1,6 +1,7 @@
 import { CardType } from '../cardSet';
 import { GameSets } from '../gamesets';
 import { Teams } from '../teams';
+
 import { IHero } from './hero.interface';
 
 type HeroNames = 'BLACK_BOLT' | 'MEDUSA' | 'CRYSTAL' | 'KARNAK' | 'GORGON';

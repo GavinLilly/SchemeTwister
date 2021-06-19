@@ -1,6 +1,7 @@
 import { CardType } from '../cardSet';
 import { GameSets } from '../gamesets';
 import { VillainGroups } from '../villains';
+
 import { IMastermind } from './mastermind.interface';
 
 type MastermindNames = 'EVIL_DEADPOOL' | 'MACHO_GOMEZ';

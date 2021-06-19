@@ -1,5 +1,6 @@
 import { GameSets } from '../gamesets';
 import { Teams } from '../teams';
+
 import { IScheme, Scheme } from './scheme';
 
 type SchemeNames =
@@ -34,7 +35,7 @@ Twist 8: Evil wins!`,
       id: '22daba46-79c4-4b15-9b72-bbd296f15b21',
       name: 'Dark Reign of H.A.M.M.E.R. Officers',
       setup: '7 Twists.',
-      twist: `Stack this Twist next to the Scheme. Then, for each Twist in that stack, put a S.H.I.E.L.D. Officer next to the Mastermind as a ,[object Object],[object Object], Villain with ,[object Object],. You can fight them to gain them as Heroes.`,
+      twist: `Stack this Twist next to the Scheme. Then, for each Twist in that stack, put a S.H.I.E.L.D. Officer next to the Mastermind as a 3 Attack Villain with S.H.I.E.L.D. Clearance. You can fight them to gain them as Heroes.`,
       evilWins: 'When there are 7 Officers next to the Mastermind.',
       gameSet: GameSets.CIVIL_WAR,
     },
@@ -143,7 +144,7 @@ Twist 8: Evil wins!`,
       id: 'a337a91e-d497-4f2e-af9b-b1bf2e5297d2',
       name: "Reveal Heroes' Secret Identities",
       setup: '6 Twists. 7 Heroes in Hero Deck.',
-      twist: `Put a Hero from the HQ next to the Scheme as an "Unmasked" Hero. All cards with "Unmasked" Hero Names cost +1 Recruit to recruit. You can\'t Unmask a Hero Name that has already been Unmasked.`,
+      twist: `Put a Hero from the HQ next to the Scheme as an "Unmasked" Hero. All cards with "Unmasked" Hero Names cost +1 Recruit to recruit. You can't Unmask a Hero Name that has already been Unmasked.`,
       evilWins: 'When 5 Heroes are Unmasked.',
       gameSet: GameSets.CIVIL_WAR,
     },

@@ -1,6 +1,7 @@
 import { CardType } from '../cardSet';
 import { GameSets } from '../gamesets';
 import { Teams } from '../teams';
+
 import { IHero } from './hero.interface';
 
 type HeroNames = 'ANT_MAN' | 'WASP' | 'JOCASTA' | 'WONDER_MAN' | 'BLACK_KNIGHT';

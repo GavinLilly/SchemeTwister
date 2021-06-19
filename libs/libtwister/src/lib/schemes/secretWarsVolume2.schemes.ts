@@ -1,6 +1,7 @@
 import { GameSets } from '../gamesets';
 import { Henchmen } from '../henchmen';
 import { HeroClass } from '../heroes';
+
 import { IScheme, Scheme } from './scheme';
 
 type SchemeNames =

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { faRedo } from '@fortawesome/free-solid-svg-icons';
 
 import { IHenchmen } from '@schemetwister/libtwister';
@@ -8,14 +8,10 @@ import { IHenchmen } from '@schemetwister/libtwister';
   templateUrl: './henchmen.component.html',
   styleUrls: ['./henchmen.component.scss'],
 })
-export class HenchmenComponent implements OnInit {
+export class HenchmenComponent {
   @Input() henchmen!: IHenchmen;
   @Output() henchmenID = new EventEmitter<string>();
   faRedo = faRedo;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   shuffle(id: string) {
     this.henchmenID.emit(id);

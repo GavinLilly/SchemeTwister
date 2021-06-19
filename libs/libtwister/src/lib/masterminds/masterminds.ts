@@ -1,4 +1,5 @@
 import { CardSet } from '../cardSet';
+
 import { AntMan } from './antMan.masterminds';
 import { CaptainAmerica } from './captainAmerica.masterminds';
 import { Champions } from './champions.masterminds';

@@ -1,5 +1,6 @@
 import { GameSets } from '../gamesets';
 import { Henchmen } from '../henchmen';
+
 import { IScheme, Scheme } from './scheme';
 
 type SchemeNames =
@@ -165,7 +166,7 @@ Twist 7: Evil Wins!`,
       twist: `Put this Twist under an HQ space as an "Obedience Disk." No space can have two more Obedience Disks than any other space.`,
       evilWins: 'When each HQ space has 2 Obedience Disks.',
       specialRules:
-        'To recruit a Hero in the HQ, you must also pay ,[object Object],[object Object], for each Obedience Disk under it.',
+        'To recruit a Hero in the HQ, you must also pay 1 Recruit for each Obedience Disk under it.',
       gameSet: GameSets.WORLD_WAR_HULK,
     },
     {
