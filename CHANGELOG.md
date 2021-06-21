@@ -1,3 +1,26 @@
+# [2.0.0](https://github.com/GavinLilly/legendizer/compare/v1.18.0...v2.0.0) (2021-06-21)
+
+
+### Bug Fixes
+
+* **app:** warn before saving without core or big box ([4378fed](https://github.com/GavinLilly/legendizer/commit/4378fed137e37a8f57b73b0f847094927b19069e))
+
+
+### Code Refactoring
+
+* replace Legendizer with SchemeTwister ([5261a51](https://github.com/GavinLilly/legendizer/commit/5261a51d83f00744d4ecbeb2debb9741f440a58f))
+
+
+### Features
+
+* **app:** add twister icon to header ([68ce5d0](https://github.com/GavinLilly/legendizer/commit/68ce5d041b15f80e9a696f295b3bbc8f1fe245c8))
+* **app:** update app icon ([8036b0d](https://github.com/GavinLilly/legendizer/commit/8036b0d064d55c1540879e977f4976e868ebafc9))
+
+
+### BREAKING CHANGES
+
+* library rename
+
 # [1.18.0](https://github.com/GavinLilly/legendizer/compare/v1.17.0...v1.18.0) (2021-03-26)
 
 
