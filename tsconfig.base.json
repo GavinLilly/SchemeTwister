@@ -19,7 +19,6 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "paths": {
-      "@schemetwister/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@schemetwister/libtwister": ["libs/libtwister/src/index.ts"],
       "@schemetwister/web-app/feature-home": [
         "libs/web-app/feature-home/src/index.ts"
@@ -31,7 +30,4 @@
     }
   },
   "exclude": ["node_modules", "tmp"]
-  // "angularCompilerOptions": {
-  //   "strictTemplates": true
-  // }
 }

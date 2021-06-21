@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordionModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
 
 import { WebAppUiModule } from '@schemetwister/web-app/ui';
@@ -20,8 +20,14 @@ describe('RandomizeComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [RandomizeComponent, IterateDeckComponent],
-        imports: [NgbModule, FontAwesomeModule, FormsModule, WebAppUiModule],
-        providers: [NgbModal, GameSetupStore, CookieService],
+        imports: [
+          FormsModule,
+          WebAppUiModule,
+          FontAwesomeModule,
+          NgbModalModule,
+          NgbAccordionModule,
+        ],
+        providers: [GameSetupStore, CookieService],
       }).compileComponents();
     })
   );
