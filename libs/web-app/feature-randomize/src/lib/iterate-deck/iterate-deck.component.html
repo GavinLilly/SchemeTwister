@@ -37,23 +37,23 @@
           </div>
         </ng-template>
         <ng-template ngbPanelContent>
-          <legendizer-henchmen
+          <schemetwister-henchmen
             *ngIf="isCardType(item, CardType.HENCHMEN)"
             [henchmen]="item"
-          ></legendizer-henchmen>
-          <legendizer-villain-group
+          ></schemetwister-henchmen>
+          <schemetwister-villain-group
             *ngIf="isCardType(item, CardType.VILLAINGROUP)"
             [villainGroup]="item"
           >
-          </legendizer-villain-group>
-          <legendizer-heroes
+          </schemetwister-villain-group>
+          <schemetwister-heroes
             *ngIf="isCardType(item, CardType.HERO)"
             [hero]="item"
-          ></legendizer-heroes>
-          <legendizer-mastermind
+          ></schemetwister-heroes>
+          <schemetwister-mastermind
             *ngIf="isCardType(item, CardType.MASTERMIND)"
             [mastermind]="item"
-          ></legendizer-mastermind>
+          ></schemetwister-mastermind>
         </ng-template>
       </ngb-panel>
     </ngb-accordion>

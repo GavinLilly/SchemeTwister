@@ -10,6 +10,7 @@
   </button>
 </div>
 <div class="modal-body">
+  <p>You must select at least one core or big box.</p>
   <select
     multiple="true"
     [(ngModel)]="selectedGameSets"
@@ -38,8 +39,9 @@
   <button
     type="button"
     class="btn btn-outline-dark"
-    (click)="setGameSets(); activeModal.close('Close click')"
+    (click)="setGameSets();"
   >
     Save
   </button>
 </div>
+<ngb-alert #selfClosingAlert *ngIf="gameSelectError" type="danger" (closed)="gameSelectError = ''">{{ gameSelectError }}</ngb-alert>

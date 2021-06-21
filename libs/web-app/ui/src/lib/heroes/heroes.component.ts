@@ -1,24 +1,19 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { faRedo } from "@fortawesome/free-solid-svg-icons";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { faRedo } from '@fortawesome/free-solid-svg-icons';
 
-import { IHero } from "@legendizer/legendizer-lib";
+import { IHero } from '@schemetwister/libtwister';
 
 @Component({
-  selector: 'legendizer-heroes',
+  selector: 'schemetwister-heroes',
   templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.scss']
+  styleUrls: ['./heroes.component.scss'],
 })
-export class HeroesComponent implements OnInit {
+export class HeroesComponent {
   @Input() hero!: IHero;
   @Output() heroID = new EventEmitter<string>();
   faRedo = faRedo;
 
-  constructor() { }
-
-  ngOnInit(): void { }
-
   shuffle() {
     this.heroID.emit(this.hero.id);
   }
-
 }

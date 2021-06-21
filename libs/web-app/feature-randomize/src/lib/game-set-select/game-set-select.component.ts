@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { GameSets, GameSetSize, IGameSet } from '@legendizer/legendizer-lib';
+import { GameSetSize, GameSets, IGameSet } from '@schemetwister/libtwister';
 
 import { GameSetupStore } from '../game-setup-store';
 
 @Component({
-  selector: 'legendizer-game-set-select',
+  selector: 'schemetwister-game-set-select',
   templateUrl: './game-set-select.component.html',
   styleUrls: ['./game-set-select.component.scss'],
 })
@@ -25,6 +25,8 @@ export class GameSetSelectComponent implements OnInit {
     (item) => item.size === GameSetSize.SMALL
   );
 
+  gameSelectError = '';
+
   constructor(
     public gameSetupStore: GameSetupStore,
     public activeModal: NgbActiveModal
@@ -32,12 +34,27 @@ export class GameSetSelectComponent implements OnInit {
 
   ngOnInit(): void {
     this.gameSetupStore.gameSets.subscribe(
-      (value) => (this.selectedGameSets = value)
+      (value) => (this.selectedGameSets = value),
+      (error) => (this.gameSelectError = error)
     );
   }
 
   setGameSets() {
-    this.gameSetupStore.setGameSets(this.selectedGameSets);
+    if (
+      this.selectedGameSets.every((item) => {
+        return [
+          GameSetSize.SMALL,
+          GameSetSize.MEDIUM,
+          GameSetSize.PROMO,
+        ].includes(item.size);
+      })
+    )
+      this.gameSelectError =
+        'At least one core box or big box game set must be chosen.';
+    else {
+      this.gameSetupStore.setGameSets(this.selectedGameSets);
+      this.activeModal.close('Close click');
+    }
   }
 
   getPickerSize(): number {

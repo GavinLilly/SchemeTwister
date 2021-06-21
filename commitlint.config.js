@@ -6,7 +6,7 @@ module.exports = {
       'app',
       'api',
       'misc',
-      'legendizer-lib',
+      'libtwister',
       'deps',
       '*'
     ]]

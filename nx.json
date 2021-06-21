@@ -1,12 +1,11 @@
 {
-  "npmScope": "legendizer",
+  "npmScope": "schemetwister",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": {
       "dependencies": "*",
       "devDependencies": "*"
     },
-    "tslint.json": "*",
     "nx.json": "*",
     "tsconfig.base.json": "*",
     ".eslintrc.json": "*"
@@ -23,7 +22,7 @@
     "api-interfaces": {
       "tags": []
     },
-    "legendizer-lib": {
+    "libtwister": {
       "tags": []
     },
     "web-api": {

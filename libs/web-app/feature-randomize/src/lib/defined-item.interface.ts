@@ -1,4 +1,4 @@
-import { IMastermind, IScheme } from '@legendizer/legendizer-lib';
+import { IMastermind, IScheme } from '@schemetwister/libtwister';
 
 export interface IDefinedItem {
   random: boolean;

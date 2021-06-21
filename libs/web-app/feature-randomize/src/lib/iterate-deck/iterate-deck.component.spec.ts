@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { CardType, GameSets } from '@legendizer/legendizer-lib';
-import { WebAppUiModule } from '@legendizer/web-app/ui';
+import { CardType, GameSets } from '@schemetwister/libtwister';
+import { WebAppUiModule } from '@schemetwister/web-app/ui';
 
 import { IterateDeckComponent } from './iterate-deck.component';
 

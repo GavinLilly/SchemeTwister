@@ -6,7 +6,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
 
-import { WebAppUiModule } from '@legendizer/web-app/ui';
+import { WebAppUiModule } from '@schemetwister/web-app/ui';
 
 import { GameSetSelectComponent } from './game-set-select/game-set-select.component';
 import { GameSetupStore } from './game-setup-store';

@@ -26,13 +26,13 @@
          "console": "internalConsole"
        },
        {
-        "name": "debug-legendizer-lib",
+        "name": "debug-libtwister",
          "type": "node",
          "request": "launch",
          "program": "${workspaceFolder}/node_modules/@nrwl/cli/bin/nx",
          "args": [
            "test",
-           "legendizer-lib",
+           "libtwister",
            "--codeCoverage=false",
          ],
          "cwd": "${workspaceFolder}",

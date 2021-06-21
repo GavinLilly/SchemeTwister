@@ -67,9 +67,9 @@
             </div>
           </ng-template>
           <ng-template ngbPanelContent>
-            <legendizer-mastermind
+            <schemetwister-mastermind
               [mastermind]="(gameSetupStore.gameSetup | async).mastermind"
-            ></legendizer-mastermind>
+            ></schemetwister-mastermind>
           </ng-template>
         </ngb-panel>
       </ngb-accordion>
@@ -122,17 +122,17 @@
   <div class="row row-cols-1 row-cols-md-2">
     <div class="col">
       <!--Villain deck-->
-      <legendizer-iterate-deck
+      <schemetwister-iterate-deck
         [deckName]="villainDeck"
         [deck]="(gameSetupStore.gameSetup | async).villainDeck"
-      ></legendizer-iterate-deck>
+      ></schemetwister-iterate-deck>
     </div>
     <div class="col">
       <!--Hero deck-->
-      <legendizer-iterate-deck
+      <schemetwister-iterate-deck
         [deckName]="heroDeck"
         [deck]="(gameSetupStore.gameSetup | async).heroDeck"
-      ></legendizer-iterate-deck>
+      ></schemetwister-iterate-deck>
     </div>
   </div>
   <div
@@ -141,14 +141,14 @@
   >
     <div class="col">
       <!--Additional deck-->
-      <legendizer-iterate-deck
+      <schemetwister-iterate-deck
         [deckName]="
           (gameSetupStore.gameSetup | async).additionalDeck?.name
             ? (gameSetupStore.gameSetup | async).additionalDeck?.name
             : 'Additional deck'
         "
         [deck]="(gameSetupStore.gameSetup | async).additionalDeck?.deck"
-      ></legendizer-iterate-deck>
+      ></schemetwister-iterate-deck>
     </div>
   </div>
 </div>
