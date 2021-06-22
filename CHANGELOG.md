@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/GavinLilly/SchemeTwister/compare/v2.0.0...v2.0.1) (2021-06-22)
+
+
+### Bug Fixes
+
+* update critical package vulnerabilities ([9c6424d](https://github.com/GavinLilly/SchemeTwister/commit/9c6424d7962c886445c49617cc955d152a6714a0))
+
 # [2.0.0](https://github.com/GavinLilly/legendizer/compare/v1.18.0...v2.0.0) (2021-06-21)
 
 
