@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CardType, GameSets } from '@schemetwister/libtwister';
 import { WebAppUiModule } from '@schemetwister/web-app/ui';
@@ -14,7 +15,7 @@ describe('IterateDeckComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [IterateDeckComponent],
-        imports: [NgbModule, WebAppUiModule],
+        imports: [WebAppUiModule, FontAwesomeModule, NgbAccordionModule],
       }).compileComponents();
     })
   );

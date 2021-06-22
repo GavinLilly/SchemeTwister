@@ -19,13 +19,7 @@
     }
   },
   "projects": {
-    "api-interfaces": {
-      "tags": []
-    },
     "libtwister": {
-      "tags": []
-    },
-    "web-api": {
       "tags": []
     },
     "web-app": {

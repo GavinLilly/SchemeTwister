@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
 
 import { GameSetupStore } from '../game-setup-store';
@@ -13,7 +13,7 @@ describe('SchemeMastermindSelectComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SchemeMastermindSelectComponent],
-      imports: [NgbModule, FormsModule],
+      imports: [NgbModalModule, FormsModule],
       providers: [GameSetupStore, CookieService, NgbActiveModal],
     }).compileComponents();
   });

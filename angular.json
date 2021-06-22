@@ -1,32 +1,6 @@
 {
   "version": 1,
   "projects": {
-    "api-interfaces": {
-      "root": "libs/api-interfaces",
-      "sourceRoot": "libs/api-interfaces/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/api-interfaces/src/**/*.ts",
-              "libs/api-interfaces/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/api-interfaces/jest.config.js",
-            "passWithNoTests": true,
-            "codeCoverage": true
-          },
-          "outputs": ["coverage/libs/api-interfaces"]
-        }
-      }
-    },
     "libtwister": {
       "root": "libs/libtwister",
       "sourceRoot": "libs/libtwister/src",
@@ -62,62 +36,6 @@
             "srcRootForCompilationRoot": "libs\\libtwister\\src"
           },
           "outputs": ["{options.outputPath}"]
-        }
-      }
-    },
-    "web-api": {
-      "root": "apps/web-api",
-      "sourceRoot": "apps/web-api/src",
-      "projectType": "application",
-      "prefix": "api",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@nrwl/node:build",
-          "options": {
-            "outputPath": "dist/apps/web-api",
-            "main": "apps/web-api/src/main.ts",
-            "tsConfig": "apps/web-api/tsconfig.app.json",
-            "assets": ["apps/web-api/src/assets"]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/web-api/src/environments/environment.ts",
-                  "with": "apps/web-api/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          },
-          "outputs": ["{options.outputPath}"]
-        },
-        "serve": {
-          "builder": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "web-api:build"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/web-api/src/**/*.ts",
-              "apps/web-api/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/web-api/jest.config.js",
-            "passWithNoTests": true,
-            "codeCoverage": true
-          },
-          "outputs": ["coverage/apps/web-api"]
         }
       }
     },

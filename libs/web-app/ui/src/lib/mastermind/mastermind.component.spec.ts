@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CardType, GameSets, Henchmen } from '@schemetwister/libtwister';
 
@@ -13,7 +12,6 @@ describe('MastermindComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [MastermindComponent],
-        imports: [NgbModule],
       }).compileComponents();
     })
   );

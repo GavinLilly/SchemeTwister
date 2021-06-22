@@ -2,7 +2,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { GameSetupStore } from '../game-setup-store';
 
@@ -18,7 +18,7 @@ describe('GameSetSelectComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [GameSetSelectComponent],
-        imports: [NgbModule, FormsModule],
+        imports: [NgbModalModule, FormsModule],
         providers: [GameSetupStore, CookieService, NgbActiveModal],
       }).compileComponents();
     })
