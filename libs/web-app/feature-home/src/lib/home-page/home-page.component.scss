@@ -1,11 +1,15 @@
-@import '~bootstrap/scss/bootstrap-grid.scss';
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins/_breakpoints';
 
-.jumbotron .container h1 {
-  font-size: 3rem;
+@include media-breakpoint-down(xs) {
+  .jumbotron .container h1 {
+    font-size: 3rem;
+  }
 }
 
-@include media-breakpoint-up(sm) {
+@media (max-width: 400px) {
   .jumbotron .container h1 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
   }
 }
