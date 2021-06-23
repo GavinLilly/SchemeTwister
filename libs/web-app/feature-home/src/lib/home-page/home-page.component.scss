@@ -1,0 +1,11 @@
+@import '~bootstrap/scss/bootstrap-grid.scss';
+
+.jumbotron .container h1 {
+  font-size: 3rem;
+}
+
+@include media-breakpoint-up(sm) {
+  .jumbotron .container h1 {
+    font-size: 3.5rem;
+  }
+}
