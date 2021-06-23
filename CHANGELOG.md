@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/GavinLilly/SchemeTwister/compare/v2.0.1...v2.0.2) (2021-06-23)
+
+
+### Bug Fixes
+
+* **app:** fix home page text overflow on mobile ([0fc553d](https://github.com/GavinLilly/SchemeTwister/commit/0fc553d05a46ee63055927afcbc4bb2f283c001d))
+
 ## [2.0.1](https://github.com/GavinLilly/SchemeTwister/compare/v2.0.0...v2.0.1) (2021-06-22)
 
 
