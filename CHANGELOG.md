@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/GavinLilly/SchemeTwister/compare/v2.0.2...v2.0.3) (2021-06-23)
+
+
+### Bug Fixes
+
+* **app:** fix css file size for prod build ([d33fbf0](https://github.com/GavinLilly/SchemeTwister/commit/d33fbf0079b5bbd6f6dc6b3fb06eac9197ccf2a8))
+
 ## [2.0.2](https://github.com/GavinLilly/SchemeTwister/compare/v2.0.1...v2.0.2) (2021-06-23)
 
 
