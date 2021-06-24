@@ -38,5 +38,14 @@ testem.log
 .DS_Store
 Thumbs.db
 
+### Firebase ###
+.idea
+**/node_modules/*
+**/.firebaserc
+
+### Firebase Patch ###
+.runtimeconfig.json
+.firebase/
+
 # Footer version file
 /libs/web-app/ui/src/lib/footer/version.ts
