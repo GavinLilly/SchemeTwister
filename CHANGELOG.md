@@ -1,3 +1,15 @@
+# [2.1.0](https://github.com/GavinLilly/SchemeTwister/compare/v2.0.3...v2.1.0) (2021-06-25)
+
+
+### Bug Fixes
+
+* **app:** fix ngModel inside a form tag ([6abe6e7](https://github.com/GavinLilly/SchemeTwister/commit/6abe6e7e3274477f8ed2e0eb8061f3262c232df1))
+
+
+### Features
+
+* **app:** add label to play number dropdown ([1a53de1](https://github.com/GavinLilly/SchemeTwister/commit/1a53de184042a1046926e824e6c09e8598b545d8))
+
 ## [2.0.3](https://github.com/GavinLilly/SchemeTwister/compare/v2.0.2...v2.0.3) (2021-06-23)
 
 
