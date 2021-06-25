@@ -16,28 +16,37 @@
           </div>
         </div>
         <div class="card-body">
-          <select
-            class="custom-select mb-1"
-            [(ngModel)]="numPlayers"
-            (change)="setPlayers()"
-          >
-            <option [value]="2">2</option>
-            <option [value]="3">3</option>
-            <option [value]="4">4</option>
-            <option [value]="5">5</option>
-          </select>
-          <a
-            href="javascript:void(0)"
-            class="btn btn-primary"
-            (click)="generateDecks()"
-            >Shuffle</a
-          >
-          <a
-            href="javascript:void(0)"
-            class="btn btn-secondary"
-            (click)="reset()"
-            >Reset</a
-          >
+          <form>
+            <div class="form-group text-left">
+              <label for="numPlayersSelect">Players</label>
+              <select
+                class="custom-select mb-1 form-control"
+                [(ngModel)]="numPlayers"
+                (change)="setPlayers()"
+                id="numPlayersSelect"
+              >
+                <option [value]="2">2</option>
+                <option [value]="3">3</option>
+                <option [value]="4">4</option>
+                <option [value]="5">5</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <a
+                href="javascript:void(0)"
+                class="btn btn-primary"
+                (click)="generateDecks()"
+                >Twist!</a
+              >
+              <a
+                href="javascript:void(0)"
+                class="btn btn-secondary"
+                (click)="reset()"
+                >Reset</a
+              >
+            </div>
+          </form>
         </div>
       </div>
     </div>
