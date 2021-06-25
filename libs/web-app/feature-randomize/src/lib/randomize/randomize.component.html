@@ -22,6 +22,7 @@
               <select
                 class="custom-select mb-1 form-control"
                 [(ngModel)]="numPlayers"
+                [ngModelOptions]="{ standalone: true }"
                 (change)="setPlayers()"
                 id="numPlayersSelect"
               >
