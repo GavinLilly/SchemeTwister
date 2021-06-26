@@ -101,7 +101,7 @@ npm test
 
 | <a href="https://github.com/GavinLilly" target="_blank">**Gavin Lilly**</a> |
 | :---: |
-| [![GavinLilly](https://avatars2.githubusercontent.com/u/29777802?s=460&v=4&s=200)](https://github.com/GavinLilly)    |
+| [![GavinLilly](https://avatars2.githubusercontent.com/u/29777802?s=200&v=4)](https://github.com/GavinLilly)    |
 | <a href="https://github.com/GavinLilly" target="_blank">`github.com/GavinLilly`</a> |
 
 ---
