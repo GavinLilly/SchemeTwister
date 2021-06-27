@@ -17,18 +17,18 @@ import { VillainGroups } from '../villains';
 import { IAdditionalDeck, IGameSetup } from './gameSetup.interface';
 
 export class GameSetup {
+  public static soloBannedSchemes = [
+    Schemes.LEGENDARY.SUPER_HERO_CIVIL_WAR,
+    Schemes.LEGENDARY.NEGATIVE_ZONE_PRISON_BREAKOUT,
+    Schemes.MARVEL_STUDIOS.SUPER_HERO_CIVIL_WAR,
+  ];
+
   private schemes: Schemes;
   private masterminds: Masterminds;
   private heroes: Heroes;
   private henchmen: Henchmen;
   private villains: VillainGroups;
   private gameSets: IGameSet[] = [];
-
-  private soloBannedSchemes = [
-    Schemes.LEGENDARY.SUPER_HERO_CIVIL_WAR,
-    Schemes.LEGENDARY.NEGATIVE_ZONE_PRISON_BREAKOUT,
-    Schemes.MARVEL_STUDIOS.SUPER_HERO_CIVIL_WAR,
-  ];
 
   constructor(...gameSets: IGameSet[]) {
     if (gameSets.length === 0) {
@@ -72,7 +72,7 @@ ${GameSets.ALL.filter((item) =>
       return this.schemes.shuffle(1)[0];
     } else {
       const availSchemes = this.schemes.getCards().filter((scheme) => {
-        return !this.soloBannedSchemes.includes(scheme);
+        return !GameSetup.soloBannedSchemes.includes(scheme);
       });
       return this.getRandomElementsFromArray(availSchemes, 1)[0];
     }
@@ -102,7 +102,7 @@ ${GameSets.ALL.filter((item) =>
         'The specified scheme is not in the list of selected game sets'
       );
 
-    if (numberPlayers == 1 && this.soloBannedSchemes.includes(scheme))
+    if (numberPlayers == 1 && GameSetup.soloBannedSchemes.includes(scheme))
       throw new Error('The selected scheme is not possible in solo play');
 
     // Check for any scheme required cards

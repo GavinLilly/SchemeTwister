@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { GameSetup } from '@schemetwister/libtwister';
 
 import {
   CardType,
@@ -44,6 +45,16 @@ export class SchemeMastermindSelectComponent implements OnInit {
           if (mastermind.random) this.selectedItem = '**Random**';
           else this.selectedItem = (mastermind.definedItem as IMastermind).id;
         });
+      }
+    });
+
+    this.gameSetupStore.numPlayers.subscribe((value) => {
+      if (this.itemType === CardType.SCHEME) {
+        if (value === 1) {
+          this.availableItems = this.availableItems.filter((scheme) => {
+            return !GameSetup.soloBannedSchemes.includes(scheme as IScheme);
+          });
+        }
       }
     });
   }
