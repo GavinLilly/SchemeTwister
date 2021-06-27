@@ -72,7 +72,7 @@ describe('Game creation', () => {
   });
 
   it('should fail without any players specified', () =>
-    expect(() => setup.generateGame(1 as numPlayers)).toThrow());
+    expect(() => setup.generateGame(0 as numPlayers)).toThrow());
 });
 
 describe.each([
@@ -130,6 +130,23 @@ describe('Specific scheme tests', () => {
 
   beforeAll(() => {
     setup = new GameSetup(...GameSets.ALL);
+  });
+
+  describe('Solo play', () => {
+    it('should not allow the Super Hero Civil War scheme', () => {
+      expect(() =>
+        setup.generateGame(1, Schemes.LEGENDARY.SUPER_HERO_CIVIL_WAR)
+      ).toThrow();
+      expect(() =>
+        setup.generateGame(1, Schemes.MARVEL_STUDIOS.SUPER_HERO_CIVIL_WAR)
+      ).toThrow();
+    });
+
+    it('should not allow the Negative Zone Prison Breakout scheme', () => {
+      expect(() =>
+        setup.generateGame(1, Schemes.LEGENDARY.NEGATIVE_ZONE_PRISON_BREAKOUT)
+      ).toThrow();
+    });
   });
 
   describe.each(playerCounts)(

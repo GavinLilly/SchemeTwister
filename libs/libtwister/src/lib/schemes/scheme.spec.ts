@@ -14,6 +14,18 @@ const schemeParams: SchemeParams = {
 };
 
 const defaultRules = {
+  1: {
+    heroDeck: {
+      numHeroes: 3,
+    },
+    villainDeck: {
+      numVillainGroups: 1,
+      numHenchmenGroups: 1,
+      numBystanders: 1,
+      numTwists: 8,
+      numMasterStrikes: 1,
+    },
+  },
   2: {
     heroDeck: {
       numHeroes: 5,
@@ -23,6 +35,7 @@ const defaultRules = {
       numHenchmenGroups: 1,
       numBystanders: 2,
       numTwists: 8,
+      numMasterStrikes: 5,
     },
   },
   3: {
@@ -34,6 +47,7 @@ const defaultRules = {
       numHenchmenGroups: 1,
       numBystanders: 8,
       numTwists: 8,
+      numMasterStrikes: 5,
     },
   },
   4: {
@@ -45,6 +59,7 @@ const defaultRules = {
       numHenchmenGroups: 2,
       numBystanders: 8,
       numTwists: 8,
+      numMasterStrikes: 5,
     },
   },
   5: {
@@ -56,6 +71,7 @@ const defaultRules = {
       numHenchmenGroups: 2,
       numBystanders: 12,
       numTwists: 8,
+      numMasterStrikes: 5,
     },
   },
 };

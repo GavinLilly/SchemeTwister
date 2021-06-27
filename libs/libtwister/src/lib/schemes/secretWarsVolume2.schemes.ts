@@ -62,17 +62,27 @@ Twist 8: The Villain in each player's Victory Pile with the highest printed Atta
     evilWins: 'When there are 6 Masterminds.',
     gameSet: GameSets.SECRET_WARS_VOLUME_2,
   }),
-  THE_FOUNTAIN_OF_ETERNAL_LIFE: new Scheme({
-    id: '996bc05f-5c6a-4758-a82d-899068b2777f',
-    name: 'The Fountain of Eternal Life',
-    setup: '8 Twists. (1 player 4 Twists.)',
-    twist: `A Villain from your Victory Pile enters the Sewers. Put this Twist on the bottom of the Villain Deck.`,
-    evilWins:
-      'When the number of escaped Villains is 3 times the number of players.',
-    specialRules:
-      'All Villains and Mastermind Tactics have "Fight: Fateful Resurrection."',
-    gameSet: GameSets.SECRET_WARS_VOLUME_2,
-  }),
+  THE_FOUNTAIN_OF_ETERNAL_LIFE: new Scheme(
+    {
+      id: '996bc05f-5c6a-4758-a82d-899068b2777f',
+      name: 'The Fountain of Eternal Life',
+      setup: '8 Twists. (1 player 4 Twists.)',
+      twist: `A Villain from your Victory Pile enters the Sewers. Put this Twist on the bottom of the Villain Deck.`,
+      evilWins:
+        'When the number of escaped Villains is 3 times the number of players.',
+      specialRules:
+        'All Villains and Mastermind Tactics have "Fight: Fateful Resurrection."',
+      gameSet: GameSets.SECRET_WARS_VOLUME_2,
+    },
+    undefined,
+    {
+      1: {
+        villainDeck: {
+          numTwists: 4,
+        },
+      },
+    }
+  ),
   THE_GODEMPEROR_OF_BATTLEWORLD: new Scheme({
     id: '271bd2be-2947-4f50-8249-ac33742cb62a',
     name: 'The God-Emperor of Battleworld',

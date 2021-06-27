@@ -17,6 +17,12 @@ import { VillainGroups } from '../villains';
 import { IAdditionalDeck, IGameSetup } from './gameSetup.interface';
 
 export class GameSetup {
+  public static soloBannedSchemes = [
+    Schemes.LEGENDARY.SUPER_HERO_CIVIL_WAR,
+    Schemes.LEGENDARY.NEGATIVE_ZONE_PRISON_BREAKOUT,
+    Schemes.MARVEL_STUDIOS.SUPER_HERO_CIVIL_WAR,
+  ];
+
   private schemes: Schemes;
   private masterminds: Masterminds;
   private heroes: Heroes;
@@ -55,11 +61,29 @@ ${GameSets.ALL.filter((item) =>
   }
 
   /**
+   * This function will return a random scheme from those available based on the
+   * selected gamesets. If it's a solo play game then some schemes will be
+   * excluded as they're not compatible.
+   * @param numPlayers The number of players in this setup. Must be between 1 and 5
+   * @returns A single scheme
+   */
+  private selectScheme(numPlayers: number): IScheme {
+    if (numPlayers != 1) {
+      return this.schemes.shuffle(1)[0];
+    } else {
+      const availSchemes = this.schemes.getCards().filter((scheme) => {
+        return !GameSetup.soloBannedSchemes.includes(scheme);
+      });
+      return this.getRandomElementsFromArray(availSchemes, 1)[0];
+    }
+  }
+
+  /**
    * @todo Allow for heroes, henchemen and villains to be seeded
    */
   public generateGame(
     numberPlayers: numPlayers,
-    scheme: IScheme = this.schemes.shuffle(1)[0],
+    scheme: IScheme = this.selectScheme(numberPlayers),
     mastermind: IMastermind = this.masterminds.shuffle(1)[0]
   ): IGameSetup {
     // Get the rules for the number of players
@@ -71,12 +95,15 @@ ${GameSets.ALL.filter((item) =>
     let additionalDeck: ICard[] = [];
 
     if (numberPlayers === undefined)
-      throw new RangeError('Number of players must be between 2 and 5');
+      throw new RangeError('Number of players must be between 1 and 5');
 
     if (!this.gameSets.includes(scheme.gameSet))
       throw new Error(
         'The specified scheme is not in the list of selected game sets'
       );
+
+    if (numberPlayers == 1 && GameSetup.soloBannedSchemes.includes(scheme))
+      throw new Error('The selected scheme is not possible in solo play');
 
     // Check for any scheme required cards
     if (scheme.requiredCards !== undefined) {
@@ -143,22 +170,24 @@ ${GameSets.ALL.filter((item) =>
         additionalDeck.push(...scheme.requiredCards.inAdditionalDeck);
     } // End check for scheme required cards
 
-    // Check to see if there are any mastermind required cards in the villain deck
-    mastermind.alwaysLeads.forEach((item) => {
-      if (!villainDeck.includes(item)) {
-        if (
-          (item.cardType === CardType.VILLAINGROUP &&
-            villainDeck.filter(
-              (villain) => villain.cardType === CardType.VILLAINGROUP
-            ).length < rules.villainDeck.numVillainGroups) ||
-          (item.cardType === CardType.HENCHMEN &&
-            villainDeck.filter(
-              (villain) => villain.cardType === CardType.HENCHMEN
-            ).length < rules.villainDeck.numHenchmenGroups)
-        )
-          villainDeck.push(item);
-      }
-    });
+    if (numberPlayers != 1) {
+      // Check to see if there are any mastermind required cards in the villain deck
+      mastermind.alwaysLeads.forEach((item) => {
+        if (!villainDeck.includes(item)) {
+          if (
+            (item.cardType === CardType.VILLAINGROUP &&
+              villainDeck.filter(
+                (villain) => villain.cardType === CardType.VILLAINGROUP
+              ).length < rules.villainDeck.numVillainGroups) ||
+            (item.cardType === CardType.HENCHMEN &&
+              villainDeck.filter(
+                (villain) => villain.cardType === CardType.HENCHMEN
+              ).length < rules.villainDeck.numHenchmenGroups)
+          )
+            villainDeck.push(item);
+        }
+      });
+    }
 
     // Scheme specific checks
     if (scheme === Schemes.WORLD_WAR_HULK.FALL_OF_THE_HULKS) {
@@ -356,7 +385,7 @@ ${GameSets.ALL.filter((item) =>
         numSidekicks: rules.villainDeck.numSidekicks,
         numWounds: rules.villainDeck.numWounds,
         numAmbitions: rules.villainDeck.numAmbitions,
-        numMasterStrikes: 5,
+        numMasterStrikes: rules.villainDeck.numMasterStrikes,
       },
       additionalDeck: rules.additionalDeck
         ? ({
