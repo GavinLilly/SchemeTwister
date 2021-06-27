@@ -1,3 +1,11 @@
+# [2.2.0](https://github.com/GavinLilly/SchemeTwister/compare/v2.1.0...v2.2.0) (2021-06-27)
+
+
+### Features
+
+* **app:** allow to choose 1 player mode and limit schemes ([b04fb5f](https://github.com/GavinLilly/SchemeTwister/commit/b04fb5f55cad91278b3533474229256b4d44342a))
+* **libtwister:** add 1 player mode ([b2bf9a3](https://github.com/GavinLilly/SchemeTwister/commit/b2bf9a39e20f038834b6c053b2b9ce2f6bd98865))
+
 # [2.1.0](https://github.com/GavinLilly/SchemeTwister/compare/v2.0.3...v2.1.0) (2021-06-25)
 
 
