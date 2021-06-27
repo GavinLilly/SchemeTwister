@@ -156,9 +156,6 @@
         {
           "assets": "dist/*.tgz"
         }
-      ],
-      [
-        "@alexbabel/semantic-release-docker"
       ]
     ]
   },
