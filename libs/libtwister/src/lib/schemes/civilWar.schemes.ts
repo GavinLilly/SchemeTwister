@@ -57,6 +57,14 @@ Twist 8: Evil wins!`,
     },
     undefined,
     {
+      1: {
+        heroDeck: {
+          numHeroes: 4,
+        },
+        villainDeck: {
+          numTwists: 9,
+        },
+      },
       2: {
         villainDeck: {
           numTwists: 9,

@@ -85,6 +85,13 @@ export const DarkCity: Record<SchemeNames, IScheme> = {
       heroDeck: {
         numBystanders: 24,
       },
+    },
+    {
+      1: {
+        heroDeck: {
+          numBystanders: 12,
+        },
+      },
     }
   ),
   STEAL_THE_WEAPONIZED_PLUTONIUM: new Scheme(

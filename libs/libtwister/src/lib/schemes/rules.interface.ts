@@ -1,4 +1,7 @@
-export type numPlayers = 2 | 3 | 4 | 5;
+/**
+ * @todo add advanced solo as an option
+ */
+export type numPlayers = 1 | 2 | 3 | 4 | 5;
 
 export interface IDeckRequirements {
   numHeroes?: number;
@@ -16,6 +19,7 @@ interface IVillainDeckRequirements extends IDeckRequirements {
   numHenchmenGroups: number;
   numMasterminds?: number;
   numAmbitions?: number;
+  numMasterStrikes: number;
 }
 
 interface IHeroDeckRequirements extends IDeckRequirements {

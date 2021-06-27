@@ -95,6 +95,13 @@ Twist 6-9: Each player must KO a Nova Centurion from the S.H.I.E.L.D. Officer St
       villainDeck: {
         numTwists: 9,
       },
+    },
+    {
+      1: {
+        heroDeck: {
+          numHeroes: 5,
+        },
+      },
     }
   ),
   ANNIHILATION_CONQUEST: new Scheme(

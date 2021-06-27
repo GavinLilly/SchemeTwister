@@ -94,6 +94,11 @@ export const Revelations: Record<SchemeNames, IScheme> = {
       numShieldOfficers: 30,
     },
     {
+      1: {
+        villainDeck: {
+          numTwists: 7,
+        },
+      },
       2: {
         villainDeck: {
           numTwists: 9,

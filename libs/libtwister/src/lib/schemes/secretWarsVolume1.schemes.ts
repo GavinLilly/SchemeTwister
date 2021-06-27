@@ -67,6 +67,13 @@ Twist 8: All Sidekicks in the city escape.`,
       villainDeck: {
         numTwists: 5,
       },
+    },
+    {
+      1: {
+        villainDeck: {
+          numVillainGroups: 2,
+        },
+      },
     }
   ),
   DARK_ALLIANCE: new Scheme(
