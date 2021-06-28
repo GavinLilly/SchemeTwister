@@ -21,6 +21,7 @@ export class GameSetup {
     Schemes.LEGENDARY.SUPER_HERO_CIVIL_WAR,
     Schemes.LEGENDARY.NEGATIVE_ZONE_PRISON_BREAKOUT,
     Schemes.MARVEL_STUDIOS.SUPER_HERO_CIVIL_WAR,
+    Schemes.FEAR_ITSELF.THE_TRAITOR
   ];
 
   private schemes: Schemes;
