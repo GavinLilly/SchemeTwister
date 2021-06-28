@@ -19,7 +19,7 @@ export class RandomizeComponent implements OnInit {
   faLock = faLock;
   schemeLocked = false;
   mastermindLocked = false;
-  showAdvancedSolo = false;
+  isAdvancedSolo = false;
 
   villainDeck = 'Villain Deck';
   heroDeck = 'Hero Deck';
@@ -39,6 +39,9 @@ export class RandomizeComponent implements OnInit {
     this.gameSetupStore.definedMastermind.subscribe(
       (value) => (this.mastermindLocked = !value.random)
     );
+    this.gameSetupStore.advancedSolo.subscribe(
+      (value) => (this.isAdvancedSolo = value)
+    );
     this.generateDecks();
   }
 
@@ -46,14 +49,17 @@ export class RandomizeComponent implements OnInit {
     this.gameSetupStore.shuffle();
   }
 
+  showAdvancedSolo(): boolean {
+    return this.numPlayers == 1;
+  }
+
   setPlayers() {
     this.gameSetupStore.setNumPlayers(this.numPlayers);
-    if (this.numPlayers == 1) {
-      this.showAdvancedSolo = true;
-      // Set advanced solo by accessing the checkbox
-    } else {
-      this.showAdvancedSolo = false;
-    }
+  }
+
+  setAdvancedSolo() {
+    this.gameSetupStore.setAdvancedSolo(this.isAdvancedSolo);
+    this.gameSetupStore.shuffle();
   }
 
   pickGameSets() {

@@ -76,7 +76,8 @@ export class GameSetupStore {
     this._setup = new GameSetup(...this._gameSets.getValue());
     this._gameSetup = new BehaviorSubject(
       this._setup.generateGame(this._numPlayers.getValue() as numPlayers, {
-        advancedSolo: this._advancedSolo.getValue(),
+        advancedSolo:
+          this._numPlayers.getValue() == 1 && this._advancedSolo.getValue(),
       })
     );
 
@@ -157,8 +158,8 @@ export class GameSetupStore {
     if (!definedMastermind.random)
       gameOptions.mastermind = definedMastermind.definedItem as IMastermind;
 
-    if (this._numPlayers.getValue() == 1)
-      gameOptions.advancedSolo = this._advancedSolo.getValue();
+    gameOptions.advancedSolo =
+      this._numPlayers.getValue() == 1 && this._advancedSolo.getValue();
 
     this._gameSetup.next(
       this._setup.generateGame(
