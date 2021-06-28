@@ -19,6 +19,7 @@ export class RandomizeComponent implements OnInit {
   faLock = faLock;
   schemeLocked = false;
   mastermindLocked = false;
+  showAdvancedSolo = false;
 
   villainDeck = 'Villain Deck';
   heroDeck = 'Hero Deck';
@@ -47,6 +48,12 @@ export class RandomizeComponent implements OnInit {
 
   setPlayers() {
     this.gameSetupStore.setNumPlayers(this.numPlayers);
+    if (this.numPlayers == 1) {
+      this.showAdvancedSolo = true;
+      // Set advanced solo by accessing the checkbox
+    } else {
+      this.showAdvancedSolo = false;
+    }
   }
 
   pickGameSets() {

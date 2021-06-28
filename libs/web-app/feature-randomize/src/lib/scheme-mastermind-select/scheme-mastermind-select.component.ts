@@ -48,9 +48,9 @@ export class SchemeMastermindSelectComponent implements OnInit {
       }
     });
 
-    this.gameSetupStore.numPlayers.subscribe((value) => {
+    this.gameSetupStore.numPlayers.subscribe((value: number) => {
       if (this.itemType === CardType.SCHEME) {
-        if (value === 1) {
+        if (Number(value) === 1) {
           this.availableItems = this.availableItems.filter((scheme) => {
             return !GameSetup.soloBannedSchemes.includes(scheme as IScheme);
           });

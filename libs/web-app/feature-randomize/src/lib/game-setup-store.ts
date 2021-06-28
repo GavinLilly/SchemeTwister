@@ -8,6 +8,7 @@ import {
   GameSetup,
   IGameSet,
   IGameSetup,
+  IGenerateOptions,
   IMastermind,
   IScheme,
   numPlayers,
@@ -42,6 +43,11 @@ export class GameSetupStore {
   private _definedMastermind: BehaviorSubject<IDefinedItem>;
   public readonly definedMastermind: Observable<IDefinedItem>;
 
+  // Our variables for storing whether to use advanced solo
+  private ADVANCED_SOLO_NAME = 'AdvancedSolo';
+  private _advancedSolo: BehaviorSubject<boolean>;
+  public readonly advancedSolo: Observable<boolean>;
+
   constructor(private cookieService: CookieService) {
     this._gameSets = new BehaviorSubject(
       this.cookieService.check(this.GAMESET_COOKIE_NAME)
@@ -59,9 +65,19 @@ export class GameSetupStore {
 
     this.numPlayers = this._numPlayers.asObservable();
 
+    this._advancedSolo = new BehaviorSubject(
+      this.cookieService.check(this.ADVANCED_SOLO_NAME)
+        ? this.cookieService.get(this.ADVANCED_SOLO_NAME) === 'true'
+        : false
+    );
+
+    this.advancedSolo = this._advancedSolo.asObservable();
+
     this._setup = new GameSetup(...this._gameSets.getValue());
     this._gameSetup = new BehaviorSubject(
-      this._setup.generateGame(this._numPlayers.getValue() as numPlayers)
+      this._setup.generateGame(this._numPlayers.getValue() as numPlayers, {
+        advancedSolo: this._advancedSolo.getValue(),
+      })
     );
 
     this._definedScheme = new BehaviorSubject({
@@ -117,19 +133,37 @@ export class GameSetupStore {
     );
   }
 
+  setAdvancedSolo(checked: boolean) {
+    this._advancedSolo.next(checked);
+    this.cookieService.set(
+      this.ADVANCED_SOLO_NAME,
+      checked ? 'true' : 'false',
+      {
+        expires: 365,
+        path: '/',
+      }
+    );
+  }
+
   shuffle() {
     const definedScheme: IDefinedItem = this._definedScheme.getValue();
     const definedMastermind: IDefinedItem = this._definedMastermind.getValue();
 
+    const gameOptions: IGenerateOptions = {};
+
+    if (!definedScheme.random)
+      gameOptions.scheme = definedScheme.definedItem as IScheme;
+
+    if (!definedMastermind.random)
+      gameOptions.mastermind = definedMastermind.definedItem as IMastermind;
+
+    if (this._numPlayers.getValue() == 1)
+      gameOptions.advancedSolo = this._advancedSolo.getValue();
+
     this._gameSetup.next(
       this._setup.generateGame(
         this._numPlayers.getValue() as numPlayers,
-        definedScheme.random
-          ? undefined
-          : (definedScheme.definedItem as IScheme),
-        definedMastermind.random
-          ? undefined
-          : (definedMastermind.definedItem as IMastermind)
+        gameOptions
       )
     );
   }

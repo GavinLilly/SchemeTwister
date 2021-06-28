@@ -14,14 +14,18 @@ import {
 import { ITeam, Teams } from '../teams';
 import { VillainGroups } from '../villains';
 
-import { IAdditionalDeck, IGameSetup } from './gameSetup.interface';
+import {
+  IAdditionalDeck,
+  IGameSetup,
+  IGenerateOptions,
+} from './gameSetup.interface';
 
 export class GameSetup {
   public static soloBannedSchemes = [
     Schemes.LEGENDARY.SUPER_HERO_CIVIL_WAR,
     Schemes.LEGENDARY.NEGATIVE_ZONE_PRISON_BREAKOUT,
     Schemes.MARVEL_STUDIOS.SUPER_HERO_CIVIL_WAR,
-    Schemes.FEAR_ITSELF.THE_TRAITOR
+    Schemes.FEAR_ITSELF.THE_TRAITOR,
   ];
 
   private schemes: Schemes;
@@ -84,49 +88,70 @@ ${GameSets.ALL.filter((item) =>
    */
   public generateGame(
     numberPlayers: numPlayers,
-    scheme: IScheme = this.selectScheme(numberPlayers),
-    mastermind: IMastermind = this.masterminds.shuffle(1)[0]
+    options?: IGenerateOptions
   ): IGameSetup {
+    // Set defaults
+    // If options hasn't been specified then ensure we have a scheme and mastermind
+    if (options === undefined) {
+      options = {
+        scheme: this.selectScheme(numberPlayers),
+        mastermind: this.masterminds.shuffle(1)[0],
+      };
+    }
+
+    if (options.scheme === undefined)
+      options.scheme = this.selectScheme(numberPlayers);
+
+    if (options.mastermind === undefined)
+      options.mastermind = this.masterminds.shuffle(1)[0];
+
     // Get the rules for the number of players
-    const rules: INumPlayerRules = scheme.rules[numberPlayers];
+    const rules: INumPlayerRules = options.scheme.rules[numberPlayers];
 
     // Create our decks
     let villainDeck: ICard[] = [];
     let heroDeck: ICard[] = [];
     let additionalDeck: ICard[] = [];
 
+    // Error check
     if (numberPlayers === undefined)
       throw new RangeError('Number of players must be between 1 and 5');
 
-    if (!this.gameSets.includes(scheme.gameSet))
+    if (!this.gameSets.includes(options.scheme.gameSet))
       throw new Error(
         'The specified scheme is not in the list of selected game sets'
       );
 
-    if (numberPlayers == 1 && GameSetup.soloBannedSchemes.includes(scheme))
+    if (
+      numberPlayers == 1 &&
+      GameSetup.soloBannedSchemes.includes(options.scheme)
+    )
       throw new Error('The selected scheme is not possible in solo play');
 
+    if (numberPlayers != 1 && options.advancedSolo)
+      throw new Error('Advanced solo only works with 1 player');
+
     // Check for any scheme required cards
-    if (scheme.requiredCards !== undefined) {
-      if (scheme.requiredCards.inVillainDeck !== undefined) {
+    if (options.scheme.requiredCards !== undefined) {
+      if (options.scheme.requiredCards.inVillainDeck !== undefined) {
         // Scheme requires villains
         if (
-          scheme === Schemes.X_MEN.THE_DARK_PHOENIX_SAGA &&
+          options.scheme === Schemes.X_MEN.THE_DARK_PHOENIX_SAGA &&
           !this.gameSets.includes(GameSets.DARK_CITY)
         ) {
           // Dark Phoenix Saga requires Jean Grey but if the user does not have
           // Dark City then we use Phoenix as a back up
-          const jgIndex = scheme.requiredCards.inVillainDeck.indexOf(
+          const jgIndex = options.scheme.requiredCards.inVillainDeck.indexOf(
             Heroes.DARK_CITY.JEAN_GREY
           );
           if (jgIndex !== -1) {
-            scheme.requiredCards.inVillainDeck.splice(
+            options.scheme.requiredCards.inVillainDeck.splice(
               jgIndex,
               1,
               Heroes.X_MEN.PHOENIX
             );
           }
-        } else if (scheme === Schemes.SHIELD.SHIELD_VS_HYDRA_WAR) {
+        } else if (options.scheme === Schemes.SHIELD.SHIELD_VS_HYDRA_WAR) {
           /**
            * @todo Ensure that it's not possible to pick both villain groups. Currently it's possible that the other group gets picked lower down in this class
            * @todo https://github.com/GavinLilly/legendizer/pull/45/checks?check_run_id=2858775412
@@ -136,23 +161,23 @@ ${GameSets.ALL.filter((item) =>
             VillainGroups.SHIELD.AIM_HYDRA_OFFSHOOT,
             VillainGroups.SHIELD.HYDRA_ELITE,
           ];
-          const shieldDeck = scheme.requiredCards.inVillainDeck.filter(
+          const shieldDeck = options.scheme.requiredCards.inVillainDeck.filter(
             (item) => !possibleVillains.includes(item)
           );
           shieldDeck.push(
             ...this.getRandomElementsFromArray(possibleVillains, 1)
           );
-          scheme.requiredCards.inVillainDeck = shieldDeck;
+          options.scheme.requiredCards.inVillainDeck = shieldDeck;
         }
 
-        villainDeck.push(...scheme.requiredCards.inVillainDeck);
+        villainDeck.push(...options.scheme.requiredCards.inVillainDeck);
       }
 
-      if (scheme.requiredCards.inHeroDeck !== undefined) {
-        if (this.isRequiredTeam(scheme.requiredCards.inHeroDeck)) {
+      if (options.scheme.requiredCards.inHeroDeck !== undefined) {
+        if (this.isRequiredTeam(options.scheme.requiredCards.inHeroDeck)) {
           // If we require  heroes from a specific team then push them into our deck
-          const numHeroes = scheme.requiredCards.inHeroDeck.numHeroes;
-          const team = scheme.requiredCards.inHeroDeck.team;
+          const numHeroes = options.scheme.requiredCards.inHeroDeck.numHeroes;
+          const team = options.scheme.requiredCards.inHeroDeck.team;
 
           const xHeroes = this.heroes.getCards().filter((hero) => {
             if (villainDeck.includes(hero)) return false;
@@ -163,17 +188,17 @@ ${GameSets.ALL.filter((item) =>
           heroDeck.push(...this.getRandomElementsFromArray(xHeroes, numHeroes));
         } else {
           // Otherwise just push the specified required cards
-          heroDeck.push(...scheme.requiredCards.inHeroDeck);
+          heroDeck.push(...options.scheme.requiredCards.inHeroDeck);
         }
       }
 
-      if (scheme.requiredCards.inAdditionalDeck !== undefined)
-        additionalDeck.push(...scheme.requiredCards.inAdditionalDeck);
+      if (options.scheme.requiredCards.inAdditionalDeck !== undefined)
+        additionalDeck.push(...options.scheme.requiredCards.inAdditionalDeck);
     } // End check for scheme required cards
 
     if (numberPlayers != 1) {
       // Check to see if there are any mastermind required cards in the villain deck
-      mastermind.alwaysLeads.forEach((item) => {
+      options.mastermind.alwaysLeads.forEach((item) => {
         if (!villainDeck.includes(item)) {
           if (
             (item.cardType === CardType.VILLAINGROUP &&
@@ -191,7 +216,7 @@ ${GameSets.ALL.filter((item) =>
     }
 
     // Scheme specific checks
-    if (scheme === Schemes.WORLD_WAR_HULK.FALL_OF_THE_HULKS) {
+    if (options.scheme === Schemes.WORLD_WAR_HULK.FALL_OF_THE_HULKS) {
       // Fall of the Hulks requires exactly 2 Hulk heroes. No more, no less
       const allHulks = this.heroes
         .getCards()
@@ -205,7 +230,7 @@ ${GameSets.ALL.filter((item) =>
           ...allHulks.filter((item) => !selectedHulks.includes(item)),
         ])
       );
-    } else if (scheme === Schemes.CIVIL_WAR.AVENGERS_VS_XMEN) {
+    } else if (options.scheme === Schemes.CIVIL_WAR.AVENGERS_VS_XMEN) {
       // Avengers vs X-Men requires 2 teams and 3 heroes from each
       const teams: Set<ITeam | undefined> = new Set<ITeam | undefined>(
         this.heroes.getCards().map((hero) => hero.team)
@@ -220,7 +245,9 @@ ${GameSets.ALL.filter((item) =>
           .filter((hero) => team.includes(hero.team));
         heroDeck.push(...this.getRandomElementsFromArray(teamHeroes, 3));
       }
-    } else if (scheme === Schemes.INTO_THE_COSMOS.DESTROY_THE_NOVA_CORPS) {
+    } else if (
+      options.scheme === Schemes.INTO_THE_COSMOS.DESTROY_THE_NOVA_CORPS
+    ) {
       // The scheme states that we should include "exactly 1 Nova" but he
       // appears in 2 gamesets so shuffle between them
       if (this.gameSets.includes(GameSets.CHAMPIONS))
@@ -231,7 +258,7 @@ ${GameSets.ALL.filter((item) =>
           )
         );
       else heroDeck.push(Heroes.INTO_THE_COSMOS.NOVA);
-    } else if (scheme === Schemes.REVELATIONS.HOUSE_OF_M) {
+    } else if (options.scheme === Schemes.REVELATIONS.HOUSE_OF_M) {
       const nonXHeroes = this.heroes
         .getCards()
         .filter((hero) => hero.team !== Teams.X_MEN);
@@ -297,7 +324,7 @@ ${GameSets.ALL.filter((item) =>
         [
           Schemes.WORLD_WAR_HULK.MUTATING_GAMMA_RAYS,
           Schemes.WORLD_WAR_HULK.SHOOT_HULK_INTO_SPACE,
-        ].includes(scheme)
+        ].includes(options.scheme)
       ) {
         // These schemes require a Hulk hero in the additional deck
 
@@ -315,7 +342,7 @@ ${GameSets.ALL.filter((item) =>
           ...this.masterminds.shuffle(
             rules.additionalDeck.deck.numMasterminds,
             undefined,
-            [mastermind]
+            [options.mastermind]
           )
         );
 
@@ -326,7 +353,7 @@ ${GameSets.ALL.filter((item) =>
 
       // Check for Symbiotic Absorption which requires the always leads of the
       // drained mastermind to be added to the villain deck
-      if (scheme === Schemes.VENOM.SYMBIOTIC_ABSORPTION) {
+      if (options.scheme === Schemes.VENOM.SYMBIOTIC_ABSORPTION) {
         const drainedMastermind = additionalDeck.find(
           (card) => card.cardType === CardType.MASTERMIND
         );
@@ -370,8 +397,8 @@ ${GameSets.ALL.filter((item) =>
     }
 
     const gameSetup: IGameSetup = {
-      scheme: scheme,
-      mastermind: mastermind,
+      scheme: options.scheme,
+      mastermind: options.mastermind,
       numPlayers: numberPlayers,
       heroDeck: {
         cards: heroDeck.sort(sortCardTypeComparator),
@@ -386,7 +413,9 @@ ${GameSets.ALL.filter((item) =>
         numSidekicks: rules.villainDeck.numSidekicks,
         numWounds: rules.villainDeck.numWounds,
         numAmbitions: rules.villainDeck.numAmbitions,
-        numMasterStrikes: rules.villainDeck.numMasterStrikes,
+        numMasterStrikes: options.advancedSolo
+          ? 5
+          : rules.villainDeck.numMasterStrikes,
       },
       additionalDeck: rules.additionalDeck
         ? ({

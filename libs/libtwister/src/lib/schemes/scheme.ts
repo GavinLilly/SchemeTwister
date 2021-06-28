@@ -126,7 +126,7 @@ export class Scheme implements IScheme {
     this.requiredCards = params.requiredCards;
 
     if (overrideRulesAll !== undefined) {
-      const players: numPlayers[] = [2, 3, 4, 5];
+      const players: numPlayers[] = [1, 2, 3, 4, 5];
       players.forEach((num) => {
         this.rules[num] = merge(this.rules[num], overrideRulesAll);
       });
