@@ -38,6 +38,11 @@ export const X_Men: Record<SchemeNames, IScheme> = {
       },
     },
     {
+      1: {
+        villainDeck: {
+          numHenchmenGroups: 2
+        }
+      },
       2: {
         villainDeck: {
           numHenchmenGroups: 2,
@@ -138,6 +143,11 @@ export const X_Men: Record<SchemeNames, IScheme> = {
       },
     },
     {
+      1: {
+        villainDeck: {
+          numHenchmenGroups: 2
+        }
+      },
       2: {
         villainDeck: {
           numHenchmenGroups: 2,
@@ -191,6 +201,9 @@ export const X_Men: Record<SchemeNames, IScheme> = {
       },
     },
     {
+      1: {
+        numWounds: 6
+      },
       2: {
         numWounds: 12,
       },

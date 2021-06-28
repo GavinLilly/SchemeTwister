@@ -67,7 +67,7 @@ describe('Game creation', () => {
   });
   it('should fail if the scheme is not in the list of game sets', () => {
     expect(() =>
-      setup.generateGame(2, Schemes.X_MEN.THE_DARK_PHOENIX_SAGA)
+      setup.generateGame(2, {scheme: Schemes.X_MEN.THE_DARK_PHOENIX_SAGA} )
     ).toThrow();
   });
 
@@ -87,7 +87,7 @@ describe.each([
       setup = new GameSetup(GameSets.LEGENDARY);
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.LEGENDARY.UNLEASH_THE_POWER_OF_THE_COSMIC_CUBE
+        {scheme: Schemes.LEGENDARY.UNLEASH_THE_POWER_OF_THE_COSMIC_CUBE}
       );
     });
 
@@ -126,7 +126,7 @@ describe.each([
 );
 
 describe('Specific scheme tests', () => {
-  const playerCounts = [2, 3, 4, 5];
+  const playerCounts = [1, 2, 3, 4, 5];
 
   beforeAll(() => {
     setup = new GameSetup(...GameSets.ALL);
@@ -135,16 +135,16 @@ describe('Specific scheme tests', () => {
   describe('Solo play', () => {
     it('should not allow the Super Hero Civil War scheme', () => {
       expect(() =>
-        setup.generateGame(1, Schemes.LEGENDARY.SUPER_HERO_CIVIL_WAR)
+        setup.generateGame(1, {scheme: Schemes.LEGENDARY.SUPER_HERO_CIVIL_WAR})
       ).toThrow();
       expect(() =>
-        setup.generateGame(1, Schemes.MARVEL_STUDIOS.SUPER_HERO_CIVIL_WAR)
+        setup.generateGame(1, {scheme: Schemes.MARVEL_STUDIOS.SUPER_HERO_CIVIL_WAR})
       ).toThrow();
     });
 
     it('should not allow the Negative Zone Prison Breakout scheme', () => {
       expect(() =>
-        setup.generateGame(1, Schemes.LEGENDARY.NEGATIVE_ZONE_PRISON_BREAKOUT)
+        setup.generateGame(1, {scheme: Schemes.LEGENDARY.NEGATIVE_ZONE_PRISON_BREAKOUT})
       ).toThrow();
     });
   });
@@ -155,7 +155,7 @@ describe('Specific scheme tests', () => {
       it('should include Skrulls in the villain deck', () => {
         game = setup.generateGame(
           players as numPlayers,
-          Schemes.LEGENDARY.SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS
+          {scheme: Schemes.LEGENDARY.SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS}
         );
         expect(game.villainDeck.cards).toContain(
           VillainGroups.LEGENDARY.SKRULLS
@@ -168,7 +168,7 @@ describe('Specific scheme tests', () => {
     beforeAll(() => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.GUARDIANS_OF_THE_GALAXY.THE_KREE_SKRULL_WAR
+        {scheme: Schemes.GUARDIANS_OF_THE_GALAXY.THE_KREE_SKRULL_WAR}
       );
     });
 
@@ -187,7 +187,7 @@ describe('Specific scheme tests', () => {
     it('should contain the Sinister Six in the villain deck', () => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.PAINT_THE_TOWN_RED.SPLICE_HUMANS_WITH_SPIDER_DNA
+        {scheme: Schemes.PAINT_THE_TOWN_RED.SPLICE_HUMANS_WITH_SPIDER_DNA}
       );
       expect(game.villainDeck.cards).toContain(
         VillainGroups.PAINT_THE_TOWN_RED.SINISTER_SIX
@@ -199,7 +199,7 @@ describe('Specific scheme tests', () => {
     it('should contain Maggia Goons in the villain deck', () => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.DARK_CITY.ORGANIZED_CRIME_WAVE
+        {scheme: Schemes.DARK_CITY.ORGANIZED_CRIME_WAVE}
       );
       expect(game.villainDeck.cards).toContain(Henchmen.DARK_CITY.MAGGIA_GOONS);
     });
@@ -209,7 +209,7 @@ describe('Specific scheme tests', () => {
     beforeAll(() => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.DARK_CITY.TRANSFORM_CITIZENS_INTO_DEMONS
+        {scheme: Schemes.DARK_CITY.TRANSFORM_CITIZENS_INTO_DEMONS}
       );
     });
 
@@ -224,7 +224,7 @@ describe('Specific scheme tests', () => {
     it('should put a hero in the villain deck', () => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.DARK_CITY.XCUTIONERS_SONG
+        {scheme: Schemes.DARK_CITY.XCUTIONERS_SONG}
       );
 
       expect(
@@ -237,7 +237,7 @@ describe('Specific scheme tests', () => {
     it('should include the villain group from the "Drained" mastermind in the villain deck', () => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.VENOM.SYMBIOTIC_ABSORPTION
+        {scheme: Schemes.VENOM.SYMBIOTIC_ABSORPTION}
       );
 
       expect(game.villainDeck.cards).toContain(
@@ -252,7 +252,7 @@ describe('Specific scheme tests', () => {
     it('should contain bystanders in the hero deck', () => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.DARK_CITY.SAVE_HUMANITY
+        {scheme: Schemes.DARK_CITY.SAVE_HUMANITY}
       );
 
       expect(game.heroDeck.numBystanders).toBeGreaterThan(0);
@@ -263,7 +263,7 @@ describe('Specific scheme tests', () => {
     it('should contain a henchmen group in the hero deck', () => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.PAINT_THE_TOWN_RED.INVADE_THE_DAILY_BUGLE_NEWS_HQ
+        {scheme: Schemes.PAINT_THE_TOWN_RED.INVADE_THE_DAILY_BUGLE_NEWS_HQ}
       );
 
       expect(
@@ -279,7 +279,7 @@ describe('Specific scheme tests', () => {
     beforeAll(() => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.REVELATIONS.HOUSE_OF_M
+        {scheme: Schemes.REVELATIONS.HOUSE_OF_M}
       );
 
       heroes = game.heroDeck.cards.filter(
@@ -304,7 +304,7 @@ describe('Specific scheme tests', () => {
       it('should contain Deadpool in the hero deck', () => {
         game = setup.generateGame(
           players as numPlayers,
-          Schemes.DEADPOOL.DEADPOOL_KILLS_THE_MARVEL_UNIVERSE
+          {scheme: Schemes.DEADPOOL.DEADPOOL_KILLS_THE_MARVEL_UNIVERSE}
         );
 
         expect(game.heroDeck.cards).toContain(Heroes.DEADPOOL.DEADPOOL);
@@ -316,7 +316,7 @@ describe('Specific scheme tests', () => {
     it('should contain Deadpool in the hero deck', () => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.DEADPOOL.DEADPOOL_WRITES_A_SCHEME
+        {scheme: Schemes.DEADPOOL.DEADPOOL_WRITES_A_SCHEME}
       );
 
       expect(game.heroDeck.cards).toContain(Heroes.DEADPOOL.DEADPOOL);
@@ -327,7 +327,7 @@ describe('Specific scheme tests', () => {
     it('should contain only 1 Nova hero in the hero deck', () => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.INTO_THE_COSMOS.DESTROY_THE_NOVA_CORPS
+        {scheme: Schemes.INTO_THE_COSMOS.DESTROY_THE_NOVA_CORPS}
       );
 
       expect(
@@ -342,7 +342,7 @@ describe('Specific scheme tests', () => {
     beforeAll(() => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.SHIELD.SECRET_EMPIRE_OF_BETRAYAL
+        {scheme: Schemes.SHIELD.SECRET_EMPIRE_OF_BETRAYAL}
       );
     });
 
@@ -367,7 +367,7 @@ describe('Specific scheme tests', () => {
     beforeAll(() => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.WORLD_WAR_HULK.CYTOPLASM_SPIKE_INVASION
+        {scheme: Schemes.WORLD_WAR_HULK.CYTOPLASM_SPIKE_INVASION}
       );
     });
 
@@ -391,7 +391,7 @@ describe('Specific scheme tests', () => {
     beforeAll(() => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.CIVIL_WAR.AVENGERS_VS_XMEN
+        {scheme: Schemes.CIVIL_WAR.AVENGERS_VS_XMEN}
       );
 
       teamCount = {};
@@ -422,7 +422,7 @@ describe('Specific scheme tests', () => {
     beforeAll(() => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.WORLD_WAR_HULK.MUTATING_GAMMA_RAYS
+        {scheme: Schemes.WORLD_WAR_HULK.MUTATING_GAMMA_RAYS}
       );
 
       hulkHeroes = game.additionalDeck?.deck.cards.filter(
@@ -451,7 +451,7 @@ describe('Specific scheme tests', () => {
     beforeAll(() => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.WORLD_WAR_HULK.SHOOT_HULK_INTO_SPACE
+        {scheme: Schemes.WORLD_WAR_HULK.SHOOT_HULK_INTO_SPACE}
       );
 
       hulkHeroes = game.additionalDeck?.deck.cards.filter(
@@ -479,7 +479,7 @@ describe('Specific scheme tests', () => {
     beforeAll(() => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.WORLD_WAR_HULK.WORLD_WAR_HULK
+        {scheme: Schemes.WORLD_WAR_HULK.WORLD_WAR_HULK}
       );
     });
 
@@ -505,7 +505,7 @@ describe('Specific scheme tests', () => {
       beforeAll(() => {
         game = setup.generateGame(
           players as numPlayers,
-          Schemes.X_MEN.THE_DARK_PHOENIX_SAGA
+          {scheme: Schemes.X_MEN.THE_DARK_PHOENIX_SAGA}
         );
       });
 
@@ -527,7 +527,7 @@ describe('Specific scheme tests', () => {
       beforeAll(() => {
         game = new GameSetup(GameSets.LEGENDARY, GameSets.X_MEN).generateGame(
           players as numPlayers,
-          Schemes.X_MEN.THE_DARK_PHOENIX_SAGA
+          {scheme: Schemes.X_MEN.THE_DARK_PHOENIX_SAGA}
         );
       });
 
@@ -547,7 +547,7 @@ describe('Specific scheme tests', () => {
     beforeAll(() => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.SECRET_WARS_VOLUME_1.BUILD_AN_ARMY_OF_ANNIHILATION
+        {scheme: Schemes.SECRET_WARS_VOLUME_1.BUILD_AN_ARMY_OF_ANNIHILATION}
       );
     });
 
@@ -573,7 +573,7 @@ describe('Specific scheme tests', () => {
       beforeAll(() => {
         game = setup.generateGame(
           players as numPlayers,
-          Schemes.SECRET_WARS_VOLUME_1.CORRUPT_THE_NEXT_GENERATION_OF_HEROES
+          {scheme: Schemes.SECRET_WARS_VOLUME_1.CORRUPT_THE_NEXT_GENERATION_OF_HEROES}
         );
       });
 
@@ -586,7 +586,7 @@ describe('Specific scheme tests', () => {
     beforeAll(() => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.SECRET_WARS_VOLUME_2.SINISTER_AMBITIONS
+        {scheme: Schemes.SECRET_WARS_VOLUME_2.SINISTER_AMBITIONS}
       );
     });
 
@@ -601,7 +601,7 @@ describe('Specific scheme tests', () => {
     beforeAll(() => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.REALM_OF_KINGS.RUIN_THE_PERFECT_WEDDING
+        {scheme: Schemes.REALM_OF_KINGS.RUIN_THE_PERFECT_WEDDING}
       );
     });
 
@@ -625,7 +625,7 @@ describe('Specific scheme tests', () => {
     beforeAll(() => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.SPIDERMAN_HOMECOMING.DISTRACT_THE_HERO
+        {scheme: Schemes.SPIDERMAN_HOMECOMING.DISTRACT_THE_HERO}
       );
     });
 
@@ -641,7 +641,7 @@ describe('Specific scheme tests', () => {
     beforeAll(() => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.SHIELD.SHIELD_VS_HYDRA_WAR
+        {scheme: Schemes.SHIELD.SHIELD_VS_HYDRA_WAR}
       );
     });
 
@@ -660,7 +660,7 @@ describe('Specific scheme tests', () => {
     beforeAll(() => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.WORLD_WAR_HULK.FALL_OF_THE_HULKS
+        {scheme: Schemes.WORLD_WAR_HULK.FALL_OF_THE_HULKS}
       );
     });
 
@@ -675,6 +675,7 @@ describe('Specific scheme tests', () => {
 });
 
 describe('Specific Mastermind tests', () => {
+  // Don't test for solo play because in solo the "Always leads" is ignored
   const playerCounts = [2, 3, 4, 5];
 
   beforeAll(() => {
@@ -685,8 +686,8 @@ describe('Specific Mastermind tests', () => {
     it('should contain the Four Horsemen in the villain deck', () => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.LEGENDARY.MIDTOWN_BANK_ROBBERY,
-        Masterminds.DARK_CITY.APOCALYPSE
+        {scheme: Schemes.LEGENDARY.MIDTOWN_BANK_ROBBERY,
+        mastermind: Masterminds.DARK_CITY.APOCALYPSE}
       );
 
       expect(game.villainDeck.cards).toContain(
@@ -699,8 +700,8 @@ describe('Specific Mastermind tests', () => {
     it('should contain Doombots in the villain deck', () => {
       game = setup.generateGame(
         players as numPlayers,
-        Schemes.LEGENDARY.MIDTOWN_BANK_ROBBERY,
-        Masterminds.LEGENDARY.DR_DOOM
+        {scheme: Schemes.LEGENDARY.MIDTOWN_BANK_ROBBERY,
+        mastermind: Masterminds.LEGENDARY.DR_DOOM}
       );
       expect(game.villainDeck.cards).toContain(
         Henchmen.LEGENDARY.DOOMBOT_LEGION

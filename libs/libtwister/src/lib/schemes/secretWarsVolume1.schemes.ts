@@ -112,6 +112,12 @@ Twist 7: Evil Wins!`,
     },
     undefined,
     {
+      1: {
+        villainDeck: {
+          numVillainGroups: 2,
+          numTwists: 1
+        }
+      },
       2: {
         villainDeck: {
           numVillainGroups: 3,
@@ -187,28 +193,29 @@ Twist 8: All Villains in both dimensions escape.`,
     },
     undefined,
     {
+      1: {
+        villainDeck: {
+          numVillainGroups: 2
+        }
+      },
       2: {
         villainDeck: {
           numVillainGroups: 3,
-          numTwists: 4,
         },
       },
       3: {
         villainDeck: {
           numVillainGroups: 4,
-          numTwists: 6,
         },
       },
       4: {
         villainDeck: {
           numVillainGroups: 4,
-          numTwists: 8,
         },
       },
       5: {
         villainDeck: {
           numVillainGroups: 5,
-          numTwists: 10,
         },
       },
     }

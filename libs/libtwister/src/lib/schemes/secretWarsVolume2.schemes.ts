@@ -27,28 +27,29 @@ export const SecretWarsVolume2: Record<SchemeNames, IScheme> = {
     },
     undefined,
     {
+      1: {
+        villainDeck: {
+          numVillainGroups: 2
+        }
+      },
       2: {
         villainDeck: {
           numVillainGroups: 3,
-          numTwists: 4,
         },
       },
       3: {
         villainDeck: {
           numVillainGroups: 4,
-          numTwists: 6,
         },
       },
       4: {
         villainDeck: {
           numVillainGroups: 4,
-          numTwists: 8,
         },
       },
       5: {
         villainDeck: {
           numVillainGroups: 5,
-          numTwists: 10,
         },
       },
     }

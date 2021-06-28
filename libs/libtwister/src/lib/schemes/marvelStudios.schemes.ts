@@ -26,6 +26,11 @@ export const MarvelStudios: Record<SchemeNames, IScheme> = {
     },
     undefined,
     {
+      1: {
+        villainDeck: {
+          numHenchmenGroups: 2
+        }
+      },
       2: {
         villainDeck: {
           numHenchmenGroups: 2,
@@ -112,6 +117,9 @@ Twist 7: Evil Wins!`,
     },
     undefined,
     {
+      1: {
+        numWounds: 6
+      },
       2: {
         numWounds: 12,
       },

@@ -89,6 +89,12 @@ Twist 10: Evil Wins!`,
     },
     undefined,
     {
+      1: {
+        villainDeck: {
+          numTwists: 4,
+          numHenchmenGroups: 2
+        }
+      },
       2: {
         villainDeck: {
           numTwists: 5,

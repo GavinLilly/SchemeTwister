@@ -29,6 +29,11 @@ export const Revelations: Record<SchemeNames, IScheme> = {
       },
     },
     {
+      1: {
+        villainDeck: {
+          numVillainGroups: 2
+        }
+      },
       2: {
         villainDeck: {
           numVillainGroups: 3,

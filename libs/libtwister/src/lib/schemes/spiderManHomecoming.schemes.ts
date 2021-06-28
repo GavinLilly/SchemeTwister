@@ -84,6 +84,11 @@ Twist 9: KO half the Bystanders from the Bystander deck, rounding up.`,
       },
     },
     {
+      1: {
+        villainDeck: {
+          numHenchmenGroups: 2
+        }
+      },
       2: {
         villainDeck: {
           numHenchmenGroups: 2,
