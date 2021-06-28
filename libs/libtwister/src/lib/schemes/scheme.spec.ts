@@ -87,6 +87,11 @@ describe('Scheme with no overrides', () => {
 
 describe('Scheme with specific rule overrides', () => {
   const override: DeepPartial<IRules> = {
+    1: {
+      heroDeck: {
+        numHeroes: 3
+      }
+    },
     2: {
       heroDeck: {
         numHeroes: 1,
@@ -113,6 +118,7 @@ describe('Scheme with specific rule overrides', () => {
   it('should create', () => expect(testScheme).toBeTruthy());
 
   it('should have the defined rules', () => {
+    expect(testScheme.rules[1].heroDeck.numHeroes).toEqual(3);
     expect(testScheme.rules[2].heroDeck.numHeroes).toEqual(1);
     expect(testScheme.rules[3].heroDeck.numHeroes).toEqual(2);
     expect(testScheme.rules[4].heroDeck.numHeroes).toEqual(3);
@@ -136,7 +142,7 @@ describe('Scheme with override for all number of players', () => {
   it('should create', () => expect(testScheme).toBeTruthy());
 
   it('should have the defined rules', () => {
-    const players: numPlayers[] = [2, 3, 4, 5];
+    const players: numPlayers[] = [1, 2, 3, 4, 5];
     players.forEach((num) => {
       expect(testScheme.rules[num].villainDeck.numTwists).toEqual(11);
     });
@@ -151,6 +157,11 @@ describe('Scheme with override for all number of players', () => {
 
 describe('Scheme with override for all number of players and specific', () => {
   const override: DeepPartial<IRules> = {
+    1: {
+      heroDeck: {
+        numHeroes: 3
+      }
+    },
     2: {
       heroDeck: {
         numHeroes: 1,
@@ -186,11 +197,12 @@ describe('Scheme with override for all number of players and specific', () => {
   it('should create', () => expect(testScheme).toBeTruthy());
 
   it('should have the defined rules', () => {
-    const players: numPlayers[] = [2, 3, 4, 5];
+    const players: numPlayers[] = [1, 2, 3, 4, 5];
     players.forEach((num) => {
       expect(testScheme.rules[num].villainDeck.numTwists).toEqual(11);
     });
 
+    expect(testScheme.rules[1].heroDeck.numHeroes).toEqual(3);
     expect(testScheme.rules[2].heroDeck.numHeroes).toEqual(1);
     expect(testScheme.rules[3].heroDeck.numHeroes).toEqual(2);
     expect(testScheme.rules[4].heroDeck.numHeroes).toEqual(3);

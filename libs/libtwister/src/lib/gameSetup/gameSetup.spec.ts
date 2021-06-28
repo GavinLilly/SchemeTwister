@@ -126,7 +126,7 @@ describe.each([
 );
 
 describe('Specific scheme tests', () => {
-  const playerCounts = [2, 3, 4, 5];
+  const playerCounts = [1, 2, 3, 4, 5];
 
   beforeAll(() => {
     setup = new GameSetup(...GameSets.ALL);
@@ -675,6 +675,7 @@ describe('Specific scheme tests', () => {
 });
 
 describe('Specific Mastermind tests', () => {
+  // Don't test for solo play because in solo the "Always leads" is ignored
   const playerCounts = [2, 3, 4, 5];
 
   beforeAll(() => {
