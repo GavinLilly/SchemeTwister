@@ -26,6 +26,11 @@ export const Deadpool: Record<SchemeNames, IScheme> = {
     },
     undefined,
     {
+      1: {
+        villainDeck: {
+          numTwists: 6
+        }
+      },
       2: {
         heroDeck: {
           numHeroes: 4,
@@ -35,25 +40,16 @@ export const Deadpool: Record<SchemeNames, IScheme> = {
         },
       },
       3: {
-        heroDeck: {
-          numHeroes: 5,
-        },
         villainDeck: {
           numTwists: 6,
         },
       },
       4: {
-        heroDeck: {
-          numHeroes: 5,
-        },
         villainDeck: {
           numTwists: 5,
         },
       },
       5: {
-        heroDeck: {
-          numHeroes: 6,
-        },
         villainDeck: {
           numTwists: 5,
         },
@@ -76,11 +72,6 @@ export const Deadpool: Record<SchemeNames, IScheme> = {
       },
     },
     {
-      2: {
-        villainDeck: {
-          numVillainGroups: 2,
-        },
-      },
       3: {
         villainDeck: {
           numVillainGroups: 4,

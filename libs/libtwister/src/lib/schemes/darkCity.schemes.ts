@@ -108,6 +108,11 @@ export const DarkCity: Record<SchemeNames, IScheme> = {
     },
     undefined,
     {
+      1: {
+        villainDeck: {
+          numVillainGroups: 2
+        }
+      },
       2: {
         villainDeck: {
           numVillainGroups: 3,

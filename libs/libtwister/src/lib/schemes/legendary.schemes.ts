@@ -26,6 +26,9 @@ export const Legendary: Record<SchemeNames, IScheme> = {
     },
     undefined,
     {
+      1: {
+        numWounds: 6
+      },
       2: {
         numWounds: 12,
       },
@@ -68,6 +71,11 @@ export const Legendary: Record<SchemeNames, IScheme> = {
     },
     undefined,
     {
+      1: {
+        villainDeck: {
+          numHenchmenGroups: 2
+        }
+      },
       2: {
         villainDeck: {
           numHenchmenGroups: 2,

@@ -55,6 +55,14 @@ export const GuardiansOfTheGalaxy: Record<SchemeNames, IScheme> = {
       ],
     },
     gameSet: GameSets.GUARDIANS_OF_THE_GALAXY,
+  },
+  undefined,
+  {
+    1: {
+      villainDeck: {
+        numVillainGroups: 2
+      }
+    }
   }),
   UNITE_THE_SHARDS: new Scheme(
     {
@@ -73,6 +81,11 @@ export const GuardiansOfTheGalaxy: Record<SchemeNames, IScheme> = {
       numShards: 30,
     },
     {
+      1: {
+        villainDeck: {
+          numTwists: 6
+        }
+      },
       2: {
         villainDeck: {
           numTwists: 7,

@@ -36,6 +36,9 @@ export const Champions: Record<SchemeNames, IScheme> = {
       },
     },
     {
+      1: {
+        numWounds: 6
+      },
       2: {
         numWounds: 12,
       },
@@ -85,6 +88,11 @@ Twist 7-8: Each player puts a Villain from their Victory Pile into the Escape pi
       },
     },
     {
+      1: {
+        villainDeck: {
+          numHenchmenGroups: 2
+        }
+      },
       2: {
         villainDeck: {
           numHenchmenGroups: 2,

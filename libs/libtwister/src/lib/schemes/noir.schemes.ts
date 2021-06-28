@@ -49,6 +49,11 @@ Twist 6: Each player writes down their guess for which Hero Name is the Split Pe
     },
     undefined,
     {
+      1: {
+        villainDeck: {
+          numVillainGroups: 3
+        }
+      },
       2: {
         villainDeck: {
           numVillainGroups: 4,

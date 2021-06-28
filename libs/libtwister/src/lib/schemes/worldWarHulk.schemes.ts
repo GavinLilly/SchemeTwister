@@ -76,6 +76,11 @@ Twist 7-10: Each player gains a Wound.`,
       },
     },
     {
+      1: {
+        villainDeck: {
+          numWounds: 6
+        }
+      },
       2: {
         villainDeck: {
           numWounds: 12,

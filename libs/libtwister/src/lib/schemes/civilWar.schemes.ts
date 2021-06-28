@@ -125,6 +125,11 @@ Twist 8: Evil wins!`,
       },
     },
     {
+      1: {
+        villainDeck: {
+          numVillainGroups: 2
+        }
+      },
       2: {
         villainDeck: {
           numVillainGroups: 3,

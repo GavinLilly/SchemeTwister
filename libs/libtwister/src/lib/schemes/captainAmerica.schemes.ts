@@ -50,6 +50,11 @@ Twist 7: Switzerland 1 space.`,
       },
     },
     {
+      1: {
+        villainDeck: {
+          numVillainGroups: 2
+        }
+      },
       2: {
         villainDeck: {
           numVillainGroups: 3,

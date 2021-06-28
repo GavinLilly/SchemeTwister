@@ -32,6 +32,11 @@ Twist 9-11: Same effect, but in the Contest, Evil selects from 6 cards from the 
       },
     },
     {
+      1: {
+        heroDeck: {
+          numHeroes: 4
+        }
+      },
       2: {
         heroDeck: {
           numHeroes: 6,
@@ -122,6 +127,11 @@ Twist 6-9: Each player must KO a Nova Centurion from the S.H.I.E.L.D. Officer St
       },
     },
     {
+      1: {
+        heroDeck: {
+          numHeroes: 4
+        }
+      },
       2: {
         heroDeck: {
           numHeroes: 6,

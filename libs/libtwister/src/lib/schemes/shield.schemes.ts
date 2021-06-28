@@ -62,6 +62,11 @@ Twist 10: Evil Wins!`,
     },
     undefined,
     {
+      1: {
+        heroDeck: {
+          numHeroes: 4
+        }
+      },
       2: {
         heroDeck: {
           numHeroes: 6,
