@@ -14,6 +14,22 @@
 * **app:** allow to choose 1 player mode and limit schemes ([b04fb5f](https://github.com/GavinLilly/SchemeTwister/commit/b04fb5f55cad91278b3533474229256b4d44342a))
 * **libtwister:** add 1 player mode ([b2bf9a3](https://github.com/GavinLilly/SchemeTwister/commit/b2bf9a39e20f038834b6c053b2b9ce2f6bd98865))
 
+# [2.2.0](https://github.com/GavinLilly/SchemeTwister/compare/v2.1.0...v2.2.0) (2021-06-28)
+
+
+### Bug Fixes
+
+* **libtwister:** ban The Traitor scheme from solo play ([df11091](https://github.com/GavinLilly/SchemeTwister/commit/df1109142b52ae9b1d4ae4895b440efa1af8fd49))
+* **libtwister:** fix missing rules for solo play ([35dab06](https://github.com/GavinLilly/SchemeTwister/commit/35dab0615da751e50f431212212d50075b84a4df))
+* **libtwister:** perform rule override for solo play ([67de4d2](https://github.com/GavinLilly/SchemeTwister/commit/67de4d267a856708348c2b70f83ddf54c4a52718))
+
+
+### Features
+
+* **app:** allow setting advanced solo mode ([e5e2919](https://github.com/GavinLilly/SchemeTwister/commit/e5e29192341e8e2698965764798c7310b5a5e48c))
+* **app:** allow to choose 1 player mode and limit schemes ([b04fb5f](https://github.com/GavinLilly/SchemeTwister/commit/b04fb5f55cad91278b3533474229256b4d44342a))
+* **libtwister:** add 1 player mode ([b2bf9a3](https://github.com/GavinLilly/SchemeTwister/commit/b2bf9a39e20f038834b6c053b2b9ce2f6bd98865))
+
 # [2.2.0](https://github.com/GavinLilly/SchemeTwister/compare/v2.1.0...v2.2.0) (2021-06-27)
 
 
