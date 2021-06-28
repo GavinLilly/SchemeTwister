@@ -33,3 +33,9 @@ export interface IGameSetup {
   additionalDeck?: IAdditionalDeck;
   numShieldOfficers?: number;
 }
+
+export interface IGenerateOptions {
+  scheme?: IScheme;
+  mastermind?: IMastermind;
+  advancedSolo?: boolean;
+}

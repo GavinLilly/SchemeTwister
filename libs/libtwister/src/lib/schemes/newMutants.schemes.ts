@@ -54,6 +54,11 @@ Twist 9,10,11: Same effect.`,
     },
     undefined,
     {
+      1: {
+        villainDeck: {
+          numTwists: 3
+        }
+      },
       2: {
         villainDeck: {
           numTwists: 5,
@@ -94,6 +99,11 @@ Twist 9,10,11: Same effect.`,
       },
     },
     {
+      1: {
+        villainDeck: {
+          numVillainGroups: 2
+        }
+      },
       2: {
         villainDeck: {
           numVillainGroups: 3,

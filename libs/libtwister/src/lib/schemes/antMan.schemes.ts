@@ -64,6 +64,11 @@ export const AntMan: Record<SchemeNames, IScheme> = {
     },
     undefined,
     {
+      1: {
+        villainDeck: {
+          numTwists: 7
+        }
+      },
       2: {
         villainDeck: {
           numTwists: 8,

@@ -21,6 +21,11 @@ export const Venom: Record<SchemeNames, IScheme> = {
     },
     undefined,
     {
+      1: {
+        villainDeck: {
+          numHenchmenGroups: 2
+        }
+      },
       2: {
         villainDeck: {
           numHenchmenGroups: 2,
@@ -61,6 +66,11 @@ export const Venom: Record<SchemeNames, IScheme> = {
       },
     },
     {
+      1: {
+        villainDeck: {
+          numWounds: 6
+        }
+      },
       2: {
         villainDeck: {
           numWounds: 12,

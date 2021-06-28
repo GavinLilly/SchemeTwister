@@ -26,6 +26,9 @@ export const Villains: Record<SchemeNames, IScheme> = {
     },
     undefined,
     {
+      1: {
+        numWounds: 5
+      },
       2: {
         numWounds: 10,
       },
