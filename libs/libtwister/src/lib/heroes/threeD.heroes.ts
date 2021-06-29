@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { DarkCity as DarkCityKeywords } from '../keywords';
 
 import { IHero } from './hero.interface';
 
@@ -17,5 +18,6 @@ export const ThreeD: Record<HeroNames, IHero> = {
     name: 'Man-Thing',
     cardType: CardType.HERO,
     gameSet: GameSets.THREE_D,
+    keywords: [DarkCityKeywords.Teleport],
   },
 };

@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { FantasticFour as FantasticFourKeywords } from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IMastermind } from './mastermind.interface';
@@ -15,6 +16,7 @@ export const FantasticFour: Record<MastermindNames, IMastermind> = {
     victoryPoints: 7,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.FANTASTIC_FOUR,
+    keywords: [FantasticFourKeywords.GalactusCosmicThreat],
   },
   MOLE_MAN: {
     id: 'd05d9daa-802c-46eb-93a9-812ea79fa203',

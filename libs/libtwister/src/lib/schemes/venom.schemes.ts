@@ -1,4 +1,5 @@
 import { GameSets } from '../gamesets';
+import { Venom as VenomKeywords } from '../keywords';
 
 import { IScheme, Scheme } from './scheme';
 
@@ -18,13 +19,14 @@ export const Venom: Record<SchemeNames, IScheme> = {
       evilWins:
         'When the Escape Pile has 3 cards per player, or the Villain Deck runs out.',
       gameSet: GameSets.VENOM,
+      keywords: [VenomKeywords.SymbioteBonds],
     },
     undefined,
     {
       1: {
         villainDeck: {
-          numHenchmenGroups: 2
-        }
+          numHenchmenGroups: 2,
+        },
       },
       2: {
         villainDeck: {
@@ -68,8 +70,8 @@ export const Venom: Record<SchemeNames, IScheme> = {
     {
       1: {
         villainDeck: {
-          numWounds: 6
-        }
+          numWounds: 6,
+        },
       },
       2: {
         villainDeck: {

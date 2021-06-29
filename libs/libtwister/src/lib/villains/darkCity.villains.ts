@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { DarkCity as DarkCityKeywords } from '../keywords';
 
 import { IVillainGroup } from './villainGroup.interface';
 
@@ -41,11 +42,13 @@ export const DarkCity: Record<VillainGroupNames, IVillainGroup> = {
     name: 'Streets of New York',
     gameSet: GameSets.DARK_CITY,
     cardType: CardType.VILLAINGROUP,
+    keywords: [DarkCityKeywords.Bribe],
   },
   UNDERWORLD: {
     id: '4265325a-0aae-4b28-90db-6305f8883a6a',
     name: 'Underworld',
     gameSet: GameSets.DARK_CITY,
     cardType: CardType.VILLAINGROUP,
+    keywords: [DarkCityKeywords.Teleport],
   },
 };

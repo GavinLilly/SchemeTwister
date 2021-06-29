@@ -1,4 +1,4 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
 import { VillainGroups } from '../villains';
 

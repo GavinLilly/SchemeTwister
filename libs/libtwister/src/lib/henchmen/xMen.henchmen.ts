@@ -1,5 +1,6 @@
-import { CardType, Keyword } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { X_Men as X_MenKeywords } from '../keywords';
 
 import { IHenchmen } from './henchmen.interface';
 
@@ -50,14 +51,16 @@ export const X_Men: Record<HenchmenNames, IHenchmen> = {
     victoryPoints: 1,
     gameSet: GameSets.X_MEN,
     cardType: CardType.HENCHMEN,
+    keywords: [X_MenKeywords.HumanShields],
   },
   SHIAR_PATROL_CRAFT: {
     id: '978c30a5-75eb-43ca-9a8f-c724208ecaa9',
     name: "Shi'ar Patrol Craft",
-    fight: `The next Hero you recruit this turn has ${Keyword.SOARING_FLIGHT}.`,
+    fight: `The next Hero you recruit this turn has ${X_MenKeywords.SoaringFlight.name}.`,
     attackPoints: 3,
     victoryPoints: 1,
     gameSet: GameSets.X_MEN,
     cardType: CardType.HENCHMEN,
+    keywords: [X_MenKeywords.SoaringFlight],
   },
 };

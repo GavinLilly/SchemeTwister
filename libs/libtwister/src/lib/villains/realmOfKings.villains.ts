@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { RealmOfKings as RealmOfKingsKeywords } from '../keywords';
 
 import { IVillainGroup } from './villainGroup.interface';
 
@@ -11,11 +12,13 @@ export const RealmOfKings: Record<VillainGroupNames, IVillainGroup> = {
     name: 'Inhuman Rebellion',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.REALM_OF_KINGS,
+    keywords: [RealmOfKingsKeywords.Abomination],
   },
   SHIAR_IMPERIAL_ELITE: {
     id: '034d6982-2940-4b3c-8c9d-4c40b84b3f8e',
     name: "Shi'ar Imperial Elite",
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.REALM_OF_KINGS,
+    keywords: [RealmOfKingsKeywords.ThronesFavor],
   },
 };

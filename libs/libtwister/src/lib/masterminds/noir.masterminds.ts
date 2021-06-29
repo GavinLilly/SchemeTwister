@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { Noir as NoirKeywords } from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IMastermind } from './mastermind.interface';
@@ -17,6 +18,7 @@ export const Noir: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.NOIR,
+    keywords: [NoirKeywords.Investigate, NoirKeywords.HiddenWitness],
   },
   THE_GOBLIN_UNDERWORLD_BOSS: {
     id: 'ae4c557a-4523-4eb7-906b-4635e567b10c',
@@ -26,5 +28,6 @@ export const Noir: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.NOIR,
+    keywords: [NoirKeywords.Investigate, NoirKeywords.HiddenWitness],
   },
 };

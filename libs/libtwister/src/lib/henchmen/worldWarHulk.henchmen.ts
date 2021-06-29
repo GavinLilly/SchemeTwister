@@ -1,5 +1,9 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import {
+  PaintTheTownRed as PaintTheTownRedKeywords,
+  WorldWarHulk as WorldWarHulkKeywords,
+} from '../keywords';
 
 import { IHenchmen } from './henchmen.interface';
 
@@ -15,6 +19,7 @@ export const WorldWarHulk: Record<HenchmenNames, IHenchmen> = {
     gameSet: GameSets.WORLD_WAR_HULK,
     fight:
       'Feast. If Cytoplasm Spikes feasts on a non-grey Hero, you get +2 Recruit',
+    keywords: [PaintTheTownRedKeywords.Feast],
   },
   DEATHS_HEADS: {
     id: '82cb34b7-64f0-419a-8751-3d5eb9273659',
@@ -25,6 +30,7 @@ export const WorldWarHulk: Record<HenchmenNames, IHenchmen> = {
     gameSet: GameSets.WORLD_WAR_HULK,
     fight:
       "If you Outwit these Death's Heads, KO one of your cards that costs 0.",
+    keywords: [WorldWarHulkKeywords.Outwit],
   },
   SAKAARAN_HIVELINGS: {
     id: '572260df-5a13-4726-b7a4-84135a419b0e',
@@ -35,5 +41,6 @@ export const WorldWarHulk: Record<HenchmenNames, IHenchmen> = {
     gameSet: GameSets.WORLD_WAR_HULK,
     fight:
       'Look at the top card of your deck. Put it back on the top or bottom. Then Feast',
+    keywords: [PaintTheTownRedKeywords.Feast],
   },
 };

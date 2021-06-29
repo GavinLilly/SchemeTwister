@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { CaptainAmerica as CaptainAmericaKeywords } from '../keywords';
 
 import { IVillainGroup } from './villainGroup.interface';
 
@@ -11,11 +12,13 @@ export const CaptainAmerica: Record<VillainGroupNames, IVillainGroup> = {
     name: "Zola's Creations",
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.CAPTAIN_AMERICA,
+    keywords: [CaptainAmericaKeywords.Abomination],
   },
   MASTERS_OF_EVIL_WWII: {
     id: '8650bcb1-5221-4836-9a96-3a885634064b',
     name: 'Masters of Evil (WWII)',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.CAPTAIN_AMERICA,
+    keywords: [CaptainAmericaKeywords.Savior],
   },
 };

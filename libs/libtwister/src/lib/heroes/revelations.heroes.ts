@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { Revelations as RevelationsKeywords } from '../keywords';
 import { Teams } from '../teams';
 
 import { IHero } from './hero.interface';
@@ -22,6 +23,7 @@ export const Revelations: Record<HeroNames, IHero> = {
     team: Teams.SHIELD,
     cardType: CardType.HERO,
     gameSet: GameSets.REVELATIONS,
+    keywords: [RevelationsKeywords.LastStand],
   },
   DARKHAWK: {
     id: '96544ae9-9d25-44e1-93c0-96b383f107a5',
@@ -29,6 +31,7 @@ export const Revelations: Record<HeroNames, IHero> = {
     team: Teams.AVENGERS,
     cardType: CardType.HERO,
     gameSet: GameSets.REVELATIONS,
+    keywords: [RevelationsKeywords.Hyperspeed],
   },
   HELLCAT: {
     id: '30c89c60-4325-4f5e-9760-4329152a9648',
@@ -43,6 +46,7 @@ export const Revelations: Record<HeroNames, IHero> = {
     team: Teams.AVENGERS,
     cardType: CardType.HERO,
     gameSet: GameSets.REVELATIONS,
+    keywords: [RevelationsKeywords.Hyperspeed, RevelationsKeywords.LastStand],
   },
   QUICKSILVER: {
     id: 'e4e5fee4-3a34-4644-9018-24bb6799d867',
@@ -50,6 +54,7 @@ export const Revelations: Record<HeroNames, IHero> = {
     team: Teams.AVENGERS,
     cardType: CardType.HERO,
     gameSet: GameSets.REVELATIONS,
+    keywords: [RevelationsKeywords.Hyperspeed],
   },
   RONIN: {
     id: 'fa2e2727-b5b8-4d3b-834b-5a3501bc13f1',
@@ -57,6 +62,10 @@ export const Revelations: Record<HeroNames, IHero> = {
     team: Teams.AVENGERS,
     cardType: CardType.HERO,
     gameSet: GameSets.REVELATIONS,
+    keywords: [
+      RevelationsKeywords.Hyperspeed,
+      RevelationsKeywords.DarkMemories,
+    ],
   },
   SCARLET_WITCH: {
     id: '347f5ae3-71b2-438c-8bcc-db61abd145f4',
@@ -64,6 +73,7 @@ export const Revelations: Record<HeroNames, IHero> = {
     team: Teams.AVENGERS,
     cardType: CardType.HERO,
     gameSet: GameSets.REVELATIONS,
+    keywords: [RevelationsKeywords.DarkMemories],
   },
   SPEED: {
     id: '1a74003d-da97-4de2-a598-1b0ae7a9696a',
@@ -71,6 +81,7 @@ export const Revelations: Record<HeroNames, IHero> = {
     team: Teams.AVENGERS,
     cardType: CardType.HERO,
     gameSet: GameSets.REVELATIONS,
+    keywords: [RevelationsKeywords.Hyperspeed],
   },
   WAR_MACHINE: {
     id: '683bc52e-0023-4008-aa59-571a9296d399',
@@ -78,5 +89,6 @@ export const Revelations: Record<HeroNames, IHero> = {
     team: Teams.AVENGERS,
     cardType: CardType.HERO,
     gameSet: GameSets.REVELATIONS,
+    keywords: [RevelationsKeywords.Hyperspeed],
   },
 };

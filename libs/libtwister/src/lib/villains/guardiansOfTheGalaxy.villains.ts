@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { GuardiansOfTheGalaxy as GuardiansOfTheGalaxyKeywords } from '../keywords';
 
 import { IVillainGroup } from './villainGroup.interface';
 
@@ -11,11 +12,16 @@ export const GuardiansOfTheGalaxy: Record<VillainGroupNames, IVillainGroup> = {
     name: 'Kree Starforce',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.GUARDIANS_OF_THE_GALAXY,
+    keywords: [GuardiansOfTheGalaxyKeywords.Shards],
   },
   INFINITY_GEMS: {
     id: '27e817d0-b853-420e-b1a6-2f7ba15681a7',
     name: 'Infinity Gems',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.GUARDIANS_OF_THE_GALAXY,
+    keywords: [
+      GuardiansOfTheGalaxyKeywords.Shards,
+      GuardiansOfTheGalaxyKeywords.Artifact,
+    ],
   },
 };

@@ -1,4 +1,5 @@
 import { GameSets } from '../gamesets';
+import { Noir as NoirKeywords } from '../keywords';
 
 import { IScheme, Scheme } from './scheme';
 
@@ -28,6 +29,7 @@ Twist 6: Each player writes down their guess for which Hero Name is the Split Pe
       twist: `This Scheme captures 3 Hidden Witnesses. If it already had any Hidden Witnesses, put those into the Escape Pile.`,
       evilWins: 'When 6 Bystanders are in the Escape Pile.',
       gameSet: GameSets.NOIR,
+      keywords: [NoirKeywords.Investigate, NoirKeywords.HiddenWitness],
     },
     {
       villainDeck: {
@@ -51,8 +53,8 @@ Twist 6: Each player writes down their guess for which Hero Name is the Split Pe
     {
       1: {
         villainDeck: {
-          numVillainGroups: 3
-        }
+          numVillainGroups: 3,
+        },
       },
       2: {
         villainDeck: {
@@ -86,5 +88,6 @@ Twist 6: Each player writes down their guess for which Hero Name is the Split Pe
     specialRules:
       'If there are no Tactics in the city, you can win the game by fighting the Mastermind card.',
     gameSet: GameSets.NOIR,
+    keywords: [NoirKeywords.Investigate],
   }),
 };

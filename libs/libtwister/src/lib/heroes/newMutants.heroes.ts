@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { NewMutants as NewMutantsKeywords } from '../keywords';
 import { Teams } from '../teams';
 
 import { IHero } from './hero.interface';
@@ -20,6 +21,10 @@ export const NewMutants: Record<HeroNames, IHero> = {
     team: Teams.X_MEN,
     cardType: CardType.HERO,
     gameSet: GameSets.NEW_MUTANTS,
+    keywords: [
+      NewMutantsKeywords.MoonlightAndSunlight,
+      NewMutantsKeywords.WakingNightmare,
+    ],
   },
   SUNSPOT: {
     id: 'eae8dc76-3544-4f33-8153-ee8931068370',
@@ -27,6 +32,7 @@ export const NewMutants: Record<HeroNames, IHero> = {
     team: Teams.X_MEN,
     cardType: CardType.HERO,
     gameSet: GameSets.NEW_MUTANTS,
+    keywords: [NewMutantsKeywords.MoonlightAndSunlight],
   },
   WARLOCK: {
     id: '445883e2-6050-496d-be6b-a85625be7256',
@@ -34,6 +40,7 @@ export const NewMutants: Record<HeroNames, IHero> = {
     team: Teams.X_MEN,
     cardType: CardType.HERO,
     gameSet: GameSets.NEW_MUTANTS,
+    keywords: [NewMutantsKeywords.MoonlightAndSunlight],
   },
   WOLFSBANE: {
     id: 'eaae6612-0802-437c-b1ab-9d4f383501c0',
@@ -41,5 +48,6 @@ export const NewMutants: Record<HeroNames, IHero> = {
     team: Teams.X_MEN,
     cardType: CardType.HERO,
     gameSet: GameSets.NEW_MUTANTS,
+    keywords: [NewMutantsKeywords.MoonlightAndSunlight],
   },
 };

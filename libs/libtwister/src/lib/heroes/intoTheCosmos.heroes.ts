@@ -1,5 +1,9 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import {
+  IntoTheCosmos as IntoTheCosmosKeywords,
+  SpiderManHomecoming as SpiderManHomecomingKeywords,
+} from '../keywords';
 import { Teams } from '../teams';
 
 import { IHero } from './hero.interface';
@@ -22,6 +26,10 @@ export const IntoTheCosmos: Record<HeroNames, IHero> = {
     team: Teams.AVENGERS,
     cardType: CardType.HERO,
     gameSet: GameSets.INTO_THE_COSMOS,
+    keywords: [
+      IntoTheCosmosKeywords.Shards,
+      IntoTheCosmosKeywords.BurningShards,
+    ],
   },
   CAPTAIN_MARVELL: {
     id: '4bd27d21-bc0a-417a-aba9-757cf39e1d51',
@@ -29,6 +37,10 @@ export const IntoTheCosmos: Record<HeroNames, IHero> = {
     team: Teams.AVENGERS,
     cardType: CardType.HERO,
     gameSet: GameSets.INTO_THE_COSMOS,
+    keywords: [
+      IntoTheCosmosKeywords.Shards,
+      SpiderManHomecomingKeywords.DangerSense,
+    ],
   },
   MOONDRAGON: {
     id: '133725c6-f86f-4b02-bee5-c058929e0cd5',
@@ -36,6 +48,10 @@ export const IntoTheCosmos: Record<HeroNames, IHero> = {
     team: Teams.AVENGERS,
     cardType: CardType.HERO,
     gameSet: GameSets.INTO_THE_COSMOS,
+    keywords: [
+      IntoTheCosmosKeywords.Shards,
+      SpiderManHomecomingKeywords.DangerSense,
+    ],
   },
   NEBULA: {
     id: 'e38f5577-bac1-4c54-ab65-62adb31bd96f',
@@ -43,6 +59,7 @@ export const IntoTheCosmos: Record<HeroNames, IHero> = {
     team: Teams.GUARDIANS_OF_THE_GALAXY,
     cardType: CardType.HERO,
     gameSet: GameSets.INTO_THE_COSMOS,
+    keywords: [IntoTheCosmosKeywords.Shards],
   },
   NOVA: {
     id: 'c2ec7fbf-283b-4de0-8ae0-cc4a88b15c0e',
@@ -50,6 +67,10 @@ export const IntoTheCosmos: Record<HeroNames, IHero> = {
     team: Teams.AVENGERS,
     cardType: CardType.HERO,
     gameSet: GameSets.INTO_THE_COSMOS,
+    keywords: [
+      IntoTheCosmosKeywords.Shards,
+      IntoTheCosmosKeywords.CosmicThreat,
+    ],
   },
   PHYLAVELL: {
     id: '49845aa3-2681-4c98-92a1-18afca2a735b',
@@ -57,6 +78,7 @@ export const IntoTheCosmos: Record<HeroNames, IHero> = {
     team: Teams.GUARDIANS_OF_THE_GALAXY,
     cardType: CardType.HERO,
     gameSet: GameSets.INTO_THE_COSMOS,
+    keywords: [IntoTheCosmosKeywords.Shards],
   },
   QUASAR: {
     id: '49cefede-776b-492e-8fea-4a8e191a292b',
@@ -64,12 +86,21 @@ export const IntoTheCosmos: Record<HeroNames, IHero> = {
     team: Teams.AVENGERS,
     cardType: CardType.HERO,
     gameSet: GameSets.INTO_THE_COSMOS,
+    keywords: [
+      IntoTheCosmosKeywords.Shards,
+      IntoTheCosmosKeywords.BurningShards,
+    ],
   },
   RONAN_THE_ACCUSER: {
     id: '261e3c11-8400-4f1e-8ac8-16c0cd753829',
     name: 'Ronan the Accuser',
     cardType: CardType.HERO,
     gameSet: GameSets.INTO_THE_COSMOS,
+    keywords: [
+      IntoTheCosmosKeywords.Shards,
+      IntoTheCosmosKeywords.BurningShards,
+      IntoTheCosmosKeywords.ContestOfChampions,
+    ],
   },
   YONDU: {
     id: '9e36bcec-fc64-477e-9e2d-e83a54a2bfcb',
@@ -77,5 +108,10 @@ export const IntoTheCosmos: Record<HeroNames, IHero> = {
     team: Teams.GUARDIANS_OF_THE_GALAXY,
     cardType: CardType.HERO,
     gameSet: GameSets.INTO_THE_COSMOS,
+    keywords: [
+      IntoTheCosmosKeywords.Shards,
+      IntoTheCosmosKeywords.BurningShards,
+      SpiderManHomecomingKeywords.DangerSense,
+    ],
   },
 };

@@ -1,6 +1,7 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
 import { Henchmen } from '../henchmen';
+import { X_Men as X_MenKeywords } from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IMastermind } from './mastermind.interface';
@@ -28,6 +29,7 @@ export const X_Men: Record<MastermindNames, IMastermind> = {
     victoryPoints: 5,
     gameSet: GameSets.X_MEN,
     cardType: CardType.MASTERMIND,
+    keywords: [X_MenKeywords.HumanShields],
   },
   EPIC_ARCADE: {
     id: '23cc52ee-2d3f-448f-8d67-5b19b29b30da',
@@ -37,6 +39,7 @@ export const X_Men: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     gameSet: GameSets.X_MEN,
     cardType: CardType.MASTERMIND,
+    keywords: [X_MenKeywords.HumanShields],
   },
   DARK_PHOENIX: {
     id: 'b0f4dc4e-45fa-4cb6-8067-b13ee207ac9b',
@@ -69,6 +72,7 @@ export const X_Men: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     gameSet: GameSets.X_MEN,
     cardType: CardType.MASTERMIND,
+    keywords: [X_MenKeywords.TokenCards],
   },
   EPIC_DEATHBIRD: {
     id: '56cd82c2-548a-48dd-a1d6-1437dbe5bda8',
@@ -83,6 +87,7 @@ export const X_Men: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     gameSet: GameSets.X_MEN,
     cardType: CardType.MASTERMIND,
+    keywords: [X_MenKeywords.TokenCards],
   },
   MOJO: {
     id: '35177145-ec24-4858-98ed-0159e2e412ab',
@@ -92,6 +97,7 @@ export const X_Men: Record<MastermindNames, IMastermind> = {
     victoryPoints: 5,
     gameSet: GameSets.X_MEN,
     cardType: CardType.MASTERMIND,
+    keywords: [X_MenKeywords.HumanShields],
   },
   EPIC_MOJO: {
     id: '85112b60-5998-42c9-a212-1355a515f6ad',
@@ -101,6 +107,7 @@ export const X_Men: Record<MastermindNames, IMastermind> = {
     victoryPoints: 5,
     gameSet: GameSets.X_MEN,
     cardType: CardType.MASTERMIND,
+    keywords: [X_MenKeywords.HumanShields],
   },
   ONSLAUGHT: {
     id: 'f6b04a2e-3673-49a3-8535-a2016b8853b7',
@@ -110,6 +117,7 @@ export const X_Men: Record<MastermindNames, IMastermind> = {
     victoryPoints: 7,
     gameSet: GameSets.X_MEN,
     cardType: CardType.MASTERMIND,
+    keywords: [X_MenKeywords.Dominate],
   },
   EPIC_ONSLAUGHT: {
     id: 'fe2edc38-9c90-4711-bfc2-cfb762456558',
@@ -119,6 +127,7 @@ export const X_Men: Record<MastermindNames, IMastermind> = {
     victoryPoints: 7,
     gameSet: GameSets.X_MEN,
     cardType: CardType.MASTERMIND,
+    keywords: [X_MenKeywords.Dominate],
   },
   SHADOW_KING: {
     id: 'cc6e1ee5-a074-4e95-9488-8f455836085c',
@@ -128,6 +137,7 @@ export const X_Men: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     gameSet: GameSets.X_MEN,
     cardType: CardType.MASTERMIND,
+    keywords: [X_MenKeywords.Dominate, X_MenKeywords.Traps],
   },
   EPIC_SHADOW_KING: {
     id: '993c5dc0-e96e-4b04-a199-a73e5849e751',
@@ -137,5 +147,6 @@ export const X_Men: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     gameSet: GameSets.X_MEN,
     cardType: CardType.MASTERMIND,
+    keywords: [X_MenKeywords.Dominate, X_MenKeywords.Traps],
   },
 };

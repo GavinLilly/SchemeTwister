@@ -1,4 +1,5 @@
 import { GameSets } from '../gamesets';
+import { HeroesOfAsgard as HeroesOfAsgardKeywords } from '../keywords';
 
 import { IScheme, Scheme } from './scheme';
 
@@ -18,6 +19,7 @@ export const HeroesOfAsgard: Record<SchemeNames, IScheme> = {
 8-11: Put this Twist next to the Scheme as a "Moral Failing."`,
       evilWins: 'When there are 5 Moral Failings.',
       gameSet: GameSets.HEROES_OF_ASGARD,
+      keywords: [HeroesOfAsgardKeywords.Worthy],
     },
     {
       villainDeck: {
@@ -76,6 +78,7 @@ Twist 8-9: Same effect, then a Frost Giant Invader from each player's Victory Pi
       evilWins:
         'When there are 5 Frost Giant Invaders in the city and/or Escape Pile.',
       gameSet: GameSets.HEROES_OF_ASGARD,
+      keywords: [HeroesOfAsgardKeywords.Worthy],
     },
     {
       villainDeck: {

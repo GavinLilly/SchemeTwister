@@ -1,5 +1,9 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import {
+  DarkCity as DarkCityKeywords,
+  CivilWar as CivilWarKeywords,
+} from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IMastermind } from './mastermind.interface';
@@ -20,6 +24,7 @@ export const CivilWar: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.CIVIL_WAR,
+    keywords: [CivilWarKeywords.Fortify],
   },
   BARON_HELMUT_ZEMO: {
     id: 'ebd930e5-f065-414d-9862-01d335f30e3e',
@@ -38,6 +43,7 @@ export const CivilWar: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.CIVIL_WAR,
+    keywords: [CivilWarKeywords.ShieldClearance],
   },
   MISTY_KNIGHT: {
     id: '28b6b19a-8d4f-490d-b834-dd03b3ab45aa',
@@ -47,6 +53,7 @@ export const CivilWar: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.CIVIL_WAR,
+    keywords: [DarkCityKeywords.Bribe, CivilWarKeywords.Fortify],
   },
   RAGNAROK: {
     id: '9492f5bc-f54a-4304-b158-0a7df6fc2127',

@@ -8,6 +8,7 @@ import { WebAppUiModule } from '@schemetwister/web-app/ui';
 
 import { GameSetupStore } from '../game-setup-store';
 import { IterateDeckComponent } from '../iterate-deck/iterate-deck.component';
+import { ReplacePipe } from '../replace.pipe';
 import { RandomizeComponent } from './randomize.component';
 
 jest.genMockFromModule('ngx-cookie-service');
@@ -19,7 +20,7 @@ describe('RandomizeComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [RandomizeComponent, IterateDeckComponent],
+        declarations: [RandomizeComponent, IterateDeckComponent, ReplacePipe],
         imports: [
           FormsModule,
           WebAppUiModule,

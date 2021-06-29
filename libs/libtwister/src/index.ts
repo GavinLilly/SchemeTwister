@@ -8,3 +8,4 @@ export * from './lib/villains';
 export * from './lib/gameSetup';
 export * from './lib/teams';
 export * from './lib/cardSet';
+export * from './lib/enums';

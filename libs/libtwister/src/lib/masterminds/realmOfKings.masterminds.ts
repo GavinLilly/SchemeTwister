@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { RealmOfKings as RealmOfKingsKeywords } from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IMastermind } from './mastermind.interface';
@@ -19,6 +20,10 @@ export const RealmOfKings: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.REALM_OF_KINGS,
+    keywords: [
+      RealmOfKingsKeywords.ThronesFavor,
+      RealmOfKingsKeywords.Abomination,
+    ],
   },
   EPIC_MAXIMUS_THE_MAD: {
     id: 'ae9b5953-23ca-4066-8ab4-d76291644ae7',
@@ -28,6 +33,10 @@ export const RealmOfKings: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.REALM_OF_KINGS,
+    keywords: [
+      RealmOfKingsKeywords.ThronesFavor,
+      RealmOfKingsKeywords.Abomination,
+    ],
   },
   EMPEROR_VULCAN_OF_THE_SHIAR: {
     id: '21b14872-e23d-46d6-b721-94483dad908a',
@@ -37,6 +46,7 @@ export const RealmOfKings: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.REALM_OF_KINGS,
+    keywords: [RealmOfKingsKeywords.ThronesFavor],
   },
   EPIC_EMPEROR_VULCAN_OF_THE_SHIAR: {
     id: 'e3289899-5eb0-45fa-8321-3e24e1dd1fd3',
@@ -46,5 +56,6 @@ export const RealmOfKings: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.REALM_OF_KINGS,
+    keywords: [RealmOfKingsKeywords.ThronesFavor],
   },
 };

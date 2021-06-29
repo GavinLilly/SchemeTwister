@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { PaintTheTownRed as PaintTheTownRedKeywords } from '../keywords';
 
 import { IVillainGroup } from './villainGroup.interface';
 
@@ -11,6 +12,7 @@ export const PaintTheTownRed: Record<VillainGroupNames, IVillainGroup> = {
     name: 'Maxmimum Carnage',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.PAINT_THE_TOWN_RED,
+    keywords: [PaintTheTownRedKeywords.Feast],
   },
   SINISTER_SIX: {
     id: '13e916d4-f3f3-4fd1-9d27-f22987b009e2',

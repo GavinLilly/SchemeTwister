@@ -1,5 +1,6 @@
-import { CardType, Keyword } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { DarkCity as DarkCityKeywords } from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IMastermind } from './mastermind.interface';
@@ -29,7 +30,7 @@ export const DarkCity: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     gameSet: GameSets.DARK_CITY,
     cardType: CardType.MASTERMIND,
-    keyword: Keyword.BRIBE,
+    keywords: [DarkCityKeywords.Bribe],
   },
   MEPHISTO: {
     id: '1de53796-a23a-43c3-9263-d15d6fec6f0b',

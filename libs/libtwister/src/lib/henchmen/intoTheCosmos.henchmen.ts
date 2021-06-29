@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { IntoTheCosmos as IntoTheCosmosKeywords } from '../keywords';
 
 import { IHenchmen } from './henchmen.interface';
 
@@ -16,6 +17,7 @@ export const IntoTheCosmos: Record<HenchmenNames, IHenchmen> = {
     cardType: CardType.HENCHMEN,
     gameSet: GameSets.INTO_THE_COSMOS,
     fight: 'KO one of your Heroes.',
+    keywords: [IntoTheCosmosKeywords.Shards],
   },
   UNIVERSAL_CHURCH_OF_TRUTH: {
     id: '56f2c6ea-ef75-47b6-a8a8-6891c97a9969',
@@ -25,5 +27,9 @@ export const IntoTheCosmos: Record<HenchmenNames, IHenchmen> = {
     cardType: CardType.HENCHMEN,
     gameSet: GameSets.INTO_THE_COSMOS,
     fight: 'Burn 2 Shards: KO one of your Heroes',
+    keywords: [
+      IntoTheCosmosKeywords.Shards,
+      IntoTheCosmosKeywords.BurningShards,
+    ],
   },
 };

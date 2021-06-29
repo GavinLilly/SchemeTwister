@@ -1,8 +1,8 @@
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
 
 import { ICard } from './card.interface';
 import { CardSet } from './cardSet';
-import { CardType } from './cardType.enum';
 
 class DummySet extends CardSet<ICard> {
   public static readonly dummyDataLegendary: ICard[] = [

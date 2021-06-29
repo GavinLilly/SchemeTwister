@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { DarkCity as DarkCityKeywords } from '../keywords';
 import { Teams } from '../teams';
 
 import { IHero } from './hero.interface';
@@ -51,6 +52,7 @@ export const DarkCity: Record<HeroNames, IHero> = {
     team: Teams.X_FORCE,
     gameSet: GameSets.DARK_CITY,
     cardType: CardType.HERO,
+    keywords: [DarkCityKeywords.Teleport],
   },
   COLUSSUS: {
     id: '7364f3ce-9398-43b7-aff4-1ade7bc3cbd9',
@@ -72,6 +74,7 @@ export const DarkCity: Record<HeroNames, IHero> = {
     team: Teams.X_FORCE,
     gameSet: GameSets.DARK_CITY,
     cardType: CardType.HERO,
+    keywords: [DarkCityKeywords.Versatile],
   },
   ELEKTRA: {
     id: 'd01eb0c8-fa13-40d9-9f75-1065a8a95dfb',
@@ -86,6 +89,7 @@ export const DarkCity: Record<HeroNames, IHero> = {
     team: Teams.X_FORCE,
     gameSet: GameSets.DARK_CITY,
     cardType: CardType.HERO,
+    keywords: [DarkCityKeywords.Versatile],
   },
   GHOST_RIDER: {
     id: 'aec4fb69-2332-4781-9f23-d09e60ba20c1',
@@ -107,6 +111,7 @@ export const DarkCity: Record<HeroNames, IHero> = {
     team: Teams.MARVEL_KNIGHTS,
     gameSet: GameSets.DARK_CITY,
     cardType: CardType.HERO,
+    keywords: [DarkCityKeywords.Versatile],
   },
   JEAN_GREY: {
     id: 'ad984457-52be-4428-8fab-c6494f7d3b15',
@@ -121,6 +126,7 @@ export const DarkCity: Record<HeroNames, IHero> = {
     team: Teams.X_MEN,
     gameSet: GameSets.DARK_CITY,
     cardType: CardType.HERO,
+    keywords: [DarkCityKeywords.Teleport],
   },
   PROFESSOR_X: {
     id: '245a62a4-0ec4-4fe3-baf4-5b7573a522e7',

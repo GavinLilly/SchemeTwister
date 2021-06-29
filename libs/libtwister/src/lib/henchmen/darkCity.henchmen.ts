@@ -1,6 +1,7 @@
-import { CardType, Keyword } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
-import { HeroClass } from '../heroes';
+import { HeroClass } from '../enums';
+import { DarkCity as DarkCityKeywords } from '../keywords';
 
 import { IHenchmen } from './henchmen.interface';
 
@@ -10,7 +11,7 @@ export const DarkCity: Record<HenchmenNames, IHenchmen> = {
   MAGGIA_GOONS: {
     id: '11b440df-9d3d-4546-af21-498058cfe6f7',
     name: 'Maggia Goons',
-    keyword: Keyword.BRIBE,
+    keywords: [DarkCityKeywords.Bribe],
     fight: 'KO one of your Heroes.',
     attackPoints: 4,
     victoryPoints: 1,

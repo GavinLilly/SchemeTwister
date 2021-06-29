@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { Shield as ShieldKeywords } from '../keywords';
 
 import { IVillainGroup } from './villainGroup.interface';
 
@@ -11,11 +12,13 @@ export const Shield: Record<VillainGroupNames, IVillainGroup> = {
     name: 'Hydra Elite',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.SHIELD,
+    keywords: [ShieldKeywords.HydraLevel],
   },
   AIM_HYDRA_OFFSHOOT: {
     id: '64a7baad-a562-4154-ba45-da13159142de',
     name: 'A.I.M., Hydra Offshoot',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.SHIELD,
+    keywords: [ShieldKeywords.Undercover, ShieldKeywords.HydraLevel],
   },
 };

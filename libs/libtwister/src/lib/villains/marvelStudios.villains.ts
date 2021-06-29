@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { MarvelStudios as MarvelStudiosKeywords } from '../keywords';
 
 import { IVillainGroup } from './villainGroup.interface';
 
@@ -16,12 +17,14 @@ export const MarvelStudios: Record<VillainGroupNames, IVillainGroup> = {
     name: 'Chitauri',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.MARVEL_STUDIOS,
+    keywords: [MarvelStudiosKeywords.Conqueror],
   },
   GAMMA_HUNTERS: {
     id: '9b3f98f6-7697-44eb-b99d-416bdf7c87c7',
     name: 'Gamma Hunters',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.MARVEL_STUDIOS,
+    keywords: [MarvelStudiosKeywords.Conqueror],
   },
   ENEMIES_OF_ASGARD: {
     id: '2f7163ca-0a86-4aed-b20d-8b585c7adb89',
@@ -40,5 +43,6 @@ export const MarvelStudios: Record<VillainGroupNames, IVillainGroup> = {
     name: 'Iron Foes',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.MARVEL_STUDIOS,
+    keywords: [MarvelStudiosKeywords.Conqueror],
   },
 };

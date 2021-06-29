@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { Noir as NoirKeywords } from '../keywords';
 
 import { IVillainGroup } from './villainGroup.interface';
 
@@ -11,11 +12,13 @@ export const Noir: Record<VillainGroupNames, IVillainGroup> = {
     name: "Goblin's Freak Show",
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.NOIR,
+    keywords: [NoirKeywords.HiddenWitness],
   },
   XMEN_NOIR: {
     id: 'f331d3a1-0014-418d-a774-2847a7a79c38',
     name: 'X-Men Noir',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.NOIR,
+    keywords: [NoirKeywords.Investigate],
   },
 };

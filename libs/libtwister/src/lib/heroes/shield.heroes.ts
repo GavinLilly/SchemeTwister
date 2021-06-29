@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { Shield as ShieldKeywords } from '../keywords';
 import { Teams } from '../teams';
 
 import { IHero } from './hero.interface';
@@ -13,6 +14,7 @@ export const Shield: Record<HeroNames, IHero> = {
     team: Teams.SHIELD,
     cardType: CardType.HERO,
     gameSet: GameSets.SHIELD,
+    keywords: [ShieldKeywords.Undercover, ShieldKeywords.ShieldLevel],
   },
   DEATHLOK: {
     id: 'f4381002-198b-420f-b60a-d74b969e87ea',
@@ -20,6 +22,7 @@ export const Shield: Record<HeroNames, IHero> = {
     team: Teams.SHIELD,
     cardType: CardType.HERO,
     gameSet: GameSets.SHIELD,
+    keywords: [ShieldKeywords.Undercover, ShieldKeywords.ShieldLevel],
   },
   MOCKINGBIRD: {
     id: 'f5331dfe-cf69-4885-b2f6-70c03e5582dc',
@@ -27,6 +30,7 @@ export const Shield: Record<HeroNames, IHero> = {
     team: Teams.SHIELD,
     cardType: CardType.HERO,
     gameSet: GameSets.SHIELD,
+    keywords: [ShieldKeywords.Undercover, ShieldKeywords.ShieldLevel],
   },
   QUAKE: {
     id: 'c3cb5ea9-35e6-40d4-bdcd-5baa3c268aeb',
@@ -34,5 +38,6 @@ export const Shield: Record<HeroNames, IHero> = {
     team: Teams.SHIELD,
     cardType: CardType.HERO,
     gameSet: GameSets.SHIELD,
+    keywords: [ShieldKeywords.Undercover, ShieldKeywords.ShieldLevel],
   },
 };

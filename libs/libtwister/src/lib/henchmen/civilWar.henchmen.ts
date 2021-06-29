@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { CivilWar as CivilWarKeywords } from '../keywords';
 
 import { IHenchmen } from './henchmen.interface';
 
@@ -23,5 +24,6 @@ export const CivilWar: Record<HenchmenNames, IHenchmen> = {
     cardType: CardType.HENCHMEN,
     gameSet: GameSets.CIVIL_WAR,
     fight: 'KO a card from your discard pile.',
+    keywords: [CivilWarKeywords.ShieldClearance],
   },
 };

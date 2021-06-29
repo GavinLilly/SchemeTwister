@@ -1,6 +1,7 @@
 import { GameSets } from '../gamesets';
 import { Henchmen } from '../henchmen';
 import { Heroes } from '../heroes';
+import { X_Men as X_MenKeywords } from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IScheme, Scheme } from './scheme';
@@ -31,6 +32,7 @@ export const X_Men: Record<SchemeNames, IScheme> = {
         inVillainDeck: [Henchmen.X_MEN.THE_BROOD],
       },
       gameSet: GameSets.X_MEN,
+      keywords: [X_MenKeywords.Traps],
     },
     {
       villainDeck: {
@@ -40,8 +42,8 @@ export const X_Men: Record<SchemeNames, IScheme> = {
     {
       1: {
         villainDeck: {
-          numHenchmenGroups: 2
-        }
+          numHenchmenGroups: 2,
+        },
       },
       2: {
         villainDeck: {
@@ -145,8 +147,8 @@ export const X_Men: Record<SchemeNames, IScheme> = {
     {
       1: {
         villainDeck: {
-          numHenchmenGroups: 2
-        }
+          numHenchmenGroups: 2,
+        },
       },
       2: {
         villainDeck: {
@@ -202,7 +204,7 @@ export const X_Men: Record<SchemeNames, IScheme> = {
     },
     {
       1: {
-        numWounds: 6
+        numWounds: 6,
       },
       2: {
         numWounds: 12,
@@ -226,5 +228,6 @@ export const X_Men: Record<SchemeNames, IScheme> = {
       'Trap! By End of Turn: You may pay 2 Recruit. If you do, shuffle this Twist back into the Villain Deck, then play a card from the Villain Deck. Or Suffer: Stack this Twist next to the scheme as an "Airborne Neurotoxin."',
     evilWins: 'When there are 5 Airborne Neurotoxins.',
     gameSet: GameSets.X_MEN,
+    keywords: [X_MenKeywords.Traps],
   }),
 };

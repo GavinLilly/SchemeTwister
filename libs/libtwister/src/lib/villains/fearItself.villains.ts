@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { FearItself as FearItselfKeywords } from '../keywords';
 
 import { IVillainGroup } from './villainGroup.interface';
 
@@ -11,5 +12,6 @@ export const FearItself: Record<VillainGroupNames, IVillainGroup> = {
     name: 'The Mighty',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.FEAR_ITSELF,
+    keywords: [FearItselfKeywords.UruEnchantedWeapons],
   },
 };

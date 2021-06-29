@@ -1,5 +1,5 @@
 import { GameSets } from '../gamesets';
-import { HeroClass } from '../heroes';
+import { HeroClass } from '../enums';
 import { VillainGroups } from '../villains';
 
 import { IScheme, Scheme } from './scheme';
@@ -27,7 +27,7 @@ export const Legendary: Record<SchemeNames, IScheme> = {
     undefined,
     {
       1: {
-        numWounds: 6
+        numWounds: 6,
       },
       2: {
         numWounds: 12,
@@ -73,8 +73,8 @@ export const Legendary: Record<SchemeNames, IScheme> = {
     {
       1: {
         villainDeck: {
-          numHenchmenGroups: 2
-        }
+          numHenchmenGroups: 2,
+        },
       },
       2: {
         villainDeck: {

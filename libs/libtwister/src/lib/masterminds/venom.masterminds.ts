@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { Venom as VenomKeywords } from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IMastermind } from './mastermind.interface';
@@ -19,6 +20,7 @@ export const Venom: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.VENOM,
+    keywords: [VenomKeywords.SymbioteBonds],
   },
   POISON_THANOS: {
     id: 'be91be31-f5d5-40cf-aa46-21f393bf1659',
@@ -37,6 +39,7 @@ export const Venom: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.VENOM,
+    keywords: [VenomKeywords.SymbioteBonds],
   },
   EPIC_POISON_THANOS: {
     id: 'e591b841-9663-4f31-bd59-c79b23688b3f',

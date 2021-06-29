@@ -1,5 +1,9 @@
 import { GameSets } from '../gamesets';
 import { Heroes } from '../heroes';
+import {
+  GuardiansOfTheGalaxy as GuardiansOfTheGalaxyKeywords,
+  IntoTheCosmos as IntoTheCosmosKeywords,
+} from '../keywords';
 
 import { IScheme, Scheme } from './scheme';
 
@@ -21,6 +25,7 @@ Twist 5-8: Same effect, but in the Contest, Evil selects from 4 cards from the H
 Twist 9-11: Same effect, but in the Contest, Evil selects from 6 cards from the Hero Deck.`,
       evilWins: 'When there are 6 Evil Triumphs.',
       gameSet: GameSets.INTO_THE_COSMOS,
+      keywords: [IntoTheCosmosKeywords.ContestOfChampions],
     },
     {
       villainDeck: {
@@ -34,8 +39,8 @@ Twist 9-11: Same effect, but in the Contest, Evil selects from 6 cards from the 
     {
       1: {
         heroDeck: {
-          numHeroes: 4
-        }
+          numHeroes: 4,
+        },
       },
       2: {
         heroDeck: {
@@ -95,6 +100,7 @@ Twist 6-9: Each player must KO a Nova Centurion from the S.H.I.E.L.D. Officer St
       specialRules:
         'All S.H.I.E.L.D. Officers and a Nova Heroes count as "Nova Centurions."',
       gameSet: GameSets.INTO_THE_COSMOS,
+      keywords: [GuardiansOfTheGalaxyKeywords.Shards],
     },
     {
       villainDeck: {
@@ -129,8 +135,8 @@ Twist 6-9: Each player must KO a Nova Centurion from the S.H.I.E.L.D. Officer St
     {
       1: {
         heroDeck: {
-          numHeroes: 4
-        }
+          numHeroes: 4,
+        },
       },
       2: {
         heroDeck: {
