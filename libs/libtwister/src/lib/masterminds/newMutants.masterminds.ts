@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { NewMutants as NewMutantsKeywords } from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IMastermind } from './mastermind.interface';
@@ -19,6 +20,10 @@ export const NewMutants: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.NEW_MUTANTS,
+    keywords: [
+      NewMutantsKeywords.MoonlightAndSunlight,
+      NewMutantsKeywords.WakingNightmare,
+    ],
   },
   EMMA_FROST_THE_WHITE_QUEEN: {
     id: '7a137e62-3cce-4003-b522-62d1c61fb289',
@@ -28,6 +33,7 @@ export const NewMutants: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.NEW_MUTANTS,
+    keywords: [NewMutantsKeywords.WakingNightmare],
   },
   EPIC_BELASCO: {
     id: '5d90bb23-c3e5-47ab-a3d9-5117d959ed1f',
@@ -37,6 +43,10 @@ export const NewMutants: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.NEW_MUTANTS,
+    keywords: [
+      NewMutantsKeywords.MoonlightAndSunlight,
+      NewMutantsKeywords.WakingNightmare,
+    ],
   },
   EPIC_EMMA_FROST: {
     id: '5cd1338e-70be-49e0-96b8-289b61f7b5cd',

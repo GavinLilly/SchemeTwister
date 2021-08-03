@@ -1,4 +1,5 @@
 import { GameSets } from '../gamesets';
+import { SpiderManHomecoming as SpiderManHomecomingKeywords } from '../keywords';
 import { Teams } from '../teams';
 
 import { IScheme, Scheme } from './scheme';
@@ -77,6 +78,7 @@ Twist 9: KO half the Bystanders from the Bystander deck, rounding up.`,
         'When 3 Villains per player have escaped or the Villain Deck runs out.',
       specialRules: 'Smugglers have Striker.',
       gameSet: GameSets.SPIDERMAN_HOMECOMING,
+      keywords: [SpiderManHomecomingKeywords.Striker],
     },
     {
       villainDeck: {
@@ -86,8 +88,8 @@ Twist 9: KO half the Bystanders from the Bystander deck, rounding up.`,
     {
       1: {
         villainDeck: {
-          numHenchmenGroups: 2
-        }
+          numHenchmenGroups: 2,
+        },
       },
       2: {
         villainDeck: {

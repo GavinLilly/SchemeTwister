@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { NewMutants as NewMutantsKeywords } from '../keywords';
 
 import { IVillainGroup } from './villainGroup.interface';
 
@@ -11,11 +12,19 @@ export const NewMutants: Record<VillainGroupNames, IVillainGroup> = {
     name: 'Demons of Limbo',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.NEW_MUTANTS,
+    keywords: [
+      NewMutantsKeywords.MoonlightAndSunlight,
+      NewMutantsKeywords.WakingNightmare,
+    ],
   },
   HELLIONS: {
     id: '2745b10a-fd6d-4d92-94ad-ee7c870876d3',
     name: 'Hellions',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.NEW_MUTANTS,
+    keywords: [
+      NewMutantsKeywords.MoonlightAndSunlight,
+      NewMutantsKeywords.WakingNightmare,
+    ],
   },
 };

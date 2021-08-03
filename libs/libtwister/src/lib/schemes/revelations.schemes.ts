@@ -1,5 +1,6 @@
 import { GameSets } from '../gamesets';
 import { Heroes } from '../heroes';
+import { Revelations as RevelationsKeywords } from '../keywords';
 import { Teams } from '../teams';
 
 import { IScheme, Scheme } from './scheme';
@@ -22,6 +23,7 @@ export const Revelations: Record<SchemeNames, IScheme> = {
       specialRules:
         'The Low Tide, Bridge, and Streets city spaces no longer exist. The city has 3 spaces total. Put this Scheme on the Streets to mark the edge of the city. Villains in destroyed city spaces escape, starting from the left.',
       gameSet: GameSets.REVELATIONS,
+      keywords: [RevelationsKeywords.DoubleSidedTransformingSchemes],
     },
     {
       villainDeck: {
@@ -31,8 +33,8 @@ export const Revelations: Record<SchemeNames, IScheme> = {
     {
       1: {
         villainDeck: {
-          numVillainGroups: 2
-        }
+          numVillainGroups: 2,
+        },
       },
       2: {
         villainDeck: {
@@ -75,6 +77,7 @@ export const Revelations: Record<SchemeNames, IScheme> = {
         inVillainDeck: [Heroes.REVELATIONS.SCARLET_WITCH],
       },
       gameSet: GameSets.REVELATIONS,
+      keywords: [RevelationsKeywords.DoubleSidedTransformingSchemes],
     },
     {
       heroDeck: {
@@ -94,6 +97,7 @@ export const Revelations: Record<SchemeNames, IScheme> = {
       specialRules:
         'Officers stacked next to this Scheme are "Hydra Sympathizers." You may pay 3 Recruit to have the player of your choice gain one as a Hero.',
       gameSet: GameSets.REVELATIONS,
+      keywords: [RevelationsKeywords.DoubleSidedTransformingSchemes],
     },
     {
       numShieldOfficers: 30,
@@ -137,5 +141,6 @@ Twist 8: Evil Wins!`,
     specialRules:
       'This Scheme counts as a 19 Attack "Korvac" Villain worth 9VP. If you defeat Korvac, KO the Mastermind and all its Tactics.',
     gameSet: GameSets.REVELATIONS,
+    keywords: [RevelationsKeywords.DoubleSidedTransformingSchemes],
   }),
 };

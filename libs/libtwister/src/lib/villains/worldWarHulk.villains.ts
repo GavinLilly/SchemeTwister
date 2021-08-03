@@ -1,5 +1,9 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import {
+  PaintTheTownRed as PaintTheTownRedKeywords,
+  WorldWarHulk as WorldWarHulkKeywords,
+} from '../keywords';
 
 import { IVillainGroup } from './villainGroup.interface';
 
@@ -18,30 +22,38 @@ export const WorldWarHulk: Record<VillainGroupNames, IVillainGroup> = {
     name: 'Aspects of the Void',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.WORLD_WAR_HULK,
+    keywords: [PaintTheTownRedKeywords.Feast, WorldWarHulkKeywords.WoundedFury],
   },
   CODE_RED: {
     id: '88d5ca32-e078-40e0-a4dc-b300d7424d66',
     name: 'Code Red',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.WORLD_WAR_HULK,
+    keywords: [WorldWarHulkKeywords.WoundedFury],
   },
   ILLUMINATI: {
     id: 'b6b54f9a-56d7-4529-be48-8675c6df1422',
     name: 'Illuminati',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.WORLD_WAR_HULK,
+    keywords: [
+      WorldWarHulkKeywords.Outwit,
+      WorldWarHulkKeywords.CrossDimensionalRampage,
+    ],
   },
   INTELLIGENCIA: {
     id: '337af3e9-107a-40c7-8d54-adfe9e1a52e7',
     name: 'Intelligencia',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.WORLD_WAR_HULK,
+    keywords: [WorldWarHulkKeywords.Outwit, WorldWarHulkKeywords.WoundedFury],
   },
   SAKAAR_IMPERIAL_GUARD: {
     id: 'f32c2b11-6741-4b9e-85f9-c0ef77785bc3',
     name: 'Sakaar Imperial Guard',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.WORLD_WAR_HULK,
+    keywords: [PaintTheTownRedKeywords.Feast, WorldWarHulkKeywords.Outwit],
   },
   UFOES: {
     id: 'e35df983-8b44-444f-b8cc-8a084aef0d0c',
@@ -54,5 +66,6 @@ export const WorldWarHulk: Record<VillainGroupNames, IVillainGroup> = {
     name: 'Warbound',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.WORLD_WAR_HULK,
+    keywords: [PaintTheTownRedKeywords.Feast, WorldWarHulkKeywords.WoundedFury],
   },
 };

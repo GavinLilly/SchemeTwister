@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { MarvelStudios as MarvelStudiosKeywords } from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IMastermind } from './mastermind.interface';
@@ -15,6 +16,7 @@ export const MarvelStudios: Record<MastermindNames, IMastermind> = {
     victoryPoints: 5,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.MARVEL_STUDIOS,
+    keywords: [MarvelStudiosKeywords.Conqueror],
   },
   LOKI: {
     id: 'a9f48d6c-820c-4837-a5da-1342b4f0f338',

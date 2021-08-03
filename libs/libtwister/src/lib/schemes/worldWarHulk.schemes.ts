@@ -1,5 +1,6 @@
 import { GameSets } from '../gamesets';
 import { Henchmen } from '../henchmen';
+import { WorldWarHulk as WorldWarHulkKeywords } from '../keywords';
 
 import { IScheme, Scheme } from './scheme';
 
@@ -69,6 +70,7 @@ export const WorldWarHulk: Record<SchemeNames, IScheme> = {
 Twist 7-10: Each player gains a Wound.`,
       evilWins: 'When the Wound Stack runs out.',
       gameSet: GameSets.WORLD_WAR_HULK,
+      keywords: [WorldWarHulkKeywords.CrossDimensionalRampage],
     },
     {
       villainDeck: {
@@ -78,8 +80,8 @@ Twist 7-10: Each player gains a Wound.`,
     {
       1: {
         villainDeck: {
-          numWounds: 6
-        }
+          numWounds: 6,
+        },
       },
       2: {
         villainDeck: {

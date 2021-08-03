@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { Villains as VillainsKeywords } from '../keywords';
 import { Teams } from '../teams';
 
 import { IHero } from './hero.interface';
@@ -28,6 +29,7 @@ export const Villains: Record<HeroNames, IHero> = {
     team: Teams.CRIME_SYNDICATE,
     cardType: CardType.HERO,
     gameSet: GameSets.VILLAINS,
+    keywords: [VillainsKeywords.Dodge],
   },
   DR_OCTOPUS: {
     id: 'be30f05c-a614-41a0-b6e4-1dd0aa08639d',
@@ -42,6 +44,7 @@ export const Villains: Record<HeroNames, IHero> = {
     team: Teams.SINISTER_SIX,
     cardType: CardType.HERO,
     gameSet: GameSets.VILLAINS,
+    keywords: [VillainsKeywords.Dodge],
   },
   ENCHANTRESS: {
     id: 'ab117a47-1dc5-4e59-bdeb-51db333f99ec',
@@ -56,6 +59,7 @@ export const Villains: Record<HeroNames, IHero> = {
     team: Teams.SINISTER_SIX,
     cardType: CardType.HERO,
     gameSet: GameSets.VILLAINS,
+    keywords: [VillainsKeywords.Dodge],
   },
   JUGGERNAUT: {
     id: 'c85ff16b-9093-4a40-8a1d-31b35b59af41',
@@ -77,6 +81,7 @@ export const Villains: Record<HeroNames, IHero> = {
     team: Teams.SINISTER_SIX,
     cardType: CardType.HERO,
     gameSet: GameSets.VILLAINS,
+    keywords: [VillainsKeywords.Dodge],
   },
   LOKI: {
     id: '7c8d3a3c-86f9-4df8-af51-895d7c57c43c',
@@ -91,6 +96,7 @@ export const Villains: Record<HeroNames, IHero> = {
     team: Teams.BROTHERHOOD,
     cardType: CardType.HERO,
     gameSet: GameSets.VILLAINS,
+    keywords: [VillainsKeywords.Dodge],
   },
   MYSTERIO: {
     id: 'ddec9596-d973-4c83-aa73-11ce3adc149a',
@@ -98,6 +104,7 @@ export const Villains: Record<HeroNames, IHero> = {
     team: Teams.SINISTER_SIX,
     cardType: CardType.HERO,
     gameSet: GameSets.VILLAINS,
+    keywords: [VillainsKeywords.Dodge],
   },
   MYSTIQUE: {
     id: '5474ffe9-fa4f-415a-b9c8-950c887992d4',
@@ -105,6 +112,7 @@ export const Villains: Record<HeroNames, IHero> = {
     team: Teams.BROTHERHOOD,
     cardType: CardType.HERO,
     gameSet: GameSets.VILLAINS,
+    keywords: [VillainsKeywords.Dodge],
   },
   SABRETOOTH: {
     id: '9fd1bdda-2087-47e0-be2a-f37333d21844',
@@ -118,6 +126,7 @@ export const Villains: Record<HeroNames, IHero> = {
     name: 'Ultron',
     cardType: CardType.HERO,
     gameSet: GameSets.VILLAINS,
+    keywords: [VillainsKeywords.Dodge],
   },
   VENOM: {
     id: 'ab7a864a-4c6a-4409-b5fd-ec0b472a57f4',

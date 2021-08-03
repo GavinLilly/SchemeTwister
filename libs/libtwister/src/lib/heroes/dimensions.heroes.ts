@@ -1,5 +1,9 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import {
+  DarkCity as DarkCityKeywords,
+  Dimensions as DimensionsKeywords,
+} from '../keywords';
 import { Teams } from '../teams';
 
 import { IHero } from './hero.interface';
@@ -18,6 +22,7 @@ export const Dimensions: Record<HeroNames, IHero> = {
     team: Teams.MARVEL_KNIGHTS,
     cardType: CardType.HERO,
     gameSet: GameSets.DIMENSIONS,
+    keywords: [DimensionsKeywords.Switcheroo, DimensionsKeywords.Investigate],
   },
   MS_AMERICA: {
     id: '879ef895-6e85-4bb1-aaf6-84a8c73b4110',
@@ -25,6 +30,7 @@ export const Dimensions: Record<HeroNames, IHero> = {
     team: Teams.AVENGERS,
     cardType: CardType.HERO,
     gameSet: GameSets.DIMENSIONS,
+    keywords: [DarkCityKeywords.Teleport, DimensionsKeywords.Investigate],
   },
   SQUIRREL_GIRL: {
     id: 'fbdf540f-c4f4-4b93-ad20-84591cd2e577',
@@ -32,6 +38,7 @@ export const Dimensions: Record<HeroNames, IHero> = {
     team: Teams.AVENGERS,
     cardType: CardType.HERO,
     gameSet: GameSets.DIMENSIONS,
+    keywords: [DimensionsKeywords.Switcheroo, DimensionsKeywords.Investigate],
   },
   HOWARD_THE_DUCK: {
     id: '951a5345-2375-4098-b44c-6d819d03d182',
@@ -44,5 +51,6 @@ export const Dimensions: Record<HeroNames, IHero> = {
     name: 'Man-Thing',
     cardType: CardType.HERO,
     gameSet: GameSets.DIMENSIONS,
+    keywords: [DarkCityKeywords.Teleport],
   },
 };

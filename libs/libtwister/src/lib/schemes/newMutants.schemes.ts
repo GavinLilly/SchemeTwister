@@ -1,4 +1,5 @@
 import { GameSets } from '../gamesets';
+import { NewMutants as NewMutantsKeywords } from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IScheme, Scheme } from './scheme';
@@ -23,6 +24,7 @@ export const NewMutants: Record<SchemeNames, IScheme> = {
       inVillainDeck: [VillainGroups.NEW_MUTANTS.DEMONS_OF_LIMBO],
     },
     gameSet: GameSets.NEW_MUTANTS,
+    keywords: [NewMutantsKeywords.MoonlightAndSunlight],
   }),
   CRASH_THE_MOON_INTO_THE_SUN: new Scheme(
     {
@@ -56,8 +58,8 @@ Twist 9,10,11: Same effect.`,
     {
       1: {
         villainDeck: {
-          numTwists: 3
-        }
+          numTwists: 3,
+        },
       },
       2: {
         villainDeck: {
@@ -101,8 +103,8 @@ Twist 9,10,11: Same effect.`,
     {
       1: {
         villainDeck: {
-          numVillainGroups: 2
-        }
+          numVillainGroups: 2,
+        },
       },
       2: {
         villainDeck: {

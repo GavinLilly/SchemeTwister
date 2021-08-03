@@ -1,5 +1,10 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import {
+  DarkCity as DarkCityKeywords,
+  Villains as VillainsKeywords,
+  Champions as ChampionsKeywords,
+} from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IMastermind } from './mastermind.interface';
@@ -19,6 +24,7 @@ export const Champions: Record<MastermindNames, IMastermind> = {
     victoryPoints: 7,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.CHAMPIONS,
+    keywords: [VillainsKeywords.Demolish, ChampionsKeywords.SizeChanging],
   },
   PAGLIACCI: {
     id: 'bc34e995-15f6-4918-922d-7e3c1e6f1a12',
@@ -28,6 +34,7 @@ export const Champions: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.CHAMPIONS,
+    keywords: [DarkCityKeywords.Versatile, VillainsKeywords.Demolish],
   },
   EPIC_FIN_FANG_FOOM: {
     id: '30469c57-f4e3-4255-b642-f37aa49eb6b9',
@@ -37,6 +44,7 @@ export const Champions: Record<MastermindNames, IMastermind> = {
     victoryPoints: 7,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.CHAMPIONS,
+    keywords: [VillainsKeywords.Demolish, ChampionsKeywords.SizeChanging],
   },
   EPIC_PAGLIACCI: {
     id: '10fdfc96-fd5d-402f-945e-f800d83fd7ea',
@@ -46,5 +54,6 @@ export const Champions: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.CHAMPIONS,
+    keywords: [DarkCityKeywords.Versatile, VillainsKeywords.Demolish],
   },
 };

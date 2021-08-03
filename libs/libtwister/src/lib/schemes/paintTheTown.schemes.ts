@@ -1,6 +1,6 @@
 import { GameSets } from '../gamesets';
 import { VillainGroups } from '../villains';
-
+import { PaintTheTownRed as PaintTheTownRedKeywords } from '../keywords';
 import { IScheme, Scheme } from './scheme';
 
 type SchemeNames =
@@ -49,6 +49,7 @@ export const PaintTheTownRed: Record<SchemeNames, IScheme> = {
       inVillainDeck: [VillainGroups.PAINT_THE_TOWN_RED.SINISTER_SIX],
     },
     gameSet: GameSets.PAINT_THE_TOWN_RED,
+    keywords: [PaintTheTownRedKeywords.WallCrawl],
   }),
   WEAVE_A_WEB_OF_LIES: new Scheme(
     {

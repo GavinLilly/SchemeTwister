@@ -1,6 +1,7 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
 import { IHero } from '../heroes';
+import { DarkCity as DarkCityKeywords } from '../keywords';
 import { Teams } from '../teams';
 
 type BystanderNames =
@@ -42,6 +43,7 @@ export const X_Men: Record<BystanderNames, IHero> = {
     team: Teams.X_MEN,
     gameSet: GameSets.X_MEN,
     cardType: CardType.BYSTANDER,
+    keywords: [DarkCityKeywords.Teleport],
   },
   MAGMA: {
     id: 'cc9dbd5f-2c5a-4d83-9de0-0d5bd1985cb6',

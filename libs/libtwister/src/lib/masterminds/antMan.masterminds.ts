@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { AntMan as AntManKeywords } from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IMastermind } from './mastermind.interface';
@@ -19,6 +20,7 @@ export const AntMan: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.ANT_MAN,
+    keywords: [AntManKeywords.Empowered],
   },
   EPIC_ULTRON: {
     id: '89167683-86c8-497b-95af-17838c3d7021',
@@ -28,6 +30,7 @@ export const AntMan: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.ANT_MAN,
+    keywords: [AntManKeywords.Empowered],
   },
   MORGAN_LE_FAY: {
     id: 'eadae97c-473e-46db-bf18-ac871d378031',
@@ -37,6 +40,7 @@ export const AntMan: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.ANT_MAN,
+    keywords: [AntManKeywords.ChivalrousDuel],
   },
   EPIC_MORGAN_LE_FAY: {
     id: 'b2adb1bc-d44f-4fdb-8860-67c4f539f825',
@@ -46,5 +50,6 @@ export const AntMan: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.ANT_MAN,
+    keywords: [AntManKeywords.ChivalrousDuel],
   },
 };

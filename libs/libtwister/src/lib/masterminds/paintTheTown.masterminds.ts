@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { PaintTheTownRed as PaintTheTownRedKeywords } from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IMastermind } from './mastermind.interface';
@@ -15,6 +16,7 @@ export const PaintTheTownRed: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.PAINT_THE_TOWN_RED,
+    keywords: [PaintTheTownRedKeywords.Feast],
   },
   MYSTERIO: {
     id: '41e155a1-92e7-4c76-992f-319cd55c47f0',

@@ -1,6 +1,7 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
 import { Henchmen } from '../henchmen';
+import { Dimensions as DimensionsKeywords } from '../keywords';
 
 import { IMastermind } from './mastermind.interface';
 
@@ -15,6 +16,7 @@ export const Dimensions: Record<MastermindNames, IMastermind> = {
     victoryPoints: 5,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.DIMENSIONS,
+    keywords: [DimensionsKeywords.Investigate],
   },
   EPIC_J_JONAH_JAMESON: {
     id: '1a464f77-8e35-4ff0-8c32-c38eb5bf88ac',
@@ -24,5 +26,6 @@ export const Dimensions: Record<MastermindNames, IMastermind> = {
     victoryPoints: 5,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.DIMENSIONS,
+    keywords: [DimensionsKeywords.Investigate],
   },
 };

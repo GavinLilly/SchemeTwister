@@ -1,6 +1,7 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
 import { Henchmen } from '../henchmen';
+import { Villains as VillainsKeywords } from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IMastermind } from './mastermind.interface';
@@ -25,6 +26,7 @@ export const Villains: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.VILLAINS,
+    keywords: [VillainsKeywords.Demolish],
   },
   ODIN: {
     id: '5fc8c65b-a616-4424-9145-58fbbdcf31c0',
@@ -43,5 +45,6 @@ export const Villains: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.VILLAINS,
+    keywords: [VillainsKeywords.XTremeAttack],
   },
 };

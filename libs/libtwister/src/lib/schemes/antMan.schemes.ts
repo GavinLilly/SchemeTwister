@@ -1,4 +1,5 @@
 import { GameSets } from '../gamesets';
+import { AntMan as AntManKeywords } from '../keywords';
 
 import { IScheme, Scheme } from './scheme';
 
@@ -18,6 +19,7 @@ export const AntMan: Record<SchemeNames, IScheme> = {
       specialRules: `Evolved Ultrons have 4 Attack and are Empowered by each color in the Evolution pile. They're worth 6VP.`,
       evilWins: 'When 7 Evolved Ultrons are in the city and/or Escape Pile.',
       gameSet: GameSets.ANT_MAN,
+      keywords: [AntManKeywords.Empowered],
     },
     {
       villainDeck: {
@@ -46,6 +48,7 @@ export const AntMan: Record<SchemeNames, IScheme> = {
 7-9: Each player puts a Villains from the Victory Pile into the Escape Pile.`,
       evilWins: 'When 3 Villains per player have escaped.',
       gameSet: GameSets.ANT_MAN,
+      keywords: [AntManKeywords.ChivalrousDuel],
     },
     {
       villainDeck: {
@@ -66,8 +69,8 @@ export const AntMan: Record<SchemeNames, IScheme> = {
     {
       1: {
         villainDeck: {
-          numTwists: 7
-        }
+          numTwists: 7,
+        },
       },
       2: {
         villainDeck: {
@@ -103,6 +106,7 @@ export const AntMan: Record<SchemeNames, IScheme> = {
       evilWins:
         'When 3 Villains per player have escaped or the Villain Deck runs out.',
       gameSet: GameSets.ANT_MAN,
+      keywords: [AntManKeywords.SizeChanging],
     },
     {
       villainDeck: {

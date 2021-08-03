@@ -1,6 +1,7 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
-import { HeroClass } from '../heroes';
+import { HeroClass } from '../enums';
+import { SecretWarsVolume1 as SecretWarsVolume1Keywords } from '../keywords';
 
 import { IHenchmen } from './henchmen.interface';
 
@@ -15,6 +16,7 @@ export const SecretWarsVolume1: Record<HenchmenNames, IHenchmen> = {
     cardType: CardType.HENCHMEN,
     gameSet: GameSets.SECRET_WARS_VOLUME_1,
     fight: `Reveal a ${HeroClass.COVERT} Hero or KO one of your Heroes with an Attack icon`,
+    keywords: [SecretWarsVolume1Keywords.RiseOfTheLivingDead],
   },
   MODOKS: {
     id: 'a0c09f47-1cc2-44c0-9916-1a722137e13a',

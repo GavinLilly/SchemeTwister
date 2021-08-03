@@ -1,5 +1,6 @@
 import { GameSets } from '../gamesets';
-import { HeroClass } from '../heroes';
+import { HeroClass } from '../enums';
+import { Shield as ShieldKeywords } from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IScheme, Scheme } from './scheme';
@@ -26,6 +27,7 @@ export const Shield: Record<SchemeNames, IScheme> = {
         ],
       },
       gameSet: GameSets.SHIELD,
+      keywords: [ShieldKeywords.Undercover, ShieldKeywords.HydraLevel],
     },
     {
       villainDeck: {
@@ -64,8 +66,8 @@ Twist 10: Evil Wins!`,
     {
       1: {
         heroDeck: {
-          numHeroes: 4
-        }
+          numHeroes: 4,
+        },
       },
       2: {
         heroDeck: {

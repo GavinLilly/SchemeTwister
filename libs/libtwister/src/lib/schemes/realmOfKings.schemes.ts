@@ -1,4 +1,5 @@
 import { GameSets } from '../gamesets';
+import { RealmOfKings as RealmOfKingsKeywords } from '../keywords';
 
 import { IScheme, Scheme } from './scheme';
 
@@ -47,6 +48,7 @@ Twist 8-11: KO two cards from the top of each Wedding Hero Stack.`,
 Twist 9-11: Same effect, but with two Victorious Generals.`,
       evilWins: 'When there are 6 Victorious Generals.',
       gameSet: GameSets.REALM_OF_KINGS,
+      keywords: [RealmOfKingsKeywords.ThronesFavor],
     },
     {
       villainDeck: {
@@ -86,14 +88,15 @@ Twist 10: Evil Wins!`,
         'When there are 3 Villains per player in the Escape Pile or the Villain Deck runs out.',
       specialRules: 'All Xerogen Experiments also have Abomination.',
       gameSet: GameSets.REALM_OF_KINGS,
+      keywords: [RealmOfKingsKeywords.Abomination],
     },
     undefined,
     {
       1: {
         villainDeck: {
           numTwists: 4,
-          numHenchmenGroups: 2
-        }
+          numHenchmenGroups: 2,
+        },
       },
       2: {
         villainDeck: {

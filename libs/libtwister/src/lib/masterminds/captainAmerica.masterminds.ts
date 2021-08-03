@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { CaptainAmerica as CaptainAmericaKeywords } from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IMastermind } from './mastermind.interface';
@@ -15,6 +16,10 @@ export const CaptainAmerica: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.CAPTAIN_AMERICA,
+    keywords: [
+      CaptainAmericaKeywords.Savior,
+      CaptainAmericaKeywords.Abomination,
+    ],
   },
   BARON_HEINRICH_ZEMO: {
     id: '008db486-dbf4-47d9-b61e-19fe11adb5d1',

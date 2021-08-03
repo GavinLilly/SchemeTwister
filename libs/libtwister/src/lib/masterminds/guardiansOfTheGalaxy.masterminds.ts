@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { GuardiansOfTheGalaxy as GuardiansOfTheGalaxyKeywords } from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IMastermind } from './mastermind.interface';
@@ -15,6 +16,7 @@ export const GuardiansOfTheGalaxy: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.GUARDIANS_OF_THE_GALAXY,
+    keywords: [GuardiansOfTheGalaxyKeywords.Shards],
   },
   THANOS: {
     id: 'a70ec132-82aa-4a6c-bf26-f57928b3b066',
@@ -24,5 +26,6 @@ export const GuardiansOfTheGalaxy: Record<MastermindNames, IMastermind> = {
     victoryPoints: 7,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.GUARDIANS_OF_THE_GALAXY,
+    keywords: [GuardiansOfTheGalaxyKeywords.Artifact],
   },
 };

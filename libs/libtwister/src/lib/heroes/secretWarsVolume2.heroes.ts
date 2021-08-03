@@ -1,5 +1,11 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import {
+  DarkCity as DarkCityKeywords,
+  PaintTheTownRed as PaintTheTownRedKeywords,
+  SecretWarsVolume1 as SecretWarsVolume1Keywords,
+  SecretWarsVolume2 as SecretWarsVolume2Keywords,
+} from '../keywords';
 import { Teams } from '../teams';
 
 import { IHero } from './hero.interface';
@@ -29,12 +35,23 @@ export const SecretWarsVolume2: Record<HeroNames, IHero> = {
     team: Teams.SPIDER_FRIENDS,
     cardType: CardType.HERO,
     gameSet: GameSets.SECRET_WARS_VOLUME_2,
+    keywords: [
+      DarkCityKeywords.Versatile,
+      PaintTheTownRedKeywords.WallCrawl,
+      SecretWarsVolume2Keywords.Spectrum,
+      SecretWarsVolume2Keywords.Patrol,
+    ],
   },
   ARKON_THE_MAGNIFICENT: {
     id: 'e0025882-b4d3-4568-88ed-43d4eb834676',
     name: 'Arkon the Magnificent',
     cardType: CardType.HERO,
     gameSet: GameSets.SECRET_WARS_VOLUME_2,
+    keywords: [
+      PaintTheTownRedKeywords.WallCrawl,
+      SecretWarsVolume2Keywords.Spectrum,
+      SecretWarsVolume2Keywords.Patrol,
+    ],
   },
   BEAST: {
     id: 'f5bbeae6-64a6-4e1d-8100-fbb3dd3fa27a',
@@ -42,6 +59,10 @@ export const SecretWarsVolume2: Record<HeroNames, IHero> = {
     team: Teams.ILLUMINATI,
     cardType: CardType.HERO,
     gameSet: GameSets.SECRET_WARS_VOLUME_2,
+    keywords: [
+      PaintTheTownRedKeywords.WallCrawl,
+      SecretWarsVolume2Keywords.Patrol,
+    ],
   },
   BLACK_SWAN: {
     id: '76b9d8dd-ef80-4930-bc77-c2fb68686b8c',
@@ -56,6 +77,10 @@ export const SecretWarsVolume2: Record<HeroNames, IHero> = {
     team: Teams.AVENGERS,
     cardType: CardType.HERO,
     gameSet: GameSets.SECRET_WARS_VOLUME_2,
+    keywords: [
+      SecretWarsVolume2Keywords.Spectrum,
+      SecretWarsVolume2Keywords.Patrol,
+    ],
   },
   CAPTAIN_BRITAIN: {
     id: '010befe8-0316-473e-80ce-3e749f50b8ad',
@@ -63,6 +88,7 @@ export const SecretWarsVolume2: Record<HeroNames, IHero> = {
     team: Teams.ILLUMINATI,
     cardType: CardType.HERO,
     gameSet: GameSets.SECRET_WARS_VOLUME_2,
+    keywords: [SecretWarsVolume2Keywords.Patrol],
   },
   CORVUS_GLAIVE: {
     id: 'ae8ef6d9-c4f0-4dda-89ab-b991eddfb8c8',
@@ -70,6 +96,7 @@ export const SecretWarsVolume2: Record<HeroNames, IHero> = {
     team: Teams.CABAL,
     cardType: CardType.HERO,
     gameSet: GameSets.SECRET_WARS_VOLUME_2,
+    keywords: [SecretWarsVolume2Keywords.Patrol],
   },
   DR_PUNISHER_SOLDIER_SUPREME: {
     id: '09211a9c-6c60-4b32-9195-8f40766229fb',
@@ -77,6 +104,7 @@ export const SecretWarsVolume2: Record<HeroNames, IHero> = {
     team: Teams.MARVEL_KNIGHTS,
     cardType: CardType.HERO,
     gameSet: GameSets.SECRET_WARS_VOLUME_2,
+    keywords: [SecretWarsVolume2Keywords.Patrol],
   },
   ELSA_BLOODSTONE: {
     id: '227697a1-0701-495a-9cf5-191fd1990c30',
@@ -84,6 +112,11 @@ export const SecretWarsVolume2: Record<HeroNames, IHero> = {
     team: Teams.SHIELD,
     cardType: CardType.HERO,
     gameSet: GameSets.SECRET_WARS_VOLUME_2,
+    keywords: [
+      PaintTheTownRedKeywords.WallCrawl,
+      SecretWarsVolume2Keywords.Spectrum,
+      SecretWarsVolume2Keywords.Patrol,
+    ],
   },
   PHOENIX_FORCE_CYCLOPS: {
     id: 'af7b0d0d-7f8e-4bd5-97b2-f3623de535b1',
@@ -98,6 +131,7 @@ export const SecretWarsVolume2: Record<HeroNames, IHero> = {
     team: Teams.X_MEN,
     cardType: CardType.HERO,
     gameSet: GameSets.SECRET_WARS_VOLUME_2,
+    keywords: [DarkCityKeywords.Teleport],
   },
   SHANGCHI: {
     id: '398084cc-d6e7-4137-867b-5825a3abc751',
@@ -105,6 +139,10 @@ export const SecretWarsVolume2: Record<HeroNames, IHero> = {
     team: Teams.MARVEL_KNIGHTS,
     cardType: CardType.HERO,
     gameSet: GameSets.SECRET_WARS_VOLUME_2,
+    keywords: [
+      PaintTheTownRedKeywords.WallCrawl,
+      SecretWarsVolume2Keywords.Patrol,
+    ],
   },
   SILK: {
     id: 'a9a2ca43-2277-48e5-8f99-709c647ed6e5',
@@ -112,6 +150,10 @@ export const SecretWarsVolume2: Record<HeroNames, IHero> = {
     team: Teams.SPIDER_FRIENDS,
     cardType: CardType.HERO,
     gameSet: GameSets.SECRET_WARS_VOLUME_2,
+    keywords: [
+      PaintTheTownRedKeywords.WallCrawl,
+      SecretWarsVolume2Keywords.Spectrum,
+    ],
   },
   SOULSWORD_COLOSSUS: {
     id: '4e014b74-5437-46ce-acda-a292dc5880ad',
@@ -119,6 +161,7 @@ export const SecretWarsVolume2: Record<HeroNames, IHero> = {
     team: Teams.X_MEN,
     cardType: CardType.HERO,
     gameSet: GameSets.SECRET_WARS_VOLUME_2,
+    keywords: [SecretWarsVolume1Keywords.CrossDimensionalRampage],
   },
   SPIDERGWEN: {
     id: 'eeaa7352-9c50-4764-b68e-e45d29b0fbdf',
@@ -126,6 +169,10 @@ export const SecretWarsVolume2: Record<HeroNames, IHero> = {
     team: Teams.SPIDER_FRIENDS,
     cardType: CardType.HERO,
     gameSet: GameSets.SECRET_WARS_VOLUME_2,
+    keywords: [
+      PaintTheTownRedKeywords.WallCrawl,
+      SecretWarsVolume2Keywords.Patrol,
+    ],
   },
   TIMETRAVELING_JEAN_GREY: {
     id: '48fa232b-26ce-4167-aa79-ef53256df126',
@@ -133,5 +180,6 @@ export const SecretWarsVolume2: Record<HeroNames, IHero> = {
     team: Teams.X_MEN,
     cardType: CardType.HERO,
     gameSet: GameSets.SECRET_WARS_VOLUME_2,
+    keywords: [SecretWarsVolume2Keywords.Patrol],
   },
 };

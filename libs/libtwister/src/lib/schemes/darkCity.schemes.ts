@@ -1,6 +1,7 @@
+import { HeroClass } from '../enums';
 import { GameSets } from '../gamesets';
 import { Henchmen } from '../henchmen';
-import { HeroClass, Heroes } from '../heroes';
+import { Heroes } from '../heroes';
 
 import { IScheme, Scheme } from './scheme';
 
@@ -110,8 +111,8 @@ export const DarkCity: Record<SchemeNames, IScheme> = {
     {
       1: {
         villainDeck: {
-          numVillainGroups: 2
-        }
+          numVillainGroups: 2,
+        },
       },
       2: {
         villainDeck: {

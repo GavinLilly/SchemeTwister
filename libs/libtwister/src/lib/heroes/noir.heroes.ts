@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { Noir as NoirKeywords } from '../keywords';
 import { Teams } from '../teams';
 
 import { IHero } from './hero.interface';
@@ -18,6 +19,7 @@ export const Noir: Record<HeroNames, IHero> = {
     team: Teams.X_MEN,
     cardType: CardType.HERO,
     gameSet: GameSets.NOIR,
+    keywords: [NoirKeywords.Investigate],
   },
   DAREDEVIL_NOIR: {
     id: '8bab7eba-8658-4df6-b1e5-6b8929760691',
@@ -25,6 +27,7 @@ export const Noir: Record<HeroNames, IHero> = {
     team: Teams.MARVEL_KNIGHTS,
     cardType: CardType.HERO,
     gameSet: GameSets.NOIR,
+    keywords: [NoirKeywords.Investigate],
   },
   IRON_MAN_NOIR: {
     id: '787170aa-5e93-4f82-b403-e20573f05daf',
@@ -32,6 +35,7 @@ export const Noir: Record<HeroNames, IHero> = {
     team: Teams.AVENGERS,
     cardType: CardType.HERO,
     gameSet: GameSets.NOIR,
+    keywords: [NoirKeywords.Investigate],
   },
   LUKE_CAGE_NOIR: {
     id: '3c5a6236-a9b6-4748-98c6-d516a4719d3a',
@@ -39,6 +43,7 @@ export const Noir: Record<HeroNames, IHero> = {
     team: Teams.MARVEL_KNIGHTS,
     cardType: CardType.HERO,
     gameSet: GameSets.NOIR,
+    keywords: [NoirKeywords.Investigate],
   },
   SPIDERMAN_NOIR: {
     id: '9e8b2b85-8dca-465a-bb6c-0efcfe70eab3',
@@ -46,5 +51,6 @@ export const Noir: Record<HeroNames, IHero> = {
     team: Teams.SPIDER_FRIENDS,
     cardType: CardType.HERO,
     gameSet: GameSets.NOIR,
+    keywords: [NoirKeywords.Investigate],
   },
 };

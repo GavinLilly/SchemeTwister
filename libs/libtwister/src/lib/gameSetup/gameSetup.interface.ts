@@ -1,4 +1,5 @@
 import { ICard } from '../cardSet';
+import { IKeyword } from '../keywords/keyword.interface';
 import { IMastermind } from '../masterminds/mastermind.interface';
 import { IScheme } from '../schemes';
 
@@ -32,6 +33,7 @@ export interface IGameSetup {
   numWounds?: number;
   additionalDeck?: IAdditionalDeck;
   numShieldOfficers?: number;
+  keywords?: IKeyword[];
 }
 
 export interface IGenerateOptions {

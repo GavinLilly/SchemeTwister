@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
 
 import { WebAppUiModule } from '@schemetwister/web-app/ui';
@@ -13,6 +13,7 @@ import { GameSetupStore } from './game-setup-store';
 import { IterateDeckComponent } from './iterate-deck/iterate-deck.component';
 import { RandomizeComponent } from './randomize/randomize.component';
 import { SchemeMastermindSelectComponent } from './scheme-mastermind-select/scheme-mastermind-select.component';
+import { ReplacePipe } from './replace.pipe';
 
 @NgModule({
   imports: [
@@ -24,12 +25,14 @@ import { SchemeMastermindSelectComponent } from './scheme-mastermind-select/sche
     ]),
     NgbModule,
     FontAwesomeModule,
+    NgbAccordionModule,
   ],
   declarations: [
     RandomizeComponent,
     GameSetSelectComponent,
     SchemeMastermindSelectComponent,
     IterateDeckComponent,
+    ReplacePipe,
   ],
   providers: [GameSetupStore, CookieService],
   entryComponents: [GameSetSelectComponent],

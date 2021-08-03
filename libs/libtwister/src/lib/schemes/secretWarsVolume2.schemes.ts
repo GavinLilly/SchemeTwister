@@ -1,6 +1,7 @@
 import { GameSets } from '../gamesets';
 import { Henchmen } from '../henchmen';
-import { HeroClass } from '../heroes';
+import { HeroClass } from '../enums';
+import { SecretWarsVolume2 as SecretWarsVolume2Keywords } from '../keywords';
 
 import { IScheme, Scheme } from './scheme';
 
@@ -24,13 +25,14 @@ export const SecretWarsVolume2: Record<SchemeNames, IScheme> = {
       evilWins:
         'When the number of escaped Villains equals the number of players plus 6.',
       gameSet: GameSets.SECRET_WARS_VOLUME_2,
+      keywords: [SecretWarsVolume2Keywords.Charge],
     },
     undefined,
     {
       1: {
         villainDeck: {
-          numVillainGroups: 2
-        }
+          numVillainGroups: 2,
+        },
       },
       2: {
         villainDeck: {
@@ -74,6 +76,7 @@ Twist 8: The Villain in each player's Victory Pile with the highest printed Atta
       specialRules:
         'All Villains and Mastermind Tactics have "Fight: Fateful Resurrection."',
       gameSet: GameSets.SECRET_WARS_VOLUME_2,
+      keywords: [SecretWarsVolume2Keywords.FatefulResurrection],
     },
     undefined,
     {
@@ -127,6 +130,7 @@ Twist 8: Evil wins! (If any Mastermind still lives.)`,
     specialRules:
       'Villains and the Mastermind have the Circle of Kung-Fu matching the number of Twists stacked here.',
     gameSet: GameSets.SECRET_WARS_VOLUME_2,
+    keywords: [SecretWarsVolume2Keywords.CircleOfKungFu],
   }),
   SECRET_WARS: new Scheme(
     {

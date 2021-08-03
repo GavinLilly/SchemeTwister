@@ -1,4 +1,5 @@
 import { GameSets } from '../gamesets';
+import { GuardiansOfTheGalaxy as GuardiansOfTheGalaxyKeywords } from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IScheme, Scheme } from './scheme';
@@ -21,6 +22,10 @@ export const GuardiansOfTheGalaxy: Record<SchemeNames, IScheme> = {
       inVillainDeck: [VillainGroups.GUARDIANS_OF_THE_GALAXY.INFINITY_GEMS],
     },
     gameSet: GameSets.GUARDIANS_OF_THE_GALAXY,
+    keywords: [
+      GuardiansOfTheGalaxyKeywords.Shards,
+      GuardiansOfTheGalaxyKeywords.Artifact,
+    ],
   }),
   INTERGALACTIC_KREE_NEGA_BOMB: new Scheme(
     {
@@ -41,29 +46,32 @@ export const GuardiansOfTheGalaxy: Record<SchemeNames, IScheme> = {
       },
     }
   ),
-  THE_KREE_SKRULL_WAR: new Scheme({
-    id: 'b0c2aafe-3df2-4fdb-813f-1493eec6e379',
-    name: 'The Kree-Skrull War',
-    setup: '8 Twists. Always include Kree Starforce and Skrull Villain Groups.',
-    twist: `1-7: All Kree and Skrulls escape from the city. Then, if there are more Kree than Skrulls in the Escape Pile, stack this Twist next to the Mastermind as a Kree Conquest. If there are more Skrulls than Kree in the Escape Pile, stack this Twist next to the Villain Deck as a Skrull Conquest.
+  THE_KREE_SKRULL_WAR: new Scheme(
+    {
+      id: 'b0c2aafe-3df2-4fdb-813f-1493eec6e379',
+      name: 'The Kree-Skrull War',
+      setup:
+        '8 Twists. Always include Kree Starforce and Skrull Villain Groups.',
+      twist: `1-7: All Kree and Skrulls escape from the city. Then, if there are more Kree than Skrulls in the Escape Pile, stack this Twist next to the Mastermind as a Kree Conquest. If there are more Skrulls than Kree in the Escape Pile, stack this Twist next to the Villain Deck as a Skrull Conquest.
 8: Stack this Twist on the side with the most Conquests.`,
-    evilWins: 'When there are 4 Kree Conquests or 4 Skrull Conquests.',
-    requiredCards: {
-      inVillainDeck: [
-        VillainGroups.GUARDIANS_OF_THE_GALAXY.KREE_STARFORCE,
-        VillainGroups.LEGENDARY.SKRULLS,
-      ],
+      evilWins: 'When there are 4 Kree Conquests or 4 Skrull Conquests.',
+      requiredCards: {
+        inVillainDeck: [
+          VillainGroups.GUARDIANS_OF_THE_GALAXY.KREE_STARFORCE,
+          VillainGroups.LEGENDARY.SKRULLS,
+        ],
+      },
+      gameSet: GameSets.GUARDIANS_OF_THE_GALAXY,
     },
-    gameSet: GameSets.GUARDIANS_OF_THE_GALAXY,
-  },
-  undefined,
-  {
-    1: {
-      villainDeck: {
-        numVillainGroups: 2
-      }
+    undefined,
+    {
+      1: {
+        villainDeck: {
+          numVillainGroups: 2,
+        },
+      },
     }
-  }),
+  ),
   UNITE_THE_SHARDS: new Scheme(
     {
       id: '3a4b7112-91dd-4f8d-9707-a3b447f231b6',
@@ -76,6 +84,7 @@ export const GuardiansOfTheGalaxy: Record<SchemeNames, IScheme> = {
       evilWins:
         'When the Mastermind has 10 Shards or when there are no more Shards in the supply.',
       gameSet: GameSets.GUARDIANS_OF_THE_GALAXY,
+      keywords: [GuardiansOfTheGalaxyKeywords.Shards],
     },
     {
       numShards: 30,
@@ -83,8 +92,8 @@ export const GuardiansOfTheGalaxy: Record<SchemeNames, IScheme> = {
     {
       1: {
         villainDeck: {
-          numTwists: 6
-        }
+          numTwists: 6,
+        },
       },
       2: {
         villainDeck: {

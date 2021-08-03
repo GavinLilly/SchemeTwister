@@ -1,6 +1,7 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
 import { Henchmen } from '../henchmen';
+import { Revelations as RevelationsKeywords } from '../keywords';
 import { VillainGroups } from '../villains';
 
 import { IMastermind } from './mastermind.interface';
@@ -22,6 +23,7 @@ export const Revelations: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.REVELATIONS,
+    keywords: [RevelationsKeywords.Locations],
   },
   THE_HOOD: {
     id: 'febabcdf-503e-4343-9389-3f901ebe345f',
@@ -31,6 +33,7 @@ export const Revelations: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.REVELATIONS,
+    keywords: [RevelationsKeywords.DarkMemories, RevelationsKeywords.Locations],
   },
   MANDARIN: {
     id: 'a6dcfa1a-14f2-4f4b-b3d1-ef2740539dab',
@@ -40,6 +43,7 @@ export const Revelations: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.REVELATIONS,
+    keywords: [RevelationsKeywords.Locations],
   },
   EPIC_GRIM_REAPER: {
     id: 'a9da7041-a927-4030-96b7-1641be3bd7df',
@@ -49,6 +53,7 @@ export const Revelations: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.REVELATIONS,
+    keywords: [RevelationsKeywords.Locations],
   },
   EPIC_HOOD: {
     id: '91622572-b2b3-48b1-9861-ba8233ad26d5',
@@ -58,6 +63,7 @@ export const Revelations: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.REVELATIONS,
+    keywords: [RevelationsKeywords.DarkMemories, RevelationsKeywords.Locations],
   },
   EPIC_MANDARIN: {
     id: '6bf519cd-ba2c-47ac-abf9-97c849b42d1e',
@@ -67,5 +73,6 @@ export const Revelations: Record<MastermindNames, IMastermind> = {
     victoryPoints: 6,
     cardType: CardType.MASTERMIND,
     gameSet: GameSets.REVELATIONS,
+    keywords: [RevelationsKeywords.Locations],
   },
 };

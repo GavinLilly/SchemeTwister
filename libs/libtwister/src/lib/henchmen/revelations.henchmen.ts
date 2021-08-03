@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { Revelations as RevelationsKeywords } from '../keywords';
 
 import { IHenchmen } from './henchmen.interface';
 
@@ -14,6 +15,7 @@ export const Revelations: Record<HenchmenNames, IHenchmen> = {
     cardType: CardType.HENCHMEN,
     gameSet: GameSets.REVELATIONS,
     fight: 'KO one of your Heroes.',
+    keywords: [RevelationsKeywords.Locations],
   },
   MANDARINS_RINGS: {
     id: '225028da-e992-4073-84ae-2fd3853d1eac',

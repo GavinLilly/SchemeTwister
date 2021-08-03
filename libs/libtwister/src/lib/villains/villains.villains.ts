@@ -1,5 +1,6 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import { Villains as VillainsKeywords } from '../keywords';
 
 import { IVillainGroup } from './villainGroup.interface';
 
@@ -18,6 +19,7 @@ export const Villains: Record<VillainGroupNames, IVillainGroup> = {
     name: 'Avengers',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.VILLAINS,
+    keywords: [VillainsKeywords.Demolish, VillainsKeywords.Elusive],
   },
   DEFENDERS: {
     id: 'be582617-82af-4727-9528-1cb35561af56',
@@ -36,23 +38,27 @@ export const Villains: Record<VillainGroupNames, IVillainGroup> = {
     name: 'Spider Friends',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.VILLAINS,
+    keywords: [VillainsKeywords.Elusive],
   },
   UNCANNY_AVENGERS: {
     id: '4ed437b8-13fc-4ebc-acf7-a4606396e928',
     name: 'Uncanny Avengers',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.VILLAINS,
+    keywords: [VillainsKeywords.XTremeAttack],
   },
   UNCANNY_XMEN: {
     id: 'd5602d88-f8aa-4f4c-87c7-7a70e56e732f',
     name: 'Uncanny X-Men',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.VILLAINS,
+    keywords: [VillainsKeywords.Elusive, VillainsKeywords.XTremeAttack],
   },
   XMEN_FIRST_CLASS: {
     id: '38875e12-6cf7-434b-9215-687f7f17932d',
     name: 'X-Men First Class',
     cardType: CardType.VILLAINGROUP,
     gameSet: GameSets.VILLAINS,
+    keywords: [VillainsKeywords.XTremeAttack],
   },
 };

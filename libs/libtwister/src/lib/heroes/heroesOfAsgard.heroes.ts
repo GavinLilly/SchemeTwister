@@ -1,5 +1,11 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import {
+  GuardiansOfTheGalaxy as GuardiansOfTheGalaxyKeywords,
+  FearItself as FearItselfKeywords,
+  MarvelStudios as MarvelStudiosKeywords,
+  HeroesOfAsgard as HeroesOfAsgardKeywords,
+} from '../keywords';
 import { Teams } from '../teams';
 
 import { IHero } from './hero.interface';
@@ -18,6 +24,10 @@ export const HeroesOfAsgard: Record<HeroNames, IHero> = {
     team: Teams.HEROES_OF_ASGARD,
     cardType: CardType.HERO,
     gameSet: GameSets.HEROES_OF_ASGARD,
+    keywords: [
+      FearItselfKeywords.ThrownArtifact,
+      HeroesOfAsgardKeywords.Worthy,
+    ],
   },
   BETA_RAY_BILL: {
     id: '92dadd88-cf41-44d0-945f-0c1743885de9',
@@ -25,6 +35,10 @@ export const HeroesOfAsgard: Record<HeroNames, IHero> = {
     team: Teams.HEROES_OF_ASGARD,
     cardType: CardType.HERO,
     gameSet: GameSets.HEROES_OF_ASGARD,
+    keywords: [
+      FearItselfKeywords.ThrownArtifact,
+      HeroesOfAsgardKeywords.Worthy,
+    ],
   },
   VALKYRIE: {
     id: '8fecbbeb-c9a3-46a4-a482-080cb13abc75',
@@ -32,6 +46,10 @@ export const HeroesOfAsgard: Record<HeroNames, IHero> = {
     team: Teams.HEROES_OF_ASGARD,
     cardType: CardType.HERO,
     gameSet: GameSets.HEROES_OF_ASGARD,
+    keywords: [
+      FearItselfKeywords.ThrownArtifact,
+      MarvelStudiosKeywords.Conqueror,
+    ],
   },
   LADY_SIF: {
     id: 'cf0b41f2-f0aa-4f80-a0a3-74a85629cf5c',
@@ -39,6 +57,10 @@ export const HeroesOfAsgard: Record<HeroNames, IHero> = {
     team: Teams.HEROES_OF_ASGARD,
     cardType: CardType.HERO,
     gameSet: GameSets.HEROES_OF_ASGARD,
+    keywords: [
+      GuardiansOfTheGalaxyKeywords.Artifact,
+      FearItselfKeywords.ThrownArtifact,
+    ],
   },
   THE_WARRIORS_THREE: {
     id: '36daa26b-af79-47cc-bd07-2e1653a2655e',
@@ -46,5 +68,6 @@ export const HeroesOfAsgard: Record<HeroNames, IHero> = {
     team: Teams.HEROES_OF_ASGARD,
     cardType: CardType.HERO,
     gameSet: GameSets.HEROES_OF_ASGARD,
+    keywords: [MarvelStudiosKeywords.Conqueror],
   },
 };

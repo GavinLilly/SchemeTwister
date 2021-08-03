@@ -1,5 +1,9 @@
-import { CardType } from '../cardSet';
+import { CardType } from '../enums';
 import { GameSets } from '../gamesets';
+import {
+  DarkCity as DarkCityKeywords,
+  RealmOfKings as RealmOfKingsKeywords,
+} from '../keywords';
 import { Teams } from '../teams';
 
 import { IHero } from './hero.interface';
@@ -13,6 +17,10 @@ export const RealmOfKings: Record<HeroNames, IHero> = {
     team: Teams.INHUMANS,
     cardType: CardType.HERO,
     gameSet: GameSets.REALM_OF_KINGS,
+    keywords: [
+      RealmOfKingsKeywords.WhenRecruited,
+      RealmOfKingsKeywords.ThronesFavor,
+    ],
   },
   MEDUSA: {
     id: 'dd9444f3-c449-4659-9712-2033f3877fc3',
@@ -20,6 +28,10 @@ export const RealmOfKings: Record<HeroNames, IHero> = {
     team: Teams.INHUMANS,
     cardType: CardType.HERO,
     gameSet: GameSets.REALM_OF_KINGS,
+    keywords: [
+      RealmOfKingsKeywords.WhenRecruited,
+      RealmOfKingsKeywords.ThronesFavor,
+    ],
   },
   CRYSTAL: {
     id: '909a7a01-9a54-4940-abb6-77ff229127ec',
@@ -27,6 +39,10 @@ export const RealmOfKings: Record<HeroNames, IHero> = {
     team: Teams.INHUMANS,
     cardType: CardType.HERO,
     gameSet: GameSets.REALM_OF_KINGS,
+    keywords: [
+      RealmOfKingsKeywords.WhenRecruited,
+      RealmOfKingsKeywords.ThronesFavor,
+    ],
   },
   KARNAK: {
     id: '8fea3024-3249-436f-b4cc-b58a0de37712',
@@ -34,6 +50,10 @@ export const RealmOfKings: Record<HeroNames, IHero> = {
     team: Teams.INHUMANS,
     cardType: CardType.HERO,
     gameSet: GameSets.REALM_OF_KINGS,
+    keywords: [
+      RealmOfKingsKeywords.WhenRecruited,
+      RealmOfKingsKeywords.ChooseAVillainGroup,
+    ],
   },
   GORGON: {
     id: 'bf9a9dee-5187-4286-9af8-29d63d5678c8',
@@ -41,5 +61,10 @@ export const RealmOfKings: Record<HeroNames, IHero> = {
     team: Teams.INHUMANS,
     cardType: CardType.HERO,
     gameSet: GameSets.REALM_OF_KINGS,
+    keywords: [
+      DarkCityKeywords.Teleport,
+      RealmOfKingsKeywords.WhenRecruited,
+      RealmOfKingsKeywords.Abomination,
+    ],
   },
 };

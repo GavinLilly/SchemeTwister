@@ -1,4 +1,5 @@
 import { GameSets } from '../gamesets';
+import { CivilWar as CivilWarKeywords } from '../keywords';
 import { Teams } from '../teams';
 
 import { IScheme, Scheme } from './scheme';
@@ -38,6 +39,7 @@ Twist 8: Evil wins!`,
       twist: `Stack this Twist next to the Scheme. Then, for each Twist in that stack, put a S.H.I.E.L.D. Officer next to the Mastermind as a 3 Attack Villain with S.H.I.E.L.D. Clearance. You can fight them to gain them as Heroes.`,
       evilWins: 'When there are 7 Officers next to the Mastermind.',
       gameSet: GameSets.CIVIL_WAR,
+      keywords: [CivilWarKeywords.ShieldClearance],
     },
     {
       villainDeck: {
@@ -95,6 +97,7 @@ Twist 8: Evil wins!`,
       twist: `Twist 1, 3, 5, 7, 9: This Scheme fortifies the city space to its right starting with the Bridge. Villains in that space get +1 Attack.`,
       evilWins: 'When 3 Bystanders are in the KO pile and/or Escape Pile.',
       gameSet: GameSets.CIVIL_WAR,
+      keywords: [CivilWarKeywords.Fortify],
     },
     {
       villainDeck: {
@@ -127,8 +130,8 @@ Twist 8: Evil wins!`,
     {
       1: {
         villainDeck: {
-          numVillainGroups: 2
-        }
+          numVillainGroups: 2,
+        },
       },
       2: {
         villainDeck: {
