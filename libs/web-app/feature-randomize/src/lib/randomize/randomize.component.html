@@ -208,7 +208,7 @@
           <ngb-accordion #acc="ngbAccordion">
             <ngb-panel
               *ngFor="let word of (gameSetupStore.gameSetup | async).keywords"
-              id="panel-{{ word.name | replace: ' ':'_' }}"
+              id="panel-{{ word.name | replace: ' ':'_' | replace: '/':'_' }}"
             >
               <ng-template ngbPanelHeader>
                 <div class="d-flex align-items-center justify-content-between">
