@@ -25,7 +25,7 @@ jobs:
           CI_REGISTRY_IMAGE: Dockerfile.angular
         run: npx semantic-release
       - run: npm run build-prod
-      - uses: FirebaseExtended/action-hosting-dweploy@v0
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SCHEMETWISTER }}'
