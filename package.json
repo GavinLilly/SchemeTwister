@@ -31,7 +31,8 @@
     "class-to-json": "ts-node --project tools/tsconfig.tools.json tools/scripts/classToJSON.ts",
     "commit": "git-cz",
     "build-version": "genversion --es6 --semi libs/web-app/ui/src/lib/footer/version.ts",
-    "workspace-generator": "nx workspace-generator"
+    "workspace-generator": "nx workspace-generator",
+    "build-prod": "npm run build-version && ng build --prod"
   },
   "private": true,
   "dependencies": {
