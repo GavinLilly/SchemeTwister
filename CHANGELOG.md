@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/GavinLilly/SchemeTwister/compare/v2.3.0...v2.3.1) (2021-08-03)
+
+
+### Bug Fixes
+
+* **app:** fix panel naming issue with man out of time ([407e7d2](https://github.com/GavinLilly/SchemeTwister/commit/407e7d2ff1b04798eda4d2091a1ee949bf059cd2))
+
 # [2.3.0](https://github.com/GavinLilly/SchemeTwister/compare/v2.2.0...v2.3.0) (2021-08-03)
 
 
