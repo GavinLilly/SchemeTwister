@@ -1,3 +1,11 @@
+## [2.3.2](https://github.com/GavinLilly/SchemeTwister/compare/v2.3.1...v2.3.2) (2021-08-04)
+
+
+### Bug Fixes
+
+* **app:** fix direct link to randomize page ([770e977](https://github.com/GavinLilly/SchemeTwister/commit/770e977eee1b992d21312b2893e237627cad75dc))
+* **app:** redirect all unknown URIs to home ([eb6a97f](https://github.com/GavinLilly/SchemeTwister/commit/eb6a97fae9ef2dbefd24523bc02a8c66f267c83a))
+
 ## [2.3.1](https://github.com/GavinLilly/SchemeTwister/compare/v2.3.0...v2.3.1) (2021-08-03)
 
 
