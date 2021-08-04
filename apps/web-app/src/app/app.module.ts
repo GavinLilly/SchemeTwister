@@ -17,18 +17,20 @@ const appRoutes: Routes = [
       ),
   },
   {
-    path: '',
-    loadChildren: () =>
-      import('@schemetwister/web-app/feature-home').then(
-        (module) => module.WebAppFeatureHomeModule
-      ),
-  },
-  {
     path: 'randomize',
     loadChildren: () =>
       import('@schemetwister/web-app/feature-randomize').then(
         (module) => module.WebAppFeatureRandomizeModule
       ),
+  },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  {
+    path: '**',
+    redirectTo: 'home',
   },
 ];
 
@@ -37,10 +39,10 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
     NgbModule,
     WebAppUiModule,
     FontAwesomeModule,
+    RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
   ],
   providers: [],
   bootstrap: [AppComponent],
