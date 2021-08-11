@@ -5,13 +5,11 @@ module.exports = {
     { value: 'docs', name: 'docs:     Documentation only changes' },
     {
       value: 'style',
-      name:
-        'style:    Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)',
+      name: 'style:    Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)',
     },
     {
       value: 'refactor',
-      name:
-        'refactor: A code change that neither fixes a bug nor adds a feature',
+      name: 'refactor: A code change that neither fixes a bug nor adds a feature',
     },
     {
       value: 'perf',
@@ -23,13 +21,11 @@ module.exports = {
     },
     {
       value: 'build',
-      name:
-        'build:    Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)',
+      name: 'build:    Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)',
     },
     {
       value: 'ci',
-      name:
-        'ci:       Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)',
+      name: 'ci:       Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)',
     },
     {
       value: 'chore',
@@ -47,6 +43,7 @@ module.exports = {
     { name: 'api' },
     { name: 'misc' },
     { name: 'libtwister' },
+    { name: 'deps' },
     { name: '*' },
   ],
 };
