@@ -1,21 +1,5 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
-# compiled output
-/dist
-/tmp
-/out-tsc
-
 # dependencies
-**/node_modules
-
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+/node_modules
 
 # IDE - VSCode
 .vscode/*
@@ -23,16 +7,7 @@
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
+.history/*
 
 # System Files
 .DS_Store
@@ -46,6 +21,3 @@ Thumbs.db
 ### Firebase Patch ###
 .runtimeconfig.json
 .firebase/
-
-# Footer version file
-/libs/web-app/ui/src/lib/footer/version.ts

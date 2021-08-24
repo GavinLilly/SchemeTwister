@@ -40,7 +40,6 @@ module.exports = {
   scopes: [
     { name: 'docs' },
     { name: 'app' },
-    { name: 'api' },
     { name: 'misc' },
     { name: 'libtwister' },
     { name: 'deps' },
