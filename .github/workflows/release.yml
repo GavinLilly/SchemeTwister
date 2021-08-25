@@ -17,9 +17,6 @@ jobs:
           node-version: 14
       - name: Install dependencies
         run: npm ci
-      - name: Install web app dependencies
-        run: npm ci
-        working-directory: packages/web-app
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
