@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { NgbActiveModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { SchemeMastermindSelectComponent } from './scheme-mastermind-select.component';
 
@@ -8,9 +10,10 @@ describe('SchemeMastermindSelectComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SchemeMastermindSelectComponent ]
-    })
-    .compileComponents();
+      declarations: [SchemeMastermindSelectComponent],
+      imports: [NgbModalModule, FormsModule],
+      providers: [NgbActiveModal],
+    }).compileComponents();
   });
 
   beforeEach(() => {

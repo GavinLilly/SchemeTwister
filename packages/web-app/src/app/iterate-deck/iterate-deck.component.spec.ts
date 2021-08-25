@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { CardType, GameSets } from 'libtwister';
 
 import { IterateDeckComponent } from './iterate-deck.component';
 
@@ -9,6 +12,7 @@ describe('IterateDeckComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [IterateDeckComponent],
+      imports: [NgbAccordionModule],
     }).compileComponents();
   });
 

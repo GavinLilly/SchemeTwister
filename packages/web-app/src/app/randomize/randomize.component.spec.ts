@@ -3,8 +3,10 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbAccordionModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
+
 import { GameSetupStoreService } from '../game-setup-store.service';
 import { IterateDeckComponent } from '../iterate-deck/iterate-deck.component';
+import { ReplacePipe } from '../replace.pipe';
 
 import { RandomizeComponent } from './randomize.component';
 
