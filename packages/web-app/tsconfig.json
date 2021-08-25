@@ -18,7 +18,7 @@
     "module": "es2020",
     "lib": ["es2018", "dom"],
     "paths": {
-      "libtwister": ["libs/libtwister/src/index.ts"]
+      "libtwister": ["../libtwister/src/index.ts"]
     }
   },
   "angularCompilerOptions": {

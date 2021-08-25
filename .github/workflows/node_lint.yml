@@ -5,8 +5,12 @@ on:
     branches: [master]
 
 jobs:
-  lint:
+  lint-lib:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: packages/libtwister
 
     steps:
       - uses: actions/checkout@v2
@@ -17,7 +21,26 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14
-      - run: npm ci --workspace libtwister
-      - run: npm ci --workspace web-app
-      - run: npm run --workspaces build
-      - run: npm run --workspaces lint
+      - run: npm ci
+      - run: npm run build
+      - run: npm run lint
+
+  lint-app:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: packages/web-app
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: npm ci
+      - run: npm run build
+      - run: npm run lint
