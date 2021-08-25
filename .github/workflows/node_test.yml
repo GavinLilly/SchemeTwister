@@ -8,12 +8,16 @@ on:
     branches: [master]
 
 jobs:
-  build:
+  test-lib:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [14.x, 15.x]
+        node-version: [12.x, 14.x, 16.x]
+
+    defaults:
+      run:
+        working-directory: packages/libtwister
 
     steps:
       - uses: actions/checkout@v2
@@ -24,9 +28,30 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci --workspaces
-      - run: npm run --workspaces build
-      - run: npm test --workspace libtwister
-        working-directory: packages/libtwister
-      - run: npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - run: npm ci
+      - run: npm run build
+      - run: npm test
+
+  test-app:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+
+    defaults:
+      run:
         working-directory: packages/web-app
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run build
+      - run: npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
