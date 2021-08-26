@@ -7,8 +7,11 @@ on:
   pull_request:
     branches: [master]
 
+env:
+  NODE_ENV: dev
+
 jobs:
-  test-lib:
+  lib:
     runs-on: ubuntu-latest
 
     strategy:
@@ -33,7 +36,7 @@ jobs:
       - run: npm run build
       - run: npm test
 
-  test-app:
+  app:
     runs-on: ubuntu-latest
 
     strategy:

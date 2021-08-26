@@ -4,8 +4,11 @@ on:
   pull_request:
     branches: [master]
 
+env:
+  NODE_ENV: dev
+
 jobs:
-  lint-lib:
+  lib:
     runs-on: ubuntu-latest
 
     defaults:
@@ -26,7 +29,7 @@ jobs:
       - run: npm run build
       - run: npm run lint
 
-  lint-app:
+  app:
     runs-on: ubuntu-latest
 
     defaults:
