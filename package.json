@@ -2,7 +2,8 @@
   "name": "schemetwister",
   "version": "2.3.2",
   "workspaces": [
-    "packages/*"
+    "libtwister",
+    "web-app"
   ],
   "scripts": {
     "commit": "git-cz"

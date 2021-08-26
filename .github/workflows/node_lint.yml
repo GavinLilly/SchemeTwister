@@ -11,10 +11,6 @@ jobs:
   lib:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: packages/libtwister
-
     steps:
       - uses: actions/checkout@v2
         with:
@@ -25,17 +21,12 @@ jobs:
         with:
           node-version: 14
       - run: npm ci
-        working-directory: .
-      - run: npm run build
-      - run: npm run lint
+      - run: npm run -w libtwister build
+      - run: npm run -w libtwister lint
 
   app:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: packages/web-app
-
     steps:
       - uses: actions/checkout@v2
         with:
@@ -46,6 +37,5 @@ jobs:
         with:
           node-version: 14
       - run: npm ci
-        working-directory: .
-      - run: npm run build
-      - run: npm run lint
+      - run: npm run -w web-app build
+      - run: npm run -w web-app lint

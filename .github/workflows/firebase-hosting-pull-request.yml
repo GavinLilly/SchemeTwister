@@ -5,10 +5,6 @@ name: Deploy to Firebase Hosting on PR
 
 on: pull_request
 
-defaults:
-  run:
-    working-directory: packages/web-app
-
 jobs:
   build_and_preview:
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
@@ -16,10 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm ci
-        working-directory: .
-      - run: npm run build
+      - run: npm run -w web-app build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SCHEMETWISTER }}'
           projectId: schemetwister
+          entrypoint: web-app

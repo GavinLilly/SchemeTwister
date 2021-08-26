@@ -6,7 +6,7 @@ on:
 
 defaults:
   run:
-    working-directory: packages/web-app
+    working-directory: web-app
 
 jobs:
   build:

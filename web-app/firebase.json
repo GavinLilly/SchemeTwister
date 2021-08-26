@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/apps/web-app",
+    "public": "dist/schemetwister",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {

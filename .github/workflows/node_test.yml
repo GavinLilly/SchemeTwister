@@ -7,9 +7,6 @@ on:
   pull_request:
     branches: [master]
 
-env:
-  NODE_ENV: dev
-
 jobs:
   lib:
     runs-on: ubuntu-latest
@@ -18,10 +15,6 @@ jobs:
       matrix:
         node-version: [12.x, 14.x, 16.x]
 
-    defaults:
-      run:
-        working-directory: packages/libtwister
-
     steps:
       - uses: actions/checkout@v2
         with:
@@ -32,9 +25,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-        working-directory: .
-      - run: npm run build
-      - run: npm test
+      - run: npm run -w libtwister build
+      - run: npm test -w libtwister
 
   app:
     runs-on: ubuntu-latest
@@ -43,10 +35,6 @@ jobs:
       matrix:
         node-version: [12.x, 14.x, 16.x]
 
-    defaults:
-      run:
-        working-directory: packages/web-app
-
     steps:
       - uses: actions/checkout@v2
         with:
@@ -57,6 +45,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-        working-directory: .
-      - run: npm run build
-      - run: npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - run: npm run -w web-app build
+      - run: npm test -w web-app -- --no-watch --no-progress --browsers=ChromeHeadlessCI
