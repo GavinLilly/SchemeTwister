@@ -25,8 +25,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - run: npm run -w libtwister build
-      - run: npm test -w libtwister
+      - run: npm run build -w libtwister
+      - run: npm run test -w libtwister
 
   app:
     runs-on: ubuntu-latest
@@ -45,5 +45,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - run: npm run -w web-app build
-      - run: npm test -w web-app -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - run: npm run build -w web-app
+      - run: npm run test -w web-app -- --no-watch --no-progress --browsers=ChromeHeadlessCI
