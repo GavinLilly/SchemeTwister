@@ -24,6 +24,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - run: npm i -g npm@7
       - run: npm ci
       - run: npm run build -w libtwister
       - run: npm run test -w libtwister
@@ -44,6 +45,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - run: npm i -g npm@7
       - run: npm ci
       - run: npm run build -w web-app
       - run: npm run test -w web-app -- --no-watch --no-progress --browsers=ChromeHeadlessCI
