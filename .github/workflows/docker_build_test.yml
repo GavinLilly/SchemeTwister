@@ -16,4 +16,4 @@ jobs:
       - name: Copy root package.json into Docker context
         run: cp package.json web-app/root-package.json
       - name: Build the Docker image
-        run: docker build .
+        run: docker build web-app
