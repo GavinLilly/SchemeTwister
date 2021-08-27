@@ -54,4 +54,4 @@ Thumbs.db
 .firebase/
 
 # Footer version file
-/src/ui-footer/version.ts
+/src/app/ui-footer/version.ts

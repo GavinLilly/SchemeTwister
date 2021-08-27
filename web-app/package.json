@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build-version": "genversion --es6 --semi libs/web-app/ui/src/lib/footer/version.ts",
+    "build-version": "genversion --source ../package.json --es6 --semi src/app/ui-footer/version.ts",
     "lint": "ng lint"
   },
   "private": true,
