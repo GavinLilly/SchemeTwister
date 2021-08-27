@@ -1,10 +1,10 @@
-import { ICard } from "../cardSet";
-import { CardType } from "../enums";
-import { GameSetSize, GameSets, IGameSet } from "../gamesets";
-import { Henchmen, IHenchmen } from "../henchmen";
-import { Heroes } from "../heroes";
-import { IKeyword } from "../keywords/keyword.interface";
-import { IMastermind, Masterminds } from "../masterminds";
+import { ICard } from '../cardSet';
+import { CardType } from '../enums';
+import { GameSetSize, GameSets, IGameSet } from '../gamesets';
+import { Henchmen, IHenchmen } from '../henchmen';
+import { Heroes } from '../heroes';
+import { IKeyword } from '../keywords/keyword.interface';
+import { IMastermind, Masterminds } from '../masterminds';
 import {
   IDeckRequirements,
   INumPlayerRules,
@@ -12,15 +12,15 @@ import {
   IScheme,
   Schemes,
   numPlayers,
-} from "../schemes";
-import { ITeam, Teams } from "../teams";
-import { VillainGroups } from "../villains";
+} from '../schemes';
+import { ITeam, Teams } from '../teams';
+import { VillainGroups } from '../villains';
 
 import {
   IAdditionalDeck,
   IGameSetup,
   IGenerateOptions,
-} from "./gameSetup.interface";
+} from './gameSetup.interface';
 
 export class GameSetup {
   public static soloBannedSchemes = [
@@ -39,7 +39,7 @@ export class GameSetup {
 
   constructor(...gameSets: IGameSet[]) {
     if (gameSets.length === 0) {
-      throw new Error("A game set or game sets must be chosen");
+      throw new Error('A game set or game sets must be chosen');
     } else if (
       !gameSets.some((item) =>
         [GameSetSize.LARGE, GameSetSize.CORE].includes(item.size)
@@ -117,21 +117,21 @@ ${GameSets.ALL.filter((item) =>
 
     // Error check
     if (numberPlayers === undefined)
-      throw new RangeError("Number of players must be between 1 and 5");
+      throw new RangeError('Number of players must be between 1 and 5');
 
     if (!this.gameSets.includes(options.scheme.gameSet))
       throw new Error(
-        "The specified scheme is not in the list of selected game sets"
+        'The specified scheme is not in the list of selected game sets'
       );
 
     if (
       numberPlayers == 1 &&
       GameSetup.soloBannedSchemes.includes(options.scheme)
     )
-      throw new Error("The selected scheme is not possible in solo play");
+      throw new Error('The selected scheme is not possible in solo play');
 
     if (numberPlayers != 1 && options.advancedSolo)
-      throw new Error("Advanced solo only works with 1 player");
+      throw new Error('Advanced solo only works with 1 player');
 
     // Check for any scheme required cards
     if (options.scheme.requiredCards !== undefined) {
@@ -222,7 +222,7 @@ ${GameSets.ALL.filter((item) =>
       // Fall of the Hulks requires exactly 2 Hulk heroes. No more, no less
       const allHulks = this.heroes
         .getCards()
-        .filter((hero) => hero.name.toUpperCase().includes("HULK"));
+        .filter((hero) => hero.name.toUpperCase().includes('HULK'));
 
       const selectedHulks = this.getRandomElementsFromArray(allHulks, 2);
       heroDeck.push(
@@ -332,7 +332,7 @@ ${GameSets.ALL.filter((item) =>
 
         const hulkHeroes = this.heroes
           .getCards()
-          .filter((hero) => hero.name.toUpperCase().includes("HULK"));
+          .filter((hero) => hero.name.toUpperCase().includes('HULK'));
         additionalDeck.push(...this.getRandomElementsFromArray(hulkHeroes, 1));
       }
 
@@ -348,10 +348,12 @@ ${GameSets.ALL.filter((item) =>
           )
         );
 
-      additionalDeck = buildRemainingDeck(
-        rules.additionalDeck?.deck,
-        additionalDeck
-      );
+      if (rules.additionalDeck.deck !== undefined) {
+        additionalDeck = buildRemainingDeck(
+          rules.additionalDeck.deck,
+          additionalDeck
+        );
+      }
 
       // Check for Symbiotic Absorption which requires the always leads of the
       // drained mastermind to be added to the villain deck
