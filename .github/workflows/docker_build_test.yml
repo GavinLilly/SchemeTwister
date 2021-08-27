@@ -18,4 +18,4 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
       - name: Build the Docker image
-        run: docker build --file Dockerfile.angular .
+        run: docker build .

@@ -25,7 +25,7 @@ jobs:
           CI_REGISTRY_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           CI_REGISTRY: docker.io
           CI_REGISTRY_NAME: $CI_REGISTRY/gavtherav/schemetwister
-          CI_REGISTRY_IMAGE: Dockerfile.angular
+          CI_REGISTRY_IMAGE: web-app/Dockerfile
         run: npx semantic-release
       - run: npm run build -w web-app
       - uses: FirebaseExtended/action-hosting-deploy@v0

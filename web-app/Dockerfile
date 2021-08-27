@@ -10,9 +10,11 @@ COPY . .
 ARG node_env=production
 ENV NODE_ENV ${node_env}
 
-RUN npm run build-version
+COPY ../package.json root-package.json
 
-RUN npm run build web-app
+RUN npx genversion --source root-package.json --es6 --semi src/app/ui-footer/version.ts
+
+RUN npm run build
 
 FROM nginx:alpine
 
