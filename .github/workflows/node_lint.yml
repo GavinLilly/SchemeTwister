@@ -19,8 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 14
-      - run: npm i -g npm@7
+          node-version: 16
       - run: npm ci
       - run: npm run build -w libtwister
       - run: npm run lint -w libtwister
@@ -36,8 +35,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 14
-      - run: npm i -g npm@7
+          node-version: 16
       - run: npm ci
       - run: npm run build -w web-app
       - run: npm run lint -w web-app
