@@ -1,31 +1,43 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
 name: Node.js Test
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
-  build:
-
+  lib:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [14.x, 15.x]
+        node-version: [12.x, 14.x, 16.x]
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: ${{ github.event.pull_request.head.ref }}
-        fetch-depth: 0
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run build-version
-    - run: npm run affected:build -- --base=origin/master
-    - run: npm run affected:test -- --base=origin/master
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm i -g npm@7
+      - run: npm ci
+      - run: npm run build -w libtwister
+      - run: npm run test -w libtwister
+
+  app:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - run: npm i -g npm@7
+      - run: npm ci
+      - run: npm run build -w web-app
+      - run: npm run test -w web-app -- --no-watch --no-progress --browsers=ChromeHeadlessCI

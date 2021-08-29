@@ -1,0 +1,51 @@
+<div class="modal-header">
+  <h4 class="modal-title">Select game sets</h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  >
+    <span aria-hidden="true" style="font-family: Arial">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>You must select at least one core or big box.</p>
+  <select
+    multiple="true"
+    [(ngModel)]="selectedGameSets"
+    class="form-control"
+    size="{{ getPickerSize() }}"
+  >
+    <option disabled>&#x2500;&#x2500; Core sets &#x2500;&#x2500;</option>
+    <option *ngFor="let gameSet of coreSets" [value]="gameSet">
+      {{ gameSet.name }}
+    </option>
+    <option disabled>&#x2500;&#x2500; Large sets &#x2500;&#x2500;</option>
+    <option *ngFor="let gameSet of lrgSets" [value]="gameSet">
+      {{ gameSet.name }}
+    </option>
+    <option disabled *ngIf="medSets.length">
+      &#x2500;&#x2500; Medium sets &#x2500;&#x2500;
+    </option>
+    <option *ngFor="let gameSet of medSets" [value]="gameSet">
+      {{ gameSet.name }}
+    </option>
+    <option disabled>&#x2500;&#x2500; Small sets &#x2500;&#x2500;</option>
+    <option *ngFor="let gameSet of smlSets" [value]="gameSet">
+      {{ gameSet.name }}
+    </option>
+  </select>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="setGameSets()">
+    Save
+  </button>
+</div>
+<ngb-alert
+  #selfClosingAlert
+  *ngIf="gameSelectError"
+  type="danger"
+  (closed)="gameSelectError = ''"
+  >{{ gameSelectError }}</ngb-alert
+>

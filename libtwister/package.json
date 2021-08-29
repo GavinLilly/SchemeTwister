@@ -1,0 +1,40 @@
+{
+  "name": "libtwister",
+  "version": "1.0.0",
+  "description": "A library for randomizing Legendary: Marvel setups",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GavinLilly/SchemeTwister.git"
+  },
+  "author": "Gavin Lilly",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/GavinLilly/SchemeTwister/issues"
+  },
+  "homepage": "https://github.com/GavinLilly/SchemeTwister#readme",
+  "devDependencies": {
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.1",
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
+    "@typescript-eslint/parser": "^4.29.3",
+    "eslint": "^7.32.0",
+    "jest": "^27.0.6",
+    "ts-jest": "^27.0.5",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.3.5",
+    "uuid": "^8.3.2"
+  },
+  "dependencies": {
+    "ts-deepmerge": "^1.0.8"
+  }
+}
