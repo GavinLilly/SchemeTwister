@@ -13,7 +13,5 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
-      - name: Copy root package.json into Docker context
-        run: cp package.json web-app/root-package.json
       - name: Build the Docker image
-        run: docker build web-app
+        run: docker build .
