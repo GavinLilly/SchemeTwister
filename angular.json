@@ -1,0 +1,271 @@
+{
+  "version": 1,
+  "projects": {
+    "libtwister": {
+      "root": "libs/libtwister",
+      "sourceRoot": "libs/libtwister/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/libtwister/src/**/*.ts",
+              "libs/libtwister/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/libtwister/jest.config.js",
+            "passWithNoTests": true,
+            "codeCoverage": true
+          },
+          "outputs": ["coverage/libs/libtwister"]
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/libtwister",
+            "tsConfig": "libs/libtwister/tsconfig.lib.json",
+            "packageJson": "libs/libtwister/package.json",
+            "main": "libs/libtwister/src/index.ts",
+            "assets": ["libs/libtwister/*.md"],
+            "srcRootForCompilationRoot": "libs\\libtwister\\src"
+          },
+          "outputs": ["{options.outputPath}"]
+        }
+      }
+    },
+    "web-app": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/web-app",
+      "sourceRoot": "apps/web-app/src",
+      "prefix": "schemetwister",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/web-app",
+            "index": "apps/web-app/src/index.html",
+            "main": "apps/web-app/src/main.ts",
+            "polyfills": "apps/web-app/src/polyfills.ts",
+            "tsConfig": "apps/web-app/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/web-app/src/favicon.ico",
+              "apps/web-app/src/assets"
+            ],
+            "styles": ["apps/web-app/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/web-app/src/environments/environment.ts",
+                  "with": "apps/web-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          },
+          "outputs": ["{options.outputPath}"]
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "web-app:build",
+            "proxyConfig": "apps/web-app/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "web-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "web-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/web-app/src/**/*.ts",
+              "apps/web-app/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/web-app/jest.config.js",
+            "passWithNoTests": true,
+            "codeCoverage": true
+          },
+          "outputs": ["coverage/apps/web-app"]
+        }
+      }
+    },
+    "web-app-e2e": {
+      "root": "apps/web-app-e2e",
+      "sourceRoot": "apps/web-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/web-app-e2e/cypress.json",
+            "tsConfig": "apps/web-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "web-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "web-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/web-app-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "web-app-feature-home": {
+      "projectType": "library",
+      "root": "libs/web-app/feature-home",
+      "sourceRoot": "libs/web-app/feature-home/src",
+      "prefix": "schemetwister",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web-app/feature-home/src/**/*.ts",
+              "libs/web-app/feature-home/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/web-app/feature-home/jest.config.js",
+            "passWithNoTests": true,
+            "codeCoverage": true
+          },
+          "outputs": ["coverage/libs/web-app/feature-home"]
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "web-app-feature-randomize": {
+      "projectType": "library",
+      "root": "libs/web-app/feature-randomize",
+      "sourceRoot": "libs/web-app/feature-randomize/src",
+      "prefix": "schemetwister",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web-app/feature-randomize/src/**/*.ts",
+              "libs/web-app/feature-randomize/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/web-app/feature-randomize/jest.config.js",
+            "passWithNoTests": true,
+            "codeCoverage": true
+          },
+          "outputs": ["coverage/libs/web-app/feature-randomize"]
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "web-app-ui": {
+      "projectType": "library",
+      "root": "libs/web-app/ui",
+      "sourceRoot": "libs/web-app/ui/src",
+      "prefix": "schemetwister",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web-app/ui/src/**/*.ts",
+              "libs/web-app/ui/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/web-app/ui/jest.config.js",
+            "passWithNoTests": true,
+            "codeCoverage": true
+          },
+          "outputs": ["coverage/libs/web-app/ui"]
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "web-app"
+}
