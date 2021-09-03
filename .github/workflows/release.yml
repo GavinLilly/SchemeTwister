@@ -24,10 +24,3 @@ jobs:
           CI_REGISTRY_NAME: $CI_REGISTRY/gavtherav/schemetwister
           CI_REGISTRY_IMAGE: Dockerfile.angular
         run: npx semantic-release
-      - run: npm run build-prod
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SCHEMETWISTER }}'
-          channelId: live
-          projectId: schemetwister
