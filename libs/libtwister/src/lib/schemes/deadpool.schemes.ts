@@ -1,5 +1,6 @@
 import { GameSets } from '../gamesets';
 import { Heroes } from '../heroes';
+import { Deadpool as DeadpoolKeywords } from '../keywords';
 import { Teams } from '../teams';
 
 import { IScheme, Scheme } from './scheme';
@@ -28,8 +29,8 @@ export const Deadpool: Record<SchemeNames, IScheme> = {
     {
       1: {
         villainDeck: {
-          numTwists: 6
-        }
+          numTwists: 6,
+        },
       },
       2: {
         heroDeck: {
@@ -122,6 +123,7 @@ Twist 6: Deadpool wins 6 times! Wow, I'm way better at this game than you.`,
         },
       },
       gameSet: GameSets.DEADPOOL,
+      keywords: [DeadpoolKeywords.Revenge],
     },
     {
       villainDeck: {
