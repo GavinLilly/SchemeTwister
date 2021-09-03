@@ -1,3 +1,15 @@
+## [2.3.3](https://github.com/GavinLilly/SchemeTwister/compare/v2.3.2...v2.3.3) (2021-09-03)
+
+
+### Bug Fixes
+
+* **libtwister:** add missing revenge keyword for Deadpool scheme ([898f725](https://github.com/GavinLilly/SchemeTwister/commit/898f725f3c7b0c627020db2faf2c2b6ee583d4a2))
+
+
+### Reverts
+
+* move back to NX ([7130a23](https://github.com/GavinLilly/SchemeTwister/commit/7130a23ad86f26c51f68b7e13da4827beea3ebbe))
+
 ## [2.3.2](https://github.com/GavinLilly/SchemeTwister/compare/v2.3.1...v2.3.2) (2021-08-04)
 
 
