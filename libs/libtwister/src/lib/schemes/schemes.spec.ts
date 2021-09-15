@@ -131,6 +131,12 @@ cardSetTest(
 
 cardSetTest(new Schemes(Object.values(Schemes.X_MEN)), 8, GameSets.X_MEN);
 
+cardSetTest(
+  new Schemes(Object.values(Schemes.ANNIHILATION)),
+  4,
+  GameSets.ANNIHILATION
+);
+
 describe('Total Schemes sets', () => {
   let total = 0;
 
@@ -162,6 +168,7 @@ describe('Total Schemes sets', () => {
       ...Object.values(Schemes.VILLAINS),
       ...Object.values(Schemes.WORLD_WAR_HULK),
       ...Object.values(Schemes.X_MEN),
+      ...Object.values(Schemes.ANNIHILATION),
     ].length;
   });
 

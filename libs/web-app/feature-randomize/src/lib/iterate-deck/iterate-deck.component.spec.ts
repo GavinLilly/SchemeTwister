@@ -4,6 +4,8 @@ import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CardType, GameSets } from '@schemetwister/libtwister';
 import { WebAppUiModule } from '@schemetwister/web-app/ui';
+import { AsVillainDeckPipe } from '../as-villain-deck.pipe';
+import { CardAsHeroPipe } from '../card-as-hero.pipe';
 
 import { IterateDeckComponent } from './iterate-deck.component';
 
@@ -14,7 +16,7 @@ describe('IterateDeckComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [IterateDeckComponent],
+        declarations: [IterateDeckComponent, AsVillainDeckPipe, CardAsHeroPipe],
         imports: [WebAppUiModule, FontAwesomeModule, NgbAccordionModule],
       }).compileComponents();
     })

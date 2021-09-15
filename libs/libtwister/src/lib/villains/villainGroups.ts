@@ -1,4 +1,5 @@
 import { CardSet } from '../cardSet';
+import { Annihilation } from './annihilation.villains';
 
 import { AntMan } from './antMan.villains';
 import { CaptainAmerica } from './captainAmerica.villains';
@@ -55,6 +56,7 @@ export class VillainGroups extends CardSet<IVillainGroup> {
   public static readonly VENOM = Venom;
   public static readonly VILLAINS = Villains;
   public static readonly WORLD_WAR_HULK = WorldWarHulk;
+  public static readonly ANNIHILATION = Annihilation;
 
   public static readonly ALL = [
     ...Object.values(VillainGroups.LEGENDARY),
@@ -83,5 +85,6 @@ export class VillainGroups extends CardSet<IVillainGroup> {
     ...Object.values(VillainGroups.VENOM),
     ...Object.values(VillainGroups.VILLAINS),
     ...Object.values(VillainGroups.WORLD_WAR_HULK),
+    ...Object.values(VillainGroups.ANNIHILATION),
   ];
 }

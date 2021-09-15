@@ -1,4 +1,5 @@
 import { CardSet } from '../cardSet';
+import { Annihilation } from './annihilation.masterminds';
 
 import { AntMan } from './antMan.masterminds';
 import { CaptainAmerica } from './captainAmerica.masterminds';
@@ -57,6 +58,7 @@ export class Masterminds extends CardSet<IMastermind> {
   public static readonly VENOM = Venom;
   public static readonly VILLAINS = Villains;
   public static readonly WORLD_WAR_HULK = WorldWarHulk;
+  public static readonly ANNIHILATION = Annihilation;
 
   public static readonly ALL = [
     ...Object.values(Masterminds.LEGENDARY),
@@ -86,5 +88,6 @@ export class Masterminds extends CardSet<IMastermind> {
     ...Object.values(Masterminds.VENOM),
     ...Object.values(Masterminds.VILLAINS),
     ...Object.values(Masterminds.WORLD_WAR_HULK),
+    ...Object.values(Masterminds.ANNIHILATION),
   ];
 }

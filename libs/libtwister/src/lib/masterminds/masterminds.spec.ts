@@ -161,6 +161,12 @@ cardSetTest(
   GameSets.X_MEN
 );
 
+cardSetTest(
+  new Masterminds(Object.values(Masterminds.ANNIHILATION)),
+  2,
+  GameSets.ANNIHILATION
+);
+
 describe('Total Masterminds sets', () => {
   let total = 0;
 
@@ -193,6 +199,7 @@ describe('Total Masterminds sets', () => {
       ...Object.values(Masterminds.VILLAINS),
       ...Object.values(Masterminds.WORLD_WAR_HULK),
       ...Object.values(Masterminds.X_MEN),
+      ...Object.values(Masterminds.ANNIHILATION),
     ].length;
   });
 

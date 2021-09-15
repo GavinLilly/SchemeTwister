@@ -2,7 +2,7 @@ import { ICard } from '../cardSet';
 import { CardType } from '../enums';
 import { GameSetSize, GameSets, IGameSet } from '../gamesets';
 import { Henchmen, IHenchmen } from '../henchmen';
-import { Heroes } from '../heroes';
+import { Heroes, IHero } from '../heroes';
 import { IKeyword } from '../keywords/keyword.interface';
 import { IMastermind, Masterminds } from '../masterminds';
 import {
@@ -265,6 +265,19 @@ ${GameSets.ALL.filter((item) =>
         .getCards()
         .filter((hero) => hero.team !== Teams.X_MEN);
       heroDeck.push(...this.getRandomElementsFromArray(nonXHeroes, 2));
+    } else if (
+      options.scheme === Schemes.ANNIHILATION.SNEAK_ATTACK_THE_HEROES_HOMES
+    ) {
+      for (let i = 1; i <= numberPlayers; i++) {
+        const nonPickHero = {
+          cardType: CardType.HERO,
+          gameSet: GameSets.ANNIHILATION,
+          id: `79131ea5-5bea-4ae2-89e6-d024cda16a5${i}`,
+          name: `Player ${i} picks a hero`,
+        } as IHero;
+
+        heroDeck.push(nonPickHero);
+      }
     }
 
     // This function will build out the rest of the deck after all the

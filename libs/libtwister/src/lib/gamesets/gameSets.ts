@@ -225,7 +225,16 @@ export class GameSets {
     series: Series.MAINLINE,
   };
 
+  public static readonly ANNIHILATION: IGameSet = {
+    id: 'c2174278-0111-49bf-9237-d7734a01559d',
+    name: 'Annihilation',
+    size: GameSetSize.SMALL,
+    releaseYear: 2021,
+    series: Series.MAINLINE,
+  };
+
   public static readonly ALL = [
+    GameSets.ANNIHILATION,
     GameSets.ANT_MAN,
     GameSets.CAPTAIN_AMERICA,
     GameSets.CHAMPIONS,
