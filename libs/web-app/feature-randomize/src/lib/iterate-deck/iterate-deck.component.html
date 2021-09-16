@@ -2,19 +2,24 @@
   <div class="card-header">{{ deckName }}</div>
   <div class="card-body p-0">
     <div class="setup-cards card-body" *ngIf="isSetupCards()">
-      <p *ngIf="deck.numMasterStrikes">
-        <b>Master Strikes: </b>{{ deck.numMasterStrikes }}
+      <p *ngIf="(deck | asVillainDeck).numMasterStrikes">
+        <b>Master Strikes: </b>{{ (deck | asVillainDeck).numMasterStrikes }}
       </p>
       <p *ngIf="deck.numTwists"><b>Scheme Twists: </b>{{ deck.numTwists }}</p>
       <p *ngIf="deck.numBystanders">
         <b>Bystanders: </b>{{ deck.numBystanders }}
       </p>
       <p *ngIf="deck.numWounds"><b>Wounds: </b>{{ deck.numWounds }}</p>
-      <p *ngIf="deck.numSidekicks"><b>Sidekicks: </b>{{ deck.numSidekicks }}</p>
-      <p *ngIf="deck.numShieldOfficers">
-        <b>S.H.I.E.L.D. Officers: </b>{{ deck.numShieldOfficers }}
+      <p *ngIf="(deck | asVillainDeck).numSidekicks">
+        <b>Sidekicks: </b>{{ (deck | asVillainDeck).numSidekicks }}
       </p>
-      <p *ngIf="deck.numAmbitions"><b>Ambitions: </b>{{ deck.numAmbitions }}</p>
+      <p *ngIf="(deck | asVillainDeck).numShieldOfficers">
+        <b>S.H.I.E.L.D. Officers: </b
+        >{{ (deck | asVillainDeck).numShieldOfficers }}
+      </p>
+      <p *ngIf="(deck | asVillainDeck).numAmbitions">
+        <b>Ambitions: </b>{{ (deck | asVillainDeck).numAmbitions }}
+      </p>
     </div>
     <ngb-accordion [closeOthers]="true">
       <ngb-panel
@@ -28,9 +33,9 @@
               {{ item.name }}
             </button>
             <img
-              *ngIf="item.team"
-              src="{{ item.team.icon }}"
-              alt="{{ item.team.name }}"
+              *ngIf="isHeroCard(item) && (item | cardAsHero).team"
+              src="{{ (item | cardAsHero).team!.icon }}"
+              alt="{{ (item | cardAsHero).team!.name }}"
               class="img-fluid"
               id="hero-team"
             />
@@ -39,7 +44,7 @@
         <ng-template ngbPanelContent>
           <schemetwister-henchmen
             *ngIf="isCardType(item, CardType.HENCHMEN)"
-            [henchmen]="item"
+            [henchmen]="item | cardAsHenchmen"
           ></schemetwister-henchmen>
           <schemetwister-villain-group
             *ngIf="isCardType(item, CardType.VILLAINGROUP)"
@@ -52,7 +57,7 @@
           ></schemetwister-heroes>
           <schemetwister-mastermind
             *ngIf="isCardType(item, CardType.MASTERMIND)"
-            [mastermind]="item"
+            [mastermind]="item | cardAsMastermind"
           ></schemetwister-mastermind>
         </ng-template>
       </ngb-panel>

@@ -77,7 +77,7 @@
               <ng-template ngbPanelHeader>
                 <div class="d-flex align-items-center justify-content-between">
                   <button ngbPanelToggle class="btn btn-link m-0">
-                    {{ (gameSetupStore.gameSetup | async).scheme.name }}
+                    {{ (gameSetupStore.gameSetup | async)!.scheme.name }}
                   </button>
                   <fa-icon
                     *ngIf="schemeLocked"
@@ -96,19 +96,19 @@
               <ng-template ngbPanelContent>
                 <p class="card-text">
                   <b>Setup: </b
-                  >{{ (gameSetupStore.gameSetup | async).scheme.setup }}
+                  >{{ (gameSetupStore.gameSetup | async)!.scheme.setup }}
                 </p>
                 <p class="card-text">
                   <b>Twist: </b
-                  >{{ (gameSetupStore.gameSetup | async).scheme.twist }}
+                  >{{ (gameSetupStore.gameSetup | async)!.scheme.twist }}
                 </p>
                 <p class="card-text">
                   <b>Evil Wins: </b
-                  >{{ (gameSetupStore.gameSetup | async).scheme.evilWins }}
+                  >{{ (gameSetupStore.gameSetup | async)!.scheme.evilWins }}
                 </p>
                 <p class="card-text">
                   <b>Game set: </b
-                  >{{ (gameSetupStore.gameSetup | async).scheme.gameSet.name }}
+                  >{{ (gameSetupStore.gameSetup | async)!.scheme.gameSet.name }}
                 </p>
               </ng-template>
             </ngb-panel>
@@ -125,7 +125,7 @@
               <ng-template ngbPanelHeader>
                 <div class="d-flex align-items-center justify-content-between">
                   <button ngbPanelToggle class="btn btn-link m-0">
-                    {{ (gameSetupStore.gameSetup | async).mastermind.name }}
+                    {{ (gameSetupStore.gameSetup | async)!.mastermind.name }}
                   </button>
                   <fa-icon
                     *ngIf="mastermindLocked"
@@ -143,7 +143,7 @@
               </ng-template>
               <ng-template ngbPanelContent>
                 <schemetwister-mastermind
-                  [mastermind]="(gameSetupStore.gameSetup | async).mastermind"
+                  [mastermind]="(gameSetupStore.gameSetup | async)!.mastermind"
                 ></schemetwister-mastermind>
               </ng-template>
             </ngb-panel>
@@ -156,7 +156,7 @@
     <div class="col-12 col-lg-4">
       <schemetwister-iterate-deck
         [deckName]="villainDeck"
-        [deck]="(gameSetupStore.gameSetup | async).villainDeck"
+        [deck]="(gameSetupStore.gameSetup | async)!.villainDeck"
       ></schemetwister-iterate-deck>
     </div>
 
@@ -164,50 +164,50 @@
     <div class="col-12 col-lg-4">
       <schemetwister-iterate-deck
         [deckName]="heroDeck"
-        [deck]="(gameSetupStore.gameSetup | async).heroDeck"
+        [deck]="(gameSetupStore.gameSetup | async)!.heroDeck"
       ></schemetwister-iterate-deck>
     </div>
   </div>
   <div
     *ngIf="
-      (gameSetupStore.gameSetup | async).keywords ||
-      (gameSetupStore.gameSetup | async).additionalDeck
+      (gameSetupStore.gameSetup | async)!.keywords ||
+      (gameSetupStore.gameSetup | async)!.additionalDeck
     "
     class="row"
   >
     <!--Additional deck-->
     <div
       [ngClass]="
-        (gameSetupStore.gameSetup | async).keywords
+        (gameSetupStore.gameSetup | async)!.keywords
           ? 'col-12 col-lg-4'
           : 'col-12'
       "
-      *ngIf="(gameSetupStore.gameSetup | async).additionalDeck"
+      *ngIf="(gameSetupStore.gameSetup | async)!.additionalDeck"
     >
       <schemetwister-iterate-deck
         [deckName]="
-          (gameSetupStore.gameSetup | async).additionalDeck?.name
-            ? (gameSetupStore.gameSetup | async).additionalDeck?.name
+          (gameSetupStore.gameSetup | async)!.additionalDeck!.name
+            ? (gameSetupStore.gameSetup | async)!.additionalDeck!.name
             : 'Additional deck'
         "
-        [deck]="(gameSetupStore.gameSetup | async).additionalDeck?.deck"
+        [deck]="(gameSetupStore.gameSetup | async)!.additionalDeck!.deck"
       ></schemetwister-iterate-deck>
     </div>
     <!--Keywords-->
     <div
       [ngClass]="
-        (gameSetupStore.gameSetup | async).additionalDeck
+        (gameSetupStore.gameSetup | async)!.additionalDeck
           ? 'col-12 col-lg-8'
           : 'col-12'
       "
-      *ngIf="(gameSetupStore.gameSetup | async).keywords"
+      *ngIf="(gameSetupStore.gameSetup | async)!.keywords"
     >
       <div class="card">
         <div class="card-header">Keywords in play</div>
         <div class="card-body p-0">
           <ngb-accordion #acc="ngbAccordion">
             <ngb-panel
-              *ngFor="let word of (gameSetupStore.gameSetup | async).keywords"
+              *ngFor="let word of (gameSetupStore.gameSetup | async)!.keywords"
               id="panel-{{ word.name | replace: ' ':'_' | replace: '/':'_' }}"
             >
               <ng-template ngbPanelHeader>

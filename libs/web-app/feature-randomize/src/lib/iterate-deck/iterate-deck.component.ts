@@ -41,4 +41,8 @@ export class IterateDeckComponent implements OnInit {
     if (setupCards.some((item) => item !== undefined)) return true;
     else return false;
   }
+
+  public isHeroCard(card: ICard): boolean {
+    return card.cardType == CardType.HERO;
+  }
 }

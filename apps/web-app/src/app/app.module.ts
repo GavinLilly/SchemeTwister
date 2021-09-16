@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WebAppUiModule } from '@schemetwister/web-app/ui';
 
 import { AppComponent } from './app.component';
+import { AsVillainDeckPipe } from './as-villain-deck.pipe';
 
 const appRoutes: Routes = [
   {
@@ -35,7 +36,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AsVillainDeckPipe],
   imports: [
     BrowserModule,
     HttpClientModule,

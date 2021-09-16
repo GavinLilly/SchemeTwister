@@ -1,4 +1,5 @@
 import { CardSet } from '../cardSet';
+import { Annihilation } from './annihilation.schemes';
 
 import { AntMan } from './antMan.schemes';
 import { CaptainAmerica } from './captainAmerica.schemes';
@@ -55,6 +56,7 @@ export class Schemes extends CardSet<IScheme> {
   public static readonly VENOM = Venom;
   public static readonly VILLAINS = Villains;
   public static readonly WORLD_WAR_HULK = WorldWarHulk;
+  public static readonly ANNIHILATION = Annihilation;
 
   public static readonly ALL = [
     ...Object.values(Schemes.LEGENDARY),
@@ -83,5 +85,6 @@ export class Schemes extends CardSet<IScheme> {
     ...Object.values(Schemes.VENOM),
     ...Object.values(Schemes.VILLAINS),
     ...Object.values(Schemes.WORLD_WAR_HULK),
+    ...Object.values(Schemes.ANNIHILATION),
   ];
 }

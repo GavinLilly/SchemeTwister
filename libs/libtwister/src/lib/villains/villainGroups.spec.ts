@@ -159,6 +159,12 @@ cardSetTest(
   GameSets.X_MEN
 );
 
+cardSetTest(
+  new VillainGroups(Object.values(VillainGroups.ANNIHILATION)),
+  2,
+  GameSets.ANNIHILATION
+);
+
 describe('Total Schemes sets', () => {
   let total = 0;
 
@@ -190,6 +196,7 @@ describe('Total Schemes sets', () => {
       ...Object.values(VillainGroups.VILLAINS),
       ...Object.values(VillainGroups.WORLD_WAR_HULK),
       ...Object.values(VillainGroups.X_MEN),
+      ...Object.values(VillainGroups.ANNIHILATION),
     ].length;
   });
 

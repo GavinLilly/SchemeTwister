@@ -24,3 +24,4 @@ export * as Shield from './shield.keywords';
 export * as HeroesOfAsgard from './heroesOfAsgard.keywords';
 export * as NewMutants from './newMutants.keywords';
 export * as RealmOfKings from './realmOfKings.keywords';
+export * as Annihilation from './annihilation.keywords';

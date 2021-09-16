@@ -141,6 +141,12 @@ cardSetTest(
   GameSets.WORLD_WAR_HULK
 );
 
+cardSetTest(
+  new Heroes(Object.values(Heroes.ANNIHILATION)),
+  5,
+  GameSets.ANNIHILATION
+);
+
 describe('X-Men heroes', () => {
   it('should all be in the X-Men team', () => {
     expect(
@@ -182,6 +188,7 @@ describe('Total Heroes sets', () => {
       ...Object.values(Heroes.VILLAINS),
       ...Object.values(Heroes.WORLD_WAR_HULK),
       ...Object.values(Heroes.X_MEN),
+      ...Object.values(Heroes.ANNIHILATION),
     ].length;
   });
 

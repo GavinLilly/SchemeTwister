@@ -14,6 +14,10 @@ import { IterateDeckComponent } from './iterate-deck/iterate-deck.component';
 import { RandomizeComponent } from './randomize/randomize.component';
 import { SchemeMastermindSelectComponent } from './scheme-mastermind-select/scheme-mastermind-select.component';
 import { ReplacePipe } from './replace.pipe';
+import { AsVillainDeckPipe } from './as-villain-deck.pipe';
+import { CardAsHeroPipe } from './card-as-hero.pipe';
+import { CardAsHenchmenPipe } from './card-as-henchmen.pipe';
+import { CardAsMastermindPipe } from './card-as-mastermind.pipe';
 
 @NgModule({
   imports: [
@@ -33,6 +37,10 @@ import { ReplacePipe } from './replace.pipe';
     SchemeMastermindSelectComponent,
     IterateDeckComponent,
     ReplacePipe,
+    AsVillainDeckPipe,
+    CardAsHeroPipe,
+    CardAsHenchmenPipe,
+    CardAsMastermindPipe,
   ],
   providers: [GameSetupStore, CookieService],
   entryComponents: [GameSetSelectComponent],

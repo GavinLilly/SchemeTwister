@@ -10,6 +10,8 @@ import { GameSetupStore } from '../game-setup-store';
 import { IterateDeckComponent } from '../iterate-deck/iterate-deck.component';
 import { ReplacePipe } from '../replace.pipe';
 import { RandomizeComponent } from './randomize.component';
+import { AsVillainDeckPipe } from '../as-villain-deck.pipe';
+import { CardAsHeroPipe } from '../card-as-hero.pipe';
 
 jest.genMockFromModule('ngx-cookie-service');
 
@@ -20,7 +22,13 @@ describe('RandomizeComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [RandomizeComponent, IterateDeckComponent, ReplacePipe],
+        declarations: [
+          RandomizeComponent,
+          IterateDeckComponent,
+          ReplacePipe,
+          AsVillainDeckPipe,
+          CardAsHeroPipe,
+        ],
         imports: [
           FormsModule,
           WebAppUiModule,
