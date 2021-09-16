@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/GavinLilly/SchemeTwister/compare/v2.3.3...v2.4.0) (2021-09-16)
+
+
+### Features
+
+* **libtwister:** add Annihilation game set ([737a3a4](https://github.com/GavinLilly/SchemeTwister/commit/737a3a4f719932e3496fd4eb927eecae80d10585))
+
 ## [2.3.3](https://github.com/GavinLilly/SchemeTwister/compare/v2.3.2...v2.3.3) (2021-09-03)
 
 
