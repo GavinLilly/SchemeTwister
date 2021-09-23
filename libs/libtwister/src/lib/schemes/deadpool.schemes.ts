@@ -106,6 +106,11 @@ Twist 6: Deadpool wins 6 times! Wow, I'm way better at this game than you.`,
       inHeroDeck: [Heroes.DEADPOOL.DEADPOOL],
     },
     gameSet: GameSets.DEADPOOL,
+  },
+  {
+    villainDeck: {
+      numTwists: 6
+    }
   }),
   EVERYBODY_HATES_DEADPOOL: new Scheme(
     {
