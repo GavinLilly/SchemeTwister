@@ -15,6 +15,8 @@ jobs:
           node-version: 14
       - name: Install dependencies
         run: npm ci
+      - name: Build using Angular
+        run: npm run build -w web-app
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
