@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/GavinLilly/SchemeTwister/compare/v2.4.0...v2.4.1) (2021-09-23)
+
+
+### Bug Fixes
+
+* **libtwister:** fix Deadpool write a scheme twists ([ee073b1](https://github.com/GavinLilly/SchemeTwister/commit/ee073b1d95d1b5a766042a729c66c3f6b3e69af7))
+
 # [2.4.0](https://github.com/GavinLilly/SchemeTwister/compare/v2.3.3...v2.4.0) (2021-09-16)
 
 
