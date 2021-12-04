@@ -46,6 +46,12 @@ export class SchemeMastermindSelectComponent implements OnInit {
           else this.selectedItem = (mastermind.definedItem as IMastermind).id;
         });
       }
+
+      this.availableItems.sort((a, b) => {
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
+        return 0;
+      });
     });
 
     this.gameSetupStore.numPlayers.subscribe((value: number) => {
