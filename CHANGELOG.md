@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/GavinLilly/SchemeTwister/compare/v2.4.1...v2.5.0) (2021-12-04)
+
+
+### Features
+
+* **app:** sort scheme and mastermind lists ([5477b8c](https://github.com/GavinLilly/SchemeTwister/commit/5477b8c1d1193be8340323dc1ac5b9887b696436))
+
 ## [2.4.1](https://github.com/GavinLilly/SchemeTwister/compare/v2.4.0...v2.4.1) (2021-09-23)
 
 
