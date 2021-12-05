@@ -29,7 +29,7 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "class-to-json": "ts-node --project tools/tsconfig.tools.json tools/scripts/classToJSON.ts",
-    "commit": "git-cz",
+    "cz": "cz",
     "build-version": "genversion --es6 --semi libs/web-app/ui/src/lib/footer/version.ts",
     "workspace-generator": "nx workspace-generator",
     "build-prod": "npm run build-version && ng build --prod",
@@ -74,8 +74,8 @@
     "@angular/cli": "12.2.13",
     "@angular/compiler-cli": "12.2.14",
     "@angular/language-service": "12.2.14",
-    "@commitlint/cli": "^12.1.4",
-    "@commitlint/config-conventional": "^12.1.4",
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
     "@ngrx/schematics": "12.4.0",
     "@ngrx/store-devtools": "12.4.0",
     "@nrwl/cli": "12.10.0",
@@ -86,11 +86,11 @@
     "@nrwl/node": "12.10.0",
     "@nrwl/tao": "12.10.0",
     "@nrwl/workspace": "12.10.0",
-    "@semantic-release/changelog": "^5.0.1",
-    "@semantic-release/exec": "^5.0.0",
-    "@semantic-release/git": "^9.0.1",
-    "@types/jest": "27.0.2",
-    "@types/node": "14.14.33",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/exec": "^6.0.2",
+    "@semantic-release/git": "^10.0.1",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.11",
     "@typescript-eslint/eslint-plugin": "4.31.2",
     "@typescript-eslint/parser": "4.31.2",
     "commitizen": "^4.2.4",
@@ -99,19 +99,19 @@
     "cz-customizable": "^6.3.0",
     "dotenv": "10.0.0",
     "eslint": "7.22.0",
-    "eslint-config-prettier": "8.1.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-cypress": "^2.10.3",
     "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-ordered-imports": "^0.5.0",
-    "husky": "^4.3.8",
-    "jest": "27.2.3",
+    "eslint-plugin-ordered-imports": "^0.6.0",
+    "husky": "^7.0.4",
+    "jest": "^27.4.3",
     "jest-preset-angular": "10.1.0",
-    "prettier": "2.3.1",
-    "semantic-release": "^17.4.7",
-    "ts-jest": "27.0.5",
+    "prettier": "^2.5.1",
+    "semantic-release": "^18.0.1",
+    "ts-jest": "^27.0.7",
     "ts-node": "9.1.1",
-    "typescript": "4.3.5"
+    "typescript": "4.3.2"
   },
   "config": {
     "commitizen": {
@@ -120,7 +120,8 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
+      "commit-msg": "npx --no -- commitlint --edit $1"
     }
   }
 }
