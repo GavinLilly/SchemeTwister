@@ -2,10 +2,11 @@ FROM node:lts as builder
 
 WORKDIR /build
 
-COPY package.json ./
-RUN npm install
+COPY angular.json decorate-angular-cli.js nx.json package-lock.json package.json tsconfig.base.json .
+COPY apps apps
+COPY libs libs
 
-COPY . .
+RUN npm install
 
 ARG node_env=production
 ENV NODE_ENV ${node_env}
