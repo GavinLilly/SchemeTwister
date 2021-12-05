@@ -14,7 +14,8 @@
               "libs/libtwister/src/**/*.ts",
               "libs/libtwister/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -122,7 +123,8 @@
               "apps/web-app/src/**/*.ts",
               "apps/web-app/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -157,7 +159,8 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/web-app-e2e/**/*.{js,ts}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     },
@@ -174,7 +177,8 @@
               "libs/web-app/feature-home/src/**/*.ts",
               "libs/web-app/feature-home/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -205,7 +209,8 @@
               "libs/web-app/feature-randomize/src/**/*.ts",
               "libs/web-app/feature-randomize/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -236,7 +241,8 @@
               "libs/web-app/ui/src/**/*.ts",
               "libs/web-app/ui/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
