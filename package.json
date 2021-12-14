@@ -34,7 +34,8 @@
     "build-version": "genversion --es6 --semi libs/web-app/ui/src/lib/footer/version.ts",
     "workspace-generator": "nx workspace-generator",
     "build-prod": "npm run build-version && ng build --prod",
-    "deploy": "firebase deploy"
+    "deploy": "firebase deploy",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
