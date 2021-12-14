@@ -8,6 +8,7 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main && npm run build-version",
+    "preinstall": "npx npm-force-resolutions",
     "nx": "nx",
     "start": "ng serve",
     "build": "npm run build-version && ng build",
@@ -104,6 +105,9 @@
     "ts-node": "9.1.1",
     "typescript": "4.3.2",
     "uuid": "^8.3.2"
+  },
+  "resolutions": {
+    "ansi-html": "https://registry.npmjs.org/ansi-html-community/-/ansi-html-community-0.0.8.tgz"
   },
   "config": {
     "commitizen": {
