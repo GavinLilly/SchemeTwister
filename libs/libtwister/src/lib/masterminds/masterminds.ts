@@ -16,6 +16,7 @@ import { IntoTheCosmos } from './intoTheCosmos.masterminds';
 import { Legendary } from './legendary.masterminds';
 import { MarvelStudios } from './marvelStudios.masterminds';
 import { IMastermind } from './mastermind.interface';
+import { MessiahComplex } from './messiahComplex.masterminds';
 import { NewMutants } from './newMutants.masterminds';
 import { Noir } from './noir.masterminds';
 import { PaintTheTownRed } from './paintTheTown.masterminds';
@@ -59,6 +60,7 @@ export class Masterminds extends CardSet<IMastermind> {
   public static readonly VILLAINS = Villains;
   public static readonly WORLD_WAR_HULK = WorldWarHulk;
   public static readonly ANNIHILATION = Annihilation;
+  public static readonly MESSIAH_COMPLEX = MessiahComplex;
 
   public static readonly ALL = [
     ...Object.values(Masterminds.LEGENDARY),
@@ -89,5 +91,6 @@ export class Masterminds extends CardSet<IMastermind> {
     ...Object.values(Masterminds.VILLAINS),
     ...Object.values(Masterminds.WORLD_WAR_HULK),
     ...Object.values(Masterminds.ANNIHILATION),
+    ...Object.values(Masterminds.MESSIAH_COMPLEX),
   ];
 }

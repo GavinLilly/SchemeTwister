@@ -52,6 +52,10 @@ export const CIRCLE_OF_KUNG_FU: IKeywordSummary = {
   name: 'Circle of Kung-Fu (and Quack-Fu)',
 };
 
+export const CLONE: IKeywordSummary = {
+  name: 'Clone',
+};
+
 export const CONQUEROR: IKeywordSummary = {
   name: 'Conqueror',
 };
@@ -194,6 +198,9 @@ export const PIERCING_ENERGY: IKeywordSummary = {
 export const POISON_VILLAINS: IKeywordSummary = {
   name: 'Poison Villains',
 };
+export const PREY: IKeywordSummary = {
+  name: 'Prey',
+};
 export const REVENGE: IKeywordSummary = {
   name: 'Revenge',
 };
@@ -205,6 +212,9 @@ export const SAVIOR: IKeywordSummary = {
 };
 export const SHARDS: IKeywordSummary = {
   name: 'Shards',
+};
+export const SHATTER: IKeywordSummary = {
+  name: 'Shatter',
 };
 export const SHIELD_CLEARANCE: IKeywordSummary = {
   name: 'Shield Clearance',
@@ -233,6 +243,9 @@ export const SWITCHEROO: IKeywordSummary = {
 export const SYMBIOTE_BONDS: IKeywordSummary = {
   name: 'Symbiote Bonds',
 };
+export const TACTICAL_FORMATION: IKeywordSummary = {
+  name: 'Tactical Formation',
+};
 export const TELEPORT: IKeywordSummary = {
   name: 'Teleport',
 };
@@ -256,6 +269,9 @@ export const UNDERCOVER: IKeywordSummary = {
 };
 export const URU_ENCHANTED_WEAPONS: IKeywordSummary = {
   name: 'Uru Enchanted Weapons',
+};
+export const VEILED_SCHEMES: IKeywordSummary = {
+  name: 'Veiled/Unveiled Schemes',
 };
 export const VERSATILE: IKeywordSummary = {
   name: 'Versatile',

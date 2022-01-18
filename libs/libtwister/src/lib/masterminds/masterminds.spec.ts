@@ -167,11 +167,15 @@ cardSetTest(
   GameSets.ANNIHILATION
 );
 
-describe('Total Masterminds sets', () => {
-  let total = 0;
+cardSetTest(
+  new Masterminds(Object.values(Masterminds.MESSIAH_COMPLEX)),
+  6,
+  GameSets.MESSIAH_COMPLEX
+);
 
-  beforeAll(() => {
-    total = [
+describe('Masterminds.ALL', () => {
+  it('should include all Masterminds from all GameSets', () => {
+    const total = [
       ...Object.values(Masterminds.ANT_MAN),
       ...Object.values(Masterminds.CAPTAIN_AMERICA),
       ...Object.values(Masterminds.CHAMPIONS),
@@ -200,9 +204,8 @@ describe('Total Masterminds sets', () => {
       ...Object.values(Masterminds.WORLD_WAR_HULK),
       ...Object.values(Masterminds.X_MEN),
       ...Object.values(Masterminds.ANNIHILATION),
+      ...Object.values(Masterminds.MESSIAH_COMPLEX),
     ].length;
+    expect(Masterminds.ALL).toHaveLength(total);
   });
-
-  it(`should have ${total} entries`, () =>
-    expect(Masterminds.ALL).toHaveLength(total));
 });

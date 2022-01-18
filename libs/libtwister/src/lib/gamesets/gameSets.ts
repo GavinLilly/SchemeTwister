@@ -233,6 +233,14 @@ export class GameSets {
     series: Series.MAINLINE,
   };
 
+  public static readonly MESSIAH_COMPLEX: IGameSet = {
+    id: '2bb79fee-9dab-4850-9fab-fc7ff7670b84',
+    name: 'Messiah Complex',
+    size: GameSetSize.MEDIUM,
+    releaseYear: 2022,
+    series: Series.MAINLINE,
+  };
+
   public static readonly ALL = [
     GameSets.ANNIHILATION,
     GameSets.ANT_MAN,

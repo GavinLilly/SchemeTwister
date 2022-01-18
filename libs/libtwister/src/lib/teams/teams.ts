@@ -22,7 +22,8 @@ type Teams =
   | 'CRIME_SYNDICATE'
   | 'SINISTER_SIX'
   | 'BROTHERHOOD'
-  | 'WARBOUND';
+  | 'WARBOUND'
+  | 'X_FACTOR';
 
 export const Teams: Record<Teams, ITeam> = {
   AVENGERS: {
@@ -112,5 +113,9 @@ export const Teams: Record<Teams, ITeam> = {
   WARBOUND: {
     name: 'Warbound',
     icon: '/assets/icons/teams/warbound.png',
+  },
+  X_FACTOR: {
+    name: 'X-Factor',
+    icon: 'TBD',
   },
 };

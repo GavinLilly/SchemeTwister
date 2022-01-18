@@ -11,10 +11,10 @@ describe('Gamesets', () => {
     expect(
       GameSets.ALL.filter((item) => item.size === GameSetSize.SMALL).length
     ).toBeLessThanOrEqual(17));
-  it('should have no more than 2 medium box', () =>
+  it('should have no more than 3 medium box', () =>
     expect(
       GameSets.ALL.filter((item) => item.size === GameSetSize.MEDIUM).length
-    ).toBeLessThanOrEqual(2));
+    ).toBeLessThanOrEqual(3));
   it('should have no more than 3 core sets', () =>
     expect(
       GameSets.ALL.filter((item) => item.size === GameSetSize.CORE).length

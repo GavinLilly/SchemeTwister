@@ -7,6 +7,7 @@ import { IHenchmen } from './henchmen.interface';
 import { IntoTheCosmos } from './intoTheCosmos.henchmen';
 import { Legendary } from './legendary.henchmen';
 import { MarvelStudios } from './marvelStudios.henchmen';
+import { MessiahComplex } from './messiahComplex.henchmen';
 import { Revelations } from './revelations.henchmen';
 import { SecretWarsVolume1 } from './secretWarsVolume1.henchmen';
 import { SecretWarsVolume2 } from './secretWarsVolume2.henchmen';
@@ -27,6 +28,7 @@ export class Henchmen extends CardSet<IHenchmen> {
   public static readonly SECRET_WARS_VOLUME_2 = SecretWarsVolume2;
   public static readonly VILLAINS = Villains;
   public static readonly WORLD_WAR_HULK = WorldWarHulk;
+  public static readonly MESSIAH_COMPLEX = MessiahComplex;
 
   public static readonly ALL = [
     ...Object.values(Henchmen.LEGENDARY),
@@ -41,5 +43,6 @@ export class Henchmen extends CardSet<IHenchmen> {
     ...Object.values(Henchmen.SECRET_WARS_VOLUME_2),
     ...Object.values(Henchmen.VILLAINS),
     ...Object.values(Henchmen.WORLD_WAR_HULK),
+    ...Object.values(Henchmen.MESSIAH_COMPLEX),
   ];
 }

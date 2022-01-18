@@ -165,11 +165,15 @@ cardSetTest(
   GameSets.ANNIHILATION
 );
 
-describe('Total Schemes sets', () => {
-  let total = 0;
+cardSetTest(
+  new VillainGroups(Object.values(VillainGroups.MESSIAH_COMPLEX)),
+  4,
+  GameSets.MESSIAH_COMPLEX
+);
 
-  beforeAll(() => {
-    total = [
+describe('VillainGroups.ALL', () => {
+  it(`should have all Villains from all game sets`, () => {
+    const total = [
       ...Object.values(VillainGroups.ANT_MAN),
       ...Object.values(VillainGroups.CAPTAIN_AMERICA),
       ...Object.values(VillainGroups.CHAMPIONS),
@@ -197,9 +201,8 @@ describe('Total Schemes sets', () => {
       ...Object.values(VillainGroups.WORLD_WAR_HULK),
       ...Object.values(VillainGroups.X_MEN),
       ...Object.values(VillainGroups.ANNIHILATION),
+      ...Object.values(VillainGroups.MESSIAH_COMPLEX),
     ].length;
+    expect(VillainGroups.ALL).toHaveLength(total);
   });
-
-  it(`should have ${total} entries`, () =>
-    expect(VillainGroups.ALL).toHaveLength(total));
 });
