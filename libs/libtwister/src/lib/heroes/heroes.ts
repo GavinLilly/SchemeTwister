@@ -16,6 +16,7 @@ import { HeroesOfAsgard } from './heroesOfAsgard.heroes';
 import { IntoTheCosmos } from './intoTheCosmos.heroes';
 import { Legendary } from './legendary.heroes';
 import { MarvelStudios } from './marvelStudios.heroes';
+import { MessiahComplex } from './messiahComplex.heroes';
 import { NewMutants } from './newMutants.heroes';
 import { Noir } from './noir.heroes';
 import { PaintTheTownRed } from './paintTheTown.heroes';
@@ -61,6 +62,7 @@ export class Heroes extends CardSet<IHero> {
   public static readonly WORLD_WAR_HULK = WorldWarHulk;
   public static readonly MARVEL_STUDIOS = MarvelStudios;
   public static readonly ANNIHILATION = Annihilation;
+  public static readonly MESSIAH_COMPLEX = MessiahComplex;
 
   public static readonly ALL = [
     ...Object.values(Heroes.LEGENDARY),
@@ -92,5 +94,6 @@ export class Heroes extends CardSet<IHero> {
     ...Object.values(Heroes.WORLD_WAR_HULK),
     ...Object.values(Heroes.MARVEL_STUDIOS),
     ...Object.values(Heroes.ANNIHILATION),
+    ...Object.values(Heroes.MESSIAH_COMPLEX),
   ];
 }

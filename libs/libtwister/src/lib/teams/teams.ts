@@ -116,6 +116,6 @@ export const Teams: Record<Teams, ITeam> = {
   },
   X_FACTOR: {
     name: 'X-Factor',
-    icon: 'TBD',
+    icon: '',
   },
 };

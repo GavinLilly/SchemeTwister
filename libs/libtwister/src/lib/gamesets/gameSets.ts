@@ -257,6 +257,7 @@ export class GameSets {
     GameSets.INTO_THE_COSMOS,
     GameSets.LEGENDARY,
     GameSets.MARVEL_STUDIOS,
+    GameSets.MESSIAH_COMPLEX,
     GameSets.NEW_MUTANTS,
     GameSets.NOIR,
     GameSets.PAINT_THE_TOWN_RED,

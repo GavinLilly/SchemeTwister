@@ -2,7 +2,7 @@ import { GameSetSize } from './gameset.interface';
 import { GameSets } from './gameSets';
 
 describe('Gamesets', () => {
-  it('should have 29 entries', () => expect(GameSets.ALL).toHaveLength(29));
+  it('should have 30 entries', () => expect(GameSets.ALL).toHaveLength(30));
   it('should have no more than 6 big boxes', () =>
     expect(
       GameSets.ALL.filter((item) => item.size === GameSetSize.LARGE).length
