@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/GavinLilly/SchemeTwister/compare/v2.5.0...v2.6.0) (2022-01-21)
+
+
+### Features
+
+* **libtwister:** add Messiah Complex game set ([8e8a4db](https://github.com/GavinLilly/SchemeTwister/commit/8e8a4dbf0822a24b7c0e1870213ed0c87361aa23))
+
 # [2.5.0](https://github.com/GavinLilly/SchemeTwister/compare/v2.4.1...v2.5.0) (2021-12-04)
 
 
