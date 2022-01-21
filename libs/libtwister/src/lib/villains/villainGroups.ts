@@ -14,6 +14,7 @@ import { HeroesOfAsgard } from './heroesOfAsgard.villains';
 import { IntoTheCosmos } from './intoTheCosmos.villains';
 import { Legendary } from './legendary.villains';
 import { MarvelStudios } from './marvelStudios.villains';
+import { MessiahComplex } from './messiahComplex.villains';
 import { NewMutants } from './newMutants.villains';
 import { Noir } from './noir.villains';
 import { PaintTheTownRed } from './paintTheTown.villains';
@@ -57,6 +58,7 @@ export class VillainGroups extends CardSet<IVillainGroup> {
   public static readonly VILLAINS = Villains;
   public static readonly WORLD_WAR_HULK = WorldWarHulk;
   public static readonly ANNIHILATION = Annihilation;
+  public static readonly MESSIAH_COMPLEX = MessiahComplex;
 
   public static readonly ALL = [
     ...Object.values(VillainGroups.LEGENDARY),
@@ -86,5 +88,6 @@ export class VillainGroups extends CardSet<IVillainGroup> {
     ...Object.values(VillainGroups.VILLAINS),
     ...Object.values(VillainGroups.WORLD_WAR_HULK),
     ...Object.values(VillainGroups.ANNIHILATION),
+    ...Object.values(VillainGroups.MESSIAH_COMPLEX),
   ];
 }

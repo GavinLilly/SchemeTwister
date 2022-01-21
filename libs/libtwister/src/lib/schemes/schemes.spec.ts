@@ -137,11 +137,15 @@ cardSetTest(
   GameSets.ANNIHILATION
 );
 
-describe('Total Schemes sets', () => {
-  let total = 0;
+cardSetTest(
+  new Schemes(Object.values(Schemes.MESSIAH_COMPLEX)),
+  4,
+  GameSets.MESSIAH_COMPLEX
+);
 
-  beforeAll(() => {
-    total = [
+describe('Schemes.ALL', () => {
+  it(`should have all schemes from all game sets`, () => {
+    const total = [
       ...Object.values(Schemes.ANT_MAN),
       ...Object.values(Schemes.CAPTAIN_AMERICA),
       ...Object.values(Schemes.CHAMPIONS),
@@ -169,9 +173,8 @@ describe('Total Schemes sets', () => {
       ...Object.values(Schemes.WORLD_WAR_HULK),
       ...Object.values(Schemes.X_MEN),
       ...Object.values(Schemes.ANNIHILATION),
+      ...Object.values(Schemes.MESSIAH_COMPLEX),
     ].length;
+    expect(Schemes.ALL).toHaveLength(total);
   });
-
-  it(`should have ${total} entries`, () =>
-    expect(Schemes.ALL).toHaveLength(total));
 });

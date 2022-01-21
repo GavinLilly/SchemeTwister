@@ -14,6 +14,7 @@ import { HeroesOfAsgard } from './heroesOfAsgard.schemes';
 import { IntoTheCosmos } from './intoTheCosmos.schemes';
 import { Legendary } from './legendary.schemes';
 import { MarvelStudios } from './marvelStudios.schemes';
+import { MessiahComplex } from './messiahComplex.schemes';
 import { NewMutants } from './newMutants.schemes';
 import { Noir } from './noir.schemes';
 import { PaintTheTownRed } from './paintTheTown.schemes';
@@ -57,6 +58,7 @@ export class Schemes extends CardSet<IScheme> {
   public static readonly VILLAINS = Villains;
   public static readonly WORLD_WAR_HULK = WorldWarHulk;
   public static readonly ANNIHILATION = Annihilation;
+  public static readonly MESSIAH_COMPLEX = MessiahComplex;
 
   public static readonly ALL = [
     ...Object.values(Schemes.LEGENDARY),
@@ -86,5 +88,6 @@ export class Schemes extends CardSet<IScheme> {
     ...Object.values(Schemes.VILLAINS),
     ...Object.values(Schemes.WORLD_WAR_HULK),
     ...Object.values(Schemes.ANNIHILATION),
+    ...Object.values(Schemes.MESSIAH_COMPLEX),
   ];
 }

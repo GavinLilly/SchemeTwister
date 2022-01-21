@@ -71,11 +71,15 @@ cardSetTest(
   GameSets.WORLD_WAR_HULK
 );
 
-describe('Total Henchmen sets', () => {
-  let total = 0;
+cardSetTest(
+  new Henchmen(Object.values(Henchmen.MESSIAH_COMPLEX)),
+  2,
+  GameSets.MESSIAH_COMPLEX
+);
 
-  beforeAll(() => {
-    total = [
+describe('Henchmen.ALL', () => {
+  it(`should have all henchmen from all game sets`, () => {
+    const total = [
       ...Object.values(Henchmen.CIVIL_WAR),
       ...Object.values(Henchmen.DARK_CITY),
       ...Object.values(Henchmen.DIMENSIONS),
@@ -88,9 +92,8 @@ describe('Total Henchmen sets', () => {
       ...Object.values(Henchmen.VILLAINS),
       ...Object.values(Henchmen.X_MEN),
       ...Object.values(Henchmen.WORLD_WAR_HULK),
+      ...Object.values(Henchmen.MESSIAH_COMPLEX),
     ].length;
+    expect(Henchmen.ALL).toHaveLength(total);
   });
-
-  it(`should have ${total} entries`, () =>
-    expect(Henchmen.ALL).toHaveLength(total));
 });
