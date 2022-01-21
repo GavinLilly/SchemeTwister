@@ -1,3 +1,10 @@
+## [2.6.1](https://github.com/GavinLilly/SchemeTwister/compare/v2.6.0...v2.6.1) (2022-01-21)
+
+
+### Bug Fixes
+
+* **libtwister:** add missing gamesets entry ([6eba035](https://github.com/GavinLilly/SchemeTwister/commit/6eba035d1eac4e27a2739e11f2d4f45a94d141d9))
+
 # [2.6.0](https://github.com/GavinLilly/SchemeTwister/compare/v2.5.0...v2.6.0) (2022-01-21)
 
 
