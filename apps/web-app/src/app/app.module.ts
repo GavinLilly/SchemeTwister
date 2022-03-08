@@ -1,13 +1,20 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EffectsModule } from '@ngrx/effects';
+import { ActionReducerMap, MetaReducer, StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { WebAppFeatureRandomizeModule } from '@schemetwister/web-app/feature-randomize';
 import { WebAppUiModule } from '@schemetwister/web-app/ui';
 
+import { environment } from '../environments/environment';
+
 import { AppComponent } from './app.component';
-import { AsVillainDeckPipe } from './as-villain-deck.pipe';
+import { reducers } from './reducers';
+import { IRootState, storageSyncReducer } from './storage-sync.reducer';
 
 const appRoutes: Routes = [
   {
@@ -35,8 +42,13 @@ const appRoutes: Routes = [
   },
 ];
 
+export const ROOT_REDUCER = new InjectionToken<ActionReducerMap<IRootState>>(
+  'ROOT_REDUCER'
+);
+const metaReducers: MetaReducer<IRootState>[] = [storageSyncReducer];
+
 @NgModule({
-  declarations: [AppComponent, AsVillainDeckPipe],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -44,6 +56,16 @@ const appRoutes: Routes = [
     WebAppUiModule,
     FontAwesomeModule,
     RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot(),
+    WebAppFeatureRandomizeModule,
+    StoreModule.forRoot(reducers),
+    !environment.production
+      ? StoreDevtoolsModule.instrument({
+          maxAge: 25,
+          autoPause: true,
+        })
+      : [],
   ],
   providers: [],
   bootstrap: [AppComponent],

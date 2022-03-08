@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-header">Hero deck</div>
+  <div class="card-body p-0">
+    <div class="setup-cards card-body" *ngIf="isBystanders()">
+      <p><b>Bystanders: </b>{{ heroDeck.numBystanders }}</p>
+    </div>
+
+    <ngb-accordion [closeOthers]="true">
+      <ngb-panel
+        *ngFor="let hero of heroDeck.heroes"
+        id="herodeck-panel-{{ hero.id }}"
+        cardClass="hero"
+      >
+        <ng-template ngbPanelHeader>
+          <div class="d-flex align-items-center justify-content-between">
+            <button ngbPanelToggle class="btn btn-link m-0">
+              {{ hero.name }}
+            </button>
+            <img
+              *ngIf="hero.team"
+              src="{{ hero.team!.icon }}"
+              alt="{{ hero.team!.name }}"
+              class="img-fluid"
+              id="hero-team"
+            />
+          </div>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <schemetwister-hero-card-content
+            [hero]="hero"
+          ></schemetwister-hero-card-content>
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel
+        *ngFor="let henchmen of heroDeck.henchmen"
+        id="herodeck-panel-{{ henchmen.id }}"
+        cardClass="henchmen"
+        title="{{ henchmen.name }}"
+      >
+        <ng-template ngbPanelContent>
+          <schemetwister-henchmen-card-content
+            [henchmen]="henchmen"
+          ></schemetwister-henchmen-card-content>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
+</div>

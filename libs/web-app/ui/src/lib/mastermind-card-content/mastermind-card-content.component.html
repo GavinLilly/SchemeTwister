@@ -1,0 +1,12 @@
+<div class="card-text">
+  <b>Always leads: </b>
+  <ul *ngFor="let item of mastermind.alwaysLeads">
+    <li>{{ item.name }}</li>
+  </ul>
+</div>
+<schemetwister-badguy-card-content
+  [card]="mastermind"
+></schemetwister-badguy-card-content>
+<schemetwister-base-card-content
+  [card]="mastermind"
+></schemetwister-base-card-content>

@@ -2,11 +2,12 @@
   margin: 1rem;
 }
 
-#hero-team {
-  height: 32px;
+#bottom-row {
+  margin: auto;
+  margin-top: 1rem;
 }
 
-.card-header,
+::ng-deep .card-header,
 button.btn.btn-link {
   font-family: Bangers;
   font-size: 1.05rem;
@@ -21,10 +22,51 @@ button.btn.btn-link {
   margin-right: 0.5rem;
 }
 
-::ng-deep .accordion {
-  .Mastermind {
-    .card-header {
-      background-color: rgb(255, 227, 227);
+::ng-deep #hero-team {
+  height: 32px;
+}
+
+::ng-deep .card {
+  .accordion {
+    .hero {
+      .card-header {
+        background-color: rgb(204, 250, 204);
+      }
+    }
+
+    .henchmen {
+      .card-header {
+        background-color: rgb(255, 254, 197);
+      }
+    }
+
+    .mastermind {
+      .card-header {
+        background-color: rgb(255, 227, 227);
+      }
+    }
+
+    .villainGroup {
+      .card-header {
+        background-color: rgb(255, 236, 199);
+      }
     }
   }
+}
+
+#bottom-row {
+  > .col-12 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  > .col-lg-4,
+  > .col-lg-8 {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+#keywords {
+  margin: 0;
 }

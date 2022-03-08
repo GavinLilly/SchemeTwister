@@ -1,16 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { GameSetup } from '@schemetwister/libtwister';
-
+import { Store } from '@ngrx/store';
 import {
+  AbstractMastermind,
+  AbstractScheme,
   CardType,
-  IMastermind,
-  IScheme,
-  Masterminds,
-  Schemes,
+  LibTwister,
+  NumPlayers,
+  SoloBannedScheme,
 } from '@schemetwister/libtwister';
+import { Observable } from 'rxjs';
 
-import { GameSetupStore } from '../game-setup-store';
+import { INumPlayersState } from '../+state/reducers/num-players.reducer';
 
 @Component({
   selector: 'schemetwister-scheme-select',
@@ -19,63 +20,55 @@ import { GameSetupStore } from '../game-setup-store';
 })
 export class SchemeMastermindSelectComponent implements OnInit {
   @Input() itemType!: CardType;
-  availableItems!: (IScheme | IMastermind)[];
-  selectedItem!: string;
+  @Input() libTwister!: LibTwister;
+  availableItems!: (AbstractScheme | AbstractMastermind)[];
+  selectedItem = '**Random**';
+  numPlayers$: Observable<NumPlayers> = this._store.select(
+    (state) => state.numPlayers.numPlayers
+  );
 
   constructor(
-    public gameSetupStore: GameSetupStore,
-    public activeModal: NgbActiveModal
+    public activeModal: NgbActiveModal,
+    private _store: Store<{
+      numPlayers: INumPlayersState;
+    }>
   ) {}
 
   ngOnInit(): void {
-    this.gameSetupStore.gameSets.subscribe((value) => {
-      if (this.itemType === CardType.SCHEME) {
-        this.availableItems = Schemes.ALL.filter((item) =>
-          value.includes(item.gameSet)
-        );
-        this.gameSetupStore.definedScheme.subscribe((scheme) => {
-          if (scheme.random) this.selectedItem = '**Random**';
-          else this.selectedItem = (scheme.definedItem as IScheme).id;
-        });
-      } else if (this.itemType === CardType.MASTERMIND) {
-        this.availableItems = Masterminds.ALL.filter((item) =>
-          value.includes(item.gameSet)
-        );
-        this.gameSetupStore.definedMastermind.subscribe((mastermind) => {
-          if (mastermind.random) this.selectedItem = '**Random**';
-          else this.selectedItem = (mastermind.definedItem as IMastermind).id;
-        });
-      }
+    if (this.itemType === CardType.SCHEME) {
+      this.availableItems = this.libTwister.schemeFactory.availableCards;
+    } else if (this.itemType === CardType.MASTERMIND) {
+      this.availableItems = this.libTwister.mastermindStore.availableCards;
+    }
 
-      this.availableItems.sort((a, b) => {
-        if (a.name < b.name) return -1;
-        if (a.name > b.name) return 1;
-        return 0;
-      });
+    this.availableItems.sort((a, b) => {
+      if (a.name < b.name) return -1;
+      if (a.name > b.name) return 1;
+      return 0;
     });
 
-    this.gameSetupStore.numPlayers.subscribe((value: number) => {
+    this.numPlayers$.subscribe((value: number) => {
       if (this.itemType === CardType.SCHEME) {
         if (Number(value) === 1) {
-          this.availableItems = this.availableItems.filter((scheme) => {
-            return !GameSetup.soloBannedSchemes.includes(scheme as IScheme);
-          });
+          this.availableItems = this.availableItems.filter(
+            (scheme) => !(scheme instanceof SoloBannedScheme)
+          );
         }
       }
     });
   }
 
   setItem() {
-    if (this.selectedItem !== '**Random**')
-      this.gameSetupStore.setDefinedItem(
-        {
-          random: false,
-          definedItem: this.availableItems.find(
-            (value) => value.id === this.selectedItem
-          ),
-        },
-        this.itemType
-      );
-    else this.gameSetupStore.setDefinedItem({ random: true }, this.itemType);
+    // if (this.selectedItem !== '**Random**')
+    //   this.gameSetupStore.setDefinedItem(
+    //     {
+    //       random: false,
+    //       definedItem: this.availableItems.find(
+    //         (value) => value.id === this.selectedItem
+    //       ),
+    //     },
+    //     this.itemType
+    //   );
+    // else this.gameSetupStore.setDefinedItem({ random: true }, this.itemType);
   }
 }

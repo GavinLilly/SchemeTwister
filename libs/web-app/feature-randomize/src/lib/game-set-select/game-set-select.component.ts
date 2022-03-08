@@ -1,70 +1,50 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Store } from '@ngrx/store';
+import { GameSet, GameSetSize, LibTwister } from '@schemetwister/libtwister';
+import { Observable } from 'rxjs';
 
-import { GameSetSize, GameSets, IGameSet } from '@schemetwister/libtwister';
-
-import { GameSetupStore } from '../game-setup-store';
+import { setGameSets } from '../+state/actions/game-sets.actions';
+import { IGameSetsState } from '../+state/reducers/game-sets.reducer';
 
 @Component({
   selector: 'schemetwister-game-set-select',
   templateUrl: './game-set-select.component.html',
   styleUrls: ['./game-set-select.component.scss'],
 })
-export class GameSetSelectComponent implements OnInit {
-  selectedGameSets: IGameSet[] = [];
-  coreSets: IGameSet[] = GameSets.ALL.filter(
-    (item) => item.size === GameSetSize.CORE
+export class GameSetSelectComponent {
+  selectedGameSets$: Observable<GameSet[]> = this._store.select((state) =>
+    LibTwister.allGameSets
+      .asArray()
+      .filter((gameSet) => state.gameSets.gameSetIds.includes(gameSet.id))
   );
-  lrgSets: IGameSet[] = GameSets.ALL.filter(
-    (item) => item.size === GameSetSize.LARGE
+
+  gameSelectError$: Observable<string> = this._store.select(
+    (state) => state.gameSets.error
   );
-  medSets: IGameSet[] = GameSets.ALL.filter(
+
+  private _allGameSets: GameSet[] = LibTwister.allGameSets
+    .asArray()
+    .sort((a, b) => (a.size < b.size ? 1 : a.name > b.name ? -1 : 0));
+
+  coreSets = this._allGameSets.filter((item) => item.size === GameSetSize.CORE);
+  lrgSets = this._allGameSets.filter((item) => item.size === GameSetSize.LARGE);
+  medSets = this._allGameSets.filter(
     (item) => item.size === GameSetSize.MEDIUM
   );
-  smlSets: IGameSet[] = GameSets.ALL.filter(
-    (item) => item.size === GameSetSize.SMALL
+  smlSets = this._allGameSets.filter((item) => item.size === GameSetSize.SMALL);
+  promoSets = this._allGameSets.filter(
+    (item) => item.size === GameSetSize.PROMO
   );
 
-  gameSelectError = '';
-
   constructor(
-    public gameSetupStore: GameSetupStore,
-    public activeModal: NgbActiveModal
+    public activeModal: NgbActiveModal,
+    private _store: Store<{ gameSets: IGameSetsState }>
   ) {}
 
-  ngOnInit(): void {
-    this.gameSetupStore.gameSets.subscribe(
-      (value) => (this.selectedGameSets = value),
-      (error) => (this.gameSelectError = error)
-    );
-  }
-
-  setGameSets() {
-    if (
-      this.selectedGameSets.every((item) => {
-        return [
-          GameSetSize.SMALL,
-          GameSetSize.MEDIUM,
-          GameSetSize.PROMO,
-        ].includes(item.size);
-      })
-    )
-      this.gameSelectError =
-        'At least one core box or big box game set must be chosen.';
-    else {
-      this.gameSetupStore.setGameSets(this.selectedGameSets);
-      this.activeModal.close('Close click');
-    }
-  }
-
-  getPickerSize(): number {
-    return Math.min(
-      this.coreSets.length +
-        this.lrgSets.length +
-        this.medSets.length +
-        this.smlSets.length +
-        4,
-      15
+  onSelectedUpdate(selected: GameSet[]) {
+    this._store.dispatch(
+      setGameSets({ gameSetIds: selected.map((item) => item.id) })
     );
   }
 }

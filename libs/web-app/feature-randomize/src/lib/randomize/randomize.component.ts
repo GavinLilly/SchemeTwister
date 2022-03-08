@@ -1,12 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { faCog, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Store } from '@ngrx/store';
+import { GameSetup, NumPlayers, numPlayers } from '@schemetwister/libtwister';
+import { Observable } from 'rxjs';
 
-import { CardType } from '@schemetwister/libtwister';
-
+import { generateGameSetup } from '../+state/actions/game-setup.actions';
+import {
+  setAdvancedSolo,
+  setNumPlayers,
+} from '../+state/actions/num-players.actions';
+import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
+import { INumPlayersState } from '../+state/reducers/num-players.reducer';
 import { GameSetSelectComponent } from '../game-set-select/game-set-select.component';
-import { GameSetupStore } from '../game-setup-store';
-import { SchemeMastermindSelectComponent } from '../scheme-mastermind-select/scheme-mastermind-select.component';
 
 @Component({
   selector: 'schemetwister-randomize',
@@ -14,70 +20,62 @@ import { SchemeMastermindSelectComponent } from '../scheme-mastermind-select/sch
   styleUrls: ['./randomize.component.scss'],
 })
 export class RandomizeComponent implements OnInit {
-  numPlayers = 2;
-  faCog = faCog;
-  faLock = faLock;
-  schemeLocked = false;
-  mastermindLocked = false;
-  isAdvancedSolo = false;
+  numPlayers$: Observable<NumPlayers> = this._store.select(
+    (state) => state.numPlayers.numPlayers
+  );
 
-  villainDeck = 'Villain Deck';
-  heroDeck = 'Hero Deck';
+  isAdvancedSolo$: Observable<boolean> = this._store.select(
+    (state) => state.numPlayers.isAdvancedSolo
+  );
+  isAdvancedSoloValue!: boolean;
+
+  gameSetup$: Observable<GameSetup> = this._store.select(
+    (state) => state.gameSetup.gameSetup
+  );
+
+  faCog = faCog;
+
+  numPlayers = numPlayers;
 
   constructor(
-    public gameSetupStore: GameSetupStore,
-    private modalService: NgbModal
+    private _modalService: NgbModal,
+    private _store: Store<{
+      numPlayers: INumPlayersState;
+      gameSetup: IGameSetupState;
+    }>
   ) {}
 
   ngOnInit(): void {
-    this.gameSetupStore.numPlayers.subscribe(
-      (value) => (this.numPlayers = value)
+    this.isAdvancedSolo$.subscribe(
+      (value) => (this.isAdvancedSoloValue = value)
     );
-    this.gameSetupStore.definedScheme.subscribe(
-      (value) => (this.schemeLocked = !value.random)
-    );
-    this.gameSetupStore.definedMastermind.subscribe(
-      (value) => (this.mastermindLocked = !value.random)
-    );
-    this.gameSetupStore.advancedSolo.subscribe(
-      (value) => (this.isAdvancedSolo = value)
-    );
+
     this.generateDecks();
   }
 
   generateDecks() {
-    this.gameSetupStore.shuffle();
+    this._store.dispatch(generateGameSetup());
   }
 
-  showAdvancedSolo(): boolean {
-    return this.numPlayers == 1;
-  }
-
-  setPlayers() {
-    this.gameSetupStore.setNumPlayers(this.numPlayers);
+  setPlayers(value: string) {
+    const realValue = parseInt(value);
+    this._store.dispatch(
+      setNumPlayers({ numPlayers: realValue as NumPlayers })
+    );
   }
 
   setAdvancedSolo() {
-    this.gameSetupStore.setAdvancedSolo(this.isAdvancedSolo);
-    this.gameSetupStore.shuffle();
+    this._store.dispatch(
+      setAdvancedSolo({ isAdvancedSolo: !this.isAdvancedSoloValue })
+    );
   }
 
   pickGameSets() {
-    this.modalService.open(GameSetSelectComponent);
-  }
-
-  pickScheme() {
-    const modalRef = this.modalService.open(SchemeMastermindSelectComponent);
-    modalRef.componentInstance.itemType = CardType.SCHEME;
-  }
-
-  pickMastermind() {
-    const modalRef = this.modalService.open(SchemeMastermindSelectComponent);
-    modalRef.componentInstance.itemType = CardType.MASTERMIND;
+    this._modalService.open(GameSetSelectComponent);
   }
 
   reset() {
-    this.gameSetupStore.setDefinedItem({ random: true }, CardType.SCHEME);
-    this.gameSetupStore.setDefinedItem({ random: true }, CardType.MASTERMIND);
+    // this.gameSetupStore.setDefinedItem({ random: true }, CardType.SCHEME);
+    // this.gameSetupStore.setDefinedItem({ random: true }, CardType.MASTERMIND);
   }
 }
