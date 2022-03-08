@@ -1,12 +1,5 @@
 import { Component } from '@angular/core';
-
-import {
-  GameSets,
-  Henchmen,
-  Heroes,
-  Masterminds,
-  VillainGroups,
-} from '@schemetwister/libtwister';
+import { LibTwister } from '@schemetwister/libtwister';
 
 @Component({
   selector: 'schemetwister-home-page',
@@ -14,9 +7,19 @@ import {
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent {
-  numGameSets: number = GameSets.ALL.length;
-  numHenchmen: number = Henchmen.ALL.length;
-  numHeroes: number = Heroes.ALL.length;
-  numMasterminds: number = Masterminds.ALL.length;
-  numVillains: number = VillainGroups.ALL.length;
+  numGameSets: number = LibTwister.allGameSets.size;
+  numHenchmen: number;
+  numHeroes: number;
+  numMasterminds: number;
+  numVillains: number;
+
+  constructor() {
+    const allGameSets = Array.from(LibTwister.allGameSets.values());
+    this.numHenchmen = allGameSets.map((gameSet) => gameSet.henchmen).length;
+    this.numHeroes = allGameSets.map((gameSet) => gameSet.heroes).length;
+    this.numMasterminds = allGameSets.map(
+      (gameSet) => gameSet.masterminds
+    ).length;
+    this.numVillains = allGameSets.map((gameSet) => gameSet.villains).length;
+  }
 }

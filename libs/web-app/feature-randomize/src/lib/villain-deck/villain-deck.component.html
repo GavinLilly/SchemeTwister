@@ -1,0 +1,81 @@
+<div class="card">
+  <div class="card-header">Villain deck</div>
+  <div class="card-body p-0">
+    <div class="setup-cards card-body">
+      <p><b>Master Strikes: </b>{{ villainDeck.numMasterStrikes }}</p>
+      <p><b>Twists: </b>{{ villainDeck.numTwists }}</p>
+      <p *ngIf="isBystanders()">
+        <b>Bystanders: </b>{{ villainDeck.numBystanders }}
+      </p>
+      <p *ngIf="isSidekick()">
+        <b>Sidekicks: </b>{{ villainDeck.numSidekicks }}
+      </p>
+      <p *ngIf="isAmbitions()">
+        <b>Ambitions: </b>{{ villainDeck.numAmbitions }}
+      </p>
+    </div>
+
+    <ngb-accordion [closeOthers]="true">
+      <ngb-panel
+        *ngFor="let henchmen of villainDeck.henchmen"
+        id="villaindeck-panel-{{ henchmen.id }}"
+        cardClass="henchmen"
+        title="{{ henchmen.name }}"
+      >
+        <ng-template ngbPanelContent>
+          <schemetwister-henchmen-card-content
+            [henchmen]="henchmen"
+          ></schemetwister-henchmen-card-content>
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel
+        *ngFor="let villainGroup of villainDeck.villains"
+        id="villaindeck-panel-{{ villainGroup.id }}"
+        cardClass="villainGroup"
+        title="{{ villainGroup.name }}"
+      >
+        <ng-template ngbPanelContent>
+          <schemetwister-villaingroup-card-content
+            [villaingroup]="villainGroup"
+          ></schemetwister-villaingroup-card-content>
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel
+        *ngFor="let hero of villainDeck.heroes"
+        id="villaindeck-panel-{{ hero.id }}"
+        cardClass="hero"
+      >
+        <ng-template ngbPanelHeader>
+          <div class="d-flex align-items-center justify-content-between">
+            <button ngbPanelToggle class="btn btn-link m-0">
+              {{ hero.name }}
+            </button>
+            <img
+              *ngIf="hero.team"
+              src="{{ hero.team!.icon }}"
+              alt="{{ hero.team!.name }}"
+              class="img-fluid"
+              id="hero-team"
+            />
+          </div>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <schemetwister-hero-card-content
+            [hero]="hero"
+          ></schemetwister-hero-card-content>
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel
+        *ngFor="let mastermind of villainDeck.masterminds"
+        id="villaindeck-panel-{{ mastermind.id }}"
+        cardClass="mastermind"
+        title="{{ mastermind.name }}"
+      >
+        <ng-template ngbPanelContent>
+          <schemetwister-mastermind-card-content [mastermind]="mastermind">
+          </schemetwister-mastermind-card-content>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
+</div>

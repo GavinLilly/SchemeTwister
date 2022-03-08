@@ -11,6 +11,13 @@ export class ReplacePipe implements PipeTransform {
       return value;
     }
 
-    return value.replace(new RegExp(strToReplace, 'g'), replacementStr);
+    return value.replace(
+      new RegExp(this.escapeStr(strToReplace), 'g'),
+      replacementStr
+    );
+  }
+
+  escapeStr(str: string) {
+    return str.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
   }
 }

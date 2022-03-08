@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="gameSetup$ | async as gameSetup">
   <div class="row">
     <div class="col-12 col-md-6 mx-auto">
       <!--Picker-->
@@ -17,35 +17,37 @@
         </div>
         <div class="card-body">
           <form>
-            <div class="form-group text-left">
-              <label for="numPlayersSelect">Players</label>
-              <select
-                class="custom-select mb-1 form-control"
-                [(ngModel)]="numPlayers"
-                [ngModelOptions]="{ standalone: true }"
-                (change)="setPlayers()"
-                id="numPlayersSelect"
-              >
-                <option [value]="1">1</option>
-                <option [value]="2">2</option>
-                <option [value]="3">3</option>
-                <option [value]="4">4</option>
-                <option [value]="5">5</option>
-              </select>
-            </div>
+            <ng-container *ngIf="numPlayers$ | async as numberPlayers">
+              <div class="form-group text-left">
+                <label for="numPlayersSelect">Players</label>
+                <select
+                  class="custom-select mb-1 form-control"
+                  #numPlayersSelect
+                  [ngModel]="numberPlayers"
+                  [ngModelOptions]="{ standalone: true }"
+                  (change)="setPlayers(numPlayersSelect.value)"
+                  id="numPlayersSelect"
+                >
+                  <option *ngFor="let num of numPlayers" value="{{ num }}">
+                    {{ num }}
+                  </option>
+                </select>
+              </div>
 
-            <div class="form-group" *ngIf="showAdvancedSolo()">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                [(ngModel)]="isAdvancedSolo"
-                (ngModelChange)="setAdvancedSolo()"
-                id="advancedSoloCheck"
-              />
-              <label class="form-check-label" for="advancedSoloCheck"
-                >Advanced solo mode?</label
-              >
-            </div>
+              <div class="form-group" *ngIf="numberPlayers === 1">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  [ngModel]="isAdvancedSolo$ | async"
+                  [ngModelOptions]="{ standalone: true }"
+                  (ngModelChange)="setAdvancedSolo()"
+                  id="advancedSoloCheck"
+                />
+                <label class="form-check-label" for="advancedSoloCheck"
+                  >Advanced solo mode?</label
+                >
+              </div>
+            </ng-container>
 
             <div class="form-group">
               <a
@@ -69,154 +71,56 @@
   <div class="row">
     <div class="col-12 col-lg-4">
       <!--Scheme-->
-      <div class="card">
-        <div class="card-header">Scheme</div>
-        <div class="card-body p-0">
-          <ngb-accordion>
-            <ngb-panel>
-              <ng-template ngbPanelHeader>
-                <div class="d-flex align-items-center justify-content-between">
-                  <button ngbPanelToggle class="btn btn-link m-0">
-                    {{ (gameSetupStore.gameSetup | async)!.scheme.name }}
-                  </button>
-                  <fa-icon
-                    *ngIf="schemeLocked"
-                    [icon]="faLock"
-                    class="ml-auto lock-item"
-                  ></fa-icon>
-                  <a
-                    (click)="pickScheme()"
-                    href="javascript:void(0)"
-                    class="text-black"
-                  >
-                    <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
-                  </a>
-                </div>
-              </ng-template>
-              <ng-template ngbPanelContent>
-                <p class="card-text">
-                  <b>Setup: </b
-                  >{{ (gameSetupStore.gameSetup | async)!.scheme.setup }}
-                </p>
-                <p class="card-text">
-                  <b>Twist: </b
-                  >{{ (gameSetupStore.gameSetup | async)!.scheme.twist }}
-                </p>
-                <p class="card-text">
-                  <b>Evil Wins: </b
-                  >{{ (gameSetupStore.gameSetup | async)!.scheme.evilWins }}
-                </p>
-                <p class="card-text">
-                  <b>Game set: </b
-                  >{{ (gameSetupStore.gameSetup | async)!.scheme.gameSet.name }}
-                </p>
-              </ng-template>
-            </ngb-panel>
-          </ngb-accordion>
-        </div>
-      </div>
+      <schemetwister-scheme-card></schemetwister-scheme-card>
 
       <!--Mastermind-->
-      <div class="card">
-        <div class="card-header">Mastermind</div>
-        <div class="card-body p-0">
-          <ngb-accordion>
-            <ngb-panel cardClass="Mastermind">
-              <ng-template ngbPanelHeader>
-                <div class="d-flex align-items-center justify-content-between">
-                  <button ngbPanelToggle class="btn btn-link m-0">
-                    {{ (gameSetupStore.gameSetup | async)!.mastermind.name }}
-                  </button>
-                  <fa-icon
-                    *ngIf="mastermindLocked"
-                    [icon]="faLock"
-                    class="ml-auto lock-item"
-                  ></fa-icon>
-                  <a
-                    (click)="pickMastermind()"
-                    href="javascript:void(0)"
-                    class="text-black"
-                  >
-                    <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
-                  </a>
-                </div>
-              </ng-template>
-              <ng-template ngbPanelContent>
-                <schemetwister-mastermind
-                  [mastermind]="(gameSetupStore.gameSetup | async)!.mastermind"
-                ></schemetwister-mastermind>
-              </ng-template>
-            </ngb-panel>
-          </ngb-accordion>
-        </div>
-      </div>
+      <schemetwister-mastermind-card></schemetwister-mastermind-card>
     </div>
-
     <!--Villain deck-->
     <div class="col-12 col-lg-4">
-      <schemetwister-iterate-deck
-        [deckName]="villainDeck"
-        [deck]="(gameSetupStore.gameSetup | async)!.villainDeck"
-      ></schemetwister-iterate-deck>
+      <schemetwister-villain-deck
+        [villainDeck]="gameSetup.villainDeck"
+      ></schemetwister-villain-deck>
     </div>
 
     <!--Hero deck-->
     <div class="col-12 col-lg-4">
-      <schemetwister-iterate-deck
-        [deckName]="heroDeck"
-        [deck]="(gameSetupStore.gameSetup | async)!.heroDeck"
-      ></schemetwister-iterate-deck>
+      <schemetwister-hero-deck
+        [heroDeck]="gameSetup.heroDeck"
+      ></schemetwister-hero-deck>
     </div>
   </div>
   <div
-    *ngIf="
-      (gameSetupStore.gameSetup | async)!.keywords ||
-      (gameSetupStore.gameSetup | async)!.additionalDeck
-    "
+    *ngIf="{
+      keywords: gameSetup.keywords,
+      additionalDeck: gameSetup.additionalDeck
+    } as additionalKeywords"
     class="row"
+    id="bottom-row"
   >
     <!--Additional deck-->
     <div
-      [ngClass]="
-        (gameSetupStore.gameSetup | async)!.keywords
-          ? 'col-12 col-lg-4'
-          : 'col-12'
-      "
-      *ngIf="(gameSetupStore.gameSetup | async)!.additionalDeck"
+      [ngClass]="additionalKeywords.keywords ? 'col-12 col-lg-4' : 'col-12'"
+      *ngIf="additionalKeywords.additionalDeck as additionalDeck"
     >
-      <schemetwister-iterate-deck
-        [deckName]="
-          (gameSetupStore.gameSetup | async)!.additionalDeck!.name
-            ? (gameSetupStore.gameSetup | async)!.additionalDeck!.name
-            : 'Additional deck'
-        "
-        [deck]="(gameSetupStore.gameSetup | async)!.additionalDeck!.deck"
-      ></schemetwister-iterate-deck>
+      <schemetwister-additional-deck></schemetwister-additional-deck>
     </div>
     <!--Keywords-->
     <div
       [ngClass]="
-        (gameSetupStore.gameSetup | async)!.additionalDeck
-          ? 'col-12 col-lg-8'
-          : 'col-12'
+        additionalKeywords.additionalDeck ? 'col-12 col-lg-8' : 'col-12'
       "
-      *ngIf="(gameSetupStore.gameSetup | async)!.keywords"
+      *ngIf="additionalKeywords.keywords as keywords"
     >
-      <div class="card">
+      <div class="card" id="keywords">
         <div class="card-header">Keywords in play</div>
         <div class="card-body p-0">
           <ngb-accordion #acc="ngbAccordion">
             <ngb-panel
-              *ngFor="let word of (gameSetupStore.gameSetup | async)!.keywords"
-              id="panel-{{ word.name | replace: ' ':'_' | replace: '/':'_' }}"
+              *ngFor="let word of keywords"
+              id="panel-keyword-{{ word.id }}"
+              title="{{ word.name }}"
             >
-              <ng-template ngbPanelHeader>
-                <div class="d-flex align-items-center justify-content-between">
-                  <button ngbPanelToggle class="btn btn-link m-0">
-                    {{ word.name }}
-                  </button>
-                </div>
-              </ng-template>
               <ng-template ngbPanelContent>
                 <div [innerHTML]="word.description"></div>
               </ng-template>

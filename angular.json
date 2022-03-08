@@ -34,7 +34,8 @@
             "packageJson": "libs/libtwister/package.json",
             "main": "libs/libtwister/src/index.ts",
             "assets": ["libs/libtwister/*.md"],
-            "srcRootForCompilationRoot": "libs\\libtwister\\src"
+            "srcRootForCompilationRoot": "libs\\libtwister\\src",
+            "sourceMap": true
           },
           "outputs": ["{options.outputPath}"]
         }
@@ -65,7 +66,11 @@
               "apps/web-app/src/assets"
             ],
             "styles": ["apps/web-app/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "sourceMap": true,
+            "buildOptimizer": false,
+            "optimization": false,
+            "serviceWorker": false
           },
           "configurations": {
             "production": {

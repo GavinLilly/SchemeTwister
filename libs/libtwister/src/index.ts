@@ -1,11 +1,21 @@
-export * from './lib/bystanders';
-export * from './lib/gamesets';
-export * from './lib/henchmen';
-export * from './lib/heroes';
-export * from './lib/masterminds';
-export * from './lib/schemes';
-export * from './lib/villains';
-export * from './lib/gameSetup';
-export * from './lib/teams';
-export * from './lib/cardSet';
-export * from './lib/enums';
+export { LibTwister } from './lib/libTwister';
+export { GameSets, Teams, KeywordName } from './lib/data';
+export {
+  AbstractMastermind,
+  AbstractScheme,
+  CardType,
+  GameSet,
+  GameSetup,
+  ICard,
+  IHenchmen,
+  IHero,
+  IVillainGroup,
+  GameSetSize,
+  IHeroDeck,
+  IVillainDeck,
+  IAdditionalDeck,
+  IBadGuyCard,
+  SoloBannedScheme,
+  NumPlayers,
+  numPlayers,
+} from './lib/model';

@@ -1,0 +1,9 @@
+<p><b>Fight: </b>{{ henchmen.fight }}</p>
+<p *ngIf="henchmen.ambush"><b>Ambush: </b>{{ henchmen.ambush }}</p>
+<p *ngIf="henchmen.ability"><b>Ability: </b>{{ henchmen.ability }}</p>
+<schemetwister-badguy-card-content
+  [card]="henchmen"
+></schemetwister-badguy-card-content>
+<schemetwister-base-card-content
+  [card]="henchmen"
+></schemetwister-base-card-content>

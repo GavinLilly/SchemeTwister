@@ -1,0 +1,5 @@
+<p *ngIf="card.keywords"><b>Keywords</b></p>
+<ul *ngIf="card.keywords">
+  <li *ngFor="let keyword of card.keywords">{{ keyword.name }}</li>
+</ul>
+<p><b>GameSet: </b>{{ gameSetName }}</p>
