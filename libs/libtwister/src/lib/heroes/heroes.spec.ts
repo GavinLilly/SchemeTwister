@@ -155,6 +155,18 @@ describe('X-Men heroes', () => {
   });
 });
 
+cardSetTest(
+  new Heroes(Object.values(Heroes.MESSIAH_COMPLEX)),
+  8,
+  GameSets.MESSIAH_COMPLEX
+);
+
+cardSetTest(
+  new Heroes(Object.values(Heroes.SHADOWS_OF_NIGHTMARE)),
+  5,
+  GameSets.SHADOWS_OF_NIGHTMARE
+);
+
 describe('Total Heroes sets', () => {
   let total: number;
 
@@ -189,6 +201,8 @@ describe('Total Heroes sets', () => {
       ...Object.values(Heroes.WORLD_WAR_HULK),
       ...Object.values(Heroes.X_MEN),
       ...Object.values(Heroes.ANNIHILATION),
+      ...Object.values(Heroes.MESSIAH_COMPLEX),
+      ...Object.values(Heroes.SHADOWS_OF_NIGHTMARE),
     ].length;
   });
 

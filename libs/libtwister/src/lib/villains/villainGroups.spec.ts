@@ -171,6 +171,12 @@ cardSetTest(
   GameSets.MESSIAH_COMPLEX
 );
 
+cardSetTest(
+  new VillainGroups(Object.values(VillainGroups.SHADOWS_OF_NIGHTMARE)),
+  2,
+  GameSets.SHADOWS_OF_NIGHTMARE
+);
+
 describe('VillainGroups.ALL', () => {
   it(`should have all Villains from all game sets`, () => {
     const total = [
@@ -202,6 +208,7 @@ describe('VillainGroups.ALL', () => {
       ...Object.values(VillainGroups.X_MEN),
       ...Object.values(VillainGroups.ANNIHILATION),
       ...Object.values(VillainGroups.MESSIAH_COMPLEX),
+      ...Object.values(VillainGroups.SHADOWS_OF_NIGHTMARE),
     ].length;
     expect(VillainGroups.ALL).toHaveLength(total);
   });

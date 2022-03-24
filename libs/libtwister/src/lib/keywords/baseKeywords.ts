@@ -12,6 +12,10 @@ export const ARTIFACT: IKeywordSummary = {
   name: 'Artifact',
 };
 
+export const ASTRAL_PLANE: IKeywordSummary = {
+  name: 'Astral Plane',
+};
+
 export const BERSERK: IKeywordSummary = {
   name: 'Berserk',
 };
@@ -90,6 +94,10 @@ export const DARK_MEMORIES: IKeywordSummary = {
 
 export const DEMOLISH: IKeywordSummary = {
   name: 'Demolish',
+};
+
+export const DEMONIC_BARGAIN: IKeywordSummary = {
+  name: 'Demonic Bargain',
 };
 
 export const DIGEST: IKeywordSummary = {
@@ -206,6 +214,9 @@ export const REVENGE: IKeywordSummary = {
 };
 export const RISE_OF_THE_LIVING_DEAD: IKeywordSummary = {
   name: 'Rise of the Living Dead',
+};
+export const RITUAL_ARTIFACTS: IKeywordSummary = {
+  name: 'Ritual Artifacts',
 };
 export const SAVIOR: IKeywordSummary = {
   name: 'Savior',

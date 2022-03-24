@@ -143,6 +143,12 @@ cardSetTest(
   GameSets.MESSIAH_COMPLEX
 );
 
+cardSetTest(
+  new Schemes(Object.values(Schemes.SHADOWS_OF_NIGHTMARE)),
+  4,
+  GameSets.SHADOWS_OF_NIGHTMARE
+);
+
 describe('Schemes.ALL', () => {
   it(`should have all schemes from all game sets`, () => {
     const total = [
@@ -174,6 +180,7 @@ describe('Schemes.ALL', () => {
       ...Object.values(Schemes.X_MEN),
       ...Object.values(Schemes.ANNIHILATION),
       ...Object.values(Schemes.MESSIAH_COMPLEX),
+      ...Object.values(Schemes.SHADOWS_OF_NIGHTMARE),
     ].length;
     expect(Schemes.ALL).toHaveLength(total);
   });

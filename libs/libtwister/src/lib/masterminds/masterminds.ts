@@ -24,6 +24,7 @@ import { RealmOfKings } from './realmOfKings.masterminds';
 import { Revelations } from './revelations.masterminds';
 import { SecretWarsVolume1 } from './secretWarsVolume1.masterminds';
 import { SecretWarsVolume2 } from './secretWarsVolume2.masterminds';
+import { ShadowsOfNightmare } from './shadowsOfNightmare.masterminds';
 import { Shield } from './shield.masterminds';
 import { SpiderManHomecoming } from './spiderManHomecoming.masterminds';
 import { Venom } from './venom.masterminds';
@@ -61,6 +62,7 @@ export class Masterminds extends CardSet<IMastermind> {
   public static readonly WORLD_WAR_HULK = WorldWarHulk;
   public static readonly ANNIHILATION = Annihilation;
   public static readonly MESSIAH_COMPLEX = MessiahComplex;
+  public static readonly SHADOWS_OF_NIGHTMARE = ShadowsOfNightmare;
 
   public static readonly ALL = [
     ...Object.values(Masterminds.LEGENDARY),
@@ -92,5 +94,6 @@ export class Masterminds extends CardSet<IMastermind> {
     ...Object.values(Masterminds.WORLD_WAR_HULK),
     ...Object.values(Masterminds.ANNIHILATION),
     ...Object.values(Masterminds.MESSIAH_COMPLEX),
+    ...Object.values(Masterminds.SHADOWS_OF_NIGHTMARE),
   ];
 }
