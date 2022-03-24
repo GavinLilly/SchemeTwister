@@ -1,3 +1,15 @@
+# [2.7.0](https://github.com/GavinLilly/SchemeTwister/compare/v2.6.1...v2.7.0) (2022-03-24)
+
+
+### Bug Fixes
+
+* **libtwister:** add missing mastermind details for Annihilation ([480cc07](https://github.com/GavinLilly/SchemeTwister/commit/480cc0797d92483ad493d8c6262ba58f5deb553a))
+
+
+### Features
+
+* **libtwister:** add Dr Strange and the Shadows of Nightmare ([8a935bf](https://github.com/GavinLilly/SchemeTwister/commit/8a935bf1187ff182e0f079cfde4b1795b2fc0d5d))
+
 ## [2.6.1](https://github.com/GavinLilly/SchemeTwister/compare/v2.6.0...v2.6.1) (2022-01-21)
 
 
