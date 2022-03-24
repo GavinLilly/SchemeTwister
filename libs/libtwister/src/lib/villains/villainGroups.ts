@@ -22,6 +22,7 @@ import { RealmOfKings } from './realmOfKings.villains';
 import { Revelations } from './revelations.villains';
 import { SecretWarsVolume1 } from './secretWarsVolume1.villains';
 import { SecretWarsVolume2 } from './secretWarsVolume2.villains';
+import { ShadowsOfNightmare } from './shadowsOfNightmare.villains';
 import { Shield } from './shield.villains';
 import { SpiderManHomecoming } from './spiderManHomecoming.villains';
 import { Venom } from './venom.villains';
@@ -59,6 +60,7 @@ export class VillainGroups extends CardSet<IVillainGroup> {
   public static readonly WORLD_WAR_HULK = WorldWarHulk;
   public static readonly ANNIHILATION = Annihilation;
   public static readonly MESSIAH_COMPLEX = MessiahComplex;
+  public static readonly SHADOWS_OF_NIGHTMARE = ShadowsOfNightmare;
 
   public static readonly ALL = [
     ...Object.values(VillainGroups.LEGENDARY),
@@ -89,5 +91,6 @@ export class VillainGroups extends CardSet<IVillainGroup> {
     ...Object.values(VillainGroups.WORLD_WAR_HULK),
     ...Object.values(VillainGroups.ANNIHILATION),
     ...Object.values(VillainGroups.MESSIAH_COMPLEX),
+    ...Object.values(VillainGroups.SHADOWS_OF_NIGHTMARE),
   ];
 }

@@ -24,6 +24,7 @@ import { RealmOfKings } from './realmOfKings.heroes';
 import { Revelations } from './revelations.heroes';
 import { SecretWarsVolume1 } from './secretWarsVolume1.heroes';
 import { SecretWarsVolume2 } from './secretWarsVolume2.heroes';
+import { ShadowsOfNightmare } from './shadowsOfNightmare.heroes';
 import { Shield } from './shield.heroes';
 import { SpiderManHomecoming } from './spiderManHomecoming.heroes';
 import { ThreeD } from './threeD.heroes';
@@ -63,6 +64,7 @@ export class Heroes extends CardSet<IHero> {
   public static readonly MARVEL_STUDIOS = MarvelStudios;
   public static readonly ANNIHILATION = Annihilation;
   public static readonly MESSIAH_COMPLEX = MessiahComplex;
+  public static readonly SHADOWS_OF_NIGHTMARE = ShadowsOfNightmare;
 
   public static readonly ALL = [
     ...Object.values(Heroes.LEGENDARY),
@@ -95,5 +97,6 @@ export class Heroes extends CardSet<IHero> {
     ...Object.values(Heroes.MARVEL_STUDIOS),
     ...Object.values(Heroes.ANNIHILATION),
     ...Object.values(Heroes.MESSIAH_COMPLEX),
+    ...Object.values(Heroes.SHADOWS_OF_NIGHTMARE),
   ];
 }

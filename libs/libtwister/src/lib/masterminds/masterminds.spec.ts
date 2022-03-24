@@ -163,7 +163,7 @@ cardSetTest(
 
 cardSetTest(
   new Masterminds(Object.values(Masterminds.ANNIHILATION)),
-  2,
+  4,
   GameSets.ANNIHILATION
 );
 
@@ -171,6 +171,12 @@ cardSetTest(
   new Masterminds(Object.values(Masterminds.MESSIAH_COMPLEX)),
   6,
   GameSets.MESSIAH_COMPLEX
+);
+
+cardSetTest(
+  new Masterminds(Object.values(Masterminds.SHADOWS_OF_NIGHTMARE)),
+  4,
+  GameSets.SHADOWS_OF_NIGHTMARE
 );
 
 describe('Masterminds.ALL', () => {
@@ -205,6 +211,7 @@ describe('Masterminds.ALL', () => {
       ...Object.values(Masterminds.X_MEN),
       ...Object.values(Masterminds.ANNIHILATION),
       ...Object.values(Masterminds.MESSIAH_COMPLEX),
+      ...Object.values(Masterminds.SHADOWS_OF_NIGHTMARE),
     ].length;
     expect(Masterminds.ALL).toHaveLength(total);
   });

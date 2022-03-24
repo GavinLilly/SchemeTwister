@@ -241,6 +241,14 @@ export class GameSets {
     series: Series.MAINLINE,
   };
 
+  public static readonly SHADOWS_OF_NIGHTMARE: IGameSet = {
+    id: 'eadb42eb-da34-4b52-be9e-2ca048e8f0c4',
+    name: 'Doctor Strange and the Shadows of Nightmare',
+    size: GameSetSize.SMALL,
+    releaseYear: 2022,
+    series: Series.MAINLINE,
+  };
+
   public static readonly ALL = [
     GameSets.ANNIHILATION,
     GameSets.ANT_MAN,
@@ -248,6 +256,7 @@ export class GameSets {
     GameSets.CHAMPIONS,
     GameSets.CIVIL_WAR,
     GameSets.DARK_CITY,
+    GameSets.SHADOWS_OF_NIGHTMARE,
     GameSets.DEADPOOL,
     GameSets.DIMENSIONS,
     GameSets.FANTASTIC_FOUR,

@@ -23,6 +23,7 @@ import { Revelations } from './revelations.schemes';
 import { IScheme } from './scheme';
 import { SecretWarsVolume1 } from './secretWarsVolume1.schemes';
 import { SecretWarsVolume2 } from './secretWarsVolume2.schemes';
+import { ShadowsOfNightmare } from './shadowsOfNightmare.schemes';
 import { Shield } from './shield.schemes';
 import { SpiderManHomecoming } from './spiderManHomecoming.schemes';
 import { Venom } from './venom.schemes';
@@ -59,6 +60,7 @@ export class Schemes extends CardSet<IScheme> {
   public static readonly WORLD_WAR_HULK = WorldWarHulk;
   public static readonly ANNIHILATION = Annihilation;
   public static readonly MESSIAH_COMPLEX = MessiahComplex;
+  public static readonly SHADOWS_OF_NIGHTMARE = ShadowsOfNightmare;
 
   public static readonly ALL = [
     ...Object.values(Schemes.LEGENDARY),
@@ -89,5 +91,6 @@ export class Schemes extends CardSet<IScheme> {
     ...Object.values(Schemes.WORLD_WAR_HULK),
     ...Object.values(Schemes.ANNIHILATION),
     ...Object.values(Schemes.MESSIAH_COMPLEX),
+    ...Object.values(Schemes.SHADOWS_OF_NIGHTMARE),
   ];
 }
