@@ -25,7 +25,9 @@ export class GameSetSelectComponent {
 
   private _allGameSets: GameSet[] = LibTwister.allGameSets
     .asArray()
-    .sort((a, b) => (a.size < b.size ? 1 : a.name > b.name ? -1 : 0));
+    .sort((a, b) =>
+      a.size < b.size ? 1 : a.size > b.size ? -1 : a.name > b.name ? 1 : -1
+    );
 
   coreSets = this._allGameSets.filter((item) => item.size === GameSetSize.CORE);
   lrgSets = this._allGameSets.filter((item) => item.size === GameSetSize.LARGE);
