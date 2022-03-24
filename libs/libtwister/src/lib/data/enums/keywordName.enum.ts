@@ -5,6 +5,8 @@ export enum KeywordName {
 
   ARTIFACT = 'Artifact',
 
+  ASTRAL_PLANE = 'Astral Plane',
+
   BERSERK = 'Berserk',
 
   BRIBE = 'Bribe',
@@ -44,6 +46,8 @@ export enum KeywordName {
   DARK_MEMORIES = 'Dark Memories',
 
   DEMOLISH = 'Demolish',
+
+  DEMONIC_BARGAIN = 'Demonic Bargain',
 
   DIGEST = 'Digest',
 
@@ -114,6 +118,8 @@ export enum KeywordName {
   REVENGE = 'Revenge',
 
   RISE_OF_THE_LIVING_DEAD = 'Rise of the Living Dead',
+
+  RITUAL_ARTIFACTS = 'Ritual Artifacts',
 
   SAVIOR = 'Savior',
 

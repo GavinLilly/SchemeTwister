@@ -6,8 +6,8 @@ import { CardType, GameSetSize, ICard, NumPlayers } from './model';
 
 describe('LibTwister', () => {
   describe('All game sets', () => {
-    it('should have 30 sets', () =>
-      expect(LibTwister.allGameSets.size).toBe(30));
+    it('should have 31 sets', () =>
+      expect(LibTwister.allGameSets.size).toBe(31));
 
     it('should have 6 big boxes', () =>
       expect(
@@ -16,12 +16,12 @@ describe('LibTwister', () => {
         )
       ).toHaveLength(6));
 
-    it('should have 17 small boxes', () =>
+    it('should have 18 small boxes', () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
           (item) => item.size === GameSetSize.SMALL
         )
-      ).toHaveLength(17));
+      ).toHaveLength(18));
 
     it('should have 3 medium boxes', () =>
       expect(

@@ -1,12 +1,9 @@
-import {
-  ASTRAL_PLANE,
-  DEMONIC_BARGAIN,
-  RITUAL_ARTIFACTS,
-} from './baseKeywords';
-import { IKeyword } from './keyword.interface';
+import { IKeyword } from '../../../model';
+import { KeywordName } from '../../enums';
 
-export const DemonicBargain: IKeyword = {
-  ...DEMONIC_BARGAIN,
+export const DEMONIC_BARGAIN: IKeyword = {
+  name: KeywordName.DEMONIC_BARGAIN,
+  id: '45c37246-c3db-4766-9ec3-caacea9678df',
   description: `Demons offer gifts of power with a dark price, hoping to corrupt the souls of mortals. These deals with the devil are especially corrupting to the powerful and arrogant. The humble are more likely to escape with their souls intact. This is represented with the new Demonic Bargain keyword.
 <ul>
   <li>Some Villains like Satana Hellstrom say things like “Fight: Choose a player to make a Demonic Bargain with Satana Hellstrom to rescue three Bystanders.”</li>
@@ -20,8 +17,9 @@ export const DemonicBargain: IKeyword = {
 </ul>`,
 };
 
-export const AstralPlane: IKeyword = {
-  ...ASTRAL_PLANE,
+export const ASTRAL_PLANE: IKeyword = {
+  name: KeywordName.ASTRAL_PLANE,
+  id: '9ca7a462-b510-4add-8659-8e54f1d4a901',
   description: `The Fear Lords are cruel demons that move themselves and others beyond the physical world to a realm of pure psychic energy. There they prey on the human psyche, evoking nightmare and terror. This is represented with new “Astral Plane” abilities.
 <ul>
   <li>Some Villains say things like “Fight: If this Villain was in the city, it enters the Astral Plane.”</li>
@@ -36,8 +34,9 @@ export const AstralPlane: IKeyword = {
 </ul>`,
 };
 
-export const RitualArtifacts: IKeyword = {
-  ...RITUAL_ARTIFACTS,
+export const RITUAL_ARTIFACTS: IKeyword = {
+  name: KeywordName.RITUAL_ARTIFACTS,
+  id: 'cdcd375f-0c13-486e-835d-cb3bb5517932',
   description: `Marvel's sorcerers invoke Rituals of awesome power, anchored by mystic talismans. This is represented with a special type of Artifact appearing for the first time in this set: Ritual Artifacts. These follow all the normal Artifact rules above with some new twists.
 <ul>
   <li>They say things like “Ritual Artifact — If you drew a card: You may discard this Artifact to get +3 Attack.”</li>

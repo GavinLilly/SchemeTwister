@@ -20,6 +20,7 @@ export * as REALM_OF_KINGS from './realmOfKings';
 export * as REVELATIONS from './revelations';
 export * as SECRET_WARS_VOLUME_1 from './secretWarsVolume1';
 export * as SECRET_WARS_VOLUME_2 from './secretWarsVolume2';
+export * as SHADOWS_OF_NIGHTMARE from './shadowsOfNightmare';
 export * as SHIELD from './shield';
 export * as SPIDERMAN_HOMECOMING from './spidermanHomecoming';
 export * as THE_NEW_MUTANTS from './theNewMutants';
