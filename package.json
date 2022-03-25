@@ -8,9 +8,11 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main && npm run build-version",
+    "postversion": "npm run build-version",
     "nx": "nx",
     "start": "ng serve",
     "build": "npm run build-version && ng build",
+    "build-prod": "npm run build-version && ng build --prod",
     "test": "nx run-many --all --target=test",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
@@ -32,7 +34,6 @@
     "cz": "cz",
     "build-version": "genversion --es6 --semi libs/web-app/ui/src/lib/footer/version.ts",
     "workspace-generator": "nx workspace-generator",
-    "build-prod": "npm run build-version && ng build --prod",
     "deploy": "firebase deploy"
   },
   "private": true,

@@ -15,14 +15,8 @@ jobs:
           node-version: 14
       - name: Install dependencies
         run: npm ci
-      - name: Build using Angular
-        run: npm run build -w web-app
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CI_REGISTRY_USER: ${{ secrets.DOCKER_USERNAME }}
-          CI_REGISTRY_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          CI_REGISTRY: docker.io
-          CI_REGISTRY_NAME: $CI_REGISTRY/gavtherav/schemetwister
-          CI_REGISTRY_IMAGE: Dockerfile.angular
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SCHEMETWISTER }}
         run: npx semantic-release
