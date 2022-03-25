@@ -5,23 +5,22 @@ name: Node.js Lint
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: ${{ github.event.pull_request.head.ref }}
-        fetch-depth: 0
-    - name: Setup Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: 14
-    - run: git fetch --no-tags --prune --depth=5 origin master
-    - run: npm ci
-    - run: npm run affected:build -- --base=origin/master
-    - run: npm run affected:lint -- --base=origin/master
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: npm ci
+      - run: npm run build-version
+      - run: npm run affected:build -- --base=origin/master
+      - run: npm run affected:lint -- --base=origin/master
