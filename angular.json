@@ -233,6 +233,31 @@
         }
       }
     },
+    "web-app-feature-store": {
+      "projectType": "library",
+      "root": "libs/web-app/feature-store",
+      "sourceRoot": "libs/web-app/feature-store/src",
+      "prefix": "schemetwister",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web-app/feature-store"],
+          "options": {
+            "jestConfig": "libs/web-app/feature-store/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web-app/feature-store/src/**/*.ts",
+              "libs/web-app/feature-store/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "web-app-ui": {
       "projectType": "library",
       "root": "libs/web-app/ui",
@@ -271,12 +296,15 @@
   },
   "schematics": {
     "@nrwl/angular:application": {
+      "linter": "eslint",
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress"
     },
     "@nrwl/angular:library": {
+      "linter": "eslint",
       "unitTestRunner": "jest"
-    }
+    },
+    "@nrwl/angular:component": {}
   },
   "defaultProject": "web-app"
 }
