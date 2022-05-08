@@ -1,4 +1,8 @@
+import { customRandom, urlAlphabet } from 'nanoid';
 import { hasPresentKey } from 'ts-is-present';
+import { v5 } from 'uuid';
+
+import { LibTwister } from '../libTwister';
 
 import { AbstractMastermind } from './AbstractMastermind';
 import { AbstractScheme } from './AbstractScheme';
@@ -24,7 +28,7 @@ export class GameSetup implements IGameSetup {
   villainDeck: IVillainDeck;
   additionalDeck?: IAdditionalDeck;
 
-  constructor(setup: IGameSetup) {
+  constructor(setup: IGameSetup, private seedUUID: string) {
     ({
       numPlayers: this.numPlayers,
       scheme: this.scheme,
@@ -51,10 +55,10 @@ export class GameSetup implements IGameSetup {
       },
     };
 
-    return new GameSetup(setup);
+    return new GameSetup(setup, LibTwister.defaultSeedUUID);
   }
 
-  public getSelectedHeroes(): IHero[] {
+  public get selectedHeroes(): IHero[] {
     const villainDeckHeroes = this.villainDeck.heroes || [];
     const additionalDeckHeroes = this.additionalDeck?.deck.heroes || [];
 
@@ -63,7 +67,7 @@ export class GameSetup implements IGameSetup {
       .concat(additionalDeckHeroes);
   }
 
-  public getSelectedHenchmen(): IHenchmen[] {
+  public get selectedHenchmen(): IHenchmen[] {
     const heroDeckHenchmen = this.heroDeck.henchmen || [];
     const additionalDeckHenchmen = this.additionalDeck?.deck.henchmen || [];
 
@@ -72,13 +76,13 @@ export class GameSetup implements IGameSetup {
       .concat(additionalDeckHenchmen);
   }
 
-  public getSelectedVillains(): IVillainGroup[] {
+  public get selectedVillains(): IVillainGroup[] {
     const additionalDeckVillains = this.additionalDeck?.deck.villains || [];
 
     return this.villainDeck.villains.concat(additionalDeckVillains);
   }
 
-  public getSelectedMasterminds(): AbstractMastermind[] {
+  public get selectedMasterminds(): AbstractMastermind[] {
     const additionalDeckMasterminds =
       this.additionalDeck?.deck.masterminds || [];
 
@@ -89,10 +93,10 @@ export class GameSetup implements IGameSetup {
     const keywordSet: Set<IKeyword> = new Set();
 
     const cards: ICard[] = [
-      ...this.getSelectedHenchmen(),
-      ...this.getSelectedHeroes(),
-      ...this.getSelectedMasterminds(),
-      ...this.getSelectedVillains(),
+      ...this.selectedHenchmen,
+      ...this.selectedHeroes,
+      ...this.selectedMasterminds,
+      ...this.selectedVillains,
     ];
 
     cards.filter(hasPresentKey('keywords')).forEach((card) => {
@@ -104,5 +108,14 @@ export class GameSetup implements IGameSetup {
     }
 
     return keywordSet;
+  }
+
+  public get tenId(): string {
+    const uuid = v5(this.toString(), this.seedUUID);
+    const shortId = short.default(short.constants);
+  }
+
+  public toString(): string {
+    return JSON.stringify(this);
   }
 }
