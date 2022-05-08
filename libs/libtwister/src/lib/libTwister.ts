@@ -17,6 +17,7 @@ import { GameSetMap } from './model/gameSetMap';
  * with all the of the associated cards
  */
 export class LibTwister {
+  public static defaultSeedUUID = 'cad42c6f-bdfd-4956-8b91-6d4c2829bb4c';
   /**
    * The factory to pick schemes
    */
@@ -143,7 +144,10 @@ export class LibTwister {
     this.selectedGameSetsIds = gameSets.map((gameSet) => gameSet.id);
   }
 
-  constructor(selectedGameSetIds: string[]) {
+  constructor(
+    selectedGameSetIds: string[],
+    private seedUUID = LibTwister.defaultSeedUUID
+  ) {
     this.selectedGameSetsIds = selectedGameSetIds;
   }
 
@@ -189,6 +193,6 @@ export class LibTwister {
       advancedSolo
     );
 
-    return new GameSetup(setup);
+    return new GameSetup(setup, this.seedUUID);
   }
 }
