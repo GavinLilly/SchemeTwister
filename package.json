@@ -1,6 +1,6 @@
 {
   "name": "schemetwister",
-  "version": "2.7.4",
+  "version": "2.7.5",
   "license": "GPL-3.0-or-later",
   "engines": {
     "node": ">=12.0"
