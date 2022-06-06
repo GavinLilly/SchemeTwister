@@ -5,7 +5,7 @@
       {
         "preset": "conventionalcommits",
         "releaseRules": [
-          {"type": "build", "scope": "deps", "release": "patch"}
+          { "type": "build", "scope": "deps", "release": "patch" }
         ]
       }
     ],
@@ -39,8 +39,7 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "npm run build-prod",
-        "publishCmd": "npm run deploy"
+        "prepareCmd": "npm run build-prod"
       }
     ]
   ]
