@@ -35,12 +35,6 @@
       {
         "assets": "dist/*.tgz"
       }
-    ],
-    [
-      "@semantic-release/exec",
-      {
-        "prepareCmd": "npm run build-prod"
-      }
     ]
   ]
 }
