@@ -51,6 +51,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
+    "@ngrx/effects": "^12.5.1",
+    "@ngrx/store": "^12.5.1",
     "@nrwl/angular": "12.10.1",
     "bootstrap": "^4.6.0",
     "genversion": "^3.0.0",
