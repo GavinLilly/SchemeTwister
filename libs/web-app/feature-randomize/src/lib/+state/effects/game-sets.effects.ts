@@ -2,10 +2,14 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { GameSetSize, LibTwister } from '@schemetwister/libtwister';
+import { CookieService } from 'ngx-cookie-service';
 import { map, withLatestFrom } from 'rxjs/operators';
 
 import {
   addGameSet,
+  migrateGameSetsCookie,
+  noGameSetCookie,
+  migrateGameSetsCookieSuccess,
   removeGameSet,
   setGameSets,
   setGameSetsFailure,
@@ -15,6 +19,8 @@ import { IGameSetsState } from '../reducers/game-sets.reducer';
 
 @Injectable()
 export class GameSetsEffects {
+  private static readonly _cookieName = 'SelectedGameSets';
+
   validateSetGameSets$ = createEffect(() =>
     this._actions$.pipe(
       ofType(setGameSets),
@@ -61,11 +67,45 @@ export class GameSetsEffects {
     )
   );
 
+  loadCookieGameSet$ = createEffect(() =>
+    this._actions$.pipe(
+      ofType(migrateGameSetsCookie),
+      map(() => {
+        if (this._cookieService.check(GameSetsEffects._cookieName)) {
+          console.log(
+            'Old Game Sets Cookie found. Migrating to local storage...'
+          );
+          const gameSetsString: string = this._cookieService.get(
+            GameSetsEffects._cookieName
+          );
+          const gameSetIds: string[] = gameSetsString.split('|');
+
+          console.log('Deleting old Game Sets Cookie...');
+
+          this._cookieService.deleteAll('/randomize');
+
+          console.log(
+            `Old Game Sets Cookie migration complete. Migrated ${gameSetIds.length} Game Sets`
+          );
+
+          return migrateGameSetsCookieSuccess({ gameSetIds: gameSetIds });
+        }
+
+        console.log(
+          "Old Game Sets Cookie not found. Assuming it's already migrated or this is a new user"
+        );
+
+        return noGameSetCookie();
+      })
+    )
+  );
+
   constructor(
     private _actions$: Actions,
     private _store: Store<{
       gameSets: IGameSetsState;
-    }>
+    }>,
+    private _cookieService: CookieService
   ) {}
 
   private _checkGameSets(gameSetIds: string[]): boolean {

@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { GameSetup, NumPlayers, numPlayers } from '@schemetwister/libtwister';
 import { Observable } from 'rxjs';
 
+import { migrateGameSetsCookie } from '../+state/actions/game-sets.actions';
 import { generateGameSetup } from '../+state/actions/game-setup.actions';
 import {
   setAdvancedSolo,
@@ -51,6 +52,8 @@ export class RandomizeComponent implements OnInit {
     );
 
     this.generateDecks();
+
+    this._store.dispatch(migrateGameSetsCookie());
   }
 
   generateDecks() {

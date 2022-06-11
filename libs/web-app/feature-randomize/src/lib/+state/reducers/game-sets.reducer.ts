@@ -3,6 +3,9 @@ import { LibTwister } from '@schemetwister/libtwister';
 
 import {
   addGameSet,
+  migrateGameSetsCookie,
+  noGameSetCookie,
+  migrateGameSetsCookieSuccess,
   removeGameSet,
   setGameSets,
   setGameSetsFailure,
@@ -39,6 +42,20 @@ export const _gameSetsReducer = createReducer(
   on(setGameSetsFailure, (state, { payload }) => ({
     ...state,
     error: payload.errorMessage,
+  })),
+  on(migrateGameSetsCookie, (state) => ({
+    ...state,
+    loading: true,
+    error: '',
+  })),
+  on(migrateGameSetsCookieSuccess, (state, { gameSetIds }) => ({
+    ...state,
+    gameSetIds: gameSetIds,
+    loading: false,
+  })),
+  on(noGameSetCookie, (state) => ({
+    ...state,
+    loading: false,
   }))
 );
 
