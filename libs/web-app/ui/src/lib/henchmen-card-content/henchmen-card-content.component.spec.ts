@@ -1,20 +1,29 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { GameSets } from '@schemetwister/libtwister';
 
-import { HeroCardContentComponent } from './henchmen-card-content.component';
+import { BadguyCardContentComponent } from '../badguy-card-content/badguy-card-content.component';
+import { BaseCardContentComponent } from '../base-card-content/base-card-content.component';
 
-describe('HeroCardContentComponent', () => {
-  let component: HeroCardContentComponent;
-  let fixture: ComponentFixture<HeroCardContentComponent>;
+import { HenchmenCardContentComponent } from './henchmen-card-content.component';
+
+describe('HenchmenCardContentComponent', () => {
+  let component: HenchmenCardContentComponent;
+  let fixture: ComponentFixture<HenchmenCardContentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HeroCardContentComponent],
+      declarations: [
+        HenchmenCardContentComponent,
+        BadguyCardContentComponent,
+        BaseCardContentComponent,
+      ],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeroCardContentComponent);
+    fixture = TestBed.createComponent(HenchmenCardContentComponent);
     component = fixture.componentInstance;
+    component.henchmen = GameSets.LEGENDARY.Henchmen.DOOMBOT_LEGION;
     fixture.detectChanges();
   });
 

@@ -3,7 +3,7 @@ import * as fromNumPlayers from './num-players.actions';
 describe('incrementNumPlayers', () => {
   it('should return an action', () => {
     expect(fromNumPlayers.incrementNumPlayers().type).toBe(
-      '[Randomize] Increment NumPlayers'
+      '[Randomize Page] Increment NumPlayers'
     );
   });
 });
@@ -11,7 +11,7 @@ describe('incrementNumPlayers', () => {
 describe('decrementNumPlayers', () => {
   it('should return an action', () => {
     expect(fromNumPlayers.decrementNumPlayers().type).toBe(
-      '[Randomize] Decrement NumPlayers'
+      '[Randomize Page] Decrement NumPlayers'
     );
   });
 });
@@ -19,7 +19,7 @@ describe('decrementNumPlayers', () => {
 describe('setNumPlayers', () => {
   it('should return an action', () => {
     expect(fromNumPlayers.setNumPlayers({ numPlayers: 2 }).type).toBe(
-      '[Randomize] Set NumPlayers'
+      '[Randomize Page] Set NumPlayers'
     );
   });
 });

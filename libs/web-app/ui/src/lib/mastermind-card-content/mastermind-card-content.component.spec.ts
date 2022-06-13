@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { GameSets } from '@schemetwister/libtwister';
 
+import { BadguyCardContentComponent } from '../badguy-card-content/badguy-card-content.component';
+import { BaseCardContentComponent } from '../base-card-content/base-card-content.component';
+
 import { MastermindCardContentComponent } from './mastermind-card-content.component';
 
 describe('MastermindCardContentComponent', () => {
@@ -10,7 +13,11 @@ describe('MastermindCardContentComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [MastermindCardContentComponent],
+        declarations: [
+          MastermindCardContentComponent,
+          BaseCardContentComponent,
+          BadguyCardContentComponent,
+        ],
       }).compileComponents();
     })
   );

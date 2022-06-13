@@ -1,16 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
+import { GameSetup } from '@schemetwister/libtwister';
 
 import { AdditionalDeckComponent } from './additional-deck.component';
 
 describe('AdditionalDeckComponent', () => {
   let component: AdditionalDeckComponent;
+  const initialState = { gameSetup: GameSetup.empty() };
   let fixture: ComponentFixture<AdditionalDeckComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdditionalDeckComponent ]
-    })
-    .compileComponents();
+      declarations: [AdditionalDeckComponent],
+      providers: [provideMockStore({ initialState })],
+    }).compileComponents();
   });
 
   beforeEach(() => {
