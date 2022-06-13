@@ -4,14 +4,14 @@ import {
   setNumPlayers,
 } from '../actions/num-players.actions';
 
-import { _numPlayersReducer, initialState } from './num-players.reducer';
+import { numPlayersReducer, initialState } from './num-players.reducer';
 
 describe('NumPlayers Reducer', () => {
   describe('an unknown action', () => {
     it('should return the previous state', () => {
       const action = {} as any;
 
-      const result = _numPlayersReducer(initialState, action);
+      const result = numPlayersReducer(initialState, action);
 
       expect(result).toBe(initialState);
     });
@@ -21,9 +21,9 @@ describe('NumPlayers Reducer', () => {
     it('should increment the number of players by 1', () => {
       const action = incrementNumPlayers;
 
-      const result = _numPlayersReducer(initialState, action);
+      const result = numPlayersReducer(initialState, action);
 
-      expect(result).toBe(initialState + 1);
+      expect(result.numPlayers).toBe(initialState.numPlayers + 1);
     });
   });
 
@@ -31,9 +31,9 @@ describe('NumPlayers Reducer', () => {
     it('should decrement the number of players by 1', () => {
       const action = decrementNumPlayers;
 
-      const result = _numPlayersReducer(initialState, action);
+      const result = numPlayersReducer(initialState, action);
 
-      expect(result).toBe(initialState - 1);
+      expect(result.numPlayers).toBe(initialState.numPlayers - 1);
     });
   });
 
@@ -41,9 +41,9 @@ describe('NumPlayers Reducer', () => {
     it('should set the number of players to 4', () => {
       const action = setNumPlayers;
 
-      const result = _numPlayersReducer(4, action);
+      const result = numPlayersReducer(initialState, action({ numPlayers: 4 }));
 
-      expect(result).toBe(initialState - 1);
+      expect(result.numPlayers).toBe(4);
     });
   });
 });

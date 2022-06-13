@@ -1,10 +1,8 @@
-import { CookieService } from 'ngx-cookie-service';
-
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { NgbActiveModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
-
-import { GameSetupStore } from '../game-setup-store';
+import { provideMockStore } from '@ngrx/store/testing';
+import { GameSetup } from '@schemetwister/libtwister';
 
 import { GameSetSelectComponent } from './game-set-select.component';
 
@@ -12,6 +10,7 @@ jest.genMockFromModule('ngx-cookie-service');
 
 describe('GameSetSelectComponent', () => {
   let component: GameSetSelectComponent;
+  const initialState = { gameSetup: GameSetup.empty() };
   let fixture: ComponentFixture<GameSetSelectComponent>;
 
   beforeEach(
@@ -19,7 +18,7 @@ describe('GameSetSelectComponent', () => {
       TestBed.configureTestingModule({
         declarations: [GameSetSelectComponent],
         imports: [NgbModalModule, FormsModule],
-        providers: [GameSetupStore, CookieService, NgbActiveModal],
+        providers: [NgbActiveModal, provideMockStore({ initialState })],
       }).compileComponents();
     })
   );

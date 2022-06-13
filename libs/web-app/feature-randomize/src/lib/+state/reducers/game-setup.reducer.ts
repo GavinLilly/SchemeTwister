@@ -15,7 +15,7 @@ export interface IGameSetupState {
   error: string;
 }
 
-const initialState: IGameSetupState = {
+export const initialState: IGameSetupState = {
   gameSetup: GameSetup.empty(),
   loading: false,
   error: '',

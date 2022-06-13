@@ -1,9 +1,12 @@
+import { GameSets } from '@schemetwister/libtwister';
+
 import * as fromSelectedGameSets from './game-sets.actions';
 
 describe('loadSelectedGameSetss', () => {
   it('should return an action', () => {
-    expect(fromSelectedGameSets.addGameSets().type).toBe(
-      '[SelectedGameSets] Load SelectedGameSetss'
-    );
+    const legendaryGSId = GameSets.LEGENDARY.default.id;
+    expect(
+      fromSelectedGameSets.addGameSet({ gameSetId: legendaryGSId }).type
+    ).toBe('[Randomize Page] Add Game Set');
   });
 });
