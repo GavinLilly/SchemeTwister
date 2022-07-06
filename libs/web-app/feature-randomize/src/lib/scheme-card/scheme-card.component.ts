@@ -6,6 +6,7 @@ import { AbstractScheme, CardType } from '@schemetwister/libtwister';
 import { Observable } from 'rxjs';
 
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
+import { selectGameSetupScheme } from '../+state/selectors/game-setup-scheme.selectors';
 import { SchemeMastermindSelectComponent } from '../scheme-mastermind-select/scheme-mastermind-select.component';
 
 @Component({
@@ -18,7 +19,7 @@ export class SchemeCardComponent {
   faLock = faLock;
   faCog = faCog;
   scheme$: Observable<AbstractScheme> = this._store.select(
-    (state) => state.gameSetup.gameSetup.scheme
+    selectGameSetupScheme
   );
 
   constructor(

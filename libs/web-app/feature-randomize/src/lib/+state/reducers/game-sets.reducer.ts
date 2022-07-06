@@ -34,11 +34,15 @@ export const _gameSetsReducer = createReducer(
     loading: true,
     error: '',
   })),
-  on(setGameSetsSuccess, (state, { gameSetIds }) => ({
-    ...state,
-    gameSetIds: gameSetIds,
-    loading: false,
-  })),
+  on(
+    setGameSetsSuccess,
+    migrateGameSetsCookieSuccess,
+    (state, { gameSetIds }) => ({
+      ...state,
+      gameSetIds: gameSetIds,
+      loading: false,
+    })
+  ),
   on(setGameSetsFailure, (state, { payload }) => ({
     ...state,
     error: payload.errorMessage,
@@ -47,11 +51,6 @@ export const _gameSetsReducer = createReducer(
     ...state,
     loading: true,
     error: '',
-  })),
-  on(migrateGameSetsCookieSuccess, (state, { gameSetIds }) => ({
-    ...state,
-    gameSetIds: gameSetIds,
-    loading: false,
   })),
   on(noGameSetCookie, (state) => ({
     ...state,

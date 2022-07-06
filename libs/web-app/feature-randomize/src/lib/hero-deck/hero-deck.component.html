@@ -1,7 +1,7 @@
-<div class="card">
+<div class="card" *ngIf="heroDeck$ | async as heroDeck">
   <div class="card-header">Hero deck</div>
   <div class="card-body p-0">
-    <div class="setup-cards card-body" *ngIf="isBystanders()">
+    <div class="setup-cards card-body" *ngIf="heroDeck.numBystanders">
       <p><b>Bystanders: </b>{{ heroDeck.numBystanders }}</p>
     </div>
 

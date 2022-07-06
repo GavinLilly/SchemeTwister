@@ -10,10 +10,10 @@
   </button>
 </div>
 <div class="modal-body">
-  <select class="form-control" [(ngModel)]="selectedItem">
+  <select class="form-control" #itemSelect [ngModel]="selectedItem" [ngModelOptions]="{ standalone: true }" (change)="setItem(itemSelect.value)">
     <option>**Random**</option>
-    <option *ngFor="let scheme of availableItems" [ngValue]="scheme.id">{{
-      scheme.name
+    <option *ngFor="let item of availableItems" value="{{ item.id }}">{{
+      item.name
     }}</option>
   </select>
 </div>
@@ -21,7 +21,7 @@
   <button
     type="button"
     class="btn btn-outline-dark"
-    (click)="setItem(); activeModal.close('Close click')"
+    (click)="activeModal.close('Close click')"
   >
     Save
   </button>

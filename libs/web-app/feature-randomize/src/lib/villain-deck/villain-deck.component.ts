@@ -1,5 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { IVillainDeck } from '@schemetwister/libtwister';
+import { Observable } from 'rxjs';
+
+import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
+import { selectVillainDeck } from '../+state/selectors/game-setup-scheme.selectors';
 
 @Component({
   selector: 'schemetwister-villain-deck',
@@ -7,17 +12,12 @@ import { IVillainDeck } from '@schemetwister/libtwister';
   styleUrls: ['./villain-deck.component.scss'],
 })
 export class VillainDeckComponent {
-  @Input() villainDeck!: IVillainDeck;
+  villainDeck$: Observable<IVillainDeck> =
+    this._store.select(selectVillainDeck);
 
-  public isBystanders(): boolean {
-    return this.villainDeck.numBystanders !== undefined;
-  }
-
-  public isSidekick(): boolean {
-    return this.villainDeck.numSidekicks !== undefined;
-  }
-
-  public isAmbitions(): boolean {
-    return this.villainDeck.numAmbitions !== undefined;
-  }
+  constructor(
+    private _store: Store<{
+      gameSetup: IGameSetupState;
+    }>
+  ) {}
 }

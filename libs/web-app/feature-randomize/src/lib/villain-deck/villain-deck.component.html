@@ -1,16 +1,16 @@
-<div class="card">
+<div class="card" *ngIf="villainDeck$ | async as villainDeck">
   <div class="card-header">Villain deck</div>
   <div class="card-body p-0">
     <div class="setup-cards card-body">
       <p><b>Master Strikes: </b>{{ villainDeck.numMasterStrikes }}</p>
       <p><b>Twists: </b>{{ villainDeck.numTwists }}</p>
-      <p *ngIf="isBystanders()">
+      <p *ngIf="villainDeck.numBystanders">
         <b>Bystanders: </b>{{ villainDeck.numBystanders }}
       </p>
-      <p *ngIf="isSidekick()">
+      <p *ngIf="villainDeck.numSidekicks">
         <b>Sidekicks: </b>{{ villainDeck.numSidekicks }}
       </p>
-      <p *ngIf="isAmbitions()">
+      <p *ngIf="villainDeck.numAmbitions">
         <b>Ambitions: </b>{{ villainDeck.numAmbitions }}
       </p>
     </div>
