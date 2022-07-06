@@ -87,26 +87,28 @@
     </div>
   </div>
   <div
-    *ngIf="{
-      keywords: gameSetup.keywords,
-      additionalDeck: gameSetup.additionalDeck
-    } as additionalKeywords"
+    *ngIf="
+      (gameSetup.keywords && gameSetup.keywords.size !== 0) ||
+      gameSetup.additionalDeck
+    "
     class="row"
     id="bottom-row"
   >
     <!--Additional deck-->
     <div
-      [ngClass]="additionalKeywords.keywords ? 'col-12 col-lg-4' : 'col-12'"
-      *ngIf="additionalKeywords.additionalDeck as additionalDeck"
+      [ngClass]="
+        gameSetup.keywords && gameSetup.keywords.size !== 0
+          ? 'col-12 col-lg-4'
+          : 'col-12'
+      "
+      *ngIf="gameSetup.additionalDeck"
     >
       <schemetwister-additional-deck></schemetwister-additional-deck>
     </div>
     <!--Keywords-->
     <div
-      [ngClass]="
-        additionalKeywords.additionalDeck ? 'col-12 col-lg-8' : 'col-12'
-      "
-      *ngIf="additionalKeywords.keywords as keywords"
+      [ngClass]="gameSetup.additionalDeck ? 'col-12 col-lg-8' : 'col-12'"
+      *ngIf="gameSetup.keywords as keywords"
     >
       <div class="card" id="keywords">
         <div class="card-header">Keywords in play</div>
