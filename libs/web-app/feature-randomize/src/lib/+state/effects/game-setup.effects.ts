@@ -10,6 +10,10 @@ import {
   generateGameSetup,
   generateGameSetupFailure,
   generateGameSetupSuccess,
+  resetDefinedMastermind,
+  resetDefinedScheme,
+  setDefinedMastermind,
+  setDefinedScheme,
 } from '../actions/game-setup.actions';
 import {
   decrementNumPlayers,
@@ -17,7 +21,14 @@ import {
   setNumPlayers,
 } from '../actions/num-players.actions';
 import { IGameSetsState } from '../reducers/game-sets.reducer';
+import { IGameSetupState } from '../reducers/game-setup.reducer';
 import { INumPlayersState } from '../reducers/num-players.reducer';
+import { selectGameSetIds } from '../selectors/game-sets.selectors';
+import {
+  selectDefinedMastermind,
+  selectDefinedScheme,
+} from '../selectors/game-setup-scheme.selectors';
+import { selectNumPlayers } from '../selectors/num-players.selectors';
 
 @Injectable()
 export class GameSetupEffects {
@@ -28,16 +39,34 @@ export class GameSetupEffects {
         setNumPlayers,
         incrementNumPlayers,
         decrementNumPlayers,
-        setGameSetsSuccess
+        setGameSetsSuccess,
+        setDefinedScheme,
+        setDefinedMastermind,
+        resetDefinedScheme,
+        resetDefinedMastermind
       ),
       concatLatestFrom(() => [
-        this._store.select((state) => state.gameSets.gameSetIds),
-        this._store.select((state) => state.numPlayers.numPlayers),
+        this._store.select(selectGameSetIds),
+        this._store.select(selectNumPlayers),
+        this._store.select(selectDefinedScheme),
+        this._store.select(selectDefinedMastermind),
       ]),
-      switchMap(async ([, gameSets, numPlayers]) => {
-        const twister = new LibTwister(gameSets);
-        return await twister.getSetup(numPlayers);
-      }),
+      switchMap(
+        async ([
+          ,
+          gameSetIds,
+          numPlayers,
+          definedScheme,
+          definedMastermind,
+        ]) => {
+          const twister = LibTwister.withGameSets(gameSetIds);
+          return await twister.getSetup(
+            numPlayers,
+            definedScheme,
+            definedMastermind
+          );
+        }
+      ),
       map((setup) => generateGameSetupSuccess({ gameSetup: setup })),
       catchError((error) => {
         console.log(error);
@@ -52,6 +81,7 @@ export class GameSetupEffects {
     private _store: Store<{
       gameSets: IGameSetsState;
       numPlayers: INumPlayersState;
+      gameSetup: IGameSetupState;
     }>
   ) {}
 }

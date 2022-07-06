@@ -1,15 +1,25 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { IHeroDeck } from '@schemetwister/libtwister';
+import { Observable } from 'rxjs';
 
+import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
+import { selectHeroDeck } from '../+state/selectors/game-setup-scheme.selectors';
+
+/**
+ * @todo check if bystanders are brought in
+ */
 @Component({
   selector: 'schemetwister-hero-deck',
   templateUrl: './hero-deck.component.html',
   styleUrls: ['./hero-deck.component.scss'],
 })
 export class HeroDeckComponent {
-  @Input() heroDeck!: IHeroDeck;
+  heroDeck$: Observable<IHeroDeck> = this._store.select(selectHeroDeck);
 
-  public isBystanders(): boolean {
-    return this.heroDeck.numBystanders !== undefined;
-  }
+  constructor(
+    private _store: Store<{
+      gameSetup: IGameSetupState;
+    }>
+  ) {}
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { GameSetSize, LibTwister } from '@schemetwister/libtwister';
+import { LibTwister } from '@schemetwister/libtwister';
 import { CookieService } from 'ngx-cookie-service';
 import { map, withLatestFrom } from 'rxjs/operators';
 
@@ -25,7 +25,7 @@ export class GameSetsEffects {
     this._actions$.pipe(
       ofType(setGameSets),
       map((action) =>
-        this._checkGameSets(action.gameSetIds)
+        LibTwister.validateGameSetIds(action.gameSetIds)
           ? setGameSetsSuccess({ gameSetIds: action.gameSetIds })
           : setGameSetsFailure()
       )
@@ -36,12 +36,10 @@ export class GameSetsEffects {
     this._actions$.pipe(
       ofType(addGameSet),
       withLatestFrom(this._store.select((state) => state.gameSets.gameSetIds)),
-      map(([action, gameSets]) => {
-        console.log(gameSets.length);
-        const newGameSetIds = gameSets.concat(action.gameSetId);
-        console.log(newGameSetIds.length);
+      map(([action, gameSetIds]) => {
+        const newGameSetIds: string[] = gameSetIds.concat(action.gameSetId);
 
-        return this._checkGameSets(newGameSetIds)
+        return LibTwister.validateGameSetIds(newGameSetIds)
           ? setGameSetsSuccess({ gameSetIds: newGameSetIds })
           : setGameSetsFailure();
       })
@@ -60,7 +58,7 @@ export class GameSetsEffects {
 
         const newGameSetIds = [...firstSection, ...secondSection];
 
-        return this._checkGameSets(newGameSetIds)
+        return LibTwister.validateGameSetIds(newGameSetIds)
           ? setGameSetsSuccess({ gameSetIds: newGameSetIds })
           : setGameSetsFailure();
       })
@@ -107,12 +105,4 @@ export class GameSetsEffects {
     }>,
     private _cookieService: CookieService
   ) {}
-
-  private _checkGameSets(gameSetIds: string[]): boolean {
-    const gameSets = LibTwister.gameSetIdsToGameSets(gameSetIds);
-
-    return gameSets.some((gameSet) =>
-      [GameSetSize.CORE, GameSetSize.LARGE].includes(gameSet.size)
-    );
-  }
 }

@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 
 import { setGameSets } from '../+state/actions/game-sets.actions';
 import { IGameSetsState } from '../+state/reducers/game-sets.reducer';
+import { selectGameSets } from '../+state/selectors/game-sets.selectors';
 
 @Component({
   selector: 'schemetwister-game-set-select',
@@ -13,11 +14,7 @@ import { IGameSetsState } from '../+state/reducers/game-sets.reducer';
   styleUrls: ['./game-set-select.component.scss'],
 })
 export class GameSetSelectComponent {
-  selectedGameSets$: Observable<GameSet[]> = this._store.select((state) =>
-    LibTwister.allGameSets
-      .asArray()
-      .filter((gameSet) => state.gameSets.gameSetIds.includes(gameSet.id))
-  );
+  selectedGameSets$: Observable<GameSet[]> = this._store.select(selectGameSets);
 
   gameSelectError$: Observable<string> = this._store.select(
     (state) => state.gameSets.error

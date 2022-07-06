@@ -37,6 +37,27 @@ export class GameSet implements IGameSetMeta {
     } = gameSetProps);
   }
 
+  /**
+   * A sorter for GameSet objects
+   * @param a the first GameSet
+   * @param b the second GameSet
+   * @returns -1 if param a comes first. 1 if param b. 0 if they're equal
+   */
+  public static sorter(a: GameSet, b: GameSet): number {
+    if (a.size > b.size) {
+      return -1;
+    } else if (a.size < b.size) {
+      return 1;
+    } else {
+      const nameA = a.name.toUpperCase();
+      const nameB = b.name.toUpperCase();
+
+      if (nameA < nameB) return -1;
+      else if (nameA > nameB) return 1;
+      else return 0;
+    }
+  }
+
   public get(cardType: CardType): ICard[] | undefined {
     switch (cardType) {
       case CardType.BYSTANDER:

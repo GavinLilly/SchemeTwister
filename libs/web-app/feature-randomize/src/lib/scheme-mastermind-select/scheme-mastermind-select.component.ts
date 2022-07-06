@@ -11,7 +11,19 @@ import {
 } from '@schemetwister/libtwister';
 import { Observable } from 'rxjs';
 
+import {
+  resetDefinedMastermind,
+  resetDefinedScheme,
+  setDefinedMastermind,
+  setDefinedScheme,
+} from '../+state/actions/game-setup.actions';
+import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
 import { INumPlayersState } from '../+state/reducers/num-players.reducer';
+import { selectLibTwister } from '../+state/selectors/game-sets.selectors';
+import {
+  selectDefinedMastermind,
+  selectDefinedScheme,
+} from '../+state/selectors/game-setup-scheme.selectors';
 
 @Component({
   selector: 'schemetwister-scheme-select',
@@ -20,33 +32,24 @@ import { INumPlayersState } from '../+state/reducers/num-players.reducer';
 })
 export class SchemeMastermindSelectComponent implements OnInit {
   @Input() itemType!: CardType;
-  @Input() libTwister!: LibTwister;
   availableItems!: (AbstractScheme | AbstractMastermind)[];
   selectedItem = '**Random**';
   numPlayers$: Observable<NumPlayers> = this._store.select(
     (state) => state.numPlayers.numPlayers
   );
+  libTwister$: Observable<LibTwister> = this._store.select(selectLibTwister);
+  definedScheme$ = this._store.select(selectDefinedScheme);
+  definedMastermind$ = this._store.select(selectDefinedMastermind);
 
   constructor(
     public activeModal: NgbActiveModal,
     private _store: Store<{
       numPlayers: INumPlayersState;
+      setupState: IGameSetupState;
     }>
   ) {}
 
   ngOnInit(): void {
-    if (this.itemType === CardType.SCHEME) {
-      this.availableItems = this.libTwister.schemeFactory.availableCards;
-    } else if (this.itemType === CardType.MASTERMIND) {
-      this.availableItems = this.libTwister.mastermindStore.availableCards;
-    }
-
-    this.availableItems.sort((a, b) => {
-      if (a.name < b.name) return -1;
-      if (a.name > b.name) return 1;
-      return 0;
-    });
-
     this.numPlayers$.subscribe((value: number) => {
       if (this.itemType === CardType.SCHEME) {
         if (Number(value) === 1) {
@@ -56,19 +59,56 @@ export class SchemeMastermindSelectComponent implements OnInit {
         }
       }
     });
+
+    this.libTwister$.subscribe((value: LibTwister) => {
+      if (this.itemType === CardType.SCHEME) {
+        this.availableItems = value.schemeFactory.availableCards;
+      } else if (this.itemType === CardType.MASTERMIND) {
+        this.availableItems = value.mastermindStore.availableCards;
+      }
+
+      this.availableItems.sort((a, b) => {
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
+        return 0;
+      });
+    });
+
+    if (this.itemType === CardType.SCHEME) {
+      this._subscribeToDefined(this.definedScheme$);
+    } else if (this.itemType === CardType.MASTERMIND) {
+      this._subscribeToDefined(this.definedMastermind$);
+    }
   }
 
-  setItem() {
-    // if (this.selectedItem !== '**Random**')
-    //   this.gameSetupStore.setDefinedItem(
-    //     {
-    //       random: false,
-    //       definedItem: this.availableItems.find(
-    //         (value) => value.id === this.selectedItem
-    //       ),
-    //     },
-    //     this.itemType
-    //   );
-    // else this.gameSetupStore.setDefinedItem({ random: true }, this.itemType);
+  setItem(value: string) {
+    const item = this.availableItems.find((card) => card.id === value);
+    if (this.itemType === CardType.SCHEME) {
+      if (item !== undefined) {
+        this._store.dispatch(
+          setDefinedScheme({ scheme: item as AbstractScheme })
+        );
+      } else {
+        this._store.dispatch(resetDefinedScheme());
+      }
+    } else if (this.itemType === CardType.MASTERMIND) {
+      if (item !== undefined) {
+        this._store.dispatch(
+          setDefinedMastermind({ mastermind: item as AbstractMastermind })
+        );
+      } else {
+        this._store.dispatch(resetDefinedMastermind());
+      }
+    }
+  }
+
+  private _subscribeToDefined(
+    observable: Observable<AbstractScheme | AbstractMastermind | undefined>
+  ) {
+    observable.subscribe((value) => {
+      if (value !== undefined) {
+        this.selectedItem = value.id;
+      }
+    });
   }
 }

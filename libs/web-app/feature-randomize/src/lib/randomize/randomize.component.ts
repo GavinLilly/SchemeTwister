@@ -6,7 +6,11 @@ import { GameSetup, NumPlayers, numPlayers } from '@schemetwister/libtwister';
 import { Observable } from 'rxjs';
 
 import { migrateGameSetsCookie } from '../+state/actions/game-sets.actions';
-import { generateGameSetup } from '../+state/actions/game-setup.actions';
+import {
+  generateGameSetup,
+  resetDefinedMastermind,
+  resetDefinedScheme,
+} from '../+state/actions/game-setup.actions';
 import {
   setAdvancedSolo,
   setNumPlayers,
@@ -78,6 +82,8 @@ export class RandomizeComponent implements OnInit {
   }
 
   reset() {
+    this._store.dispatch(resetDefinedScheme());
+    this._store.dispatch(resetDefinedMastermind());
     // this.gameSetupStore.setDefinedItem({ random: true }, CardType.SCHEME);
     // this.gameSetupStore.setDefinedItem({ random: true }, CardType.MASTERMIND);
   }
