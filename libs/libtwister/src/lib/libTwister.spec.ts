@@ -70,7 +70,7 @@ describe('LibTwister', () => {
   });
 
   describe('with 1 game set', () => {
-    const twister: LibTwister = new LibTwister([LEGENDARY.id]);
+    const twister: LibTwister = new LibTwister([LEGENDARY]);
 
     it('should create', () => expect(twister).toBeTruthy());
 
@@ -83,8 +83,8 @@ describe('LibTwister', () => {
     });
 
     it('should only contain the Legendary game set ID', () => {
-      expect(twister.selectedGameSetsIds).toContain(LEGENDARY.id);
-      expect(twister.selectedGameSetsIds).toHaveLength(1);
+      expect(twister.selectedGameSets).toContain(LEGENDARY);
+      expect(twister.selectedGameSets).toHaveLength(1);
     });
 
     it.each([
@@ -129,7 +129,7 @@ describe('LibTwister', () => {
   });
 
   describe('with 2 game sets', () => {
-    const twister: LibTwister = new LibTwister([LEGENDARY.id, DARK_CITY.id]);
+    const twister: LibTwister = new LibTwister([LEGENDARY, DARK_CITY]);
 
     it('should create', () => expect(twister).toBeTruthy());
 
@@ -147,9 +147,9 @@ describe('LibTwister', () => {
     });
 
     it('should only contain the Legendary and Dark City game set IDs', () => {
-      expect(twister.selectedGameSetsIds).toContain(LEGENDARY.id);
-      expect(twister.selectedGameSetsIds).toContain(DARK_CITY.id);
-      expect(twister.selectedGameSetsIds).toHaveLength(2);
+      expect(twister.selectedGameSets).toContain(LEGENDARY);
+      expect(twister.selectedGameSets).toContain(DARK_CITY);
+      expect(twister.selectedGameSets).toHaveLength(2);
     });
 
     it.each([
