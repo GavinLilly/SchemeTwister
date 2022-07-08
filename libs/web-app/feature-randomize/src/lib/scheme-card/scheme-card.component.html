@@ -9,7 +9,7 @@
               {{ scheme.name }}
             </button>
             <fa-icon
-              *ngIf="schemeLocked"
+              *ngIf="schemeLocked$ | async"
               [icon]="faLock"
               class="ml-auto lock-item"
             ></fa-icon>

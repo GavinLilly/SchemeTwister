@@ -6,7 +6,10 @@ import { AbstractMastermind, CardType } from '@schemetwister/libtwister';
 import { Observable } from 'rxjs';
 
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
-import { selectMastermind } from '../+state/selectors/game-setup-scheme.selectors';
+import {
+  selectIsDefinedMastermind,
+  selectMastermind,
+} from '../+state/selectors/game-setup-scheme.selectors';
 import { SchemeMastermindSelectComponent } from '../scheme-mastermind-select/scheme-mastermind-select.component';
 
 @Component({
@@ -17,8 +20,10 @@ import { SchemeMastermindSelectComponent } from '../scheme-mastermind-select/sch
 export class MastermindCardComponent {
   mastermind$: Observable<AbstractMastermind> =
     this._store.select(selectMastermind);
+  mastermindLocked$: Observable<boolean> = this._store.select(
+    selectIsDefinedMastermind
+  );
 
-  mastermindLocked = false;
   faLock = faLock;
   faCog = faCog;
 

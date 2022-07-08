@@ -9,7 +9,7 @@
               {{ mastermind.name }}
             </button>
             <fa-icon
-              *ngIf="mastermindLocked"
+              *ngIf="mastermindLocked$ | async"
               [icon]="faLock"
               class="ml-auto lock-item"
             ></fa-icon>

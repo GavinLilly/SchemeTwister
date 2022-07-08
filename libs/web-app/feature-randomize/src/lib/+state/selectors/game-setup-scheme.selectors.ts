@@ -39,7 +39,17 @@ export const selectDefinedScheme = createSelector(
   (state: IGameSetupState) => state.definedScheme
 );
 
+export const selectIsDefinedScheme = createSelector(
+  selectGameSetupFeature,
+  (state: IGameSetupState) => state.definedScheme !== undefined
+);
+
 export const selectDefinedMastermind = createSelector(
   selectGameSetupFeature,
   (state: IGameSetupState) => state.definedMastermind
+);
+
+export const selectIsDefinedMastermind = createSelector(
+  selectGameSetupFeature,
+  (state: IGameSetupState) => state.definedMastermind !== undefined
 );
