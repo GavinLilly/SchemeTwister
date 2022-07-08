@@ -17,6 +17,7 @@ import {
 } from '../+state/actions/num-players.actions';
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
 import { INumPlayersState } from '../+state/reducers/num-players.reducer';
+import { selectNumPlayers } from '../+state/selectors/num-players.selectors';
 import { GameSetSelectComponent } from '../game-set-select/game-set-select.component';
 
 @Component({
@@ -25,9 +26,7 @@ import { GameSetSelectComponent } from '../game-set-select/game-set-select.compo
   styleUrls: ['./randomize.component.scss'],
 })
 export class RandomizeComponent implements OnInit {
-  numPlayers$: Observable<NumPlayers> = this._store.select(
-    (state) => state.numPlayers.numPlayers
-  );
+  numPlayers$: Observable<NumPlayers> = this._store.select(selectNumPlayers);
 
   isAdvancedSolo$: Observable<boolean> = this._store.select(
     (state) => state.numPlayers.isAdvancedSolo

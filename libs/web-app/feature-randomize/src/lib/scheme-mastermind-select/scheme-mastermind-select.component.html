@@ -6,23 +6,29 @@
     aria-label="Close"
     (click)="activeModal.dismiss('Cross click')"
   >
-    <span aria-hidden="true" style="font-family: Arial;">&times;</span>
+    <span aria-hidden="true" style="font-family: Arial">&times;</span>
   </button>
 </div>
 <div class="modal-body">
-  <select class="form-control" #itemSelect [ngModel]="selectedItem" [ngModelOptions]="{ standalone: true }" (change)="setItem(itemSelect.value)">
+  <select
+    class="form-control"
+    #itemSelect
+    [ngModel]="selectedItem"
+    [ngModelOptions]="{ standalone: true }"
+    (change)="setItem(itemSelect.value)"
+  >
     <option>**Random**</option>
-    <option *ngFor="let item of availableItems" value="{{ item.id }}">{{
-      item.name
-    }}</option>
+    <option *ngFor="let item of availableItems" value="{{ item.id }}">
+      {{ item.name }}
+    </option>
   </select>
 </div>
 <div class="modal-footer">
   <button
     type="button"
-    class="btn btn-outline-dark"
+    class="btn btn-primary"
     (click)="activeModal.close('Close click')"
   >
-    Save
+    Close
   </button>
 </div>

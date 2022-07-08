@@ -6,7 +6,10 @@ import { AbstractScheme, CardType } from '@schemetwister/libtwister';
 import { Observable } from 'rxjs';
 
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
-import { selectGameSetupScheme } from '../+state/selectors/game-setup-scheme.selectors';
+import {
+  selectGameSetupScheme,
+  selectIsDefinedScheme,
+} from '../+state/selectors/game-setup-scheme.selectors';
 import { SchemeMastermindSelectComponent } from '../scheme-mastermind-select/scheme-mastermind-select.component';
 
 @Component({
@@ -15,7 +18,9 @@ import { SchemeMastermindSelectComponent } from '../scheme-mastermind-select/sch
   styleUrls: ['./scheme-card.component.scss'],
 })
 export class SchemeCardComponent {
-  schemeLocked = false;
+  schemeLocked$: Observable<boolean> = this._store.select(
+    selectIsDefinedScheme
+  );
   faLock = faLock;
   faCog = faCog;
   scheme$: Observable<AbstractScheme> = this._store.select(
