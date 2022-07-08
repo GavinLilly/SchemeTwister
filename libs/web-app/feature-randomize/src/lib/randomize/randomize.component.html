@@ -108,14 +108,14 @@
     <!--Keywords-->
     <div
       [ngClass]="gameSetup.additionalDeck ? 'col-12 col-lg-8' : 'col-12'"
-      *ngIf="gameSetup.keywords as keywords"
+      *ngIf="gameSetup.keywords"
     >
       <div class="card" id="keywords">
         <div class="card-header">Keywords in play</div>
         <div class="card-body p-0">
           <ngb-accordion #acc="ngbAccordion">
             <ngb-panel
-              *ngFor="let word of keywords"
+              *ngFor="let word of gameSetup.keywords"
               id="panel-keyword-{{ word.id }}"
               title="{{ word.name }}"
             >
