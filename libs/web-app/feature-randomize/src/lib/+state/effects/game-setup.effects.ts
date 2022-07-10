@@ -18,6 +18,7 @@ import {
 import {
   decrementNumPlayers,
   incrementNumPlayers,
+  setAdvancedSolo,
   setNumPlayers,
 } from '../actions/num-players.actions';
 import { IGameSetsState } from '../reducers/game-sets.reducer';
@@ -28,7 +29,10 @@ import {
   selectDefinedMastermind,
   selectDefinedScheme,
 } from '../selectors/game-setup-scheme.selectors';
-import { selectNumPlayers } from '../selectors/num-players.selectors';
+import {
+  selectNumPlayers,
+  selectIsAdvancedSolo,
+} from '../selectors/num-players.selectors';
 
 @Injectable()
 export class GameSetupEffects {
@@ -43,13 +47,15 @@ export class GameSetupEffects {
         setDefinedScheme,
         setDefinedMastermind,
         resetDefinedScheme,
-        resetDefinedMastermind
+        resetDefinedMastermind,
+        setAdvancedSolo
       ),
       concatLatestFrom(() => [
         this._store.select(selectGameSetIds),
         this._store.select(selectNumPlayers),
         this._store.select(selectDefinedScheme),
         this._store.select(selectDefinedMastermind),
+        this._store.select(selectIsAdvancedSolo),
       ]),
       switchMap(
         async ([
@@ -58,12 +64,14 @@ export class GameSetupEffects {
           numPlayers,
           definedScheme,
           definedMastermind,
+          isAdvancedSolo,
         ]) => {
           const twister = LibTwister.withGameSets(gameSetIds);
           return await twister.getSetup(
             numPlayers,
             definedScheme,
-            definedMastermind
+            definedMastermind,
+            isAdvancedSolo
           );
         }
       ),
