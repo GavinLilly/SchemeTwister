@@ -31,7 +31,7 @@ export const MAXIMUS_THE_MAD = new MaximusTheMad(
 export const EPIC_MAXIMUS_THE_MAD = new MaximusTheMad(
   'ae9b5953-23ca-4066-8ab4-d76291644ae7',
   9,
-  false
+  true
 );
 
 class Vulcan extends AbstractRealmOfKingsMastermind {
@@ -56,5 +56,5 @@ export const EMPEROR_VULCAN_OF_THE_SHIAR = new Vulcan(
 export const EPIC_EMPEROR_VULCAN_OF_THE_SHIAR = new Vulcan(
   'e3289899-5eb0-45fa-8321-3e24e1dd1fd3',
   12,
-  false
+  true
 );
