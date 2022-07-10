@@ -12,3 +12,8 @@ export const selectNumPlayers = createSelector(
   selectNumPlayersFeature,
   (state: INumPlayersState) => state.numPlayers
 );
+
+export const selectIsAdvancedSolo = createSelector(
+  selectNumPlayersFeature,
+  (state: INumPlayersState) => state.isAdvancedSolo
+);
