@@ -58,5 +58,6 @@ export const PAGLIACCI = new BasePagliacci(
 
 export const EPIC_PAGLIACCI = new BasePagliacci(
   '10fdfc96-fd5d-402f-945e-f800d83fd7ea',
-  11
+  11,
+  true
 );
