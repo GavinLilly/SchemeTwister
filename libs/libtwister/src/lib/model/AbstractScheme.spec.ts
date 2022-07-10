@@ -245,5 +245,38 @@ describe('Abstract scheme', () => {
         expect.arrayContaining(villains)
       );
     });
+
+    describe('single player mode', () => {
+      it('should have 1 Master Strike', async () => {
+        const soloScheme = new TestAbstractScheme(schemeDesc, 6);
+
+        const setup = await soloScheme.getSetup(
+          1,
+          mastermindStore.getOneRandom(),
+          heroStore,
+          villainStore,
+          henchmenStore,
+          mastermindStore
+        );
+
+        expect(setup.villainDeck.numMasterStrikes).toBe(1);
+      });
+
+      it('advanced solo should have 5 Master Strike', async () => {
+        const soloScheme = new TestAbstractScheme(schemeDesc, 6);
+
+        const setup = await soloScheme.getSetup(
+          1,
+          mastermindStore.getOneRandom(),
+          heroStore,
+          villainStore,
+          henchmenStore,
+          mastermindStore,
+          true
+        );
+
+        expect(setup.villainDeck.numMasterStrikes).toBe(5);
+      });
+    });
   });
 });

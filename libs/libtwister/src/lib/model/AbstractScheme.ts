@@ -248,10 +248,8 @@ export abstract class AbstractScheme implements ICard {
       villainDeck: {
         villains: [],
         henchmen: [],
-        numTwists: playerRules.villainDeck.numTwists,
-        numMasterStrikes: advancedSolo
-          ? 5
-          : playerRules.villainDeck.numMasterStrikes,
+        numTwists: villainRules.numTwists,
+        numMasterStrikes: advancedSolo ? 5 : villainRules.numMasterStrikes,
         ...partialVillainDeck,
       },
       numShieldOfficers: playerRules.numShieldOfficers,
@@ -422,7 +420,6 @@ export abstract class AbstractScheme implements ICard {
     // Finally add remaining deck elements
     fullDeck.villainDeck.numAmbitions = villainRules.numAmbitions;
     fullDeck.villainDeck.numBystanders = villainRules.numBystanders;
-    fullDeck.villainDeck.numMasterStrikes = villainRules.numMasterStrikes;
     fullDeck.villainDeck.numSidekicks = villainRules.numSidekicks;
     fullDeck.villainDeck.numTwists = villainRules.numTwists;
     //#endregion Build villain deck
