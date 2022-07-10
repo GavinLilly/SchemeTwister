@@ -1,27 +1,18 @@
 <div class="card">
-  <div class="card-header">Scheme</div>
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Scheme
+    <fa-icon
+      *ngIf="schemeLocked$ | async"
+      [icon]="faLock"
+      class="ml-auto lock-item"
+    ></fa-icon>
+    <a (click)="pickScheme()" href="javascript:void(0)" class="text-black">
+      <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
+    </a>
+  </div>
   <div class="card-body p-0" *ngIf="scheme$ | async as scheme">
     <ngb-accordion>
-      <ngb-panel>
-        <ng-template ngbPanelHeader>
-          <div class="d-flex align-items-center justify-content-between">
-            <button ngbPanelToggle class="btn btn-link m-0">
-              {{ scheme.name }}
-            </button>
-            <fa-icon
-              *ngIf="schemeLocked$ | async"
-              [icon]="faLock"
-              class="ml-auto lock-item"
-            ></fa-icon>
-            <a
-              (click)="pickScheme()"
-              href="javascript:void(0)"
-              class="text-black"
-            >
-              <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
-            </a>
-          </div>
-        </ng-template>
+      <ngb-panel title="{{ scheme.name }}">
         <ng-template ngbPanelContent>
           <p class="card-text"><b>Setup: </b>{{ scheme.setup }}</p>
           <p class="card-text"><b>Twist: </b>{{ scheme.twist }}</p>
