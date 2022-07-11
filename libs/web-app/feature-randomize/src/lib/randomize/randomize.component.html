@@ -88,7 +88,7 @@
   </div>
   <div
     *ngIf="
-      (gameSetup.keywords && gameSetup.keywords.size !== 0) ||
+      (gameSetup.keywords && gameSetup.keywords.size > 0) ||
       gameSetup.additionalDeck
     "
     class="row"
@@ -97,7 +97,7 @@
     <!--Additional deck-->
     <div
       [ngClass]="
-        gameSetup.keywords && gameSetup.keywords.size !== 0
+        gameSetup.keywords && gameSetup.keywords.size > 0
           ? 'col-12 col-lg-4'
           : 'col-12'
       "
@@ -108,7 +108,7 @@
     <!--Keywords-->
     <div
       [ngClass]="gameSetup.additionalDeck ? 'col-12 col-lg-8' : 'col-12'"
-      *ngIf="gameSetup.keywords && gameSetup.keywords.size !== 0"
+      *ngIf="gameSetup.keywords && gameSetup.keywords.size > 0"
     >
       <div class="card" id="keywords">
         <div class="card-header">Keywords in play</div>
