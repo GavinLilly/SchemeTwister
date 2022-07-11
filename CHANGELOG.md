@@ -1,3 +1,43 @@
+# [3.0.0](https://github.com/GavinLilly/SchemeTwister/compare/v2.7.5...v3.0.0) (2022-07-11)
+
+
+### Bug Fixes
+
+* **app:** add the lock icon back for chosen cards ([1cd5149](https://github.com/GavinLilly/SchemeTwister/commit/1cd5149c27df6392a61724578f24c532dcac550d))
+* **app:** allow defined scheme/mastermind ([8d435ea](https://github.com/GavinLilly/SchemeTwister/commit/8d435eaa1f2a7a371e285d14e6eb725b7e16a328))
+* **app:** ensure that advanced solo mode generates a setup ([cc6812d](https://github.com/GavinLilly/SchemeTwister/commit/cc6812da898ec0471f97eabf5c6d7cef4e92a569))
+* **app:** fix count of cards on home page ([2d75c1b](https://github.com/GavinLilly/SchemeTwister/commit/2d75c1b801f78ce632b29977885ae196cc2fb8af))
+* **app:** fix hiding of keywords when additional deck shown ([235ee3b](https://github.com/GavinLilly/SchemeTwister/commit/235ee3b2d57a8cf933c94ddefacf352a26003243))
+* **app:** fix keywords showing when empty ([045442c](https://github.com/GavinLilly/SchemeTwister/commit/045442c0b922f55c4c47e528f75bcc19caaabd30))
+* **app:** fix sorting of game set names ([fd5d89e](https://github.com/GavinLilly/SchemeTwister/commit/fd5d89ee321082abcdbc00f2251e0f544eb9b315))
+* **app:** hide keywords section if no keywords defined ([5c4338c](https://github.com/GavinLilly/SchemeTwister/commit/5c4338c7ae3ed8ef451d678f5d9daee83affe369))
+* **app:** only show valid keywords inside card ([c47c695](https://github.com/GavinLilly/SchemeTwister/commit/c47c695b7afabaf32de3499f04a820be3a9193c9))
+* **libtwister:** don't override the number of master strikes ([8cf3d26](https://github.com/GavinLilly/SchemeTwister/commit/8cf3d26b9866977375fd12653fc7fc5bb566e954))
+* **libtwister:** fix some masterminds not set as epic ([92e5e8b](https://github.com/GavinLilly/SchemeTwister/commit/92e5e8b36b095eb338c2c9c6668459f9c3e6c9c0))
+
+
+### Features
+
+* **app:** add cookie to local storage migrator ([4d39594](https://github.com/GavinLilly/SchemeTwister/commit/4d3959417c68d9a5248ca9bc5b3999945c7a3889))
+* **app:** move lock/cog icons to mastermind/scheme headers ([c97ac04](https://github.com/GavinLilly/SchemeTwister/commit/c97ac045c6a63f6bad6ac1eb497fc9c11a217508))
+* **app:** replace cookies with localstorage ([f5e4239](https://github.com/GavinLilly/SchemeTwister/commit/f5e4239a529e2d32d953aff7a601441ac365a67a))
+
+
+### Reverts
+
+* Revert "wip(*): creating UUID of game setup" ([33437ae](https://github.com/GavinLilly/SchemeTwister/commit/33437ae11e24fdf5dfbfdc1a5b8e6fe5e6a2480a))
+
+
+### wip
+
+* creating UUID of game setup ([fcd431f](https://github.com/GavinLilly/SchemeTwister/commit/fcd431f1f78a1a1d0fe95818d55ca187b19ef38a))
+
+
+### BREAKING CHANGES
+
+* previously configured game sets will be lost
+* **app:** previously configured game sets will be lost
+
 ## [2.7.5](https://github.com/GavinLilly/SchemeTwister/compare/v2.7.4...v2.7.5) (2022-06-06)
 
 ## [2.7.4](https://github.com/GavinLilly/SchemeTwister/compare/v2.7.3...v2.7.4) (2022-06-06)
