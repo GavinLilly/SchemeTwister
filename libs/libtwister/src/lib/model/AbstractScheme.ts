@@ -358,7 +358,8 @@ export abstract class AbstractScheme implements ICard {
     const numRemVillDeckHenchmen = () =>
       villainRules.numHenchmenGroups - fullDeck.villainDeck.henchmen.length;
 
-    // Check to see if any more henchmen are needed and if so, whether the mastermind demands any
+    // Check to see if any more henchmen are needed and if so,
+    // whether the mastermind demands any
     const alwaysLeadsHenchmen = selectedMastermind.alwaysLeads.filter(
       (item) => item.cardType === CardType.HENCHMEN
     );
@@ -429,5 +430,32 @@ export abstract class AbstractScheme implements ICard {
 
   public toString(): string {
     return this.name;
+  }
+
+  public clone() {
+    const cls = this.constructor as new (
+      scheme: ShortScheme,
+      numTwists1: number,
+      numTwists2: number,
+      numTwists3: number,
+      numTwists4: number,
+      numTwists5: number
+    ) => this;
+    return new cls(
+      {
+        id: this.id,
+        keywords: this.keywords,
+        name: this.name,
+        setup: this.setup,
+        twist: this.twist,
+        evilWins: this.evilWins,
+        specialRules: this.specialRules,
+      },
+      this.rules[1].villainDeck.numTwists,
+      this.rules[2].villainDeck.numTwists,
+      this.rules[3].villainDeck.numTwists,
+      this.rules[4].villainDeck.numTwists,
+      this.rules[5].villainDeck.numTwists
+    );
   }
 }

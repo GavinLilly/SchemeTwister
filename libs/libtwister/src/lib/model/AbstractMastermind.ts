@@ -13,7 +13,7 @@ export abstract class AbstractMastermind implements ICard {
     name: string,
     attackPoints: string | number,
     victoryPoints: number,
-    alwaysLeads: IVillainGroup | IHenchmen,
+    alwaysLeads?: IVillainGroup | IHenchmen,
     epic?: boolean,
     ...keywords: IKeyword[]
   );
@@ -22,7 +22,7 @@ export abstract class AbstractMastermind implements ICard {
     name: string,
     attackPoints: string | number,
     victoryPoints: number,
-    alwaysLeads: (IVillainGroup | IHenchmen)[],
+    alwaysLeads?: (IVillainGroup | IHenchmen)[],
     epic?: boolean,
     ...keywords: IKeyword[]
   );
@@ -31,7 +31,7 @@ export abstract class AbstractMastermind implements ICard {
     name: string,
     public attackPoints: string | number,
     public victoryPoints: number,
-    alwaysLeads: (IVillainGroup | IHenchmen) | (IVillainGroup | IHenchmen)[],
+    alwaysLeads?: (IVillainGroup | IHenchmen) | (IVillainGroup | IHenchmen)[],
     epic = false,
     ...keywords: IKeyword[]
   ) {
@@ -40,8 +40,10 @@ export abstract class AbstractMastermind implements ICard {
 
     if (Array.isArray(alwaysLeads)) {
       this.alwaysLeads = alwaysLeads;
-    } else {
+    } else if (alwaysLeads !== undefined) {
       this.alwaysLeads = [alwaysLeads];
+    } else {
+      this.alwaysLeads = [];
     }
   }
 
