@@ -1,3 +1,11 @@
+# [3.1.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.0.0...v3.1.0) (2022-07-13)
+
+
+### Features
+
+* **libtwister:** add MCU Guardians of the Galaxy game set ([9ad7483](https://github.com/GavinLilly/SchemeTwister/commit/9ad748396d6bff0490ef5c466056270b7cca01d5))
+* **libtwister:** allow mastermind-dependent rule changes ([c2c1ab9](https://github.com/GavinLilly/SchemeTwister/commit/c2c1ab9a9bfa292b9521b2f2872707e435663c05))
+
 # [3.0.0](https://github.com/GavinLilly/SchemeTwister/compare/v2.7.5...v3.0.0) (2022-07-11)
 
 
