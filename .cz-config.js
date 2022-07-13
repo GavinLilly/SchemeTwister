@@ -44,6 +44,7 @@ module.exports = {
     { name: 'misc' },
     { name: 'libtwister' },
     { name: 'deps' },
+    { name: 'deps-dev' },
     { name: '*' },
   ],
 };

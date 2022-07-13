@@ -4,7 +4,7 @@
     "scope-enum": [
       2,
       "always",
-      ["docs", "app", "api", "misc", "libtwister", "deps", "*"]
+      ["docs", "app", "api", "misc", "libtwister", "deps", "deps-dev", "*"]
     ],
     "type-enum": [
       2,
