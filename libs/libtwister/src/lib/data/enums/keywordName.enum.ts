@@ -29,6 +29,8 @@ export enum KeywordName {
 
   CLONE = 'Clone',
 
+  COMMAND = 'Command',
+
   CONQUEROR = 'Conqueror',
 
   CONTEST_OF_CHAMPIONS = 'Contest of Champions',
@@ -62,6 +64,8 @@ export enum KeywordName {
   ELUSIVE = 'Elusive',
 
   EMPOWERED = 'Empowered',
+
+  EXCESSIVE_KINDNESS = 'Excessive Kindness',
 
   EXCESSIVE_VIOLENCE = 'Excessive Violence',
 
@@ -156,6 +160,8 @@ export enum KeywordName {
   TOKEN_CARDS = 'Token Cards',
 
   TRANSFORM = 'Transform',
+
+  TRIGGERED_ARTIFACTS = 'Triggered Artifacts',
 
   TRAPS = 'Traps',
 

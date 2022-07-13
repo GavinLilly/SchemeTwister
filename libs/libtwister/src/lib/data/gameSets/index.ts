@@ -9,6 +9,7 @@ export * as DIMENSIONS from './dimensions';
 export * as FANTASTIC_FOUR from './fantasticFour';
 export * as FEAR_ITSELF from './fearItself';
 export * as GUARDIANS_OF_THE_GALAXY from './guardiansOfTheGalaxy';
+export * as MCU_GUARDIANS_OF_THE_GALAXY from './mcuGuardiansOfTheGalaxy';
 export * as HEROES_OF_ASGARD from './heroesOfAsgard';
 export * as INTO_THE_COSMOS from './intoTheCosmos';
 export * as LEGENDARY from './legendary';
