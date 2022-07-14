@@ -226,7 +226,12 @@ export abstract class AbstractScheme implements ICard {
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
   ): Promise<IGameSetup> {
     //#region Get player rules
-    const playerRules = this.rules[numPlayers];
+    const mastermindRules = selectedMastermind.getRuleOverride();
+    const ruleSet =
+      mastermindRules !== undefined
+        ? this.clone().overrideEachRule(mastermindRules).rules
+        : this.rules;
+    const playerRules = ruleSet[numPlayers];
     const heroRules = playerRules.heroDeck;
     const villainRules = playerRules.villainDeck;
     const additionalRules = playerRules.additionalDeck;

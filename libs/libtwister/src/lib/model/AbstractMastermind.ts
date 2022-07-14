@@ -1,5 +1,13 @@
 import { CardType } from './cardType.enum';
-import { ICard, IHenchmen, IKeyword, IVillainGroup } from './interfaces';
+import {
+  ICard,
+  IHenchmen,
+  IKeyword,
+  INumPlayerRules,
+  IVillainGroup,
+} from './interfaces';
+
+type RuleOverrideFunc = (rule: INumPlayerRules, num: number) => INumPlayerRules;
 
 export abstract class AbstractMastermind implements ICard {
   public readonly name: string;
@@ -7,6 +15,7 @@ export abstract class AbstractMastermind implements ICard {
   public abstract gameSetId: string;
   public readonly keywords: IKeyword[];
   public readonly alwaysLeads: (IVillainGroup | IHenchmen)[];
+  private _overrideFunction: RuleOverrideFunc | undefined;
 
   constructor(
     id: string,
@@ -51,5 +60,21 @@ export abstract class AbstractMastermind implements ICard {
     return new (class extends AbstractMastermind {
       public readonly gameSetId = 'EMPTY_GAMESET';
     })('EMPTY_MASTERMIND', 'EMPTY MASTERMIND', 0, 0, []);
+  }
+
+  /**
+   * Override the rules for each number of players. Useful for setting a rule
+   * based on the number of players
+   * @param func a function to apply to the rule set for each number of players
+   * @returns a configured instance of an {@link AbstractScheme}
+   */
+  public withRuleOverride(func: RuleOverrideFunc): this {
+    this._overrideFunction = func;
+
+    return this;
+  }
+
+  public getRuleOverride(): RuleOverrideFunc | undefined {
+    return this._overrideFunction;
   }
 }

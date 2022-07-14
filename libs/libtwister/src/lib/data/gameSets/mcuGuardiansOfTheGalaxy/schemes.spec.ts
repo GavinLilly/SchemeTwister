@@ -10,6 +10,7 @@ import {
 import { GUARDIANS_OF_THE_GALAXY } from '../../teams';
 import MARVEL_STUDIOS from '../marvelStudios';
 
+import { RONAN_THE_ACCUSER } from './masterminds';
 import { STAR_LORDS_AWESOME_MIX_TAPE } from './schemes';
 
 import MCU_GUARDIANS from './index';
@@ -45,7 +46,7 @@ describe('Marvel Studios Guardians of the Galaxy schemes', () => {
     beforeEach(async () => {
       setup = await STAR_LORDS_AWESOME_MIX_TAPE.getSetup(
         3,
-        mastermindStore.getOneRandom(),
+        mastermindStore.getOne(RONAN_THE_ACCUSER.id),
         heroStore,
         villainStore,
         henchmenStore,

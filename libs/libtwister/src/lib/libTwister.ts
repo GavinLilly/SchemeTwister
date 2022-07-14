@@ -1,8 +1,4 @@
 import * as GameSets from './data/gameSets';
-import {
-  EGO_THE_LIVING_PLANET,
-  EPIC_EGO_THE_LIVING_PLANET,
-} from './data/gameSets/mcuGuardiansOfTheGalaxy/masterminds';
 import { MultiCardStore, SingleCardFactory } from './factories';
 import {
   AbstractMastermind,
@@ -159,17 +155,7 @@ export class LibTwister {
   ): Promise<GameSetup> {
     this._resetStores();
 
-    let localScheme: AbstractScheme;
-
-    if (mastermind === EGO_THE_LIVING_PLANET) {
-      localScheme = this._incrementVillains(1, scheme);
-    } else if (mastermind === EPIC_EGO_THE_LIVING_PLANET) {
-      localScheme = this._incrementVillains(2, scheme);
-    } else {
-      localScheme = scheme;
-    }
-
-    const setup = await localScheme.getSetup(
+    const setup = await scheme.getSetup(
       numPlayers,
       mastermind,
       this.heroStore,
@@ -180,15 +166,6 @@ export class LibTwister {
     );
 
     return new GameSetup(setup);
-  }
-
-  private _incrementVillains(inc: number, scheme: AbstractScheme) {
-    const localScheme = scheme.clone().overrideEachRule((rule) => {
-      rule.villainDeck.numVillainGroups += inc;
-      return rule;
-    });
-
-    return localScheme;
   }
 
   /**
