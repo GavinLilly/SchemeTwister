@@ -36,7 +36,10 @@ export const EGO_THE_LIVING_PLANET = new McuGuardiansOfTheGalaxy(
   'Ego, The Living Planet',
   '3+',
   0
-);
+).withRuleOverride((rule) => {
+  rule.villainDeck.numVillainGroups++;
+  return rule;
+});
 
 export const EPIC_EGO_THE_LIVING_PLANET = new McuGuardiansOfTheGalaxy(
   '7474eef1-38f4-4127-8ce8-e38296fadcc1',
@@ -45,4 +48,7 @@ export const EPIC_EGO_THE_LIVING_PLANET = new McuGuardiansOfTheGalaxy(
   0,
   undefined,
   true
-);
+).withRuleOverride((rule) => {
+  rule.villainDeck.numVillainGroups += 2;
+  return rule;
+});
