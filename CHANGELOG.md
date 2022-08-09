@@ -1,3 +1,5 @@
+## [3.1.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.1.0...v3.1.1) (2022-08-09)
+
 # [3.1.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.0.0...v3.1.0) (2022-07-13)
 
 
