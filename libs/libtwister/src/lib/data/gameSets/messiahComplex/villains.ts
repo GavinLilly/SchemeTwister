@@ -1,7 +1,7 @@
 import { CardType, IVillainGroup } from '../../../model';
 import { CHIVALROUS_DUEL } from '../antMan/keywords';
 
-import { CLONE, PREY, SHATTER } from './keywords';
+import { CLONE_VILLAINS, PREY, SHATTER } from './keywords';
 import { META } from './meta';
 
 export const CLAN_YASHIDA: IVillainGroup = {
@@ -33,5 +33,5 @@ export const PURIFIERS: IVillainGroup = {
   name: 'Purifiers',
   cardType: CardType.VILLAINGROUP,
   gameSetId: META.id,
-  keywords: [PREY, CLONE],
+  keywords: [PREY, CLONE_VILLAINS],
 };

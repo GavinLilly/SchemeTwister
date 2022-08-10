@@ -1,12 +1,12 @@
 import { AbstractMastermind } from '../AbstractMastermind';
-import { AbstractScheme } from '../AbstractScheme';
+import { Scheme } from '../schemes';
 
 import { IAdditionalDeck, IHeroDeck, IVillainDeck } from './deck.interface';
 import { IKeyword } from './keyword.interface';
 
 export interface IGameSetup {
   numPlayers: number;
-  scheme: AbstractScheme;
+  scheme: Scheme;
   mastermind: AbstractMastermind;
   numWounds?: number;
   numShieldOfficers?: number;

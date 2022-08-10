@@ -3,6 +3,7 @@
 import DARK_CITY from '../data/gameSets/darkCity';
 import { DOMINO } from '../data/gameSets/darkCity/heroes';
 import { VERSATILE } from '../data/gameSets/darkCity/keywords';
+import INTO_THE_COSMOS from '../data/gameSets/intoTheCosmos';
 import { CONTEST_OF_CHAMPIONS } from '../data/gameSets/intoTheCosmos/keywords';
 import { THE_CONTEST_OF_CHAMPIONS } from '../data/gameSets/intoTheCosmos/schemes';
 import LEGENDARY from '../data/gameSets/legendary';
@@ -17,10 +18,12 @@ import {
   REPLACE_EARTHS_LEADERS_WITH_KILLBOTS,
 } from '../data/gameSets/legendary/schemes';
 import { MultiCardStore } from '../factories/multiCardStore';
+import { injectGameSet } from '../utils/schemeInjector';
 
 import { AbstractMastermind } from './AbstractMastermind';
 import { GameSetup } from './GameSetup';
 import { IHenchmen, IHero, IVillainGroup } from './interfaces';
+import { Scheme } from './schemes';
 
 let heroStore: MultiCardStore<IHero>;
 let villainStore: MultiCardStore<IVillainGroup>;
@@ -45,7 +48,10 @@ describe('GameSetup', () => {
     let setup: GameSetup;
 
     beforeAll(async () => {
-      setup = (await MIDTOWN_BANK_ROBBERY.getSetup(
+      const scheme = new Scheme(
+        injectGameSet(LEGENDARY.id, MIDTOWN_BANK_ROBBERY)
+      );
+      setup = (await scheme.getSetup(
         2,
         mastermindStore.getOneRandom(),
         heroStore,
@@ -74,7 +80,10 @@ describe('GameSetup', () => {
     let setup: GameSetup;
 
     beforeAll(async () => {
-      setup = (await REPLACE_EARTHS_LEADERS_WITH_KILLBOTS.getSetup(
+      const scheme = new Scheme(
+        injectGameSet(LEGENDARY.id, REPLACE_EARTHS_LEADERS_WITH_KILLBOTS)
+      );
+      setup = (await scheme.getSetup(
         2,
         mastermindStore.getOneRandom(),
         heroStore,
@@ -101,7 +110,10 @@ describe('GameSetup', () => {
 
   describe('get keywords', () => {
     it('should have no keywords', async () => {
-      const setup = (await REPLACE_EARTHS_LEADERS_WITH_KILLBOTS.getSetup(
+      const scheme = new Scheme(
+        injectGameSet(LEGENDARY.id, REPLACE_EARTHS_LEADERS_WITH_KILLBOTS)
+      );
+      const setup = (await scheme.getSetup(
         2,
         mastermindStore.getOneRandom(),
         heroStore,
@@ -114,7 +126,10 @@ describe('GameSetup', () => {
     });
 
     it('should have only the "Contest of Champions" keyword', async () => {
-      const setup = (await THE_CONTEST_OF_CHAMPIONS.getSetup(
+      const scheme = new Scheme(
+        injectGameSet(INTO_THE_COSMOS.id, THE_CONTEST_OF_CHAMPIONS)
+      );
+      const setup = (await scheme.getSetup(
         2,
         mastermindStore.getOneRandom(),
         heroStore,
@@ -133,7 +148,10 @@ describe('GameSetup', () => {
         ...DARK_CITY.heroes,
       ]);
 
-      const setup = (await REPLACE_EARTHS_LEADERS_WITH_KILLBOTS.getSetup(
+      const scheme = new Scheme(
+        injectGameSet(LEGENDARY.id, REPLACE_EARTHS_LEADERS_WITH_KILLBOTS)
+      );
+      const setup = (await scheme.getSetup(
         2,
         mastermindStore.getOneRandom(),
         heroStore,

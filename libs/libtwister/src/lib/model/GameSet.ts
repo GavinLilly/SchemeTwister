@@ -1,5 +1,4 @@
 import { AbstractMastermind } from './AbstractMastermind';
-import { AbstractScheme } from './AbstractScheme';
 import { CardType } from './cardType.enum';
 import { GameSetSize } from './gameSetSize.enum';
 import {
@@ -10,6 +9,7 @@ import {
   IHero,
   IVillainGroup,
 } from './interfaces';
+import { SchemeMinusRules } from './interfaces/newScheme.interface';
 import { Series } from './series.enum';
 
 export class GameSet implements IGameSetMeta {
@@ -23,7 +23,7 @@ export class GameSet implements IGameSetMeta {
     gameSetProps: IGameSetMeta,
     readonly heroes: IHero[],
     readonly masterminds?: AbstractMastermind[],
-    readonly schemes?: AbstractScheme[],
+    readonly schemes?: SchemeMinusRules[],
     readonly villains?: IVillainGroup[],
     readonly henchmen?: IHenchmen[],
     readonly bystanders?: IHero[] | IBystander[]
@@ -58,7 +58,7 @@ export class GameSet implements IGameSetMeta {
     }
   }
 
-  public get(cardType: CardType): ICard[] | undefined {
+  public get(cardType: CardType): ICard[] | SchemeMinusRules[] | undefined {
     switch (cardType) {
       case CardType.BYSTANDER:
         return this.bystanders;

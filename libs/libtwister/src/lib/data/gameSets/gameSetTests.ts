@@ -1,12 +1,5 @@
 /* eslint-disable no-undef */
-import {
-  ICard,
-  IGameSetup,
-  GameSet,
-  NumPlayers,
-  SinglePlayerError,
-  CardType,
-} from '../../model';
+import { ICard, GameSet, CardType, SchemeMinusRules } from '../../model';
 
 export function gameSetTest(
   gameSet: GameSet,
@@ -26,7 +19,7 @@ export function gameSetTest(
       ['masterminds', numMasterminds, CardType.MASTERMIND],
       ['schemes', numSchemes, CardType.SCHEME],
     ])('%s deck', (readableCardType, numCards, cardType) => {
-      let cards: ICard[];
+      let cards: ICard[] | SchemeMinusRules[];
 
       beforeAll(() => {
         cards = gameSet.get(cardType) || [];
@@ -36,23 +29,11 @@ export function gameSetTest(
         expect(cards).toHaveLength(numCards));
 
       it(`should have all cards be of type ${cardType}`, () =>
-        expect(cards.every((card) => card.cardType === cardType)).toBeTruthy());
+        expect(
+          cards.every(
+            (card: ICard | SchemeMinusRules) => card.cardType === cardType
+          )
+        ).toBeTruthy());
     });
   });
-}
-
-export function singlePlayerTest(
-  getSetup: (num: NumPlayers) => Promise<IGameSetup>
-) {
-  it('should throw an error for 1 player', async () => {
-    try {
-      await getSetup(1);
-    } catch (e) {
-      expect(e).toBeInstanceOf(SinglePlayerError);
-    }
-  });
-
-  it.each([2, 3, 4, 5])('should generate a setup for %p players', async (arg) =>
-    expect(getSetup(arg as NumPlayers)).toBeTruthy()
-  );
 }

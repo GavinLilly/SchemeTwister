@@ -1,8 +1,8 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import {
   AbstractMastermind,
-  AbstractScheme,
   GameSetup,
+  SchemeMinusRules,
 } from '@schemetwister/libtwister';
 
 import {
@@ -21,7 +21,7 @@ export interface IGameSetupState {
   gameSetup: GameSetup;
   loading: boolean;
   error: string;
-  definedScheme?: AbstractScheme;
+  definedScheme?: SchemeMinusRules;
   definedMastermind?: AbstractMastermind;
 }
 
@@ -44,10 +44,19 @@ const _gameSetupReducer = createReducer(
     ...state,
     error: payload.errorMessage,
   })),
-  on(setDefinedScheme, (state, {scheme}) => ({ ...state, definedScheme: scheme})),
-  on(setDefinedMastermind, (state, {mastermind}) => ({ ...state, definedMastermind: mastermind})),
-  on(resetDefinedScheme, (state) => ({ ...state, definedScheme: undefined})),
-  on(resetDefinedMastermind, (state) => ({ ...state, definedMastermind: undefined}))
+  on(setDefinedScheme, (state, { scheme }) => ({
+    ...state,
+    definedScheme: scheme,
+  })),
+  on(setDefinedMastermind, (state, { mastermind }) => ({
+    ...state,
+    definedMastermind: mastermind,
+  })),
+  on(resetDefinedScheme, (state) => ({ ...state, definedScheme: undefined })),
+  on(resetDefinedMastermind, (state) => ({
+    ...state,
+    definedMastermind: undefined,
+  }))
 );
 
 export function gameSetupReducer(

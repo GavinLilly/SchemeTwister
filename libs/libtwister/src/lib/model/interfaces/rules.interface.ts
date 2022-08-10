@@ -33,7 +33,7 @@ export interface INumPlayerRules {
   additionalDeck?: {
     name: string;
     instruction?: string;
-    deck: IAdditionalDeckRequirements;
+    deck?: IAdditionalDeckRequirements;
   };
   numWounds?: number;
   numShieldOfficers?: number;

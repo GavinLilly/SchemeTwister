@@ -1,4 +1,5 @@
 import { GameSet } from '../../../model';
+import { injectGameSetToMany } from '../../../utils/schemeInjector';
 
 import * as Bystanders from './bystanders';
 import * as Henchmen from './henchmen';
@@ -8,13 +9,15 @@ import { META } from './meta';
 import * as Schemes from './schemes';
 import * as Villains from './villains';
 
-export { Heroes, Schemes, Masterminds, Villains, Henchmen, Bystanders };
+const schemes = injectGameSetToMany(META.id, Object.values(Schemes));
+
+export { Heroes, schemes, Masterminds, Villains, Henchmen, Bystanders };
 
 export default new GameSet(
   META,
   Object.values(Heroes),
   Object.values(Masterminds),
-  Object.values(Schemes),
+  Object.values(schemes),
   Object.values(Villains),
   Object.values(Henchmen),
   Object.values(Bystanders)

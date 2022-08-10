@@ -2,7 +2,6 @@ import * as GameSets from './data/gameSets';
 import { MultiCardStore, SingleCardFactory } from './factories';
 import {
   AbstractMastermind,
-  AbstractScheme,
   GameSet,
   GameSetSize,
   GameSetup,
@@ -12,13 +11,15 @@ import {
   NumPlayers,
 } from './model';
 import { GameSetMap } from './model/gameSetMap';
+import { SchemeMinusRules } from './model/interfaces/newScheme.interface';
+import instantiateScheme from './utils/instantiateScheme';
 
 /**
  * A class to store which game sets are available and have been selected along
  * with all the of the associated cards
  */
 export class LibTwister {
-  private _schemeFactory!: SingleCardFactory<AbstractScheme>;
+  private _schemeFactory!: SingleCardFactory<SchemeMinusRules>;
   /**
    * The factory to pick schemes
    */
@@ -155,7 +156,9 @@ export class LibTwister {
   ): Promise<GameSetup> {
     this._resetStores();
 
-    const setup = await scheme.getSetup(
+    const createdScheme = instantiateScheme(scheme);
+
+    const setup = await createdScheme.getSetup(
       numPlayers,
       mastermind,
       this.heroStore,
@@ -184,7 +187,7 @@ export class LibTwister {
   private _onGameSetsChange() {
     const heroes: IHero[] = [];
     const masterminds: AbstractMastermind[] = [];
-    const schemes: AbstractScheme[] = [];
+    const schemes: SchemeMinusRules[] = [];
     const villains: IVillainGroup[] = [];
     const henchmen: IHenchmen[] = [];
 

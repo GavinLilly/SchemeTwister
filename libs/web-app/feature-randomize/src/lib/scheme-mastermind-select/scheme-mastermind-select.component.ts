@@ -3,7 +3,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import {
   AbstractMastermind,
-  AbstractScheme,
+  SchemeMinusRules,
   CardType,
   LibTwister,
   NumPlayers,
@@ -32,7 +32,7 @@ import {
 })
 export class SchemeMastermindSelectComponent implements OnInit {
   @Input() itemType!: CardType;
-  availableItems!: (AbstractScheme | AbstractMastermind)[];
+  availableItems!: (SchemeMinusRules | AbstractMastermind)[];
   selectedItem = '**Random**';
   numPlayers$: Observable<NumPlayers> = this._store.select(
     (state) => state.numPlayers.numPlayers
@@ -86,7 +86,7 @@ export class SchemeMastermindSelectComponent implements OnInit {
     if (this.itemType === CardType.SCHEME) {
       if (item !== undefined) {
         this._store.dispatch(
-          setDefinedScheme({ scheme: item as AbstractScheme })
+          setDefinedScheme({ scheme: item as SchemeMinusRules })
         );
       } else {
         this._store.dispatch(resetDefinedScheme());
@@ -103,7 +103,7 @@ export class SchemeMastermindSelectComponent implements OnInit {
   }
 
   private _subscribeToDefined(
-    observable: Observable<AbstractScheme | AbstractMastermind | undefined>
+    observable: Observable<SchemeMinusRules | AbstractMastermind | undefined>
   ) {
     observable.subscribe((value) => {
       if (value !== undefined) {
