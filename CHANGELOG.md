@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.1.1...v3.2.0) (2022-08-10)
+
+
+### Features
+
+* **app:** move to constant based schemes ([eaf8f3c](https://github.com/GavinLilly/SchemeTwister/commit/eaf8f3c9ad4e306209e9b0f874f59ea3524381e9))
+
 ## [3.1.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.1.0...v3.1.1) (2022-08-09)
 
 # [3.1.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.0.0...v3.1.0) (2022-07-13)
