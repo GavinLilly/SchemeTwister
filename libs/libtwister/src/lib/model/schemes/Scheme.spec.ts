@@ -1,57 +1,84 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-import defaultRules from '../data/defaultRules';
-import LEGENDARY from '../data/gameSets/legendary';
-import { DOOMBOT_LEGION } from '../data/gameSets/legendary/henchmen';
-import { DR_DOOM } from '../data/gameSets/legendary/masterminds';
-import XMEN from '../data/gameSets/xMen';
-import { ARCADE } from '../data/gameSets/xMen/masterminds';
-import { HELLFIRE_CLUB, MURDERWORLD } from '../data/gameSets/xMen/villains';
-import { MultiCardStore } from '../factories';
+import LEGENDARY from '../../data/gameSets/legendary';
+import { DOOMBOT_LEGION } from '../../data/gameSets/legendary/henchmen';
+import { DR_DOOM } from '../../data/gameSets/legendary/masterminds';
+import XMEN from '../../data/gameSets/xMen';
+import { ARCADE } from '../../data/gameSets/xMen/masterminds';
+import { HELLFIRE_CLUB, MURDERWORLD } from '../../data/gameSets/xMen/villains';
+import { MultiCardStore } from '../../factories';
+import { AbstractMastermind } from '../AbstractMastermind';
+import { GameSetup } from '../GameSetup';
+import { CardType } from '../cardType.enum';
+import {
+  IHenchmen,
+  IHero,
+  IVillainGroup,
+  SchemeMinusRules,
+} from '../interfaces';
+import { IGameSetup } from '../interfaces/gameSetup.interface';
+import { Rules } from '../rules';
+import { NumPlayers, numPlayers } from '../types/numPlayers.type';
 
-import { AbstractMastermind } from './AbstractMastermind';
-import { AbstractScheme } from './AbstractScheme';
-import { GameSetup } from './GameSetup';
-import { IHenchmen, IHero, IVillainGroup } from './interfaces';
-import { IGameSetup } from './interfaces/gameSetup.interface';
-import { IScheme } from './interfaces/scheme.interface';
-import { NumPlayers, numPlayers } from './types/numPlayers.type';
+import { Scheme } from './Scheme';
 
-class TestAbstractScheme extends AbstractScheme {
-  public readonly gameSetId = '0f0a6c5b-6476-4850-aaac-25f06316b1b4';
-}
-
-const schemeDesc: Omit<IScheme, 'gameSetId' | 'rules' | 'cardType'> = {
+const baseSchemeDesc: Omit<SchemeMinusRules, 'meta'> = {
   name: 'Test scheme',
   id: 'ea6412df-9a3a-451c-a25b-5ab49507b958',
   twist: "There's some twists",
   evilWins: 'Evil wins',
   setup: 'Setup',
+  cardType: CardType.SCHEME,
+  gameSetId: '0f0a6c5b-6476-4850-aaac-25f06316b1b4',
 };
 
-describe('Abstract scheme', () => {
+const schemeDescSimpleTwist: SchemeMinusRules = {
+  ...baseSchemeDesc,
+  meta: { numTwists: 8 },
+};
+
+const schemeDescComplexTwist: SchemeMinusRules = {
+  ...baseSchemeDesc,
+  meta: {
+    numTwists: {
+      '1': 1,
+      '2': 2,
+      '3': 3,
+      '4': 4,
+      '5': 5,
+    },
+  },
+};
+
+describe('Base Scheme', () => {
   it('should create with 1 count of twists', () =>
-    expect(new TestAbstractScheme(schemeDesc, 8)).toBeTruthy());
+    expect(new Scheme(schemeDescSimpleTwist)).toBeTruthy());
 
   it('should create with 5 counts of twists', () =>
-    expect(new TestAbstractScheme(schemeDesc, 1, 2, 3, 4, 5)).toBeTruthy());
+    expect(new Scheme(schemeDescComplexTwist)).toBeTruthy());
 
   describe('Rules', () => {
     it('should have default rules when not overridden', () => {
-      const scheme = new TestAbstractScheme(schemeDesc, 8);
-      expect(scheme.rules).toEqual(defaultRules());
+      const scheme = new Scheme(schemeDescSimpleTwist);
+      expect(scheme.rules).toEqual(Rules.defaultRules);
     });
 
     describe('Overriding default rules', () => {
-      let overriddenScheme: AbstractScheme;
+      let overriddenScheme: Scheme;
+
+      const overridingAllRules: SchemeMinusRules = {
+        ...schemeDescSimpleTwist,
+        meta: {
+          numTwists: schemeDescSimpleTwist.meta.numTwists,
+          rules: (rule) => {
+            rule.heroDeck.numHeroes = 10;
+            return rule;
+          },
+        },
+      };
 
       beforeAll(() => {
-        overriddenScheme = new TestAbstractScheme(
-          schemeDesc,
-          8
-        ).overrideDefaultRules({
-          heroDeck: { numHeroes: 10 },
-        });
+        overriddenScheme = new Scheme(overridingAllRules);
       });
 
       it.each(numPlayers)('%s player game should have 10 heroes', (num) =>
@@ -60,16 +87,21 @@ describe('Abstract scheme', () => {
     });
 
     describe('Overriding each rule', () => {
-      let overriddenScheme: AbstractScheme;
+      let overriddenScheme: Scheme;
+
+      const overridingEachRule: SchemeMinusRules = {
+        ...schemeDescSimpleTwist,
+        meta: {
+          numTwists: schemeDescSimpleTwist.meta.numTwists,
+          rules: (rule, num) => {
+            rule.numWounds = 3 * num;
+            return rule;
+          },
+        },
+      };
 
       beforeAll(() => {
-        overriddenScheme = new TestAbstractScheme(
-          schemeDesc,
-          8
-        ).overrideEachRule((rule, num) => {
-          rule.numWounds = 3 * num;
-          return rule;
-        });
+        overriddenScheme = new Scheme(overridingEachRule);
       });
 
       it.each([
@@ -85,7 +117,7 @@ describe('Abstract scheme', () => {
   });
 
   describe('getSetup()', () => {
-    let scheme: AbstractScheme;
+    let scheme: Scheme;
     let setup: IGameSetup;
     let heroStore: MultiCardStore<IHero>;
     let villainStore: MultiCardStore<IVillainGroup>;
@@ -93,7 +125,7 @@ describe('Abstract scheme', () => {
     let mastermindStore: MultiCardStore<AbstractMastermind>;
 
     beforeAll(async () => {
-      scheme = new TestAbstractScheme(schemeDesc, 10);
+      scheme = new Scheme(schemeDescSimpleTwist);
       heroStore = new MultiCardStore<IHero>(XMEN.heroes);
       villainStore = new MultiCardStore<IVillainGroup>(XMEN.villains!);
       henchmenStore = new MultiCardStore<IHenchmen>(XMEN.henchmen!);
@@ -126,14 +158,18 @@ describe('Abstract scheme', () => {
       expect(setup.villainDeck.villains).toContain(MURDERWORLD));
 
     it('should put 1 hero in the additional deck', async () => {
-      const heroAdditional = new TestAbstractScheme(
-        schemeDesc,
-        8
-      ).overrideDefaultRules({
-        additionalDeck: {
-          name: 'Foo',
-          deck: {
-            numHeroes: 1,
+      const heroAdditional = new Scheme({
+        ...baseSchemeDesc,
+        meta: {
+          numTwists: 8,
+          rules: (rule) => {
+            rule.additionalDeck = {
+              name: 'Foo',
+              deck: {
+                numHeroes: 1,
+              },
+            };
+            return rule;
           },
         },
       });
@@ -152,10 +188,16 @@ describe('Abstract scheme', () => {
     });
 
     it('should put 1 henchmen in the hero deck', async () => {
-      const henchmenHero = new TestAbstractScheme(
-        schemeDesc,
-        8
-      ).overrideDefaultRules({ heroDeck: { numHenchmenGroups: 1 } });
+      const henchmenHero = new Scheme({
+        ...baseSchemeDesc,
+        meta: {
+          numTwists: 8,
+          rules: (rule) => {
+            rule.heroDeck.numHenchmenGroups = 1;
+            return rule;
+          },
+        },
+      });
 
       const heroHenchmenSetup = await henchmenHero.getSetup(
         3,
@@ -170,10 +212,16 @@ describe('Abstract scheme', () => {
     });
 
     it('should put 1 mastermind in the villain deck', async () => {
-      const mastermindVillain = new TestAbstractScheme(
-        schemeDesc,
-        8
-      ).overrideDefaultRules({ villainDeck: { numMasterminds: 1 } });
+      const mastermindVillain = new Scheme({
+        ...baseSchemeDesc,
+        meta: {
+          numTwists: 8,
+          rules: (rule) => {
+            rule.villainDeck.numMasterminds = 1;
+            return rule;
+          },
+        },
+      });
 
       expect(mastermindVillain.rules[3].villainDeck.numMasterminds).toBe(1);
 
@@ -191,10 +239,16 @@ describe('Abstract scheme', () => {
     });
 
     it('should put 5 bystanders in the hero deck', async () => {
-      const bystanderScheme = new TestAbstractScheme(
-        schemeDesc,
-        6
-      ).overrideDefaultRules({ heroDeck: { numBystanders: 5 } });
+      const bystanderScheme = new Scheme({
+        ...baseSchemeDesc,
+        meta: {
+          numTwists: 8,
+          rules: (rule) => {
+            rule.heroDeck.numBystanders = 5;
+            return rule;
+          },
+        },
+      });
 
       const bystanderSetup = await bystanderScheme.getSetup(
         3,
@@ -248,7 +302,12 @@ describe('Abstract scheme', () => {
 
     describe('single player mode', () => {
       it('should have 1 Master Strike', async () => {
-        const soloScheme = new TestAbstractScheme(schemeDesc, 6);
+        const soloScheme = new Scheme({
+          ...baseSchemeDesc,
+          meta: {
+            numTwists: 6,
+          },
+        });
 
         const setup = await soloScheme.getSetup(
           1,
@@ -263,7 +322,12 @@ describe('Abstract scheme', () => {
       });
 
       it('advanced solo should have 5 Master Strike', async () => {
-        const soloScheme = new TestAbstractScheme(schemeDesc, 6);
+        const soloScheme = new Scheme({
+          ...baseSchemeDesc,
+          meta: {
+            numTwists: 6,
+          },
+        });
 
         const setup = await soloScheme.getSetup(
           1,

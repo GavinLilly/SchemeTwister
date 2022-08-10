@@ -9,7 +9,14 @@ import {
 } from './data/gameSets/mcuGuardiansOfTheGalaxy/masterminds';
 import { UNLEASH_THE_ABILISK_SPACE_MONSTER } from './data/gameSets/mcuGuardiansOfTheGalaxy/schemes';
 import { LibTwister } from './libTwister';
-import { CardType, GameSetSize, ICard, NumPlayers } from './model';
+import {
+  CardType,
+  GameSetSize,
+  ICard,
+  NumPlayers,
+  SchemeMinusRules,
+} from './model';
+import { injectGameSet } from './utils/schemeInjector';
 
 describe('LibTwister', () => {
   describe('All game sets', () => {
@@ -120,18 +127,20 @@ describe('LibTwister', () => {
       async (numPlayers) => {
         const setup = await twister.getSetup(numPlayers as NumPlayers);
 
-        expect(setup.scheme.gameSetId).toBe(LEGENDARY.id);
-        expect(setup.mastermind.gameSetId).toBe(LEGENDARY.id);
+        expect(setup?.scheme.gameSetId).toBe(LEGENDARY.id);
+        expect(setup?.mastermind.gameSetId).toBe(LEGENDARY.id);
         expect(
-          setup.heroDeck.heroes.every((hero) => hero.gameSetId === LEGENDARY.id)
+          setup?.heroDeck.heroes.every(
+            (hero) => hero.gameSetId === LEGENDARY.id
+          )
         ).toBeTruthy();
         expect(
-          setup.villainDeck.henchmen.every(
+          setup?.villainDeck.henchmen.every(
             (henchmen) => henchmen.gameSetId === LEGENDARY.id
           )
         ).toBeTruthy();
         expect(
-          setup.villainDeck.villains.every(
+          setup?.villainDeck.villains.every(
             (villain) => villain.gameSetId === LEGENDARY.id
           )
         ).toBeTruthy();
@@ -208,23 +217,31 @@ describe('LibTwister', () => {
   });
 
   describe('with MCU Guardians of the Galaxy', () => {
-    const twister: LibTwister = new LibTwister([
-      MARVEL_STUDIOS,
-      MCU_GUARDIANS_OF_THE_GALAXY,
-    ]);
+    let twister: LibTwister;
+
+    beforeEach(() => {
+      twister = new LibTwister([MARVEL_STUDIOS, MCU_GUARDIANS_OF_THE_GALAXY]);
+    });
 
     it('should create', () => expect(twister).toBeTruthy());
 
     describe('getSetup()', () => {
+      let unleashScheme: SchemeMinusRules;
+      beforeEach(() => {
+        unleashScheme = injectGameSet(
+          MCU_GUARDIANS_OF_THE_GALAXY.id,
+          UNLEASH_THE_ABILISK_SPACE_MONSTER
+        );
+      });
       describe('with Ego as mastermind', () => {
         it('should have an additional villain group', async () => {
           const setup = await twister.getSetup(
             2,
-            UNLEASH_THE_ABILISK_SPACE_MONSTER,
+            unleashScheme,
             EGO_THE_LIVING_PLANET
           );
 
-          expect(setup.villainDeck.villains).toHaveLength(3);
+          expect(setup?.villainDeck.villains).toHaveLength(3);
         });
       });
 
@@ -232,11 +249,11 @@ describe('LibTwister', () => {
         it('should have 2 additional villain groups', async () => {
           const setup = await twister.getSetup(
             2,
-            UNLEASH_THE_ABILISK_SPACE_MONSTER,
+            unleashScheme,
             EPIC_EGO_THE_LIVING_PLANET
           );
 
-          expect(setup.villainDeck.villains).toHaveLength(4);
+          expect(setup?.villainDeck.villains).toHaveLength(4);
         });
       });
     });

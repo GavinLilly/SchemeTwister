@@ -1,7 +1,6 @@
 import { hasPresentKey } from 'ts-is-present';
 
 import { AbstractMastermind } from './AbstractMastermind';
-import { AbstractScheme } from './AbstractScheme';
 import {
   IAdditionalDeck,
   ICard,
@@ -13,10 +12,11 @@ import {
   IVillainGroup,
 } from './interfaces';
 import { IGameSetup } from './interfaces/gameSetup.interface';
+import { Scheme } from './schemes';
 
 export class GameSetup implements IGameSetup {
   readonly numPlayers: number;
-  readonly scheme: AbstractScheme;
+  readonly scheme: Scheme;
   readonly mastermind: AbstractMastermind;
   readonly numWounds?: number;
   readonly numShieldOfficers?: number;
@@ -40,7 +40,7 @@ export class GameSetup implements IGameSetup {
   public static empty(): GameSetup {
     const setup: IGameSetup = {
       numPlayers: 2,
-      scheme: AbstractScheme.empty(),
+      scheme: Scheme.empty(),
       mastermind: AbstractMastermind.empty(),
       heroDeck: { heroes: [] },
       villainDeck: {

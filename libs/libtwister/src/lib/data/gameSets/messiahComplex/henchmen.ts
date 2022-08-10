@@ -1,6 +1,6 @@
 import { CardType, IHenchmen } from '../../../model';
 
-import { CLONE } from './keywords';
+import { CLONE_HEROES } from './keywords';
 import { META } from './meta';
 
 export const MR_SINISTER_CLONES: IHenchmen = {
@@ -14,7 +14,7 @@ export const MR_SINISTER_CLONES: IHenchmen = {
   victoryPoints: 1,
   gameSetId: META.id,
   cardType: CardType.HENCHMEN,
-  keywords: [CLONE],
+  keywords: [CLONE_HEROES],
 };
 
 export const SENTINEL_SQUAD_ONE: IHenchmen = {
@@ -27,5 +27,5 @@ export const SENTINEL_SQUAD_ONE: IHenchmen = {
   victoryPoints: 1,
   gameSetId: META.id,
   cardType: CardType.HENCHMEN,
-  keywords: [CLONE],
+  keywords: [CLONE_HEROES],
 };

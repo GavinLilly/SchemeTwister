@@ -1,7 +1,7 @@
 import { CardType, IBystander } from '../../../model';
 import { INVESTIGATE } from '../noir/keywords';
 
-import { CLONE, SHATTER } from './keywords';
+import { CLONE_HEROES, SHATTER } from './keywords';
 import { META } from './meta';
 
 export const OPERA_SINGER: IBystander = {
@@ -21,7 +21,7 @@ export const CLONE_TECHNICIAN: IBystander = {
   victoryPoints: 1,
   gameSetId: META.id,
   cardType: CardType.BYSTANDER,
-  keywords: [CLONE],
+  keywords: [CLONE_HEROES],
 };
 
 export const PRIVATE_INVESTIGATOR: IBystander = {

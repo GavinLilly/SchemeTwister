@@ -3,7 +3,7 @@ import { X_FACTOR, X_FORCE, X_MEN } from '../../teams';
 import { INVESTIGATE } from '../noir/keywords';
 import { WHEN_RECRUITED } from '../realmOfKings/keywords';
 
-import { CLONE, SHATTER, TACTICAL_FORMATION } from './keywords';
+import { CLONE_HEROES, SHATTER, TACTICAL_FORMATION } from './keywords';
 import { META } from './meta';
 
 export const STRONG_GUY: IHero = {
@@ -30,7 +30,7 @@ export const MULTIPLE_MAN: IHero = {
   team: X_FACTOR,
   cardType: CardType.HERO,
   gameSetId: META.id,
-  keywords: [INVESTIGATE, CLONE, TACTICAL_FORMATION],
+  keywords: [INVESTIGATE, CLONE_HEROES, TACTICAL_FORMATION],
 };
 
 export const STEPFORD_CUCKOOS: IHero = {
@@ -39,7 +39,7 @@ export const STEPFORD_CUCKOOS: IHero = {
   team: X_MEN,
   cardType: CardType.HERO,
   gameSetId: META.id,
-  keywords: [INVESTIGATE, CLONE, TACTICAL_FORMATION, WHEN_RECRUITED],
+  keywords: [INVESTIGATE, CLONE_HEROES, TACTICAL_FORMATION, WHEN_RECRUITED],
 };
 
 export const M: IHero = {
@@ -48,7 +48,7 @@ export const M: IHero = {
   team: X_FACTOR,
   cardType: CardType.HERO,
   gameSetId: META.id,
-  keywords: [INVESTIGATE, CLONE, WHEN_RECRUITED, TACTICAL_FORMATION],
+  keywords: [INVESTIGATE, CLONE_HEROES, WHEN_RECRUITED, TACTICAL_FORMATION],
 };
 
 export const SHATTERSTAR: IHero = {
@@ -57,7 +57,7 @@ export const SHATTERSTAR: IHero = {
   team: X_FORCE,
   cardType: CardType.HERO,
   gameSetId: META.id,
-  keywords: [CLONE, WHEN_RECRUITED, TACTICAL_FORMATION, SHATTER],
+  keywords: [CLONE_HEROES, WHEN_RECRUITED, TACTICAL_FORMATION, SHATTER],
 };
 
 export const SIRYN: IHero = {

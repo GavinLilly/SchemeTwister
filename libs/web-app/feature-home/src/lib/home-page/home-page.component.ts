@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import {
   AbstractMastermind,
-  AbstractScheme,
   IHenchmen,
   IHero,
   IVillainGroup,
   LibTwister,
+  SchemeMinusRules,
 } from '@schemetwister/libtwister';
 
 @Component({
@@ -47,7 +47,7 @@ export class HomePageComponent {
 
     this.numSchemes = allGameSets
       .map((gameSet) => gameSet.schemes)
-      .filter((schemes): schemes is AbstractScheme[] => !!schemes)
+      .filter((schemes): schemes is SchemeMinusRules[] => !!schemes)
       .reduce((prev, next) => prev?.concat(next)).length;
   }
 }

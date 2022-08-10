@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { faCog, faLock } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import { AbstractScheme, CardType } from '@schemetwister/libtwister';
+import { CardType, Scheme } from '@schemetwister/libtwister';
 import { Observable } from 'rxjs';
 
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
@@ -23,9 +23,7 @@ export class SchemeCardComponent {
   );
   faLock = faLock;
   faCog = faCog;
-  scheme$: Observable<AbstractScheme> = this._store.select(
-    selectGameSetupScheme
-  );
+  scheme$: Observable<Scheme> = this._store.select(selectGameSetupScheme);
 
   constructor(
     private _modalService: NgbModal,

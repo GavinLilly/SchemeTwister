@@ -1,12 +1,11 @@
 import merge from 'ts-deepmerge';
 import { PartialDeep } from 'type-fest';
+import * as uuid from 'uuid';
 
-import defaultRules from '../data/defaultRules';
-import { MultiCardStore } from '../factories';
-
-import { AbstractMastermind } from './AbstractMastermind';
-import { GameSetup } from './GameSetup';
-import { CardType } from './cardType.enum';
+import { MultiCardStore } from '../../factories';
+import { AbstractMastermind } from '../AbstractMastermind';
+import { GameSetup } from '../GameSetup';
+import { CardType } from '../cardType.enum';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
@@ -18,16 +17,18 @@ import {
   INumPlayerRules,
   IVillainGroup,
   VillainDeckMinimal,
-} from './interfaces';
-import { NumPlayers, numPlayers, Rules, ShortScheme } from './types';
+} from '../interfaces';
+import { SchemeMinusRules } from '../interfaces/newScheme.interface';
+import { Rules, RulesType } from '../rules';
+import { NumPlayers, numPlayers } from '../types';
 
-export abstract class AbstractScheme implements ICard {
+export class Scheme implements ICard {
   // Meta
   public readonly id: string;
-  public abstract gameSetId: string;
+  public readonly gameSetId: string;
   public readonly keywords?: IKeyword[] = undefined;
   public readonly cardType: CardType = CardType.SCHEME;
-  public rules: Rules;
+  public rules: RulesType;
 
   // Card content
   public readonly name: string;
@@ -36,65 +37,53 @@ export abstract class AbstractScheme implements ICard {
   public readonly evilWins: string;
   public readonly specialRules?: string = undefined;
 
-  constructor(scheme: ShortScheme, numTwists: number);
-  constructor(
-    scheme: ShortScheme,
-    numTwists1Player: number,
-    numTwists2Player: number,
-    numTwists3Player: number,
-    numTwists4Player: number,
-    numTwists5Player: number
-  );
-  constructor(
-    scheme: ShortScheme,
-    numTwists1: number,
-    numTwists2?: number,
-    numTwists3?: number,
-    numTwists4?: number,
-    numTwists5?: number
-  ) {
-    // Destructure object to assign baseline variables
+  constructor(scheme: SchemeMinusRules) {
     ({
       id: this.id,
-      keywords: this.keywords,
       name: this.name,
+      gameSetId: this.gameSetId,
       setup: this.setup,
       twist: this.twist,
       evilWins: this.evilWins,
       specialRules: this.specialRules,
+      keywords: this.keywords,
     } = scheme);
 
-    this.rules = Object.assign({}, defaultRules());
-    if (
-      numTwists1 !== undefined &&
-      numTwists2 !== undefined &&
-      numTwists3 !== undefined &&
-      numTwists4 !== undefined &&
-      numTwists5 !== undefined
-    ) {
-      this.rules[1].villainDeck.numTwists = numTwists1;
-      this.rules[2].villainDeck.numTwists = numTwists2;
-      this.rules[3].villainDeck.numTwists = numTwists3;
-      this.rules[4].villainDeck.numTwists = numTwists4;
-      this.rules[5].villainDeck.numTwists = numTwists5;
+    const rules =
+      scheme.meta.rules === undefined
+        ? new Rules()
+        : new Rules(scheme.meta.rules);
+
+    this.rules = rules.rules;
+
+    if (typeof scheme.meta.numTwists === 'number') {
+      this.rules[1].villainDeck.numTwists = scheme.meta.numTwists;
+      this.rules[2].villainDeck.numTwists = scheme.meta.numTwists;
+      this.rules[3].villainDeck.numTwists = scheme.meta.numTwists;
+      this.rules[4].villainDeck.numTwists = scheme.meta.numTwists;
+      this.rules[5].villainDeck.numTwists = scheme.meta.numTwists;
     } else {
-      this.overrideDefaultRules({ villainDeck: { numTwists: numTwists1 } });
+      this.rules[1].villainDeck.numTwists = scheme.meta.numTwists[1];
+      this.rules[2].villainDeck.numTwists = scheme.meta.numTwists[2];
+      this.rules[3].villainDeck.numTwists = scheme.meta.numTwists[3];
+      this.rules[4].villainDeck.numTwists = scheme.meta.numTwists[4];
+      this.rules[5].villainDeck.numTwists = scheme.meta.numTwists[5];
     }
   }
 
-  public static empty(): AbstractScheme {
-    return new (class extends AbstractScheme {
-      public readonly gameSetId = 'EMPTY_GAMESET';
-    })(
-      {
-        id: 'EMPTY_SCHEME',
-        name: 'EMPTY SCHEME',
-        setup: 'n/a',
-        evilWins: 'n/a',
-        twist: 'n/a',
+  public static empty(): Scheme {
+    return new Scheme({
+      id: uuid.v4(),
+      name: 'EMPTY SCHEME',
+      setup: 'n/a',
+      evilWins: 'n/a',
+      twist: 'n/a',
+      cardType: CardType.SCHEME,
+      gameSetId: uuid.v4(),
+      meta: {
+        numTwists: 0,
       },
-      0
-    );
+    });
   }
 
   protected static addToDeck<T extends ICard>(
@@ -145,7 +134,7 @@ export abstract class AbstractScheme implements ICard {
   /**
    * Override the default rules for all numbers of players
    * @param override a partial set of rules to override the defaults
-   * @returns a configured instance of an {@link AbstractScheme}
+   * @returns a configured instance of an {@link Scheme}
    */
   public overrideDefaultRules(override: PartialDeep<INumPlayerRules>): this {
     this.overrideEachRule((rule) => merge(rule, override));
@@ -155,7 +144,7 @@ export abstract class AbstractScheme implements ICard {
   /**
    * Override the rules for each number of players. Useful for setting a rule based on the number of players
    * @param func a function to apply to the rule set for each number of players
-   * @returns a configured instance of an {@link AbstractScheme}
+   * @returns a configured instance of an {@link Scheme}
    */
   public overrideEachRule(
     func: (rule: INumPlayerRules, num: number) => INumPlayerRules
@@ -229,7 +218,7 @@ export abstract class AbstractScheme implements ICard {
     const mastermindRules = selectedMastermind.getRuleOverride();
     const ruleSet =
       mastermindRules !== undefined
-        ? this.clone().overrideEachRule(mastermindRules).rules
+        ? this.overrideEachRule(mastermindRules).rules
         : this.rules;
     const playerRules = ruleSet[numPlayers];
     const heroRules = playerRules.heroDeck;
@@ -435,32 +424,5 @@ export abstract class AbstractScheme implements ICard {
 
   public toString(): string {
     return this.name;
-  }
-
-  public clone() {
-    const cls = this.constructor as new (
-      scheme: ShortScheme,
-      numTwists1: number,
-      numTwists2: number,
-      numTwists3: number,
-      numTwists4: number,
-      numTwists5: number
-    ) => this;
-    return new cls(
-      {
-        id: this.id,
-        keywords: this.keywords,
-        name: this.name,
-        setup: this.setup,
-        twist: this.twist,
-        evilWins: this.evilWins,
-        specialRules: this.specialRules,
-      },
-      this.rules[1].villainDeck.numTwists,
-      this.rules[2].villainDeck.numTwists,
-      this.rules[3].villainDeck.numTwists,
-      this.rules[4].villainDeck.numTwists,
-      this.rules[5].villainDeck.numTwists
-    );
   }
 }

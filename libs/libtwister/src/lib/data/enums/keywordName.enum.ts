@@ -27,7 +27,9 @@ export enum KeywordName {
 
   CIRCLE_OF_KUNG_FU = 'Circle of Kung-Fu (and Quack-Fu)',
 
-  CLONE = 'Clone',
+  CLONE_HEROES = 'Clone Heroes',
+
+  CLONE_VILLAINS = 'Clone Villains',
 
   COMMAND = 'Command',
 
