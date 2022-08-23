@@ -22,7 +22,7 @@ export const HEROES_OF_ASGARD: ITeam = {
 
 export const HEROES_OF_WAKANDA: ITeam = {
   name: 'Heroes of Wakanda',
-  icon: '',
+  icon: '/assets/icons/teams/heroes-of-wakanda.png',
 };
 
 export const MARVEL_KNIGHTS: ITeam = {
@@ -117,5 +117,5 @@ export const WARBOUND: ITeam = {
 
 export const X_FACTOR: ITeam = {
   name: 'X-Factor',
-  icon: '',
+  icon: '/assets/icons/teams/x-factor.png',
 };
