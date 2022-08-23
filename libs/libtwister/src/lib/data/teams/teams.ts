@@ -20,6 +20,11 @@ export const HEROES_OF_ASGARD: ITeam = {
   icon: '/assets/icons/teams/heroes-of-asgard.png',
 };
 
+export const HEROES_OF_WAKANDA: ITeam = {
+  name: 'Heroes of Wakanda',
+  icon: '',
+};
+
 export const MARVEL_KNIGHTS: ITeam = {
   name: 'Marvel Knights',
   icon: '/assets/icons/teams/marvel-knights.png',

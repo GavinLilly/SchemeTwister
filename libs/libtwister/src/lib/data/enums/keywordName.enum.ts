@@ -3,6 +3,8 @@ export enum KeywordName {
 
   ADAPT = 'Adapt',
 
+  AMBUSH_ON_HEROES = 'Ambush Abilities on Heroes',
+
   ARTIFACT = 'Artifact',
 
   ASTRAL_PLANE = 'Astral Plane',
@@ -186,6 +188,8 @@ export enum KeywordName {
   WORTHY = 'Worthy',
 
   WOUNDED_FURY = 'Wounded Fury',
+
+  WOUNDS_ON_VILLAINS = 'Putting Wounds on Villains',
 
   X_GENE = 'X-Gene',
 

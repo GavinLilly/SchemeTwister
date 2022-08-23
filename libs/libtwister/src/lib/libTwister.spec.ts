@@ -20,8 +20,8 @@ import { injectGameSet } from './utils/schemeInjector';
 
 describe('LibTwister', () => {
   describe('All game sets', () => {
-    it('should have 32 sets', () =>
-      expect(LibTwister.allGameSets.size).toBe(32));
+    it('should have 33 sets', () =>
+      expect(LibTwister.allGameSets.size).toBe(33));
 
     it('should have 6 big boxes', () =>
       expect(
@@ -30,12 +30,12 @@ describe('LibTwister', () => {
         )
       ).toHaveLength(6));
 
-    it('should have 19 small boxes', () =>
+    it('should have 20 small boxes', () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
           (item) => item.size === GameSetSize.SMALL
         )
-      ).toHaveLength(19));
+      ).toHaveLength(20));
 
     it('should have 3 medium boxes', () =>
       expect(
