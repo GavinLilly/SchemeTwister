@@ -1,5 +1,6 @@
 export * as ANNIHILATION from './annihilation';
 export * as ANT_MAN from './antMan';
+export * as BLACK_PANTHER from './blackPanther';
 export * as CAPTAIN_AMERICA from './captainAmerica';
 export * as CHAMPIONS from './champions';
 export * as CIVIL_WAR from './civilWar';
