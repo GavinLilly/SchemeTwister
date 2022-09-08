@@ -171,6 +171,8 @@ export enum KeywordName {
 
   UNDERCOVER = 'Undercover',
 
+  UNLEASH = 'Unleash',
+
   URU_ENCHANTED_WEAPONS = 'Uru Enchanted Weapons',
 
   VEILED_SCHEMES = 'Veiled/Unveiled Schemes',
