@@ -1,3 +1,10 @@
+## [3.4.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.4.0...v3.4.1) (2022-09-14)
+
+
+### Bug Fixes
+
+* **libtwister:** ensure Black Widow is included in game sets ([7476ee2](https://github.com/GavinLilly/SchemeTwister/commit/7476ee2f26936fd8ccaa7ea84589e744347599d7))
+
 # [3.4.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.3.0...v3.4.0) (2022-09-14)
 
 
