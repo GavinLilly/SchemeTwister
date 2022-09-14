@@ -1,3 +1,10 @@
+# [3.4.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.3.0...v3.4.0) (2022-09-14)
+
+
+### Features
+
+* **libtwister:** add Black Widow expansion ([9eea955](https://github.com/GavinLilly/SchemeTwister/commit/9eea955d8e63f18e38b1727212b0b032f59dd6b5))
+
 # [3.3.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.2.1...v3.3.0) (2022-08-23)
 
 
