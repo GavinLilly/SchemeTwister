@@ -37,6 +37,8 @@ export class Scheme implements ICard {
   public readonly evilWins: string;
   public readonly specialRules?: string = undefined;
 
+  private static _sorter = (a: ICard, b: ICard) => (a.name < b.name ? -1 : 1);
+
   constructor(scheme: SchemeMinusRules) {
     ({
       id: this.id,
@@ -308,6 +310,11 @@ export class Scheme implements ICard {
             ...mastermindStore.getManyRandom(numMasterminds)
           );
         }
+
+        fullDeck.additionalDeck.deck.heroes?.sort(Scheme._sorter);
+        fullDeck.additionalDeck.deck.henchmen?.sort(Scheme._sorter);
+        fullDeck.additionalDeck.deck.villains?.sort(Scheme._sorter);
+        fullDeck.additionalDeck.deck.masterminds?.sort(Scheme._sorter);
       }
     }
     //#endregion Build the additional deck first if required
@@ -333,6 +340,9 @@ export class Scheme implements ICard {
         ...henchmenStore.getManyRandom(numRemainingHeroDeckHenchmen)
       );
     }
+
+    fullDeck.heroDeck.heroes.sort(Scheme._sorter);
+    fullDeck.heroDeck.henchmen?.sort(Scheme._sorter);
     //#endregion Build hero deck
 
     //#region Build villain deck
@@ -417,6 +427,11 @@ export class Scheme implements ICard {
     fullDeck.villainDeck.numBystanders = villainRules.numBystanders;
     fullDeck.villainDeck.numSidekicks = villainRules.numSidekicks;
     fullDeck.villainDeck.numTwists = villainRules.numTwists;
+
+    fullDeck.villainDeck.henchmen.sort(Scheme._sorter);
+    fullDeck.villainDeck.villains.sort(Scheme._sorter);
+    fullDeck.villainDeck.heroes?.sort(Scheme._sorter);
+    fullDeck.villainDeck.masterminds?.sort(Scheme._sorter);
     //#endregion Build villain deck
 
     return fullDeck;

@@ -95,13 +95,18 @@ export class GameSetup implements IGameSetup {
       ...this.getSelectedVillains(),
     ];
 
-    cards.filter(hasPresentKey('keywords')).forEach((card) => {
-      card.keywords.forEach((keyword) => keywordSet.add(keyword));
-    });
+    const keywords = cards
+      .filter(hasPresentKey('keywords'))
+      .map((card) => card.keywords)
+      .reduce((acc, val) => acc.concat(val), []);
 
     if (this.scheme.keywords !== undefined) {
-      this.scheme.keywords.forEach((keyword) => keywordSet.add(keyword));
+      this.scheme.keywords.forEach((keyword) => keywords.push(keyword));
     }
+
+    keywords
+      .sort((a: IKeyword, b: IKeyword) => (a.name < b.name ? -1 : 1))
+      .forEach((x) => keywordSet.add(x));
 
     return keywordSet;
   }
