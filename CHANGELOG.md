@@ -1,3 +1,10 @@
+## [3.4.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.4.1...v3.4.2) (2022-09-21)
+
+
+### Bug Fixes
+
+* **libtwister:** ensure all decks are sorted alphabetically ([a147fca](https://github.com/GavinLilly/SchemeTwister/commit/a147fca883b1a555a66e7c117c445aa2b2677058))
+
 ## [3.4.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.4.0...v3.4.1) (2022-09-14)
 
 
