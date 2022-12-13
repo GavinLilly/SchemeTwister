@@ -1,3 +1,5 @@
+## [3.4.5](https://github.com/GavinLilly/SchemeTwister/compare/v3.4.4...v3.4.5) (2022-12-13)
+
 ## [3.4.4](https://github.com/GavinLilly/SchemeTwister/compare/v3.4.3...v3.4.4) (2022-11-25)
 
 ## [3.4.3](https://github.com/GavinLilly/SchemeTwister/compare/v3.4.2...v3.4.3) (2022-09-21)
