@@ -44,6 +44,11 @@
               "type": "ci",
               "section": "Continuous Integration",
               "hidden": true
+            },
+            {
+              "type": "wip",
+              "section": "Work in Progress",
+              "hidden": true
             }
           ]
         }
