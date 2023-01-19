@@ -1,3 +1,10 @@
+## [3.4.7](https://github.com/GavinLilly/SchemeTwister/compare/v3.4.6...v3.4.7) (2023-01-19)
+
+
+### Dependencies
+
+* **deps:** bump json5 from 1.0.1 to 1.0.2 ([a4cd645](https://github.com/GavinLilly/SchemeTwister/commit/a4cd64533dfb315fcdf40972684c9a7609ffea84))
+
 ### [3.4.6](https://github.com/GavinLilly/SchemeTwister/compare/v3.4.5...v3.4.6) (2022-12-13)
 
 
@@ -603,4 +610,3 @@
 ### Bug Fixes
 
 * **misc:** add missing docker release ([87601f7](https://github.com/GavinLilly/SchemeTwister/commit/87601f7a59c88a1a762e26de547124ab92950bf4))
-
