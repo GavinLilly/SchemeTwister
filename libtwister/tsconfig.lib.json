@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../dist/out-tsc",
+    "declaration": true,
+    "types": []
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": [
+    "jest.config.ts",
+    "src/**/*.spec.ts",
+    "src/lib/data/gameSets/gameSetTests.ts"
+  ]
+}

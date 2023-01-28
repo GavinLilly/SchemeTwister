@@ -2,24 +2,24 @@ FROM node:16 as builder
 
 WORKDIR /build
 
-COPY angular.json decorate-angular-cli.js nx.json package-lock.json package.json tsconfig.base.json ./
-COPY apps apps/
-COPY libs libs/
+COPY nx.json package-lock.json package.json tsconfig.base.json ./
+COPY src src/
+COPY home home/
+COPY libtwister libtwister/
+COPY randomize randomize/
 
 RUN npm install
 
 ARG node_env=production
 ENV NODE_ENV ${node_env}
 
-RUN npm run build-version
-
-RUN npm run build web-app
+RUN npm run build
 
 FROM nginx:alpine
 
 WORKDIR /dist
 
-COPY --from=builder /build/dist/apps/web-app /usr/share/nginx/html
+COPY --from=builder /build/dist/schemetwister /usr/share/nginx/html
 COPY ./docker/nginx.conf /etc/nginx/conf.d/default.conf
 
 ARG port=80

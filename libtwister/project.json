@@ -1,0 +1,50 @@
+{
+  "name": "libtwister",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libtwister/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/libtwister",
+        "main": "libtwister/src/index.ts",
+        "tsConfig": "libtwister/tsconfig.lib.json",
+        "assets": [
+          "libtwister/*.md"
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libtwister/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "libtwister/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

@@ -48,13 +48,13 @@ npm install
 - Run schemetwister web app
 
 ```shell
-nx serve web-app
+nx serve
 ```
 
 - Commit your changes
 
 ```shell
-npm run cm
+npm run cz
 ```
 
 ---
@@ -82,10 +82,11 @@ npm test
 ### Step 1
 
 - **Option 1**
-    - 🍴 Fork this repo!
+
+  - 🍴 Fork this repo!
 
 - **Option 2**
-    - 👯 Clone this repo to your local machine using `https://github.com/GavinLilly/schemetwister.git`
+  - 👯 Clone this repo to your local machine using `https://github.com/GavinLilly/schemetwister.git`
 
 ### Step 2
 
@@ -99,10 +100,10 @@ npm test
 
 ## Contributors
 
-| <a href="https://github.com/GavinLilly" target="_blank">**Gavin Lilly**</a> |
-| :---: |
-| [![GavinLilly](https://avatars2.githubusercontent.com/u/29777802?s=200&v=4)](https://github.com/GavinLilly)    |
-| <a href="https://github.com/GavinLilly" target="_blank">`github.com/GavinLilly`</a> |
+|                 <a href="https://github.com/GavinLilly" target="_blank">**Gavin Lilly**</a>                 |
+| :---------------------------------------------------------------------------------------------------------: |
+| [![GavinLilly](https://avatars2.githubusercontent.com/u/29777802?s=200&v=4)](https://github.com/GavinLilly) |
+|             <a href="https://github.com/GavinLilly" target="_blank">`github.com/GavinLilly`</a>             |
 
 ---
 

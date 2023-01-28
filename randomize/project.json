@@ -1,0 +1,38 @@
+{
+  "name": "randomize",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "randomize/src",
+  "prefix": "schemetwister",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "randomize/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "randomize/**/*.ts",
+          "randomize/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

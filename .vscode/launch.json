@@ -10,7 +10,7 @@
       "request": "launch",
       "preLaunchTask": "npm: start",
       "url": "http://localhost:4200/",
-      "webRoot": "${workspaceFolder}/dist/apps/web-app",
+      "webRoot": "${workspaceFolder}/dist/schemetwister",
       "sourceMaps": true,
       "sourceMapPathOverrides": {
         "webpack:/*": "${webRoot}/*",
@@ -27,7 +27,7 @@
       "program": "${workspaceFolder}/node_modules/@nrwl/cli/bin/nx",
       "args": [
         "test",
-        "web-app-feature-randomize",
+        "randomize",
         "--codeCoverage=false",
         "--test-path-pattern (schemes|index|libTwister|factories|AbstractScheme|AbstractMastermind).spec.ts"
       ],
