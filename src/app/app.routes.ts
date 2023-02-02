@@ -1,4 +1,18 @@
-import { Route } from '@angular/router';
-import { AppComponent } from './app.component';
+import { Routes } from '@angular/router';
+import { HomeComponent } from '@schemetwister/home';
+import { RandomizeComponent } from '@schemetwister/randomize';
 
-export const appRoutes: Route[] = [{ path: '', component: AppComponent }];
+export const appRoutes: Routes = [
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
+    path: 'randomize',
+    component: RandomizeComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '/home',
+  },
+];

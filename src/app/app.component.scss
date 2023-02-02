@@ -1,0 +1,20 @@
+mat-sidenav {
+  padding: 16px;
+  text-align: center;
+}
+
+.content {
+  height: calc(100vh - 98px);
+
+  margin-left: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 2rem;
+}
+
+mat-sidenav-container {
+  height: calc(100vh - 65px);
+}
