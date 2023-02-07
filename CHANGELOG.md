@@ -1,3 +1,10 @@
+## [3.4.8](https://github.com/GavinLilly/SchemeTwister/compare/v3.4.7...v3.4.8) (2023-02-07)
+
+
+### Dependencies
+
+* **deps:** bump http-cache-semantics from 4.1.0 to 4.1.1 ([721392c](https://github.com/GavinLilly/SchemeTwister/commit/721392cbdbb4b40220ed015a26e2431ae5c1d27f))
+
 ## [3.4.7](https://github.com/GavinLilly/SchemeTwister/compare/v3.4.6...v3.4.7) (2023-01-19)
 
 
