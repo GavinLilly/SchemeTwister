@@ -1,3 +1,10 @@
+## [3.4.9](https://github.com/GavinLilly/SchemeTwister/compare/v3.4.8...v3.4.9) (2023-02-13)
+
+
+### Dependencies
+
+* **deps:** bump cacheable-request and firebase-tools ([ff53954](https://github.com/GavinLilly/SchemeTwister/commit/ff539541048ad4fe201253806f3904ffb0025331))
+
 ## [3.4.8](https://github.com/GavinLilly/SchemeTwister/compare/v3.4.7...v3.4.8) (2023-02-07)
 
 
