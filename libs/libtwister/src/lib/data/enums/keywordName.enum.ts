@@ -69,6 +69,8 @@ export enum KeywordName {
 
   EMPOWERED = 'Empowered',
 
+  ENDGAME = 'Endgame',
+
   EXCESSIVE_KINDNESS = 'Excessive Kindness',
 
   EXCESSIVE_VIOLENCE = 'Excessive Violence',
@@ -111,6 +113,8 @@ export enum KeywordName {
 
   MOONLIGHT_AND_SUNLIGHT = 'Moonlight and Sunlight',
 
+  MULTI_CLASS_CARDS = 'Multi-Class Cards',
+
   OUTWIT = 'Outwit',
 
   PATROL = 'Patrol',
@@ -128,6 +132,8 @@ export enum KeywordName {
   RISE_OF_THE_LIVING_DEAD = 'Rise of the Living Dead',
 
   RITUAL_ARTIFACTS = 'Ritual Artifacts',
+
+  SACRIFICE = 'Sacrifice',
 
   SAVIOR = 'Savior',
 
