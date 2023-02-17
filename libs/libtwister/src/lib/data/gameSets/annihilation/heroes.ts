@@ -1,7 +1,7 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { FANTASTIC_FOUR } from '../../teams';
 import { FOCUS } from '../fantasticFour/keywords';
-import { CONQUEROR } from '../marvelStudios/keywords';
+import { CONQUEROR } from '../mcuPhaseOne/keywords';
 
 import { MAN_OUT_OF_TIME } from './keywords';
 import { META } from './meta';

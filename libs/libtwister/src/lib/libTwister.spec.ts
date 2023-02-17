@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import DARK_CITY from './data/gameSets/darkCity';
 import LEGENDARY from './data/gameSets/legendary';
-import MARVEL_STUDIOS from './data/gameSets/marvelStudios';
 import MCU_GUARDIANS_OF_THE_GALAXY from './data/gameSets/mcuGuardiansOfTheGalaxy';
 import {
   EGO_THE_LIVING_PLANET,
   EPIC_EGO_THE_LIVING_PLANET,
 } from './data/gameSets/mcuGuardiansOfTheGalaxy/masterminds';
 import { UNLEASH_THE_ABILISK_SPACE_MONSTER } from './data/gameSets/mcuGuardiansOfTheGalaxy/schemes';
+import MARVEL_STUDIOS from './data/gameSets/mcuPhaseOne';
 import { LibTwister } from './libTwister';
 import {
   CardType,
@@ -18,45 +18,59 @@ import {
 } from './model';
 import { injectGameSet } from './utils/schemeInjector';
 
+const CORE_BOX_SIZE = 3;
+const BIG_BOX_SIZE = 6;
+const MEDIUM_BOX_SIZE = 3;
+const SMALL_BOX_SIZE = 22;
+const PROMO_BOX_SIZE = 1;
+const TOTAL_SIZE =
+  CORE_BOX_SIZE +
+  BIG_BOX_SIZE +
+  MEDIUM_BOX_SIZE +
+  SMALL_BOX_SIZE +
+  PROMO_BOX_SIZE;
+
 describe('LibTwister', () => {
   describe('All game sets', () => {
-    it('should have 34 sets', () =>
-      expect(LibTwister.allGameSets.size).toBe(34));
+    it(`should have ${TOTAL_SIZE} sets`, () =>
+      expect(LibTwister.allGameSets.size).toBe(TOTAL_SIZE));
 
-    it('should have 6 big boxes', () =>
+    it(`should have ${BIG_BOX_SIZE} big boxes`, () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
           (item) => item.size === GameSetSize.LARGE
         )
-      ).toHaveLength(6));
+      ).toHaveLength(BIG_BOX_SIZE));
 
-    it('should have 21 small boxes', () =>
+    it(`should have ${SMALL_BOX_SIZE} small boxes`, () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
           (item) => item.size === GameSetSize.SMALL
         )
-      ).toHaveLength(21));
+      ).toHaveLength(SMALL_BOX_SIZE));
 
-    it('should have 3 medium boxes', () =>
+    it(`should have ${MEDIUM_BOX_SIZE} medium boxes`, () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
           (item) => item.size === GameSetSize.MEDIUM
         )
-      ).toHaveLength(3));
+      ).toHaveLength(MEDIUM_BOX_SIZE));
 
-    it('should have 3 core sets', () =>
+    it(`should have ${CORE_BOX_SIZE} core sets`, () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
           (item) => item.size === GameSetSize.CORE
         )
-      ).toHaveLength(3));
+      ).toHaveLength(CORE_BOX_SIZE));
 
     it('should not have any duplicate card IDs', () => {
       const findDupes = (arr: string[]) => {
         const sortedArr = arr.slice().sort();
         const results = [];
         for (let i = 0; i < sortedArr.length - 1; i++) {
-          if (sortedArr[i + 1] === sortedArr[i]) results.push(sortedArr[i]);
+          if (sortedArr[i + 1] === sortedArr[i]) {
+            results.push(sortedArr[i]);
+          }
         }
         return results;
       };

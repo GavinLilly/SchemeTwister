@@ -1,7 +1,7 @@
-import { IVillainGroup , CardType } from '../../../model';
+import { IVillainGroup, CardType } from '../../../model';
 import { THROWN_ARTIFACT } from '../fearItself/keywords';
 import { ARTIFACT } from '../guardiansOfTheGalaxy/keywords';
-import { CONQUEROR } from '../marvelStudios/keywords';
+import { CONQUEROR } from '../mcuPhaseOne/keywords';
 
 import { VILLAINOUS_WEAPONS, WORTHY } from './keywords';
 import { META } from './meta';

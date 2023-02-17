@@ -1,5 +1,5 @@
-import { IVillainGroup , CardType } from '../../../model';
-import { CONQUEROR } from '../marvelStudios/keywords';
+import { IVillainGroup, CardType } from '../../../model';
+import { CONQUEROR } from '../mcuPhaseOne/keywords';
 
 import { MAN_OUT_OF_TIME, MOMENTUM } from './keywords';
 import { META } from './meta';

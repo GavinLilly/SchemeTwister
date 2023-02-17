@@ -1,8 +1,8 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { HEROES_OF_ASGARD } from '../../teams';
 import { THROWN_ARTIFACT } from '../fearItself/keywords';
 import { ARTIFACT } from '../guardiansOfTheGalaxy/keywords';
-import { CONQUEROR } from '../marvelStudios/keywords';
+import { CONQUEROR } from '../mcuPhaseOne/keywords';
 
 import { WORTHY } from './keywords';
 import { META } from './meta';
