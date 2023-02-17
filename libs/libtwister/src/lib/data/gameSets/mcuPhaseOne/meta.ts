@@ -5,5 +5,5 @@ export const META: IGameSetMeta = {
   name: 'Marvel Studios, Phase 1',
   size: GameSetSize.CORE,
   releaseYear: 2018,
-  series: Series.MCU,
+  series: Series.MARVEL_STUDIOS,
 };

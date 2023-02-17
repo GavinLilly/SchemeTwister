@@ -1,5 +1,5 @@
 export enum Series {
   MAINLINE,
-  MCU,
+  MARVEL_STUDIOS,
   VILLAINS,
 }
