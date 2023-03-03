@@ -1,0 +1,17 @@
+header {
+  .background {
+    background: linear-gradient(145deg, #2b022c, #300938);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 480px;
+    padding: 48px 48px 32px;
+    overflow: hidden;
+    transform: skewY(5deg);
+    transform-origin: 100%;
+  }
+}
