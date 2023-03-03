@@ -1,42 +1,30 @@
 /* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import {
-  AbstractMastermind,
   GameSets,
   GameSetup,
-  IHenchmen,
-  IHero,
   injectGameSet,
-  IVillainGroup,
-  MultiCardStore,
   instantiateScheme,
   Scheme,
 } from '@schemetwister/libtwister';
+import LEGENDARY from 'libs/libtwister/src/lib/data/gameSets/legendary';
 import { MIDTOWN_BANK_ROBBERY } from 'libs/libtwister/src/lib/data/gameSets/legendary/schemes';
+import {
+  StoreBuilder,
+  StoreOfStores,
+} from 'libs/libtwister/src/lib/factories/storeOfStores';
 
 import { IGameSetupState } from '../reducers/game-setup.reducer';
 
 import { selectGameSetupScheme } from './game-setup-scheme.selectors';
 
 describe('GameSetupScheme Selectors', () => {
-  let heroStore: MultiCardStore<IHero>;
-  let villainStore: MultiCardStore<IVillainGroup>;
-  let henchmenStore: MultiCardStore<IHenchmen>;
-  let mastermindStore: MultiCardStore<AbstractMastermind>;
+  let store: StoreOfStores;
   const selectedMastermind = GameSets.LEGENDARY.Masterminds.DR_DOOM;
   let initialState: IGameSetupState;
   let scheme: Scheme;
 
   beforeAll(() => {
-    heroStore = new MultiCardStore(Object.values(GameSets.LEGENDARY.Heroes));
-    villainStore = new MultiCardStore(
-      Object.values(GameSets.LEGENDARY.Villains)
-    );
-    henchmenStore = new MultiCardStore(
-      Object.values(GameSets.LEGENDARY.Henchmen)
-    );
-    mastermindStore = new MultiCardStore(
-      Object.values(GameSets.LEGENDARY.Masterminds)
-    );
+    store = new StoreBuilder().withSingleGameset(LEGENDARY).build();
   });
 
   beforeEach(async () => {
@@ -46,14 +34,7 @@ describe('GameSetupScheme Selectors', () => {
     );
 
     scheme = instantiateScheme(selectedScheme);
-    const setup = await scheme.getSetup(
-      2,
-      selectedMastermind,
-      heroStore,
-      villainStore,
-      henchmenStore,
-      mastermindStore
-    );
+    const setup = await scheme.getSetup(2, selectedMastermind, store);
 
     initialState = {
       error: '',
