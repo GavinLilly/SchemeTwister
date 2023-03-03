@@ -1,32 +1,22 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import DARK_CITY from '../../data/gameSets/darkCity';
 import INTO_THE_COSMOS from '../../data/gameSets/intoTheCosmos';
 import { ADAM_WARLOCK } from '../../data/gameSets/intoTheCosmos/heroes';
 import { TURN_THE_SOUL_OF_ADAM_WARLOCK } from '../../data/gameSets/intoTheCosmos/schemes';
-import { MultiCardStore } from '../../factories';
+import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
 import { injectGameSet } from '../../utils/schemeInjector';
-import { AbstractMastermind } from '../AbstractMastermind';
-import { IHero, IVillainGroup, IHenchmen } from '../interfaces';
 
 import { RequireHeroInAdditionalDeckScheme } from './RequireHeroInAdditionalDeckScheme';
 
 describe('Require Hero In Additional Deck Scheme', () => {
-  let heroStore: MultiCardStore<IHero>;
-  let villainStore: MultiCardStore<IVillainGroup>;
-  let henchmenStore: MultiCardStore<IHenchmen>;
-  let mastermindStore: MultiCardStore<AbstractMastermind>;
+  let store: StoreOfStores;
 
   beforeAll(() => {
-    heroStore = new MultiCardStore([
-      ...DARK_CITY.heroes,
-      ...INTO_THE_COSMOS.heroes,
-    ]);
-    villainStore = new MultiCardStore([
-      ...DARK_CITY.villains!,
-      ...INTO_THE_COSMOS.villains!,
-    ]);
-    henchmenStore = new MultiCardStore(DARK_CITY.henchmen!);
-    mastermindStore = new MultiCardStore(DARK_CITY.masterminds!);
+    store = new StoreBuilder()
+      .withHeroGamesets(DARK_CITY, INTO_THE_COSMOS)
+      .withMastermindGamesets(DARK_CITY)
+      .withVillainGamesets(DARK_CITY, INTO_THE_COSMOS)
+      .withHenchmenGamesets(DARK_CITY)
+      .build();
   });
 
   it('It should include Adam Warlock in the additional deck', async () => {
@@ -36,11 +26,8 @@ describe('Require Hero In Additional Deck Scheme', () => {
     );
     const setup = await scheme.getSetup(
       2,
-      mastermindStore.getOneRandom(),
-      heroStore,
-      villainStore,
-      henchmenStore,
-      mastermindStore
+      store.mastermindStore.getOneRandom(),
+      store
     );
 
     expect(setup.additionalDeck?.deck.heroes).toContain(ADAM_WARLOCK);

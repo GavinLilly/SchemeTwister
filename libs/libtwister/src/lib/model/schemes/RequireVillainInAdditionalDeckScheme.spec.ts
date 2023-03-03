@@ -1,29 +1,22 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import CHAMPIONS from '../../data/gameSets/champions';
 import { CLASH_OF_THE_MONSTERS_UNLEASHED } from '../../data/gameSets/champions/schemes';
 import { MONSTERS_UNLEASHED } from '../../data/gameSets/champions/villains';
 import LEGENDARY from '../../data/gameSets/legendary';
-import { MultiCardStore } from '../../factories';
+import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
 import { injectGameSet } from '../../utils/schemeInjector';
-import { AbstractMastermind } from '../AbstractMastermind';
-import { IHero, IVillainGroup, IHenchmen } from '../interfaces';
 
 import { RequireVillainInAdditionalDeckScheme } from './RequireVillainInAdditionalDeckScheme';
 
 describe('Require Villain In Additional Deck Scheme', () => {
-  let heroStore: MultiCardStore<IHero>;
-  let villainStore: MultiCardStore<IVillainGroup>;
-  let henchmenStore: MultiCardStore<IHenchmen>;
-  let mastermindStore: MultiCardStore<AbstractMastermind>;
+  let store: StoreOfStores;
 
   beforeAll(() => {
-    heroStore = new MultiCardStore(CHAMPIONS.heroes);
-    villainStore = new MultiCardStore([
-      ...LEGENDARY.villains!,
-      ...CHAMPIONS.villains!,
-    ]);
-    henchmenStore = new MultiCardStore(LEGENDARY.henchmen!);
-    mastermindStore = new MultiCardStore(CHAMPIONS.masterminds!);
+    store = new StoreBuilder()
+      .withHeroGamesets(CHAMPIONS)
+      .withMastermindGamesets(CHAMPIONS)
+      .withVillainGamesets(LEGENDARY, CHAMPIONS)
+      .withHenchmenGamesets(LEGENDARY)
+      .build();
   });
 
   it('It should include Monsters Unleashed in the additional deck', async () => {
@@ -33,11 +26,8 @@ describe('Require Villain In Additional Deck Scheme', () => {
     );
     const setup = await scheme.getSetup(
       2,
-      mastermindStore.getOneRandom(),
-      heroStore,
-      villainStore,
-      henchmenStore,
-      mastermindStore
+      store.mastermindStore.getOneRandom(),
+      store
     );
 
     expect(setup.additionalDeck?.deck.villains).toContain(MONSTERS_UNLEASHED);

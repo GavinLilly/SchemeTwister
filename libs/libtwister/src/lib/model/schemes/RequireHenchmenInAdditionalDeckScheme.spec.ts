@@ -1,25 +1,16 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import VILLAINS from '../../data/gameSets/villains';
 import { COPS } from '../../data/gameSets/villains/henchmen';
 import { CAGE_VILLAINS_IN_POWERSUPPRESSING_CELLS } from '../../data/gameSets/villains/schemes';
-import { MultiCardStore } from '../../factories';
+import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
 import { injectGameSet } from '../../utils/schemeInjector';
-import { AbstractMastermind } from '../AbstractMastermind';
-import { IHero, IVillainGroup, IHenchmen } from '../interfaces';
 
 import { RequireHenchmenInAdditionalDeckScheme } from './RequireHenchmenInAdditionalDeckScheme';
 
 describe('Require Henchmen In Additional Deck Scheme', () => {
-  let heroStore: MultiCardStore<IHero>;
-  let villainStore: MultiCardStore<IVillainGroup>;
-  let henchmenStore: MultiCardStore<IHenchmen>;
-  let mastermindStore: MultiCardStore<AbstractMastermind>;
+  let store: StoreOfStores;
 
   beforeAll(() => {
-    heroStore = new MultiCardStore(VILLAINS.heroes);
-    villainStore = new MultiCardStore(VILLAINS.villains!);
-    henchmenStore = new MultiCardStore(VILLAINS.henchmen!);
-    mastermindStore = new MultiCardStore(VILLAINS.masterminds!);
+    store = new StoreBuilder().withSingleGameset(VILLAINS).build();
   });
 
   it('It should include Cops in the additional deck', async () => {
@@ -29,11 +20,8 @@ describe('Require Henchmen In Additional Deck Scheme', () => {
     );
     const setup = await scheme.getSetup(
       2,
-      mastermindStore.getOneRandom(),
-      heroStore,
-      villainStore,
-      henchmenStore,
-      mastermindStore
+      store.mastermindStore.getOneRandom(),
+      store
     );
 
     expect(setup.additionalDeck?.deck.henchmen).toContain(COPS);

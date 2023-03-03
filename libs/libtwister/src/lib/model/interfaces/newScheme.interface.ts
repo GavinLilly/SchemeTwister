@@ -5,6 +5,7 @@ import { Scheme } from '../schemes/Scheme';
 
 import { IScheme } from './scheme.interface';
 
+/* eslint-disable @typescript-eslint/naming-convention */
 interface IEachPlayerTwists {
   1: number;
   2: number;
@@ -12,6 +13,7 @@ interface IEachPlayerTwists {
   4: number;
   5: number;
 }
+/* eslint-enable @typescript-eslint/naming-convention */
 
 export interface IOverrideScheme {
   schemeType: Constructor<Scheme>;

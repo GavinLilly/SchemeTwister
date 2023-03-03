@@ -17,31 +17,31 @@ import {
   MIDTOWN_BANK_ROBBERY,
   REPLACE_EARTHS_LEADERS_WITH_KILLBOTS,
 } from '../data/gameSets/legendary/schemes';
-import { MultiCardStore } from '../factories/multiCardStore';
+import PAINT_THE_TOWN_RED from '../data/gameSets/paintTheTownRed';
+import { CARNAGE } from '../data/gameSets/paintTheTownRed/masterminds';
+import { SPLICE_HUMANS_WITH_SPIDER_DNA } from '../data/gameSets/paintTheTownRed/schemes';
+import {
+  MAXIMUM_CARNAGE,
+  SINISTER_SIX,
+} from '../data/gameSets/paintTheTownRed/villains';
+import { StoreBuilder, StoreOfStores } from '../factories/storeOfStores';
 import { injectGameSet } from '../utils/schemeInjector';
 
-import { AbstractMastermind } from './AbstractMastermind';
 import { GameSetup } from './GameSetup';
-import { IHenchmen, IHero, IVillainGroup } from './interfaces';
-import { Scheme } from './schemes';
+import { RequireVillainsInVillainDeckScheme, Scheme } from './schemes';
 
-let heroStore: MultiCardStore<IHero>;
-let villainStore: MultiCardStore<IVillainGroup>;
-let henchmenStore: MultiCardStore<IHenchmen>;
-let mastermindStore: MultiCardStore<AbstractMastermind>;
+let store: StoreOfStores;
 
 beforeAll(() => {
-  heroStore = new MultiCardStore(LEGENDARY.heroes);
-  villainStore = new MultiCardStore(LEGENDARY.villains!);
-  henchmenStore = new MultiCardStore(LEGENDARY.henchmen!);
-  mastermindStore = new MultiCardStore(LEGENDARY.masterminds!);
+  store = new StoreBuilder()
+    .withHeroGamesets(LEGENDARY)
+    .withMastermindGamesets(LEGENDARY, PAINT_THE_TOWN_RED)
+    .withVillainGamesets(LEGENDARY, PAINT_THE_TOWN_RED)
+    .withHenchmenGamesets(LEGENDARY)
+    .build();
 });
 
-afterEach(() => {
-  [heroStore, villainStore, henchmenStore, mastermindStore].forEach((store) =>
-    store.resetStore()
-  );
-});
+afterEach(() => store.reset());
 
 describe('GameSetup', () => {
   describe('with Midtown Bank Robbery', () => {
@@ -53,11 +53,8 @@ describe('GameSetup', () => {
       );
       setup = (await scheme.getSetup(
         2,
-        mastermindStore.getOneRandom(),
-        heroStore,
-        villainStore,
-        henchmenStore,
-        mastermindStore
+        store.mastermindStore.getOneRandom(),
+        store
       )) as GameSetup;
     });
 
@@ -85,11 +82,8 @@ describe('GameSetup', () => {
       );
       setup = (await scheme.getSetup(
         2,
-        mastermindStore.getOneRandom(),
-        heroStore,
-        villainStore,
-        henchmenStore,
-        mastermindStore
+        store.mastermindStore.getOneRandom(),
+        store
       )) as GameSetup;
     });
 
@@ -115,11 +109,8 @@ describe('GameSetup', () => {
       );
       const setup = (await scheme.getSetup(
         2,
-        mastermindStore.getOneRandom(),
-        heroStore,
-        villainStore,
-        henchmenStore,
-        mastermindStore
+        store.mastermindStore.getOneRandom(),
+        store
       )) as GameSetup;
 
       expect(setup.keywords.size).toBe(0);
@@ -131,11 +122,8 @@ describe('GameSetup', () => {
       );
       const setup = (await scheme.getSetup(
         2,
-        mastermindStore.getOneRandom(),
-        heroStore,
-        villainStore,
-        henchmenStore,
-        mastermindStore
+        store.mastermindStore.getOneRandom(),
+        store
       )) as GameSetup;
 
       expect(setup.keywords.size).toBe(1);
@@ -143,21 +131,21 @@ describe('GameSetup', () => {
     });
 
     it('should have only the "Versatile" keyword', async () => {
-      heroStore = new MultiCardStore([
-        ...LEGENDARY.heroes,
-        ...DARK_CITY.heroes,
-      ]);
+      const versatileStore: StoreOfStores = new StoreBuilder()
+        .withHeroGamesets(LEGENDARY, DARK_CITY)
+        .withMastermindGamesets(LEGENDARY)
+        .withVillainGamesets(LEGENDARY)
+        .withHenchmenGamesets(LEGENDARY)
+        .build();
+      versatileStore;
 
       const scheme = new Scheme(
         injectGameSet(LEGENDARY.id, REPLACE_EARTHS_LEADERS_WITH_KILLBOTS)
       );
       const setup = (await scheme.getSetup(
         2,
-        mastermindStore.getOneRandom(),
-        heroStore,
-        villainStore,
-        henchmenStore,
-        mastermindStore,
+        versatileStore.mastermindStore.getOneRandom(),
+        versatileStore,
         undefined,
         {
           heroes: [DOMINO, CYCLOPS, WOLVERINE, CAPTAIN_AMERICA, IRON_MAN],
@@ -167,5 +155,41 @@ describe('GameSetup', () => {
       expect(setup.keywords.size).toBe(1);
       expect(setup.keywords.has(VERSATILE)).toBeTruthy();
     });
+  });
+
+  describe('with Splice Humans with Spider DNA + Carnage', () => {
+    let setup: GameSetup;
+
+    beforeAll(async () => {
+      const scheme = new RequireVillainsInVillainDeckScheme(
+        injectGameSet(LEGENDARY.id, SPLICE_HUMANS_WITH_SPIDER_DNA),
+        SINISTER_SIX
+      );
+      setup = (await scheme.getSetup(
+        2,
+        store.mastermindStore.getOne(CARNAGE.id),
+        store
+      )) as GameSetup;
+    });
+
+    describe('getSelectedHeroes()', () => {
+      it('should have 5 heroes', () =>
+        expect(setup.getSelectedHeroes()).toHaveLength(5));
+
+      it('should have 1 henchmen group', () =>
+        expect(setup.getSelectedHenchmen()).toHaveLength(1));
+
+      it('should have 2 villain groups', () =>
+        expect(setup.getSelectedVillains()).toHaveLength(2));
+
+      it('should have 1 mastermind', () =>
+        expect(setup.getSelectedMasterminds()).toHaveLength(1));
+    });
+
+    it('should have the Sinister Six as a villain group', () =>
+      expect(setup.getSelectedVillains()).toContain(SINISTER_SIX));
+
+    it('should have Maximum Carnage as a villain group', () =>
+      expect(setup.getSelectedVillains()).toContain(MAXIMUM_CARNAGE));
   });
 });

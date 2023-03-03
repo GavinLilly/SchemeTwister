@@ -1,5 +1,6 @@
 import * as GameSets from './data/gameSets';
-import { MultiCardStore, SingleCardFactory } from './factories';
+import { SingleCardFactory } from './factories';
+import { StoreOfStores } from './factories/storeOfStores';
 import {
   AbstractMastermind,
   GameSet,
@@ -27,36 +28,9 @@ export class LibTwister {
     return this._schemeFactory;
   }
 
-  private _mastermindStore!: MultiCardStore<AbstractMastermind>;
-  /**
-   * The mastermind store and picker
-   */
-  public get mastermindStore() {
-    return this._mastermindStore;
-  }
-
-  private _heroStore!: MultiCardStore<IHero>;
-  /**
-   * The hero store and picker
-   */
-  public get heroStore() {
-    return this._heroStore;
-  }
-
-  private _villainStore!: MultiCardStore<IVillainGroup>;
-  /**
-   * The villain store and picker
-   */
-  public get villainStore() {
-    return this._villainStore;
-  }
-
-  private _henchmenStore!: MultiCardStore<IHenchmen>;
-  /**
-   * The henchmen store and picker
-   */
-  public get henchmenStore() {
-    return this._henchmenStore;
+  private _stores!: StoreOfStores;
+  public get stores() {
+    return this._stores;
   }
 
   /**
@@ -151,34 +125,21 @@ export class LibTwister {
   public async getSetup(
     numPlayers: NumPlayers,
     scheme = this.schemeFactory.getOneRandom(),
-    mastermind = this.mastermindStore.getOneRandom(),
+    mastermind = this.stores.mastermindStore.getOneRandom(),
     advancedSolo = false
   ): Promise<GameSetup> {
-    this._resetStores();
+    this._stores.reset();
 
     const createdScheme = instantiateScheme(scheme);
 
     const setup = await createdScheme.getSetup(
       numPlayers,
       mastermind,
-      this.heroStore,
-      this.villainStore,
-      this.henchmenStore,
-      this.mastermindStore,
+      this.stores,
       advancedSolo
     );
 
     return new GameSetup(setup);
-  }
-
-  /**
-   * Resets the stores, removing any picked cards
-   */
-  private _resetStores() {
-    this._henchmenStore.resetStore();
-    this._heroStore.resetStore();
-    this._mastermindStore.resetStore();
-    this._villainStore.resetStore();
   }
 
   /**
@@ -211,10 +172,8 @@ export class LibTwister {
       }
     });
 
-    this._heroStore = new MultiCardStore(heroes);
-    this._mastermindStore = new MultiCardStore(masterminds);
+    this._stores = new StoreOfStores(heroes, masterminds, villains, henchmen);
+
     this._schemeFactory = new SingleCardFactory(schemes);
-    this._villainStore = new MultiCardStore(villains);
-    this._henchmenStore = new MultiCardStore(henchmen);
   }
 }

@@ -1,13 +1,10 @@
-import { MultiCardStore } from '../../factories';
+import { StoreOfStores } from '../../factories/storeOfStores';
 import { AbstractMastermind } from '../AbstractMastermind';
 import { SinglePlayerError } from '../errors';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  IHenchmen,
-  IHero,
-  IVillainGroup,
   VillainDeckMinimal,
 } from '../interfaces';
 import { NumPlayers } from '../types';
@@ -15,13 +12,10 @@ import { NumPlayers } from '../types';
 import { Scheme } from './Scheme';
 
 export class SoloBannedScheme extends Scheme {
-  public async getSetup(
+  override async getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: AbstractMastermind,
-    heroStore: MultiCardStore<IHero>,
-    villainStore: MultiCardStore<IVillainGroup>,
-    henchmenStore: MultiCardStore<IHenchmen>,
-    mastermindStore: MultiCardStore<AbstractMastermind>,
+    store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck?: VillainDeckMinimal,
@@ -33,10 +27,7 @@ export class SoloBannedScheme extends Scheme {
       return await super.getSetup(
         numPlayers,
         selectedMastermind,
-        heroStore,
-        villainStore,
-        henchmenStore,
-        mastermindStore,
+        store,
         advancedSolo,
         partialHeroDeck,
         partialVillainDeck,

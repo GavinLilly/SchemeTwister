@@ -1,41 +1,22 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import LEGENDARY from '../../data/gameSets/legendary';
 import { NEGATIVE_ZONE_PRISON_BREAKOUT } from '../../data/gameSets/legendary/schemes';
-import { MultiCardStore } from '../../factories';
+import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
 import { injectGameSet } from '../../utils/schemeInjector';
-import { AbstractMastermind } from '../AbstractMastermind';
 import { SinglePlayerError } from '../errors';
-import { IHero, IVillainGroup, IHenchmen } from '../interfaces';
 import { NumPlayers } from '../types';
 
 import { SoloBannedScheme } from './SoloBannedScheme';
 
 describe('Solo Banned Scheme', () => {
-  let heroStore: MultiCardStore<IHero>;
-  let villainStore: MultiCardStore<IVillainGroup>;
-  let henchmenStore: MultiCardStore<IHenchmen>;
-  let mastermindStore: MultiCardStore<AbstractMastermind>;
+  let store: StoreOfStores;
 
   beforeAll(() => {
-    heroStore = new MultiCardStore(LEGENDARY.heroes);
-    villainStore = new MultiCardStore(LEGENDARY.villains!);
-    henchmenStore = new MultiCardStore(LEGENDARY.henchmen!);
-    mastermindStore = new MultiCardStore(LEGENDARY.masterminds!);
+    store = new StoreBuilder().withSingleGameset(LEGENDARY).build();
   });
 
-  beforeEach(() => {
-    [heroStore, villainStore, henchmenStore, mastermindStore].forEach((store) =>
-      store.resetStore()
-    );
-  });
+  beforeEach(() => store.reset());
 
   describe('Negative Zone Prison Breakout', () => {
-    beforeEach(async () => {
-      [heroStore, villainStore, henchmenStore, mastermindStore].forEach(
-        (store) => store.resetStore()
-      );
-    });
-
     it('should throw an error for 1 player', async () => {
       expect.assertions(1);
 
@@ -43,14 +24,7 @@ describe('Solo Banned Scheme', () => {
         injectGameSet(LEGENDARY.id, NEGATIVE_ZONE_PRISON_BREAKOUT)
       );
       try {
-        await scheme.getSetup(
-          1,
-          mastermindStore.getOneRandom(),
-          heroStore,
-          villainStore,
-          henchmenStore,
-          mastermindStore
-        );
+        await scheme.getSetup(1, store.mastermindStore.getOneRandom(), store);
       } catch (e) {
         expect(e).toBeInstanceOf(SinglePlayerError);
       }
@@ -65,11 +39,8 @@ describe('Solo Banned Scheme', () => {
         expect(
           await scheme2.getSetup(
             arg as NumPlayers,
-            mastermindStore.getOneRandom(),
-            heroStore,
-            villainStore,
-            henchmenStore,
-            mastermindStore
+            store.mastermindStore.getOneRandom(),
+            store
           )
         ).toBeTruthy();
       }

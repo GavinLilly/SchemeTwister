@@ -1,13 +1,11 @@
-import { MultiCardStore } from '../../factories';
+import { StoreOfStores } from '../../factories/storeOfStores';
 import { randomize } from '../../utils/randomize';
 import { AbstractMastermind } from '../AbstractMastermind';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  IHenchmen,
   IHero,
-  IVillainGroup,
   VillainDeckMinimal,
 } from '../interfaces';
 import { SchemeMinusRules } from '../interfaces/newScheme.interface';
@@ -28,16 +26,13 @@ export class RequireHeroNameInHeroDeckScheme extends Scheme {
   public async getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: AbstractMastermind,
-    heroStore: MultiCardStore<IHero>,
-    villainStore: MultiCardStore<IVillainGroup>,
-    henchmenStore: MultiCardStore<IHenchmen>,
-    mastermindStore: MultiCardStore<AbstractMastermind>,
+    store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck: HeroDeckMinimal = {},
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
   ): Promise<IGameSetup> {
-    const heroes: IHero[] = heroStore.availableCards.filter((hero) =>
+    const heroes: IHero[] = store.heroStore.availableCards.filter((hero) =>
       hero.name.toLowerCase().includes(this._heroName.toLowerCase())
     );
 
@@ -45,10 +40,10 @@ export class RequireHeroNameInHeroDeckScheme extends Scheme {
       const chosenHeroes = randomize(heroes, this._numberRequired);
 
       const pickedHeroes = chosenHeroes.map((hero) =>
-        heroStore.getOne(hero.id)
+        store.heroStore.getOne(hero.id)
       );
 
-      heroes.forEach((hero) => heroStore.removeCard(hero.id));
+      heroes.forEach((hero) => store.heroStore.removeCard(hero.id));
 
       partialHeroDeck.heroes =
         pickedHeroes.length > 1
@@ -67,16 +62,13 @@ export class RequireHeroNameInHeroDeckScheme extends Scheme {
       if (this._removeOthers) {
         heroes
           .filter((hero) => !pickedHeroes.includes(hero))
-          .forEach((hero) => heroStore.removeCard(hero.id));
+          .forEach((hero) => store.heroStore.removeCard(hero.id));
       }
 
       return await super.getSetup(
         numPlayers,
         selectedMastermind,
-        heroStore,
-        villainStore,
-        henchmenStore,
-        mastermindStore,
+        store,
         advancedSolo,
         partialHeroDeck,
         partialVillainDeck,
