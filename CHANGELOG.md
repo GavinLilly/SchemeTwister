@@ -1,3 +1,10 @@
+## [3.4.10](https://github.com/GavinLilly/SchemeTwister/compare/v3.4.9...v3.4.10) (2023-03-03)
+
+
+### Bug Fixes
+
+* **libtwister:** use store of stores and mix mastermind villains ([5ae4689](https://github.com/GavinLilly/SchemeTwister/commit/5ae4689478f8eefe34949d7ce961cfa859fb8799))
+
 ## [3.4.9](https://github.com/GavinLilly/SchemeTwister/compare/v3.4.8...v3.4.9) (2023-02-13)
 
 
