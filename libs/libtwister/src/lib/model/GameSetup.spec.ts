@@ -120,10 +120,16 @@ describe('GameSetup', () => {
       const scheme = new Scheme(
         injectGameSet(INTO_THE_COSMOS.id, THE_CONTEST_OF_CHAMPIONS)
       );
+      const legendaryStore = new StoreBuilder()
+        .withHeroGamesets(LEGENDARY)
+        .withMastermindGamesets(LEGENDARY)
+        .withVillainGamesets(LEGENDARY)
+        .withHenchmenGamesets(LEGENDARY)
+        .build();
       const setup = (await scheme.getSetup(
         2,
-        store.mastermindStore.getOneRandom(),
-        store
+        legendaryStore.mastermindStore.getOneRandom(),
+        legendaryStore
       )) as GameSetup;
 
       expect(setup.keywords.size).toBe(1);
