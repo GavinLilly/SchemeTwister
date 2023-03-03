@@ -64,7 +64,7 @@ export class SchemeMastermindSelectComponent implements OnInit {
       if (this.itemType === CardType.SCHEME) {
         this.availableItems = value.schemeFactory.availableCards;
       } else if (this.itemType === CardType.MASTERMIND) {
-        this.availableItems = value.mastermindStore.availableCards;
+        this.availableItems = value.stores.mastermindStore.availableCards;
       }
 
       this.availableItems.sort((a, b) => {
