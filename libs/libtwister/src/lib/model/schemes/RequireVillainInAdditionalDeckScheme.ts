@@ -1,11 +1,9 @@
-import { MultiCardStore } from '../../factories';
+import { StoreOfStores } from '../../factories/storeOfStores';
 import { AbstractMastermind } from '../AbstractMastermind';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  IHenchmen,
-  IHero,
   IVillainGroup,
   VillainDeckMinimal,
 } from '../interfaces';
@@ -25,16 +23,13 @@ export class RequireVillainInAdditionalDeckScheme extends Scheme {
   public async getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: AbstractMastermind,
-    heroStore: MultiCardStore<IHero>,
-    villainStore: MultiCardStore<IVillainGroup>,
-    henchmenStore: MultiCardStore<IHenchmen>,
-    mastermindStore: MultiCardStore<AbstractMastermind>,
+    store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck: AdditionalDeckDeckMinimal = {}
   ): Promise<IGameSetup> {
-    const villain = villainStore.getOne(this._requiredVillain.id);
+    const villain = store.villainStore.getOne(this._requiredVillain.id);
 
     if (
       this.rules[numPlayers].additionalDeck !== undefined &&
@@ -52,10 +47,7 @@ export class RequireVillainInAdditionalDeckScheme extends Scheme {
     return await super.getSetup(
       numPlayers,
       selectedMastermind,
-      heroStore,
-      villainStore,
-      henchmenStore,
-      mastermindStore,
+      store,
       advancedSolo,
       partialHeroDeck,
       partialVillainDeck,

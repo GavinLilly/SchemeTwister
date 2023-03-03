@@ -1,10 +1,9 @@
-import { MultiCardStore } from '../../factories';
+import { StoreOfStores } from '../../factories/storeOfStores';
 import { AbstractMastermind } from '../AbstractMastermind';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  IHenchmen,
   IHero,
   IVillainGroup,
   SchemeMinusRules,
@@ -28,20 +27,17 @@ export class TheDarkPhoenixSagaScheme extends RequireVillainsInVillainDeckScheme
   public async getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: AbstractMastermind,
-    heroStore: MultiCardStore<IHero>,
-    villainStore: MultiCardStore<IVillainGroup>,
-    henchmenStore: MultiCardStore<IHenchmen>,
-    mastermindStore: MultiCardStore<AbstractMastermind>,
+    store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck: VillainDeckMinimal = {},
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
   ): Promise<IGameSetup> {
-    const hero = heroStore.isAvailable(this._preferredHero)
+    const hero = store.heroStore.isAvailable(this._preferredHero)
       ? this._preferredHero
       : this._backupHero;
 
-    const pickedHero = heroStore.getOne(hero.id);
+    const pickedHero = store.heroStore.getOne(hero.id);
 
     partialVillainDeck.heroes = Scheme.addToDeck(
       partialVillainDeck.heroes,
@@ -52,10 +48,7 @@ export class TheDarkPhoenixSagaScheme extends RequireVillainsInVillainDeckScheme
     return await super.getSetup(
       numPlayers,
       selectedMastermind,
-      heroStore,
-      villainStore,
-      henchmenStore,
-      mastermindStore,
+      store,
       advancedSolo,
       partialHeroDeck,
       partialVillainDeck,

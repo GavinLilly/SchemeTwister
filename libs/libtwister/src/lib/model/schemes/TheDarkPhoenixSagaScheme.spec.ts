@@ -1,30 +1,22 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import DARK_CITY from '../../data/gameSets/darkCity';
 import { JEAN_GREY } from '../../data/gameSets/darkCity/heroes';
 import XMEN from '../../data/gameSets/xMen';
 import { PHOENIX } from '../../data/gameSets/xMen/heroes';
 import { THE_DARK_PHOENIX_SAGA } from '../../data/gameSets/xMen/schemes';
 import { HELLFIRE_CLUB } from '../../data/gameSets/xMen/villains';
-import { MultiCardStore } from '../../factories';
+import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
 import { injectGameSet } from '../../utils/schemeInjector';
-import { AbstractMastermind } from '../AbstractMastermind';
-import { IHero, IVillainGroup, IHenchmen, IGameSetup } from '../interfaces';
+import { IGameSetup } from '../interfaces';
 
 import { Scheme } from './Scheme';
 import { TheDarkPhoenixSagaScheme } from './TheDarkPhoenixSagaScheme';
 
 describe('The Dark Phoenix Saga Scheme', () => {
-  let heroStore: MultiCardStore<IHero>;
-  let villainStore: MultiCardStore<IVillainGroup>;
-  let henchmenStore: MultiCardStore<IHenchmen>;
-  let mastermindStore: MultiCardStore<AbstractMastermind>;
+  let store: StoreOfStores;
   let scheme: Scheme;
 
   beforeAll(() => {
-    heroStore = new MultiCardStore(XMEN.heroes);
-    villainStore = new MultiCardStore(XMEN.villains!);
-    henchmenStore = new MultiCardStore(XMEN.henchmen!);
-    mastermindStore = new MultiCardStore(XMEN.masterminds!);
+    store = new StoreBuilder().withSingleGameset(XMEN).build();
     scheme = new TheDarkPhoenixSagaScheme(
       injectGameSet(XMEN.id, THE_DARK_PHOENIX_SAGA),
       HELLFIRE_CLUB,
@@ -33,22 +25,15 @@ describe('The Dark Phoenix Saga Scheme', () => {
     );
   });
 
-  beforeEach(() => {
-    [heroStore, villainStore, henchmenStore, mastermindStore].forEach((store) =>
-      store.resetStore()
-    );
-  });
+  beforeEach(() => store.reset());
 
   describe('with X-Men expansion', () => {
     let setup: IGameSetup;
     beforeAll(async () => {
       setup = await scheme.getSetup(
         2,
-        mastermindStore.getOneRandom(),
-        heroStore,
-        villainStore,
-        henchmenStore,
-        mastermindStore
+        store.mastermindStore.getOneRandom(),
+        store
       );
     });
 
@@ -62,14 +47,16 @@ describe('The Dark Phoenix Saga Scheme', () => {
   describe('with the Dark City expansion', () => {
     let setup: IGameSetup;
     beforeAll(async () => {
-      const dcHeroStore = new MultiCardStore(DARK_CITY.heroes);
+      const dcHeroStore = new StoreBuilder()
+        .withHeroGamesets(DARK_CITY)
+        .withMastermindGamesets(XMEN)
+        .withVillainGamesets(XMEN)
+        .withHenchmenGamesets(XMEN)
+        .build();
       setup = await scheme.getSetup(
         2,
-        mastermindStore.getOneRandom(),
-        dcHeroStore,
-        villainStore,
-        henchmenStore,
-        mastermindStore
+        dcHeroStore.mastermindStore.getOneRandom(),
+        dcHeroStore
       );
     });
 

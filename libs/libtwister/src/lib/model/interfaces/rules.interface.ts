@@ -26,15 +26,17 @@ interface IAdditionalDeckRequirements extends IDeckRequirements {
   numWounds?: number;
 }
 
+export interface IAdditionalDeckRules {
+  name: string;
+  instruction?: string;
+  deck?: IAdditionalDeckRequirements;
+}
+
 export interface INumPlayerRules {
   heroDeck: IHeroDeckRequirements;
   villainDeck: IVillainDeckRequirements;
 
-  additionalDeck?: {
-    name: string;
-    instruction?: string;
-    deck?: IAdditionalDeckRequirements;
-  };
+  additionalDeck?: IAdditionalDeckRules;
   numWounds?: number;
   numShieldOfficers?: number;
   numShards?: number;

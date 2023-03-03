@@ -2,26 +2,28 @@ import merge from 'ts-deepmerge';
 import { PartialDeep } from 'type-fest';
 import * as uuid from 'uuid';
 
-import { MultiCardStore } from '../../factories';
+import { StoreOfStores } from '../../factories/storeOfStores';
 import { AbstractMastermind } from '../AbstractMastermind';
 import { GameSetup } from '../GameSetup';
 import { CardType } from '../cardType.enum';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
+  IAdditionalDeck,
+  IAdditionalDeckRules,
   ICard,
   IGameSetup,
-  IHenchmen,
-  IHero,
   IKeyword,
   INumPlayerRules,
-  IVillainGroup,
   VillainDeckMinimal,
 } from '../interfaces';
 import { SchemeMinusRules } from '../interfaces/newScheme.interface';
 import { Rules, RulesType } from '../rules';
 import { NumPlayers, numPlayers } from '../types';
 
+/**
+ * Scheme allows for a Scheme-rules from the game to be instantiated and generate a game setup.
+ */
 export class Scheme implements ICard {
   // Meta
   public readonly id: string;
@@ -72,7 +74,10 @@ export class Scheme implements ICard {
       this.rules[5].villainDeck.numTwists = scheme.meta.numTwists[5];
     }
   }
-
+  /**
+   * Create an "empty" Scheme. Mainly used fot testing.
+   * @returns a Scheme instantiated with empty data
+   */
   public static empty(): Scheme {
     return new Scheme({
       id: uuid.v4(),
@@ -88,49 +93,143 @@ export class Scheme implements ICard {
     });
   }
 
+  /**
+   * Adds the provided card to the provided deck, checking to make sure the new deck size does not exceed the configured maximum.
+   * @param existingCards the deck of cards to add to
+   * @param card the card to add to the deck
+   * @param maxLength the maximum size of the deck
+   */
   protected static addToDeck<T extends ICard>(
-    array: T[] | undefined,
+    existingCards: T[] | undefined,
     card: T,
     maxLength?: number
   ): T[];
+
+  /**
+   * Adds the provided cards to the provided deck, checking to make sure the new deck size does not exceed the configured maximum.
+   * @param existingCards the deck of cards to add to
+   * @param card the card to add to the deck
+   * @param maxLength the maximum size of the deck
+   * @param extraCards an array of additional cards to add to the deck
+   */
   protected static addToDeck<T extends ICard>(
-    array: T[] | undefined,
+    existingCards: T[] | undefined,
     card: T,
     maxLength?: number,
     ...extraCards: T[]
   ): T[];
+
   protected static addToDeck<T extends ICard>(
-    array: T[] | undefined,
+    existingCards: T[] | undefined,
     card: T,
     maxLength?: number,
     ...extraCards: T[]
   ): T[] {
     const cards: T[] = [card, ...extraCards];
-    if (maxLength !== undefined && cards.length > maxLength) {
-      throw new Error(
-        "The number of cards to add can't be more than the maximum length of the array"
-      );
-    }
 
-    if (array === undefined) {
+    if (existingCards === undefined) {
       return cards;
     }
 
-    if (maxLength !== undefined && cards.length > maxLength - array.length) {
-      throw new Error(
-        "The number of cards to add can't be more than the amount of space in the array"
-      );
+    const newDeck = Array.from(existingCards);
+
+    if (maxLength !== undefined) {
+      if (cards.length > maxLength) {
+        throw new Error(
+          "The number of cards to add can't be more than the maximum length of the array"
+        );
+      }
+
+      if (cards.length > maxLength - existingCards.length) {
+        throw new Error(
+          "The number of cards to add can't be more than the amount of space in the array"
+        );
+      }
+
+      newDeck.push(...cards);
+
+      if (newDeck.length >= maxLength) {
+        newDeck.splice(0, newDeck.length - maxLength);
+      }
     }
 
-    const newArray = Array.from(array);
+    return newDeck;
+  }
 
-    newArray.push(...cards);
+  /**
+   * Builds the additional deck based on the provided rules
+   * @param additionalRules the rules to build to
+   * @param heroStore a hero factory to get heroes for the setup
+   * @param villainStore a villain factory to get heroes for the setup
+   * @param henchmenStore a henchmen factory to get heroes for the setup
+   * @param mastermindStore a mastermind factory to get heroes for the setup
+   * @param partialAdditionalDeck a baseline of the deck to build from
+   * @returns an instantiation of an additional deck
+   */
+  private static _buildAdditionalDeck(
+    additionalRules: IAdditionalDeckRules,
+    store: StoreOfStores,
+    partialAdditionalDeck?: AdditionalDeckDeckMinimal
+  ): IAdditionalDeck {
+    const deck: IAdditionalDeck = {
+      name: additionalRules.name,
+      instructions: additionalRules.instruction,
+      deck: { ...additionalRules.deck, ...partialAdditionalDeck },
+    };
 
-    if (maxLength !== undefined && newArray.length >= maxLength) {
-      newArray.splice(0, newArray.length - maxLength);
+    // Some setups don't specify cards to go in the deck
+    if (additionalRules.deck !== undefined) {
+      // Populate the heroes
+      const numHeroes =
+        (additionalRules.deck.numHeroes || 0) - (deck.deck.heroes?.length || 0);
+
+      if (numHeroes > 0) {
+        deck.deck.heroes = [];
+        deck.deck.heroes.push(...store.heroStore.getManyRandom(numHeroes));
+      }
+
+      // Populate the henchmen
+      const numHenchmen =
+        (additionalRules.deck.numHenchmenGroups || 0) -
+        (deck.deck.henchmen?.length || 0);
+
+      if (numHenchmen > 0) {
+        deck.deck.henchmen = [];
+        deck.deck.henchmen.push(
+          ...store.henchmenStore.getManyRandom(numHenchmen)
+        );
+      }
+
+      // Populate the villains
+      const numVillains =
+        (additionalRules.deck.numVillainGroups || 0) -
+        (deck.deck.villains?.length || 0);
+
+      if (numVillains > 0) {
+        deck.deck.villains = [];
+        deck.deck.villains.push(
+          ...store.villainStore.getManyRandom(numVillains)
+        );
+      }
+
+      const numMasterminds =
+        (additionalRules.deck.numMasterminds || 0) -
+        (deck.deck.masterminds?.length || 0);
+
+      if (numMasterminds > 0) {
+        deck.deck.masterminds = [];
+        deck.deck.masterminds.push(
+          ...store.mastermindStore.getManyRandom(numMasterminds)
+        );
+      }
+
+      deck.deck.heroes?.sort(Scheme._sorter);
+      deck.deck.henchmen?.sort(Scheme._sorter);
+      deck.deck.villains?.sort(Scheme._sorter);
+      deck.deck.masterminds?.sort(Scheme._sorter);
     }
 
-    return newArray;
+    return deck;
   }
 
   /**
@@ -171,10 +270,7 @@ export class Scheme implements ICard {
   public async getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: AbstractMastermind,
-    heroStore: MultiCardStore<IHero>,
-    villainStore: MultiCardStore<IVillainGroup>,
-    henchmenStore: MultiCardStore<IHenchmen>,
-    mastermindStore: MultiCardStore<AbstractMastermind>,
+    store: StoreOfStores,
     advancedSolo?: boolean
   ): Promise<IGameSetup>;
 
@@ -194,10 +290,7 @@ export class Scheme implements ICard {
   public async getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: AbstractMastermind,
-    heroStore: MultiCardStore<IHero>,
-    villainStore: MultiCardStore<IVillainGroup>,
-    henchmenStore: MultiCardStore<IHenchmen>,
-    mastermindStore: MultiCardStore<AbstractMastermind>,
+    store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck?: VillainDeckMinimal,
@@ -207,28 +300,25 @@ export class Scheme implements ICard {
   public async getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: AbstractMastermind,
-    heroStore: MultiCardStore<IHero>,
-    villainStore: MultiCardStore<IVillainGroup>,
-    henchmenStore: MultiCardStore<IHenchmen>,
-    mastermindStore: MultiCardStore<AbstractMastermind>,
+    store: StoreOfStores,
     advancedSolo = false,
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
   ): Promise<IGameSetup> {
-    //#region Get player rules
-    const mastermindRules = selectedMastermind.getRuleOverride();
-    const ruleSet =
-      mastermindRules !== undefined
-        ? this.overrideEachRule(mastermindRules).rules
-        : this.rules;
+    // Get player rules
+    const ruleSet = selectedMastermind.hasRuleOverride
+      ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        this.overrideEachRule(selectedMastermind.ruleOverride!).rules
+      : this.rules;
     const playerRules = ruleSet[numPlayers];
-    const heroRules = playerRules.heroDeck;
-    const villainRules = playerRules.villainDeck;
-    const additionalRules = playerRules.additionalDeck;
-    //#endregion Get player rules
+    const {
+      heroDeck: heroRules,
+      villainDeck: villainRules,
+      additionalDeck: additionalRules,
+    } = playerRules;
 
-    //#region Create skeleton decks
+    // Create skeleton decks
     const fullDeck = new GameSetup({
       numPlayers: numPlayers,
       mastermind: selectedMastermind,
@@ -252,80 +342,23 @@ export class Scheme implements ICard {
       numWounds: playerRules.numWounds,
     });
 
-    //#endregion Create skeleton decks
-
-    //#region Build the additional deck first if required
+    // Build the additional deck first if required
     if (additionalRules !== undefined) {
-      fullDeck.additionalDeck = {
-        name: additionalRules.name,
-        instructions: additionalRules.instruction,
-        deck: { ...additionalRules.deck, ...partialAdditionalDeck },
-      };
-
-      // Some setups don't specify cards to go in the deck
-      if (additionalRules.deck !== undefined) {
-        // Populate the heroes
-        const numHeroes =
-          (additionalRules.deck.numHeroes || 0) -
-          (fullDeck.additionalDeck.deck.heroes?.length || 0);
-
-        if (numHeroes > 0) {
-          fullDeck.additionalDeck.deck.heroes = [];
-          fullDeck.additionalDeck.deck.heroes.push(
-            ...heroStore.getManyRandom(numHeroes)
-          );
-        }
-
-        // Populate the henchmen
-        const numHenchmen =
-          (additionalRules.deck.numHenchmenGroups || 0) -
-          (fullDeck.additionalDeck.deck.henchmen?.length || 0);
-
-        if (numHenchmen > 0) {
-          fullDeck.additionalDeck.deck.henchmen = [];
-          fullDeck.additionalDeck.deck.henchmen.push(
-            ...henchmenStore.getManyRandom(numHenchmen)
-          );
-        }
-
-        // Populate the villains
-        const numVillains =
-          (additionalRules.deck.numVillainGroups || 0) -
-          (fullDeck.additionalDeck.deck.villains?.length || 0);
-
-        if (numVillains > 0) {
-          fullDeck.additionalDeck.deck.villains = [];
-          fullDeck.additionalDeck.deck.villains.push(
-            ...villainStore.getManyRandom(numVillains)
-          );
-        }
-
-        const numMasterminds =
-          (additionalRules.deck.numMasterminds || 0) -
-          (fullDeck.additionalDeck.deck.masterminds?.length || 0);
-
-        if (numMasterminds > 0) {
-          fullDeck.additionalDeck.deck.masterminds = [];
-          fullDeck.additionalDeck.deck.masterminds.push(
-            ...mastermindStore.getManyRandom(numMasterminds)
-          );
-        }
-
-        fullDeck.additionalDeck.deck.heroes?.sort(Scheme._sorter);
-        fullDeck.additionalDeck.deck.henchmen?.sort(Scheme._sorter);
-        fullDeck.additionalDeck.deck.villains?.sort(Scheme._sorter);
-        fullDeck.additionalDeck.deck.masterminds?.sort(Scheme._sorter);
-      }
+      fullDeck.additionalDeck = Scheme._buildAdditionalDeck(
+        additionalRules,
+        store,
+        partialAdditionalDeck
+      );
     }
-    //#endregion Build the additional deck first if required
 
     //#region Build hero deck
+
     // Add heroes to hero deck
     const numRemainingHeroDeckHeroes =
       heroRules.numHeroes - fullDeck.heroDeck.heroes.length;
     if (numRemainingHeroDeckHeroes > 0) {
       fullDeck.heroDeck.heroes.push(
-        ...heroStore.getManyRandom(numRemainingHeroDeckHeroes)
+        ...store.heroStore.getManyRandom(numRemainingHeroDeckHeroes)
       );
     }
 
@@ -337,15 +370,17 @@ export class Scheme implements ICard {
       fullDeck.heroDeck.henchmen = [];
 
       fullDeck.heroDeck.henchmen.push(
-        ...henchmenStore.getManyRandom(numRemainingHeroDeckHenchmen)
+        ...store.henchmenStore.getManyRandom(numRemainingHeroDeckHenchmen)
       );
     }
 
     fullDeck.heroDeck.heroes.sort(Scheme._sorter);
     fullDeck.heroDeck.henchmen?.sort(Scheme._sorter);
+
     //#endregion Build hero deck
 
     //#region Build villain deck
+
     // Start by adding any heroes
     const numRemVillDeckHeroes =
       (villainRules.numHeroes || 0) -
@@ -354,7 +389,7 @@ export class Scheme implements ICard {
       fullDeck.villainDeck.heroes = [];
 
       fullDeck.villainDeck.heroes.push(
-        ...heroStore.getManyRandom(numRemVillDeckHeroes)
+        ...store.heroStore.getManyRandom(numRemVillDeckHeroes)
       );
     }
 
@@ -371,7 +406,7 @@ export class Scheme implements ICard {
       numRemVillDeckHenchmen() > 0 &&
       alwaysLeadsHenchmen.length < numRemVillDeckHenchmen()
     ) {
-      const mastermindHenchmen = henchmenStore.getAll(
+      const mastermindHenchmen = store.henchmenStore.getAll(
         alwaysLeadsHenchmen.map((henchmen) => henchmen.id)
       );
 
@@ -381,7 +416,7 @@ export class Scheme implements ICard {
     // Check again in case the mastermind did not fill all the slots
     if (numRemVillDeckHenchmen() > 0) {
       fullDeck.villainDeck.henchmen.push(
-        ...henchmenStore.getManyRandom(numRemVillDeckHenchmen())
+        ...store.henchmenStore.getManyRandom(numRemVillDeckHenchmen())
       );
     }
 
@@ -395,9 +430,9 @@ export class Scheme implements ICard {
     );
     if (
       numRemVillDeckVillains() > 0 &&
-      alwaysLeadsVillains.length < numRemVillDeckVillains()
+      alwaysLeadsVillains.length <= numRemVillDeckVillains()
     ) {
-      const mastermindVillains = villainStore.getAll(
+      const mastermindVillains = store.villainStore.getAll(
         alwaysLeadsVillains.map((villain) => villain.id)
       );
 
@@ -407,7 +442,7 @@ export class Scheme implements ICard {
     // Check again in case the mastermind did not fill all the slots
     if (numRemVillDeckVillains() > 0) {
       fullDeck.villainDeck.villains.push(
-        ...villainStore.getManyRandom(numRemVillDeckVillains())
+        ...store.villainStore.getManyRandom(numRemVillDeckVillains())
       );
     }
 
@@ -418,7 +453,7 @@ export class Scheme implements ICard {
     if (numRemVillDeckMasterminds > 0) {
       fullDeck.villainDeck.masterminds = [];
       fullDeck.villainDeck.masterminds.push(
-        ...mastermindStore.getManyRandom(numRemVillDeckMasterminds)
+        ...store.mastermindStore.getManyRandom(numRemVillDeckMasterminds)
       );
     }
 
@@ -432,6 +467,7 @@ export class Scheme implements ICard {
     fullDeck.villainDeck.villains.sort(Scheme._sorter);
     fullDeck.villainDeck.heroes?.sort(Scheme._sorter);
     fullDeck.villainDeck.masterminds?.sort(Scheme._sorter);
+
     //#endregion Build villain deck
 
     return fullDeck;

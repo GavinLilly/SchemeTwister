@@ -1,21 +1,13 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-
 import LEGENDARY from '../../data/gameSets/legendary';
 import { DOOMBOT_LEGION } from '../../data/gameSets/legendary/henchmen';
 import { DR_DOOM } from '../../data/gameSets/legendary/masterminds';
 import XMEN from '../../data/gameSets/xMen';
 import { ARCADE } from '../../data/gameSets/xMen/masterminds';
 import { HELLFIRE_CLUB, MURDERWORLD } from '../../data/gameSets/xMen/villains';
-import { MultiCardStore } from '../../factories';
-import { AbstractMastermind } from '../AbstractMastermind';
+import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
 import { GameSetup } from '../GameSetup';
 import { CardType } from '../cardType.enum';
-import {
-  IHenchmen,
-  IHero,
-  IVillainGroup,
-  SchemeMinusRules,
-} from '../interfaces';
+import { SchemeMinusRules } from '../interfaces';
 import { IGameSetup } from '../interfaces/gameSetup.interface';
 import { Rules } from '../rules';
 import { NumPlayers, numPlayers } from '../types/numPlayers.type';
@@ -119,34 +111,15 @@ describe('Base Scheme', () => {
   describe('getSetup()', () => {
     let scheme: Scheme;
     let setup: IGameSetup;
-    let heroStore: MultiCardStore<IHero>;
-    let villainStore: MultiCardStore<IVillainGroup>;
-    let henchmenStore: MultiCardStore<IHenchmen>;
-    let mastermindStore: MultiCardStore<AbstractMastermind>;
+    let store: StoreOfStores;
 
     beforeAll(async () => {
       scheme = new Scheme(schemeDescSimpleTwist);
-      heroStore = new MultiCardStore<IHero>(XMEN.heroes);
-      villainStore = new MultiCardStore<IVillainGroup>(XMEN.villains!);
-      henchmenStore = new MultiCardStore<IHenchmen>(XMEN.henchmen!);
-      mastermindStore = new MultiCardStore<AbstractMastermind>(
-        XMEN.masterminds!
-      );
-      setup = await scheme.getSetup(
-        2,
-        ARCADE,
-        heroStore,
-        villainStore,
-        henchmenStore,
-        mastermindStore
-      );
+      store = new StoreBuilder().withSingleGameset(XMEN).build();
+      setup = await scheme.getSetup(2, ARCADE, store);
     });
 
-    beforeEach(() => {
-      [heroStore, villainStore, henchmenStore, mastermindStore].forEach(
-        (store) => store.resetStore()
-      );
-    });
+    beforeEach(() => store.reset());
 
     it('should be an instance of GameSetup', () =>
       expect(setup).toBeInstanceOf(GameSetup));
@@ -176,11 +149,8 @@ describe('Base Scheme', () => {
 
       const additionalSetup = await heroAdditional.getSetup(
         3,
-        mastermindStore.getOneRandom(),
-        heroStore,
-        villainStore,
-        henchmenStore,
-        mastermindStore
+        store.mastermindStore.getOneRandom(),
+        store
       );
 
       expect(additionalSetup.additionalDeck).toBeTruthy();
@@ -201,11 +171,8 @@ describe('Base Scheme', () => {
 
       const heroHenchmenSetup = await henchmenHero.getSetup(
         3,
-        mastermindStore.getOneRandom(),
-        heroStore,
-        villainStore,
-        henchmenStore,
-        mastermindStore
+        store.mastermindStore.getOneRandom(),
+        store
       );
 
       expect(heroHenchmenSetup.heroDeck.henchmen).toHaveLength(1);
@@ -227,11 +194,8 @@ describe('Base Scheme', () => {
 
       const mastermindVillainSetup = await mastermindVillain.getSetup(
         3,
-        mastermindStore.getOneRandom(),
-        heroStore,
-        villainStore,
-        henchmenStore,
-        mastermindStore
+        store.mastermindStore.getOneRandom(),
+        store
       );
 
       expect(mastermindVillainSetup.villainDeck.masterminds).toBeTruthy();
@@ -252,42 +216,31 @@ describe('Base Scheme', () => {
 
       const bystanderSetup = await bystanderScheme.getSetup(
         3,
-        mastermindStore.getOneRandom(),
-        heroStore,
-        villainStore,
-        henchmenStore,
-        mastermindStore
+        store.mastermindStore.getOneRandom(),
+        store
       );
 
       expect(bystanderSetup.heroDeck.numBystanders).toBe(5);
     });
 
     it('should include Doombots in the villain deck', async () => {
-      const doomHenchmenStore = new MultiCardStore<IHenchmen>([
-        ...LEGENDARY.henchmen!,
-        ...XMEN.henchmen!,
-      ]);
-      const goonsSetup = await scheme.getSetup(
-        4,
-        DR_DOOM,
-        heroStore,
-        villainStore,
-        doomHenchmenStore,
-        mastermindStore
-      );
+      const doomHenchmenStore = new StoreBuilder()
+        .withHeroGamesets(XMEN)
+        .withMastermindGamesets(LEGENDARY)
+        .withVillainGamesets(XMEN)
+        .withHenchmenGamesets(LEGENDARY, XMEN)
+        .build();
+      const doomSetup = await scheme.getSetup(4, DR_DOOM, doomHenchmenStore);
 
-      expect(goonsSetup.villainDeck.henchmen).toContain(DOOMBOT_LEGION);
+      expect(doomSetup.villainDeck.henchmen).toContain(DOOMBOT_LEGION);
     });
 
     it('should not need to fill in any more slots in the villain deck', async () => {
       const villains = [HELLFIRE_CLUB, MURDERWORLD];
       const filledSetup = await scheme.getSetup(
         2,
-        mastermindStore.getOneRandom(),
-        heroStore,
-        villainStore,
-        henchmenStore,
-        mastermindStore,
+        store.mastermindStore.getOneRandom(),
+        store,
         undefined,
         undefined,
         {
@@ -311,11 +264,8 @@ describe('Base Scheme', () => {
 
         const setup = await soloScheme.getSetup(
           1,
-          mastermindStore.getOneRandom(),
-          heroStore,
-          villainStore,
-          henchmenStore,
-          mastermindStore
+          store.mastermindStore.getOneRandom(),
+          store
         );
 
         expect(setup.villainDeck.numMasterStrikes).toBe(1);
@@ -331,11 +281,8 @@ describe('Base Scheme', () => {
 
         const setup = await soloScheme.getSetup(
           1,
-          mastermindStore.getOneRandom(),
-          heroStore,
-          villainStore,
-          henchmenStore,
-          mastermindStore,
+          store.mastermindStore.getOneRandom(),
+          store,
           true
         );
 

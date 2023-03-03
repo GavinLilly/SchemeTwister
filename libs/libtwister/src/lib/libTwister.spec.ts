@@ -106,16 +106,21 @@ describe('LibTwister', () => {
     });
 
     it.each([
-      ['heroes', 'hero', twister.heroStore, LEGENDARY.heroes],
+      ['heroes', 'hero', twister.stores.heroStore, LEGENDARY.heroes],
       [
         'masterminds',
         'mastermind',
-        twister.mastermindStore,
+        twister.stores.mastermindStore,
         LEGENDARY.masterminds,
       ],
       ['schemes', 'scheme', twister.schemeFactory, LEGENDARY.schemes],
-      ['villains', 'villain', twister.villainStore, LEGENDARY.villains],
-      ['henchmen', 'henchmen', twister.henchmenStore, LEGENDARY.henchmen],
+      ['villains', 'villain', twister.stores.villainStore, LEGENDARY.villains],
+      [
+        'henchmen',
+        'henchmen',
+        twister.stores.henchmenStore,
+        LEGENDARY.henchmen,
+      ],
     ])(
       'should contain all of the Legendary %s in the %s store',
       (_cardTypePlural, _cardType, store, cards) =>
@@ -173,11 +178,17 @@ describe('LibTwister', () => {
     });
 
     it.each([
-      ['heroes', 'hero', twister.heroStore, LEGENDARY.heroes, DARK_CITY.heroes],
+      [
+        'heroes',
+        'hero',
+        twister.stores.heroStore,
+        LEGENDARY.heroes,
+        DARK_CITY.heroes,
+      ],
       [
         'masterminds',
         'mastermind',
-        twister.mastermindStore,
+        twister.stores.mastermindStore,
         LEGENDARY.masterminds,
         DARK_CITY.masterminds,
       ],
@@ -191,14 +202,14 @@ describe('LibTwister', () => {
       [
         'villains',
         'villain',
-        twister.villainStore,
+        twister.stores.villainStore,
         LEGENDARY.villains,
         DARK_CITY.villains,
       ],
       [
         'henchmen',
         'henchmen',
-        twister.henchmenStore,
+        twister.stores.henchmenStore,
         LEGENDARY.henchmen,
         DARK_CITY.henchmen,
       ],

@@ -1,13 +1,11 @@
 import { X_MEN } from '../../data/teams';
-import { MultiCardStore } from '../../factories';
+import { StoreOfStores } from '../../factories/storeOfStores';
 import { AbstractMastermind } from '../AbstractMastermind';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  IHenchmen,
   IHero,
-  IVillainGroup,
   VillainDeckMinimal,
 } from '../interfaces';
 import { SchemeMinusRules } from '../interfaces/newScheme.interface';
@@ -24,20 +22,17 @@ export class HouseOfMScheme extends RequireHeroInVillainDeckScheme {
   public async getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: AbstractMastermind,
-    heroStore: MultiCardStore<IHero>,
-    villainStore: MultiCardStore<IVillainGroup>,
-    henchmenStore: MultiCardStore<IHenchmen>,
-    mastermindStore: MultiCardStore<AbstractMastermind>,
+    store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck: HeroDeckMinimal = {},
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
   ): Promise<IGameSetup> {
-    const xMenHeroes = heroStore.getManyRandom(
+    const xMenHeroes = store.heroStore.getManyRandom(
       4,
       (hero) => hero.team === X_MEN
     );
-    const otherHeroes = heroStore.getManyRandom(
+    const otherHeroes = store.heroStore.getManyRandom(
       2,
       (hero) => hero.team !== X_MEN && hero !== this.requiredHero
     );
@@ -53,10 +48,7 @@ export class HouseOfMScheme extends RequireHeroInVillainDeckScheme {
     return await super.getSetup(
       numPlayers,
       selectedMastermind,
-      heroStore,
-      villainStore,
-      henchmenStore,
-      mastermindStore,
+      store,
       advancedSolo,
       partialHeroDeck,
       partialVillainDeck,

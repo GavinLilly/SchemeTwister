@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import GUARDIANS from '../../data/gameSets/guardiansOfTheGalaxy';
 import { THE_KREE_SKRULL_WAR } from '../../data/gameSets/guardiansOfTheGalaxy/schemes';
 import { KREE_STARFORCE } from '../../data/gameSets/guardiansOfTheGalaxy/villains';
@@ -11,35 +10,27 @@ import {
   AIM_HYDRA_OFFSHOOT,
   HYDRA_ELITE,
 } from '../../data/gameSets/shield/villains';
-import { MultiCardStore } from '../../factories';
+import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
 import { injectGameSet } from '../../utils/schemeInjector';
-import { AbstractMastermind } from '../AbstractMastermind';
-import { IHero, IVillainGroup, IHenchmen, IGameSetup } from '../interfaces';
+import { IVillainGroup, IGameSetup } from '../interfaces';
 
 import { RequireVillainsInVillainDeckScheme } from './RequireVillainsInVillainDeckScheme';
 import { Scheme } from './Scheme';
 
 describe('Require Villains In Villain Deck Scheme', () => {
-  let heroStore: MultiCardStore<IHero>;
-  let villainStore: MultiCardStore<IVillainGroup>;
-  let henchmenStore: MultiCardStore<IHenchmen>;
-  let mastermindStore: MultiCardStore<AbstractMastermind>;
+  let store: StoreOfStores;
 
   beforeAll(() => {
-    heroStore = new MultiCardStore(LEGENDARY.heroes);
-    villainStore = new MultiCardStore([
-      ...LEGENDARY.villains!,
-      ...GUARDIANS.villains!,
-      ...SHIELD.villains!,
-    ]);
-    henchmenStore = new MultiCardStore(LEGENDARY.henchmen!);
-    mastermindStore = new MultiCardStore(LEGENDARY.masterminds!);
+    store = new StoreBuilder()
+      .withHeroGamesets(LEGENDARY)
+      .withMastermindGamesets(LEGENDARY)
+      .withVillainGamesets(LEGENDARY, GUARDIANS, SHIELD)
+      .withHenchmenGamesets(LEGENDARY)
+      .build();
   });
 
   beforeEach(() => {
-    [heroStore, villainStore, henchmenStore, mastermindStore].forEach((store) =>
-      store.resetStore()
-    );
+    store.reset();
   });
 
   describe('Secret invastion of the Skurll shapeshifters', () => {
@@ -53,11 +44,8 @@ describe('Require Villains In Villain Deck Scheme', () => {
       );
       const setup = await scheme.getSetup(
         2,
-        mastermindStore.getOneRandom(),
-        heroStore,
-        villainStore,
-        henchmenStore,
-        mastermindStore
+        store.mastermindStore.getOneRandom(),
+        store
       );
 
       expect(setup.villainDeck.villains).toContain(SKRULLS);
@@ -78,11 +66,8 @@ describe('Require Villains In Villain Deck Scheme', () => {
       );
       setup = await scheme.getSetup(
         2,
-        mastermindStore.getOneRandom(),
-        heroStore,
-        villainStore,
-        henchmenStore,
-        mastermindStore
+        store.mastermindStore.getOneRandom(),
+        store
       );
     });
 
@@ -110,11 +95,8 @@ describe('Require Villains In Villain Deck Scheme', () => {
       );
       setup = await scheme.getSetup(
         3,
-        mastermindStore.getOneRandom(),
-        heroStore,
-        villainStore,
-        henchmenStore,
-        mastermindStore
+        store.mastermindStore.getOneRandom(),
+        store
       );
     });
 
@@ -125,7 +107,7 @@ describe('Require Villains In Villain Deck Scheme', () => {
 
     it('should remove the chosen and non-chosen villain from the store', () =>
       expect(
-        villainStore.excludedCards?.filter(shieldVillainPredicate)
+        store.villainStore.excludedCards?.filter(shieldVillainPredicate)
       ).toHaveLength(2));
   });
 });

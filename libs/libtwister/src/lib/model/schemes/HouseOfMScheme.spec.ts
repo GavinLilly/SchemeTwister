@@ -1,36 +1,27 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Teams } from '../../data';
 import DARK_CITY from '../../data/gameSets/darkCity';
 import REVELATIONS from '../../data/gameSets/revelations';
 import { SCARLET_WITCH } from '../../data/gameSets/revelations/heroes';
 import { HOUSE_OF_M } from '../../data/gameSets/revelations/schemes';
-import { MultiCardStore } from '../../factories';
+import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
 import { injectGameSet } from '../../utils/schemeInjector';
-import { AbstractMastermind } from '../AbstractMastermind';
-import { IHero, IVillainGroup, IHenchmen, IGameSetup } from '../interfaces';
+import { IGameSetup } from '../interfaces';
 
 import { HouseOfMScheme } from './HouseOfMScheme';
 import { Scheme } from './Scheme';
 
 describe('House of M Scheme', () => {
-  let heroStore: MultiCardStore<IHero>;
-  let villainStore: MultiCardStore<IVillainGroup>;
-  let henchmenStore: MultiCardStore<IHenchmen>;
-  let mastermindStore: MultiCardStore<AbstractMastermind>;
+  let store: StoreOfStores;
   let scheme: Scheme;
   let setup: IGameSetup;
 
   beforeAll(async () => {
-    heroStore = new MultiCardStore([
-      ...DARK_CITY.heroes,
-      ...REVELATIONS.heroes,
-    ]);
-    villainStore = new MultiCardStore([
-      ...DARK_CITY.villains!,
-      ...REVELATIONS.villains!,
-    ]);
-    henchmenStore = new MultiCardStore(DARK_CITY.henchmen!);
-    mastermindStore = new MultiCardStore(DARK_CITY.masterminds!);
+    store = new StoreBuilder()
+      .withHeroGamesets(DARK_CITY, REVELATIONS)
+      .withMastermindGamesets(DARK_CITY)
+      .withVillainGamesets(DARK_CITY, REVELATIONS)
+      .withHenchmenGamesets(DARK_CITY)
+      .build();
 
     scheme = new HouseOfMScheme(
       injectGameSet(REVELATIONS.id, HOUSE_OF_M),
@@ -39,11 +30,8 @@ describe('House of M Scheme', () => {
 
     setup = await scheme.getSetup(
       2,
-      mastermindStore.getOneRandom(),
-      heroStore,
-      villainStore,
-      henchmenStore,
-      mastermindStore
+      store.mastermindStore.getOneRandom(),
+      store
     );
   });
 

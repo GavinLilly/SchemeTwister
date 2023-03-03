@@ -1,12 +1,10 @@
-import { MultiCardStore } from '../../factories';
+import { StoreOfStores } from '../../factories/storeOfStores';
 import { randomize } from '../../utils/randomize';
 import { AbstractMastermind } from '../AbstractMastermind';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  IHenchmen,
-  IHero,
   IVillainGroup,
   VillainDeckMinimal,
 } from '../interfaces';
@@ -39,10 +37,7 @@ export class RequireVillainsInVillainDeckScheme extends Scheme {
   public async getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: AbstractMastermind,
-    heroStore: MultiCardStore<IHero>,
-    villainStore: MultiCardStore<IVillainGroup>,
-    henchmenStore: MultiCardStore<IHenchmen>,
-    mastermindStore: MultiCardStore<AbstractMastermind>,
+    store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck: VillainDeckMinimal = {},
@@ -54,7 +49,7 @@ export class RequireVillainsInVillainDeckScheme extends Scheme {
         : randomize(this._requiredVillains, this._numberRequired);
 
     const villains = chosenVillains.map((villain) =>
-      villainStore.getOne(villain.id)
+      store.villainStore.getOne(villain.id)
     );
 
     partialVillainDeck.villains =
@@ -74,16 +69,13 @@ export class RequireVillainsInVillainDeckScheme extends Scheme {
     if (this._removeOthers) {
       this._requiredVillains
         .filter((villain) => !villains.includes(villain))
-        .forEach((villain) => villainStore.removeCard(villain.id));
+        .forEach((villain) => store.villainStore.removeCard(villain.id));
     }
 
     return await super.getSetup(
       numPlayers,
       selectedMastermind,
-      heroStore,
-      villainStore,
-      henchmenStore,
-      mastermindStore,
+      store,
       advancedSolo,
       partialHeroDeck,
       partialVillainDeck,

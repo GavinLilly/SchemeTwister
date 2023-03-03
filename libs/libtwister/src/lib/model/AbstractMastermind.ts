@@ -7,7 +7,10 @@ import {
   IVillainGroup,
 } from './interfaces';
 
-type RuleOverrideFunc = (rule: INumPlayerRules, num: number) => INumPlayerRules;
+type RuleOverrideFunction = (
+  rule: INumPlayerRules,
+  num: number
+) => INumPlayerRules;
 
 export abstract class AbstractMastermind implements ICard {
   public readonly name: string;
@@ -15,7 +18,15 @@ export abstract class AbstractMastermind implements ICard {
   public abstract gameSetId: string;
   public readonly keywords: IKeyword[];
   public readonly alwaysLeads: (IVillainGroup | IHenchmen)[];
-  private _overrideFunction: RuleOverrideFunc | undefined;
+  private _overrideFunction: RuleOverrideFunction | undefined;
+
+  public get ruleOverride() {
+    return this._overrideFunction;
+  }
+
+  public get hasRuleOverride(): boolean {
+    return this._overrideFunction !== undefined;
+  }
 
   constructor(
     id: string,
@@ -68,13 +79,9 @@ export abstract class AbstractMastermind implements ICard {
    * @param func a function to apply to the rule set for each number of players
    * @returns a configured instance of an {@link AbstractScheme}
    */
-  public withRuleOverride(func: RuleOverrideFunc): this {
+  public withRuleOverride(func: RuleOverrideFunction): this {
     this._overrideFunction = func;
 
     return this;
-  }
-
-  public getRuleOverride(): RuleOverrideFunc | undefined {
-    return this._overrideFunction;
   }
 }
