@@ -1,3 +1,10 @@
+## [3.5.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.4.10...v3.5.0) (2023-03-10)
+
+
+### Features
+
+* **libtwister:** add Infinity Saga game set ([ab582bd](https://github.com/GavinLilly/SchemeTwister/commit/ab582bda179bb67498605d0e6adbde15cf478a6f))
+
 ## [3.4.10](https://github.com/GavinLilly/SchemeTwister/compare/v3.4.9...v3.4.10) (2023-03-03)
 
 
