@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 16
       - run: npm ci
       - run: npm run build-version
       - run: npm run affected:build -- --base=origin/master

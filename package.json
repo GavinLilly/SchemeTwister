@@ -3,7 +3,7 @@
   "version": "3.5.0",
   "license": "GPL-3.0-or-later",
   "engines": {
-    "node": ">=12.0"
+    "node": ">=12.0 < 17.0"
   },
   "scripts": {
     "ng": "nx",
