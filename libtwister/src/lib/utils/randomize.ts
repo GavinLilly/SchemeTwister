@@ -1,5 +1,5 @@
 /**
- * This method will return an array of random card entries from our list of
+ * This method will return an array of random card entries from a list of
  * available cards
  * @param originalArray the array to randomize from
  * @param count The number of cards to return

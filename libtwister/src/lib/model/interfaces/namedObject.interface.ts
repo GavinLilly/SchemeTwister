@@ -5,7 +5,7 @@ export interface INamedObject {
   readonly name: string;
 
   /**
-   * Meta: ID of the card (only used in this library)
+   * Meta: ID of the object
    */
   readonly id: string;
 }
