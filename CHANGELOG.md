@@ -1,3 +1,10 @@
+## [3.5.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.5.0...v3.5.1) (2023-04-30)
+
+
+### Bug Fixes
+
+* ensure shield officers are in villain deck ([6dc6264](https://github.com/GavinLilly/SchemeTwister/commit/6dc62649a251d8cdcdb9d98b256371d390efdc7f))
+
 ## [3.5.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.4.10...v3.5.0) (2023-03-10)
 
 
