@@ -462,6 +462,7 @@ export class Scheme implements ICard {
     fullDeck.villainDeck.numBystanders = villainRules.numBystanders;
     fullDeck.villainDeck.numSidekicks = villainRules.numSidekicks;
     fullDeck.villainDeck.numTwists = villainRules.numTwists;
+    fullDeck.villainDeck.numShieldOfficers = villainRules.numShieldOfficers;
 
     fullDeck.villainDeck.henchmen.sort(Scheme._sorter);
     fullDeck.villainDeck.villains.sort(Scheme._sorter);

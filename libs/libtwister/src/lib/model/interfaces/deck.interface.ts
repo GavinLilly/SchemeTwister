@@ -24,6 +24,7 @@ export interface IVillainDeck extends IDeck {
   masterminds?: AbstractMastermind[];
   numSidekicks?: number;
   numAmbitions?: number;
+  numShieldOfficers?: number;
 }
 
 export type VillainDeckMinimal = Partial<
