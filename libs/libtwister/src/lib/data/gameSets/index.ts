@@ -18,6 +18,7 @@ export * as MARVEL_STUDIOS_GUARDIANS_OF_THE_GALAXY from './mcuGuardiansOfTheGala
 export * as MARVEL_STUDIOS_INFINITY_SAGA from './mcuInfinitySaga';
 export * as MARVEL_STUDIOS_PHASE_ONE from './mcuPhaseOne';
 export * as MESSIAH_COMPLEX from './messiahComplex';
+export * as MIDNIGHT_SONS from './midnightSons';
 export * as NOIR from './noir';
 export * as PAINT_THE_TOWN_RED from './paintTheTownRed';
 export * as REALM_OF_KINGS from './realmOfKings';

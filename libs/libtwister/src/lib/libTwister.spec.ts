@@ -21,7 +21,7 @@ import { injectGameSet } from './utils/schemeInjector';
 const CORE_BOX_SIZE = 3;
 const BIG_BOX_SIZE = 6;
 const MEDIUM_BOX_SIZE = 3;
-const SMALL_BOX_SIZE = 22;
+const SMALL_BOX_SIZE = 23;
 const PROMO_BOX_SIZE = 1;
 const TOTAL_SIZE =
   CORE_BOX_SIZE +

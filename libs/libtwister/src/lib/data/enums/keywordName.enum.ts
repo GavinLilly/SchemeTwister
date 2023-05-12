@@ -11,6 +11,8 @@ export enum KeywordName {
 
   BERSERK = 'Berserk',
 
+  BLOOD_FRENZY = 'Blood Frenzy',
+
   BRIBE = 'Bribe',
 
   BURNING_SHARDS = 'Burning Shards',
@@ -85,9 +87,13 @@ export enum KeywordName {
 
   GALACTUS_COSMIC_THREAT = 'Galactus Cosmic Threat',
 
+  HAUNT = 'Haunt',
+
   HIDDEN_WITNESS = 'Hidden Witness',
 
   HUMAN_SHIELDS = 'Human Shields',
+
+  HUNT_FOR_VICTIMS = 'Hunt for Victims',
 
   HYDRA_LEVEL = 'Hydra Level',
 
