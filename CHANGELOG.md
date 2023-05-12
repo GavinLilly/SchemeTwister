@@ -1,3 +1,10 @@
+## [3.6.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.5.1...v3.6.0) (2023-05-12)
+
+
+### Features
+
+* **libtwister:** add Midnight Sons game set ([61a5439](https://github.com/GavinLilly/SchemeTwister/commit/61a543996bad6a1fec6a7ce220c9d1a3caba46db))
+
 ## [3.5.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.5.0...v3.5.1) (2023-04-30)
 
 

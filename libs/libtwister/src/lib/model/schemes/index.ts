@@ -11,3 +11,5 @@ export * from './RequireVillainsInVillainDeckScheme';
 export * from './Scheme';
 export * from './SoloBannedScheme';
 export * from './TheDarkPhoenixSagaScheme';
+export * from './RitualSacrificeToSummonChthonScheme';
+export * from './RequireHeroNameInVillainDeckScheme';
