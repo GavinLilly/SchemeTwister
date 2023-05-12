@@ -11,10 +11,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
-
     steps:
       - uses: actions/checkout@v2
         with:
@@ -23,7 +19,7 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 16
       - run: npm ci
       - run: npm run build-version
       - run: npm run affected:build -- --base=origin/master
