@@ -4,7 +4,7 @@ export interface IDeckRequirements {
   numBystanders?: number;
 }
 
-interface IVillainDeckRequirements extends IDeckRequirements {
+export interface IVillainDeckRequirements extends IDeckRequirements {
   numTwists: number;
   numSidekicks?: number;
   numShieldOfficers?: number;
@@ -15,7 +15,7 @@ interface IVillainDeckRequirements extends IDeckRequirements {
   numMasterStrikes: number;
 }
 
-interface IHeroDeckRequirements extends IDeckRequirements {
+export interface IHeroDeckRequirements extends IDeckRequirements {
   numHeroes: number;
 }
 

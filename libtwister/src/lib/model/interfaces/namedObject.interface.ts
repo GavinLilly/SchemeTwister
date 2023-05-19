@@ -9,3 +9,7 @@ export interface INamedObject {
    */
   readonly id: string;
 }
+
+export function nameSorter(a: INamedObject, b: INamedObject) {
+  return a.name < b.name ? -1 : 1;
+}

@@ -79,10 +79,6 @@ export class Mastermind implements IMastermind, ICardType {
     return this._overrideFunction;
   }
 
-  get hasRuleOverride(): boolean {
-    return this._overrideFunction !== undefined;
-  }
-
   get attackPoints() {
     return this._attackPoints;
   }

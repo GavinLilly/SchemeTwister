@@ -10,3 +10,4 @@ export * from './rules.interface';
 export * from './gameSetup.interface';
 export * from './team.interface';
 export * from './newScheme.interface';
+export * from './namedObject.interface';
