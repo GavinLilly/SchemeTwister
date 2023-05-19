@@ -3,11 +3,11 @@ import {
   RequireHenchmenInVillainDeckScheme,
   TheDarkPhoenixSagaScheme,
 } from '../../../model';
-import { JEAN_GREY } from '../darkCity/heroes';
+import { JEAN_GREY } from '../darkCity/darkCity.heroes';
 import { SENTINELS } from '../legendary/henchmen';
 
 import { THE_BROOD } from './henchmen';
-import { PHOENIX } from './heroes';
+import { PHOENIX } from './xMen.heroes';
 import { TRAPS } from './keywords';
 import { HELLFIRE_CLUB } from './villains';
 

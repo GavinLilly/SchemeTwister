@@ -4,7 +4,7 @@ import {
   RequireHeroNameInHeroDeckScheme,
 } from '../../../model';
 
-import { ADAM_WARLOCK } from './heroes';
+import { ADAM_WARLOCK } from './intoTheCosmos.heroes';
 import { CONTEST_OF_CHAMPIONS, SHARDS } from './keywords';
 
 export const THE_CONTEST_OF_CHAMPIONS: ShortScheme = {

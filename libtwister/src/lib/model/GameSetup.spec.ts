@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
 import DARK_CITY from '../data/gameSets/darkCity';
-import { DOMINO } from '../data/gameSets/darkCity/heroes';
+import { DOMINO } from '../data/gameSets/darkCity/darkCity.heroes';
 import { VERSATILE } from '../data/gameSets/darkCity/keywords';
 import INTO_THE_COSMOS from '../data/gameSets/intoTheCosmos';
 import { CONTEST_OF_CHAMPIONS } from '../data/gameSets/intoTheCosmos/keywords';
@@ -12,7 +12,7 @@ import {
   CYCLOPS,
   IRON_MAN,
   WOLVERINE,
-} from '../data/gameSets/legendary/heroes';
+} from '../data/gameSets/legendary/legendary.heroes';
 import {
   MIDTOWN_BANK_ROBBERY,
   REPLACE_EARTHS_LEADERS_WITH_KILLBOTS,

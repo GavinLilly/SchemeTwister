@@ -1,7 +1,7 @@
 import { Teams } from '../../data';
 import DARK_CITY from '../../data/gameSets/darkCity';
 import REVELATIONS from '../../data/gameSets/revelations';
-import { SCARLET_WITCH } from '../../data/gameSets/revelations/heroes';
+import { SCARLET_WITCH } from '../../data/gameSets/revelations/revelations.heroes';
 import { HOUSE_OF_M } from '../../data/gameSets/revelations/schemes';
 import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
 import { injectGameSet } from '../../utils/schemeInjector';

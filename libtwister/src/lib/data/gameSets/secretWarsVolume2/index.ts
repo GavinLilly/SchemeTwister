@@ -3,9 +3,9 @@ import { injectGameSetToMany } from '../../../utils/schemeInjector';
 
 import * as Bystanders from './bystanders';
 import * as Henchmen from './henchmen';
-import * as Heroes from './heroes';
 import { META } from './meta';
 import * as Schemes from './schemes';
+import * as Heroes from './sw2.heroes';
 import * as Masterminds from './sw2.masterminds';
 import * as Villains from './villains';
 

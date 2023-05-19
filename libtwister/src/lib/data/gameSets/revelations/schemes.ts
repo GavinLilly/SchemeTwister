@@ -1,7 +1,7 @@
 import { ShortScheme } from '../../../model';
 import { HouseOfMScheme } from '../../../model/schemes/HouseOfMScheme';
 
-import { SCARLET_WITCH } from './heroes';
+import { SCARLET_WITCH } from './revelations.heroes';
 import { DOUBLE_SIDED_TRANSFORMING_SCHEMES } from './keywords';
 
 export const EARTHQUAKE_DRAINS_THE_OCEAN: ShortScheme = {

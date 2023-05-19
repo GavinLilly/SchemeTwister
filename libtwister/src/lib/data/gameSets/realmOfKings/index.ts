@@ -1,9 +1,9 @@
 import { GameSet } from '../../../model';
 import { injectGameSetToMany } from '../../../utils/schemeInjector';
 
-import * as Heroes from './heroes';
-import * as Masterminds from './realmOfKings.masterminds';
 import { META } from './meta';
+import * as Heroes from './realmOfKings.heroes';
+import * as Masterminds from './realmOfKings.masterminds';
 import * as Schemes from './schemes';
 import * as Villains from './villains';
 
