@@ -6,7 +6,7 @@ export {
   GameSetup,
   ICard,
   IHenchmen,
-  IHero,
+  Hero,
   IVillainGroup,
   GameSetSize,
   IHeroDeck,

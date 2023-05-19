@@ -1,17 +1,17 @@
 import { hasPresentKey } from 'ts-is-present';
 
-import { Mastermind } from './mastermind';
+import { Hero } from './hero';
 import {
   IAdditionalDeck,
   ICard,
   IHenchmen,
-  IHero,
   IHeroDeck,
   IKeyword,
   IVillainDeck,
   IVillainGroup,
 } from './interfaces';
 import { IGameSetup } from './interfaces/gameSetup.interface';
+import { Mastermind } from './mastermind';
 import { Scheme } from './schemes';
 
 export class GameSetup implements IGameSetup {
@@ -54,7 +54,7 @@ export class GameSetup implements IGameSetup {
     return new GameSetup(setup);
   }
 
-  public getSelectedHeroes(): IHero[] {
+  public getSelectedHeroes(): Hero[] {
     const villainDeckHeroes = this.villainDeck.heroes || [];
     const additionalDeckHeroes = this.additionalDeck?.deck.heroes || [];
 

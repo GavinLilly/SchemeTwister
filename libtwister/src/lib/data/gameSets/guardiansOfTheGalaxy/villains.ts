@@ -1,4 +1,4 @@
-import { IHero, IVillainGroup, CardType } from '../../../model';
+import { IVillainGroup, CardType } from '../../../model';
 
 import { ARTIFACT, SHARDS } from './keywords';
 import { META } from './meta';
@@ -11,7 +11,7 @@ export const KREE_STARFORCE: IVillainGroup = {
   keywords: [SHARDS],
 };
 
-export const INFINITY_GEMS: IHero = {
+export const INFINITY_GEMS: IVillainGroup = {
   id: '27e817d0-b853-420e-b1a6-2f7ba15681a7',
   name: 'Infinity Gems',
   cardType: CardType.VILLAINGROUP,

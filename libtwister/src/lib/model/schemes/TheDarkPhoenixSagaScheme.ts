@@ -1,9 +1,9 @@
 import { StoreOfStores } from '../../factories/storeOfStores';
+import { Hero } from '../hero';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  IHero,
   IVillainGroup,
   SchemeMinusRules,
   VillainDeckMinimal,
@@ -18,8 +18,8 @@ export class TheDarkPhoenixSagaScheme extends RequireVillainsInVillainDeckScheme
   constructor(
     scheme: SchemeMinusRules,
     requiredVillain: IVillainGroup,
-    private _preferredHero: IHero,
-    private _backupHero: IHero
+    private _preferredHero: Hero,
+    private _backupHero: Hero
   ) {
     super(scheme, requiredVillain);
   }

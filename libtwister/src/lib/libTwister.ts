@@ -5,8 +5,8 @@ import {
   GameSet,
   GameSetSize,
   GameSetup,
+  Hero,
   IHenchmen,
-  IHero,
   IVillainGroup,
   Mastermind,
   NumPlayers,
@@ -146,7 +146,7 @@ export class LibTwister {
    * Performs actions when the selected Game Sets change
    */
   private _onGameSetsChange() {
-    const heroes: IHero[] = [];
+    const heroes: Hero[] = [];
     const masterminds: Mastermind[] = [];
     const schemes: SchemeMinusRules[] = [];
     const villains: IVillainGroup[] = [];

@@ -1,19 +1,19 @@
 import { StoreOfStores } from '../../factories/storeOfStores';
-import { Mastermind } from '../mastermind';
+import { Hero } from '../hero';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  IHero,
   VillainDeckMinimal,
 } from '../interfaces';
 import { SchemeMinusRules } from '../interfaces/newScheme.interface';
+import { Mastermind } from '../mastermind';
 import { NumPlayers } from '../types';
 
 import { Scheme } from './Scheme';
 
 export class RequireHeroInAdditionalDeckScheme extends Scheme {
-  constructor(scheme: SchemeMinusRules, private _requiredHero: IHero) {
+  constructor(scheme: SchemeMinusRules, private _requiredHero: Hero) {
     super(scheme);
   }
 

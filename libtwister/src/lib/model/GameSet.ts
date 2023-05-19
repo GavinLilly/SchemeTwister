@@ -1,10 +1,10 @@
 import { CardType } from './cardType.enum';
 import { GameSetSize } from './gameSetSize.enum';
+import { Hero } from './hero';
 import {
   IBystander,
   IGameSetMeta,
   IHenchmen,
-  IHero,
   IVillainGroup,
 } from './interfaces';
 import { SchemeMinusRules } from './interfaces/newScheme.interface';
@@ -21,12 +21,12 @@ export class GameSet implements IGameSetMeta {
 
   constructor(
     gameSetProps: IGameSetMeta,
-    readonly heroes: IHero[],
+    readonly heroes: Hero[],
     readonly masterminds?: Mastermind[],
     readonly schemes?: SchemeMinusRules[],
     readonly villains?: IVillainGroup[],
     readonly henchmen?: IHenchmen[],
-    readonly bystanders?: IHero[] | IBystander[]
+    readonly bystanders?: Hero[] | IBystander[]
   ) {
     ({
       id: this.id,

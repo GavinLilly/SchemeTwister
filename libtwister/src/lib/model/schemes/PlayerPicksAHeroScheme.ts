@@ -1,10 +1,9 @@
 import { StoreOfStores } from '../../factories/storeOfStores';
-import { CardType } from '../cardType.enum';
+import { Hero } from '../hero';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  IHero,
   VillainDeckMinimal,
 } from '../interfaces';
 import { Mastermind } from '../mastermind';
@@ -22,14 +21,15 @@ export class PlayerPicksAHeroScheme extends Scheme {
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
   ): Promise<IGameSetup> {
-    const nonPickedHeroes: IHero[] = [];
+    const nonPickedHeroes: Hero[] = [];
     for (let i = 1; i <= numPlayers; i++) {
-      nonPickedHeroes.push({
-        gameSet: this.gameSet,
-        cardType: CardType.HERO,
-        id: `79131ea5-5bea-4ae2-89e6-d024cda16a5${i}`,
-        name: `Player ${i} picks a hero`,
-      });
+      nonPickedHeroes.push(
+        new Hero({
+          gameSet: this.gameSet,
+          id: `79131ea5-5bea-4ae2-89e6-d024cda16a5${i}`,
+          name: `Player ${i} picks a hero`,
+        })
+      );
     }
 
     partialHeroDeck.heroes = Scheme.addToDeck(

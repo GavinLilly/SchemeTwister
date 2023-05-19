@@ -1,5 +1,5 @@
 import LEGENDARY from '../data/gameSets/legendary';
-import { Mastermind, IHero, IVillainGroup, IHenchmen, GameSet } from '../model';
+import { Mastermind, IVillainGroup, IHenchmen, GameSet, Hero } from '../model';
 
 import { MultiCardStore } from './multiCardStore';
 
@@ -12,7 +12,7 @@ export class StoreOfStores {
     return this._mastermindStore;
   }
 
-  private _heroStore!: MultiCardStore<IHero>;
+  private _heroStore!: MultiCardStore<Hero>;
   /**
    * The hero store and picker
    */
@@ -38,13 +38,13 @@ export class StoreOfStores {
 
   constructor();
   constructor(
-    heroes: IHero[],
+    heroes: Hero[],
     masterminds: Mastermind[],
     villains: IVillainGroup[],
     henchmen: IHenchmen[]
   );
   constructor(
-    heroes: IHero[] = LEGENDARY.heroes,
+    heroes: Hero[] = LEGENDARY.heroes,
     /* eslint-disable @typescript-eslint/no-non-null-assertion */
     masterminds: Mastermind[] = LEGENDARY.masterminds!,
     villains: IVillainGroup[] = LEGENDARY.villains!,
@@ -127,7 +127,7 @@ export class StoreBuilder implements StepA, StepB, StepC, StepD, Build {
   }
 
   build(): StoreOfStores {
-    const heroes: IHero[] = this._heroGamesets.flatMap(
+    const heroes: Hero[] = this._heroGamesets.flatMap(
       (gameSet) => gameSet.heroes
     );
 

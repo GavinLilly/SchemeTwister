@@ -9,3 +9,4 @@ export { GameSet } from './GameSet';
 export { GameSetSize } from './gameSetSize.enum';
 export { CardType } from './cardType.enum';
 export { Series } from './series.enum';
+export { Hero } from './hero';

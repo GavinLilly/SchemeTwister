@@ -1,14 +1,14 @@
 import { StoreOfStores } from '../../factories/storeOfStores';
 import { randomize } from '../../utils/randomize';
+import { Hero } from '../hero';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  IHero,
   VillainDeckMinimal,
 } from '../interfaces';
-import { Mastermind } from '../mastermind';
 import { SchemeMinusRules } from '../interfaces/newScheme.interface';
+import { Mastermind } from '../mastermind';
 import { NumPlayers } from '../types';
 
 import { Scheme } from './Scheme';
@@ -27,7 +27,7 @@ export class RequireHeroNameInAdditionalDeckScheme extends Scheme {
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck: AdditionalDeckDeckMinimal = {}
   ): Promise<IGameSetup> {
-    const heroes: IHero[] = store.heroStore.availableCards.filter((hero) =>
+    const heroes: Hero[] = store.heroStore.availableCards.filter((hero) =>
       hero.name.toLowerCase().includes(this._heroName.toLowerCase())
     );
 

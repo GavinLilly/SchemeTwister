@@ -1,6 +1,6 @@
+import { Hero } from '../hero';
 import {
   IBystander,
-  IHero,
   IHenchmen,
   IVillainGroup,
   SchemeMinusRules,
@@ -9,7 +9,7 @@ import { Mastermind } from '../mastermind';
 
 export type AllCardTypes =
   | IBystander
-  | IHero
+  | Hero
   | IHenchmen
   | IVillainGroup
   | Mastermind

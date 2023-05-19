@@ -4,12 +4,13 @@ import { DEADPOOL_KILLS_THE_MARVEL_UNIVERSE } from '../../data/gameSets/deadpool
 import LEGENDARY from '../../data/gameSets/legendary';
 import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
 import { injectGameSet } from '../../utils/schemeInjector';
-import { IHero, IGameSetup } from '../interfaces';
+import { Hero } from '../hero';
+import { IGameSetup } from '../interfaces';
 
 import { RequireHeroNameInHeroDeckScheme } from './RequireHeroNameInHeroDeckScheme';
 import { Scheme } from './Scheme';
 
-function isDeadpool(hero: IHero): boolean {
+function isDeadpool(hero: Hero): boolean {
   return hero.name.toLowerCase().includes('deadpool');
 }
 

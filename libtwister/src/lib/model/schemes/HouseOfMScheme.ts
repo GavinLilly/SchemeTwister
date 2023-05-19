@@ -1,21 +1,21 @@
 import { X_MEN } from '../../data/teams';
 import { StoreOfStores } from '../../factories/storeOfStores';
-import { Mastermind } from '../mastermind';
+import { Hero } from '../hero';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  IHero,
   VillainDeckMinimal,
 } from '../interfaces';
 import { SchemeMinusRules } from '../interfaces/newScheme.interface';
+import { Mastermind } from '../mastermind';
 import { NumPlayers } from '../types';
 
 import { RequireHeroInVillainDeckScheme } from './RequireHeroInVillainDeckScheme';
 import { Scheme } from './Scheme';
 
 export class HouseOfMScheme extends RequireHeroInVillainDeckScheme {
-  constructor(scheme: SchemeMinusRules, requiredHero: IHero) {
+  constructor(scheme: SchemeMinusRules, requiredHero: Hero) {
     super(scheme, requiredHero);
   }
 
