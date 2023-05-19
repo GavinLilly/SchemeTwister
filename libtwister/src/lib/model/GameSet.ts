@@ -1,3 +1,5 @@
+import * as uuid from 'uuid';
+
 import { CardType } from './cardType.enum';
 import { GameSetSize } from './gameSetSize.enum';
 import { Hero } from './hero';
@@ -56,6 +58,19 @@ export class GameSet implements IGameSetMeta {
       else if (nameA > nameB) return 1;
       else return 0;
     }
+  }
+
+  public static empty(): GameSet {
+    return new GameSet(
+      {
+        id: uuid.v4(),
+        name: 'EMPTY GAME SET',
+        releaseYear: 1970,
+        series: Series.MAINLINE,
+        size: GameSetSize.PROMO,
+      },
+      []
+    );
   }
 
   public get(cardType: CardType): AllCardTypes[] | undefined {

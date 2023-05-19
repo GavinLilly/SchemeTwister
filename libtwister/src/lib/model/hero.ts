@@ -1,3 +1,6 @@
+import * as uuid from 'uuid';
+
+import { GameSet } from './GameSet';
 import { CardType } from './cardType.enum';
 import { ICard, IGameSetMeta, IKeyword, ITeam } from './interfaces';
 import { ICardType } from './interfaces/cardType.interface';
@@ -48,5 +51,13 @@ export class Hero implements IHero {
 
   get cardType() {
     return this._cardType;
+  }
+
+  public static empty(): Hero {
+    return new Hero({
+      id: uuid.v4(),
+      name: 'EMPTY HERO',
+      gameSet: GameSet.empty(),
+    });
   }
 }
