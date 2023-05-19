@@ -1,5 +1,4 @@
-import { IHenchmen , CardType } from '../../../model';
-
+import { IHenchmen, CardType } from '../../../model';
 
 import { META } from './meta';
 
@@ -9,7 +8,7 @@ export const ASGARDIAN_WARRIORS: IHenchmen = {
   attackPoints: '3',
   victoryPoints: 1,
   cardType: CardType.HENCHMEN,
-  gameSetId: META.id,
+  gameSet: META,
   fight: 'Draw a card.',
 };
 
@@ -19,7 +18,7 @@ export const COPS: IHenchmen = {
   attackPoints: '3',
   victoryPoints: 1,
   cardType: CardType.HENCHMEN,
-  gameSetId: META.id,
+  gameSet: META,
   fight: 'Gain a New Recruit.',
 };
 
@@ -29,7 +28,7 @@ export const MULTIPLE_MAN: IHenchmen = {
   attackPoints: '3',
   victoryPoints: 1,
   cardType: CardType.HENCHMEN,
-  gameSetId: META.id,
+  gameSet: META,
   fight:
     'KO one of your Allies for each other Multiple Man in your Victory Pile.',
 };
@@ -40,7 +39,7 @@ export const SHIELD_ASSAULT_SQUAD: IHenchmen = {
   attackPoints: '3',
   victoryPoints: 1,
   cardType: CardType.HENCHMEN,
-  gameSetId: META.id,
+  gameSet: META,
   fight:
     'Discard the top card of your deck. Then KO an Ally from your discard pile.',
 };

@@ -3,7 +3,7 @@ export * from './interfaces';
 export * from './schemes';
 export * from './types';
 
-export { AbstractMastermind } from './AbstractMastermind';
+export { Mastermind, EpicMastermindBuilder, IMastermind } from './mastermind';
 export { GameSetup } from './GameSetup';
 export { GameSet } from './GameSet';
 export { GameSetSize } from './gameSetSize.enum';

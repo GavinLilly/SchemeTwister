@@ -1,15 +1,15 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { HYDRA, MERCS_FOR_MONEY } from '../../teams';
 
 import { EXCESSIVE_VIOLENCE } from './keywords';
-import { META as DeadpoolDef } from './meta';
+import { META } from './meta';
 
 export const BOB_AGENT_OF_HYDRA: IHero = {
   id: '5aa52805-11c4-4e17-840b-b6e94612a21c',
   name: 'Bob, Agent of HYDRA',
   team: HYDRA,
   cardType: CardType.HERO,
-  gameSetId: DeadpoolDef.id,
+  gameSet: META,
   keywords: [EXCESSIVE_VIOLENCE],
 };
 
@@ -18,7 +18,7 @@ export const DEADPOOL: IHero = {
   name: 'Deadpool',
   team: MERCS_FOR_MONEY,
   cardType: CardType.HERO,
-  gameSetId: DeadpoolDef.id,
+  gameSet: META,
   keywords: [EXCESSIVE_VIOLENCE],
 };
 
@@ -27,7 +27,7 @@ export const SLAPSTICK: IHero = {
   name: 'Slapstick',
   team: MERCS_FOR_MONEY,
   cardType: CardType.HERO,
-  gameSetId: DeadpoolDef.id,
+  gameSet: META,
   keywords: [EXCESSIVE_VIOLENCE],
 };
 
@@ -36,7 +36,7 @@ export const SOLO: IHero = {
   name: 'Solo',
   team: MERCS_FOR_MONEY,
   cardType: CardType.HERO,
-  gameSetId: DeadpoolDef.id,
+  gameSet: META,
   keywords: [EXCESSIVE_VIOLENCE],
 };
 
@@ -45,6 +45,6 @@ export const STINGRAY: IHero = {
   name: 'Stingray',
   team: MERCS_FOR_MONEY,
   cardType: CardType.HERO,
-  gameSetId: DeadpoolDef.id,
+  gameSet: META,
   keywords: [EXCESSIVE_VIOLENCE],
 };

@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { AVENGERS, NEW_WARRIORS, X_MEN } from '../../teams';
 
 import { DIVIDED, FORTIFY, PHASING, SIZE_CHANGING } from './keywords';
@@ -9,7 +9,7 @@ export const CAPTAIN_AMERICA_SECRET_AVENGER: IHero = {
   name: 'Captain America, Secret Avenger',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DIVIDED],
 };
 
@@ -18,7 +18,7 @@ export const CLOAK_AND_DAGGER: IHero = {
   name: 'Cloak & Dagger',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DIVIDED, PHASING],
 };
 
@@ -27,7 +27,7 @@ export const DAREDEVIL: IHero = {
   name: 'Daredevil',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DIVIDED],
 };
 
@@ -36,7 +36,7 @@ export const FALCON: IHero = {
   name: 'Falcon',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DIVIDED],
 };
 
@@ -45,7 +45,7 @@ export const GOLIATH: IHero = {
   name: 'Goliath',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DIVIDED, SIZE_CHANGING],
 };
 
@@ -54,7 +54,7 @@ export const HERCULES: IHero = {
   name: 'Hercules',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DIVIDED],
 };
 
@@ -63,7 +63,7 @@ export const HULKLING: IHero = {
   name: 'Hulkling',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DIVIDED, SIZE_CHANGING],
 };
 
@@ -72,7 +72,7 @@ export const LUKE_CAGE: IHero = {
   name: 'Luke Cage',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DIVIDED, FORTIFY],
 };
 
@@ -81,7 +81,7 @@ export const PATRIOT: IHero = {
   name: 'Patriot',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DIVIDED],
 };
 
@@ -90,7 +90,7 @@ export const PETER_PARKER: IHero = {
   name: 'Peter Parker',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DIVIDED],
 };
 
@@ -99,7 +99,7 @@ export const SPEEDBALL: IHero = {
   name: 'Speedball',
   team: NEW_WARRIORS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DIVIDED],
 };
 
@@ -108,7 +108,7 @@ export const STATURE: IHero = {
   name: 'Stature',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DIVIDED, SIZE_CHANGING],
 };
 
@@ -117,7 +117,7 @@ export const STORM_AND_BLACK_PANTHER: IHero = {
   name: 'Storm & Black Panther',
   team: X_MEN,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DIVIDED],
 };
 
@@ -126,7 +126,7 @@ export const TIGRA: IHero = {
   name: 'Tigra',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DIVIDED],
 };
 
@@ -135,7 +135,7 @@ export const VISION: IHero = {
   name: 'Vision',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DIVIDED, SIZE_CHANGING, PHASING],
 };
 
@@ -144,6 +144,6 @@ export const WICCAN: IHero = {
   name: 'Wiccan',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DIVIDED, PHASING],
 };

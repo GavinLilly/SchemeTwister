@@ -1,5 +1,4 @@
-import { IBystander , CardType } from '../../../model';
-
+import { IBystander, CardType } from '../../../model';
 
 import { META } from './meta';
 
@@ -8,7 +7,7 @@ export const BYSTANDER: IBystander = {
   name: 'Bystander',
   copies: 30,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.BYSTANDER,
 };
 
@@ -17,7 +16,7 @@ export const HAPPY_HOGAN: IBystander = {
   name: 'Happy Hogan',
   copies: 3,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.BYSTANDER,
 };
 
@@ -26,7 +25,7 @@ export const JANE_FOSTER: IBystander = {
   name: 'Jane Foster',
   copies: 3,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.BYSTANDER,
 };
 
@@ -35,7 +34,7 @@ export const PEGGY_CARTER: IBystander = {
   name: 'Peggy Carter',
   copies: 3,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.BYSTANDER,
 };
 
@@ -44,6 +43,6 @@ export const PEPPER_POTTS: IBystander = {
   name: 'Pepper Potts',
   copies: 3,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.BYSTANDER,
 };

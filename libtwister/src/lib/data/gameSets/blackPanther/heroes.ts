@@ -11,7 +11,7 @@ export const KING_BLACK_PANTHER: IHero = {
   name: 'King Black Panther',
   team: HEROES_OF_WAKANDA,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [THRONES_FAVOR, AMBUSH_ON_HEROES],
 };
 
@@ -20,7 +20,7 @@ export const QUEEN_STORM_OF_WAKANDA: IHero = {
   name: 'Queen Storm of Wakanda',
   team: HEROES_OF_WAKANDA,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [EMPOWERED, AMBUSH_ON_HEROES, THRONES_FAVOR],
 };
 
@@ -29,7 +29,7 @@ export const GENERAL_OKOYE: IHero = {
   name: 'General Okoye',
   team: HEROES_OF_WAKANDA,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [AMBUSH_ON_HEROES],
 };
 
@@ -38,7 +38,7 @@ export const PRINCESS_SHURI: IHero = {
   name: 'Princess Shuri',
   team: HEROES_OF_WAKANDA,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [AMBUSH_ON_HEROES, EMPOWERED],
 };
 
@@ -47,6 +47,6 @@ export const WHITE_WOLF: IHero = {
   name: 'White Wolf',
   team: HEROES_OF_WAKANDA,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [AMBUSH_ON_HEROES],
 };

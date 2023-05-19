@@ -1,8 +1,8 @@
-import { NewScheme } from '../../../model';
+import { ShortScheme } from '../../../model';
 
 import { VEILED_SCHEMES } from './keywords';
 
-export const HACK_CEREBRO_SERVERS_TO: NewScheme = {
+export const HACK_CEREBRO_SERVERS_TO: ShortScheme = {
   id: 'e25e8c41-af6f-4481-b2f0-d98f3113d492',
   name: 'Hack Cerebro Servers to...',
   setup: '10 Twists',
@@ -13,7 +13,7 @@ export const HACK_CEREBRO_SERVERS_TO: NewScheme = {
   meta: { numTwists: 10 },
 };
 
-export const RAID_GENE_BANK_TO: NewScheme = {
+export const RAID_GENE_BANK_TO: ShortScheme = {
   id: 'f20c107f-bba4-4a2d-89ca-196a8f9ce902',
   name: 'Raid Gene Bank to...',
   setup: '8 Twists',
@@ -24,7 +24,7 @@ export const RAID_GENE_BANK_TO: NewScheme = {
   meta: { numTwists: 8 },
 };
 
-export const HIRE_SINGULARITY_INVESTIGATIONS_TO: NewScheme = {
+export const HIRE_SINGULARITY_INVESTIGATIONS_TO: ShortScheme = {
   id: '5fd38dd7-1a83-4c9f-aea8-4500b6536659',
   name: 'Hire Singularity Investigations to...',
   setup: '9 Twists',
@@ -35,7 +35,7 @@ export const HIRE_SINGULARITY_INVESTIGATIONS_TO: NewScheme = {
   meta: { numTwists: 9 },
 };
 
-export const DRAIN_MUTANTS_POWERS_TO: NewScheme = {
+export const DRAIN_MUTANTS_POWERS_TO: ShortScheme = {
   id: '9d1dc041-7072-4219-9846-062f4cb59581',
   name: "Drain Mutants' powers to...",
   setup: '11 Twists',

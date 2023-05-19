@@ -1,6 +1,5 @@
 import { StoreOfStores } from '../../factories/storeOfStores';
 import { randomize } from '../../utils/randomize';
-import { AbstractMastermind } from '../AbstractMastermind';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
@@ -9,6 +8,7 @@ import {
   VillainDeckMinimal,
 } from '../interfaces';
 import { SchemeMinusRules } from '../interfaces/newScheme.interface';
+import { Mastermind } from '../mastermind';
 import { NumPlayers } from '../types';
 
 import { Scheme } from './Scheme';
@@ -25,7 +25,7 @@ export class RequireHeroNameInHeroDeckScheme extends Scheme {
 
   public override async getSetup(
     numPlayers: NumPlayers,
-    selectedMastermind: AbstractMastermind,
+    selectedMastermind: Mastermind,
     store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck: HeroDeckMinimal = {},

@@ -18,7 +18,7 @@ import {
   REPLACE_EARTHS_LEADERS_WITH_KILLBOTS,
 } from '../data/gameSets/legendary/schemes';
 import PAINT_THE_TOWN_RED from '../data/gameSets/paintTheTownRed';
-import { CARNAGE } from '../data/gameSets/paintTheTownRed/masterminds';
+import { CARNAGE } from '../data/gameSets/paintTheTownRed/paintTheTownRed.masterminds';
 import { SPLICE_HUMANS_WITH_SPIDER_DNA } from '../data/gameSets/paintTheTownRed/schemes';
 import {
   MAXIMUM_CARNAGE,
@@ -48,9 +48,7 @@ describe('GameSetup', () => {
     let setup: GameSetup;
 
     beforeAll(async () => {
-      const scheme = new Scheme(
-        injectGameSet(LEGENDARY.id, MIDTOWN_BANK_ROBBERY)
-      );
+      const scheme = new Scheme(injectGameSet(LEGENDARY, MIDTOWN_BANK_ROBBERY));
       setup = (await scheme.getSetup(
         2,
         store.mastermindStore.getOneRandom(),
@@ -78,7 +76,7 @@ describe('GameSetup', () => {
 
     beforeAll(async () => {
       const scheme = new Scheme(
-        injectGameSet(LEGENDARY.id, REPLACE_EARTHS_LEADERS_WITH_KILLBOTS)
+        injectGameSet(LEGENDARY, REPLACE_EARTHS_LEADERS_WITH_KILLBOTS)
       );
       setup = (await scheme.getSetup(
         2,
@@ -116,7 +114,7 @@ describe('GameSetup', () => {
 
     it('should have no keywords', async () => {
       const scheme = new Scheme(
-        injectGameSet(LEGENDARY.id, REPLACE_EARTHS_LEADERS_WITH_KILLBOTS)
+        injectGameSet(LEGENDARY, REPLACE_EARTHS_LEADERS_WITH_KILLBOTS)
       );
       const setup = (await scheme.getSetup(
         2,
@@ -129,7 +127,7 @@ describe('GameSetup', () => {
 
     it('should have only the "Contest of Champions" keyword', async () => {
       const scheme = new Scheme(
-        injectGameSet(INTO_THE_COSMOS.id, THE_CONTEST_OF_CHAMPIONS)
+        injectGameSet(INTO_THE_COSMOS, THE_CONTEST_OF_CHAMPIONS)
       );
 
       const setup = (await scheme.getSetup(
@@ -152,7 +150,7 @@ describe('GameSetup', () => {
       versatileStore;
 
       const scheme = new Scheme(
-        injectGameSet(LEGENDARY.id, REPLACE_EARTHS_LEADERS_WITH_KILLBOTS)
+        injectGameSet(LEGENDARY, REPLACE_EARTHS_LEADERS_WITH_KILLBOTS)
       );
       const setup = (await scheme.getSetup(
         2,
@@ -174,7 +172,7 @@ describe('GameSetup', () => {
 
     beforeAll(async () => {
       const scheme = new RequireVillainsInVillainDeckScheme(
-        injectGameSet(LEGENDARY.id, SPLICE_HUMANS_WITH_SPIDER_DNA),
+        injectGameSet(LEGENDARY, SPLICE_HUMANS_WITH_SPIDER_DNA),
         SINISTER_SIX
       );
       setup = (await scheme.getSetup(

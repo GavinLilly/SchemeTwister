@@ -1,6 +1,6 @@
 import { X_MEN } from '../../data/teams';
 import { StoreOfStores } from '../../factories/storeOfStores';
-import { AbstractMastermind } from '../AbstractMastermind';
+import { Mastermind } from '../mastermind';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
@@ -21,7 +21,7 @@ export class HouseOfMScheme extends RequireHeroInVillainDeckScheme {
 
   public override async getSetup(
     numPlayers: NumPlayers,
-    selectedMastermind: AbstractMastermind,
+    selectedMastermind: Mastermind,
     store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck: HeroDeckMinimal = {},

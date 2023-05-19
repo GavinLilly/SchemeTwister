@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import {
   AVENGERS,
   CHAMPIONS,
@@ -22,7 +22,7 @@ export const AMADEUS_CHO: IHero = {
   name: 'Amadeus Cho',
   team: CHAMPIONS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [TRANSFORM, OUTWIT],
 };
 
@@ -31,7 +31,7 @@ export const BRUCE_BANNER: IHero = {
   name: 'Bruce Banner',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [TRANSFORM, OUTWIT, SMASH],
 };
 
@@ -40,7 +40,7 @@ export const CAIERA: IHero = {
   name: 'Caiera',
   team: WARBOUND,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [TRANSFORM, OUTWIT, SMASH],
 };
 
@@ -49,7 +49,7 @@ export const GLADIATOR_HULK: IHero = {
   name: 'Gladiator Hulk',
   team: WARBOUND,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [TRANSFORM, SMASH, WOUNDED_FURY, CROSS_DIMENSIONAL_RAMPAGE],
 };
 
@@ -58,7 +58,7 @@ export const HIROIM: IHero = {
   name: 'Hiroim',
   team: WARBOUND,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [TRANSFORM],
 };
 
@@ -67,7 +67,7 @@ export const HULKBUSTER_IRON_MAN: IHero = {
   name: 'Hulkbuster Iron Man',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [TRANSFORM, OUTWIT, SMASH],
 };
 
@@ -76,7 +76,7 @@ export const JOE_FIXIT_GREY_HULK: IHero = {
   name: 'Joe Fixit, Grey Hulk',
   team: CRIME_SYNDICATE,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [TRANSFORM, SMASH],
 };
 
@@ -85,7 +85,7 @@ export const KORG: IHero = {
   name: 'Korg',
   team: WARBOUND,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [TRANSFORM, OUTWIT, SMASH],
 };
 
@@ -94,7 +94,7 @@ export const MIEK_THE_UNHIVED: IHero = {
   name: 'Miek, The Unhived',
   team: WARBOUND,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [FEAST, TRANSFORM, SMASH],
 };
 
@@ -103,7 +103,7 @@ export const NAMORA: IHero = {
   name: 'Namora',
   team: CHAMPIONS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [TRANSFORM, SMASH],
 };
 
@@ -112,7 +112,7 @@ export const NONAME_BROOD_QUEEN: IHero = {
   name: 'No-Name, Brood Queen',
   team: WARBOUND,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [FEAST, TRANSFORM],
 };
 
@@ -121,7 +121,7 @@ export const RICK_JONES: IHero = {
   name: 'Rick Jones',
   team: SHIELD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [TRANSFORM, SMASH],
 };
 
@@ -130,7 +130,7 @@ export const SENTRY: IHero = {
   name: 'Sentry',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [FEAST, TRANSFORM],
 };
 
@@ -139,7 +139,7 @@ export const SHEHULK: IHero = {
   name: 'She-Hulk',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [TRANSFORM, OUTWIT, SMASH],
 };
 
@@ -148,6 +148,6 @@ export const SKAAR_SON_OF_HULK: IHero = {
   name: 'Skaar, Son of Hulk',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [TRANSFORM, SMASH, WOUNDED_FURY],
 };

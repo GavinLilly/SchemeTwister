@@ -9,7 +9,7 @@ export const DOCTOR_STRANGE: IHero = {
   name: 'Doctor Strange',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [RITUAL_ARTIFACTS],
 };
 
@@ -18,7 +18,7 @@ export const CLEA: IHero = {
   name: 'Clea',
   team: MARVEL_KNIGHTS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DEMONIC_BARGAIN, RITUAL_ARTIFACTS],
 };
 
@@ -27,7 +27,7 @@ export const DOCTOR_VOODOO: IHero = {
   name: 'Doctor Voodoo',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [RITUAL_ARTIFACTS],
 };
 
@@ -35,7 +35,7 @@ export const THE_ANCIENT_ONE: IHero = {
   id: 'be278c05-4224-432b-afc3-fe2723133cf8',
   name: 'The Ancient One',
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [ASTRAL_PLANE, RITUAL_ARTIFACTS],
 };
 
@@ -43,6 +43,6 @@ export const THE_VISHANTI: IHero = {
   id: '4f0f9b86-b983-4e46-bbec-655e0abad23e',
   name: 'The Vishanti',
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DEMONIC_BARGAIN, RITUAL_ARTIFACTS],
 };

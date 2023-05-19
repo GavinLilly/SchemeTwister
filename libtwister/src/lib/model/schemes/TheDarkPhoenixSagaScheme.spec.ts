@@ -18,7 +18,7 @@ describe('The Dark Phoenix Saga Scheme', () => {
   beforeAll(() => {
     store = new StoreBuilder().withSingleGameset(XMEN).build();
     scheme = new TheDarkPhoenixSagaScheme(
-      injectGameSet(XMEN.id, THE_DARK_PHOENIX_SAGA),
+      injectGameSet(XMEN, THE_DARK_PHOENIX_SAGA),
       HELLFIRE_CLUB,
       JEAN_GREY,
       PHOENIX

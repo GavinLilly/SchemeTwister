@@ -6,7 +6,7 @@ import MCU_GUARDIANS_OF_THE_GALAXY from './data/gameSets/mcuGuardiansOfTheGalaxy
 import {
   EGO_THE_LIVING_PLANET,
   EPIC_EGO_THE_LIVING_PLANET,
-} from './data/gameSets/mcuGuardiansOfTheGalaxy/masterminds';
+} from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.masterminds';
 import { UNLEASH_THE_ABILISK_SPACE_MONSTER } from './data/gameSets/mcuGuardiansOfTheGalaxy/schemes';
 import { LibTwister } from './libTwister';
 import {
@@ -132,21 +132,21 @@ describe('LibTwister', () => {
       async (numPlayers) => {
         const setup = await twister.getSetup(numPlayers as NumPlayers);
 
-        expect(setup?.scheme.gameSetId).toBe(LEGENDARY.id);
-        expect(setup?.mastermind.gameSetId).toBe(LEGENDARY.id);
+        expect(setup?.scheme.gameSet.id).toBe(LEGENDARY.id);
+        expect(setup?.mastermind.gameSet.id).toBe(LEGENDARY.id);
         expect(
           setup?.heroDeck.heroes.every(
-            (hero) => hero.gameSetId === LEGENDARY.id
+            (hero) => hero.gameSet.id === LEGENDARY.id
           )
         ).toBeTruthy();
         expect(
           setup?.villainDeck.henchmen.every(
-            (henchmen) => henchmen.gameSetId === LEGENDARY.id
+            (henchmen) => henchmen.gameSet.id === LEGENDARY.id
           )
         ).toBeTruthy();
         expect(
           setup?.villainDeck.villains.every(
-            (villain) => villain.gameSetId === LEGENDARY.id
+            (villain) => villain.gameSet.id === LEGENDARY.id
           )
         ).toBeTruthy();
       }
@@ -220,7 +220,7 @@ describe('LibTwister', () => {
         expect(store.allCards).toEqual(expect.arrayContaining(legCards!));
         expect(
           store.allCards.every((card) =>
-            [LEGENDARY.id, DARK_CITY.id].includes(card.gameSetId)
+            [LEGENDARY.id, DARK_CITY.id].includes(card.gameSet.id)
           )
         ).toBeTruthy();
       }
@@ -240,7 +240,7 @@ describe('LibTwister', () => {
       let unleashScheme: SchemeMinusRules;
       beforeEach(() => {
         unleashScheme = injectGameSet(
-          MCU_GUARDIANS_OF_THE_GALAXY.id,
+          MCU_GUARDIANS_OF_THE_GALAXY,
           UNLEASH_THE_ABILISK_SPACE_MONSTER
         );
       });

@@ -3,12 +3,12 @@ import { injectGameSetToMany } from '../../../utils/schemeInjector';
 
 import * as Bystanders from './bystanders';
 import * as Heroes from './heroes';
-import * as Masterminds from './masterminds';
+import * as Masterminds from './noir.masterminds';
 import { META } from './meta';
 import * as Schemes from './schemes';
 import * as Villains from './villains';
 
-const schemes = injectGameSetToMany(META.id, Object.values(Schemes));
+const schemes = injectGameSetToMany(META, Object.values(Schemes));
 
 export { Heroes, schemes, Masterminds, Villains, Bystanders };
 

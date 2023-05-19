@@ -1,5 +1,4 @@
 import { StoreOfStores } from '../../factories/storeOfStores';
-import { AbstractMastermind } from '../AbstractMastermind';
 import { CardType } from '../cardType.enum';
 import {
   AdditionalDeckDeckMinimal,
@@ -8,6 +7,7 @@ import {
   IHero,
   VillainDeckMinimal,
 } from '../interfaces';
+import { Mastermind } from '../mastermind';
 import { NumPlayers } from '../types';
 
 import { Scheme } from './Scheme';
@@ -15,7 +15,7 @@ import { Scheme } from './Scheme';
 export class PlayerPicksAHeroScheme extends Scheme {
   public override async getSetup(
     numPlayers: NumPlayers,
-    selectedMastermind: AbstractMastermind,
+    selectedMastermind: Mastermind,
     store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck: HeroDeckMinimal = {},
@@ -25,8 +25,8 @@ export class PlayerPicksAHeroScheme extends Scheme {
     const nonPickedHeroes: IHero[] = [];
     for (let i = 1; i <= numPlayers; i++) {
       nonPickedHeroes.push({
+        gameSet: this.gameSet,
         cardType: CardType.HERO,
-        gameSetId: this.gameSetId,
         id: `79131ea5-5bea-4ae2-89e6-d024cda16a5${i}`,
         name: `Player ${i} picks a hero`,
       });

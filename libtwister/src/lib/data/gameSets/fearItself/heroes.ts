@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { FOES_OF_ASGARD, HYDRA } from '../../teams';
 import { ARTIFACT } from '../guardiansOfTheGalaxy/keywords';
 import { DEMOLISH } from '../villains/keywords';
@@ -11,7 +11,7 @@ export const GREITHOTH_BREAKER_OF_WILLS: IHero = {
   name: 'Greithoth, Breaker of Wills',
   team: FOES_OF_ASGARD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [ARTIFACT, THROWN_ARTIFACT],
 };
 
@@ -20,7 +20,7 @@ export const KUURTH_BREAKER_OF_STONE: IHero = {
   name: 'Kuurth, Breaker of Stone',
   team: FOES_OF_ASGARD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [THROWN_ARTIFACT],
 };
 
@@ -29,7 +29,7 @@ export const NERKKOD_BREAKER_OF_OCEANS: IHero = {
   name: 'Nerkkod, Breaker of Oceans',
   team: FOES_OF_ASGARD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [THROWN_ARTIFACT],
 };
 
@@ -38,7 +38,7 @@ export const NUL_BREAKER_OF_WORLDS: IHero = {
   name: 'Nul, Breaker of Worlds',
   team: FOES_OF_ASGARD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DEMOLISH, THROWN_ARTIFACT],
 };
 
@@ -47,7 +47,7 @@ export const SKADI: IHero = {
   name: 'Skadi',
   team: HYDRA,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [THROWN_ARTIFACT],
 };
 
@@ -56,6 +56,6 @@ export const SKIRN_BREAKER_OF_MEN: IHero = {
   name: 'Skirn, Breaker of Men',
   team: FOES_OF_ASGARD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [THROWN_ARTIFACT],
 };

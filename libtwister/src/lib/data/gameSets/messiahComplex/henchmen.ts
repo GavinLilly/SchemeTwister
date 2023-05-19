@@ -12,7 +12,7 @@ export const MR_SINISTER_CLONES: IHenchmen = {
     'Clone the next hero you recruit this turn that has printed cost 4 or less',
   attackPoints: 3,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.HENCHMEN,
   keywords: [CLONE_HEROES],
 };
@@ -25,7 +25,7 @@ export const SENTINEL_SQUAD_ONE: IHenchmen = {
     'If there are no other Sentinel Squad O*N*E*s in the city, KO one of your Heroes and put this Villain on the bottom of the Villain Deck',
   attackPoints: 2,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.HENCHMEN,
   keywords: [CLONE_HEROES],
 };

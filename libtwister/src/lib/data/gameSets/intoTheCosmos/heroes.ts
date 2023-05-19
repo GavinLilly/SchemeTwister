@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { AVENGERS, GUARDIANS_OF_THE_GALAXY } from '../../teams';
 import { DANGER_SENSE } from '../spidermanHomecoming/keywords';
 
@@ -15,7 +15,7 @@ export const ADAM_WARLOCK: IHero = {
   name: 'Adam Warlock',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SHARDS, BURNING_SHARDS],
 };
 
@@ -24,7 +24,7 @@ export const CAPTAIN_MAR_VELL: IHero = {
   name: 'Captain Mar-Vell',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SHARDS, DANGER_SENSE],
 };
 
@@ -33,7 +33,7 @@ export const MOONDRAGON: IHero = {
   name: 'Moondragon',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SHARDS, DANGER_SENSE],
 };
 
@@ -42,7 +42,7 @@ export const NEBULA: IHero = {
   name: 'Nebula',
   team: GUARDIANS_OF_THE_GALAXY,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SHARDS],
 };
 
@@ -51,7 +51,7 @@ export const NOVA: IHero = {
   name: 'Nova',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SHARDS, COSMIC_THREAT],
 };
 
@@ -60,7 +60,7 @@ export const PHYLA_VELL: IHero = {
   name: 'Phyla-Vell',
   team: GUARDIANS_OF_THE_GALAXY,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SHARDS],
 };
 
@@ -69,7 +69,7 @@ export const QUASAR: IHero = {
   name: 'Quasar',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SHARDS, BURNING_SHARDS],
 };
 
@@ -77,7 +77,7 @@ export const RONAN_THE_ACCUSER: IHero = {
   id: '261e3c11-8400-4f1e-8ac8-16c0cd753829',
   name: 'Ronan the Accuser',
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SHARDS, BURNING_SHARDS, CONTEST_OF_CHAMPIONS],
 };
 
@@ -86,6 +86,6 @@ export const YONDU: IHero = {
   name: 'Yondu',
   team: GUARDIANS_OF_THE_GALAXY,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SHARDS, BURNING_SHARDS, DANGER_SENSE],
 };

@@ -1,7 +1,7 @@
-import { NewScheme, RequireTeamInHeroDeckScheme } from '../../../model';
+import { ShortScheme, RequireTeamInHeroDeckScheme } from '../../../model';
 import { GUARDIANS_OF_THE_GALAXY } from '../../teams';
 
-export const INESCAPABLE_KYLN_SPACE_PRISON: NewScheme = {
+export const INESCAPABLE_KYLN_SPACE_PRISON: ShortScheme = {
   id: 'a5f90df4-9aab-44b4-aed5-5089aa827e3d',
   name: 'Inescapable "Kyln" Space Prison',
   setup: '8 Twists. Add an extra Villain Group.',
@@ -23,7 +23,7 @@ Twist 8: Evil wins!`,
   },
 };
 
-export const PROVOKE_THE_SOVEREIGN_WAR_FLEET: NewScheme = {
+export const PROVOKE_THE_SOVEREIGN_WAR_FLEET: ShortScheme = {
   id: '6df7a489-5207-4753-954f-9f221f075ab5',
   name: 'Provoke the Sovereign War Fleet',
   setup: '11 Twists. Add an extra Villain Group.',
@@ -39,7 +39,7 @@ export const PROVOKE_THE_SOVEREIGN_WAR_FLEET: NewScheme = {
   },
 };
 
-export const STAR_LORDS_AWESOME_MIX_TAPE: NewScheme = {
+export const STAR_LORDS_AWESOME_MIX_TAPE: ShortScheme = {
   id: 'b746d561-b6e6-4700-ae0d-a5d8edf26ad4',
   name: "Star-Lord's Awesome Mix Tape",
   setup:
@@ -62,7 +62,7 @@ export const STAR_LORDS_AWESOME_MIX_TAPE: NewScheme = {
   },
 };
 
-export const UNLEASH_THE_ABILISK_SPACE_MONSTER: NewScheme = {
+export const UNLEASH_THE_ABILISK_SPACE_MONSTER: ShortScheme = {
   id: '0e313503-e4ff-48ff-95a3-f36c40f0fd18',
   name: 'Unleash the Abilisk Space Monster',
   setup: '9 Twists',

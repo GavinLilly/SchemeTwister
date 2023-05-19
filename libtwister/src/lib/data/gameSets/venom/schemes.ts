@@ -1,8 +1,8 @@
-import { NewScheme } from '../../../model';
+import { ShortScheme } from '../../../model';
 
 import { SYMBIOTE_BONDS } from './keywords';
 
-export const INVASION_OF_THE_VENOM_SYMBIOTES: NewScheme = {
+export const INVASION_OF_THE_VENOM_SYMBIOTES: ShortScheme = {
   id: 'b2a14295-fbc7-468a-a484-5a530fc92be5',
   name: 'Invasion of the Venom Symbiotes',
   setup: '8 Twists. Add an extra Henchman Group.',
@@ -19,7 +19,7 @@ export const INVASION_OF_THE_VENOM_SYMBIOTES: NewScheme = {
   },
 };
 
-export const MAXIMUM_CARNAGE: NewScheme = {
+export const MAXIMUM_CARNAGE: ShortScheme = {
   id: 'fee94c93-1db0-4daf-8008-3a9d57df1682',
   name: 'Maximum Carnage',
   setup: '10 Twists. Wound Stack has 6 Wounds per player.',
@@ -37,7 +37,7 @@ export const MAXIMUM_CARNAGE: NewScheme = {
   },
 };
 
-export const PARALYZING_VENOM: NewScheme = {
+export const PARALYZING_VENOM: ShortScheme = {
   id: 'f402699b-31f4-458f-98c6-5bc51484eef7',
   name: 'Paralyzing Venom',
   setup: '6 Twists. All Bystanders are also "Biochemists."',
@@ -47,7 +47,7 @@ Twist 6: Evil Wins!`,
   meta: { numTwists: 6 },
 };
 
-export const SYMBIOTIC_ABSORPTION: NewScheme = {
+export const SYMBIOTIC_ABSORPTION: ShortScheme = {
   id: 'bcc9bcc7-d4d2-4eac-895c-f29a0af70b99',
   name: 'Symbiotic Absorption',
   setup:

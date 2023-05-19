@@ -1,5 +1,5 @@
 import {
-  NewScheme,
+  ShortScheme,
   RequireVillainsInVillainDeckScheme,
   SoloBannedScheme,
 } from '../../../model';
@@ -7,7 +7,7 @@ import { HeroClass } from '../../enums';
 
 import { CHITAURI } from './villains';
 
-export const ASGARD_UNDER_SIEGE: NewScheme = {
+export const ASGARD_UNDER_SIEGE: ShortScheme = {
   id: '8d4bc6fd-0fb5-448e-9799-1608a2e8dbc2',
   name: 'Asgard Under Siege',
   setup: '8 Twists. Add an extra Henchman group to the Villain Deck.',
@@ -22,7 +22,7 @@ export const ASGARD_UNDER_SIEGE: NewScheme = {
   },
 };
 
-export const DESTROY_THE_CITIES_OF_EARTH: NewScheme = {
+export const DESTROY_THE_CITIES_OF_EARTH: ShortScheme = {
   id: 'c61d6a77-7720-4eb0-803d-973ac9ce7edc',
   name: 'Destroy the Cities of Earth!',
   setup: '8 Twists. 12 Bystanders in the Villain Deck.',
@@ -38,7 +38,7 @@ export const DESTROY_THE_CITIES_OF_EARTH: NewScheme = {
   },
 };
 
-export const ENSLAVE_MINDS_WITH_THE_CHITAURI_SCEPTER: NewScheme = {
+export const ENSLAVE_MINDS_WITH_THE_CHITAURI_SCEPTER: ShortScheme = {
   id: 'd8a770ea-8fe0-4cc4-a5c6-912b1b4b2501',
   name: 'Enslave Minds with the Chitauri Scepter',
   setup:
@@ -59,7 +59,7 @@ export const ENSLAVE_MINDS_WITH_THE_CHITAURI_SCEPTER: NewScheme = {
   },
 };
 
-export const INVADE_ASGARD: NewScheme = {
+export const INVADE_ASGARD: ShortScheme = {
   id: '7c057e6d-9838-4bf3-ba50-78ce6f05e8fa',
   name: 'Invade Asgard',
   setup: '7 Twists. Each Twist is a Dark Portal.',
@@ -70,7 +70,7 @@ Twist 7: Evil Wins!`,
   meta: { numTwists: 7 },
 };
 
-export const RADIOACTIVE_PALLADIUM_POISONING: NewScheme = {
+export const RADIOACTIVE_PALLADIUM_POISONING: ShortScheme = {
   id: 'c9e29df3-9cc0-4c1b-a9be-4e9abc5ee0da',
   name: 'Radioactive Palladium Poisoning',
   setup: '8 Twists. Wound stack holds 6 Wounds per player.',
@@ -85,7 +85,7 @@ export const RADIOACTIVE_PALLADIUM_POISONING: NewScheme = {
   },
 };
 
-export const REPLACE_EARTHS_LEADERS_WITH_HYDRA: NewScheme = {
+export const REPLACE_EARTHS_LEADERS_WITH_HYDRA: ShortScheme = {
   id: 'ac8001c3-cd45-4d5e-a8e0-930e80874ec2',
   name: "Replace Earth's Leaders with HYDRA",
   setup:
@@ -108,7 +108,7 @@ export const REPLACE_EARTHS_LEADERS_WITH_HYDRA: NewScheme = {
   },
 };
 
-export const SUPER_HERO_CIVIL_WAR: NewScheme = {
+export const SUPER_HERO_CIVIL_WAR: ShortScheme = {
   id: '443832df-675d-44bc-8d27-5d8c0ee290be',
   name: 'Super Hero Civil War',
   setup:
@@ -135,7 +135,7 @@ export const SUPER_HERO_CIVIL_WAR: NewScheme = {
   },
 };
 
-export const UNLEASH_THE_POWER_OF_THE_COSMIC_CUBE: NewScheme = {
+export const UNLEASH_THE_POWER_OF_THE_COSMIC_CUBE: ShortScheme = {
   id: '173ccd3c-09eb-4313-bc71-d650bc32d840',
   name: 'Unleash the Power of the Cosmic Cube',
   setup: '8 twists',

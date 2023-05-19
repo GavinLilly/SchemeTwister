@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { SHIELD } from '../../teams';
 
 import { SHIELD_LEVEL, UNDERCOVER } from './keywords';
@@ -9,7 +9,7 @@ export const AGENT_PHIL_COULSON: IHero = {
   name: 'Agent Phil Coulson',
   team: SHIELD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [UNDERCOVER, SHIELD_LEVEL],
 };
 
@@ -18,7 +18,7 @@ export const DEATHLOK: IHero = {
   name: 'Deathlok',
   team: SHIELD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [UNDERCOVER, SHIELD_LEVEL],
 };
 
@@ -27,7 +27,7 @@ export const MOCKINGBIRD: IHero = {
   name: 'Mockingbird',
   team: SHIELD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [UNDERCOVER, SHIELD_LEVEL],
 };
 
@@ -36,6 +36,6 @@ export const QUAKE: IHero = {
   name: 'Quake',
   team: SHIELD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [UNDERCOVER, SHIELD_LEVEL],
 };

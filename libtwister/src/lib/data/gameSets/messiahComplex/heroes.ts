@@ -11,7 +11,7 @@ export const STRONG_GUY: IHero = {
   name: 'Strong Guy',
   team: X_FACTOR,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [INVESTIGATE, TACTICAL_FORMATION],
 };
 
@@ -20,7 +20,7 @@ export const WARPATH: IHero = {
   name: 'Warpath',
   team: X_FORCE,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [INVESTIGATE, TACTICAL_FORMATION],
 };
 
@@ -29,7 +29,7 @@ export const MULTIPLE_MAN: IHero = {
   name: 'Multiple Man',
   team: X_FACTOR,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [INVESTIGATE, CLONE_HEROES, TACTICAL_FORMATION],
 };
 
@@ -38,7 +38,7 @@ export const STEPFORD_CUCKOOS: IHero = {
   name: 'Stepford Cuckoos',
   team: X_MEN,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [INVESTIGATE, CLONE_HEROES, TACTICAL_FORMATION, WHEN_RECRUITED],
 };
 
@@ -47,7 +47,7 @@ export const M: IHero = {
   name: 'M',
   team: X_FACTOR,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [INVESTIGATE, CLONE_HEROES, WHEN_RECRUITED, TACTICAL_FORMATION],
 };
 
@@ -56,7 +56,7 @@ export const SHATTERSTAR: IHero = {
   name: 'SHATTERstar',
   team: X_FORCE,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [CLONE_HEROES, WHEN_RECRUITED, TACTICAL_FORMATION, SHATTER],
 };
 
@@ -65,7 +65,7 @@ export const SIRYN: IHero = {
   name: 'Siryn',
   team: X_FACTOR,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SHATTER, INVESTIGATE, TACTICAL_FORMATION],
 };
 
@@ -74,6 +74,6 @@ export const RICTOR: IHero = {
   name: 'Rictor',
   team: X_FACTOR,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SHATTER, INVESTIGATE],
 };

@@ -21,7 +21,7 @@ describe('Solo Banned Scheme', () => {
       expect.assertions(1);
 
       const scheme = new SoloBannedScheme(
-        injectGameSet(LEGENDARY.id, NEGATIVE_ZONE_PRISON_BREAKOUT)
+        injectGameSet(LEGENDARY, NEGATIVE_ZONE_PRISON_BREAKOUT)
       );
       try {
         await scheme.getSetup(1, store.mastermindStore.getOneRandom(), store);
@@ -34,7 +34,7 @@ describe('Solo Banned Scheme', () => {
       'should generate a setup for %p players',
       async (arg) => {
         const scheme2 = new SoloBannedScheme(
-          injectGameSet(LEGENDARY.id, NEGATIVE_ZONE_PRISON_BREAKOUT)
+          injectGameSet(LEGENDARY, NEGATIVE_ZONE_PRISON_BREAKOUT)
         );
         expect(
           await scheme2.getSetup(

@@ -36,10 +36,7 @@ describe('Require Villains In Villain Deck Scheme', () => {
   describe('Secret invastion of the Skurll shapeshifters', () => {
     it('It should include Skrulls in the villain deck', async () => {
       const scheme = new RequireVillainsInVillainDeckScheme(
-        injectGameSet(
-          LEGENDARY.id,
-          SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS
-        ),
+        injectGameSet(LEGENDARY, SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS),
         SKRULLS
       );
       const setup = await scheme.getSetup(
@@ -58,7 +55,7 @@ describe('Require Villains In Villain Deck Scheme', () => {
 
     beforeEach(async () => {
       scheme = new RequireVillainsInVillainDeckScheme(
-        injectGameSet(GUARDIANS.id, THE_KREE_SKRULL_WAR),
+        injectGameSet(GUARDIANS, THE_KREE_SKRULL_WAR),
         SKRULLS,
         2,
         false,
@@ -87,7 +84,7 @@ describe('Require Villains In Villain Deck Scheme', () => {
 
     beforeEach(async () => {
       scheme = new RequireVillainsInVillainDeckScheme(
-        injectGameSet(SHIELD.id, SHIELD_VS_HYDRA_WAR),
+        injectGameSet(SHIELD, SHIELD_VS_HYDRA_WAR),
         HYDRA_ELITE,
         1,
         true,

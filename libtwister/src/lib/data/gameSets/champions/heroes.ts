@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { CHAMPIONS } from '../../teams';
 import { VERSATILE } from '../darkCity/keywords';
 import { DEMOLISH } from '../villains/keywords';
@@ -11,7 +11,7 @@ export const GWENPOOL: IHero = {
   name: 'Gwenpool',
   team: CHAMPIONS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [VERSATILE, DEMOLISH, CHEERING_CROWDS, SIZE_CHANGING],
 };
 
@@ -20,7 +20,7 @@ export const MS_MARVEL: IHero = {
   name: 'Ms. Marvel',
   team: CHAMPIONS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [VERSATILE, CHEERING_CROWDS, SIZE_CHANGING],
 };
 
@@ -29,7 +29,7 @@ export const NOVA: IHero = {
   name: 'Nova',
   team: CHAMPIONS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [VERSATILE, CHEERING_CROWDS, SIZE_CHANGING],
 };
 
@@ -38,7 +38,7 @@ export const TOTALLY_AWESOME_HULK: IHero = {
   name: 'Totally Awesome Hulk',
   team: CHAMPIONS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [CHEERING_CROWDS, SIZE_CHANGING],
 };
 
@@ -47,6 +47,6 @@ export const VIV_VISION: IHero = {
   name: 'Viv Vision',
   team: CHAMPIONS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [VERSATILE, CHEERING_CROWDS, SIZE_CHANGING],
 };

@@ -13,7 +13,7 @@ export const BLACK_WIDOW: IHero = {
   name: 'Black Widow',
   team: SHIELD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DODGE, DARK_MEMORIES, UNDERCOVER],
 };
 
@@ -22,7 +22,7 @@ export const YELENA_BELOVA: IHero = {
   name: 'Yelena Belova',
   team: SHIELD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [UNDERCOVER, UNLEASH, DODGE],
 };
 
@@ -30,7 +30,7 @@ export const RED_GUARDIAN: IHero = {
   id: '8fc823b4-11b0-4d96-89bb-98831eefb5cf',
   name: 'Red Guardian',
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [WHEN_RECRUITED, UNDERCOVER, UNLEASH],
 };
 
@@ -39,7 +39,7 @@ export const WHITE_TIGER: IHero = {
   name: 'White Tiger',
   team: MARVEL_KNIGHTS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DODGE, DARK_MEMORIES],
 };
 
@@ -48,6 +48,6 @@ export const FALCON_AND_WINTER_SOLDIER: IHero = {
   name: 'Falcon & Winter Soldier',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DARK_MEMORIES, DODGE],
 };

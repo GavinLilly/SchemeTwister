@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { X_MEN } from '../../teams';
 
 import { MOONLIGHT_AND_SUNLIGHT, WAKING_NIGHTMARE } from './keywords';
@@ -9,7 +9,7 @@ export const KARMA: IHero = {
   name: 'Karma',
   team: X_MEN,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const MIRAGE: IHero = {
@@ -17,7 +17,7 @@ export const MIRAGE: IHero = {
   name: 'Mirage',
   team: X_MEN,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [MOONLIGHT_AND_SUNLIGHT, WAKING_NIGHTMARE],
 };
 
@@ -26,7 +26,7 @@ export const SUNSPOT: IHero = {
   name: 'Sunspot',
   team: X_MEN,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [MOONLIGHT_AND_SUNLIGHT],
 };
 
@@ -35,7 +35,7 @@ export const WARLOCK: IHero = {
   name: 'Warlock',
   team: X_MEN,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [MOONLIGHT_AND_SUNLIGHT],
 };
 
@@ -44,6 +44,6 @@ export const WOLFSBANE: IHero = {
   name: 'Wolfsbane',
   team: X_MEN,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [MOONLIGHT_AND_SUNLIGHT],
 };

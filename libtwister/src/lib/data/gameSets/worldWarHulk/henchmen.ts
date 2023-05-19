@@ -1,4 +1,4 @@
-import { IHenchmen , CardType } from '../../../model';
+import { IHenchmen, CardType } from '../../../model';
 import { FEAST } from '../paintTheTownRed/keywords';
 
 import { OUTWIT } from './keywords';
@@ -10,7 +10,7 @@ export const CYTOPLASM_SPIKES: IHenchmen = {
   attackPoints: '3',
   victoryPoints: 1,
   cardType: CardType.HENCHMEN,
-  gameSetId: META.id,
+  gameSet: META,
   fight:
     'Feast. If Cytoplasm Spikes feasts on a non-grey Hero, you get +2 Recruit',
   keywords: [FEAST],
@@ -22,7 +22,7 @@ export const DEATHS_HEADS: IHenchmen = {
   attackPoints: '3',
   victoryPoints: 1,
   cardType: CardType.HENCHMEN,
-  gameSetId: META.id,
+  gameSet: META,
   fight:
     "If you Outwit these Death's Heads, KO one of your cards that costs 0.",
   keywords: [OUTWIT],
@@ -34,7 +34,7 @@ export const SAKAARAN_HIVELINGS: IHenchmen = {
   attackPoints: '3',
   victoryPoints: 1,
   cardType: CardType.HENCHMEN,
-  gameSetId: META.id,
+  gameSet: META,
   fight:
     'Look at the top card of your deck. Put it back on the top or bottom. Then Feast',
   keywords: [FEAST],

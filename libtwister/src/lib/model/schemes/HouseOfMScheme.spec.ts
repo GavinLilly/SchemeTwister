@@ -24,7 +24,7 @@ describe('House of M Scheme', () => {
       .build();
 
     scheme = new HouseOfMScheme(
-      injectGameSet(REVELATIONS.id, HOUSE_OF_M),
+      injectGameSet(REVELATIONS, HOUSE_OF_M),
       SCARLET_WITCH
     );
 

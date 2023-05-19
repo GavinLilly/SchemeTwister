@@ -27,7 +27,7 @@ describe('Require Hero Name In Hero Deck Scheme', () => {
       .build();
 
     scheme = new RequireHeroNameInHeroDeckScheme(
-      injectGameSet(DEADPOOL.id, DEADPOOL_KILLS_THE_MARVEL_UNIVERSE),
+      injectGameSet(DEADPOOL, DEADPOOL_KILLS_THE_MARVEL_UNIVERSE),
       'deadpool'
     );
 

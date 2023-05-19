@@ -15,7 +15,7 @@ describe('Require Henchmen In Villain Deck Scheme', () => {
 
   it('It should include Maggia Goons in the villain deck', async () => {
     const scheme = new RequireHenchmenInVillainDeckScheme(
-      injectGameSet(DARK_CITY.id, ORGANIZED_CRIME_WAVE),
+      injectGameSet(DARK_CITY, ORGANIZED_CRIME_WAVE),
       MAGGIA_GOONS
     );
     const setup = await scheme.getSetup(

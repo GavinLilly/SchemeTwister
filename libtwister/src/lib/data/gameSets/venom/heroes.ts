@@ -1,17 +1,17 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { VENOMVERSE } from '../../teams';
 import { EXCESSIVE_VIOLENCE } from '../deadpool/keywords';
 import { FEAST } from '../paintTheTownRed/keywords';
 
 import { DIGEST, INDIGESTION } from './keywords';
-import { META as Definition } from './meta';
+import { META } from './meta';
 
 export const CARNAGE: IHero = {
   id: 'b8ae624d-403d-4b16-885d-57c4c5b3766f',
   name: 'Carnage',
   team: VENOMVERSE,
   cardType: CardType.HERO,
-  gameSetId: Definition.id,
+  gameSet: META,
   keywords: [FEAST, EXCESSIVE_VIOLENCE, DIGEST, INDIGESTION],
 };
 
@@ -20,7 +20,7 @@ export const VENOM: IHero = {
   name: 'Venom',
   team: VENOMVERSE,
   cardType: CardType.HERO,
-  gameSetId: Definition.id,
+  gameSet: META,
   keywords: [EXCESSIVE_VIOLENCE, DIGEST, INDIGESTION],
 };
 
@@ -29,7 +29,7 @@ export const VENOM_ROCKET: IHero = {
   name: 'Venom Rocket',
   team: VENOMVERSE,
   cardType: CardType.HERO,
-  gameSetId: Definition.id,
+  gameSet: META,
   keywords: [EXCESSIVE_VIOLENCE, DIGEST],
 };
 
@@ -38,7 +38,7 @@ export const VENOMIZED_DR_STRANGE: IHero = {
   name: 'Venomized Dr. Strange',
   team: VENOMVERSE,
   cardType: CardType.HERO,
-  gameSetId: Definition.id,
+  gameSet: META,
   keywords: [DIGEST],
 };
 
@@ -47,6 +47,6 @@ export const VENOMPOOL: IHero = {
   name: 'Venompool',
   team: VENOMVERSE,
   cardType: CardType.HERO,
-  gameSetId: Definition.id,
+  gameSet: META,
   keywords: [EXCESSIVE_VIOLENCE, DIGEST, INDIGESTION],
 };

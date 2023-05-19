@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { MARVEL_KNIGHTS, AVENGERS } from '../../teams';
 import { TELEPORT } from '../darkCity/keywords';
 
@@ -10,7 +10,7 @@ export const JESSICA_JONES: IHero = {
   name: 'Jessica Jones',
   team: MARVEL_KNIGHTS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SWITCHEROO, INVESTIGATE],
 };
 
@@ -19,7 +19,7 @@ export const MS_AMERICA: IHero = {
   name: 'Ms. America',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [TELEPORT, INVESTIGATE],
 };
 
@@ -28,7 +28,7 @@ export const SQUIRREL_GIRL: IHero = {
   name: 'Squirrel Girl',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SWITCHEROO, INVESTIGATE],
 };
 
@@ -36,13 +36,13 @@ export const HOWARD_THE_DUCK: IHero = {
   id: '951a5345-2375-4098-b44c-6d819d03d182',
   name: 'Howard the Duck',
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const MAN_THING: IHero = {
   id: '84d256ce-3d98-4ea7-8b51-a599bdcdb5fc',
   name: 'Man-Thing',
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [TELEPORT],
 };

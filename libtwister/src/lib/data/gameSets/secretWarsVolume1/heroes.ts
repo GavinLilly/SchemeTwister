@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import {
   AVENGERS,
   CABAL,
@@ -16,7 +16,7 @@ export const APOCALYPTIC_KITTY_PRYDE: IHero = {
   name: 'Apocalyptic Kitty Pryde',
   team: X_MEN,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const BLACK_BOLT: IHero = {
@@ -24,7 +24,7 @@ export const BLACK_BOLT: IHero = {
   name: 'Black Bolt',
   team: ILLUMINATI,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const BLACK_PANTHER: IHero = {
@@ -32,7 +32,7 @@ export const BLACK_PANTHER: IHero = {
   name: 'Black Panther',
   team: ILLUMINATI,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const CAPTAIN_MARVEL: IHero = {
@@ -40,7 +40,7 @@ export const CAPTAIN_MARVEL: IHero = {
   name: 'Captain Marvel',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const DR_STRANGE: IHero = {
@@ -48,7 +48,7 @@ export const DR_STRANGE: IHero = {
   name: 'Dr. Strange',
   team: ILLUMINATI,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [TELEPORT],
 };
 
@@ -57,7 +57,7 @@ export const LADY_THOR: IHero = {
   name: 'Lady Thor',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const MAGIK: IHero = {
@@ -65,7 +65,7 @@ export const MAGIK: IHero = {
   name: 'Magik',
   team: X_MEN,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [TELEPORT],
 };
 
@@ -74,7 +74,7 @@ export const MAXIMUS: IHero = {
   name: 'Maximus',
   team: CABAL,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const NAMOR_THE_SUBMARINER: IHero = {
@@ -82,7 +82,7 @@ export const NAMOR_THE_SUBMARINER: IHero = {
   name: 'Namor, the Sub-Mariner',
   team: CABAL,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const OLD_MAN_LOGAN: IHero = {
@@ -90,7 +90,7 @@ export const OLD_MAN_LOGAN: IHero = {
   name: 'Old Man Logan',
   team: X_MEN,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [CROSS_DIMENSIONAL_RAMPAGE],
 };
 
@@ -99,7 +99,7 @@ export const PROXIMA_MIDNIGHT: IHero = {
   name: 'Proxima Midnight',
   team: CABAL,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const SUPERIOR_IRON_MAN: IHero = {
@@ -107,7 +107,7 @@ export const SUPERIOR_IRON_MAN: IHero = {
   name: 'Superior Iron Man',
   team: ILLUMINATI,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const THANOS: IHero = {
@@ -115,7 +115,7 @@ export const THANOS: IHero = {
   name: 'Thanos',
   team: CABAL,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [TELEPORT],
 };
 
@@ -124,5 +124,5 @@ export const ULTIMATE_SPIDERMAN: IHero = {
   name: 'Ultimate Spider-Man',
   team: SPIDER_FRIENDS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };

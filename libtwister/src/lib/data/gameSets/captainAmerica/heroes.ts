@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { AVENGERS, SHIELD } from '../../teams';
 
 import { MAN_OUT_OF_TIME, SAVIOR } from './keywords';
@@ -9,7 +9,7 @@ export const AGENT_X13: IHero = {
   name: 'Agent X-13',
   team: SHIELD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [MAN_OUT_OF_TIME, SAVIOR],
 };
 export const CAPTAIN_AMERICA_FALCON: IHero = {
@@ -17,7 +17,7 @@ export const CAPTAIN_AMERICA_FALCON: IHero = {
   name: 'Captain America (Falcon)',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SAVIOR],
 };
 export const CAPTAIN_AMERICA_1941: IHero = {
@@ -25,7 +25,7 @@ export const CAPTAIN_AMERICA_1941: IHero = {
   name: 'Captain America 1941',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [MAN_OUT_OF_TIME, SAVIOR],
 };
 export const STEVE_ROGERS_DIRECTOR_OF_SHIELD: IHero = {
@@ -33,13 +33,13 @@ export const STEVE_ROGERS_DIRECTOR_OF_SHIELD: IHero = {
   name: 'Steve Rogers, Director of S.H.I.E.L.D.',
   team: SHIELD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [MAN_OUT_OF_TIME, SAVIOR],
 };
 export const WINTER_SOLDIER: IHero = {
   id: 'd0ec44f1-e1be-426f-9817-6077e10779e8',
   name: 'Winter Soldier',
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [MAN_OUT_OF_TIME],
 };

@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import {
   CRIME_SYNDICATE,
   SINISTER_SIX,
@@ -14,7 +14,7 @@ export const BULLSEYE: IHero = {
   name: 'Bullseye',
   team: CRIME_SYNDICATE,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DODGE],
 };
 
@@ -23,7 +23,7 @@ export const DR_OCTOPUS: IHero = {
   name: 'Dr. Octopus',
   team: SINISTER_SIX,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const ELECTRO: IHero = {
@@ -31,7 +31,7 @@ export const ELECTRO: IHero = {
   name: 'Electro',
   team: SINISTER_SIX,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DODGE],
 };
 
@@ -40,7 +40,7 @@ export const ENCHANTRESS: IHero = {
   name: 'Enchantress',
   team: FOES_OF_ASGARD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const GREEN_GOBLIN: IHero = {
@@ -48,7 +48,7 @@ export const GREEN_GOBLIN: IHero = {
   name: 'Green Goblin',
   team: SINISTER_SIX,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DODGE],
 };
 
@@ -57,7 +57,7 @@ export const JUGGERNAUT: IHero = {
   name: 'Juggernaut',
   team: BROTHERHOOD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const KINGPIN: IHero = {
@@ -65,7 +65,7 @@ export const KINGPIN: IHero = {
   name: 'Kingpin',
   team: CRIME_SYNDICATE,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const KRAVEN: IHero = {
@@ -73,7 +73,7 @@ export const KRAVEN: IHero = {
   name: 'Kraven',
   team: SINISTER_SIX,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DODGE],
 };
 
@@ -82,7 +82,7 @@ export const LOKI: IHero = {
   name: 'Loki',
   team: FOES_OF_ASGARD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const MAGNETO: IHero = {
@@ -90,7 +90,7 @@ export const MAGNETO: IHero = {
   name: 'Magneto',
   team: BROTHERHOOD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DODGE],
 };
 
@@ -99,7 +99,7 @@ export const MYSTERIO: IHero = {
   name: 'Mysterio',
   team: SINISTER_SIX,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DODGE],
 };
 
@@ -108,7 +108,7 @@ export const MYSTIQUE: IHero = {
   name: 'Mystique',
   team: BROTHERHOOD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DODGE],
 };
 
@@ -117,14 +117,14 @@ export const SABRETOOTH: IHero = {
   name: 'Sabretooth',
   team: BROTHERHOOD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const ULTRON: IHero = {
   id: 'dd242d89-782f-4635-979a-75e5caeb976e',
   name: 'Ultron',
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DODGE],
 };
 
@@ -133,5 +133,5 @@ export const VENOM: IHero = {
   name: 'Venom',
   team: SINISTER_SIX,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };

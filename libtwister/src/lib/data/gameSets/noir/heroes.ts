@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { X_MEN, MARVEL_KNIGHTS, AVENGERS, SPIDER_FRIENDS } from '../../teams';
 
 import { INVESTIGATE } from './keywords';
@@ -9,7 +9,7 @@ export const ANGEL_NOIR: IHero = {
   name: 'Angel Noir',
   team: X_MEN,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [INVESTIGATE],
 };
 
@@ -18,7 +18,7 @@ export const DAREDEVIL_NOIR: IHero = {
   name: 'Daredevil Noir',
   team: MARVEL_KNIGHTS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [INVESTIGATE],
 };
 
@@ -27,7 +27,7 @@ export const IRON_MAN_NOIR: IHero = {
   name: 'Iron Man Noir',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [INVESTIGATE],
 };
 
@@ -36,7 +36,7 @@ export const LUKE_CAGE_NOIR: IHero = {
   name: 'Luke Cage Noir',
   team: MARVEL_KNIGHTS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [INVESTIGATE],
 };
 
@@ -45,6 +45,6 @@ export const SPIDERMAN_NOIR: IHero = {
   name: 'Spider-Man Noir',
   team: SPIDER_FRIENDS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [INVESTIGATE],
 };

@@ -1,5 +1,4 @@
-import { IHenchmen , CardType } from '../../../model';
-
+import { IHenchmen, CardType } from '../../../model';
 
 import { META } from './meta';
 
@@ -9,7 +8,7 @@ export const HAMMER_DRONE_ARMY: IHenchmen = {
   attackPoints: '3',
   victoryPoints: 1,
   cardType: CardType.HENCHMEN,
-  gameSetId: META.id,
+  gameSet: META,
   fight:
     'Look at the top two cards of your deck. KO one of them and put the other back.',
 };
@@ -20,7 +19,7 @@ export const HYDRA_PILOTS: IHenchmen = {
   attackPoints: '3',
   victoryPoints: 1,
   cardType: CardType.HENCHMEN,
-  gameSetId: META.id,
+  gameSet: META,
   fight: 'You get +1 Recruit',
 };
 
@@ -30,7 +29,7 @@ export const HYDRA_SPIES: IHenchmen = {
   attackPoints: '3',
   victoryPoints: 1,
   cardType: CardType.HENCHMEN,
-  gameSetId: META.id,
+  gameSet: META,
   fight:
     'When you draw a new hand of cards at the end of this turn, draw an extra card.',
 };
@@ -41,7 +40,7 @@ export const TEN_RINGS_FANATICS: IHenchmen = {
   attackPoints: '3',
   victoryPoints: 1,
   cardType: CardType.HENCHMEN,
-  gameSetId: META.id,
+  gameSet: META,
   fight:
     'Look at the top two cards of your deck. KO one of them and put the other back.',
 };

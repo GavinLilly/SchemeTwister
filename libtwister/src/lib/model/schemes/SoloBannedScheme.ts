@@ -1,5 +1,5 @@
 import { StoreOfStores } from '../../factories/storeOfStores';
-import { AbstractMastermind } from '../AbstractMastermind';
+import { Mastermind } from '../mastermind';
 import { SinglePlayerError } from '../errors';
 import {
   AdditionalDeckDeckMinimal,
@@ -14,7 +14,7 @@ import { Scheme } from './Scheme';
 export class SoloBannedScheme extends Scheme {
   override async getSetup(
     numPlayers: NumPlayers,
-    selectedMastermind: AbstractMastermind,
+    selectedMastermind: Mastermind,
     store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck?: HeroDeckMinimal,

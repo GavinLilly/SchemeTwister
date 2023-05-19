@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { AVENGERS } from '../../teams';
 
 import {
@@ -13,7 +13,7 @@ export const ANT_MAN: IHero = {
   name: 'Ant-Man',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SIZE_CHANGING, MICROSCOPIC_SIZE_CHANGING],
 };
 
@@ -22,7 +22,7 @@ export const WASP: IHero = {
   name: 'Wasp',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SIZE_CHANGING, MICROSCOPIC_SIZE_CHANGING],
 };
 
@@ -31,7 +31,7 @@ export const JOCASTA: IHero = {
   name: 'Jocasta',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SIZE_CHANGING, EMPOWERED],
 };
 
@@ -40,7 +40,7 @@ export const WONDER_MAN: IHero = {
   name: 'Wonder Man',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SIZE_CHANGING, EMPOWERED],
 };
 
@@ -49,6 +49,6 @@ export const BLACK_KNIGHT: IHero = {
   name: 'Black Knight',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [EMPOWERED],
 };

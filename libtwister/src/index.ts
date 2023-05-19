@@ -1,7 +1,6 @@
 export { LibTwister } from './lib/libTwister';
 export { GameSets, Teams, KeywordName } from './lib/data';
 export {
-  AbstractMastermind,
   CardType,
   GameSet,
   GameSetup,

@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { ICard, GameSet, CardType, SchemeMinusRules } from '../../model';
+import { GameSet, CardType, AllCardTypes } from '../../model';
 
 export function gameSetTest(
   gameSet: GameSet,
@@ -19,7 +19,7 @@ export function gameSetTest(
       ['masterminds', numMasterminds, CardType.MASTERMIND],
       ['schemes', numSchemes, CardType.SCHEME],
     ])('%s deck', (readableCardType, numCards, cardType) => {
-      let cards: ICard[] | SchemeMinusRules[];
+      let cards: AllCardTypes[];
 
       beforeAll(() => {
         cards = gameSet.get(cardType) || [];
@@ -30,9 +30,7 @@ export function gameSetTest(
 
       it(`should have all cards be of type ${cardType}`, () =>
         expect(
-          cards.every(
-            (card: ICard | SchemeMinusRules) => card.cardType === cardType
-          )
+          cards.every((card: AllCardTypes) => card.cardType === cardType)
         ).toBeTruthy());
     });
   });

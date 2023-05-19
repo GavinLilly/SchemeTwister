@@ -1,8 +1,8 @@
-import { NewScheme } from '../../../model';
+import { ShortScheme } from '../../../model';
 
 import { ABOMINATION, THRONES_FAVOR } from './keywords';
 
-export const RUIN_THE_PERFECT_WEDDING: NewScheme = {
+export const RUIN_THE_PERFECT_WEDDING: ShortScheme = {
   id: 'f5067ce4-63ef-4ae2-bded-02844e913c01',
   name: 'Ruin the Perfect Wedding',
   setup:
@@ -28,7 +28,7 @@ Twist 8-11: KO two cards from the top of each Wedding Hero Stack.`,
   },
 };
 
-export const WAR_OF_KINGS: NewScheme = {
+export const WAR_OF_KINGS: ShortScheme = {
   id: '6dcf3c43-2baf-4990-84e7-8b1d4fc34280',
   name: 'War of Kings',
   setup: '11 Twists.',
@@ -41,7 +41,7 @@ Twist 9-11: Same effect, but with two Victorious Generals.`,
   meta: { numTwists: 11 },
 };
 
-export const TORNADO_OF_TERRIGEN_MISTS: NewScheme = {
+export const TORNADO_OF_TERRIGEN_MISTS: ShortScheme = {
   id: '9f29f2c3-e539-48ae-a160-3df30018ac0c',
   name: 'Tornado of Terrigen Mists',
   setup:
@@ -56,7 +56,7 @@ Twist 10: Evil Wins!`,
   meta: { numTwists: 10 },
 };
 
-export const DEVOLVE_WITH_XEROGEN_CRYSTALS: NewScheme = {
+export const DEVOLVE_WITH_XEROGEN_CRYSTALS: ShortScheme = {
   id: 'bf9b7c30-493d-47a1-bff0-f785ee599fa0',
   name: 'Devolve with Xerogen Crystals',
   setup:

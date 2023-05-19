@@ -9,7 +9,7 @@ export const OPERA_SINGER: IBystander = {
   name: 'Opera Singer',
   copies: 1,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.BYSTANDER,
   keywords: [SHATTER],
 };
@@ -19,7 +19,7 @@ export const CLONE_TECHNICIAN: IBystander = {
   name: 'Clone Technician',
   copies: 1,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.BYSTANDER,
   keywords: [CLONE_HEROES],
 };
@@ -29,7 +29,7 @@ export const PRIVATE_INVESTIGATOR: IBystander = {
   name: 'Private Investigator',
   copies: 1,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.BYSTANDER,
   keywords: [INVESTIGATE],
 };

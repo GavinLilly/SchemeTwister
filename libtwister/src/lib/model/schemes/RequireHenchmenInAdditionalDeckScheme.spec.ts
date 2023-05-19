@@ -15,7 +15,7 @@ describe('Require Henchmen In Additional Deck Scheme', () => {
 
   it('It should include Cops in the additional deck', async () => {
     const scheme = new RequireHenchmenInAdditionalDeckScheme(
-      injectGameSet(VILLAINS.id, CAGE_VILLAINS_IN_POWERSUPPRESSING_CELLS),
+      injectGameSet(VILLAINS, CAGE_VILLAINS_IN_POWERSUPPRESSING_CELLS),
       COPS
     );
     const setup = await scheme.getSetup(

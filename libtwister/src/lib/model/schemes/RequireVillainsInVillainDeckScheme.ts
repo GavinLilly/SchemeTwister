@@ -1,6 +1,6 @@
 import { StoreOfStores } from '../../factories/storeOfStores';
 import { randomize } from '../../utils/randomize';
-import { AbstractMastermind } from '../AbstractMastermind';
+import { Mastermind } from '../mastermind';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
@@ -36,7 +36,7 @@ export class RequireVillainsInVillainDeckScheme extends Scheme {
 
   public override async getSetup(
     numPlayers: NumPlayers,
-    selectedMastermind: AbstractMastermind,
+    selectedMastermind: Mastermind,
     store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck?: HeroDeckMinimal,

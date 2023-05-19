@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { GUARDIANS_OF_THE_GALAXY } from '../../teams';
 
 import { ARTIFACT, SHARDS } from './keywords';
@@ -9,7 +9,7 @@ export const DRAX: IHero = {
   name: 'Drax the Destroyer',
   team: GUARDIANS_OF_THE_GALAXY,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SHARDS, ARTIFACT],
 };
 
@@ -18,7 +18,7 @@ export const GAMORA: IHero = {
   name: 'Gamora',
   team: GUARDIANS_OF_THE_GALAXY,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SHARDS, ARTIFACT],
 };
 
@@ -27,7 +27,7 @@ export const GROOT: IHero = {
   name: 'Groot',
   team: GUARDIANS_OF_THE_GALAXY,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SHARDS],
 };
 
@@ -36,7 +36,7 @@ export const ROCKET_RACCOON: IHero = {
   name: 'Rocket Raccoon',
   team: GUARDIANS_OF_THE_GALAXY,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SHARDS, ARTIFACT],
 };
 
@@ -45,6 +45,6 @@ export const STAR_LORD: IHero = {
   name: 'Star-Lord',
   team: GUARDIANS_OF_THE_GALAXY,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SHARDS, ARTIFACT],
 };

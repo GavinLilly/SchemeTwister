@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {
-  AbstractMastermind,
+  Mastermind,
   IHenchmen,
   IHero,
   IVillainGroup,
@@ -38,9 +38,7 @@ export class HomeComponent {
 
     this.numMasterminds = allGameSets
       .map((gameSet) => gameSet.masterminds)
-      .filter(
-        (masterminds): masterminds is AbstractMastermind[] => !!masterminds
-      )
+      .filter((masterminds): masterminds is Mastermind[] => !!masterminds)
       .reduce((prev, next) => prev?.concat(next)).length;
 
     this.numVillains = allGameSets

@@ -1,12 +1,12 @@
 import {
-  NewScheme,
+  ShortScheme,
   RequireVillainInAdditionalDeckScheme,
 } from '../../../model';
 import { HeroClass } from '../../enums';
 
 import { MONSTERS_UNLEASHED } from './villains';
 
-export const CLASH_OF_THE_MONSTERS_UNLEASHED: NewScheme = {
+export const CLASH_OF_THE_MONSTERS_UNLEASHED: ShortScheme = {
   id: '0f59ccb0-e32a-4e5a-83b6-826dbc2a9640',
   name: 'Clash of the Monsters Unleashed',
   setup:
@@ -33,7 +33,7 @@ export const CLASH_OF_THE_MONSTERS_UNLEASHED: NewScheme = {
   },
 };
 
-export const DIVIDE_AND_CONQUER: NewScheme = {
+export const DIVIDE_AND_CONQUER: ShortScheme = {
   id: '4cd49303-2726-452c-9f19-c0241e521e95',
   name: 'Divide and Conquer',
   setup: `8 Twists. 7 Heroes. Sort the Hero Deck by Hero Class. ${HeroClass.STRENGTH} ${HeroClass.INSTINCT} ${HeroClass.COVERT} ${HeroClass.TECH} ${HeroClass.RANGED} (If a card has multiple Classes, break ties at random.). Put these 5 smaller, shuffled Hero Decks beneath the 5 HQ Spaces.`,
@@ -51,7 +51,7 @@ Twist 4-8: KO one of the Hero Decks.`,
   },
 };
 
-export const HYPNOTIZE_EVERY_HUMAN: NewScheme = {
+export const HYPNOTIZE_EVERY_HUMAN: ShortScheme = {
   id: 'c1aec589-0a31-4fe4-827a-e34b7415ffa6',
   name: 'Hypnotize Every Human',
   setup:
@@ -69,7 +69,7 @@ Twist 7-8: Each player puts a Villain from their Victory Pile into the Escape pi
   },
 };
 
-export const STEAL_ALL_OXYGEN_ON_EARTH: NewScheme = {
+export const STEAL_ALL_OXYGEN_ON_EARTH: ShortScheme = {
   id: '4b1a8d31-2967-4191-9f94-e717df20d05f',
   name: 'Steal All Oxygen on Earth',
   setup: '8 Twists. The "Oxygen Level" starts at 8.',

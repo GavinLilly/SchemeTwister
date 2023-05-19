@@ -10,5 +10,4 @@ export * from './keyword.interface';
 export * from './rules.interface';
 export * from './gameSetup.interface';
 export * from './team.interface';
-export * from './scheme.interface';
 export * from './newScheme.interface';

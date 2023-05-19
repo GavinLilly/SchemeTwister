@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { HEROES_OF_ASGARD } from '../../teams';
 import { THROWN_ARTIFACT } from '../fearItself/keywords';
 import { ARTIFACT } from '../guardiansOfTheGalaxy/keywords';
@@ -12,7 +12,7 @@ export const THOR: IHero = {
   name: 'Thor',
   team: HEROES_OF_ASGARD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [THROWN_ARTIFACT, WORTHY],
 };
 
@@ -21,7 +21,7 @@ export const BETA_RAY_BILL: IHero = {
   name: 'Beta Ray Bill',
   team: HEROES_OF_ASGARD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [THROWN_ARTIFACT, WORTHY],
 };
 
@@ -30,7 +30,7 @@ export const VALKYRIE: IHero = {
   name: 'Valkyrie',
   team: HEROES_OF_ASGARD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [THROWN_ARTIFACT, CONQUEROR],
 };
 
@@ -39,7 +39,7 @@ export const LADY_SIF: IHero = {
   name: 'Lady Sif',
   team: HEROES_OF_ASGARD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [ARTIFACT, THROWN_ARTIFACT],
 };
 
@@ -48,6 +48,6 @@ export const THE_WARRIORS_THREE: IHero = {
   name: 'The Warriors Three',
   team: HEROES_OF_ASGARD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [CONQUEROR],
 };

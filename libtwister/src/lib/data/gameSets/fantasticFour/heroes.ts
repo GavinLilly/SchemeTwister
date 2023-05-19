@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { FANTASTIC_FOUR } from '../../teams';
 
 import { FOCUS } from './keywords';
@@ -9,7 +9,7 @@ export const HUMAN_TORCH: IHero = {
   name: 'Human Torch',
   team: FANTASTIC_FOUR,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [FOCUS],
 };
 
@@ -18,7 +18,7 @@ export const INVISIBLE_WOMAN: IHero = {
   name: 'Invisible Woman',
   team: FANTASTIC_FOUR,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [FOCUS],
 };
 
@@ -27,7 +27,7 @@ export const MR_FANTASTIC: IHero = {
   name: 'Mr. Fantastic',
   team: FANTASTIC_FOUR,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [FOCUS],
 };
 
@@ -35,7 +35,7 @@ export const SILVER_SURFER: IHero = {
   id: 'e84d398e-24ac-4518-a235-ef0f3f65a3d8',
   name: 'Silver Surfer',
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [FOCUS],
 };
 
@@ -44,6 +44,6 @@ export const THING: IHero = {
   name: 'Thing',
   team: FANTASTIC_FOUR,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [FOCUS],
 };

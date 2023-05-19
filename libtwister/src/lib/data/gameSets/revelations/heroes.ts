@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { AVENGERS, SHIELD } from '../../teams';
 
 import { DARK_MEMORIES, HYPERSPEED, LAST_STAND } from './keywords';
@@ -9,7 +9,7 @@ export const CAPTAIN_MARVEL_AGENT_OF_SHIELD: IHero = {
   name: 'Captain Marvel, Agent of S.H.I.E.L.D.',
   team: SHIELD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [LAST_STAND],
 };
 
@@ -18,7 +18,7 @@ export const DARKHAWK: IHero = {
   name: 'Darkhawk',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [HYPERSPEED],
 };
 
@@ -27,7 +27,7 @@ export const HELLCAT: IHero = {
   name: 'Hellcat',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const PHOTON: IHero = {
@@ -35,7 +35,7 @@ export const PHOTON: IHero = {
   name: 'Photon',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [HYPERSPEED, LAST_STAND],
 };
 
@@ -44,7 +44,7 @@ export const QUICKSILVER: IHero = {
   name: 'Quicksilver',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [HYPERSPEED],
 };
 
@@ -53,7 +53,7 @@ export const RONIN: IHero = {
   name: 'Ronin',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [HYPERSPEED, DARK_MEMORIES],
 };
 
@@ -62,7 +62,7 @@ export const SCARLET_WITCH: IHero = {
   name: 'Scarlet Witch',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DARK_MEMORIES],
 };
 
@@ -71,7 +71,7 @@ export const SPEED: IHero = {
   name: 'Speed',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [HYPERSPEED],
 };
 
@@ -80,6 +80,6 @@ export const WAR_MACHINE: IHero = {
   name: 'War Machine',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [HYPERSPEED],
 };

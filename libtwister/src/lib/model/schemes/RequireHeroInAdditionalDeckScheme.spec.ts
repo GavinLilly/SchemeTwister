@@ -21,7 +21,7 @@ describe('Require Hero In Additional Deck Scheme', () => {
 
   it('It should include Adam Warlock in the additional deck', async () => {
     const scheme = new RequireHeroInAdditionalDeckScheme(
-      injectGameSet(DARK_CITY.id, TURN_THE_SOUL_OF_ADAM_WARLOCK),
+      injectGameSet(DARK_CITY, TURN_THE_SOUL_OF_ADAM_WARLOCK),
       ADAM_WARLOCK
     );
     const setup = await scheme.getSetup(

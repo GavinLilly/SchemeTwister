@@ -10,7 +10,7 @@ export const GHOST_RACERS: IHenchmen = {
   attackPoints: '3',
   victoryPoints: 1,
   cardType: CardType.HENCHMEN,
-  gameSetId: META.id,
+  gameSet: META,
   fight: `Reveal a ${HeroClass.COVERT} Hero or KO one of your Heroes with an Attack icon`,
   keywords: [RISE_OF_THE_LIVING_DEAD],
 };
@@ -21,7 +21,7 @@ export const MODOKS: IHenchmen = {
   attackPoints: '3',
   victoryPoints: 1,
   cardType: CardType.HENCHMEN,
-  gameSetId: META.id,
+  gameSet: META,
   fight:
     'KO a Hero from your discard pile or the HQ. If that Hero has a Recruit icon, you get +1 Recruit',
 };
@@ -32,6 +32,6 @@ export const THOR_CORPS: IHenchmen = {
   attackPoints: '3',
   victoryPoints: 1,
   cardType: CardType.HENCHMEN,
-  gameSetId: META.id,
+  gameSet: META,
   fight: 'Gain this as a Hero.',
 };

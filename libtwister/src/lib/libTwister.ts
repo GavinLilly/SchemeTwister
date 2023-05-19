@@ -2,13 +2,13 @@ import * as GameSets from './data/gameSets';
 import { SingleCardFactory } from './factories';
 import { StoreOfStores } from './factories/storeOfStores';
 import {
-  AbstractMastermind,
   GameSet,
   GameSetSize,
   GameSetup,
   IHenchmen,
   IHero,
   IVillainGroup,
+  Mastermind,
   NumPlayers,
 } from './model';
 import { GameSetMap } from './model/gameSetMap';
@@ -147,7 +147,7 @@ export class LibTwister {
    */
   private _onGameSetsChange() {
     const heroes: IHero[] = [];
-    const masterminds: AbstractMastermind[] = [];
+    const masterminds: Mastermind[] = [];
     const schemes: SchemeMinusRules[] = [];
     const villains: IVillainGroup[] = [];
     const henchmen: IHenchmen[] = [];

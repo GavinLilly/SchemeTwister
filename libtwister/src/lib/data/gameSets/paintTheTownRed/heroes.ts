@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { SPIDER_FRIENDS, MARVEL_KNIGHTS } from '../../teams';
 
 import { WALL_CRAWL } from './keywords';
@@ -9,7 +9,7 @@ export const BLACK_CAT: IHero = {
   name: 'Black Cat',
   team: SPIDER_FRIENDS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [WALL_CRAWL],
 };
 
@@ -18,7 +18,7 @@ export const MOON_KNIGHT: IHero = {
   name: 'Moon Knight',
   team: MARVEL_KNIGHTS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [WALL_CRAWL],
 };
 
@@ -27,7 +27,7 @@ export const SCARLET_SPIDER: IHero = {
   name: 'Scarlet Spider',
   team: SPIDER_FRIENDS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [WALL_CRAWL],
 };
 
@@ -36,7 +36,7 @@ export const SPIDER_WOMAN: IHero = {
   name: 'Spider-Woman',
   team: SPIDER_FRIENDS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [WALL_CRAWL],
 };
 
@@ -45,6 +45,6 @@ export const SYMBIOTE_SPIDER_MAN: IHero = {
   name: 'Symbiote Spider-Man',
   team: SPIDER_FRIENDS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [WALL_CRAWL],
 };

@@ -29,7 +29,7 @@
         "test",
         "randomize",
         "--codeCoverage=false",
-        "--test-path-pattern (schemes|index|libTwister|factories|AbstractScheme|AbstractMastermind).spec.ts"
+        "--test-path-pattern (schemes|index|libTwister|factories|AbstractScheme|Mastermind).spec.ts"
       ],
       "cwd": "${workspaceFolder}",
       "console": "internalConsole"

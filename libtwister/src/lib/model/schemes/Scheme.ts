@@ -3,22 +3,25 @@ import { PartialDeep } from 'type-fest';
 import * as uuid from 'uuid';
 
 import { StoreOfStores } from '../../factories/storeOfStores';
-import { AbstractMastermind } from '../AbstractMastermind';
 import { GameSetup } from '../GameSetup';
 import { CardType } from '../cardType.enum';
+import { GameSetSize } from '../gameSetSize.enum';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IAdditionalDeck,
   IAdditionalDeckRules,
   ICard,
+  IGameSetMeta,
   IGameSetup,
   IKeyword,
   INumPlayerRules,
   VillainDeckMinimal,
 } from '../interfaces';
 import { SchemeMinusRules } from '../interfaces/newScheme.interface';
+import { Mastermind } from '../mastermind';
 import { Rules, RulesType } from '../rules';
+import { Series } from '../series.enum';
 import { NumPlayers, numPlayers } from '../types';
 
 /**
@@ -27,7 +30,8 @@ import { NumPlayers, numPlayers } from '../types';
 export class Scheme implements ICard {
   // Meta
   public readonly id: string;
-  public readonly gameSetId: string;
+
+  private readonly _gameSet: IGameSetMeta;
   public readonly keywords?: IKeyword[] = undefined;
   public readonly cardType: CardType = CardType.SCHEME;
   public rules: RulesType;
@@ -45,7 +49,7 @@ export class Scheme implements ICard {
     ({
       id: this.id,
       name: this.name,
-      gameSetId: this.gameSetId,
+      gameSet: this._gameSet,
       setup: this.setup,
       twist: this.twist,
       evilWins: this.evilWins,
@@ -74,6 +78,7 @@ export class Scheme implements ICard {
       this.rules[5].villainDeck.numTwists = scheme.meta.numTwists[5];
     }
   }
+
   /**
    * Create an "empty" Scheme. Mainly used fot testing.
    * @returns a Scheme instantiated with empty data
@@ -86,7 +91,14 @@ export class Scheme implements ICard {
       evilWins: 'n/a',
       twist: 'n/a',
       cardType: CardType.SCHEME,
-      gameSetId: uuid.v4(),
+
+      gameSet: {
+        id: uuid.v4(),
+        name: 'Empty Scheme',
+        releaseYear: 1970,
+        series: Series.MAINLINE,
+        size: GameSetSize.PROMO,
+      } as IGameSetMeta,
       meta: {
         numTwists: 0,
       },
@@ -232,6 +244,10 @@ export class Scheme implements ICard {
     return deck;
   }
 
+  public get gameSet() {
+    return this._gameSet;
+  }
+
   /**
    * Override the default rules for all numbers of players
    * @param override a partial set of rules to override the defaults
@@ -269,7 +285,7 @@ export class Scheme implements ICard {
    */
   public async getSetup(
     numPlayers: NumPlayers,
-    selectedMastermind: AbstractMastermind,
+    selectedMastermind: Mastermind,
     store: StoreOfStores,
     advancedSolo?: boolean
   ): Promise<IGameSetup>;
@@ -289,7 +305,7 @@ export class Scheme implements ICard {
    */
   public async getSetup(
     numPlayers: NumPlayers,
-    selectedMastermind: AbstractMastermind,
+    selectedMastermind: Mastermind,
     store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck?: HeroDeckMinimal,
@@ -299,7 +315,7 @@ export class Scheme implements ICard {
 
   public async getSetup(
     numPlayers: NumPlayers,
-    selectedMastermind: AbstractMastermind,
+    selectedMastermind: Mastermind,
     store: StoreOfStores,
     advancedSolo = false,
     partialHeroDeck?: HeroDeckMinimal,
@@ -399,7 +415,7 @@ export class Scheme implements ICard {
 
     // Check to see if any more henchmen are needed and if so,
     // whether the mastermind demands any
-    const alwaysLeadsHenchmen = selectedMastermind.alwaysLeads.filter(
+    const alwaysLeadsHenchmen = selectedMastermind.alwaysLeads?.filter(
       (item) => item.cardType === CardType.HENCHMEN
     );
     if (

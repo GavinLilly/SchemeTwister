@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { SPIDER_FRIENDS, AVENGERS } from '../../teams';
 import { WALL_CRAWL } from '../paintTheTownRed/keywords';
 
@@ -9,7 +9,7 @@ export const HAPPY_HOGAN: IHero = {
   id: 'f9aefec7-040b-4bff-8088-ccc15d4257a1',
   name: 'Happy Hogan',
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DANGER_SENSE, STRIKER, COORDINATE],
 };
 
@@ -18,7 +18,7 @@ export const HIGH_TECH_SPIDERMAN: IHero = {
   name: 'High Tech Spider-Man',
   team: SPIDER_FRIENDS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [WALL_CRAWL, DANGER_SENSE, COORDINATE],
 };
 
@@ -27,7 +27,7 @@ export const PETER_PARKER_HOMECOMING: IHero = {
   name: 'Peter Parker, Homecoming',
   team: SPIDER_FRIENDS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [WALL_CRAWL, DANGER_SENSE, COORDINATE],
 };
 
@@ -36,7 +36,7 @@ export const PETERS_ALLIES: IHero = {
   name: "Peter's Allies",
   team: SPIDER_FRIENDS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [COORDINATE],
 };
 
@@ -45,6 +45,6 @@ export const TONY_STARK: IHero = {
   name: 'Tony Stark',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [DANGER_SENSE, COORDINATE],
 };

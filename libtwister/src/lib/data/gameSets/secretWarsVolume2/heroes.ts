@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import {
   SPIDER_FRIENDS,
   ILLUMINATI,
@@ -20,7 +20,7 @@ export const AGENT_VENOM: IHero = {
   name: 'Agent Venom',
   team: SPIDER_FRIENDS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [VERSATILE, WALL_CRAWL, SPECTRUM, PATROL],
 };
 
@@ -28,7 +28,7 @@ export const ARKON_THE_MAGNIFICENT: IHero = {
   id: 'e0025882-b4d3-4568-88ed-43d4eb834676',
   name: 'Arkon the Magnificent',
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [WALL_CRAWL, SPECTRUM, PATROL],
 };
 
@@ -37,7 +37,7 @@ export const BEAST: IHero = {
   name: 'Beast',
   team: ILLUMINATI,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [WALL_CRAWL, PATROL],
 };
 
@@ -46,7 +46,7 @@ export const BLACK_SWAN: IHero = {
   name: 'Black Swan',
   team: CABAL,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const THE_CAPTAIN_AND_THE_DEVIL: IHero = {
@@ -54,7 +54,7 @@ export const THE_CAPTAIN_AND_THE_DEVIL: IHero = {
   name: 'The Captain and the Devil',
   team: AVENGERS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [SPECTRUM, PATROL],
 };
 
@@ -63,7 +63,7 @@ export const CAPTAIN_BRITAIN: IHero = {
   name: 'Captain Britain',
   team: ILLUMINATI,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [PATROL],
 };
 
@@ -72,7 +72,7 @@ export const CORVUS_GLAIVE: IHero = {
   name: 'Corvus Glaive',
   team: CABAL,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [PATROL],
 };
 
@@ -81,7 +81,7 @@ export const DR_PUNISHER_SOLDIER_SUPREME: IHero = {
   name: 'Dr. Punisher, Soldier Supreme',
   team: MARVEL_KNIGHTS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [PATROL],
 };
 
@@ -90,7 +90,7 @@ export const ELSA_BLOODSTONE: IHero = {
   name: 'Elsa Bloodstone',
   team: SHIELD,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [WALL_CRAWL, SPECTRUM, PATROL],
 };
 
@@ -99,7 +99,7 @@ export const PHOENIX_FORCE_CYCLOPS: IHero = {
   name: 'Phoenix Force Cyclops',
   team: X_MEN,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const RUBY_SUMMERS: IHero = {
@@ -107,7 +107,7 @@ export const RUBY_SUMMERS: IHero = {
   name: 'Ruby Summers',
   team: X_MEN,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [TELEPORT],
 };
 
@@ -116,7 +116,7 @@ export const SHANGCHI: IHero = {
   name: 'Shang-Chi',
   team: MARVEL_KNIGHTS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [WALL_CRAWL, PATROL],
 };
 
@@ -125,7 +125,7 @@ export const SILK: IHero = {
   name: 'Silk',
   team: SPIDER_FRIENDS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [WALL_CRAWL, SPECTRUM],
 };
 
@@ -134,7 +134,7 @@ export const SOULSWORD_COLOSSUS: IHero = {
   name: 'Soulsword Colossus',
   team: X_MEN,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [CROSS_DIMENSIONAL_RAMPAGE],
 };
 
@@ -143,7 +143,7 @@ export const SPIDERGWEN: IHero = {
   name: 'Spider-Gwen',
   team: SPIDER_FRIENDS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [WALL_CRAWL, PATROL],
 };
 
@@ -152,6 +152,6 @@ export const TIMETRAVELING_JEAN_GREY: IHero = {
   name: 'Time-Traveling Jean Grey',
   team: X_MEN,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [PATROL],
 };

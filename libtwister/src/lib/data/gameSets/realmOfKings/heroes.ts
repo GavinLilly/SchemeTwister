@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { INHUMANS } from '../../teams';
 import { TELEPORT } from '../darkCity/keywords';
 
@@ -15,7 +15,7 @@ export const BLACK_BOLT: IHero = {
   name: 'Black Bolt',
   team: INHUMANS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [WHEN_RECRUITED, THRONES_FAVOR],
 };
 
@@ -24,7 +24,7 @@ export const MEDUSA: IHero = {
   name: 'Medusa',
   team: INHUMANS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [WHEN_RECRUITED, THRONES_FAVOR],
 };
 
@@ -33,7 +33,7 @@ export const CRYSTAL: IHero = {
   name: 'Crystal',
   team: INHUMANS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [WHEN_RECRUITED, THRONES_FAVOR],
 };
 
@@ -42,7 +42,7 @@ export const KARNAK: IHero = {
   name: 'Karnak',
   team: INHUMANS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [WHEN_RECRUITED, CHOOSE_A_VILLAIN_GROUP],
 };
 
@@ -51,6 +51,6 @@ export const GORGON: IHero = {
   name: 'Gorgon',
   team: INHUMANS,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [TELEPORT, WHEN_RECRUITED, ABOMINATION],
 };

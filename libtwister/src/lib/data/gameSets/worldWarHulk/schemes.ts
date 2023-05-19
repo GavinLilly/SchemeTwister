@@ -1,5 +1,5 @@
 import {
-  NewScheme,
+  ShortScheme,
   RequireHenchmenInAdditionalDeckScheme,
   RequireHeroNameInHeroDeckScheme,
   RequireHeroNameInAdditionalDeckScheme,
@@ -14,7 +14,7 @@ const requireHulkScheme: IOverrideScheme = {
   params: ['hulk'],
 };
 
-export const BREAK_THE_PLANET_ASUNDER: NewScheme = {
+export const BREAK_THE_PLANET_ASUNDER: ShortScheme = {
   id: '92fa1f10-1bee-468e-8a7c-6c008531e491',
   name: 'Break the Planet Asunder',
   setup: '9 Twists. 7 Heroes.',
@@ -29,7 +29,7 @@ export const BREAK_THE_PLANET_ASUNDER: NewScheme = {
   },
 };
 
-export const CYTOPLASM_SPIKE_INVASION: NewScheme = {
+export const CYTOPLASM_SPIKE_INVASION: ShortScheme = {
   id: '19b6bae6-3122-4893-b066-afb5e189697f',
   name: 'Cytoplasm Spike Invasion',
   setup:
@@ -56,7 +56,7 @@ export const CYTOPLASM_SPIKE_INVASION: NewScheme = {
   },
 };
 
-export const FALL_OF_THE_HULKS: NewScheme = {
+export const FALL_OF_THE_HULKS: ShortScheme = {
   id: '106067b6-7589-4ac8-afd5-31ca59d607ab',
   name: 'Fall of the Hulks',
   setup:
@@ -78,7 +78,7 @@ Twist 7-10: Each player gains a Wound.`,
   },
 };
 
-export const GLADIATOR_PITS_OF_SAKAAR: NewScheme = {
+export const GLADIATOR_PITS_OF_SAKAAR: ShortScheme = {
   id: 'bcd13b7e-d66e-4365-afb6-8163958871f9',
   name: 'Gladiator Pits of Sakaar',
   setup: '6 Twists.',
@@ -88,7 +88,7 @@ export const GLADIATOR_PITS_OF_SAKAAR: NewScheme = {
   meta: { numTwists: 6 },
 };
 
-export const MUTATING_GAMMA_RAYS: NewScheme = {
+export const MUTATING_GAMMA_RAYS: ShortScheme = {
   id: 'c39541a2-9ba3-4491-b410-7ac6c4e8d8f9',
   name: 'Mutating Gamma Rays',
   setup:
@@ -111,7 +111,7 @@ Twist 7: Evil Wins!`,
   },
 };
 
-export const SHOOT_HULK_INTO_SPACE: NewScheme = {
+export const SHOOT_HULK_INTO_SPACE: ShortScheme = {
   id: 'f39ee139-c92a-4c88-a68e-888414b3b00c',
   name: 'Shoot Hulk into Space',
   setup:
@@ -135,7 +135,7 @@ export const SHOOT_HULK_INTO_SPACE: NewScheme = {
   },
 };
 
-export const SUBJUGATE_WITH_OBEDIENCE_DISKS: NewScheme = {
+export const SUBJUGATE_WITH_OBEDIENCE_DISKS: ShortScheme = {
   id: '0954bf80-d875-4e60-9c92-ee7bc10190be',
   name: 'Subjugate with Obedience Disks',
   setup: '11 Twists.',
@@ -146,7 +146,7 @@ export const SUBJUGATE_WITH_OBEDIENCE_DISKS: NewScheme = {
   meta: { numTwists: 11 },
 };
 
-export const WORLD_WAR_HULK: NewScheme = {
+export const WORLD_WAR_HULK: ShortScheme = {
   id: 'f1b02846-eda3-422d-a5d5-3f42e9f66445',
   name: 'World War Hulk',
   setup:

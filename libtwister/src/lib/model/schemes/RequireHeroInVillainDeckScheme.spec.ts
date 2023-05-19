@@ -15,7 +15,7 @@ describe('Require Hero In Villain Deck Scheme', () => {
 
   it('It should include Jean Grey in the villain deck', async () => {
     const scheme = new RequireHeroInVillainDeckScheme(
-      injectGameSet(DARK_CITY.id, TRANSFORM_CITIZENS_INTO_DEMONS),
+      injectGameSet(DARK_CITY, TRANSFORM_CITIZENS_INTO_DEMONS),
       JEAN_GREY
     );
     const setup = await scheme.getSetup(

@@ -1,5 +1,4 @@
-import { IBystander , CardType } from '../../../model';
-
+import { IBystander, CardType } from '../../../model';
 
 import { META } from './meta';
 
@@ -8,7 +7,7 @@ export const ACTOR: IBystander = {
   name: 'Actor',
   cardType: CardType.BYSTANDER,
   copies: 1,
-  gameSetId: META.id,
+  gameSet: META,
   victoryPoints: 1,
 };
 
@@ -17,7 +16,7 @@ export const ANIMAL_TRAINER: IBystander = {
   name: 'Animal Trainer',
   cardType: CardType.BYSTANDER,
   copies: 1,
-  gameSetId: META.id,
+  gameSet: META,
   victoryPoints: 1,
 };
 
@@ -26,7 +25,7 @@ export const TOURIST_COUPLE: IBystander = {
   name: 'Tourist Couple',
   cardType: CardType.BYSTANDER,
   copies: 1,
-  gameSetId: META.id,
+  gameSet: META,
   victoryPoints: 1,
 };
 
@@ -35,6 +34,6 @@ export const TRIAGE_NURSE: IBystander = {
   name: 'Triage Nurse',
   cardType: CardType.BYSTANDER,
   copies: 1,
-  gameSetId: META.id,
+  gameSet: META,
   victoryPoints: 1,
 };

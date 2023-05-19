@@ -1,4 +1,4 @@
-import { IHero , CardType } from '../../../model';
+import { IHero, CardType } from '../../../model';
 import { FANTASTIC_FOUR } from '../../teams';
 import { FOCUS } from '../fantasticFour/keywords';
 import { CONQUEROR } from '../marvelStudios/keywords';
@@ -11,7 +11,7 @@ export const BRAINSTORM: IHero = {
   name: 'Brainstorm',
   team: FANTASTIC_FOUR,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [MAN_OUT_OF_TIME],
 };
 
@@ -20,7 +20,7 @@ export const FANTASTIC_FOUR_UNITED: IHero = {
   name: 'Fantastic Four United',
   team: FANTASTIC_FOUR,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [FOCUS],
 };
 
@@ -28,7 +28,7 @@ export const HERALDS_OF_GALACTUS: IHero = {
   id: '74ba66f1-0584-4cf0-86f8-e2496f58aea9',
   name: 'Heralds of Galactus',
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [FOCUS, CONQUEROR],
 };
 
@@ -37,7 +37,7 @@ export const PSI_LORD: IHero = {
   name: 'Psi-Lord',
   team: FANTASTIC_FOUR,
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
   keywords: [FOCUS, MAN_OUT_OF_TIME],
 };
 
@@ -45,5 +45,5 @@ export const SUPER_SKRULL: IHero = {
   id: '747b5e67-1e4a-405e-a61e-90968d10b065',
   name: 'Super-Skrull',
   cardType: CardType.HERO,
-  gameSetId: META.id,
+  gameSet: META,
 };

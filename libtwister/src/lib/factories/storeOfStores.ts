@@ -1,16 +1,10 @@
 import LEGENDARY from '../data/gameSets/legendary';
-import {
-  AbstractMastermind,
-  IHero,
-  IVillainGroup,
-  IHenchmen,
-  GameSet,
-} from '../model';
+import { Mastermind, IHero, IVillainGroup, IHenchmen, GameSet } from '../model';
 
 import { MultiCardStore } from './multiCardStore';
 
 export class StoreOfStores {
-  private _mastermindStore!: MultiCardStore<AbstractMastermind>;
+  private _mastermindStore!: MultiCardStore<Mastermind>;
   /**
    * The mastermind store and picker
    */
@@ -45,14 +39,14 @@ export class StoreOfStores {
   constructor();
   constructor(
     heroes: IHero[],
-    masterminds: AbstractMastermind[],
+    masterminds: Mastermind[],
     villains: IVillainGroup[],
     henchmen: IHenchmen[]
   );
   constructor(
     heroes: IHero[] = LEGENDARY.heroes,
     /* eslint-disable @typescript-eslint/no-non-null-assertion */
-    masterminds: AbstractMastermind[] = LEGENDARY.masterminds!,
+    masterminds: Mastermind[] = LEGENDARY.masterminds!,
     villains: IVillainGroup[] = LEGENDARY.villains!,
     henchmen: IHenchmen[] = LEGENDARY.henchmen!
     /* eslint-enable @typescript-eslint/no-non-null-assertion */
@@ -137,9 +131,9 @@ export class StoreBuilder implements StepA, StepB, StepC, StepD, Build {
       (gameSet) => gameSet.heroes
     );
 
-    const masterminds: AbstractMastermind[] = this._mastermindGamesets
+    const masterminds: Mastermind[] = this._mastermindGamesets
       .flatMap((gameSet) => gameSet.masterminds)
-      .filter((mastermind): mastermind is AbstractMastermind => !!mastermind);
+      .filter((mastermind): mastermind is Mastermind => !!mastermind);
 
     const villains: IVillainGroup[] = this._villainGamesets
       .flatMap((gameSet) => gameSet.villains)

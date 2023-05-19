@@ -1,8 +1,8 @@
-import { NewScheme } from '../../../model';
+import { ShortScheme } from '../../../model';
 
 import { WORTHY } from './keywords';
 
-export const ASGARDIAN_TEST_OF_WORTH: NewScheme = {
+export const ASGARDIAN_TEST_OF_WORTH: ShortScheme = {
   id: '759e3b29-e1aa-4d30-b715-3e02192f35a9',
   name: 'Asgardian Test of Worth',
   setup: '11 twists.',
@@ -13,7 +13,7 @@ export const ASGARDIAN_TEST_OF_WORTH: NewScheme = {
   meta: { numTwists: 1 },
 };
 
-export const THE_DARK_WORLD_OF_SVARTALFHEIM: NewScheme = {
+export const THE_DARK_WORLD_OF_SVARTALFHEIM: ShortScheme = {
   id: '00502896-c385-4f84-8097-880804ef203b',
   name: 'The Dark World of Svartalfheim',
   setup: '10 twists.',
@@ -25,7 +25,7 @@ export const THE_DARK_WORLD_OF_SVARTALFHEIM: NewScheme = {
   meta: { numTwists: 10 },
 };
 
-export const RAGNAROK_TWILIGHT_OF_THE_GODS: NewScheme = {
+export const RAGNAROK_TWILIGHT_OF_THE_GODS: ShortScheme = {
   id: '310db9df-a36f-40ed-a242-c317eadd49ed',
   name: 'Ragnarok, Twilight of the Gods',
   setup: '11 Twists.',
@@ -42,7 +42,7 @@ Twist 8-11: Warriors of Valhalla, 6 Attack`,
   meta: { numTwists: 11 },
 };
 
-export const WAR_OF_THE_FROST_GIANTS: NewScheme = {
+export const WAR_OF_THE_FROST_GIANTS: ShortScheme = {
   id: 'ffb26f7e-0a28-4247-9380-415acc0372a3',
   name: 'War of the Frost Giants',
   setup: '9 twists.',

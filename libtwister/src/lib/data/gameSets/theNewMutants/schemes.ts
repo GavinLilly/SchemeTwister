@@ -1,9 +1,12 @@
-import { NewScheme, RequireVillainsInVillainDeckScheme } from '../../../model';
+import {
+  ShortScheme,
+  RequireVillainsInVillainDeckScheme,
+} from '../../../model';
 
 import { MOONLIGHT_AND_SUNLIGHT } from './keywords';
 import { DEMONS_OF_LIMBO } from './villains';
 
-export const THE_DEMON_BEAR_SAGA: NewScheme = {
+export const THE_DEMON_BEAR_SAGA: ShortScheme = {
   id: '38763bc5-1569-4752-a6dd-3829030e8b96',
   name: 'The Demon Bear Saga',
   setup:
@@ -22,7 +25,7 @@ export const THE_DEMON_BEAR_SAGA: NewScheme = {
   },
 };
 
-export const CRASH_THE_MOON_INTO_THE_SUN: NewScheme = {
+export const CRASH_THE_MOON_INTO_THE_SUN: ShortScheme = {
   id: '69ec1136-50ce-4acf-96e5-312d9cec240b',
   name: 'Crash the Moon into the Sun',
   setup: '11 Twists.',
@@ -33,7 +36,7 @@ Twist 9,10,11: Same effect.`,
   meta: { numTwists: 8 },
 };
 
-export const TRAPPED_IN_THE_INSANE_ASYLUM: NewScheme = {
+export const TRAPPED_IN_THE_INSANE_ASYLUM: ShortScheme = {
   id: 'c18eeab3-13e1-452c-a15e-29f92c5c567d',
   name: 'Trapped in the Insane Asylum',
   setup: '1 Twist, plus 2 Twists per player.',
@@ -52,7 +55,7 @@ export const TRAPPED_IN_THE_INSANE_ASYLUM: NewScheme = {
   },
 };
 
-export const SUPERHUMAN_BASEBALL_GAME: NewScheme = {
+export const SUPERHUMAN_BASEBALL_GAME: ShortScheme = {
   id: 'e292f8a2-58c0-466b-97c8-5ca44e25ae61',
   name: 'Superhuman Baseball Game',
   setup: '9 Twists. Add an extra Villain Group.',

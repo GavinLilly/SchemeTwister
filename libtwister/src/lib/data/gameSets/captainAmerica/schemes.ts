@@ -1,6 +1,6 @@
-import { NewScheme } from '../../../model';
+import { ShortScheme } from '../../../model';
 
-export const BRAINWASH_THE_MILITARY: NewScheme = {
+export const BRAINWASH_THE_MILITARY: ShortScheme = {
   id: '82049898-13fb-4792-a8fc-b1b8a92b7ac2',
   name: 'Brainwash the Military',
   setup: '7 Twists. Add 12 S.H.I.E.L.D. Officers to the Villain Deck.',
@@ -18,7 +18,7 @@ Twist 7: All S.H.I.E.L.D. Officers in the city escape.`,
   },
 };
 
-export const CHANGE_THE_OUTCOME_OF_WWII: NewScheme = {
+export const CHANGE_THE_OUTCOME_OF_WWII: ShortScheme = {
   id: '31519ae5-782b-4d87-b65b-2b4836f9d31c',
   name: 'Change the Outcome of WWII',
   setup: '7 Twists. Add an extra Villain Group.',
@@ -40,7 +40,7 @@ Twist 7: Switzerland 1 space.`,
   },
 };
 
-export const GO_BACK_IN_TIME_TO_SLAY_HEROES_ANCESTORS: NewScheme = {
+export const GO_BACK_IN_TIME_TO_SLAY_HEROES_ANCESTORS: ShortScheme = {
   id: 'aa87c7f7-9472-4f1b-835a-ddf15bcc0235',
   name: "Go Back in Time to Slay Heroes' Ancestors",
   setup: '9 Twists. 8 Heroes in Hero deck.',
@@ -57,7 +57,7 @@ export const GO_BACK_IN_TIME_TO_SLAY_HEROES_ANCESTORS: NewScheme = {
   },
 };
 
-export const THE_UNBREAKABLE_ENIGMA_CODE: NewScheme = {
+export const THE_UNBREAKABLE_ENIGMA_CODE: ShortScheme = {
   id: 'bc968e25-dcf3-490d-8587-b2cd3924ccc0',
   name: 'The Unbreakable Enigma Code',
   setup: '6 Twists.',

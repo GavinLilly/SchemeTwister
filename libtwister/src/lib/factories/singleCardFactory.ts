@@ -124,6 +124,6 @@ export class SingleCardFactory<T extends ICard> {
   }
 
   public getStoreType(): string {
-    return this.availableCards[0].cardType;
+    return this.availableCards[0].constructor.name;
   }
 }

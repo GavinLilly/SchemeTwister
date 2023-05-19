@@ -1,5 +1,4 @@
-import { IHenchmen , CardType } from '../../../model';
-
+import { IHenchmen, CardType } from '../../../model';
 
 import { META } from './meta';
 
@@ -11,7 +10,7 @@ export const CIRCUS_OF_CRIME: IHenchmen = {
   cardType: CardType.HENCHMEN,
   fight:
     'Reveal the top card of your deck. If it costs 0, KO it. Otherwise, draw it.',
-  gameSetId: META.id,
+  gameSet: META,
 };
 
 export const SPIDER_SLAYER: IHenchmen = {
@@ -22,5 +21,5 @@ export const SPIDER_SLAYER: IHenchmen = {
   cardType: CardType.HENCHMEN,
   fight:
     'Reveal the top two cards of your deck. Put any that cost 2 or less into your hand. Put the rest back in any order.',
-  gameSetId: META.id,
+  gameSet: META,
 };

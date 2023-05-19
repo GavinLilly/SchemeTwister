@@ -1,5 +1,4 @@
-import { IHenchmen , CardType } from '../../../model';
-
+import { IHenchmen, CardType } from '../../../model';
 
 import { META } from './meta';
 
@@ -10,7 +9,7 @@ export const DOOMBOT_LEGION: IHenchmen = {
     'Look at the top two cards of your deck. KO one of them and put the other back.',
   attackPoints: 3,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.HENCHMEN,
 };
 
@@ -20,7 +19,7 @@ export const HAND_NINJAS: IHenchmen = {
   fight: 'You get +1 Recruit.',
   attackPoints: 3,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.HENCHMEN,
 };
 
@@ -31,7 +30,7 @@ export const SAVAGE_LAND_MUTATES: IHenchmen = {
     'When you draw a new hand of cards at the end of this turn, draw an extra card.',
   attackPoints: 3,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.HENCHMEN,
 };
 
@@ -41,6 +40,6 @@ export const SENTINELS: IHenchmen = {
   fight: 'KO one of your Heroes.',
   attackPoints: 3,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.HENCHMEN,
 };

@@ -1,6 +1,6 @@
-import { NewScheme } from '../../../model';
+import { ShortScheme } from '../../../model';
 
-export const SEIZE_THE_WAKANDAN_THRONE: NewScheme = {
+export const SEIZE_THE_WAKANDAN_THRONE: ShortScheme = {
   id: '3c3f5d0c-cb08-4cee-9a97-c62df7a8c526',
   name: 'Seize the Wakandan Throne',
   setup: '6 twists',
@@ -12,7 +12,7 @@ export const SEIZE_THE_WAKANDAN_THRONE: NewScheme = {
   meta: { numTwists: 6 },
 };
 
-export const POISON_LAKES_WITH_NANITE_MICROBOTS: NewScheme = {
+export const POISON_LAKES_WITH_NANITE_MICROBOTS: ShortScheme = {
   id: 'eaabff3c-a087-4327-93db-e44565b10c27',
   name: 'Poison Lakes with Nanite Microbots',
   setup:
@@ -37,7 +37,7 @@ export const POISON_LAKES_WITH_NANITE_MICROBOTS: NewScheme = {
   },
 };
 
-export const PLUNDER_WAKANDAS_VIBRANIUM: NewScheme = {
+export const PLUNDER_WAKANDAS_VIBRANIUM: ShortScheme = {
   id: '9ad0e347-46d0-4cd6-b759-05a07c4709fa',
   name: "Plunder Wakanda's Vibranium",
   setup: '10 Twists, representing "Vibranium."',
@@ -50,7 +50,7 @@ export const PLUNDER_WAKANDAS_VIBRANIUM: NewScheme = {
   meta: { numTwists: 10 },
 };
 
-export const PROVOKE_CLASH_OF_NATIONS: NewScheme = {
+export const PROVOKE_CLASH_OF_NATIONS: ShortScheme = {
   id: '6af54094-b89a-4adf-abdc-a7354884c57e',
   name: 'Provoke Clash of Nations',
   setup: '11 Twists.',
