@@ -1,7 +1,7 @@
 import ANNIHILATION from '../../data/gameSets/annihilation';
 import { SNEAK_ATTACK_THE_HEROES_HOMES } from '../../data/gameSets/annihilation/schemes';
 import LEGENDARY from '../../data/gameSets/legendary';
-import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
+import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';
 
 import { PlayerPicksAHeroScheme } from './PlayerPicksAHeroScheme';

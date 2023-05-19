@@ -2,7 +2,7 @@ import DARK_CITY from '../../data/gameSets/darkCity';
 import DEADPOOL from '../../data/gameSets/deadpool';
 import { DEADPOOL_KILLS_THE_MARVEL_UNIVERSE } from '../../data/gameSets/deadpool/schemes';
 import LEGENDARY from '../../data/gameSets/legendary';
-import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
+import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';
 import { Hero } from '../hero';
 import { IGameSetup } from '../interfaces';

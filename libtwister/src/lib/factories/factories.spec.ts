@@ -210,12 +210,6 @@ describe('Multi Card Store', () => {
       expect(store.getAll(picked.map((item) => item.id))).toHaveLength(2);
       expect(store.availableCards).not.toEqual(expect.arrayContaining(picked));
       expect(store.excludedCards).toEqual(expect.arrayContaining(picked));
-
-      // eslint-disable-next-line no-undef
-      console.log = jest.fn();
-      store.getAll(picked.map((item) => item.id));
-      // eslint-disable-next-line no-undef
-      expect(console.log).toHaveBeenCalled();
     });
 
     it("should fail if the specific card ID doesn't exist", () => {

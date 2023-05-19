@@ -2,7 +2,7 @@ import DARK_CITY from '../../data/gameSets/darkCity';
 import DEADPOOL from '../../data/gameSets/deadpool';
 import { EVERYBODY_HATES_DEADPOOL } from '../../data/gameSets/deadpool/schemes';
 import { MERCS_FOR_MONEY } from '../../data/teams';
-import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
+import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';
 
 import { RequireTeamInHeroDeckScheme } from './RequireTeamInHeroDeckScheme';

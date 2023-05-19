@@ -24,7 +24,7 @@ import {
   MAXIMUM_CARNAGE,
   SINISTER_SIX,
 } from '../data/gameSets/paintTheTownRed/villains';
-import { StoreBuilder, StoreOfStores } from '../factories/storeOfStores';
+import { StoreBuilder, StoreOfStores } from '../factories';
 import { injectGameSet } from '../utils/schemeInjector';
 
 import { GameSetup } from './GameSetup';

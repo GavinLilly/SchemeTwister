@@ -1,6 +1,6 @@
 import LEGENDARY from '../../data/gameSets/legendary';
 import { NEGATIVE_ZONE_PRISON_BREAKOUT } from '../../data/gameSets/legendary/schemes';
-import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
+import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';
 import { SinglePlayerError } from '../errors';
 import { NumPlayers } from '../types';

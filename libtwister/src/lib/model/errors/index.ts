@@ -1,2 +1,1 @@
-export * from './CardChosenError';
-export * from './SinglePlayerError';
+export { SinglePlayerError } from './SinglePlayerError';

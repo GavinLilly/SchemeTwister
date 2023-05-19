@@ -1,7 +1,7 @@
 import DARK_CITY from '../../data/gameSets/darkCity';
 import { MAGGIA_GOONS } from '../../data/gameSets/darkCity/henchmen';
 import { ORGANIZED_CRIME_WAVE } from '../../data/gameSets/darkCity/schemes';
-import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
+import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';
 
 import { RequireHenchmenInVillainDeckScheme } from './RequireHenchmenInVillainDeckScheme';

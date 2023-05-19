@@ -2,7 +2,7 @@ import DARK_CITY from '../../data/gameSets/darkCity';
 import INTO_THE_COSMOS from '../../data/gameSets/intoTheCosmos';
 import { ADAM_WARLOCK } from '../../data/gameSets/intoTheCosmos/intoTheCosmos.heroes';
 import { TURN_THE_SOUL_OF_ADAM_WARLOCK } from '../../data/gameSets/intoTheCosmos/schemes';
-import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
+import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';
 
 import { RequireHeroInAdditionalDeckScheme } from './RequireHeroInAdditionalDeckScheme';

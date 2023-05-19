@@ -3,7 +3,7 @@ import DARK_CITY from '../../data/gameSets/darkCity';
 import REVELATIONS from '../../data/gameSets/revelations';
 import { SCARLET_WITCH } from '../../data/gameSets/revelations/revelations.heroes';
 import { HOUSE_OF_M } from '../../data/gameSets/revelations/schemes';
-import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
+import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';
 import { IGameSetup } from '../interfaces';
 

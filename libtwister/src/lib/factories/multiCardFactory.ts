@@ -3,14 +3,17 @@ import { randomize } from '../utils/randomize';
 
 import { SingleCardFactory } from './singleCardFactory';
 
+/**
+ * A factory for selecting multiple cards from a large set.
+ */
 export class MultiCardFactory<T extends ICard> extends SingleCardFactory<T> {
   /**
-   * This methods gets a number of random cards from the list of filtered cards while also
+   * Gets a number of random cards from the list of filtered cards while also
    * removing those carsd from the record so they can't be selected later
    * @param count the number of cards to get
    * @returns an array of cards
    */
-  public getManyRandom(count: number, func?: (hero: T) => boolean): T[] {
+  public getManyRandom(count: number, func?: (card: T) => boolean): T[] {
     try {
       if (func === undefined) {
         return randomize(this.availableCards, count);
@@ -28,5 +31,23 @@ Randomize count: ${count}
 Number of available cards: ${this.availableCards.length}`
       );
     }
+  }
+
+  /**
+   * For each ID passed to the function, get the full item associated with it.
+   * Note: IDs that are not matched are skipped.
+   * @param ids an array of ID strings
+   * @returns an array of cards
+   */
+  public getAll(ids: string[]): T[] {
+    const cards: T[] = [];
+    ids.forEach((id) => {
+      const card = this.getOne(id);
+
+      if (card) {
+        cards.push(card);
+      }
+    });
+    return cards;
   }
 }

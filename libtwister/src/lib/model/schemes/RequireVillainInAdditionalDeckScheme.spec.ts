@@ -2,7 +2,7 @@ import CHAMPIONS from '../../data/gameSets/champions';
 import { CLASH_OF_THE_MONSTERS_UNLEASHED } from '../../data/gameSets/champions/schemes';
 import { MONSTERS_UNLEASHED } from '../../data/gameSets/champions/villains';
 import LEGENDARY from '../../data/gameSets/legendary';
-import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
+import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';
 
 import { RequireVillainInAdditionalDeckScheme } from './RequireVillainInAdditionalDeckScheme';

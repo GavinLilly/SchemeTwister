@@ -10,7 +10,7 @@ import {
   AIM_HYDRA_OFFSHOOT,
   HYDRA_ELITE,
 } from '../../data/gameSets/shield/villains';
-import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
+import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';
 import { IVillainGroup, IGameSetup } from '../interfaces';
 
