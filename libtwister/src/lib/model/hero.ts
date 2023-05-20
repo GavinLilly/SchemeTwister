@@ -14,7 +14,7 @@ export class Hero implements IHero {
   private readonly _name: string;
   private readonly _gameSet: IGameSetMeta;
   private readonly _team?: ITeam | undefined;
-  private readonly _keywords?: IKeyword[] | undefined;
+  private readonly _keywords: IKeyword[];
   private readonly _cardType: CardType;
 
   constructor(heroConfig: IHero) {
@@ -23,10 +23,10 @@ export class Hero implements IHero {
       gameSet: this._gameSet,
       id: this._id,
       team: this._team,
-      keywords: this._keywords,
     } = heroConfig);
 
     this._cardType = heroConfig.cardType ?? CardType.HERO;
+    this._keywords = heroConfig.keywords ?? [];
   }
 
   get id() {

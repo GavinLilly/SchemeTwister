@@ -60,6 +60,10 @@ export class GameSet implements IGameSetMeta {
     }
   }
 
+  /**
+   * Creates an empty GameSet
+   * @returns a GameSet
+   */
   public static empty(): GameSet {
     return new GameSet(
       {
@@ -73,6 +77,11 @@ export class GameSet implements IGameSetMeta {
     );
   }
 
+  /**
+   * Gets all the cards in the game set with the given type
+   * @param cardType the type of card to get
+   * @returns an array of cards
+   */
   public get(cardType: CardType): AllCardTypes[] | undefined {
     switch (cardType) {
       case CardType.BYSTANDER:

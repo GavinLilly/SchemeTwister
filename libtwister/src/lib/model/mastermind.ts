@@ -31,7 +31,7 @@ export interface IMastermind extends IBadGuyCard {
 export class Mastermind implements IMastermind, ICardType {
   private readonly _name: string;
   private readonly _gameSet: IGameSetMeta;
-  private readonly _keywords?: IKeyword[];
+  private readonly _keywords: IKeyword[];
   private readonly _alwaysLeads: (IVillainGroup | IHenchmen)[];
   private readonly _id: string;
   private readonly _attackPoints: number | string;
@@ -42,13 +42,14 @@ export class Mastermind implements IMastermind, ICardType {
     ({
       name: this._name,
       gameSet: this._gameSet,
-      keywords: this._keywords,
       alwaysLeads: this._alwaysLeads,
       id: this._id,
       attackPoints: this._attackPoints,
       victoryPoints: this._victoryPoints,
       ruleOverride: this._overrideFunction,
     } = mastermindConfig);
+
+    this._keywords = mastermindConfig.keywords ?? [];
   }
 
   get name() {
