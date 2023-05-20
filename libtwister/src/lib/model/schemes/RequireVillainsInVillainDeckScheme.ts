@@ -1,14 +1,14 @@
 import { StoreOfStores } from '../../factories/storeOfStores';
 import { randomize } from '../../utils/randomize';
-import { Mastermind } from '../mastermind';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
   IVillainGroup,
+  SchemeMinusRules,
   VillainDeckMinimal,
 } from '../interfaces';
-import { SchemeMinusRules } from '../interfaces/newScheme.interface';
+import { Mastermind } from '../mastermind';
 import { NumPlayers } from '../types';
 
 import { Scheme } from './Scheme';

@@ -1,5 +1,4 @@
 import { StoreOfStores } from '../../factories/storeOfStores';
-import { Mastermind } from '../mastermind';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
@@ -8,6 +7,7 @@ import {
   VillainDeckMinimal,
 } from '../interfaces';
 import { SchemeMinusRules } from '../interfaces/newScheme.interface';
+import { Mastermind } from '../mastermind';
 import { NumPlayers } from '../types';
 
 import { Scheme } from './Scheme';

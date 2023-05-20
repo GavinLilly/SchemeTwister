@@ -36,48 +36,48 @@ export class RequireHeroNameInHeroDeckScheme extends Scheme {
       hero.name.toLowerCase().includes(this._heroName.toLowerCase())
     );
 
-    if (heroes.length > 0) {
-      const chosenHeroes = randomize(heroes, this._numberRequired);
-
-      const pickedHeroes = chosenHeroes.map((hero) =>
-        store.heroStore.getOne(hero.id)
-      );
-
-      heroes.forEach((hero) => store.heroStore.removeCard(hero.id));
-
-      partialHeroDeck.heroes =
-        pickedHeroes.length > 1
-          ? Scheme.addToDeck(
-              partialHeroDeck.heroes,
-              pickedHeroes[0],
-              this.rules[numPlayers].heroDeck.numHeroes,
-              ...pickedHeroes.slice(1)
-            )
-          : Scheme.addToDeck(
-              partialHeroDeck.heroes,
-              pickedHeroes[0],
-              this.rules[numPlayers].heroDeck.numHeroes
-            );
-
-      if (this._removeOthers) {
-        heroes
-          .filter((hero) => !pickedHeroes.includes(hero))
-          .forEach((hero) => store.heroStore.removeCard(hero.id));
-      }
-
-      return await super.getSetup(
-        numPlayers,
-        selectedMastermind,
-        store,
-        advancedSolo,
-        partialHeroDeck,
-        partialVillainDeck,
-        partialAdditionalDeck
-      );
-    } else {
+    if (heroes.length === 0) {
       throw new Error(
         `No card with ${this._heroName} in it's name is available to be selected`
       );
     }
+
+    const chosenHeroes = randomize(heroes, this._numberRequired);
+
+    const pickedHeroes = chosenHeroes.map((hero) =>
+      store.heroStore.getOne(hero.id)
+    );
+
+    heroes.forEach((hero) => store.heroStore.removeCard(hero.id));
+
+    partialHeroDeck.heroes =
+      pickedHeroes.length > 1
+        ? Scheme.addToDeck(
+            partialHeroDeck.heroes,
+            pickedHeroes[0],
+            this.rules[numPlayers].heroDeck.numHeroes,
+            ...pickedHeroes.slice(1)
+          )
+        : Scheme.addToDeck(
+            partialHeroDeck.heroes,
+            pickedHeroes[0],
+            this.rules[numPlayers].heroDeck.numHeroes
+          );
+
+    if (this._removeOthers) {
+      heroes
+        .filter((hero) => !pickedHeroes.includes(hero))
+        .forEach((hero) => store.heroStore.removeCard(hero.id));
+    }
+
+    return await super.getSetup(
+      numPlayers,
+      selectedMastermind,
+      store,
+      advancedSolo,
+      partialHeroDeck,
+      partialVillainDeck,
+      partialAdditionalDeck
+    );
   }
 }

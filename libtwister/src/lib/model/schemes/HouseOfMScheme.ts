@@ -5,9 +5,9 @@ import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
+  SchemeMinusRules,
   VillainDeckMinimal,
 } from '../interfaces';
-import { SchemeMinusRules } from '../interfaces/newScheme.interface';
 import { Mastermind } from '../mastermind';
 import { NumPlayers } from '../types';
 

@@ -5,9 +5,9 @@ import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
+  SchemeMinusRules,
   VillainDeckMinimal,
 } from '../interfaces';
-import { SchemeMinusRules } from '../interfaces/newScheme.interface';
 import { Mastermind } from '../mastermind';
 import { NumPlayers } from '../types';
 
@@ -31,30 +31,30 @@ export class RequireHeroNameInAdditionalDeckScheme extends Scheme {
       hero.name.toLowerCase().includes(this._heroName.toLowerCase())
     );
 
-    if (heroes.length > 0) {
-      const hero = randomize(heroes, 1)[0];
-
-      const pickedHero = store.heroStore.getOne(hero.id);
-
-      partialAdditionalDeck.heroes = Scheme.addToDeck(
-        partialAdditionalDeck.heroes,
-        pickedHero,
-        this.rules[numPlayers].additionalDeck?.deck?.numHeroes
-      );
-
-      return await super.getSetup(
-        numPlayers,
-        selectedMastermind,
-        store,
-        advancedSolo,
-        partialHeroDeck,
-        partialVillainDeck,
-        partialAdditionalDeck
-      );
-    } else {
+    if (heroes.length === 0) {
       throw new Error(
         `No card with ${this._heroName} in it's name is available to be selected`
       );
     }
+
+    const hero = randomize(heroes, 1)[0];
+
+    const pickedHero = store.heroStore.getOne(hero.id);
+
+    partialAdditionalDeck.heroes = Scheme.addToDeck(
+      partialAdditionalDeck.heroes,
+      pickedHero,
+      this.rules[numPlayers].additionalDeck?.deck?.numHeroes
+    );
+
+    return await super.getSetup(
+      numPlayers,
+      selectedMastermind,
+      store,
+      advancedSolo,
+      partialHeroDeck,
+      partialVillainDeck,
+      partialAdditionalDeck
+    );
   }
 }

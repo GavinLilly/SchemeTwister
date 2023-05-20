@@ -20,10 +20,10 @@ import {
   INumPlayerRules,
   IVillainDeck,
   IVillainDeckRequirements,
+  SchemeMinusRules,
   VillainDeckMinimal,
   nameSorter,
 } from '../interfaces';
-import { SchemeMinusRules } from '../interfaces/newScheme.interface';
 import { Mastermind } from '../mastermind';
 import { Rules, RulesType } from '../rules';
 import { NumPlayers, numPlayers } from '../types';
