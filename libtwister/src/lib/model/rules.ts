@@ -12,15 +12,20 @@ export class Rules {
   private readonly _rules = Rules.defaultRules;
 
   constructor(func?: RulesModifierFunction) {
-    if (func !== undefined) {
+    if (func) {
       numPlayers.forEach((num) => {
         this._rules[num] = func(this._rules[num], num);
       });
     }
   }
 
+  public get rules(): RulesType {
+    return this._rules;
+  }
+
   public static get defaultRules(): RulesType {
     return {
+      /* eslint-disable @typescript-eslint/naming-convention */
       1: {
         heroDeck: {
           numHeroes: 3,
@@ -81,10 +86,7 @@ export class Rules {
           numMasterStrikes: 5,
         },
       },
+      /* eslint-enable @typescript-eslint/naming-convention */
     };
-  }
-
-  public get rules(): RulesType {
-    return this._rules;
   }
 }

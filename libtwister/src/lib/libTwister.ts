@@ -17,29 +17,12 @@ import instantiateScheme from './utils/instantiateScheme';
 
 /**
  * A class to store which game sets are available and have been selected along
- * with all the of the associated cards
+ * with all of the associated cards
  */
 export class LibTwister {
   private _schemeFactory!: SingleCardFactory<SchemeMinusRules>;
-  /**
-   * The factory to pick schemes
-   */
-  public get schemeFactory() {
-    return this._schemeFactory;
-  }
-
   private _stores!: StoreOfStores;
-  public get stores() {
-    return this._stores;
-  }
-
-  /**
-   * The selected game sets
-   */
-  private _selectedGameSets: GameSet[] = [];
-  public get selectedGameSets(): GameSet[] {
-    return this._selectedGameSets;
-  }
+  private readonly _selectedGameSets: GameSet[] = [];
 
   /**
    * Create a new LibTwister instance with the given GameSets
@@ -49,6 +32,25 @@ export class LibTwister {
     this._selectedGameSets = selectedGameSets;
     this._selectedGameSets.sort(GameSet.sorter);
     this._onGameSetsChange();
+  }
+
+  /**
+   * The factory to pick schemes
+   */
+  public get schemeFactory() {
+    return this._schemeFactory;
+  }
+
+  public get stores() {
+    return this._stores;
+  }
+
+  /**
+   * The selected game sets
+   */
+
+  public get selectedGameSets(): GameSet[] {
+    return this._selectedGameSets;
   }
 
   /**
@@ -155,19 +157,19 @@ export class LibTwister {
     this._selectedGameSets.forEach((gameSet) => {
       heroes.push(...gameSet.heroes);
 
-      if (gameSet.masterminds !== undefined) {
+      if (gameSet.masterminds) {
         masterminds.push(...gameSet.masterminds);
       }
 
-      if (gameSet.schemes !== undefined) {
+      if (gameSet.schemes) {
         schemes.push(...gameSet.schemes);
       }
 
-      if (gameSet.villains !== undefined) {
+      if (gameSet.villains) {
         villains.push(...gameSet.villains);
       }
 
-      if (gameSet.henchmen !== undefined) {
+      if (gameSet.henchmen) {
         henchmen.push(...gameSet.henchmen);
       }
     });
