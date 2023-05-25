@@ -18,7 +18,7 @@ export class RequireTeamInHeroDeckScheme extends Scheme {
     super(scheme);
   }
 
-  public override async getSetup(
+  public override getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: Mastermind,
     store: StoreOfStores,
@@ -26,7 +26,7 @@ export class RequireTeamInHeroDeckScheme extends Scheme {
     partialHeroDeck: HeroDeckMinimal = {},
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): Promise<IGameSetup> {
+  ): IGameSetup {
     const teamHeroes = store.heroStore.availableCards.filter(
       (merc) => merc.team === this._team
     );
@@ -41,7 +41,7 @@ export class RequireTeamInHeroDeckScheme extends Scheme {
       this.rules[numPlayers].heroDeck.numHeroes
     );
 
-    return await super.getSetup(
+    return super.getSetup(
       numPlayers,
       selectedMastermind,
       store,

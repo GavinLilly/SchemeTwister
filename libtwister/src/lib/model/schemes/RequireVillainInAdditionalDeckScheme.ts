@@ -20,7 +20,7 @@ export class RequireVillainInAdditionalDeckScheme extends Scheme {
     super(scheme);
   }
 
-  public override async getSetup(
+  public override getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: Mastermind,
     store: StoreOfStores,
@@ -28,7 +28,7 @@ export class RequireVillainInAdditionalDeckScheme extends Scheme {
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck: AdditionalDeckDeckMinimal = {}
-  ): Promise<IGameSetup> {
+  ): IGameSetup {
     const villain = store.villainStore.getOne(this._requiredVillain.id);
 
     if (
@@ -43,7 +43,7 @@ export class RequireVillainInAdditionalDeckScheme extends Scheme {
       );
     }
 
-    return await super.getSetup(
+    return super.getSetup(
       numPlayers,
       selectedMastermind,
       store,

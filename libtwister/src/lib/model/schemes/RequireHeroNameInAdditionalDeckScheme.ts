@@ -18,7 +18,7 @@ export class RequireHeroNameInAdditionalDeckScheme extends Scheme {
     super(scheme);
   }
 
-  public override async getSetup(
+  public override getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: Mastermind,
     store: StoreOfStores,
@@ -26,7 +26,7 @@ export class RequireHeroNameInAdditionalDeckScheme extends Scheme {
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck: AdditionalDeckDeckMinimal = {}
-  ): Promise<IGameSetup> {
+  ): IGameSetup {
     const heroes: Hero[] = store.heroStore.availableCards.filter((hero) =>
       hero.name.toLowerCase().includes(this._heroName.toLowerCase())
     );
@@ -47,7 +47,7 @@ export class RequireHeroNameInAdditionalDeckScheme extends Scheme {
       this.rules[numPlayers].additionalDeck?.deck?.numHeroes
     );
 
-    return await super.getSetup(
+    return super.getSetup(
       numPlayers,
       selectedMastermind,
       store,

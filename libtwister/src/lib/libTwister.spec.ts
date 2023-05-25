@@ -129,8 +129,8 @@ describe('LibTwister', () => {
 
     it.each([2, 3, 4, 5])(
       'should generate a setup with %p players, only using Legendary cards',
-      async (numPlayers) => {
-        const setup = await twister.getSetup(numPlayers as NumPlayers);
+      (numPlayers) => {
+        const setup = twister.getSetup(numPlayers as NumPlayers);
 
         expect(setup?.scheme.gameSet.id).toBe(LEGENDARY.id);
         expect(setup?.mastermind.gameSet.id).toBe(LEGENDARY.id);
@@ -245,8 +245,8 @@ describe('LibTwister', () => {
         );
       });
       describe('with Ego as mastermind', () => {
-        it('should have an additional villain group', async () => {
-          const setup = await twister.getSetup(
+        it('should have an additional villain group', () => {
+          const setup = twister.getSetup(
             2,
             unleashScheme,
             EGO_THE_LIVING_PLANET
@@ -257,8 +257,8 @@ describe('LibTwister', () => {
       });
 
       describe('with Epic Ego as mastermind', () => {
-        it('should have 2 additional villain groups', async () => {
-          const setup = await twister.getSetup(
+        it('should have 2 additional villain groups', () => {
+          const setup = twister.getSetup(
             2,
             unleashScheme,
             EPIC_EGO_THE_LIVING_PLANET

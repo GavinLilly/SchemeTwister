@@ -34,7 +34,7 @@ export class RequireVillainsInVillainDeckScheme extends Scheme {
     this._requiredVillains = [requiredVillain, ...requiredVillains];
   }
 
-  public override async getSetup(
+  public override getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: Mastermind,
     store: StoreOfStores,
@@ -42,7 +42,7 @@ export class RequireVillainsInVillainDeckScheme extends Scheme {
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck: VillainDeckMinimal = {},
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): Promise<IGameSetup> {
+  ): IGameSetup {
     const chosenVillains =
       this._requiredVillains.length === 1
         ? this._requiredVillains
@@ -72,7 +72,7 @@ export class RequireVillainsInVillainDeckScheme extends Scheme {
         .forEach((villain) => store.villainStore.removeCard(villain.id));
     }
 
-    return await super.getSetup(
+    return super.getSetup(
       numPlayers,
       selectedMastermind,
       store,

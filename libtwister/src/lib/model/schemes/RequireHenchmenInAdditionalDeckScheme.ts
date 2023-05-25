@@ -17,7 +17,7 @@ export class RequireHenchmenInAdditionalDeckScheme extends Scheme {
     super(scheme);
   }
 
-  public override async getSetup(
+  public override getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: Mastermind,
     store: StoreOfStores,
@@ -25,7 +25,7 @@ export class RequireHenchmenInAdditionalDeckScheme extends Scheme {
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck: AdditionalDeckDeckMinimal = {}
-  ): Promise<IGameSetup> {
+  ): IGameSetup {
     const henchmen = store.henchmenStore.getOne(this._requiredHenchmen.id);
 
     partialAdditionalDeck.henchmen = Scheme.addToDeck(
@@ -34,7 +34,7 @@ export class RequireHenchmenInAdditionalDeckScheme extends Scheme {
       this.rules[numPlayers].additionalDeck?.deck?.numHenchmenGroups
     );
 
-    return await super.getSetup(
+    return super.getSetup(
       numPlayers,
       selectedMastermind,
       store,

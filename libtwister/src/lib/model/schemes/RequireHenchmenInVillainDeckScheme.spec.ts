@@ -13,12 +13,12 @@ describe('Require Henchmen In Villain Deck Scheme', () => {
     store = new StoreBuilder().withSingleGameset(DARK_CITY).build();
   });
 
-  it('It should include Maggia Goons in the villain deck', async () => {
+  it('It should include Maggia Goons in the villain deck', () => {
     const scheme = new RequireHenchmenInVillainDeckScheme(
       injectGameSet(DARK_CITY, ORGANIZED_CRIME_WAVE),
       MAGGIA_GOONS
     );
-    const setup = await scheme.getSetup(
+    const setup = scheme.getSetup(
       2,
       store.mastermindStore.getOneRandom(),
       store

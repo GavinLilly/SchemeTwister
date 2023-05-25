@@ -13,12 +13,12 @@ describe('Require Hero In Villain Deck Scheme', () => {
     store = new StoreBuilder().withSingleGameset(DARK_CITY).build();
   });
 
-  it('It should include Jean Grey in the villain deck', async () => {
+  it('It should include Jean Grey in the villain deck', () => {
     const scheme = new RequireHeroInVillainDeckScheme(
       injectGameSet(DARK_CITY, TRANSFORM_CITIZENS_INTO_DEMONS),
       JEAN_GREY
     );
-    const setup = await scheme.getSetup(
+    const setup = scheme.getSetup(
       2,
       store.mastermindStore.getOneRandom(),
       store

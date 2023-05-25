@@ -19,12 +19,12 @@ describe('Require Team In Hero Deck Scheme', () => {
       .build();
   });
 
-  it('should have at least 1 Merc for Money hero', async () => {
+  it('should have at least 1 Merc for Money hero', () => {
     const scheme = new RequireTeamInHeroDeckScheme(
       injectGameSet(DARK_CITY, EVERYBODY_HATES_DEADPOOL),
       MERCS_FOR_MONEY
     );
-    const setup = await scheme.getSetup(
+    const setup = scheme.getSetup(
       2,
       store.mastermindStore.getOneRandom(),
       store

@@ -15,7 +15,7 @@ describe('House of M Scheme', () => {
   let scheme: Scheme;
   let setup: IGameSetup;
 
-  beforeAll(async () => {
+  beforeAll(() => {
     store = new StoreBuilder()
       .withHeroGamesets(DARK_CITY, REVELATIONS)
       .withMastermindGamesets(DARK_CITY)
@@ -28,11 +28,7 @@ describe('House of M Scheme', () => {
       SCARLET_WITCH
     );
 
-    setup = await scheme.getSetup(
-      2,
-      store.mastermindStore.getOneRandom(),
-      store
-    );
+    setup = scheme.getSetup(2, store.mastermindStore.getOneRandom(), store);
   });
 
   it('should include Scarlet Witch in the villain deck', () =>

@@ -116,10 +116,10 @@ describe('Base Scheme', () => {
     let setup: IGameSetup;
     let store: StoreOfStores;
 
-    beforeAll(async () => {
+    beforeAll(() => {
       scheme = new Scheme(schemeDescSimpleTwist);
       store = new StoreBuilder().withSingleGameset(XMEN).build();
-      setup = await scheme.getSetup(2, ARCADE, store);
+      setup = scheme.getSetup(2, ARCADE, store);
     });
 
     beforeEach(() => store.reset());
@@ -133,7 +133,7 @@ describe('Base Scheme', () => {
     it('should include Murderworld in the villain deck', () =>
       expect(setup.villainDeck.villains).toContain(MURDERWORLD));
 
-    it('should put 1 hero in the additional deck', async () => {
+    it('should put 1 hero in the additional deck', () => {
       const heroAdditional = new Scheme({
         ...baseSchemeDesc,
         meta: {
@@ -150,7 +150,7 @@ describe('Base Scheme', () => {
         },
       });
 
-      const additionalSetup = await heroAdditional.getSetup(
+      const additionalSetup = heroAdditional.getSetup(
         3,
         store.mastermindStore.getOneRandom(),
         store
@@ -160,7 +160,7 @@ describe('Base Scheme', () => {
       expect(additionalSetup.additionalDeck?.deck.heroes).toHaveLength(1);
     });
 
-    it('should put 1 henchmen in the hero deck', async () => {
+    it('should put 1 henchmen in the hero deck', () => {
       const henchmenHero = new Scheme({
         ...baseSchemeDesc,
         meta: {
@@ -172,7 +172,7 @@ describe('Base Scheme', () => {
         },
       });
 
-      const heroHenchmenSetup = await henchmenHero.getSetup(
+      const heroHenchmenSetup = henchmenHero.getSetup(
         3,
         store.mastermindStore.getOneRandom(),
         store
@@ -181,7 +181,7 @@ describe('Base Scheme', () => {
       expect(heroHenchmenSetup.heroDeck.henchmen).toHaveLength(1);
     });
 
-    it('should put 1 mastermind in the villain deck', async () => {
+    it('should put 1 mastermind in the villain deck', () => {
       const mastermindVillain = new Scheme({
         ...baseSchemeDesc,
         meta: {
@@ -195,7 +195,7 @@ describe('Base Scheme', () => {
 
       expect(mastermindVillain.rules[3].villainDeck.numMasterminds).toBe(1);
 
-      const mastermindVillainSetup = await mastermindVillain.getSetup(
+      const mastermindVillainSetup = mastermindVillain.getSetup(
         3,
         store.mastermindStore.getOneRandom(),
         store
@@ -205,7 +205,7 @@ describe('Base Scheme', () => {
       expect(mastermindVillainSetup.villainDeck.masterminds).toHaveLength(1);
     });
 
-    it('should put 5 bystanders in the hero deck', async () => {
+    it('should put 5 bystanders in the hero deck', () => {
       const bystanderScheme = new Scheme({
         ...baseSchemeDesc,
         meta: {
@@ -217,7 +217,7 @@ describe('Base Scheme', () => {
         },
       });
 
-      const bystanderSetup = await bystanderScheme.getSetup(
+      const bystanderSetup = bystanderScheme.getSetup(
         3,
         store.mastermindStore.getOneRandom(),
         store
@@ -226,21 +226,21 @@ describe('Base Scheme', () => {
       expect(bystanderSetup.heroDeck.numBystanders).toBe(5);
     });
 
-    it('should include Doombots in the villain deck', async () => {
+    it('should include Doombots in the villain deck', () => {
       const doomHenchmenStore = new StoreBuilder()
         .withHeroGamesets(XMEN)
         .withMastermindGamesets(LEGENDARY)
         .withVillainGamesets(XMEN)
         .withHenchmenGamesets(LEGENDARY, XMEN)
         .build();
-      const doomSetup = await scheme.getSetup(4, DR_DOOM, doomHenchmenStore);
+      const doomSetup = scheme.getSetup(4, DR_DOOM, doomHenchmenStore);
 
       expect(doomSetup.villainDeck.henchmen).toContain(DOOMBOT_LEGION);
     });
 
-    it('should not need to fill in any more slots in the villain deck', async () => {
+    it('should not need to fill in any more slots in the villain deck', () => {
       const villains = [HELLFIRE_CLUB, MURDERWORLD];
-      const filledSetup = await scheme.getSetup(
+      const filledSetup = scheme.getSetup(
         2,
         store.mastermindStore.getOneRandom(),
         store,
@@ -257,7 +257,7 @@ describe('Base Scheme', () => {
     });
 
     describe('single player mode', () => {
-      it('should have 1 Master Strike', async () => {
+      it('should have 1 Master Strike', () => {
         const soloScheme = new Scheme({
           ...baseSchemeDesc,
           meta: {
@@ -265,7 +265,7 @@ describe('Base Scheme', () => {
           },
         });
 
-        const setup = await soloScheme.getSetup(
+        const setup = soloScheme.getSetup(
           1,
           store.mastermindStore.getOneRandom(),
           store
@@ -274,7 +274,7 @@ describe('Base Scheme', () => {
         expect(setup.villainDeck.numMasterStrikes).toBe(1);
       });
 
-      it('advanced solo should have 5 Master Strike', async () => {
+      it('advanced solo should have 5 Master Strike', () => {
         const soloScheme = new Scheme({
           ...baseSchemeDesc,
           meta: {
@@ -282,7 +282,7 @@ describe('Base Scheme', () => {
           },
         });
 
-        const setup = await soloScheme.getSetup(
+        const setup = soloScheme.getSetup(
           1,
           store.mastermindStore.getOneRandom(),
           store,

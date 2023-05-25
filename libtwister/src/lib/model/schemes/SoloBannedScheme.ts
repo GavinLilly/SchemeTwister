@@ -12,7 +12,7 @@ import { NumPlayers } from '../types';
 import { Scheme } from './Scheme';
 
 export class SoloBannedScheme extends Scheme {
-  public override async getSetup(
+  public override getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: Mastermind,
     store: StoreOfStores,
@@ -20,12 +20,12 @@ export class SoloBannedScheme extends Scheme {
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): Promise<IGameSetup> {
+  ): IGameSetup {
     if (numPlayers === 1) {
       throw new SinglePlayerError();
     }
 
-    return await super.getSetup(
+    return super.getSetup(
       numPlayers,
       selectedMastermind,
       store,

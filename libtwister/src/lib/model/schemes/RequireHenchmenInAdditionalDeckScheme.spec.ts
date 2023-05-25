@@ -13,12 +13,12 @@ describe('Require Henchmen In Additional Deck Scheme', () => {
     store = new StoreBuilder().withSingleGameset(VILLAINS).build();
   });
 
-  it('It should include Cops in the additional deck', async () => {
+  it('It should include Cops in the additional deck', () => {
     const scheme = new RequireHenchmenInAdditionalDeckScheme(
       injectGameSet(VILLAINS, CAGE_VILLAINS_IN_POWERSUPPRESSING_CELLS),
       COPS
     );
-    const setup = await scheme.getSetup(
+    const setup = scheme.getSetup(
       2,
       store.mastermindStore.getOneRandom(),
       store

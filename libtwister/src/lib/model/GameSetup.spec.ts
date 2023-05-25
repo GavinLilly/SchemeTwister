@@ -47,13 +47,13 @@ describe('GameSetup', () => {
   describe('with Midtown Bank Robbery', () => {
     let setup: GameSetup;
 
-    beforeAll(async () => {
+    beforeAll(() => {
       const scheme = new Scheme(injectGameSet(LEGENDARY, MIDTOWN_BANK_ROBBERY));
-      setup = (await scheme.getSetup(
+      setup = scheme.getSetup(
         2,
         store.mastermindStore.getOneRandom(),
         store
-      )) as GameSetup;
+      ) as GameSetup;
     });
 
     describe('getSelectedHeroes()', () => {
@@ -74,15 +74,15 @@ describe('GameSetup', () => {
   describe("with Replace Earth's Leaders with Killbots", () => {
     let setup: GameSetup;
 
-    beforeAll(async () => {
+    beforeAll(() => {
       const scheme = new Scheme(
         injectGameSet(LEGENDARY, REPLACE_EARTHS_LEADERS_WITH_KILLBOTS)
       );
-      setup = (await scheme.getSetup(
+      setup = scheme.getSetup(
         2,
         store.mastermindStore.getOneRandom(),
         store
-      )) as GameSetup;
+      ) as GameSetup;
     });
 
     describe('getSelectedHeroes()', () => {
@@ -112,35 +112,35 @@ describe('GameSetup', () => {
         .build();
     });
 
-    it('should have no keywords', async () => {
+    it('should have no keywords', () => {
       const scheme = new Scheme(
         injectGameSet(LEGENDARY, REPLACE_EARTHS_LEADERS_WITH_KILLBOTS)
       );
-      const setup = (await scheme.getSetup(
+      const setup = scheme.getSetup(
         2,
         legendaryStore.mastermindStore.getOneRandom(),
         legendaryStore
-      )) as GameSetup;
+      ) as GameSetup;
 
       expect(setup.keywords.size).toBe(0);
     });
 
-    it('should have only the "Contest of Champions" keyword', async () => {
+    it('should have only the "Contest of Champions" keyword', () => {
       const scheme = new Scheme(
         injectGameSet(INTO_THE_COSMOS, THE_CONTEST_OF_CHAMPIONS)
       );
 
-      const setup = (await scheme.getSetup(
+      const setup = scheme.getSetup(
         2,
         legendaryStore.mastermindStore.getOneRandom(),
         legendaryStore
-      )) as GameSetup;
+      ) as GameSetup;
 
       expect(setup.keywords.size).toBe(1);
       expect(setup.keywords.has(CONTEST_OF_CHAMPIONS)).toBeTruthy();
     });
 
-    it('should have only the "Versatile" keyword', async () => {
+    it('should have only the "Versatile" keyword', () => {
       const versatileStore: StoreOfStores = new StoreBuilder()
         .withHeroGamesets(LEGENDARY, DARK_CITY)
         .withMastermindGamesets(LEGENDARY)
@@ -152,7 +152,7 @@ describe('GameSetup', () => {
       const scheme = new Scheme(
         injectGameSet(LEGENDARY, REPLACE_EARTHS_LEADERS_WITH_KILLBOTS)
       );
-      const setup = (await scheme.getSetup(
+      const setup = scheme.getSetup(
         2,
         versatileStore.mastermindStore.getOneRandom(),
         versatileStore,
@@ -160,7 +160,7 @@ describe('GameSetup', () => {
         {
           heroes: [DOMINO, CYCLOPS, WOLVERINE, CAPTAIN_AMERICA, IRON_MAN],
         }
-      )) as GameSetup;
+      ) as GameSetup;
 
       expect(setup.keywords.size).toBe(1);
       expect(setup.keywords.has(VERSATILE)).toBeTruthy();
@@ -170,16 +170,16 @@ describe('GameSetup', () => {
   describe('with Splice Humans with Spider DNA + Carnage', () => {
     let setup: GameSetup;
 
-    beforeAll(async () => {
+    beforeAll(() => {
       const scheme = new RequireVillainsInVillainDeckScheme(
         injectGameSet(LEGENDARY, SPLICE_HUMANS_WITH_SPIDER_DNA),
         SINISTER_SIX
       );
-      setup = (await scheme.getSetup(
+      setup = scheme.getSetup(
         2,
         store.mastermindStore.getOne(CARNAGE.id),
         store
-      )) as GameSetup;
+      ) as GameSetup;
     });
 
     describe('getSelectedHeroes()', () => {

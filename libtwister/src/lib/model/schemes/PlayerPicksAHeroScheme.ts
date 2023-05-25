@@ -12,7 +12,7 @@ import { NumPlayers } from '../types';
 import { Scheme } from './Scheme';
 
 export class PlayerPicksAHeroScheme extends Scheme {
-  public override async getSetup(
+  public override getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: Mastermind,
     store: StoreOfStores,
@@ -20,7 +20,7 @@ export class PlayerPicksAHeroScheme extends Scheme {
     partialHeroDeck: HeroDeckMinimal = {},
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): Promise<IGameSetup> {
+  ): IGameSetup {
     const nonPickedHeroes: Hero[] = [];
     for (let i = 1; i <= numPlayers; i++) {
       nonPickedHeroes.push(
@@ -39,7 +39,7 @@ export class PlayerPicksAHeroScheme extends Scheme {
       ...nonPickedHeroes.slice(1)
     );
 
-    return await super.getSetup(
+    return super.getSetup(
       numPlayers,
       selectedMastermind,
       store,

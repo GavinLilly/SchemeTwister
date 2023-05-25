@@ -437,12 +437,12 @@ export class Scheme implements ICard {
    * @param mastermindStore a mastermind factory to get heroes for the setup
    * @returns a fully populated setup for a game
    */
-  public async getSetup(
+  public getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: Mastermind,
     store: StoreOfStores,
     advancedSolo?: boolean
-  ): Promise<IGameSetup>;
+  ): IGameSetup;
   /**
    * Builds a game setup using the rules defined for this scheme
    * @param numPlayers the number of players to build the setup for
@@ -456,7 +456,7 @@ export class Scheme implements ICard {
    * @param partialAdditionalDeck an additional deck to start the setup from
    * @returns a fully populated setup for a game
    */
-  public async getSetup(
+  public getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: Mastermind,
     store: StoreOfStores,
@@ -464,8 +464,8 @@ export class Scheme implements ICard {
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): Promise<IGameSetup>;
-  public async getSetup(
+  ): IGameSetup;
+  public getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: Mastermind,
     store: StoreOfStores,
@@ -473,7 +473,7 @@ export class Scheme implements ICard {
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): Promise<IGameSetup> {
+  ): IGameSetup {
     // Get player rules
     const ruleSet =
       selectedMastermind.ruleOverride !== undefined

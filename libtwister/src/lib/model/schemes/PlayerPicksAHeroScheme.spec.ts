@@ -19,11 +19,11 @@ describe('Player Picks a Hero Scheme', () => {
   });
 
   describe("Sneak Attack the Heroes' Homes", () => {
-    it('should put 3 blank heroes in the hero deck', async () => {
+    it('should put 3 blank heroes in the hero deck', () => {
       const scheme = new PlayerPicksAHeroScheme(
         injectGameSet(ANNIHILATION, SNEAK_ATTACK_THE_HEROES_HOMES)
       );
-      const setup = await scheme.getSetup(
+      const setup = scheme.getSetup(
         3,
         store.mastermindStore.getOneRandom(),
         store

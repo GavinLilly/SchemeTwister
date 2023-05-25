@@ -19,12 +19,12 @@ describe('Require Villain In Additional Deck Scheme', () => {
       .build();
   });
 
-  it('It should include Monsters Unleashed in the additional deck', async () => {
+  it('It should include Monsters Unleashed in the additional deck', () => {
     const scheme = new RequireVillainInAdditionalDeckScheme(
       injectGameSet(CHAMPIONS, CLASH_OF_THE_MONSTERS_UNLEASHED),
       MONSTERS_UNLEASHED
     );
-    const setup = await scheme.getSetup(
+    const setup = scheme.getSetup(
       2,
       store.mastermindStore.getOneRandom(),
       store

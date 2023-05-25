@@ -29,12 +29,8 @@ describe('The Dark Phoenix Saga Scheme', () => {
 
   describe('with X-Men expansion', () => {
     let setup: IGameSetup;
-    beforeAll(async () => {
-      setup = await scheme.getSetup(
-        2,
-        store.mastermindStore.getOneRandom(),
-        store
-      );
+    beforeAll(() => {
+      setup = scheme.getSetup(2, store.mastermindStore.getOneRandom(), store);
     });
 
     it('should include Phoenix in the villain deck', () =>
@@ -46,14 +42,14 @@ describe('The Dark Phoenix Saga Scheme', () => {
 
   describe('with the Dark City expansion', () => {
     let setup: IGameSetup;
-    beforeAll(async () => {
+    beforeAll(() => {
       const dcHeroStore = new StoreBuilder()
         .withHeroGamesets(DARK_CITY)
         .withMastermindGamesets(XMEN)
         .withVillainGamesets(XMEN)
         .withHenchmenGamesets(XMEN)
         .build();
-      setup = await scheme.getSetup(
+      setup = scheme.getSetup(
         2,
         dcHeroStore.mastermindStore.getOneRandom(),
         dcHeroStore

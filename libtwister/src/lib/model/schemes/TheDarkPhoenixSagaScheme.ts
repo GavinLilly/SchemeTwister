@@ -24,7 +24,7 @@ export class TheDarkPhoenixSagaScheme extends RequireVillainsInVillainDeckScheme
     super(scheme, requiredVillain);
   }
 
-  public override async getSetup(
+  public override getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: Mastermind,
     store: StoreOfStores,
@@ -32,7 +32,7 @@ export class TheDarkPhoenixSagaScheme extends RequireVillainsInVillainDeckScheme
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck: VillainDeckMinimal = {},
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): Promise<IGameSetup> {
+  ): IGameSetup {
     const hero = store.heroStore.isAvailable(this._preferredHero)
       ? this._preferredHero
       : this._backupHero;
@@ -45,7 +45,7 @@ export class TheDarkPhoenixSagaScheme extends RequireVillainsInVillainDeckScheme
       this.rules[numPlayers].villainDeck.numHeroes
     );
 
-    return await super.getSetup(
+    return super.getSetup(
       numPlayers,
       selectedMastermind,
       store,

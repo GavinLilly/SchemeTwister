@@ -18,7 +18,7 @@ describe('Require Hero Name in Additional Deck Scheme', () => {
   let scheme: Scheme;
   let setup: IGameSetup;
 
-  beforeAll(async () => {
+  beforeAll(() => {
     store = new StoreBuilder().withSingleGameset(WWHULK).build();
 
     scheme = new RequireHeroNameInAdditionalDeckScheme(
@@ -26,11 +26,7 @@ describe('Require Hero Name in Additional Deck Scheme', () => {
       'hulk'
     );
 
-    setup = await scheme.getSetup(
-      2,
-      store.mastermindStore.getOneRandom(),
-      store
-    );
+    setup = scheme.getSetup(2, store.mastermindStore.getOneRandom(), store);
   });
 
   it('should include 1 "Hulk" hero in the additional deck', () => {
@@ -39,7 +35,7 @@ describe('Require Hero Name in Additional Deck Scheme', () => {
     expect(hulkHeroes).toHaveLength(1);
   });
 
-  it('should throw an error when no Hulks are available', async () => {
+  it('should throw an error when no Hulks are available', () => {
     store = new StoreBuilder()
       .withHeroGamesets(DARK_CITY)
       .withMastermindGamesets(WWHULK)
@@ -47,8 +43,8 @@ describe('Require Hero Name in Additional Deck Scheme', () => {
       .withHenchmenGamesets(WWHULK)
       .build();
 
-    await expect(
+    expect(() =>
       scheme.getSetup(3, store.mastermindStore.getOneRandom(), store)
-    ).rejects.toThrow();
+    ).toThrow();
   });
 });

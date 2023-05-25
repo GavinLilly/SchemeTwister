@@ -124,17 +124,17 @@ export class LibTwister {
    * @param advancedSolo if it is being set up for 1 player mode then this will enable "Advanced Solo"
    * @returns a promise of a GameSetup
    */
-  public async getSetup(
+  public getSetup(
     numPlayers: NumPlayers,
     scheme = this.schemeFactory.getOneRandom(),
     mastermind = this.stores.mastermindStore.getOneRandom(),
     advancedSolo = false
-  ): Promise<GameSetup> {
+  ): GameSetup {
     this._stores.reset();
 
     const createdScheme = instantiateScheme(scheme);
 
-    const setup = await createdScheme.getSetup(
+    const setup = createdScheme.getSetup(
       numPlayers,
       mastermind,
       this.stores,

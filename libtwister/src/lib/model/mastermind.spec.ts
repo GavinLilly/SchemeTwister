@@ -45,7 +45,7 @@ describe('Mastermind', () => {
       it('should not have "Epic" in the name', () =>
         expect(mastermind.name).not.toMatch(epicRegex));
 
-      it('should have 1 Test Villain in the always leads', async () => {
+      it('should have 1 Test Villain in the always leads', () => {
         expect(mastermind.alwaysLeads).toHaveLength(1);
         expect(mastermind.alwaysLeads).toContain(testVillain1);
       });
@@ -83,7 +83,7 @@ describe('Mastermind', () => {
 
     it('should create', () => expect(mastermind).toBeTruthy());
 
-    it('should have 2 Test Villains in the always leads', async () => {
+    it('should have 2 Test Villains in the always leads', () => {
       expect(mastermind.alwaysLeads).toHaveLength(2);
       expect(mastermind.alwaysLeads).toContain(testVillain1);
       expect(mastermind.alwaysLeads).toContain(testVillain2);

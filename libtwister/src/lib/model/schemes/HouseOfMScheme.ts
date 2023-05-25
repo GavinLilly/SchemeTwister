@@ -19,7 +19,7 @@ export class HouseOfMScheme extends RequireHeroInVillainDeckScheme {
     super(scheme, requiredHero);
   }
 
-  public override async getSetup(
+  public override getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: Mastermind,
     store: StoreOfStores,
@@ -27,7 +27,7 @@ export class HouseOfMScheme extends RequireHeroInVillainDeckScheme {
     partialHeroDeck: HeroDeckMinimal = {},
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): Promise<IGameSetup> {
+  ): IGameSetup {
     const xMenHeroes = store.heroStore.getManyRandom(
       4,
       (hero) => hero.team === X_MEN
@@ -45,7 +45,7 @@ export class HouseOfMScheme extends RequireHeroInVillainDeckScheme {
       ...xMenHeroes
     );
 
-    return await super.getSetup(
+    return super.getSetup(
       numPlayers,
       selectedMastermind,
       store,
