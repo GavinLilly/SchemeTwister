@@ -1,26 +1,26 @@
 import LEGENDARY from '../data/gameSets/legendary';
-import { Mastermind, IVillainGroup, IHenchmen, Hero } from '../model';
+import { Mastermind, VillainGroup, IHenchmen, Hero } from '../model';
 
 import { MultiCardStore } from './multiCardStore';
 
 export class StoreOfStores {
   private _mastermindStore!: MultiCardStore<Mastermind>;
   private _heroStore!: MultiCardStore<Hero>;
-  private _villainStore!: MultiCardStore<IVillainGroup>;
+  private _villainStore!: MultiCardStore<VillainGroup>;
   private _henchmenStore!: MultiCardStore<IHenchmen>;
 
   constructor();
   constructor(
     heroes: Hero[],
     masterminds: Mastermind[],
-    villains: IVillainGroup[],
+    villains: VillainGroup[],
     henchmen: IHenchmen[]
   );
   constructor(
     heroes: Hero[] = LEGENDARY.heroes,
     /* eslint-disable @typescript-eslint/no-non-null-assertion */
     masterminds: Mastermind[] = LEGENDARY.masterminds!,
-    villains: IVillainGroup[] = LEGENDARY.villains!,
+    villains: VillainGroup[] = LEGENDARY.villains!,
     henchmen: IHenchmen[] = LEGENDARY.henchmen!
     /* eslint-enable @typescript-eslint/no-non-null-assertion */
   ) {

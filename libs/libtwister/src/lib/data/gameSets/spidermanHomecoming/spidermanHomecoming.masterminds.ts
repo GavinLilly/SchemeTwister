@@ -2,7 +2,7 @@ import { EpicMastermindBuilder, IMastermind } from '../../../model';
 
 import { DANGER_SENSE, STRIKER } from './keywords';
 import { META } from './meta';
-import { SALVAGERS, VULTURE_TECH } from './villains';
+import { SALVAGERS, VULTURE_TECH } from './spidermanHomecoming.villains';
 
 const adrianToomes = new EpicMastermindBuilder({
   name: 'Adrian Toomes',

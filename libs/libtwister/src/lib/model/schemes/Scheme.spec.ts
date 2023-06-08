@@ -2,7 +2,10 @@ import LEGENDARY from '../../data/gameSets/legendary';
 import { DOOMBOT_LEGION } from '../../data/gameSets/legendary/henchmen';
 import { DR_DOOM } from '../../data/gameSets/legendary/legendary.masterminds';
 import XMEN from '../../data/gameSets/xMen';
-import { HELLFIRE_CLUB, MURDERWORLD } from '../../data/gameSets/xMen/villains';
+import {
+  HELLFIRE_CLUB,
+  MURDERWORLD,
+} from '../../data/gameSets/xMen/xMen.villains';
 import { ARCADE } from '../../data/gameSets/xMen/xMen.masterminds';
 import { StoreBuilder, StoreOfStores } from '../../factories';
 import { GameSetup } from '../GameSetup';

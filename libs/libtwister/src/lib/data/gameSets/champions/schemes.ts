@@ -4,7 +4,7 @@ import {
 } from '../../../model';
 import { HeroClass } from '../../enums';
 
-import { MONSTERS_UNLEASHED } from './villains';
+import { MONSTERS_UNLEASHED } from './champions.villains';
 
 export const CLASH_OF_THE_MONSTERS_UNLEASHED: ShortScheme = {
   id: '0f59ccb0-e32a-4e5a-83b6-826dbc2a9640',

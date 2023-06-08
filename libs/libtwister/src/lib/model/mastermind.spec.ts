@@ -1,24 +1,21 @@
 import legendary from '../data/gameSets/legendary';
 
-import { CardType } from './cardType.enum';
-import { IVillainGroup } from './interfaces';
 import { Mastermind } from './mastermind';
+import { VillainGroup } from './villainGroup';
 
 const epicRegex = new RegExp(`^Epic?`);
 
-const testVillain1: IVillainGroup = {
+const testVillain1 = new VillainGroup({
   gameSet: legendary,
   id: 'fb5a07cf-eddd-449d-abf5-06acd070fbdb',
   name: 'Test villain 1',
-  cardType: CardType.VILLAINGROUP,
-};
+});
 
-const testVillain2: IVillainGroup = {
+const testVillain2 = new VillainGroup({
   gameSet: legendary,
   id: 'fb5a07cf-eddd-449d-abf5-06acd070fbdb',
   name: 'Test villain 2',
-  cardType: CardType.VILLAINGROUP,
-};
+});
 
 const BASE_MASTERMIND = {
   attackPoints: 5,

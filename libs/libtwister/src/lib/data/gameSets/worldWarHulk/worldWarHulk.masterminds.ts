@@ -15,7 +15,7 @@ import {
   INTELLIGENCIA,
   SAKAAR_IMPERIAL_GUARD,
   WARBOUND,
-} from './villains';
+} from './worldWarHulk.villains';
 
 export const GENERAL_THUNDERBOLT_ROSS = new Mastermind({
   id: '1361f09c-889c-4d5b-92e2-6a739ad0fb09',

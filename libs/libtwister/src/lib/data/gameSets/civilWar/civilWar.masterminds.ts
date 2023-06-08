@@ -9,7 +9,7 @@ import {
   SHIELD_ELITE,
   SUPERHUMAN_REGISTRATION_ACT,
   THUNDERBOLTS,
-} from './villains';
+} from './civilWar.villains';
 
 export const AUTHORITARIAN_IRON_MAN = new Mastermind({
   id: 'e9052952-4b86-4718-b33f-2b926d32b833',

@@ -3,7 +3,7 @@ import { Mastermind } from '../../../model';
 import { SPIDERINFECTED } from './henchmen';
 import { CHARGE, CIRCLE_OF_KUNG_FU, FATEFUL_RESURRECTION } from './keywords';
 import { META } from './meta';
-import { KUNLUN, MONSTER_METROPOLIS, UTOPOLIS } from './villains';
+import { KUNLUN, MONSTER_METROPOLIS, UTOPOLIS } from './sw2.villains';
 
 export const IMMORTAL_EMPEROR_ZHENGZHU = new Mastermind({
   id: '03b4ca44-6b71-4a36-abe3-902f79b90d5b',

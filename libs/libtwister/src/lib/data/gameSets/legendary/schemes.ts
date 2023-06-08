@@ -5,7 +5,7 @@ import {
 } from '../../../model';
 import { HeroClass } from '../../enums';
 
-import { SKRULLS } from './villains';
+import { SKRULLS } from './legendary.villains';
 
 export const THE_LEGACY_VIRUS: ShortScheme = {
   id: 'b9171c60-c3c3-4482-91e5-38ba1d2b3a6a',

@@ -2,7 +2,10 @@ import { EpicMastermindBuilder } from '../../../model';
 
 import { ABOMINATION, THRONES_FAVOR } from './keywords';
 import { META } from './meta';
-import { INHUMAN_REBELLION, SHIAR_IMPERIAL_ELITE } from './villains';
+import {
+  INHUMAN_REBELLION,
+  SHIAR_IMPERIAL_ELITE,
+} from './realmOfKings.villains';
 
 const maximusTheMad = new EpicMastermindBuilder({
   name: 'Maximus the Mad',

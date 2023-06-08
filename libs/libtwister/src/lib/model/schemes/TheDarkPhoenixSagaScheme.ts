@@ -4,12 +4,12 @@ import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  IVillainGroup,
   SchemeMinusRules,
   VillainDeckMinimal,
 } from '../interfaces';
 import { Mastermind } from '../mastermind';
 import { NumPlayers } from '../types';
+import { VillainGroup } from '../villainGroup';
 
 import { RequireVillainsInVillainDeckScheme } from './RequireVillainsInVillainDeckScheme';
 import { Scheme } from './Scheme';
@@ -17,7 +17,7 @@ import { Scheme } from './Scheme';
 export class TheDarkPhoenixSagaScheme extends RequireVillainsInVillainDeckScheme {
   constructor(
     scheme: SchemeMinusRules,
-    requiredVillain: IVillainGroup,
+    requiredVillain: VillainGroup,
     private _preferredHero: Hero,
     private _backupHero: Hero
   ) {

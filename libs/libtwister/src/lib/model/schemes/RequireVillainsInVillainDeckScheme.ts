@@ -4,24 +4,24 @@ import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  IVillainGroup,
   SchemeMinusRules,
   VillainDeckMinimal,
 } from '../interfaces';
 import { Mastermind } from '../mastermind';
 import { NumPlayers } from '../types';
+import { VillainGroup } from '../villainGroup';
 
 import { Scheme } from './Scheme';
 
 export class RequireVillainsInVillainDeckScheme extends Scheme {
-  private _requiredVillains: IVillainGroup[];
+  private _requiredVillains: VillainGroup[];
 
   constructor(
     scheme: SchemeMinusRules,
-    requiredVillain: IVillainGroup,
+    requiredVillain: VillainGroup,
     private _numberRequired = 1,
     private _removeOthers = false,
-    ...requiredVillains: IVillainGroup[]
+    ...requiredVillains: VillainGroup[]
   ) {
     super(scheme);
 

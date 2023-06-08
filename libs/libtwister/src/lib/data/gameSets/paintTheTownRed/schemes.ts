@@ -4,7 +4,7 @@ import {
 } from '../../../model';
 
 import { WALL_CRAWL } from './keywords';
-import { SINISTER_SIX } from './villains';
+import { SINISTER_SIX } from './paintTheTownRed.villains';
 
 export const THE_CLONE_SAGA: ShortScheme = {
   id: '650a925c-d835-4a42-ac59-9a54e2ee3e08',

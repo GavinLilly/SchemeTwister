@@ -8,7 +8,7 @@ import {
   SENTINEL_TERRITORIES,
   THE_DEADLANDS,
   WASTELAND,
-} from './villains';
+} from './sw1.villains';
 
 export const MADELYNE_PRYOR_GOBLIN_QUEEN = new Mastermind({
   id: '60a0a5df-2273-43a8-9d08-e7b2c9ab7e05',

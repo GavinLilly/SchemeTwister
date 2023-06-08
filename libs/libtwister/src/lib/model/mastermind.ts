@@ -6,10 +6,10 @@ import {
   IHenchmen,
   IKeyword,
   INumPlayerRules,
-  IVillainGroup,
 } from './interfaces';
 import { ICardType } from './interfaces/cardType.interface';
 import { Series } from './series.enum';
+import { VillainGroup } from './villainGroup';
 
 /** A function that will override the rules provided, optionally basing it on the number of players. */
 type RuleOverrideFunction = (
@@ -20,7 +20,7 @@ type RuleOverrideFunction = (
 export interface IMastermind extends IBadGuyCard {
   readonly name: string;
   readonly keywords?: IKeyword[];
-  readonly alwaysLeads: (IVillainGroup | IHenchmen)[];
+  readonly alwaysLeads: (VillainGroup | IHenchmen)[];
   /**
    * Override the rules for each number of players. Useful for setting a rule
    * based on the number of players
@@ -32,7 +32,7 @@ export class Mastermind implements IMastermind, ICardType {
   private readonly _name: string;
   private readonly _gameSet: IGameSetMeta;
   private readonly _keywords: IKeyword[];
-  private readonly _alwaysLeads: (IVillainGroup | IHenchmen)[];
+  private readonly _alwaysLeads: (VillainGroup | IHenchmen)[];
   private readonly _id: string;
   private readonly _attackPoints: number | string;
   private readonly _victoryPoints: number;

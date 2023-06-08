@@ -5,7 +5,7 @@ import { CONQUEROR } from '../marvelStudios/keywords';
 
 import { VILLAINOUS_WEAPONS } from './keywords';
 import { META } from './meta';
-import { DARK_COUNCIL, OMENS_OF_RAGNAROK } from './villains';
+import { DARK_COUNCIL, OMENS_OF_RAGNAROK } from './heroesOfAsgard.villains';
 
 const malekith = new EpicMastermindBuilder({
   name: 'Malekith the Accursed',

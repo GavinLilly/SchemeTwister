@@ -3,7 +3,7 @@ import { JEAN_GREY } from '../../data/gameSets/darkCity/darkCity.heroes';
 import XMEN from '../../data/gameSets/xMen';
 import { PHOENIX } from '../../data/gameSets/xMen/xMen.heroes';
 import { THE_DARK_PHOENIX_SAGA } from '../../data/gameSets/xMen/schemes';
-import { HELLFIRE_CLUB } from '../../data/gameSets/xMen/villains';
+import { HELLFIRE_CLUB } from '../../data/gameSets/xMen/xMen.villains';
 import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';
 import { IGameSetup } from '../interfaces';

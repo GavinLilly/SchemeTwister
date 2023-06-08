@@ -3,16 +3,12 @@ import * as uuid from 'uuid';
 import { CardType } from './cardType.enum';
 import { GameSetSize } from './gameSetSize.enum';
 import { Hero } from './hero';
-import {
-  IBystander,
-  IGameSetMeta,
-  IHenchmen,
-  IVillainGroup,
-} from './interfaces';
+import { IBystander, IGameSetMeta, IHenchmen } from './interfaces';
 import { SchemeMinusRules } from './interfaces/newScheme.interface';
 import { Mastermind } from './mastermind';
 import { Series } from './series.enum';
 import { AllCardTypes } from './types';
+import { VillainGroup } from './villainGroup';
 
 export class GameSet implements IGameSetMeta {
   readonly id: string;
@@ -26,7 +22,7 @@ export class GameSet implements IGameSetMeta {
     readonly heroes: Hero[],
     readonly masterminds?: Mastermind[],
     readonly schemes?: SchemeMinusRules[],
-    readonly villains?: IVillainGroup[],
+    readonly villains?: VillainGroup[],
     readonly henchmen?: IHenchmen[],
     readonly bystanders?: Hero[] | IBystander[]
   ) {

@@ -5,20 +5,20 @@ import {
   VillainDeckMinimal,
   AdditionalDeckDeckMinimal,
   SchemeMinusRules,
-  IVillainGroup,
 } from '../interfaces';
 import { Mastermind } from '../mastermind';
 import { NumPlayers, numPlayers as numPlayersCount } from '../types';
+import { VillainGroup } from '../villainGroup';
 
 import { RequireVillainsInVillainDeckScheme } from './RequireVillainsInVillainDeckScheme';
 
 export class RitualSacrificeToSummonChthonScheme extends RequireVillainsInVillainDeckScheme {
   constructor(
     scheme: SchemeMinusRules,
-    requiredVillain: IVillainGroup,
+    requiredVillain: VillainGroup,
     numberRequired = 1,
     removeOthers = false,
-    ...requiredVillains: IVillainGroup[]
+    ...requiredVillains: VillainGroup[]
   ) {
     super(
       scheme,

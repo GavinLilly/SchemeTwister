@@ -5,7 +5,7 @@ import { SENTINELS } from '../legendary/henchmen';
 import { SENTINEL_SQUAD_ONE } from './henchmen';
 import { PREY, SHATTER } from './keywords';
 import { META } from './meta';
-import { ACOLYTES, PURIFIERS, REAVERS } from './villains';
+import { ACOLYTES, PURIFIERS, REAVERS } from './messiahComplex.villains';
 
 const ladyDeathstrike = new EpicMastermindBuilder({
   name: 'Lady Deathstrike',

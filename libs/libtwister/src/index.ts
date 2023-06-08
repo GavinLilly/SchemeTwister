@@ -7,7 +7,7 @@ export {
   ICard,
   IHenchmen,
   Hero,
-  IVillainGroup,
+  VillainGroup,
   GameSetSize,
   IHeroDeck,
   IVillainDeck,
@@ -18,6 +18,7 @@ export {
   numPlayers,
   Scheme,
   SchemeMinusRules,
+  Mastermind,
 } from './lib/model';
 export { MultiCardStore } from './lib/factories';
 export { injectGameSet } from './lib/utils/schemeInjector';

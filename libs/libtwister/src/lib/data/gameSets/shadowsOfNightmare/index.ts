@@ -5,7 +5,7 @@ import { META } from './meta';
 import * as Schemes from './schemes';
 import * as Heroes from './shadowsOfNightmare.heroes';
 import * as Masterminds from './shadowsOfNightmare.masterminds';
-import * as Villains from './villains';
+import * as Villains from './shadowsOfNightmare.villains';
 
 const schemes = injectGameSetToMany(META, Object.values(Schemes));
 

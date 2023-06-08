@@ -4,7 +4,7 @@ import {
 } from '../../../model';
 
 import { MOONLIGHT_AND_SUNLIGHT } from './keywords';
-import { DEMONS_OF_LIMBO } from './villains';
+import { DEMONS_OF_LIMBO } from './theNewMutants.villains';
 
 export const THE_DEMON_BEAR_SAGA: ShortScheme = {
   id: '38763bc5-1569-4752-a6dd-3829030e8b96',

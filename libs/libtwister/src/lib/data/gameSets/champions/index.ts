@@ -3,9 +3,9 @@ import { injectGameSetToMany } from '../../../utils/schemeInjector';
 
 import * as Heroes from './champions.heroes';
 import * as Masterminds from './champions.masterminds';
+import * as Villains from './champions.villains';
 import { META } from './meta';
 import * as Schemes from './schemes';
-import * as Villains from './villains';
 
 const schemes = injectGameSetToMany(META, Object.values(Schemes));
 

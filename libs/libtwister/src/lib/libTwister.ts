@@ -7,9 +7,9 @@ import {
   GameSetup,
   Hero,
   IHenchmen,
-  IVillainGroup,
   Mastermind,
   NumPlayers,
+  VillainGroup,
 } from './model';
 import { GameSetMap } from './model/gameSetMap';
 import { SchemeMinusRules } from './model/interfaces/newScheme.interface';
@@ -151,7 +151,7 @@ export class LibTwister {
     const heroes: Hero[] = [];
     const masterminds: Mastermind[] = [];
     const schemes: SchemeMinusRules[] = [];
-    const villains: IVillainGroup[] = [];
+    const villains: VillainGroup[] = [];
     const henchmen: IHenchmen[] = [];
 
     this._selectedGameSets.forEach((gameSet) => {

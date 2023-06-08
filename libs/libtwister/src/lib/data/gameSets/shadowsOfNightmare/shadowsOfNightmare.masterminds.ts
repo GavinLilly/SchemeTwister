@@ -2,7 +2,10 @@ import { EpicMastermindBuilder } from '../../../model';
 
 import { ASTRAL_PLANE, DEMONIC_BARGAIN } from './keywords';
 import { META } from './meta';
-import { FEAR_LORDS, LORDS_OF_NETHERWORLD } from './villains';
+import {
+  FEAR_LORDS,
+  LORDS_OF_NETHERWORLD,
+} from './shadowsOfNightmare.villains';
 
 const dormammu = new EpicMastermindBuilder({
   name: 'Dormammu',

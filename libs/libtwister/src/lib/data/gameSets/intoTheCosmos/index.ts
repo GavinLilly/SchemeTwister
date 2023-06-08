@@ -5,9 +5,9 @@ import * as Bystanders from './bystanders';
 import * as Henchmen from './henchmen';
 import * as Heroes from './intoTheCosmos.heroes';
 import * as Masterminds from './intoTheCosmos.masterminds';
+import * as Villains from './intoTheCosmos.villains';
 import { META } from './meta';
 import * as Schemes from './schemes';
-import * as Villains from './villains';
 
 const schemes = injectGameSetToMany(META, Object.values(Schemes));
 

@@ -5,7 +5,7 @@ import {
 import { HeroClass } from '../../enums';
 
 import { HYDRA_LEVEL, UNDERCOVER } from './keywords';
-import { AIM_HYDRA_OFFSHOOT, HYDRA_ELITE } from './villains';
+import { AIM_HYDRA_OFFSHOOT, HYDRA_ELITE } from './shield.villains';
 
 export const SHIELD_VS_HYDRA_WAR: ShortScheme = {
   id: '05c59c1a-fa4e-4b84-a8f8-282e3d882454',

@@ -2,7 +2,7 @@ import { Mastermind } from '../../../model';
 
 import { REVENGE } from './keywords';
 import { META } from './meta';
-import { DEADPOOLS_FRIENDS, EVIL_DEADPOOL_CORPSE } from './villains';
+import { DEADPOOLS_FRIENDS, EVIL_DEADPOOL_CORPSE } from './deadpool.villains';
 
 export const EVIL_DEADPOOL = new Mastermind({
   id: 'e9427fd1-f815-4a04-8ca9-822ae4152a9b',

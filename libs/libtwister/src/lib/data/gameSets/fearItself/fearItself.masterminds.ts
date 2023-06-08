@@ -2,7 +2,7 @@ import { Mastermind } from '../../../model';
 import { DEMOLISH } from '../villains/keywords';
 
 import { META } from './meta';
-import { THE_MIGHTY } from './villains';
+import { THE_MIGHTY } from './fearItself.villains';
 
 export const URUENCHANTED_IRON_MAN = new Mastermind({
   id: 'ae06a222-8894-458e-9ef3-f75b823d4d2b',

@@ -6,7 +6,7 @@ import {
 } from '../../../model';
 
 import { COPS, SHIELD_ASSAULT_SQUAD } from './henchmen';
-import { AVENGERS } from './villains';
+import { AVENGERS } from './villains.villains';
 
 export const BUILD_AN_UNDERGROUND_MEGAVAULT_PRISON: ShortScheme = {
   id: 'ea05a9a1-39b0-4925-a85b-8b62b127d1e4',

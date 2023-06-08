@@ -8,7 +8,7 @@ import {
   MLF,
   STREETS_OF_NEW_YORK,
   UNDERWORLD,
-} from './villains';
+} from './darkCity.villains';
 
 export const APOCALYPSE = new Mastermind({
   id: 'ec0617db-3869-4301-b07d-938876684790',

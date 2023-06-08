@@ -1,8 +1,8 @@
 import { Hero } from '../hero';
 import { Mastermind } from '../mastermind';
+import { VillainGroup } from '../villainGroup';
 
 import { IHenchmen } from './henchmen.interface';
-import { IVillainGroup } from './villainGroup.interface';
 
 interface IDeck {
   heroes?: Hero[];
@@ -17,7 +17,7 @@ export interface IHeroDeck extends IDeck {
 export type HeroDeckMinimal = Partial<Pick<IHeroDeck, 'heroes' | 'henchmen'>>;
 
 export interface IVillainDeck extends IDeck {
-  villains: IVillainGroup[];
+  villains: VillainGroup[];
   henchmen: IHenchmen[];
   numTwists: number;
   numMasterStrikes: number;
@@ -31,7 +31,7 @@ export type VillainDeckMinimal = Partial<
 >;
 
 export interface IAdditionalDeckDeck extends IDeck {
-  villains?: IVillainGroup[];
+  villains?: VillainGroup[];
   numTwists?: number;
   numWounds?: number;
   masterminds?: Mastermind[];

@@ -3,7 +3,7 @@ import { Mastermind } from '../../../model';
 import { ASGARDIAN_WARRIORS } from './henchmen';
 import { DEMOLISH, X_TREME_ATTACK } from './keywords';
 import { META } from './meta';
-import { AVENGERS, DEFENDERS, XMEN_FIRST_CLASS } from './villains';
+import { AVENGERS, DEFENDERS, XMEN_FIRST_CLASS } from './villains.villains';
 
 export const DR_STRANGE = new Mastermind({
   id: '18f47d4e-6af2-4732-a34c-3a0c6a9bfb4f',

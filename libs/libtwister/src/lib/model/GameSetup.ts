@@ -6,12 +6,12 @@ import {
   IHeroDeck,
   IKeyword,
   IVillainDeck,
-  IVillainGroup,
   nameSorter,
 } from './interfaces';
 import { IGameSetup } from './interfaces/gameSetup.interface';
 import { Mastermind } from './mastermind';
 import { Scheme } from './schemes';
+import { VillainGroup } from './villainGroup';
 
 /**
  * A class to store the generated game setup.
@@ -97,7 +97,7 @@ export class GameSetup implements IGameSetup {
       .concat(this.additionalDeck?.deck.henchmen ?? []);
   }
 
-  public getSelectedVillains(): IVillainGroup[] {
+  public getSelectedVillains(): VillainGroup[] {
     return this.villainDeck.villains.concat(
       this.additionalDeck?.deck.villains ?? []
     );

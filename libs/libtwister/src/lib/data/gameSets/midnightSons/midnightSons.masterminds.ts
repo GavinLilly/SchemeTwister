@@ -2,7 +2,7 @@ import { EpicMastermindBuilder } from '../../../model';
 
 import { HAUNT, HUNT_FOR_VICTIMS } from './keywords';
 import { META } from './meta';
-import { LILIN, FALLEN } from './villains';
+import { LILIN, FALLEN } from './midnightSons.villains';
 
 const lilith = new EpicMastermindBuilder({
   name: 'Lilith, Mother of Demons',

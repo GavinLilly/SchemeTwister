@@ -23,7 +23,7 @@ import { SPLICE_HUMANS_WITH_SPIDER_DNA } from '../data/gameSets/paintTheTownRed/
 import {
   MAXIMUM_CARNAGE,
   SINISTER_SIX,
-} from '../data/gameSets/paintTheTownRed/villains';
+} from '../data/gameSets/paintTheTownRed/paintTheTownRed.villains';
 import { StoreBuilder, StoreOfStores } from '../factories';
 import { injectGameSet } from '../utils/schemeInjector';
 

@@ -4,7 +4,7 @@ import { DEMOLISH } from '../villains/keywords';
 
 import { SIZE_CHANGING } from './keywords';
 import { META } from './meta';
-import { MONSTERS_UNLEASHED, WRECKING_CREW } from './villains';
+import { MONSTERS_UNLEASHED, WRECKING_CREW } from './champions.villains';
 
 const finFangFoom = new EpicMastermindBuilder({
   gameSet: META,

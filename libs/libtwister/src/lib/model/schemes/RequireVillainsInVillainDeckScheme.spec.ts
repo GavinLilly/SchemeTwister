@@ -1,18 +1,19 @@
 import GUARDIANS from '../../data/gameSets/guardiansOfTheGalaxy';
+import { KREE_STARFORCE } from '../../data/gameSets/guardiansOfTheGalaxy/guardiansOfTheGalaxy.villains';
 import { THE_KREE_SKRULL_WAR } from '../../data/gameSets/guardiansOfTheGalaxy/schemes';
-import { KREE_STARFORCE } from '../../data/gameSets/guardiansOfTheGalaxy/villains';
 import LEGENDARY from '../../data/gameSets/legendary';
+import { SKRULLS } from '../../data/gameSets/legendary/legendary.villains';
 import { SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS } from '../../data/gameSets/legendary/schemes';
-import { SKRULLS } from '../../data/gameSets/legendary/villains';
 import SHIELD from '../../data/gameSets/shield';
 import { SHIELD_VS_HYDRA_WAR } from '../../data/gameSets/shield/schemes';
 import {
   AIM_HYDRA_OFFSHOOT,
   HYDRA_ELITE,
-} from '../../data/gameSets/shield/villains';
+} from '../../data/gameSets/shield/shield.villains';
 import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';
-import { IVillainGroup, IGameSetup } from '../interfaces';
+import { IGameSetup } from '../interfaces';
+import { VillainGroup } from '../villainGroup';
 
 import { RequireVillainsInVillainDeckScheme } from './RequireVillainsInVillainDeckScheme';
 import { Scheme } from './Scheme';
@@ -75,7 +76,7 @@ describe('Require Villains In Villain Deck Scheme', () => {
     let scheme: Scheme;
     let setup: IGameSetup;
 
-    const shieldVillainPredicate = (item: IVillainGroup) =>
+    const shieldVillainPredicate = (item: VillainGroup) =>
       [AIM_HYDRA_OFFSHOOT, HYDRA_ELITE].includes(item);
 
     beforeEach(() => {

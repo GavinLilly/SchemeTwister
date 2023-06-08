@@ -10,7 +10,7 @@ import {
   MOJOVERSE,
   MURDERWORLD,
   SHADOW_X,
-} from './villains';
+} from './xMen.villains';
 
 const arcadeCommons: Pick<IMastermind, 'gameSet' | 'alwaysLeads' | 'keywords'> =
   {

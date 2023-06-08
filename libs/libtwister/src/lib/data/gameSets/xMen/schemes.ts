@@ -9,7 +9,7 @@ import { SENTINELS } from '../legendary/henchmen';
 import { THE_BROOD } from './henchmen';
 import { PHOENIX } from './xMen.heroes';
 import { TRAPS } from './keywords';
-import { HELLFIRE_CLUB } from './villains';
+import { HELLFIRE_CLUB } from './xMen.villains';
 
 export const ALIEN_BROOD_ENCOUNTER: ShortScheme = {
   id: 'af32abef-e791-484a-9014-8e3195095adb',

@@ -1,4 +1,4 @@
-import { GameSet, Hero, Mastermind, IVillainGroup, IHenchmen } from '../model';
+import { GameSet, Hero, Mastermind, VillainGroup, IHenchmen } from '../model';
 
 import { StoreOfStores } from './storeOfStores';
 
@@ -72,9 +72,9 @@ export class StoreBuilder implements StepA, StepB, StepC, StepD, Build {
       .flatMap((gameSet) => gameSet.masterminds)
       .filter((mastermind): mastermind is Mastermind => !!mastermind);
 
-    const villains: IVillainGroup[] = this._villainGamesets
+    const villains: VillainGroup[] = this._villainGamesets
       .flatMap((gameSet) => gameSet.villains)
-      .filter((villain): villain is IVillainGroup => !!villain);
+      .filter((villain): villain is VillainGroup => !!villain);
 
     const henchmen: IHenchmen[] = this._henchmenGamesets
       .flatMap((gameSet) => gameSet.henchmen)

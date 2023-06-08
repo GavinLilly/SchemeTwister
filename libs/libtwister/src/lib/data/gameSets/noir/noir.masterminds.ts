@@ -2,7 +2,7 @@ import { Mastermind } from '../../../model';
 
 import { HIDDEN_WITNESS, INVESTIGATE } from './keywords';
 import { META } from './meta';
-import { GOBLINS_FREAK_SHOW, XMEN_NOIR } from './villains';
+import { GOBLINS_FREAK_SHOW, XMEN_NOIR } from './noir.villains';
 
 export const CHARLES_XAVIER_PROFESSOR_OF_CRIME = new Mastermind({
   id: 'c31d1352-17f4-4389-82ca-d94c70409966',

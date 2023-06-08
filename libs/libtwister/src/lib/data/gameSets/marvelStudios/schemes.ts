@@ -5,7 +5,7 @@ import {
 } from '../../../model';
 import { HeroClass } from '../../enums';
 
-import { CHITAURI } from './villains';
+import { CHITAURI } from './marvelStudios.villains';
 
 export const ASGARD_UNDER_SIEGE: ShortScheme = {
   id: '8d4bc6fd-0fb5-448e-9799-1608a2e8dbc2',

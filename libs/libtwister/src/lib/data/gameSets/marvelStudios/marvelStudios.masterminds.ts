@@ -2,7 +2,7 @@ import { Mastermind } from '../../../model';
 
 import { CONQUEROR } from './keywords';
 import { META } from './meta';
-import { ENEMIES_OF_ASGARD, HYDRA, IRON_FOES } from './villains';
+import { ENEMIES_OF_ASGARD, HYDRA, IRON_FOES } from './marvelStudios.villains';
 
 export const IRON_MONGER = new Mastermind({
   id: 'a809a0db-8214-4547-9fd6-177c03050055',
