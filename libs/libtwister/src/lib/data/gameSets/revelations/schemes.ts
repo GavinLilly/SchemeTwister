@@ -1,10 +1,10 @@
-import { NewScheme } from '../../../model';
+import { ShortScheme } from '../../../model';
 import { HouseOfMScheme } from '../../../model/schemes/HouseOfMScheme';
 
-import { SCARLET_WITCH } from './heroes';
+import { SCARLET_WITCH } from './revelations.heroes';
 import { DOUBLE_SIDED_TRANSFORMING_SCHEMES } from './keywords';
 
-export const EARTHQUAKE_DRAINS_THE_OCEAN: NewScheme = {
+export const EARTHQUAKE_DRAINS_THE_OCEAN: ShortScheme = {
   id: '16800076-996c-4cea-89f9-4d5bb6969557',
   name: 'Earthquake Drains the Ocean',
   setup: '11 Twists. Add an extra Villain Group.',
@@ -23,7 +23,7 @@ export const EARTHQUAKE_DRAINS_THE_OCEAN: NewScheme = {
   },
 };
 
-export const HOUSE_OF_M: NewScheme = {
+export const HOUSE_OF_M: ShortScheme = {
   id: '392eb5bd-261f-4bcd-a9bc-77137c3ae0e1',
   name: 'House of M',
   setup:
@@ -48,7 +48,7 @@ export const HOUSE_OF_M: NewScheme = {
   },
 };
 
-export const SECRET_HYDRA_CORRUPTION: NewScheme = {
+export const SECRET_HYDRA_CORRUPTION: ShortScheme = {
   id: 'ba1c8117-bb39-48d6-ad47-09ead82f402c',
   name: 'Secret HYDRA Corruption',
   setup:
@@ -74,7 +74,7 @@ export const SECRET_HYDRA_CORRUPTION: NewScheme = {
   },
 };
 
-export const THE_KORVAC_SAGA: NewScheme = {
+export const THE_KORVAC_SAGA: ShortScheme = {
   id: '2f845b77-435f-472e-9ed9-c501e08ff62d',
   name: 'The Korvac Saga',
   setup: '8 Twists.',

@@ -1,11 +1,11 @@
-import { NewScheme } from '../../../model';
+import { ShortScheme } from '../../../model';
 import { DARK_MEMORIES } from '../revelations/keywords';
 import { UNDERCOVER } from '../shield/keywords';
 import { DODGE } from '../villains/keywords';
 
 import { UNLEASH } from './keywords';
 
-export const CORRUPT_THE_SPY_AGENCIES: NewScheme = {
+export const CORRUPT_THE_SPY_AGENCIES: ShortScheme = {
   id: '92a8a127-c651-4e50-9bcd-8e75aeb031de',
   name: 'Corrupt the Spy Agencies',
   setup: '7 Twists',
@@ -16,7 +16,7 @@ export const CORRUPT_THE_SPY_AGENCIES: NewScheme = {
   keywords: [UNDERCOVER, UNLEASH],
 };
 
-export const TRAIN_BLACK_WIDOWS_IN_THE_RED_ROOM: NewScheme = {
+export const TRAIN_BLACK_WIDOWS_IN_THE_RED_ROOM: ShortScheme = {
   id: 'b1d67b24-45a6-4ede-a82b-e86aedfacea4',
   name: 'Train Black Widows in the Red Room',
   setup:
@@ -42,7 +42,7 @@ export const TRAIN_BLACK_WIDOWS_IN_THE_RED_ROOM: NewScheme = {
   keywords: [DARK_MEMORIES, UNDERCOVER],
 };
 
-export const SNIPER_RIFLE_ASSASSINS: NewScheme = {
+export const SNIPER_RIFLE_ASSASSINS: ShortScheme = {
   id: '18c8046e-e21e-4b37-ae14-43f20dd17aa8',
   name: 'Sniper Rifle Assassins',
   setup: '11 Twists, minus 1 Twist per player',
@@ -60,7 +60,7 @@ export const SNIPER_RIFLE_ASSASSINS: NewScheme = {
   keywords: [DODGE],
 };
 
-export const FRAME_HEROES_FOR_MURDER: NewScheme = {
+export const FRAME_HEROES_FOR_MURDER: ShortScheme = {
   id: '98eb4b69-ba00-41b7-8812-755b2d88cbb3',
   name: 'Frame Heroes for Murder',
   setup: '7 Twists, 6 Heroes.',

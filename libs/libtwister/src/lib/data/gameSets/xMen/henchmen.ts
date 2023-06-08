@@ -1,5 +1,4 @@
-import { IHenchmen , CardType } from '../../../model';
-
+import { IHenchmen, CardType } from '../../../model';
 
 import { HUMAN_SHIELDS, SOARING_FLIGHT } from './keywords';
 import { META } from './meta';
@@ -11,7 +10,7 @@ export const THE_BROOD: IHenchmen = {
   fight: 'KO one of your Heroes. Then KO a Bystander from the Bystander Stack.',
   attackPoints: '1+',
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.HENCHMEN,
 };
 
@@ -21,7 +20,7 @@ export const HELLFIRE_CULT: IHenchmen = {
   fight: `Reveal the top card of your deck. If it costs 0, KO it. Otherwise, you get +1 Recruit.`,
   attackPoints: 3,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.HENCHMEN,
 };
 
@@ -32,7 +31,7 @@ export const SAPIEN_LEAGUE: IHenchmen = {
     "KO one of your Heroes. Then, reveal the top card of the Villain Deck. If it's a Henchman Villain, play it.",
   attackPoints: 3,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.HENCHMEN,
 };
 
@@ -43,7 +42,7 @@ export const SHIAR_DEATH_COMMANDOS: IHenchmen = {
   fight: 'KO one of your Heroes.',
   attackPoints: '2*',
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.HENCHMEN,
   keywords: [HUMAN_SHIELDS],
 };
@@ -54,7 +53,7 @@ export const SHIAR_PATROL_CRAFT: IHenchmen = {
   fight: `The next Hero you recruit this turn has ${SOARING_FLIGHT.name}.`,
   attackPoints: 3,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.HENCHMEN,
   keywords: [SOARING_FLIGHT],
 };

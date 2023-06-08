@@ -5,5 +5,5 @@ export const META: IGameSetMeta = {
   name: "Marvel Studios' The Infinity Saga",
   size: GameSetSize.SMALL,
   releaseYear: 2023,
-  series: Series.MARVEL_STUDIOS,
+  series: Series.MCU,
 };

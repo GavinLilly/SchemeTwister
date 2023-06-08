@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import DARK_CITY from './data/gameSets/darkCity';
 import LEGENDARY from './data/gameSets/legendary';
+import MARVEL_STUDIOS from './data/gameSets/marvelStudios';
 import MCU_GUARDIANS_OF_THE_GALAXY from './data/gameSets/mcuGuardiansOfTheGalaxy';
 import {
   EGO_THE_LIVING_PLANET,
   EPIC_EGO_THE_LIVING_PLANET,
-} from './data/gameSets/mcuGuardiansOfTheGalaxy/masterminds';
+} from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.masterminds';
 import { UNLEASH_THE_ABILISK_SPACE_MONSTER } from './data/gameSets/mcuGuardiansOfTheGalaxy/schemes';
-import MARVEL_STUDIOS from './data/gameSets/mcuPhaseOne';
 import { LibTwister } from './libTwister';
 import {
   CardType,
@@ -18,59 +18,45 @@ import {
 } from './model';
 import { injectGameSet } from './utils/schemeInjector';
 
-const CORE_BOX_SIZE = 3;
-const BIG_BOX_SIZE = 6;
-const MEDIUM_BOX_SIZE = 3;
-const SMALL_BOX_SIZE = 23;
-const PROMO_BOX_SIZE = 1;
-const TOTAL_SIZE =
-  CORE_BOX_SIZE +
-  BIG_BOX_SIZE +
-  MEDIUM_BOX_SIZE +
-  SMALL_BOX_SIZE +
-  PROMO_BOX_SIZE;
-
 describe('LibTwister', () => {
   describe('All game sets', () => {
-    it(`should have ${TOTAL_SIZE} sets`, () =>
-      expect(LibTwister.allGameSets.size).toBe(TOTAL_SIZE));
+    it('should have 34 sets', () =>
+      expect(LibTwister.allGameSets.size).toBe(34));
 
-    it(`should have ${BIG_BOX_SIZE} big boxes`, () =>
+    it('should have 6 big boxes', () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
           (item) => item.size === GameSetSize.LARGE
         )
-      ).toHaveLength(BIG_BOX_SIZE));
+      ).toHaveLength(6));
 
-    it(`should have ${SMALL_BOX_SIZE} small boxes`, () =>
+    it('should have 21 small boxes', () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
           (item) => item.size === GameSetSize.SMALL
         )
-      ).toHaveLength(SMALL_BOX_SIZE));
+      ).toHaveLength(21));
 
-    it(`should have ${MEDIUM_BOX_SIZE} medium boxes`, () =>
+    it('should have 3 medium boxes', () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
           (item) => item.size === GameSetSize.MEDIUM
         )
-      ).toHaveLength(MEDIUM_BOX_SIZE));
+      ).toHaveLength(3));
 
-    it(`should have ${CORE_BOX_SIZE} core sets`, () =>
+    it('should have 3 core sets', () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
           (item) => item.size === GameSetSize.CORE
         )
-      ).toHaveLength(CORE_BOX_SIZE));
+      ).toHaveLength(3));
 
     it('should not have any duplicate card IDs', () => {
       const findDupes = (arr: string[]) => {
         const sortedArr = arr.slice().sort();
         const results = [];
         for (let i = 0; i < sortedArr.length - 1; i++) {
-          if (sortedArr[i + 1] === sortedArr[i]) {
-            results.push(sortedArr[i]);
-          }
+          if (sortedArr[i + 1] === sortedArr[i]) results.push(sortedArr[i]);
         }
         return results;
       };
@@ -143,24 +129,24 @@ describe('LibTwister', () => {
 
     it.each([2, 3, 4, 5])(
       'should generate a setup with %p players, only using Legendary cards',
-      async (numPlayers) => {
-        const setup = await twister.getSetup(numPlayers as NumPlayers);
+      (numPlayers) => {
+        const setup = twister.getSetup(numPlayers as NumPlayers);
 
-        expect(setup?.scheme.gameSetId).toBe(LEGENDARY.id);
-        expect(setup?.mastermind.gameSetId).toBe(LEGENDARY.id);
+        expect(setup?.scheme.gameSet.id).toBe(LEGENDARY.id);
+        expect(setup?.mastermind.gameSet.id).toBe(LEGENDARY.id);
         expect(
           setup?.heroDeck.heroes.every(
-            (hero) => hero.gameSetId === LEGENDARY.id
+            (hero) => hero.gameSet.id === LEGENDARY.id
           )
         ).toBeTruthy();
         expect(
           setup?.villainDeck.henchmen.every(
-            (henchmen) => henchmen.gameSetId === LEGENDARY.id
+            (henchmen) => henchmen.gameSet.id === LEGENDARY.id
           )
         ).toBeTruthy();
         expect(
           setup?.villainDeck.villains.every(
-            (villain) => villain.gameSetId === LEGENDARY.id
+            (villain) => villain.gameSet.id === LEGENDARY.id
           )
         ).toBeTruthy();
       }
@@ -234,7 +220,7 @@ describe('LibTwister', () => {
         expect(store.allCards).toEqual(expect.arrayContaining(legCards!));
         expect(
           store.allCards.every((card) =>
-            [LEGENDARY.id, DARK_CITY.id].includes(card.gameSetId)
+            [LEGENDARY.id, DARK_CITY.id].includes(card.gameSet.id)
           )
         ).toBeTruthy();
       }
@@ -254,13 +240,13 @@ describe('LibTwister', () => {
       let unleashScheme: SchemeMinusRules;
       beforeEach(() => {
         unleashScheme = injectGameSet(
-          MCU_GUARDIANS_OF_THE_GALAXY.id,
+          MCU_GUARDIANS_OF_THE_GALAXY,
           UNLEASH_THE_ABILISK_SPACE_MONSTER
         );
       });
       describe('with Ego as mastermind', () => {
-        it('should have an additional villain group', async () => {
-          const setup = await twister.getSetup(
+        it('should have an additional villain group', () => {
+          const setup = twister.getSetup(
             2,
             unleashScheme,
             EGO_THE_LIVING_PLANET
@@ -271,8 +257,8 @@ describe('LibTwister', () => {
       });
 
       describe('with Epic Ego as mastermind', () => {
-        it('should have 2 additional villain groups', async () => {
-          const setup = await twister.getSetup(
+        it('should have 2 additional villain groups', () => {
+          const setup = twister.getSetup(
             2,
             unleashScheme,
             EPIC_EGO_THE_LIVING_PLANET

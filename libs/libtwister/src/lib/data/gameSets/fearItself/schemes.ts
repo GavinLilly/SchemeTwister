@@ -1,6 +1,6 @@
-import { NewScheme, SoloBannedScheme } from '../../../model';
+import { ShortScheme, SoloBannedScheme } from '../../../model';
 
-export const FEAR_ITSELF: NewScheme = {
+export const FEAR_ITSELF: ShortScheme = {
   id: '895b4808-285a-4b4b-b997-93cacaa3a9ee',
   name: 'Fear Itself',
   setup: '10 Twists.',
@@ -9,7 +9,7 @@ export const FEAR_ITSELF: NewScheme = {
   meta: { numTwists: 10 },
 };
 
-export const LAST_STAND_AT_AVENGERS_TOWER: NewScheme = {
+export const LAST_STAND_AT_AVENGERS_TOWER: ShortScheme = {
   id: '5d754225-7031-4b95-b6dc-decbefcb81a2',
   name: 'Last Stand at Avengers Tower',
   setup: '6 Twists.',
@@ -20,7 +20,7 @@ export const LAST_STAND_AT_AVENGERS_TOWER: NewScheme = {
   meta: { numTwists: 6 },
 };
 
-export const THE_TRAITOR: NewScheme = {
+export const THE_TRAITOR: ShortScheme = {
   id: 'b2c79dfa-df65-45fb-91e3-9780bb565020',
   name: 'The Traitor',
   setup:

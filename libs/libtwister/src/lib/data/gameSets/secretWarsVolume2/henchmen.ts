@@ -1,4 +1,4 @@
-import { IHenchmen , CardType } from '../../../model';
+import { IHenchmen, CardType } from '../../../model';
 import { WALL_CRAWL } from '../paintTheTownRed/keywords';
 
 import { FATEFUL_RESURRECTION } from './keywords';
@@ -10,7 +10,7 @@ export const KHONSHU_GUARDIANS: IHenchmen = {
   attackPoints: '3',
   victoryPoints: 1,
   cardType: CardType.HENCHMEN,
-  gameSetId: META.id,
+  gameSet: META,
   fight: 'KO one of your Heroes.',
 };
 
@@ -20,7 +20,7 @@ export const MAGMA_MEN: IHenchmen = {
   attackPoints: '3',
   victoryPoints: 1,
   cardType: CardType.HENCHMEN,
-  gameSetId: META.id,
+  gameSet: META,
   fight: 'KO one of your Heroes.',
   keywords: [FATEFUL_RESURRECTION],
 };
@@ -31,7 +31,7 @@ export const SPIDERINFECTED: IHenchmen = {
   attackPoints: '3',
   victoryPoints: 1,
   cardType: CardType.HENCHMEN,
-  gameSetId: META.id,
+  gameSet: META,
   fight: 'The next Hero you gain this turn has Wall-Crawl',
   keywords: [WALL_CRAWL],
 };

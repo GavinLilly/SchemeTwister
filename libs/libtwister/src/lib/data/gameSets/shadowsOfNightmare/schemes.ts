@@ -1,9 +1,9 @@
-import { NewScheme } from '../../../model';
+import { ShortScheme } from '../../../model';
 import { HeroClass } from '../../enums';
 
 import { ASTRAL_PLANE, DEMONIC_BARGAIN, RITUAL_ARTIFACTS } from './keywords';
 
-export const CLAIM_SOULS_FOR_DEMONS: NewScheme = {
+export const CLAIM_SOULS_FOR_DEMONS: ShortScheme = {
   id: 'c05aab18-4135-43c7-9aac-429bc443b063',
   name: 'Claim Souls for Demons',
   setup: '8 twists',
@@ -15,7 +15,7 @@ export const CLAIM_SOULS_FOR_DEMONS: NewScheme = {
   meta: { numTwists: 8 },
 };
 
-export const WAR_OF_THE_DREAM_DIMENSION: NewScheme = {
+export const WAR_OF_THE_DREAM_DIMENSION: ShortScheme = {
   id: '6385b786-3648-45d0-8421-6645544f7dc5',
   name: 'War for the Dream Dimension',
   setup: '7 Twists. Add an extra Villain Group.',
@@ -32,7 +32,7 @@ export const WAR_OF_THE_DREAM_DIMENSION: NewScheme = {
   },
 };
 
-export const CURSED_PAGES_OF_THE_DARKHOLD_TOME: NewScheme = {
+export const CURSED_PAGES_OF_THE_DARKHOLD_TOME: ShortScheme = {
   id: 'eaa8d1b5-897e-469f-98b1-70a5ef2417ef',
   name: 'Cursed Pages of the Darkhold Tome',
   setup:
@@ -53,7 +53,7 @@ export const CURSED_PAGES_OF_THE_DARKHOLD_TOME: NewScheme = {
   },
 };
 
-export const DUELS_OF_SCIENCE_AND_MAGIC: NewScheme = {
+export const DUELS_OF_SCIENCE_AND_MAGIC: ShortScheme = {
   id: '253bf004-31e6-439f-a68f-b423ee3c0c9b',
   name: 'Duels of Science and Magic',
   setup:

@@ -1,9 +1,9 @@
-import { NewScheme } from '../../../model';
+import { ShortScheme } from '../../../model';
 import { AVENGERS, X_MEN, SPIDER_FRIENDS, MARVEL_KNIGHTS } from '../../teams';
 
 import { FORTIFY, SHIELD_CLEARANCE } from './keywords';
 
-export const AVENGERS_VS_XMEN: NewScheme = {
+export const AVENGERS_VS_XMEN: ShortScheme = {
   id: 'ed12b424-cdf5-4b78-ad31-a014c646891e',
   name: 'Avengers vs. X-Men',
   setup: `9 Twists. Hero Deck has 3 Heroes of one Team and 3 Heroes of another Team. (${AVENGERS}, ${X_MEN}, ${SPIDER_FRIENDS}, ${MARVEL_KNIGHTS} etc.)`,
@@ -13,7 +13,7 @@ Twist 8: Evil wins!`,
   meta: { numTwists: 9 },
 };
 
-export const DARK_REIGN_OF_HAMMER_OFFICERS: NewScheme = {
+export const DARK_REIGN_OF_HAMMER_OFFICERS: ShortScheme = {
   id: '22daba46-79c4-4b15-9b72-bbd296f15b21',
   name: 'Dark Reign of H.A.M.M.E.R. Officers',
   setup: '7 Twists.',
@@ -23,7 +23,7 @@ export const DARK_REIGN_OF_HAMMER_OFFICERS: NewScheme = {
   meta: { numTwists: 7 },
 };
 
-export const EPIC_SUPER_HERO_CIVIL_WAR: NewScheme = {
+export const EPIC_SUPER_HERO_CIVIL_WAR: ShortScheme = {
   id: '2f8a37d6-071d-48fb-b40a-cbee5d54584c',
   name: 'Epic Super Hero Civil War',
   setup:
@@ -47,7 +47,7 @@ export const EPIC_SUPER_HERO_CIVIL_WAR: NewScheme = {
   },
 };
 
-export const IMPRISON_UNREGISTERED_SUPERHUMANS: NewScheme = {
+export const IMPRISON_UNREGISTERED_SUPERHUMANS: ShortScheme = {
   id: 'bd5e4333-d8e4-43a2-be2e-35bfe6490c4b',
   name: 'Imprison Unregistered Superhumans',
   setup: '11 Twists.',
@@ -57,7 +57,7 @@ export const IMPRISON_UNREGISTERED_SUPERHUMANS: NewScheme = {
   meta: { numTwists: 11 },
 };
 
-export const NITRO_THE_SUPERVILLAIN_THREATENS_CROWDS: NewScheme = {
+export const NITRO_THE_SUPERVILLAIN_THREATENS_CROWDS: ShortScheme = {
   id: 'b73d1b78-5567-42b5-a24f-5060b684b87f',
   name: 'Nitro the Supervillain Threatens Crowds',
   setup: '8 Twists.',
@@ -66,7 +66,7 @@ export const NITRO_THE_SUPERVILLAIN_THREATENS_CROWDS: NewScheme = {
   meta: { numTwists: 8 },
 };
 
-export const PREDICT_FUTURE_CRIME: NewScheme = {
+export const PREDICT_FUTURE_CRIME: ShortScheme = {
   id: 'c3c39452-f2a8-442a-b348-bb405c078a04',
   name: 'Predict Future Crime',
   setup: '6 Twists. Add an extra Villain Group.',
@@ -81,7 +81,7 @@ export const PREDICT_FUTURE_CRIME: NewScheme = {
   },
 };
 
-export const REVEAL_HEROES_SECRET_IDENTITIES: NewScheme = {
+export const REVEAL_HEROES_SECRET_IDENTITIES: ShortScheme = {
   id: 'a337a91e-d497-4f2e-af9b-b1bf2e5297d2',
   name: "Reveal Heroes' Secret Identities",
   setup: '6 Twists. 7 Heroes in Hero Deck.',
@@ -96,7 +96,7 @@ export const REVEAL_HEROES_SECRET_IDENTITIES: NewScheme = {
   },
 };
 
-export const UNITED_STATES_SPLIT_BY_CIVIL_WAR: NewScheme = {
+export const UNITED_STATES_SPLIT_BY_CIVIL_WAR: ShortScheme = {
   id: 'f302a8ca-cbc4-44a2-a3b1-8359553f7a30',
   name: 'United States Split by Civil War',
   setup: '10 Twists.',

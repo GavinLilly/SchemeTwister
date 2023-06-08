@@ -5,5 +5,5 @@ export const META: IGameSetMeta = {
   name: 'Spider-Man Homecoming',
   size: GameSetSize.SMALL,
   releaseYear: 2017,
-  series: Series.MARVEL_STUDIOS,
+  series: Series.MCU,
 };

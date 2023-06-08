@@ -1,5 +1,4 @@
 import { StoreOfStores } from '../../factories/storeOfStores';
-import { AbstractMastermind } from '../AbstractMastermind';
 import { SinglePlayerError } from '../errors';
 import {
   AdditionalDeckDeckMinimal,
@@ -7,32 +6,33 @@ import {
   IGameSetup,
   VillainDeckMinimal,
 } from '../interfaces';
+import { Mastermind } from '../mastermind';
 import { NumPlayers } from '../types';
 
 import { Scheme } from './Scheme';
 
 export class SoloBannedScheme extends Scheme {
-  override async getSetup(
+  public override getSetup(
     numPlayers: NumPlayers,
-    selectedMastermind: AbstractMastermind,
+    selectedMastermind: Mastermind,
     store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): Promise<IGameSetup> {
+  ): IGameSetup {
     if (numPlayers === 1) {
       throw new SinglePlayerError();
-    } else {
-      return await super.getSetup(
-        numPlayers,
-        selectedMastermind,
-        store,
-        advancedSolo,
-        partialHeroDeck,
-        partialVillainDeck,
-        partialAdditionalDeck
-      );
     }
+
+    return super.getSetup(
+      numPlayers,
+      selectedMastermind,
+      store,
+      advancedSolo,
+      partialHeroDeck,
+      partialVillainDeck,
+      partialAdditionalDeck
+    );
   }
 }

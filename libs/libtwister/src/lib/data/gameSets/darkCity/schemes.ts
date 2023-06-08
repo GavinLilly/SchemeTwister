@@ -2,13 +2,13 @@ import {
   RequireHenchmenInVillainDeckScheme,
   RequireHeroInVillainDeckScheme,
 } from '../../../model';
-import { NewScheme } from '../../../model/interfaces';
+import { ShortScheme } from '../../../model/interfaces';
 import { HeroClass } from '../../enums';
 
 import { MAGGIA_GOONS } from './henchmen';
-import { JEAN_GREY } from './heroes';
+import { JEAN_GREY } from './darkCity.heroes';
 
-export const CAPTURE_BABY_HOPE: NewScheme = {
+export const CAPTURE_BABY_HOPE: ShortScheme = {
   id: 'd4d841c0-5e46-4307-9436-39482fa5627b',
   name: 'Capture Baby Hope',
   setup:
@@ -21,7 +21,7 @@ export const CAPTURE_BABY_HOPE: NewScheme = {
   meta: { numTwists: 8 },
 };
 
-export const DETONATE_THE_HELICARRIER: NewScheme = {
+export const DETONATE_THE_HELICARRIER: ShortScheme = {
   id: 'afe0c1bf-e25e-4321-9e60-6a864099ab32',
   name: 'Detonate the Helicarrier',
   setup: '8 Twists. 6 Heroes in the Hero Deck.',
@@ -39,7 +39,7 @@ export const DETONATE_THE_HELICARRIER: NewScheme = {
   },
 };
 
-export const MASSIVE_EARTHQUAKE_GENERATOR: NewScheme = {
+export const MASSIVE_EARTHQUAKE_GENERATOR: ShortScheme = {
   id: 'b5e7e6b9-d71e-4b97-9709-f34d4fb2a462',
   name: 'Massive Earthquake Generator',
   setup: '8 Twists.',
@@ -49,7 +49,7 @@ export const MASSIVE_EARTHQUAKE_GENERATOR: NewScheme = {
   meta: { numTwists: 8 },
 };
 
-export const ORGANIZED_CRIME_WAVE: NewScheme = {
+export const ORGANIZED_CRIME_WAVE: ShortScheme = {
   id: 'c2a36b60-4a97-4e3d-9f7b-4a14750c1d24',
   name: 'Organized Crime Wave',
   setup: '8 Twists. Include 10 Maggia Goons as one of the Henchman Groups.',
@@ -67,7 +67,7 @@ export const ORGANIZED_CRIME_WAVE: NewScheme = {
   },
 };
 
-export const SAVE_HUMANITY: NewScheme = {
+export const SAVE_HUMANITY: ShortScheme = {
   id: '48b8e045-c061-4e3a-877b-36e72f6b71ef',
   name: 'Save Humanity',
   setup:
@@ -88,7 +88,7 @@ export const SAVE_HUMANITY: NewScheme = {
   },
 };
 
-export const STEAL_THE_WEAPONIZED_PLUTONIUM: NewScheme = {
+export const STEAL_THE_WEAPONIZED_PLUTONIUM: ShortScheme = {
   id: '5c53d6e4-2b84-4fc1-81bc-750da3f899c7',
   name: 'Steal the Weaponized Plutonium',
   setup: '8 Twists representing Plutonium. Add an extra Villain Group.',
@@ -106,7 +106,7 @@ export const STEAL_THE_WEAPONIZED_PLUTONIUM: NewScheme = {
   },
 };
 
-export const TRANSFORM_CITIZENS_INTO_DEMONS: NewScheme = {
+export const TRANSFORM_CITIZENS_INTO_DEMONS: ShortScheme = {
   id: '2b991381-f7fe-44a4-adb5-99d10f936bb6',
   name: 'Transform Citizens Into Demons',
   setup:
@@ -129,7 +129,7 @@ export const TRANSFORM_CITIZENS_INTO_DEMONS: NewScheme = {
   },
 };
 
-export const XCUTIONERS_SONG: NewScheme = {
+export const XCUTIONERS_SONG: ShortScheme = {
   id: '05f48d7a-aa59-46af-b0e4-6e8b54395c70',
   name: "X-Cutioner's Song",
   setup:

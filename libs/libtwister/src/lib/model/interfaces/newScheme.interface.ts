@@ -3,7 +3,8 @@ import { Constructor } from 'type-fest';
 import { RulesModifierFunction } from '../rules';
 import { Scheme } from '../schemes/Scheme';
 
-import { IScheme } from './scheme.interface';
+import { ICard } from './card.interface';
+import { ICardType } from './cardType.interface';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 interface IEachPlayerTwists {
@@ -20,7 +21,11 @@ export interface IOverrideScheme {
   params?: unknown[];
 }
 
-interface INewScheme extends IScheme {
+export interface IScheme extends ICard, ICardType {
+  setup: string;
+  twist: string;
+  evilWins: string;
+  specialRules?: string;
   meta: {
     numTwists: number | IEachPlayerTwists;
     rules?: RulesModifierFunction;
@@ -28,6 +33,6 @@ interface INewScheme extends IScheme {
   };
 }
 
-export type NewScheme = Omit<INewScheme, 'gameSetId' | 'cardType'>;
+export type ShortScheme = Omit<IScheme, 'gameSet' | 'cardType'>;
 
-export type SchemeMinusRules = Omit<INewScheme, 'rules'>;
+export type SchemeMinusRules = Omit<IScheme, 'rules'>;

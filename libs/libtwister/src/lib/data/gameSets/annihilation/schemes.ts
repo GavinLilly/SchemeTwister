@@ -1,7 +1,7 @@
-import { NewScheme, PlayerPicksAHeroScheme } from '../../../model';
+import { ShortScheme, PlayerPicksAHeroScheme } from '../../../model';
 import { FOCUS } from '../fantasticFour/keywords';
 
-export const PULSE_WAVES_FROM_THE_NEGATIVE_ZONE: NewScheme = {
+export const PULSE_WAVES_FROM_THE_NEGATIVE_ZONE: ShortScheme = {
   id: 'f968b735-5575-407e-8dc9-091d1fef3b58',
   name: 'Pulse Waves from the Negative Zone',
   setup: '9 twists',
@@ -12,7 +12,7 @@ export const PULSE_WAVES_FROM_THE_NEGATIVE_ZONE: NewScheme = {
   meta: { numTwists: 9 },
 };
 
-export const SNEAK_ATTACK_THE_HEROES_HOMES: NewScheme = {
+export const SNEAK_ATTACK_THE_HEROES_HOMES: ShortScheme = {
   id: '0ab10c4f-6d7c-4f47-a4a7-e1af2aa23d6c',
   name: "Sneak Attack the Heroes' Homes",
   setup:
@@ -28,7 +28,7 @@ export const SNEAK_ATTACK_THE_HEROES_HOMES: NewScheme = {
   },
 };
 
-export const PUT_HUMANITY_ON_TRIAL: NewScheme = {
+export const PUT_HUMANITY_ON_TRIAL: ShortScheme = {
   id: '2a438d6d-3ec5-4e75-a97c-549f7317683e',
   name: 'Put Humanity on Trial',
   setup:
@@ -54,7 +54,7 @@ export const PUT_HUMANITY_ON_TRIAL: NewScheme = {
   },
 };
 
-export const BREACH_PARALLEL_DIMENSIONS: NewScheme = {
+export const BREACH_PARALLEL_DIMENSIONS: ShortScheme = {
   id: '554228f5-a706-4704-aebb-3ae09a593ddd',
   name: 'Breach Parallel Dimensions',
   setup: `6 Twists. Add 4 extra Bystanders to the Villain Deck. Deal the shuffled Deck into several "Dimension" decks where the first Dimension has 1 card, the next has 2 cards, then 3, 4 etc (The final Dimension might not have enough cards to reach it's full number)`,

@@ -1,9 +1,9 @@
-import { NewScheme, RequireTeamInHeroDeckScheme } from '../../../model';
+import { ShortScheme, RequireTeamInHeroDeckScheme } from '../../../model';
 import { SPIDER_FRIENDS } from '../../teams';
 
 import { STRIKER } from './keywords';
 
-export const DISTRACT_THE_HERO: NewScheme = {
+export const DISTRACT_THE_HERO: ShortScheme = {
   id: '764951d6-5b1c-4bf4-985a-c5804ea9b32e',
   name: 'Distract the Hero',
   setup: '8 Twists. Use at least one Spider Friends Hero.',
@@ -18,7 +18,7 @@ export const DISTRACT_THE_HERO: NewScheme = {
   },
 };
 
-export const EXPLOSION_AT_THE_WASHINGTON_MONUMENT: NewScheme = {
+export const EXPLOSION_AT_THE_WASHINGTON_MONUMENT: ShortScheme = {
   id: 'aae82a96-6b45-4c36-b9bd-cc8ea15a2947',
   name: 'Explosion at the Washington Monument',
   setup:
@@ -44,7 +44,7 @@ export const EXPLOSION_AT_THE_WASHINGTON_MONUMENT: NewScheme = {
   },
 };
 
-export const FERRY_DISASTER: NewScheme = {
+export const FERRY_DISASTER: ShortScheme = {
   id: 'f5cde443-9109-436c-9393-082ab306d428',
   name: 'Ferry Disaster',
   setup: '9 Twists. Put the Bystander Stack above the Sewers as the "Ferry."',
@@ -55,7 +55,7 @@ Twist 9: KO half the Bystanders from the Bystander deck, rounding up.`,
   meta: { numTwists: 9 },
 };
 
-export const SCAVENGE_ALIEN_WEAPONRY: NewScheme = {
+export const SCAVENGE_ALIEN_WEAPONRY: ShortScheme = {
   id: 'b28cb5ca-715f-4a3f-acf8-49d583131cc5',
   name: 'Scavenge Alien Weaponry',
   setup: '7 Twists. Add an extra Henchmen Group of 10 cards as "Smugglers."',

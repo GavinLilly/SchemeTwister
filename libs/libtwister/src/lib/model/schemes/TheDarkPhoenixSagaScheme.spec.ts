@@ -1,10 +1,10 @@
 import DARK_CITY from '../../data/gameSets/darkCity';
-import { JEAN_GREY } from '../../data/gameSets/darkCity/heroes';
+import { JEAN_GREY } from '../../data/gameSets/darkCity/darkCity.heroes';
 import XMEN from '../../data/gameSets/xMen';
-import { PHOENIX } from '../../data/gameSets/xMen/heroes';
+import { PHOENIX } from '../../data/gameSets/xMen/xMen.heroes';
 import { THE_DARK_PHOENIX_SAGA } from '../../data/gameSets/xMen/schemes';
 import { HELLFIRE_CLUB } from '../../data/gameSets/xMen/villains';
-import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
+import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';
 import { IGameSetup } from '../interfaces';
 
@@ -18,7 +18,7 @@ describe('The Dark Phoenix Saga Scheme', () => {
   beforeAll(() => {
     store = new StoreBuilder().withSingleGameset(XMEN).build();
     scheme = new TheDarkPhoenixSagaScheme(
-      injectGameSet(XMEN.id, THE_DARK_PHOENIX_SAGA),
+      injectGameSet(XMEN, THE_DARK_PHOENIX_SAGA),
       HELLFIRE_CLUB,
       JEAN_GREY,
       PHOENIX
@@ -29,12 +29,8 @@ describe('The Dark Phoenix Saga Scheme', () => {
 
   describe('with X-Men expansion', () => {
     let setup: IGameSetup;
-    beforeAll(async () => {
-      setup = await scheme.getSetup(
-        2,
-        store.mastermindStore.getOneRandom(),
-        store
-      );
+    beforeAll(() => {
+      setup = scheme.getSetup(2, store.mastermindStore.getOneRandom(), store);
     });
 
     it('should include Phoenix in the villain deck', () =>
@@ -46,14 +42,14 @@ describe('The Dark Phoenix Saga Scheme', () => {
 
   describe('with the Dark City expansion', () => {
     let setup: IGameSetup;
-    beforeAll(async () => {
+    beforeAll(() => {
       const dcHeroStore = new StoreBuilder()
         .withHeroGamesets(DARK_CITY)
         .withMastermindGamesets(XMEN)
         .withVillainGamesets(XMEN)
         .withHenchmenGamesets(XMEN)
         .build();
-      setup = await scheme.getSetup(
+      setup = scheme.getSetup(
         2,
         dcHeroStore.mastermindStore.getOneRandom(),
         dcHeroStore

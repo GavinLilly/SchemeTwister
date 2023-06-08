@@ -1,8 +1,8 @@
-import { NewScheme } from '../../../model';
+import { ShortScheme } from '../../../model';
 
 import { HIDDEN_WITNESS, INVESTIGATE } from './keywords';
 
-export const FIND_THE_SPLIT_PERSONALITY_KILLER: NewScheme = {
+export const FIND_THE_SPLIT_PERSONALITY_KILLER: ShortScheme = {
   id: '81435cb5-a05b-4cdd-8d8b-b602a7ce3a53',
   name: 'Find the Split Personality Killer',
   setup: '8 Twists.',
@@ -14,7 +14,7 @@ Twist 6: Each player writes down their guess for which Hero Name is the Split Pe
   meta: { numTwists: 8 },
 };
 
-export const SILENCE_THE_WITNESSES: NewScheme = {
+export const SILENCE_THE_WITNESSES: ShortScheme = {
   id: '6bfc956d-2ebc-4fcf-9716-2a00b0c1b0c5',
   name: 'Silence the Witnesses',
   setup: '6 Twists.',
@@ -24,7 +24,7 @@ export const SILENCE_THE_WITNESSES: NewScheme = {
   meta: { numTwists: 6 },
 };
 
-export const FIVE_FAMILIES_OF_CRIM: NewScheme = {
+export const FIVE_FAMILIES_OF_CRIM: ShortScheme = {
   id: 'f6393acd-4446-4278-83d0-e147d768e927',
   name: 'Five Families of Crime',
   setup:
@@ -42,7 +42,7 @@ export const FIVE_FAMILIES_OF_CRIM: NewScheme = {
   },
 };
 
-export const HIDDEN_HEART_OF_DARKNESS: NewScheme = {
+export const HIDDEN_HEART_OF_DARKNESS: ShortScheme = {
   id: '97c28f0b-ab2d-4f2c-864f-3743327324a6',
   name: 'Hidden Heart of Darkness',
   setup:

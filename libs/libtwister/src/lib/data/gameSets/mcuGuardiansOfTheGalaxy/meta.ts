@@ -5,5 +5,5 @@ export const META: IGameSetMeta = {
   name: "Marvel Studios' Guardians of the Galaxy",
   size: GameSetSize.SMALL,
   releaseYear: 2022,
-  series: Series.MARVEL_STUDIOS,
+  series: Series.MCU,
 };

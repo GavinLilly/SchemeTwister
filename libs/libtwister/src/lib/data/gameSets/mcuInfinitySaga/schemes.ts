@@ -1,6 +1,6 @@
-import { NewScheme } from '../../../model';
+import { ShortScheme } from '../../../model';
 
-export const SACRIFICE_FOR_THE_SOUL_STONE: NewScheme = {
+export const SACRIFICE_FOR_THE_SOUL_STONE: ShortScheme = {
   id: '8cbf2b72-0102-4742-83dd-c58b1e2d8497',
   name: 'Sacrifice for the Soul Stone',
   setup: 'Twists equal to the number of players plus 4',
@@ -9,16 +9,18 @@ export const SACRIFICE_FOR_THE_SOUL_STONE: NewScheme = {
   evilWins: 'When the Mastermind has sacrificed 5 Heroes for the Soul Stone.',
   meta: {
     numTwists: {
+      /* eslint-disable @typescript-eslint/naming-convention */
       '1': 5,
       '2': 6,
       '3': 7,
       '4': 8,
       '5': 9,
+      /* eslint-enable @typescript-eslint/naming-convention */
     },
   },
 };
 
-export const HALVE_ALL_LIFE_IN_THE_UNIVERSE: NewScheme = {
+export const HALVE_ALL_LIFE_IN_THE_UNIVERSE: ShortScheme = {
   id: 'dfd69212-df32-4856-a446-5ae9419aa510',
   name: 'Halve All Life in the Universe',
   setup: '5 twists',
@@ -30,7 +32,7 @@ export const HALVE_ALL_LIFE_IN_THE_UNIVERSE: NewScheme = {
   },
 };
 
-export const WARP_REALITY_INTO_A_TV_SHOW: NewScheme = {
+export const WARP_REALITY_INTO_A_TV_SHOW: ShortScheme = {
   id: '9ab3090a-9c52-4d22-a747-755beee80a89',
   name: 'Warp Reality into a TV Show',
   setup:
@@ -41,7 +43,7 @@ export const WARP_REALITY_INTO_A_TV_SHOW: NewScheme = {
   meta: { numTwists: 11 },
 };
 
-export const THE_TIME_HEIST: NewScheme = {
+export const THE_TIME_HEIST: ShortScheme = {
   id: 'a7a4b7a3-4077-41d2-85cf-c982882e5e0d',
   name: 'The Time Heist',
   setup:

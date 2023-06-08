@@ -1,13 +1,13 @@
 import { StoreOfStores } from '../../factories/storeOfStores';
-import { AbstractMastermind } from '../AbstractMastermind';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
   IVillainGroup,
+  SchemeMinusRules,
   VillainDeckMinimal,
 } from '../interfaces';
-import { SchemeMinusRules } from '../interfaces/newScheme.interface';
+import { Mastermind } from '../mastermind';
 import { NumPlayers } from '../types';
 
 import { Scheme } from './Scheme';
@@ -20,22 +20,21 @@ export class RequireVillainInAdditionalDeckScheme extends Scheme {
     super(scheme);
   }
 
-  public async getSetup(
+  public override getSetup(
     numPlayers: NumPlayers,
-    selectedMastermind: AbstractMastermind,
+    selectedMastermind: Mastermind,
     store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck: AdditionalDeckDeckMinimal = {}
-  ): Promise<IGameSetup> {
+  ): IGameSetup {
     const villain = store.villainStore.getOne(this._requiredVillain.id);
 
     if (
-      this.rules[numPlayers].additionalDeck !== undefined &&
-      this.rules[numPlayers].additionalDeck?.deck !== undefined &&
-      this.rules[numPlayers].additionalDeck?.deck?.numVillainGroups !==
-        undefined
+      this.rules[numPlayers].additionalDeck &&
+      this.rules[numPlayers].additionalDeck?.deck &&
+      this.rules[numPlayers].additionalDeck?.deck?.numVillainGroups
     ) {
       partialAdditionalDeck.villains = Scheme.addToDeck(
         partialAdditionalDeck.villains,
@@ -44,7 +43,7 @@ export class RequireVillainInAdditionalDeckScheme extends Scheme {
       );
     }
 
-    return await super.getSetup(
+    return super.getSetup(
       numPlayers,
       selectedMastermind,
       store,

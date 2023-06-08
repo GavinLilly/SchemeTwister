@@ -1,5 +1,4 @@
 import { StoreOfStores } from '../../factories/storeOfStores';
-import { AbstractMastermind } from '../AbstractMastermind';
 import {
   IGameSetup,
   HeroDeckMinimal,
@@ -8,6 +7,7 @@ import {
   SchemeMinusRules,
   IVillainGroup,
 } from '../interfaces';
+import { Mastermind } from '../mastermind';
 import { NumPlayers, numPlayers as numPlayersCount } from '../types';
 
 import { RequireVillainsInVillainDeckScheme } from './RequireVillainsInVillainDeckScheme';
@@ -31,13 +31,13 @@ export class RitualSacrificeToSummonChthonScheme extends RequireVillainsInVillai
 
   public override getSetup(
     numPlayers: NumPlayers,
-    selectedMastermind: AbstractMastermind,
+    selectedMastermind: Mastermind,
     store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck: VillainDeckMinimal = {},
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): Promise<IGameSetup> {
+  ): IGameSetup {
     if (selectedMastermind.name.includes('Lilith')) {
       numPlayersCount.forEach(
         (num) => (this.rules[num].villainDeck.numTwists = 1)

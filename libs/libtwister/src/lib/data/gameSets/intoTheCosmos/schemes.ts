@@ -1,13 +1,13 @@
 import {
-  NewScheme,
+  ShortScheme,
   RequireHeroInAdditionalDeckScheme,
   RequireHeroNameInHeroDeckScheme,
 } from '../../../model';
 
-import { ADAM_WARLOCK } from './heroes';
+import { ADAM_WARLOCK } from './intoTheCosmos.heroes';
 import { CONTEST_OF_CHAMPIONS, SHARDS } from './keywords';
 
-export const THE_CONTEST_OF_CHAMPIONS: NewScheme = {
+export const THE_CONTEST_OF_CHAMPIONS: ShortScheme = {
   id: 'b437687c-df45-4608-8500-118817a6dc99',
   name: 'The Contest of Champions',
   setup:
@@ -30,7 +30,7 @@ Twist 9-11: Same effect, but in the Contest, Evil selects from 6 cards from the 
   },
 };
 
-export const TURN_THE_SOUL_OF_ADAM_WARLOCK: NewScheme = {
+export const TURN_THE_SOUL_OF_ADAM_WARLOCK: ShortScheme = {
   id: 'f0b2149d-e84d-4c21-9418-2c05c60e7bfa',
   name: 'Turn the Soul of Adam Warlock',
   setup:
@@ -55,7 +55,7 @@ export const TURN_THE_SOUL_OF_ADAM_WARLOCK: NewScheme = {
   },
 };
 
-export const DESTROY_THE_NOVA_CORPS: NewScheme = {
+export const DESTROY_THE_NOVA_CORPS: ShortScheme = {
   id: '04575b4d-2d5e-4fee-99a1-80ba8835fe81',
   name: 'Destroy the Nova Corps',
   setup:
@@ -81,7 +81,7 @@ Twist 6-9: Each player must KO a Nova Centurion from the S.H.I.E.L.D. Officer St
   },
 };
 
-export const ANNIHILATION_CONQUEST: NewScheme = {
+export const ANNIHILATION_CONQUEST: ShortScheme = {
   id: 'e40b97bb-1c46-4e0a-b7ba-d5dc7bb9af98',
   name: 'Annihilation: Conquest',
   setup: '11 Twists. Add an extra Hero.',

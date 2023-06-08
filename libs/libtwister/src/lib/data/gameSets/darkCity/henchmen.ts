@@ -11,7 +11,7 @@ export const MAGGIA_GOONS: IHenchmen = {
   fight: 'KO one of your Heroes.',
   attackPoints: 4,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.HENCHMEN,
 };
 
@@ -21,6 +21,6 @@ export const PHALANX: IHenchmen = {
   fight: `Reveal a ${HeroClass.TECH} Hero or KO one of your Heroes with an Attack icon`,
   attackPoints: 3,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.HENCHMEN,
 };

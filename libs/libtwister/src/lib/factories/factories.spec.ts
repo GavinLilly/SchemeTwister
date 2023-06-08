@@ -1,3 +1,4 @@
+import { DARK_CITY, LEGENDARY } from '../data/gameSets';
 import { CardType, ICard } from '../model';
 
 import { MultiCardFactory } from './multiCardFactory';
@@ -6,9 +7,8 @@ import { SingleCardFactory } from './singleCardFactory';
 
 const cardType = CardType.HERO;
 
-const legId = '7bfbc930-f5aa-4056-8d22-8f2a1ca406db';
 class LegCard implements ICard {
-  gameSetId = legId;
+  gameSet = LEGENDARY.default;
   constructor(
     public name: string,
     public id: string,
@@ -16,9 +16,8 @@ class LegCard implements ICard {
   ) {}
 }
 
-const dcId = 'e766444b-7c47-4731-991d-94fe8bb43b5a';
 class DcCard implements ICard {
-  gameSetId = dcId;
+  gameSet = DARK_CITY.default;
   constructor(
     public name: string,
     public id: string,
@@ -86,7 +85,7 @@ describe('Single Card Factory', () => {
     });
 
     it('should only give random Legendary cards', () => {
-      expect(instance.getOneRandom().gameSetId).toEqual(legId);
+      expect(instance.getOneRandom().gameSet.id).toEqual(LEGENDARY.default.id);
     });
 
     describe('isAvailable()', () => {
@@ -144,7 +143,9 @@ describe('Multi Card Factory', () => {
       const instance = new MultiCardFactory(legData);
 
       expect(
-        instance.getManyRandom(3).every((item) => item.gameSetId === legId)
+        instance
+          .getManyRandom(3)
+          .every((item) => item.gameSet === LEGENDARY.default)
       ).toBeTruthy();
     });
   });
@@ -209,10 +210,6 @@ describe('Multi Card Store', () => {
       expect(store.getAll(picked.map((item) => item.id))).toHaveLength(2);
       expect(store.availableCards).not.toEqual(expect.arrayContaining(picked));
       expect(store.excludedCards).toEqual(expect.arrayContaining(picked));
-
-      console.log = jest.fn();
-      store.getAll(picked.map((item) => item.id));
-      expect(console.log).toHaveBeenCalled();
     });
 
     it("should fail if the specific card ID doesn't exist", () => {

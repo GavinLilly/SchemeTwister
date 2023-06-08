@@ -1,6 +1,6 @@
-import { NewScheme } from '../../../model';
+import { ShortScheme } from '../../../model';
 
-export const BATHE_THE_EARTH_IN_COSMIC_RAYS: NewScheme = {
+export const BATHE_THE_EARTH_IN_COSMIC_RAYS: ShortScheme = {
   id: 'f1c60929-2ba6-4f35-b0fe-dc21a04fc32a',
   name: 'Bathe the Earth in Cosmic Rays',
   setup: '6 Twists.',
@@ -10,7 +10,7 @@ export const BATHE_THE_EARTH_IN_COSMIC_RAYS: NewScheme = {
   meta: { numTwists: 6 },
 };
 
-export const FLOOD_THE_PLANET_WITH_MELTED_GLACIERS: NewScheme = {
+export const FLOOD_THE_PLANET_WITH_MELTED_GLACIERS: ShortScheme = {
   id: '069749f1-d285-45c9-b7db-c2b6ca6881d5',
   name: 'Flood the Planet with Melted Glaciers',
   setup: '8 twists.',
@@ -19,7 +19,7 @@ export const FLOOD_THE_PLANET_WITH_MELTED_GLACIERS: NewScheme = {
   meta: { numTwists: 8 },
 };
 
-export const INVINCIBLE_FORCE_FIELD: NewScheme = {
+export const INVINCIBLE_FORCE_FIELD: ShortScheme = {
   id: '0d4dd374-ad11-49cf-a877-61fea85799f1',
   name: 'Invincible Force Field',
   setup: '7 twists',
@@ -30,7 +30,7 @@ export const INVINCIBLE_FORCE_FIELD: NewScheme = {
   meta: { numTwists: 7 },
 };
 
-export const PULL_REALITY_INTO_THE_NEGATIVE_ZONE: NewScheme = {
+export const PULL_REALITY_INTO_THE_NEGATIVE_ZONE: ShortScheme = {
   id: '3555b355-604b-48b4-9372-2063d476450a',
   name: 'Pull Reality Into the Negative Zone',
   setup: '8 Twists.',

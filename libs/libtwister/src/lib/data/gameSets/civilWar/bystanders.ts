@@ -1,5 +1,4 @@
-import { IBystander , CardType } from '../../../model';
-
+import { IBystander, CardType } from '../../../model';
 
 import { META } from './meta';
 
@@ -8,7 +7,7 @@ export const ASPIRING_HERO: IBystander = {
   name: 'Aspiring Hero',
   copies: 4,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.BYSTANDER,
 };
 
@@ -17,6 +16,6 @@ export const COMIC_SHOP_KEEPER: IBystander = {
   name: 'Comic Shop Keeper',
   copies: 4,
   victoryPoints: 1,
-  gameSetId: META.id,
+  gameSet: META,
   cardType: CardType.BYSTANDER,
 };

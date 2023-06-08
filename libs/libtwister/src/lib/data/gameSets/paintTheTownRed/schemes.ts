@@ -1,9 +1,12 @@
-import { NewScheme, RequireVillainsInVillainDeckScheme } from '../../../model';
+import {
+  ShortScheme,
+  RequireVillainsInVillainDeckScheme,
+} from '../../../model';
 
 import { WALL_CRAWL } from './keywords';
 import { SINISTER_SIX } from './villains';
 
-export const THE_CLONE_SAGA: NewScheme = {
+export const THE_CLONE_SAGA: ShortScheme = {
   id: '650a925c-d835-4a42-ac59-9a54e2ee3e08',
   name: 'The Clone Saga',
   setup: '8 Twists.',
@@ -13,7 +16,7 @@ export const THE_CLONE_SAGA: NewScheme = {
   meta: { numTwists: 8 },
 };
 
-export const INVADE_THE_DAILY_BUGLE_NEWS_HQ: NewScheme = {
+export const INVADE_THE_DAILY_BUGLE_NEWS_HQ: ShortScheme = {
   id: 'bb4f86d6-8002-4bb4-abde-6b0e90ad132a',
   name: 'Invade the Daily Bugle News HQ',
   setup:
@@ -30,7 +33,7 @@ export const INVADE_THE_DAILY_BUGLE_NEWS_HQ: NewScheme = {
   },
 };
 
-export const SPLICE_HUMANS_WITH_SPIDER_DNA: NewScheme = {
+export const SPLICE_HUMANS_WITH_SPIDER_DNA: ShortScheme = {
   id: '89a783c0-006e-49b2-91fd-8c7cf4d314d3',
   name: 'Splice Humans with Spider DNA',
   setup: '8 Twists. Include Sinister Six as one of the Villain Groups.',
@@ -49,7 +52,7 @@ export const SPLICE_HUMANS_WITH_SPIDER_DNA: NewScheme = {
   },
 };
 
-export const WEAVE_AWEB_OF_LIES: NewScheme = {
+export const WEAVE_AWEB_OF_LIES: ShortScheme = {
   id: '395e0e98-ad58-48e9-aa4a-5d20024ab848',
   name: 'Weave a Web of Lies',
   setup: '7 twists',

@@ -1,10 +1,13 @@
-import { NewScheme, RequireHenchmenInVillainDeckScheme } from '../../../model';
+import {
+  ShortScheme,
+  RequireHenchmenInVillainDeckScheme,
+} from '../../../model';
 import { HeroClass } from '../../enums';
 
 import { KHONSHU_GUARDIANS } from './henchmen';
 import { CHARGE, CIRCLE_OF_KUNG_FU, FATEFUL_RESURRECTION } from './keywords';
 
-export const DEADLANDS_HORDES_CHARGE_THE_WALL: NewScheme = {
+export const DEADLANDS_HORDES_CHARGE_THE_WALL: ShortScheme = {
   id: 'ad8cc356-fe6f-4876-ab64-5703a0914b4c',
   name: 'Deadlands Hordes Charge the Wall',
   setup: '8 Twists. Add an extra Villain Group.',
@@ -21,7 +24,7 @@ export const DEADLANDS_HORDES_CHARGE_THE_WALL: NewScheme = {
   },
 };
 
-export const ENTHRONE_THE_BARONS_OF_BATTLEWORLD: NewScheme = {
+export const ENTHRONE_THE_BARONS_OF_BATTLEWORLD: ShortScheme = {
   id: '7b11db3d-9aed-4e6c-907b-df7717ea82b4',
   name: 'Enthrone the Barons of Battleworld',
   setup: '8 Twists.',
@@ -31,7 +34,7 @@ Twist 8: The Villain in each player's Victory Pile with the highest printed Atta
   meta: { numTwists: 8 },
 };
 
-export const THE_FOUNTAIN_OF_ETERNAL_LIFE: NewScheme = {
+export const THE_FOUNTAIN_OF_ETERNAL_LIFE: ShortScheme = {
   id: '996bc05f-5c6a-4758-a82d-899068b2777f',
   name: 'The Fountain of Eternal Life',
   setup: '8 Twists. (1 player 4 Twists.)',
@@ -52,7 +55,7 @@ export const THE_FOUNTAIN_OF_ETERNAL_LIFE: NewScheme = {
   },
 };
 
-export const THE_GODEMPEROR_OF_BATTLEWORLD: NewScheme = {
+export const THE_GODEMPEROR_OF_BATTLEWORLD: ShortScheme = {
   id: '271bd2be-2947-4f50-8249-ac33742cb62a',
   name: 'The God-Emperor of Battleworld',
   setup: '8 Twists.',
@@ -64,7 +67,7 @@ Twist 8: Evil wins! (If any Mastermind still lives.)`,
   meta: { numTwists: 8 },
 };
 
-export const THE_MARK_OF_KHONSHU: NewScheme = {
+export const THE_MARK_OF_KHONSHU: ShortScheme = {
   id: '2f35b369-3dc6-4d1a-901f-1f94dadaae38',
   name: 'The Mark of Khonshu',
   setup:
@@ -86,7 +89,7 @@ export const THE_MARK_OF_KHONSHU: NewScheme = {
   },
 };
 
-export const MASTER_THE_MYSTERIES_OF_KUNGFU: NewScheme = {
+export const MASTER_THE_MYSTERIES_OF_KUNGFU: ShortScheme = {
   id: 'b4f89a6a-502f-46d0-991b-1b7535c5459f',
   name: 'Master the Mysteries of Kung-Fu',
   setup: '8 Twists.',
@@ -99,7 +102,7 @@ export const MASTER_THE_MYSTERIES_OF_KUNGFU: NewScheme = {
   meta: { numTwists: 8 },
 };
 
-export const SECRET_WARS: NewScheme = {
+export const SECRET_WARS: ShortScheme = {
   id: '11162a49-a687-4877-8283-8f59f26c7522',
   name: 'Secret Wars',
   setup: '8 Twists.',
@@ -120,7 +123,7 @@ Twist 8: Evil wins!`,
   },
 };
 
-export const SINISTER_AMBITIONS: NewScheme = {
+export const SINISTER_AMBITIONS: ShortScheme = {
   id: '639fd392-01f2-466c-9be2-a8092be34e7f',
   name: 'Sinister Ambitions',
   setup: '6 Twists. Add 10 random Ambition cards to the Villain Deck.',

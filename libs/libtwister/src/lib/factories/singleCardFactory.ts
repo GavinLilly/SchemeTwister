@@ -1,9 +1,12 @@
 import { ICard } from '../model';
 import { randomize } from '../utils/randomize';
 
+/**
+ * A factory for selecting a single card from a large set.
+ */
 export class SingleCardFactory<T extends ICard> {
-  private _allCards: Map<string, T> = new Map();
-  private _excludedCardIds: Set<string>;
+  private readonly _allCards: Map<string, T> = new Map();
+  private readonly _excludedCardIds: Set<string>;
 
   constructor(allCards: T[], excludedCardIds?: string[]) {
     if (allCards.length == 0) {
@@ -15,9 +18,15 @@ export class SingleCardFactory<T extends ICard> {
     this._excludedCardIds = new Set(excludedCardIds);
   }
 
-  protected static excludeFromMap<T extends ICard>(
-    allCards: Map<string, T>,
-    toExclude: Set<string>
+  /**
+   * Removes cards from the map of cards
+   * @param toExclude the cards to remove from the collection
+   * @param allCards the entire collection of cards in the factory
+   * @returns a subset of cards as a map
+   */
+  protected excludeFromMap(
+    toExclude: Set<string>,
+    allCards: Map<string, T> = this._allCards
   ): Map<string, T> {
     const availMap = new Map(allCards);
 
@@ -26,15 +35,22 @@ export class SingleCardFactory<T extends ICard> {
     return availMap;
   }
 
-  protected static getMapFromSet<T extends ICard>(
-    allCards: Map<string, T>,
-    set: Set<string>
+  /**
+   * Creates a map of cards to the their IDs as a subset of the entire
+   * collection of cards in the factory.
+   * @param set the subset of cards that are wanted
+   * @param allCards the entire collection of cards in the factory
+   * @returns a map of the cards to their card IDs
+   */
+  protected getMapFromSet(
+    set: Set<string>,
+    allCards: Map<string, T> = this._allCards
   ): Map<string, T> {
     const excluded: Map<string, T> = new Map();
 
     set.forEach((id) => {
       const card = allCards.get(id);
-      if (card !== undefined) {
+      if (card) {
         excluded.set(id, card);
       }
     });
@@ -49,6 +65,9 @@ export class SingleCardFactory<T extends ICard> {
     return Array.from(this.allCardsMap.values());
   }
 
+  /**
+   * The map of all records as ID => record (i.e. pre-filtered)
+   */
   public get allCardsMap(): Map<string, T> {
     return this._allCards;
   }
@@ -60,11 +79,11 @@ export class SingleCardFactory<T extends ICard> {
     return Array.from(this.excludedCardsMap.values());
   }
 
+  /**
+   * The map of excluded records as ID => record
+   */
   public get excludedCardsMap(): Map<string, T> {
-    return SingleCardFactory.getMapFromSet(
-      this._allCards,
-      this._excludedCardIds
-    );
+    return this.getMapFromSet(this._excludedCardIds);
   }
 
   /**
@@ -74,17 +93,21 @@ export class SingleCardFactory<T extends ICard> {
     return Array.from(this.availableCardsMap.values());
   }
 
+  /**
+   * The map of available records as ID => record (i.e. has already been filtered)
+   */
   public get availableCardsMap(): Map<string, T> {
     return this._excludedCardIds.size > 0
-      ? SingleCardFactory.excludeFromMap(this._allCards, this._excludedCardIds)
+      ? this.excludeFromMap(this._excludedCardIds)
       : this._allCards;
   }
 
   /**
-   * This method will return 1 random card entry from our list of available cards
+   * Returns 1 random card entry from the list of available cards
+   * @param func an optional function to filter the cards before randomisation
    * @returns a single card entry
    */
-  public getOneRandom(func?: (hero: T) => boolean): T {
+  public getOneRandom(func?: (card: T) => boolean): T {
     if (func === undefined) {
       return randomize(this.availableCards, 1)[0];
     } else {
@@ -107,14 +130,12 @@ export class SingleCardFactory<T extends ICard> {
    * @returns true if it is available
    */
   public isAvailable(id: string): boolean;
-
   /**
    * Returns whether the provided item is available in the factory
    * @param item the item that is requested
    * @returns true if it is available
    */
   public isAvailable(item: T): boolean;
-
   public isAvailable(item: string | T): boolean {
     if (typeof item === 'string' || item instanceof String) {
       return this.availableCardsMap.get(item as string) !== undefined;
@@ -123,7 +144,11 @@ export class SingleCardFactory<T extends ICard> {
     }
   }
 
+  /**
+   * Returns the type of card stored within the string
+   * @returns a string name of the store
+   */
   public getStoreType(): string {
-    return this.availableCards[0].cardType;
+    return this.availableCards[0].constructor.name;
   }
 }

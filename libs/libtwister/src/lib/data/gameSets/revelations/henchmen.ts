@@ -1,5 +1,4 @@
-import { IHenchmen , CardType } from '../../../model';
-
+import { IHenchmen, CardType } from '../../../model';
 
 import { LOCATIONS } from './keywords';
 import { META } from './meta';
@@ -10,7 +9,7 @@ export const HYDRA_BASE: IHenchmen = {
   attackPoints: '2+',
   victoryPoints: 1,
   cardType: CardType.HENCHMEN,
-  gameSetId: META.id,
+  gameSet: META,
   fight: 'KO one of your Heroes.',
   keywords: [LOCATIONS],
 };
@@ -21,6 +20,6 @@ export const MANDARINS_RINGS: IHenchmen = {
   attackPoints: '3',
   victoryPoints: 1,
   cardType: CardType.HENCHMEN,
-  gameSetId: META.id,
+  gameSet: META,
   fight: 'Draw a card.',
 };

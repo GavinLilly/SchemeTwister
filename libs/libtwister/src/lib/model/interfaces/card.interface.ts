@@ -1,21 +1,15 @@
-import { CardType } from '../cardType.enum';
-
+import { IGameSetMeta } from './gameSet.interface';
 import { IKeyword } from './keyword.interface';
 import { INamedObject } from './namedObject.interface';
 
 export interface ICard extends INamedObject {
   /**
-   * Meta: Type of the card
+   * Meta: The associated game set
    */
-  readonly cardType: CardType;
+  readonly gameSet: IGameSetMeta;
 
   /**
-   * Meta: ID of the associated game set
-   */
-  readonly gameSetId: string;
-
-  /**
-   * Meta: Keywords associated to the card
+   * Keywords associated to the card
    */
   readonly keywords?: IKeyword[];
 }

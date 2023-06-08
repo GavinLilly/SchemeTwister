@@ -1,16 +1,16 @@
-import { CardType } from '../model';
+import { CardType, IGameSetMeta } from '../model';
 import {
-  NewScheme,
+  ShortScheme,
   SchemeMinusRules,
 } from '../model/interfaces/newScheme.interface';
 
 export function injectGameSet(
-  gameSetId: string,
-  scheme: NewScheme
+  gameSet: IGameSetMeta,
+  scheme: ShortScheme
 ): SchemeMinusRules {
   return {
     ...scheme,
-    gameSetId: gameSetId,
+    gameSet: gameSet,
     cardType: CardType.SCHEME,
   };
 }
@@ -22,10 +22,10 @@ export function injectGameSet(
  * @returns schemes including the game set ID and card type
  */
 export function injectGameSetToMany(
-  gameSetId: string,
-  schemes: NewScheme[]
+  gameSet: IGameSetMeta,
+  schemes: ShortScheme[]
 ): SchemeMinusRules[] {
   const injected = [...schemes];
 
-  return injected.map((scheme) => injectGameSet(gameSetId, scheme));
+  return injected.map((scheme) => injectGameSet(gameSet, scheme));
 }

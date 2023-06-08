@@ -1,5 +1,4 @@
-import { IBystander , CardType } from '../../../model';
-
+import { IBystander, CardType } from '../../../model';
 
 import { META } from './meta';
 
@@ -8,6 +7,6 @@ export const BANKER: IBystander = {
   name: 'Banker',
   cardType: CardType.BYSTANDER,
   copies: 3,
-  gameSetId: META.id,
+  gameSet: META,
   victoryPoints: 1,
 };

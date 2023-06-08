@@ -1,14 +1,14 @@
 import { StoreOfStores } from '../../factories/storeOfStores';
-import { AbstractMastermind } from '../AbstractMastermind';
+import { Hero } from '../hero';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  IHero,
   IVillainGroup,
   SchemeMinusRules,
   VillainDeckMinimal,
 } from '../interfaces';
+import { Mastermind } from '../mastermind';
 import { NumPlayers } from '../types';
 
 import { RequireVillainsInVillainDeckScheme } from './RequireVillainsInVillainDeckScheme';
@@ -18,21 +18,21 @@ export class TheDarkPhoenixSagaScheme extends RequireVillainsInVillainDeckScheme
   constructor(
     scheme: SchemeMinusRules,
     requiredVillain: IVillainGroup,
-    private _preferredHero: IHero,
-    private _backupHero: IHero
+    private _preferredHero: Hero,
+    private _backupHero: Hero
   ) {
     super(scheme, requiredVillain);
   }
 
-  public async getSetup(
+  public override getSetup(
     numPlayers: NumPlayers,
-    selectedMastermind: AbstractMastermind,
+    selectedMastermind: Mastermind,
     store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck: VillainDeckMinimal = {},
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): Promise<IGameSetup> {
+  ): IGameSetup {
     const hero = store.heroStore.isAvailable(this._preferredHero)
       ? this._preferredHero
       : this._backupHero;
@@ -45,7 +45,7 @@ export class TheDarkPhoenixSagaScheme extends RequireVillainsInVillainDeckScheme
       this.rules[numPlayers].villainDeck.numHeroes
     );
 
-    return await super.getSetup(
+    return super.getSetup(
       numPlayers,
       selectedMastermind,
       store,

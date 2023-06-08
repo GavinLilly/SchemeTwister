@@ -1,10 +1,13 @@
-import { NewScheme, RequireVillainsInVillainDeckScheme } from '../../../model';
+import {
+  ShortScheme,
+  RequireVillainsInVillainDeckScheme,
+} from '../../../model';
 import { SKRULLS } from '../legendary/villains';
 
 import { ARTIFACT, SHARDS } from './keywords';
 import { INFINITY_GEMS, KREE_STARFORCE } from './villains';
 
-export const FORGE_THE_INFINITY_GAUNTLET: NewScheme = {
+export const FORGE_THE_INFINITY_GAUNTLET: ShortScheme = {
   id: '628baaec-c104-437f-ab61-f4526e70ae5f',
   name: 'Forge the Infinity Gauntlet',
   setup: '8 Twists. Always include the Infinity Gems Villain Group.',
@@ -21,7 +24,7 @@ export const FORGE_THE_INFINITY_GAUNTLET: NewScheme = {
   },
 };
 
-export const INTERGALACTIC_KREE_NEGA_BOMB: NewScheme = {
+export const INTERGALACTIC_KREE_NEGA_BOMB: ShortScheme = {
   id: '129b64e2-e2ec-4662-944c-cfd1688497a4',
   name: 'Intergalactic Kree Nega-Bomb',
   setup: "8 Twists. Make a face down 'Nega-Bomb Deck' of 6 Bystanders.",
@@ -41,7 +44,7 @@ export const INTERGALACTIC_KREE_NEGA_BOMB: NewScheme = {
   },
 };
 
-export const THE_KREE_SKRULL_WAR: NewScheme = {
+export const THE_KREE_SKRULL_WAR: ShortScheme = {
   id: 'b0c2aafe-3df2-4fdb-813f-1493eec6e379',
   name: 'The Kree-Skrull War',
   setup: '8 Twists. Always include Kree Starforce and Skrull Villain Groups.',
@@ -63,7 +66,7 @@ export const THE_KREE_SKRULL_WAR: NewScheme = {
   },
 };
 
-export const UNITE_THE_SHARDS: NewScheme = {
+export const UNITE_THE_SHARDS: ShortScheme = {
   id: '3a4b7112-91dd-4f8d-9707-a3b447f231b6',
   name: 'Unite the Shards',
   setup:
