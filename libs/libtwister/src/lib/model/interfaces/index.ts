@@ -3,7 +3,6 @@ export * from './card.interface';
 export * from './gameSet.interface';
 export * from './deck.interface';
 export * from './henchmen.interface';
-export * from './villainGroup.interface';
 export * from './bystander.interface';
 export * from './keyword.interface';
 export * from './rules.interface';

@@ -3,7 +3,7 @@ import { EpicMastermindBuilder, IMastermind, Mastermind } from '../../../model';
 import { MANDARINS_RINGS } from './henchmen';
 import { DARK_MEMORIES, LOCATIONS } from './keywords';
 import { META } from './meta';
-import { HOODS_GANG, LETHAL_LEGION } from './villains';
+import { HOODS_GANG, LETHAL_LEGION } from './revelations.villains';
 
 const grimReaper = new EpicMastermindBuilder({
   name: 'Grim Reaper',

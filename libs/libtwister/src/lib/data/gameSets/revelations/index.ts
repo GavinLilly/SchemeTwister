@@ -7,7 +7,7 @@ import { META } from './meta';
 import * as Heroes from './revelations.heroes';
 import * as Masterminds from './revelations.masterminds';
 import * as Schemes from './revelations.schemes';
-import * as Villains from './villains';
+import * as Villains from './revelations.villains';
 
 const schemes = injectGameSetToMany(META, Object.values(Schemes));
 
