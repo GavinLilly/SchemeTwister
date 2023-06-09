@@ -20,6 +20,6 @@ export {
   SchemeMinusRules,
   Mastermind,
 } from './lib/model';
-export { MultiCardStore } from './lib/factories';
+export { MultiCardStore, StoreOfStores, StoreBuilder } from './lib/factories';
 export { injectGameSet } from './lib/utils/schemeInjector';
 export { default as instantiateScheme } from './lib/utils/instantiateScheme';

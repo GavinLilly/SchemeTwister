@@ -5,13 +5,11 @@ import {
   injectGameSet,
   instantiateScheme,
   Scheme,
+  StoreBuilder,
+  StoreOfStores,
 } from '@schemetwister/libtwister';
 import LEGENDARY from 'libs/libtwister/src/lib/data/gameSets/legendary';
 import { MIDTOWN_BANK_ROBBERY } from 'libs/libtwister/src/lib/data/gameSets/legendary/schemes';
-import {
-  StoreBuilder,
-  StoreOfStores,
-} from 'libs/libtwister/src/lib/factories/storeOfStores';
 
 import { IGameSetupState } from '../reducers/game-setup.reducer';
 
@@ -29,7 +27,7 @@ describe('GameSetupScheme Selectors', () => {
 
   beforeEach(async () => {
     const selectedScheme = injectGameSet(
-      GameSets.LEGENDARY.default.id,
+      GameSets.LEGENDARY.default,
       MIDTOWN_BANK_ROBBERY
     );
 
