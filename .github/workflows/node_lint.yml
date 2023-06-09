@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [14, 16, 18]
+        node: [lts, lts/-1]
 
     steps:
       - uses: actions/checkout@v2
