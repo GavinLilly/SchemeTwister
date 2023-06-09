@@ -1,11 +1,11 @@
 import { EpicMastermindBuilder } from '../../../model';
 import { EMPOWERED } from '../antMan/keywords';
 
-import { META } from './meta';
 import {
   ENEMIES_OF_WAKANDA,
   KILLMONGERS_LEAGUE,
 } from './blackPanther.villains';
+import { META } from './meta';
 
 const killmonger = new EpicMastermindBuilder({
   gameSet: META,

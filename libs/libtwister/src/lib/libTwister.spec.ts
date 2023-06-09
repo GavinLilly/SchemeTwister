@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default-member */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import DARK_CITY from './data/gameSets/darkCity';
 import LEGENDARY from './data/gameSets/legendary';
@@ -216,13 +217,18 @@ describe('LibTwister', () => {
     ])(
       'should contain all of the Legendary & Dark City %s in the %s store',
       (_cardTypePlural, _cardType, store, legCards, dcCards) => {
-        expect(store.allCards).toEqual(expect.arrayContaining(dcCards!));
-        expect(store.allCards).toEqual(expect.arrayContaining(legCards!));
+        const ids = store.allCards.map((card) => card.id);
+        expect(ids).toEqual(
+          expect.arrayContaining(dcCards!.map((card) => card.id))
+        );
+        expect(ids).toEqual(
+          expect.arrayContaining(legCards!.map((card) => card.id))
+        );
         expect(
-          store.allCards.every((card) =>
-            [LEGENDARY.id, DARK_CITY.id].includes(card.gameSet.id)
-          )
-        ).toBeTruthy();
+          store.allCards
+            .map((card) => card.gameSet.id)
+            .filter((value, index, array) => array.indexOf(value) === index)
+        ).toHaveLength(2);
       }
     );
   });

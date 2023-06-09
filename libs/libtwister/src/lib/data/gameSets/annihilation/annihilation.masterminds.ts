@@ -1,8 +1,8 @@
 import { EpicMastermindBuilder } from '../../../model';
 
+import { ANNIHILATION_WAVE, TIMELINES_OF_KANG } from './annihilation.villains';
 import { MASS_MOMENTUM } from './keywords';
 import { META } from './meta';
-import { ANNIHILATION_WAVE, TIMELINES_OF_KANG } from './annihilation.villains';
 
 const annihilus = new EpicMastermindBuilder({
   gameSet: META,

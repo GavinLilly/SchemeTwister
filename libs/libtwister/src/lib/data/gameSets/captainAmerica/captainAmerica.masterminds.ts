@@ -1,11 +1,11 @@
 import { Mastermind } from '../../../model';
 
-import { ABOMINATION, SAVIOR } from './keywords';
-import { META } from './meta';
 import {
   MASTERS_OF_EVIL_WWII,
   ZOLAS_CREATIONS,
 } from './captainAmerica.villains';
+import { ABOMINATION, SAVIOR } from './keywords';
+import { META } from './meta';
 
 export const ARNIM_ZOLA = new Mastermind({
   id: '7351cae6-f1d4-4c31-a075-fa7a25a4a13e',

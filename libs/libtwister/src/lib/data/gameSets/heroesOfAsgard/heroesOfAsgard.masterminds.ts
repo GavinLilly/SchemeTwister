@@ -3,9 +3,9 @@ import { THROWN_ARTIFACT } from '../fearItself/keywords';
 import { ARTIFACT } from '../guardiansOfTheGalaxy/keywords';
 import { CONQUEROR } from '../marvelStudios/keywords';
 
+import { DARK_COUNCIL, OMENS_OF_RAGNAROK } from './heroesOfAsgard.villains';
 import { VILLAINOUS_WEAPONS } from './keywords';
 import { META } from './meta';
-import { DARK_COUNCIL, OMENS_OF_RAGNAROK } from './heroesOfAsgard.villains';
 
 const malekith = new EpicMastermindBuilder({
   name: 'Malekith the Accursed',

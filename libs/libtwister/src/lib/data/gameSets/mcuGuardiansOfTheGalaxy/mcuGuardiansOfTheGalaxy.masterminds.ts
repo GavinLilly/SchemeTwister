@@ -2,8 +2,8 @@ import { EpicMastermindBuilder } from '../../../model';
 import { VILLAINOUS_WEAPONS } from '../heroesOfAsgard/keywords';
 
 import { TRIGGERED_ARTIFACTS } from './keywords';
-import { META } from './meta';
 import { FOLLOWERS_OF_RONAN } from './mcuGuardiansOfTheGalaxy.villains';
+import { META } from './meta';
 
 const ronanTheAccuser = new EpicMastermindBuilder({
   name: 'Ronan the Accuser',

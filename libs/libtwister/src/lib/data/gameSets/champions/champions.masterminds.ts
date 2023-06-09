@@ -2,9 +2,9 @@ import { EpicMastermindBuilder } from '../../../model';
 import { VERSATILE } from '../darkCity/keywords';
 import { DEMOLISH } from '../villains/keywords';
 
+import { MONSTERS_UNLEASHED, WRECKING_CREW } from './champions.villains';
 import { SIZE_CHANGING } from './keywords';
 import { META } from './meta';
-import { MONSTERS_UNLEASHED, WRECKING_CREW } from './champions.villains';
 
 const finFangFoom = new EpicMastermindBuilder({
   gameSet: META,

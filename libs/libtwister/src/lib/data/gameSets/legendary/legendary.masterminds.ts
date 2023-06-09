@@ -1,8 +1,8 @@
 import { Mastermind } from '../../../model';
 
 import { DOOMBOT_LEGION } from './henchmen';
-import { META } from './meta';
 import { BROTHERHOOD, ENEMIES_OF_ASGARD, HYDRA } from './legendary.villains';
+import { META } from './meta';
 
 export const DR_DOOM = new Mastermind({
   id: '0bf45de9-7ee0-4650-98e0-2ef0300c6e22',

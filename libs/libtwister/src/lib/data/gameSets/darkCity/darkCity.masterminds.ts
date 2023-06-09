@@ -1,7 +1,5 @@
 import { Mastermind } from '../../../model';
 
-import { BRIBE } from './keywords';
-import { META } from './meta';
 import {
   FOUR_HORSEMEN,
   MARAUDERS,
@@ -9,6 +7,8 @@ import {
   STREETS_OF_NEW_YORK,
   UNDERWORLD,
 } from './darkCity.villains';
+import { BRIBE } from './keywords';
+import { META } from './meta';
 
 export const APOCALYPSE = new Mastermind({
   id: 'ec0617db-3869-4301-b07d-938876684790',

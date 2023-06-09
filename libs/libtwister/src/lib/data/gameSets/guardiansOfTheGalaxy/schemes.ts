@@ -4,8 +4,8 @@ import {
 } from '../../../model';
 import { SKRULLS } from '../legendary/legendary.villains';
 
-import { ARTIFACT, SHARDS } from './keywords';
 import { INFINITY_GEMS, KREE_STARFORCE } from './guardiansOfTheGalaxy.villains';
+import { ARTIFACT, SHARDS } from './keywords';
 
 export const FORGE_THE_INFINITY_GAUNTLET: ShortScheme = {
   id: '628baaec-c104-437f-ab61-f4526e70ae5f',

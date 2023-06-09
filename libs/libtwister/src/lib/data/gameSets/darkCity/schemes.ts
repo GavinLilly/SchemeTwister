@@ -5,8 +5,8 @@ import {
 import { ShortScheme } from '../../../model/interfaces';
 import { HeroClass } from '../../enums';
 
-import { MAGGIA_GOONS } from './henchmen';
 import { JEAN_GREY } from './darkCity.heroes';
+import { MAGGIA_GOONS } from './henchmen';
 
 export const CAPTURE_BABY_HOPE: ShortScheme = {
   id: 'd4d841c0-5e46-4307-9436-39482fa5627b',

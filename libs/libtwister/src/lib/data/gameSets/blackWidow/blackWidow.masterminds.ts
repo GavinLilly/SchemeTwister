@@ -1,10 +1,10 @@
 import { EpicMastermindBuilder, IMastermind } from '../../../model';
 
-import { META } from './meta';
 import {
   ELITE_ASSASSINS,
   TASKMASTERS_THUNDERBOLTS,
 } from './blackWidow.villains';
+import { META } from './meta';
 
 type AttackPoints = Pick<IMastermind, 'attackPoints'>;
 

@@ -1,8 +1,8 @@
 import { Mastermind } from '../../../model';
 
+import { HERALDS_OF_GALACTUS, SUBTERRANEA } from './fantasticFour.villains';
 import { GALACTUS_COSMIC_THREAT } from './keywords';
 import { META } from './meta';
-import { HERALDS_OF_GALACTUS, SUBTERRANEA } from './fantasticFour.villains';
 
 export const GALACTUS = new Mastermind({
   id: '9782d689-6f55-435e-a99f-0b91cf167fe9',

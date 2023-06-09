@@ -19,11 +19,11 @@ import {
 } from '../data/gameSets/legendary/schemes';
 import PAINT_THE_TOWN_RED from '../data/gameSets/paintTheTownRed';
 import { CARNAGE } from '../data/gameSets/paintTheTownRed/paintTheTownRed.masterminds';
-import { SPLICE_HUMANS_WITH_SPIDER_DNA } from '../data/gameSets/paintTheTownRed/schemes';
 import {
   MAXIMUM_CARNAGE,
   SINISTER_SIX,
 } from '../data/gameSets/paintTheTownRed/paintTheTownRed.villains';
+import { SPLICE_HUMANS_WITH_SPIDER_DNA } from '../data/gameSets/paintTheTownRed/schemes';
 import { StoreBuilder, StoreOfStores } from '../factories';
 import { injectGameSet } from '../utils/schemeInjector';
 

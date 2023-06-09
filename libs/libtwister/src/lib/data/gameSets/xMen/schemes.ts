@@ -7,8 +7,8 @@ import { JEAN_GREY } from '../darkCity/darkCity.heroes';
 import { SENTINELS } from '../legendary/henchmen';
 
 import { THE_BROOD } from './henchmen';
-import { PHOENIX } from './xMen.heroes';
 import { TRAPS } from './keywords';
+import { PHOENIX } from './xMen.heroes';
 import { HELLFIRE_CLUB } from './xMen.villains';
 
 export const ALIEN_BROOD_ENCOUNTER: ShortScheme = {
