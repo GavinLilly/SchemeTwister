@@ -12,7 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [lts/*, lts/-1]
+        # Staying on Node 16 until SSL crypto issues are resolved
+        node: [16]
 
     steps:
       - uses: actions/checkout@v3
