@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import {
-  AbstractMastermind,
+  Mastermind,
   GameSetup,
   SchemeMinusRules,
 } from '@schemetwister/libtwister';
@@ -22,7 +22,7 @@ export interface IGameSetupState {
   loading: boolean;
   error: string;
   definedScheme?: SchemeMinusRules;
-  definedMastermind?: AbstractMastermind;
+  definedMastermind?: Mastermind;
 }
 
 export const initialState: IGameSetupState = {

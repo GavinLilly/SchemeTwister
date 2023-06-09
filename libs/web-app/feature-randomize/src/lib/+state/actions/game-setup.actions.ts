@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import {
-  AbstractMastermind,
+  Mastermind,
   SchemeMinusRules,
   GameSetup,
 } from '@schemetwister/libtwister';
@@ -32,7 +32,7 @@ export const resetDefinedScheme = createAction(
 
 export const setDefinedMastermind = createAction(
   `${domain} Set Defined Mastermind`,
-  props<{ mastermind: AbstractMastermind }>()
+  props<{ mastermind: Mastermind }>()
 );
 
 export const resetDefinedMastermind = createAction(

@@ -12,6 +12,6 @@ export class BaseCardContentComponent<T extends ICard> implements OnInit {
 
   ngOnInit(): void {
     this.gameSetName =
-      LibTwister.allGameSets.get(this.card.gameSetId)?.name || '';
+      LibTwister.allGameSets.get(this.card.gameSet.id)?.name || '';
   }
 }
