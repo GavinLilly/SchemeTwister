@@ -1,10 +1,10 @@
-import { ICard } from '../model';
+import { IPlayableObject } from '../model';
 import { randomize } from '../utils/randomize';
 
 /**
  * A factory for selecting a single card from a large set.
  */
-export class SingleCardFactory<T extends ICard> {
+export class SingleCardFactory<T extends IPlayableObject> {
   private readonly _allCards: Map<string, T> = new Map();
   private readonly _excludedCardIds: Set<string>;
 

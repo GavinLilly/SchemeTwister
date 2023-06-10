@@ -1,5 +1,6 @@
-import { AbstractCardGroup } from './cardGroup';
-import { CardType } from './cardType.enum';
+import { CardType } from '../cardType.enum';
+
+import { AbstractCardGroup } from './abstractCardGroup';
 
 export class VillainGroup extends AbstractCardGroup {
   get cardType() {

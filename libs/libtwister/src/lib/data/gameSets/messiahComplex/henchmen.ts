@@ -1,9 +1,9 @@
-import { CardType, IHenchmen } from '../../../model';
+import { Henchmen } from '../../../model';
 
 import { CLONE_HEROES } from './keywords';
 import { META } from './meta';
 
-export const MR_SINISTER_CLONES: IHenchmen = {
+export const MR_SINISTER_CLONES = new Henchmen({
   id: '89272e6e-8a3e-4651-986e-fcdd7517447e',
   name: 'Mr. Sinister Clones',
   ambush:
@@ -13,11 +13,11 @@ export const MR_SINISTER_CLONES: IHenchmen = {
   attackPoints: 3,
   victoryPoints: 1,
   gameSet: META,
-  cardType: CardType.HENCHMEN,
-  keywords: [CLONE_HEROES],
-};
 
-export const SENTINEL_SQUAD_ONE: IHenchmen = {
+  keywords: [CLONE_HEROES],
+});
+
+export const SENTINEL_SQUAD_ONE = new Henchmen({
   id: '788ac1a0-f3b5-4fd1-b3d8-651864133a75',
   name: 'Sentinel Squad O*N*E*',
   ambush: 'If there are no other Sentinel Squad O*N*E*s in the city, Clone.',
@@ -26,6 +26,6 @@ export const SENTINEL_SQUAD_ONE: IHenchmen = {
   attackPoints: 2,
   victoryPoints: 1,
   gameSet: META,
-  cardType: CardType.HENCHMEN,
+
   keywords: [CLONE_HEROES],
-};
+});

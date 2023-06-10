@@ -1,19 +1,17 @@
-import { StoreOfStores } from '../../factories/storeOfStores';
+import { StoreOfStores } from '../../factories';
+import { Henchmen, Mastermind } from '../cards';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  IHenchmen,
-  SchemeMinusRules,
   VillainDeckMinimal,
 } from '../interfaces';
-import { Mastermind } from '../mastermind';
-import { NumPlayers } from '../types';
+import { NumPlayers, SchemeMinusRules } from '../types';
 
 import { Scheme } from './Scheme';
 
 export class RequireHenchmenInVillainDeckScheme extends Scheme {
-  constructor(scheme: SchemeMinusRules, private _requiredHenchmen: IHenchmen) {
+  constructor(scheme: SchemeMinusRules, private _requiredHenchmen: Henchmen) {
     super(scheme);
   }
 

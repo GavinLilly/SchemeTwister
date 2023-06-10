@@ -3,7 +3,7 @@ import WWHULK from '../../data/gameSets/worldWarHulk';
 import { MUTATING_GAMMA_RAYS } from '../../data/gameSets/worldWarHulk/schemes';
 import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';
-import { Hero } from '../hero';
+import { Hero } from '../cards';
 import { IGameSetup } from '../interfaces';
 
 import { RequireHeroNameInAdditionalDeckScheme } from './RequireHeroNameInAdditionalDeckScheme';

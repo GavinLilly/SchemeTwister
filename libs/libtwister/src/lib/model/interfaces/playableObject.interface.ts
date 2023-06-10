@@ -2,7 +2,7 @@ import { IGameSetMeta } from './gameSet.interface';
 import { IKeyword } from './keyword.interface';
 import { INamedObject } from './namedObject.interface';
 
-export interface ICard extends INamedObject {
+export interface IPlayableObject extends INamedObject {
   /**
    * Meta: The associated game set
    */

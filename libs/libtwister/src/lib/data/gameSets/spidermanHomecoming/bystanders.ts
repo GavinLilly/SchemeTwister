@@ -1,12 +1,12 @@
-import { IBystander, CardType } from '../../../model';
+import { Bystander } from '../../../model';
 
 import { META } from './meta';
 
-export const DAMAGE_CONTROL: IBystander = {
+export const DAMAGE_CONTROL = new Bystander({
   id: '463fa409-d797-4dc8-983d-334080881793',
   name: 'Damage Control',
-  cardType: CardType.BYSTANDER,
+
   copies: 1,
   gameSet: META,
   victoryPoints: 1,
-};
+});

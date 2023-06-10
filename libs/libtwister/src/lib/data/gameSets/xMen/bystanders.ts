@@ -32,8 +32,8 @@ export const MAGIK = new Hero({
   name: 'Magik',
   team: X_MEN,
   gameSet: META,
-  cardType: CardType.BYSTANDER,
   keywords: [TELEPORT],
+  cardType: CardType.BYSTANDER,
 });
 
 export const MAGMA = new Hero({

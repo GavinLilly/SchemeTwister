@@ -1,4 +1,5 @@
 import { StoreOfStores } from '../../factories/storeOfStores';
+import { Mastermind } from '../cards';
 import { SinglePlayerError } from '../errors';
 import {
   AdditionalDeckDeckMinimal,
@@ -6,7 +7,6 @@ import {
   IGameSetup,
   VillainDeckMinimal,
 } from '../interfaces';
-import { Mastermind } from '../mastermind';
 import { NumPlayers } from '../types';
 
 import { Scheme } from './Scheme';

@@ -2,16 +2,17 @@ import merge from 'ts-deepmerge';
 import { PartialDeep } from 'type-fest';
 import * as uuid from 'uuid';
 
-import { StoreOfStores } from '../../factories/storeOfStores';
+import { StoreOfStores } from '../../factories';
 import { GameSet } from '../GameSet';
 import { GameSetup } from '../GameSetup';
 import { CardType } from '../cardType.enum';
+import { Mastermind } from '../cards';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IAdditionalDeck,
   IAdditionalDeckRules,
-  ICard,
+  IPlayableObject,
   IGameSetMeta,
   IGameSetup,
   IHeroDeck,
@@ -20,19 +21,17 @@ import {
   INumPlayerRules,
   IVillainDeck,
   IVillainDeckRequirements,
-  SchemeMinusRules,
   VillainDeckMinimal,
   nameSorter,
 } from '../interfaces';
-import { Mastermind } from '../mastermind';
 import { Rules, RulesType } from '../rules';
-import { NumPlayers, numPlayers } from '../types';
+import { NumPlayers, SchemeMinusRules, numPlayers } from '../types';
 
 /**
  * Scheme allows for a Scheme-rules from the game to be instantiated and
  * generate a game setup.
  */
-export class Scheme implements ICard {
+export class Scheme implements IPlayableObject {
   // Meta
   private readonly _id: string;
   private readonly _gameSet: IGameSetMeta;
@@ -146,7 +145,7 @@ export class Scheme implements ICard {
    * @param card the card to add to the deck
    * @param maxLength the maximum size of the deck
    */
-  protected static addToDeck<T extends ICard>(
+  protected static addToDeck<T extends IPlayableObject>(
     existingCards: T[] | undefined,
     card: T,
     maxLength?: number
@@ -159,13 +158,13 @@ export class Scheme implements ICard {
    * @param maxLength the maximum size of the deck
    * @param extraCards an array of additional cards to add to the deck
    */
-  protected static addToDeck<T extends ICard>(
+  protected static addToDeck<T extends IPlayableObject>(
     existingCards: T[] | undefined,
     card: T,
     maxLength?: number,
     ...extraCards: T[]
   ): T[];
-  protected static addToDeck<T extends ICard>(
+  protected static addToDeck<T extends IPlayableObject>(
     existingCards: T[] | undefined,
     card: T,
     maxLength?: number,

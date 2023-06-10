@@ -1,5 +1,5 @@
 import { DARK_CITY, LEGENDARY } from '../data/gameSets';
-import { CardType, ICard } from '../model';
+import { CardType, IPlayableObject } from '../model';
 
 import { MultiCardFactory } from './multiCardFactory';
 import { MultiCardStore } from './multiCardStore';
@@ -7,7 +7,7 @@ import { SingleCardFactory } from './singleCardFactory';
 
 const cardType = CardType.HERO;
 
-class LegCard implements ICard {
+class LegCard implements IPlayableObject {
   gameSet = LEGENDARY.default;
   constructor(
     public name: string,
@@ -16,7 +16,7 @@ class LegCard implements ICard {
   ) {}
 }
 
-class DcCard implements ICard {
+class DcCard implements IPlayableObject {
   gameSet = DARK_CITY.default;
   constructor(
     public name: string,
@@ -52,7 +52,7 @@ beforeEach(() => {
 
 describe('Single Card Factory', () => {
   describe('with all cards', () => {
-    let instance: SingleCardFactory<ICard>;
+    let instance: SingleCardFactory<IPlayableObject>;
 
     beforeAll(() => {
       instance = new SingleCardFactory([...legData, ...dcData]);
@@ -74,7 +74,7 @@ describe('Single Card Factory', () => {
   });
 
   describe('with only Legendary cards', () => {
-    let instance: SingleCardFactory<ICard>;
+    let instance: SingleCardFactory<IPlayableObject>;
 
     beforeAll(() => {
       instance = new SingleCardFactory(legData);
@@ -114,7 +114,7 @@ describe('Single Card Factory', () => {
 
 describe('Multi Card Factory', () => {
   describe('with all cards', () => {
-    let instance: MultiCardFactory<ICard>;
+    let instance: MultiCardFactory<IPlayableObject>;
 
     beforeAll(() => {
       instance = new MultiCardFactory([...legData, ...dcData]);
@@ -153,7 +153,7 @@ describe('Multi Card Factory', () => {
 
 describe('Multi Card Store', () => {
   describe('with all cards', () => {
-    let store: MultiCardStore<ICard>;
+    let store: MultiCardStore<IPlayableObject>;
 
     beforeAll(() => {
       store = new MultiCardStore([...legData, ...dcData]);

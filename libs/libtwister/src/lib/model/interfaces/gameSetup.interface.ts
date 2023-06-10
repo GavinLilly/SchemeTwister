@@ -1,4 +1,4 @@
-import { Mastermind } from '../mastermind';
+import { Mastermind } from '../cards';
 import { Scheme } from '../schemes';
 
 import { IAdditionalDeck, IHeroDeck, IVillainDeck } from './deck.interface';

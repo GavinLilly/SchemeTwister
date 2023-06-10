@@ -12,8 +12,8 @@ import {
 } from '../../data/gameSets/shield/shield.villains';
 import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';
+import { VillainGroup } from '../cards';
 import { IGameSetup } from '../interfaces';
-import { VillainGroup } from '../villainGroup';
 
 import { RequireVillainsInVillainDeckScheme } from './RequireVillainsInVillainDeckScheme';
 import { Scheme } from './Scheme';

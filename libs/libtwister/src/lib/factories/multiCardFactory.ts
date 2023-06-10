@@ -1,4 +1,4 @@
-import { ICard } from '../model';
+import { IPlayableObject } from '../model';
 import { randomize } from '../utils/randomize';
 
 import { SingleCardFactory } from './singleCardFactory';
@@ -6,7 +6,9 @@ import { SingleCardFactory } from './singleCardFactory';
 /**
  * A factory for selecting multiple cards from a large set.
  */
-export class MultiCardFactory<T extends ICard> extends SingleCardFactory<T> {
+export class MultiCardFactory<
+  T extends IPlayableObject
+> extends SingleCardFactory<T> {
   /**
    * Gets a number of random cards from the list of filtered cards while also
    * removing those carsd from the record so they can't be selected later

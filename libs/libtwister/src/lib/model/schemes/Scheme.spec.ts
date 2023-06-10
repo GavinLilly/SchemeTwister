@@ -10,9 +10,9 @@ import {
 import { StoreBuilder, StoreOfStores } from '../../factories';
 import { GameSetup } from '../GameSetup';
 import { CardType } from '../cardType.enum';
-import { SchemeMinusRules } from '../interfaces';
 import { IGameSetup } from '../interfaces/gameSetup.interface';
 import { Rules } from '../rules';
+import { SchemeMinusRules } from '../types';
 import { NumPlayers, numPlayers } from '../types/numPlayers.type';
 
 import { Scheme } from './Scheme';

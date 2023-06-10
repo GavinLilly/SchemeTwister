@@ -1,15 +1,12 @@
-import { StoreOfStores } from '../../factories/storeOfStores';
-import { Hero } from '../hero';
+import { StoreOfStores } from '../../factories';
+import { VillainGroup, Hero, Mastermind } from '../cards';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  SchemeMinusRules,
   VillainDeckMinimal,
 } from '../interfaces';
-import { Mastermind } from '../mastermind';
-import { NumPlayers } from '../types';
-import { VillainGroup } from '../villainGroup';
+import { NumPlayers, SchemeMinusRules } from '../types';
 
 import { RequireVillainsInVillainDeckScheme } from './RequireVillainsInVillainDeckScheme';
 import { Scheme } from './Scheme';

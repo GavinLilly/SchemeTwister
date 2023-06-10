@@ -1,4 +1,4 @@
-import legendary from '../data/gameSets/legendary';
+import legendary from '../../data/gameSets/legendary';
 
 import { Mastermind } from './mastermind';
 import { VillainGroup } from './villainGroup';

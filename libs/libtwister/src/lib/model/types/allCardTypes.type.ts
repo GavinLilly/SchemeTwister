@@ -1,12 +1,11 @@
-import { Hero } from '../hero';
-import { IBystander, IHenchmen, SchemeMinusRules } from '../interfaces';
-import { Mastermind } from '../mastermind';
-import { VillainGroup } from '../villainGroup';
+import { Bystander, Henchmen, Hero, Mastermind, VillainGroup } from '../cards';
+
+import { SchemeMinusRules } from './specialistScheme.type';
 
 export type AllCardTypes =
-  | IBystander
+  | Bystander
   | Hero
-  | IHenchmen
+  | Henchmen
   | VillainGroup
   | Mastermind
   | SchemeMinusRules;

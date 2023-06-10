@@ -1,18 +1,17 @@
 import * as GameSets from './data/gameSets';
-import { SingleCardFactory } from './factories';
-import { StoreOfStores } from './factories/storeOfStores';
+import { SingleCardFactory, StoreOfStores } from './factories';
 import {
   GameSet,
   GameSetSize,
   GameSetup,
   Hero,
-  IHenchmen,
+  Henchmen,
   Mastermind,
   NumPlayers,
   VillainGroup,
+  SchemeMinusRules,
+  GameSetMap,
 } from './model';
-import { GameSetMap } from './model/gameSetMap';
-import { SchemeMinusRules } from './model/interfaces/newScheme.interface';
 import instantiateScheme from './utils/instantiateScheme';
 
 /**
@@ -152,7 +151,7 @@ export class LibTwister {
     const masterminds: Mastermind[] = [];
     const schemes: SchemeMinusRules[] = [];
     const villains: VillainGroup[] = [];
-    const henchmen: IHenchmen[] = [];
+    const henchmen: Henchmen[] = [];
 
     this._selectedGameSets.forEach((gameSet) => {
       heroes.push(...gameSet.heroes);

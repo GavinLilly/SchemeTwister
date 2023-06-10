@@ -1,11 +1,13 @@
-import { ICard } from '../model';
+import { IPlayableObject } from '../model';
 
 import { MultiCardFactory } from './multiCardFactory';
 
 /**
  * A MultiCardFactory with memory!
  */
-export class MultiCardStore<T extends ICard> extends MultiCardFactory<T> {
+export class MultiCardStore<
+  T extends IPlayableObject
+> extends MultiCardFactory<T> {
   private readonly _chosenCards: Set<string> = new Set();
   private readonly _excludedCardsForSetup: Set<string> = new Set();
 

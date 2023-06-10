@@ -1,14 +1,10 @@
-import { CardType } from './cardType.enum';
-import { GameSetSize } from './gameSetSize.enum';
-import {
-  IBadGuyCard,
-  IGameSetMeta,
-  IHenchmen,
-  IKeyword,
-  INumPlayerRules,
-} from './interfaces';
-import { ICardType } from './interfaces/cardType.interface';
-import { Series } from './series.enum';
+import { CardType } from '../cardType.enum';
+import { GameSetSize } from '../gameSetSize.enum';
+import { INumPlayerRules, IFightable } from '../interfaces';
+import { Series } from '../series.enum';
+
+import { AbstractFightableCardGroup } from './fightableCardGroup';
+import { Henchmen } from './henchmen';
 import { VillainGroup } from './villainGroup';
 
 /** A function that will override the rules provided, optionally basing it on the number of players. */
@@ -17,10 +13,8 @@ type RuleOverrideFunction = (
   num: number
 ) => INumPlayerRules;
 
-export interface IMastermind extends IBadGuyCard {
-  readonly name: string;
-  readonly keywords?: IKeyword[];
-  readonly alwaysLeads: (VillainGroup | IHenchmen)[];
+export interface IMastermind extends IFightable {
+  readonly alwaysLeads: (VillainGroup | Henchmen)[];
   /**
    * Override the rules for each number of players. Useful for setting a rule
    * based on the number of players
@@ -28,48 +22,22 @@ export interface IMastermind extends IBadGuyCard {
   readonly ruleOverride?: RuleOverrideFunction;
 }
 
-export class Mastermind implements IMastermind, ICardType {
-  private readonly _name: string;
-  private readonly _gameSet: IGameSetMeta;
-  private readonly _keywords: IKeyword[];
-  private readonly _alwaysLeads: (VillainGroup | IHenchmen)[];
-  private readonly _id: string;
-  private readonly _attackPoints: number | string;
-  private readonly _victoryPoints: number;
+export class Mastermind
+  extends AbstractFightableCardGroup
+  implements IMastermind
+{
+  private readonly _alwaysLeads: (VillainGroup | Henchmen)[];
   private readonly _overrideFunction?: RuleOverrideFunction;
 
   constructor(mastermindConfig: IMastermind) {
-    ({
-      name: this._name,
-      gameSet: this._gameSet,
-      alwaysLeads: this._alwaysLeads,
-      id: this._id,
-      attackPoints: this._attackPoints,
-      victoryPoints: this._victoryPoints,
-      ruleOverride: this._overrideFunction,
-    } = mastermindConfig);
+    super(mastermindConfig);
 
-    this._keywords = mastermindConfig.keywords ?? [];
-  }
-
-  get name() {
-    return this._name;
-  }
-
-  get gameSet() {
-    return this._gameSet;
-  }
-
-  get keywords() {
-    return this._keywords;
+    ({ alwaysLeads: this._alwaysLeads, ruleOverride: this._overrideFunction } =
+      mastermindConfig);
   }
 
   get alwaysLeads() {
     return this._alwaysLeads;
-  }
-
-  get id() {
-    return this._id;
   }
 
   get isEpic() {
@@ -78,14 +46,6 @@ export class Mastermind implements IMastermind, ICardType {
 
   get ruleOverride() {
     return this._overrideFunction;
-  }
-
-  get attackPoints() {
-    return this._attackPoints;
-  }
-
-  get victoryPoints() {
-    return this._victoryPoints;
   }
 
   get cardType() {

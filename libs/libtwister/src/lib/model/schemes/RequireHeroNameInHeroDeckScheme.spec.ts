@@ -4,7 +4,7 @@ import { DEADPOOL_KILLS_THE_MARVEL_UNIVERSE } from '../../data/gameSets/deadpool
 import LEGENDARY from '../../data/gameSets/legendary';
 import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';
-import { Hero } from '../hero';
+import { Hero } from '../cards';
 import { IGameSetup } from '../interfaces';
 
 import { RequireHeroNameInHeroDeckScheme } from './RequireHeroNameInHeroDeckScheme';

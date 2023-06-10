@@ -1,15 +1,15 @@
-import { CardType } from './cardType.enum';
-import { ICard, IGameSetMeta, IKeyword } from './interfaces';
-import { ICardType } from './interfaces/cardType.interface';
+import { CardType } from '../cardType.enum';
+import { IPlayableObject, IGameSetMeta, IKeyword } from '../interfaces';
+import { ICardType } from '../interfaces/cardType.interface';
 
-export abstract class AbstractCardGroup implements ICard, ICardType {
+export abstract class AbstractCardGroup implements IPlayableObject, ICardType {
   private readonly _id: string;
   private readonly _name: string;
   private readonly _gameSet: IGameSetMeta;
-  private readonly _keywords?: IKeyword[];
+  private readonly _keywords: IKeyword[];
   public abstract readonly cardType: CardType;
 
-  constructor(config: ICard) {
+  constructor(config: IPlayableObject) {
     ({ id: this._id, name: this._name, gameSet: this._gameSet } = config);
 
     this._keywords = config.keywords ?? [];

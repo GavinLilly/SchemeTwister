@@ -1,17 +1,14 @@
-import { Hero } from './hero';
+import { Mastermind, Hero, Henchmen, VillainGroup } from './cards';
 import {
   IAdditionalDeck,
-  ICard,
-  IHenchmen,
+  IPlayableObject,
   IHeroDeck,
   IKeyword,
   IVillainDeck,
   nameSorter,
 } from './interfaces';
 import { IGameSetup } from './interfaces/gameSetup.interface';
-import { Mastermind } from './mastermind';
 import { Scheme } from './schemes';
-import { VillainGroup } from './villainGroup';
 
 /**
  * A class to store the generated game setup.
@@ -43,7 +40,7 @@ export class GameSetup implements IGameSetup {
    * All the keywords contained in this game setup.
    */
   public get keywords(): Set<IKeyword> {
-    const cards: ICard[] = [
+    const cards: IPlayableObject[] = [
       ...this.getSelectedHenchmen(),
       ...this.getSelectedHeroes(),
       ...this.getSelectedMasterminds(),
@@ -91,7 +88,7 @@ export class GameSetup implements IGameSetup {
       .concat(this.additionalDeck?.deck.heroes ?? []);
   }
 
-  public getSelectedHenchmen(): IHenchmen[] {
+  public getSelectedHenchmen(): Henchmen[] {
     return this.villainDeck.henchmen
       .concat(this.heroDeck.henchmen ?? [])
       .concat(this.additionalDeck?.deck.henchmen ?? []);

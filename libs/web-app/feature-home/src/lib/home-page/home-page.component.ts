@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {
   Mastermind,
-  IHenchmen,
+  Henchmen,
   Hero,
   LibTwister,
   SchemeMinusRules,
@@ -25,7 +25,7 @@ export class HomePageComponent {
     const allGameSets = LibTwister.allGameSets.asArray();
     this.numHenchmen = allGameSets
       .map((gameSet) => gameSet.henchmen)
-      .filter((henchmen): henchmen is IHenchmen[] => !!henchmen)
+      .filter((henchmen): henchmen is Henchmen[] => !!henchmen)
       .reduce((prev, next) => prev?.concat(next)).length;
 
     this.numHeroes = allGameSets

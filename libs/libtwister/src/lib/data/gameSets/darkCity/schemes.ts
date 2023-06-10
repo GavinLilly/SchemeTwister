@@ -1,8 +1,8 @@
 import {
   RequireHenchmenInVillainDeckScheme,
   RequireHeroInVillainDeckScheme,
+  ShortScheme,
 } from '../../../model';
-import { ShortScheme } from '../../../model/interfaces';
 import { HeroClass } from '../../enums';
 
 import { JEAN_GREY } from './darkCity.heroes';

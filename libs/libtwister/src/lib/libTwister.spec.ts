@@ -13,7 +13,7 @@ import { LibTwister } from './libTwister';
 import {
   CardType,
   GameSetSize,
-  ICard,
+  IPlayableObject,
   NumPlayers,
   SchemeMinusRules,
 } from './model';
@@ -63,7 +63,7 @@ describe('LibTwister', () => {
       };
 
       const allGamesets = Array.from(LibTwister.allGameSets.values());
-      const allCards: ICard[] = [];
+      const allCards: IPlayableObject[] = [];
 
       // Iterate over all game sets
       allGamesets.forEach((gameSet) => {

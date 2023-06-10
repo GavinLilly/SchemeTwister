@@ -1,8 +1,9 @@
-import { CardType, IGameSetMeta } from '../model';
 import {
-  ShortScheme,
+  CardType,
+  IGameSetMeta,
   SchemeMinusRules,
-} from '../model/interfaces/newScheme.interface';
+  ShortScheme,
+} from '../model';
 
 export function injectGameSet(
   gameSet: IGameSetMeta,

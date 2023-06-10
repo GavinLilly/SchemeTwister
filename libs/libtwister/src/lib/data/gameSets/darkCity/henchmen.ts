@@ -1,10 +1,10 @@
-import { CardType, IHenchmen } from '../../../model';
+import { Henchmen } from '../../../model';
 import { HeroClass } from '../../enums';
 
 import { BRIBE } from './keywords';
 import { META } from './meta';
 
-export const MAGGIA_GOONS: IHenchmen = {
+export const MAGGIA_GOONS = new Henchmen({
   id: '11b440df-9d3d-4546-af21-498058cfe6f7',
   name: 'Maggia Goons',
   keywords: [BRIBE],
@@ -12,15 +12,13 @@ export const MAGGIA_GOONS: IHenchmen = {
   attackPoints: 4,
   victoryPoints: 1,
   gameSet: META,
-  cardType: CardType.HENCHMEN,
-};
+});
 
-export const PHALANX: IHenchmen = {
+export const PHALANX = new Henchmen({
   id: 'afd81252-9b06-42fa-bc75-e7b928ca49aa',
   name: 'Phalanx',
   fight: `Reveal a ${HeroClass.TECH} Hero or KO one of your Heroes with an Attack icon`,
   attackPoints: 3,
   victoryPoints: 1,
   gameSet: META,
-  cardType: CardType.HENCHMEN,
-};
+});

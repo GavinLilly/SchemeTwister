@@ -1,20 +1,19 @@
 import * as uuid from 'uuid';
 
-import { GameSet } from './GameSet';
-import { AbstractCardGroup } from './cardGroup';
-import { CardType } from './cardType.enum';
-import { ICard, ITeam } from './interfaces';
-import { ICardType } from './interfaces/cardType.interface';
+import { GameSet } from '../GameSet';
+import { CardType } from '../cardType.enum';
+import { ICardType, IPlayableObject, ITeam } from '../interfaces';
 
-interface IHero extends ICard, Partial<ICardType> {
+import { AbstractCardGroup } from './abstractCardGroup';
+
+interface IHero extends IPlayableObject {
   team?: ITeam;
 }
-
 export class Hero extends AbstractCardGroup implements IHero {
   private readonly _team?: ITeam;
   private readonly _cardType: CardType;
 
-  constructor(heroConfig: IHero) {
+  constructor(heroConfig: IHero & Partial<ICardType>) {
     super(heroConfig);
 
     ({ team: this._team } = heroConfig);
