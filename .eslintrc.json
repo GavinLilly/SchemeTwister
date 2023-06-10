@@ -36,7 +36,8 @@
         "plugin:@nrwl/nx/typescript",
         "eslint:recommended",
         "plugin:import/recommended",
-        "plugin:import/typescript"
+        "plugin:import/typescript",
+        "prettier"
       ],
       "rules": {
         "no-dupe-class-members": "off",
@@ -77,7 +78,6 @@
             "format": ["UPPER_CASE"]
           }
         ],
-        "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
         "import/order": [
           "error",
           {
