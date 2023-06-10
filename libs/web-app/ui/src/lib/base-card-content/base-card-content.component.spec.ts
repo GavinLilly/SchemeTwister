@@ -14,7 +14,9 @@ describe('BaseCardContentComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BaseCardContentComponent<Hero>);
+    fixture = TestBed.createComponent<BaseCardContentComponent<Hero>>(
+      BaseCardContentComponent
+    );
     component = fixture.componentInstance;
     component.card = GameSets.LEGENDARY.Heroes.BLACK_WIDOW;
     fixture.detectChanges();
