@@ -1,10 +1,10 @@
 import { Hero } from '../../../model';
 import { HEROES_OF_WAKANDA } from '../../teams';
-import { EMPOWERED } from '../antMan/keywords';
-import { THRONES_FAVOR } from '../realmOfKings/keywords';
+import { EMPOWERED } from '../antMan/antMan.keywords';
+import { THRONES_FAVOR } from '../realmOfKings/realmOfKings.keywords';
 
-import { AMBUSH_ON_HEROES } from './keywords';
-import { META } from './meta';
+import { AMBUSH_ON_HEROES } from './blackPanther.keywords';
+import { META } from './blackPanther.meta';
 
 export const KING_BLACK_PANTHER = new Hero({
   id: '37049ad8-ff78-4af5-a289-4c865cda016c',

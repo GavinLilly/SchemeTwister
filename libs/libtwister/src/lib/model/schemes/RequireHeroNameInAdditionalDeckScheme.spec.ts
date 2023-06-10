@@ -1,6 +1,6 @@
 import DARK_CITY from '../../data/gameSets/darkCity';
 import WWHULK from '../../data/gameSets/worldWarHulk';
-import { MUTATING_GAMMA_RAYS } from '../../data/gameSets/worldWarHulk/schemes';
+import { MUTATING_GAMMA_RAYS } from '../../data/gameSets/worldWarHulk/worldWarHulk.schemes';
 import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';
 import { Hero } from '../cards';

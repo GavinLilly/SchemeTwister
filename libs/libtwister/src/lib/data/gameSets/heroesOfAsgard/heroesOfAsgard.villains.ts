@@ -1,10 +1,10 @@
 import { VillainGroup } from '../../../model';
-import { THROWN_ARTIFACT } from '../fearItself/keywords';
-import { ARTIFACT } from '../guardiansOfTheGalaxy/keywords';
-import { CONQUEROR } from '../marvelStudios/keywords';
+import { THROWN_ARTIFACT } from '../fearItself/fearItself.keywords';
+import { ARTIFACT } from '../guardiansOfTheGalaxy/guardiansOfTheGalaxy.keywords';
+import { CONQUEROR } from '../marvelStudios/marvelStudios.keywords';
 
-import { VILLAINOUS_WEAPONS, WORTHY } from './keywords';
-import { META } from './meta';
+import { VILLAINOUS_WEAPONS, WORTHY } from './heroesOfAsgard.keywords';
+import { META } from './heroesOfAsgard.meta';
 
 export const DARK_COUNCIL = new VillainGroup({
   id: 'ca7fd688-3d19-4ec2-b190-adf8b58eb67a',

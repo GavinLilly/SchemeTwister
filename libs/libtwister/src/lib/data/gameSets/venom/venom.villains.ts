@@ -1,7 +1,7 @@
 import { VillainGroup } from '../../../model';
 
-import { POISION_VILLAINS, SYMBIOTE_BONDS } from './keywords';
-import { META } from './meta';
+import { POISION_VILLAINS, SYMBIOTE_BONDS } from './venom.keywords';
+import { META } from './venom.meta';
 
 export const LIFE_FOUNDATION = new VillainGroup({
   id: '8e892d94-e2ae-4949-9cf3-dd20487c6b9a',

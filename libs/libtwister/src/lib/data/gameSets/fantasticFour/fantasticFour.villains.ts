@@ -1,7 +1,7 @@
 import { VillainGroup } from '../../../model';
 
-import { BURROW, COSMIC_THREAT } from './keywords';
-import { META } from './meta';
+import { BURROW, COSMIC_THREAT } from './fantasticFour.keywords';
+import { META } from './fantasticFour.meta';
 
 export const HERALDS_OF_GALACTUS = new VillainGroup({
   id: 'ec13a924-108a-48ba-8dfd-4eb6b310febc',

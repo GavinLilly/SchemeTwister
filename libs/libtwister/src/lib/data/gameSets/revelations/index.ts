@@ -1,11 +1,11 @@
 import { GameSet } from '../../../model';
 import { injectGameSetToMany } from '../../../utils/schemeInjector';
 
-import * as Bystanders from './bystanders';
-import * as Henchmen from './henchmen';
-import { META } from './meta';
+import * as Bystanders from './revelations.bystanders';
+import * as Henchmen from './revelations.henchmen';
 import * as Heroes from './revelations.heroes';
 import * as Masterminds from './revelations.masterminds';
+import { META } from './revelations.meta';
 import * as Schemes from './revelations.schemes';
 import * as Villains from './revelations.villains';
 

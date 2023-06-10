@@ -1,7 +1,7 @@
 import { VillainGroup } from '../../../model';
 
-import { ENDGAME } from './keywords';
-import { META } from './meta';
+import { ENDGAME } from './mcuInfinitySaga.keywords';
+import { META } from './mcuInfinitySaga.meta';
 
 export const CHILDREN_OF_THANOS = new VillainGroup({
   id: 'dfb2c2f0-d238-4f3e-930f-d514066b8a07',

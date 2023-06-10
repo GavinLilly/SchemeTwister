@@ -1,11 +1,11 @@
 import { Hero } from '../../../model';
 import { HEROES_OF_ASGARD } from '../../teams';
-import { THROWN_ARTIFACT } from '../fearItself/keywords';
-import { ARTIFACT } from '../guardiansOfTheGalaxy/keywords';
-import { CONQUEROR } from '../marvelStudios/keywords';
+import { THROWN_ARTIFACT } from '../fearItself/fearItself.keywords';
+import { ARTIFACT } from '../guardiansOfTheGalaxy/guardiansOfTheGalaxy.keywords';
+import { CONQUEROR } from '../marvelStudios/marvelStudios.keywords';
 
-import { WORTHY } from './keywords';
-import { META } from './meta';
+import { WORTHY } from './heroesOfAsgard.keywords';
+import { META } from './heroesOfAsgard.meta';
 
 export const THOR = new Hero({
   id: '7287c952-0348-4f84-87fd-83f2db55447e',

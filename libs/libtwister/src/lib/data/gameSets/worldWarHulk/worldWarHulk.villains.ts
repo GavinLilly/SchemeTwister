@@ -1,8 +1,12 @@
 import { VillainGroup } from '../../../model';
-import { FEAST } from '../paintTheTownRed/keywords';
+import { FEAST } from '../paintTheTownRed/paintTheTownRed.keywords';
 
-import { CROSS_DIMENSIONAL_RAMPAGE, OUTWIT, WOUNDED_FURY } from './keywords';
-import { META } from './meta';
+import {
+  CROSS_DIMENSIONAL_RAMPAGE,
+  OUTWIT,
+  WOUNDED_FURY,
+} from './worldWarHulk.keywords';
+import { META } from './worldWarHulk.meta';
 
 export const ASPECTS_OF_THE_VOID = new VillainGroup({
   id: '90ba3403-201c-4554-bde7-de31b2b18412',

@@ -1,10 +1,10 @@
 import { Hero } from '../../../model';
 import { FANTASTIC_FOUR } from '../../teams';
-import { FOCUS } from '../fantasticFour/keywords';
-import { CONQUEROR } from '../marvelStudios/keywords';
+import { FOCUS } from '../fantasticFour/fantasticFour.keywords';
+import { CONQUEROR } from '../marvelStudios/marvelStudios.keywords';
 
-import { MAN_OUT_OF_TIME } from './keywords';
-import { META } from './meta';
+import { MAN_OUT_OF_TIME } from './annihilation.keywords';
+import { META } from './annihilation.meta';
 
 export const BRAINSTORM = new Hero({
   id: '94ab015e-878a-4214-a252-c4add8d332d7',

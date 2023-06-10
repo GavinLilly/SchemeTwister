@@ -6,8 +6,8 @@ import {
   BROTHERHOOD,
 } from '../../teams';
 
-import { DODGE } from './keywords';
-import { META } from './meta';
+import { DODGE } from './villains.keywords';
+import { META } from './villains.meta';
 
 export const BULLSEYE = new Hero({
   id: '1ce739ed-89de-423e-991e-83cc6b110d30',

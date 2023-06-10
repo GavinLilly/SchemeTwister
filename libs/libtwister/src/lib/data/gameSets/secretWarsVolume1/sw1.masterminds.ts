@@ -1,8 +1,11 @@
 import { Mastermind } from '../../../model';
-import { TELEPORT } from '../darkCity/keywords';
+import { TELEPORT } from '../darkCity/darkCity.keywords';
 
-import { CROSS_DIMENSIONAL_RAMPAGE, RISE_OF_THE_LIVING_DEAD } from './keywords';
-import { META } from './meta';
+import {
+  CROSS_DIMENSIONAL_RAMPAGE,
+  RISE_OF_THE_LIVING_DEAD,
+} from './sw1.keywords';
+import { META } from './sw1.meta';
 import {
   LIMBO,
   SENTINEL_TERRITORIES,

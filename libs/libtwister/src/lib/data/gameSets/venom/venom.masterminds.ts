@@ -1,7 +1,7 @@
 import { EpicMastermindBuilder } from '../../../model';
 
-import { SYMBIOTE_BONDS } from './keywords';
-import { META } from './meta';
+import { SYMBIOTE_BONDS } from './venom.keywords';
+import { META } from './venom.meta';
 import { LIFE_FOUNDATION, POISONS } from './venom.villains';
 
 const hybrid = new EpicMastermindBuilder({

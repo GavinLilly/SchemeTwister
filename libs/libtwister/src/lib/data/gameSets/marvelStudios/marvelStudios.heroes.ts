@@ -1,7 +1,7 @@
 import { Hero } from '../../../model';
 import { AVENGERS, SHIELD } from '../../teams';
 
-import { META } from './meta';
+import { META } from './marvelStudios.meta';
 
 export const BLACK_WIDOW = new Hero({
   id: '5c94b39f-9814-47c2-857b-cd17d6deec0b',

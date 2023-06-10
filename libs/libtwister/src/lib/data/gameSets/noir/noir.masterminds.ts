@@ -1,7 +1,7 @@
 import { Mastermind } from '../../../model';
 
-import { HIDDEN_WITNESS, INVESTIGATE } from './keywords';
-import { META } from './meta';
+import { HIDDEN_WITNESS, INVESTIGATE } from './noir.keywords';
+import { META } from './noir.meta';
 import { GOBLINS_FREAK_SHOW, XMEN_NOIR } from './noir.villains';
 
 export const CHARLES_XAVIER_PROFESSOR_OF_CRIME = new Mastermind({

@@ -1,9 +1,9 @@
 import { Hero } from '../../../model';
 import { MARVEL_KNIGHTS, AVENGERS } from '../../teams';
-import { TELEPORT } from '../darkCity/keywords';
+import { TELEPORT } from '../darkCity/darkCity.keywords';
 
-import { INVESTIGATE, SWITCHEROO } from './keywords';
-import { META } from './meta';
+import { INVESTIGATE, SWITCHEROO } from './dimensions.keywords';
+import { META } from './dimensions.meta';
 
 export const JESSICA_JONES = new Hero({
   id: '6812ba8e-8aa9-424f-80b8-d08e70632bd0',

@@ -1,7 +1,7 @@
 import { VillainGroup } from '../../../model';
 
-import { ARTIFACT, SHARDS } from './keywords';
-import { META } from './meta';
+import { ARTIFACT, SHARDS } from './guardiansOfTheGalaxy.keywords';
+import { META } from './guardiansOfTheGalaxy.meta';
 
 export const KREE_STARFORCE = new VillainGroup({
   id: '368b4068-a407-4bf4-b5b4-da93440eb433',

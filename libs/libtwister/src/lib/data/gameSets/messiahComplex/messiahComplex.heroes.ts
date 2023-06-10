@@ -1,10 +1,14 @@
 import { Hero } from '../../../model';
 import { X_FACTOR, X_FORCE, X_MEN } from '../../teams';
-import { INVESTIGATE } from '../noir/keywords';
-import { WHEN_RECRUITED } from '../realmOfKings/keywords';
+import { INVESTIGATE } from '../noir/noir.keywords';
+import { WHEN_RECRUITED } from '../realmOfKings/realmOfKings.keywords';
 
-import { CLONE_HEROES, SHATTER, TACTICAL_FORMATION } from './keywords';
-import { META } from './meta';
+import {
+  CLONE_HEROES,
+  SHATTER,
+  TACTICAL_FORMATION,
+} from './messiahComplex.keywords';
+import { META } from './messiahComplex.meta';
 
 export const STRONG_GUY = new Hero({
   id: 'ee989156-a39f-4058-aa4a-077832cacfb5',

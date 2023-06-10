@@ -1,8 +1,8 @@
 import { Mastermind } from '../../../model';
 
-import { ASGARDIAN_WARRIORS } from './henchmen';
-import { DEMOLISH, X_TREME_ATTACK } from './keywords';
-import { META } from './meta';
+import { ASGARDIAN_WARRIORS } from './villains.henchmen';
+import { DEMOLISH, X_TREME_ATTACK } from './villains.keywords';
+import { META } from './villains.meta';
 import { AVENGERS, DEFENDERS, XMEN_FIRST_CLASS } from './villains.villains';
 
 export const DR_STRANGE = new Mastermind({

@@ -1,8 +1,8 @@
 import { Hero } from '../../../model';
 import { AVENGERS, SHIELD } from '../../teams';
 
-import { DARK_MEMORIES, HYPERSPEED, LAST_STAND } from './keywords';
-import { META } from './meta';
+import { DARK_MEMORIES, HYPERSPEED, LAST_STAND } from './revelations.keywords';
+import { META } from './revelations.meta';
 
 export const CAPTAIN_MARVEL_AGENT_OF_SHIELD = new Hero({
   id: '198052b7-8307-4b1c-bd14-058c7f3ebef7',

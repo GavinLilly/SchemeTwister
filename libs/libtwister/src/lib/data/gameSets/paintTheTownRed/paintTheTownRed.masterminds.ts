@@ -1,7 +1,7 @@
 import { Mastermind } from '../../../model';
 
-import { FEAST } from './keywords';
-import { META } from './meta';
+import { FEAST } from './paintTheTownRed.keywords';
+import { META } from './paintTheTownRed.meta';
 import { MAXIMUM_CARNAGE, SINISTER_SIX } from './paintTheTownRed.villains';
 
 export const CARNAGE = new Mastermind({

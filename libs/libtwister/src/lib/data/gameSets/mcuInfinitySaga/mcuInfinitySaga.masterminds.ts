@@ -1,11 +1,11 @@
 import { EpicMastermindBuilder } from '../../../model';
 
-import { ENDGAME } from './keywords';
+import { ENDGAME } from './mcuInfinitySaga.keywords';
+import { META } from './mcuInfinitySaga.meta';
 import {
   CHILDREN_OF_THANOS,
   INFINITY_STONES,
 } from './mcuInfinitySaga.villains';
-import { META } from './meta';
 
 const thanos = new EpicMastermindBuilder({
   name: 'Thanos',

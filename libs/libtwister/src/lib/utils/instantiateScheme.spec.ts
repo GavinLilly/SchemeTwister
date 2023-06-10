@@ -3,7 +3,7 @@ import {
   SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS,
   SUPER_HERO_CIVIL_WAR,
   THE_LEGACY_VIRUS,
-} from '../data/gameSets/legendary/schemes';
+} from '../data/gameSets/legendary/legendary.schemes';
 import {
   RequireVillainsInVillainDeckScheme,
   Scheme,

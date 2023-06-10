@@ -1,10 +1,10 @@
 import { CardType, Hero } from '../../../model';
 import { MARVEL_KNIGHTS } from '../../teams';
-import { PATROL } from '../secretWarsVolume2/keywords';
-import { MOONLIGHT_AND_SUNLIGHT } from '../theNewMutants/keywords';
+import { PATROL } from '../secretWarsVolume2/sw2.keywords';
+import { MOONLIGHT_AND_SUNLIGHT } from '../theNewMutants/theNewMutants.keywords';
 
-import { BLOOD_FRENZY } from './keywords';
-import { META } from './meta';
+import { BLOOD_FRENZY } from './midnightSons.keywords';
+import { META } from './midnightSons.meta';
 
 export const BLADE_DAYWALKER = new Hero({
   id: 'b3d5f860-d34c-4f0c-9ebc-1c99341152fe',

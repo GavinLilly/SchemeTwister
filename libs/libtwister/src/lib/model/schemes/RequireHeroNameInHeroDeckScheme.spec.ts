@@ -1,6 +1,6 @@
 import DARK_CITY from '../../data/gameSets/darkCity';
 import DEADPOOL from '../../data/gameSets/deadpool';
-import { DEADPOOL_KILLS_THE_MARVEL_UNIVERSE } from '../../data/gameSets/deadpool/schemes';
+import { DEADPOOL_KILLS_THE_MARVEL_UNIVERSE } from '../../data/gameSets/deadpool/deadpool.schemes';
 import LEGENDARY from '../../data/gameSets/legendary';
 import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';

@@ -1,7 +1,7 @@
 import { EpicMastermindBuilder } from '../../../model';
 
-import { ASTRAL_PLANE, DEMONIC_BARGAIN } from './keywords';
-import { META } from './meta';
+import { ASTRAL_PLANE, DEMONIC_BARGAIN } from './shadowsOfNightmare.keywords';
+import { META } from './shadowsOfNightmare.meta';
 import {
   FEAR_LORDS,
   LORDS_OF_NETHERWORLD,

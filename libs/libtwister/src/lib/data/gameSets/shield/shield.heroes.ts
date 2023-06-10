@@ -1,8 +1,8 @@
 import { Hero } from '../../../model';
 import { SHIELD } from '../../teams';
 
-import { SHIELD_LEVEL, UNDERCOVER } from './keywords';
-import { META } from './meta';
+import { SHIELD_LEVEL, UNDERCOVER } from './shield.keywords';
+import { META } from './shield.meta';
 
 export const AGENT_PHIL_COULSON = new Hero({
   id: 'fa1006d5-ed2b-45a4-9e26-03f9787d3096',

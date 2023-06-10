@@ -1,8 +1,8 @@
 import { Hero } from '../../../model';
 import { HYDRA, MERCS_FOR_MONEY } from '../../teams';
 
-import { EXCESSIVE_VIOLENCE } from './keywords';
-import { META } from './meta';
+import { EXCESSIVE_VIOLENCE } from './deadpool.keywords';
+import { META } from './deadpool.meta';
 
 export const BOB_AGENT_OF_HYDRA = new Hero({
   id: '5aa52805-11c4-4e17-840b-b6e94612a21c',

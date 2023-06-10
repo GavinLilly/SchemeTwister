@@ -1,13 +1,13 @@
 import { Mastermind } from '../../../model';
-import { FEAST } from '../paintTheTownRed/keywords';
+import { FEAST } from '../paintTheTownRed/paintTheTownRed.keywords';
 
 import {
   CROSS_DIMENSIONAL_RAMPAGE,
   OUTWIT,
   TRANSFORM,
   WOUNDED_FURY,
-} from './keywords';
-import { META } from './meta';
+} from './worldWarHulk.keywords';
+import { META } from './worldWarHulk.meta';
 import {
   ASPECTS_OF_THE_VOID,
   CODE_RED,

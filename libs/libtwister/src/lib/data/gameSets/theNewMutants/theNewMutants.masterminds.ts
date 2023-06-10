@@ -1,7 +1,10 @@
 import { IMastermind, Mastermind } from '../../../model';
 
-import { MOONLIGHT_AND_SUNLIGHT, WAKING_NIGHTMARE } from './keywords';
-import { META } from './meta';
+import {
+  MOONLIGHT_AND_SUNLIGHT,
+  WAKING_NIGHTMARE,
+} from './theNewMutants.keywords';
+import { META } from './theNewMutants.meta';
 import { DEMONS_OF_LIMBO, HELLIONS } from './theNewMutants.villains';
 
 type MastermindCommons = Pick<

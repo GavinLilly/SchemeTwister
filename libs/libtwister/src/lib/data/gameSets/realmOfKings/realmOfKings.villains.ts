@@ -1,7 +1,7 @@
 import { VillainGroup } from '../../../model';
 
-import { ABOMINATION, THRONES_FAVOR } from './keywords';
-import { META } from './meta';
+import { ABOMINATION, THRONES_FAVOR } from './realmOfKings.keywords';
+import { META } from './realmOfKings.meta';
 
 export const INHUMAN_REBELLION = new VillainGroup({
   id: 'f2a90de3-d516-40cc-bb14-1196e648f146',

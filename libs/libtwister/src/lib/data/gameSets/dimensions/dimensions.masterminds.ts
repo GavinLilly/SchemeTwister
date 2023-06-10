@@ -1,8 +1,8 @@
 import { EpicMastermindBuilder } from '../../../model';
 
-import { SPIDER_SLAYER } from './henchmen';
-import { INVESTIGATE } from './keywords';
-import { META } from './meta';
+import { SPIDER_SLAYER } from './dimensions.henchmen';
+import { INVESTIGATE } from './dimensions.keywords';
+import { META } from './dimensions.meta';
 
 const jJonahJameson = new EpicMastermindBuilder({
   gameSet: META,

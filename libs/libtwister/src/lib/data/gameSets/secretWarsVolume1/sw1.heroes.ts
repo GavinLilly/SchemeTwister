@@ -6,10 +6,10 @@ import {
   SPIDER_FRIENDS,
   X_MEN,
 } from '../../teams';
-import { TELEPORT } from '../darkCity/keywords';
+import { TELEPORT } from '../darkCity/darkCity.keywords';
 
-import { CROSS_DIMENSIONAL_RAMPAGE } from './keywords';
-import { META } from './meta';
+import { CROSS_DIMENSIONAL_RAMPAGE } from './sw1.keywords';
+import { META } from './sw1.meta';
 
 export const APOCALYPTIC_KITTY_PRYDE = new Hero({
   id: 'ff75f7c1-ea51-4611-8906-007f34020f36',

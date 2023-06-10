@@ -1,8 +1,8 @@
 import { Hero } from '../../../model';
 import { FANTASTIC_FOUR } from '../../teams';
 
-import { FOCUS } from './keywords';
-import { META } from './meta';
+import { FOCUS } from './fantasticFour.keywords';
+import { META } from './fantasticFour.meta';
 
 export const HUMAN_TORCH = new Hero({
   id: '8ac6a4c8-e125-45c2-901c-cbcf2e2f3af8',

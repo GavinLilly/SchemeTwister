@@ -1,8 +1,8 @@
 import { VillainGroup } from '../../../model';
-import { MOONLIGHT_AND_SUNLIGHT } from '../theNewMutants/keywords';
+import { MOONLIGHT_AND_SUNLIGHT } from '../theNewMutants/theNewMutants.keywords';
 
-import { BLOOD_FRENZY, HAUNT, HUNT_FOR_VICTIMS } from './keywords';
-import { META } from './meta';
+import { BLOOD_FRENZY, HAUNT, HUNT_FOR_VICTIMS } from './midnightSons.keywords';
+import { META } from './midnightSons.meta';
 
 export const LILIN = new VillainGroup({
   id: 'a6f081c0-938b-4fbd-8ddc-98cd6d7266d1',

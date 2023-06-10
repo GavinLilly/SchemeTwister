@@ -1,8 +1,11 @@
 import { VillainGroup } from '../../../model';
-import { BRIBE, TELEPORT } from '../darkCity/keywords';
+import { BRIBE, TELEPORT } from '../darkCity/darkCity.keywords';
 
-import { CROSS_DIMENSIONAL_RAMPAGE, RISE_OF_THE_LIVING_DEAD } from './keywords';
-import { META } from './meta';
+import {
+  CROSS_DIMENSIONAL_RAMPAGE,
+  RISE_OF_THE_LIVING_DEAD,
+} from './sw1.keywords';
+import { META } from './sw1.meta';
 
 export const THE_DEADLANDS = new VillainGroup({
   id: '068e3934-7b0e-4f80-ab8a-167c06072090',

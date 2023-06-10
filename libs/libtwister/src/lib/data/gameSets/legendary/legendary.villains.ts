@@ -1,6 +1,6 @@
 import { VillainGroup } from '../../../model';
 
-import { META } from './meta';
+import { META } from './legendary.meta';
 
 export const BROTHERHOOD = new VillainGroup({
   id: '1777054a-5b47-49c5-a951-fadb598b0265',

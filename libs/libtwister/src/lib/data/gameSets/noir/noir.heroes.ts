@@ -1,8 +1,8 @@
 import { Hero } from '../../../model';
 import { X_MEN, MARVEL_KNIGHTS, AVENGERS, SPIDER_FRIENDS } from '../../teams';
 
-import { INVESTIGATE } from './keywords';
-import { META } from './meta';
+import { INVESTIGATE } from './noir.keywords';
+import { META } from './noir.meta';
 
 export const ANGEL_NOIR = new Hero({
   id: 'a92f6ba6-3f50-463b-a72e-bb22a1fd473d',

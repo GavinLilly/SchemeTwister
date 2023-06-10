@@ -1,11 +1,11 @@
 import { GameSet } from '../../../model';
 import { injectGameSetToMany } from '../../../utils/schemeInjector';
 
-import { META } from './meta';
 import * as Heroes from './midnightSons.heroes';
 import * as Masterminds from './midnightSons.masterminds';
+import { META } from './midnightSons.meta';
+import * as Schemes from './midnightSons.schemes';
 import * as Villains from './midnightSons.villains';
-import * as Schemes from './schemes';
 
 const schemes = injectGameSetToMany(META, Object.values(Schemes));
 

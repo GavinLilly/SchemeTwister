@@ -3,9 +3,9 @@ import { injectGameSetToMany } from '../../../utils/schemeInjector';
 
 import * as Heroes from './antMan.heroes';
 import * as Masterminds from './antMan.masterminds';
+import { META } from './antMan.meta';
+import * as Schemes from './antMan.schemes';
 import * as Villains from './antMan.villains';
-import { META } from './meta';
-import * as Schemes from './schemes';
 
 const schemes = injectGameSetToMany(META, Object.values(Schemes));
 

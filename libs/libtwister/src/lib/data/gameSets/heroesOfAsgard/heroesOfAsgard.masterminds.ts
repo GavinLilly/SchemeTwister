@@ -1,11 +1,11 @@
 import { EpicMastermindBuilder } from '../../../model';
-import { THROWN_ARTIFACT } from '../fearItself/keywords';
-import { ARTIFACT } from '../guardiansOfTheGalaxy/keywords';
-import { CONQUEROR } from '../marvelStudios/keywords';
+import { THROWN_ARTIFACT } from '../fearItself/fearItself.keywords';
+import { ARTIFACT } from '../guardiansOfTheGalaxy/guardiansOfTheGalaxy.keywords';
+import { CONQUEROR } from '../marvelStudios/marvelStudios.keywords';
 
+import { VILLAINOUS_WEAPONS } from './heroesOfAsgard.keywords';
+import { META } from './heroesOfAsgard.meta';
 import { DARK_COUNCIL, OMENS_OF_RAGNAROK } from './heroesOfAsgard.villains';
-import { VILLAINOUS_WEAPONS } from './keywords';
-import { META } from './meta';
 
 const malekith = new EpicMastermindBuilder({
   name: 'Malekith the Accursed',

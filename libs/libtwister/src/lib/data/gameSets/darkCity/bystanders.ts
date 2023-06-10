@@ -1,6 +1,6 @@
 import { Bystander } from '../../../model';
 
-import { META } from './meta';
+import { META } from './darkCity.meta';
 
 export const NEWS_REPORTER = new Bystander({
   id: 'bdad80b0-df45-4804-ac94-081752709bf5',

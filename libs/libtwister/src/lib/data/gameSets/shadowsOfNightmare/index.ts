@@ -1,10 +1,10 @@
 import { GameSet } from '../../../model';
 import { injectGameSetToMany } from '../../../utils/schemeInjector';
 
-import { META } from './meta';
-import * as Schemes from './schemes';
 import * as Heroes from './shadowsOfNightmare.heroes';
 import * as Masterminds from './shadowsOfNightmare.masterminds';
+import { META } from './shadowsOfNightmare.meta';
+import * as Schemes from './shadowsOfNightmare.schemes';
 import * as Villains from './shadowsOfNightmare.villains';
 
 const schemes = injectGameSetToMany(META, Object.values(Schemes));

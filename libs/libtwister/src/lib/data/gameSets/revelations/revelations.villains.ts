@@ -1,7 +1,7 @@
 import { VillainGroup } from '../../../model';
 
-import { DARK_MEMORIES, LAST_STAND, LOCATIONS } from './keywords';
-import { META } from './meta';
+import { DARK_MEMORIES, LAST_STAND, LOCATIONS } from './revelations.keywords';
+import { META } from './revelations.meta';
 
 export const ARMY_OF_EVIL = new VillainGroup({
   id: '31b33d1d-befb-44ea-9b0b-72d613ce37af',

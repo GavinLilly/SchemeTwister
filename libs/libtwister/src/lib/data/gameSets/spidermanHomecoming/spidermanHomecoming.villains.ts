@@ -1,8 +1,8 @@
 import { VillainGroup } from '../../../model';
-import { WALL_CRAWL } from '../paintTheTownRed/keywords';
+import { WALL_CRAWL } from '../paintTheTownRed/paintTheTownRed.keywords';
 
-import { DANGER_SENSE, STRIKER } from './keywords';
-import { META } from './meta';
+import { DANGER_SENSE, STRIKER } from './spidermanHomecoming.keywords';
+import { META } from './spidermanHomecoming.meta';
 
 export const SALVAGERS = new VillainGroup({
   id: '36db4913-6798-42f6-b8bb-0603ef256005',

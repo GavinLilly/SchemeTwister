@@ -1,8 +1,8 @@
 import { VillainGroup } from '../../../model';
-import { CHIVALROUS_DUEL } from '../antMan/keywords';
+import { CHIVALROUS_DUEL } from '../antMan/antMan.keywords';
 
-import { CLONE_VILLAINS, PREY, SHATTER } from './keywords';
-import { META } from './meta';
+import { CLONE_VILLAINS, PREY, SHATTER } from './messiahComplex.keywords';
+import { META } from './messiahComplex.meta';
 
 export const CLAN_YASHIDA = new VillainGroup({
   id: '229ecfc3-83db-4e1e-a6c4-c056d3d3536c',

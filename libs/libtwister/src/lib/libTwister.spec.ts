@@ -8,7 +8,7 @@ import {
   EGO_THE_LIVING_PLANET,
   EPIC_EGO_THE_LIVING_PLANET,
 } from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.masterminds';
-import { UNLEASH_THE_ABILISK_SPACE_MONSTER } from './data/gameSets/mcuGuardiansOfTheGalaxy/schemes';
+import { UNLEASH_THE_ABILISK_SPACE_MONSTER } from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.schemes';
 import { LibTwister } from './libTwister';
 import {
   CardType,

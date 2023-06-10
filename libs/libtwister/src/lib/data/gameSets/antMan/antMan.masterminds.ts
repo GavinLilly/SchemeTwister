@@ -1,8 +1,8 @@
 import { EpicMastermindBuilder } from '../../../model';
 
+import { CHIVALROUS_DUEL, EMPOWERED } from './antMan.keywords';
+import { META } from './antMan.meta';
 import { QUEENS_VENGEANCE, ULTRONS_LEGACY } from './antMan.villains';
-import { CHIVALROUS_DUEL, EMPOWERED } from './keywords';
-import { META } from './meta';
 
 const ultron = new EpicMastermindBuilder({
   gameSet: META,

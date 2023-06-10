@@ -1,7 +1,7 @@
 import { VillainGroup } from '../../../model';
 
-import { CONQUEROR } from './keywords';
-import { META } from './meta';
+import { CONQUEROR } from './marvelStudios.keywords';
+import { META } from './marvelStudios.meta';
 
 export const CHITAURI = new VillainGroup({
   id: '60e792d1-00df-43ad-a91f-e322b1c5ed74',

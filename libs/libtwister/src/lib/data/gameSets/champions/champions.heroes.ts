@@ -1,10 +1,10 @@
 import { Hero } from '../../../model';
 import { CHAMPIONS } from '../../teams';
-import { VERSATILE } from '../darkCity/keywords';
-import { DEMOLISH } from '../villains/keywords';
+import { VERSATILE } from '../darkCity/darkCity.keywords';
+import { DEMOLISH } from '../villains/villains.keywords';
 
-import { CHEERING_CROWDS, SIZE_CHANGING } from './keywords';
-import { META } from './meta';
+import { CHEERING_CROWDS, SIZE_CHANGING } from './champions.keywords';
+import { META } from './champions.meta';
 
 export const GWENPOOL = new Hero({
   id: '1ecb9f13-f1cd-4613-8197-ba1b4c626ab2',

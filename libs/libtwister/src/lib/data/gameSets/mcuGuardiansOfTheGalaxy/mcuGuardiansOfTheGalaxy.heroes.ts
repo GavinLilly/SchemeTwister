@@ -1,10 +1,13 @@
 import { Hero } from '../../../model';
 import { GUARDIANS_OF_THE_GALAXY } from '../../teams';
-import { DIVIDED } from '../civilWar/keywords';
-import { EXCESSIVE_VIOLENCE } from '../deadpool/keywords';
+import { DIVIDED } from '../civilWar/civilWar.keywords';
+import { EXCESSIVE_VIOLENCE } from '../deadpool/deadpool.keywords';
 
-import { EXCESSIVE_KINDNESS, TRIGGERED_ARTIFACTS } from './keywords';
-import { META } from './meta';
+import {
+  EXCESSIVE_KINDNESS,
+  TRIGGERED_ARTIFACTS,
+} from './mcuGuardiansOfTheGalaxy.keywords';
+import { META } from './mcuGuardiansOfTheGalaxy.meta';
 
 export const STAR_LORD = new Hero({
   id: '9f16a276-4a0b-440e-a2d4-6ddb455616de',

@@ -1,5 +1,5 @@
 import { VillainGroup } from '../../../model';
-import { CROSS_DIMENSIONAL_RAMPAGE } from '../secretWarsVolume1/keywords';
+import { CROSS_DIMENSIONAL_RAMPAGE } from '../secretWarsVolume1/sw1.keywords';
 
 import {
   CHARGE,
@@ -7,8 +7,8 @@ import {
   FATEFUL_RESURRECTION,
   PATROL,
   SPECTRUM,
-} from './keywords';
-import { META } from './meta';
+} from './sw2.keywords';
+import { META } from './sw2.meta';
 
 export const DEADPOOLS_SECRET_SECRET_WARS = new VillainGroup({
   id: '529d6fbb-9b0b-48d1-b0ab-da7569dfd50d',

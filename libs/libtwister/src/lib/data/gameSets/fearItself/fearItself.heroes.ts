@@ -1,10 +1,10 @@
 import { Hero } from '../../../model';
 import { FOES_OF_ASGARD, HYDRA } from '../../teams';
-import { ARTIFACT } from '../guardiansOfTheGalaxy/keywords';
-import { DEMOLISH } from '../villains/keywords';
+import { ARTIFACT } from '../guardiansOfTheGalaxy/guardiansOfTheGalaxy.keywords';
+import { DEMOLISH } from '../villains/villains.keywords';
 
-import { THROWN_ARTIFACT } from './keywords';
-import { META } from './meta';
+import { THROWN_ARTIFACT } from './fearItself.keywords';
+import { META } from './fearItself.meta';
 
 export const GREITHOTH_BREAKER_OF_WILLS = new Hero({
   id: 'aae895fd-bd30-4924-a11c-e7def711c23b',

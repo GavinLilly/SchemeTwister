@@ -1,9 +1,13 @@
 import { Hero } from '../../../model';
 import { SPIDER_FRIENDS, AVENGERS } from '../../teams';
-import { WALL_CRAWL } from '../paintTheTownRed/keywords';
+import { WALL_CRAWL } from '../paintTheTownRed/paintTheTownRed.keywords';
 
-import { COORDINATE, DANGER_SENSE, STRIKER } from './keywords';
-import { META } from './meta';
+import {
+  COORDINATE,
+  DANGER_SENSE,
+  STRIKER,
+} from './spidermanHomecoming.keywords';
+import { META } from './spidermanHomecoming.meta';
 
 export const HAPPY_HOGAN = new Hero({
   id: 'f9aefec7-040b-4bff-8088-ccc15d4257a1',

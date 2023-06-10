@@ -1,8 +1,11 @@
 import { Hero } from '../../../model';
 import { X_MEN } from '../../teams';
 
-import { MOONLIGHT_AND_SUNLIGHT, WAKING_NIGHTMARE } from './keywords';
-import { META } from './meta';
+import {
+  MOONLIGHT_AND_SUNLIGHT,
+  WAKING_NIGHTMARE,
+} from './theNewMutants.keywords';
+import { META } from './theNewMutants.meta';
 
 export const KARMA = new Hero({
   id: '75500870-adbd-4e41-82f2-7abbb600fd99',

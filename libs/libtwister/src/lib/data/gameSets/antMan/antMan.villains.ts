@@ -5,8 +5,8 @@ import {
   EMPOWERED,
   MICROSCOPIC_SIZE_CHANGING,
   SIZE_CHANGING,
-} from './keywords';
-import { META } from './meta';
+} from './antMan.keywords';
+import { META } from './antMan.meta';
 
 export const ULTRONS_LEGACY = new VillainGroup({
   id: 'ac9173ae-138c-41ca-a4c8-945d1e09ffcd',

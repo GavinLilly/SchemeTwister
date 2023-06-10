@@ -1,8 +1,8 @@
 import { Hero } from '../../../model';
 import { SPIDER_FRIENDS, MARVEL_KNIGHTS } from '../../teams';
 
-import { WALL_CRAWL } from './keywords';
-import { META } from './meta';
+import { WALL_CRAWL } from './paintTheTownRed.keywords';
+import { META } from './paintTheTownRed.meta';
 
 export const BLACK_CAT = new Hero({
   id: 'e169eaa9-e74e-405b-9565-931c7ec7744d',

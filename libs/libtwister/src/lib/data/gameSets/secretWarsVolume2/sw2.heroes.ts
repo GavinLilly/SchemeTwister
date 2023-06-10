@@ -8,12 +8,12 @@ import {
   SHIELD,
   X_MEN,
 } from '../../teams';
-import { TELEPORT, VERSATILE } from '../darkCity/keywords';
-import { WALL_CRAWL } from '../paintTheTownRed/keywords';
-import { CROSS_DIMENSIONAL_RAMPAGE } from '../secretWarsVolume1/keywords';
+import { TELEPORT, VERSATILE } from '../darkCity/darkCity.keywords';
+import { WALL_CRAWL } from '../paintTheTownRed/paintTheTownRed.keywords';
+import { CROSS_DIMENSIONAL_RAMPAGE } from '../secretWarsVolume1/sw1.keywords';
 
-import { PATROL, SPECTRUM } from './keywords';
-import { META } from './meta';
+import { PATROL, SPECTRUM } from './sw2.keywords';
+import { META } from './sw2.meta';
 
 export const AGENT_VENOM = new Hero({
   id: '46ae2506-1219-48fc-873e-dcfc0f822993',

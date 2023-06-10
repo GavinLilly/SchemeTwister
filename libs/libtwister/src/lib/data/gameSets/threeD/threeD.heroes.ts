@@ -1,7 +1,7 @@
 import { Hero } from '../../../model';
-import { TELEPORT } from '../darkCity/keywords';
+import { TELEPORT } from '../darkCity/darkCity.keywords';
 
-import { META } from './meta';
+import { META } from './threeD.meta';
 
 export const HOWARD_THE_DUCK = new Hero({
   id: 'aa09b983-b71c-4c82-a7d2-7a0f5a0a5d29',

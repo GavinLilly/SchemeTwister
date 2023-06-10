@@ -6,8 +6,8 @@ import {
   COSMIC_THREAT,
   DANGER_SENSE_ON_VILLAINS,
   SHARDS,
-} from './keywords';
-import { META } from './meta';
+} from './intoTheCosmos.keywords';
+import { META } from './intoTheCosmos.meta';
 
 export const ELDERS_OF_THE_UNIVERSE = new VillainGroup({
   id: 'cbf60874-654b-463f-8278-a19950b8e832',

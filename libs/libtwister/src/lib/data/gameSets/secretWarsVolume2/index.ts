@@ -1,12 +1,12 @@
 import { GameSet } from '../../../model';
 import { injectGameSetToMany } from '../../../utils/schemeInjector';
 
-import * as Bystanders from './bystanders';
-import * as Henchmen from './henchmen';
-import { META } from './meta';
-import * as Schemes from './schemes';
+import * as Bystanders from './sw2.bystanders';
+import * as Henchmen from './sw2.henchmen';
 import * as Heroes from './sw2.heroes';
 import * as Masterminds from './sw2.masterminds';
+import { META } from './sw2.meta';
+import * as Schemes from './sw2.schemes';
 import * as Villains from './sw2.villains';
 
 const schemes = injectGameSetToMany(META, Object.values(Schemes));

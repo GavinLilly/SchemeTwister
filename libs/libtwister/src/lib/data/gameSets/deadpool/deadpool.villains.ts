@@ -1,7 +1,7 @@
 import { VillainGroup } from '../../../model';
 
-import { EXCESSIVE_VIOLENCE } from './keywords';
-import { META } from './meta';
+import { EXCESSIVE_VIOLENCE } from './deadpool.keywords';
+import { META } from './deadpool.meta';
 
 export const DEADPOOLS_FRIENDS = new VillainGroup({
   id: '64a75bb7-bf4a-4b77-a299-de6ee6842001',

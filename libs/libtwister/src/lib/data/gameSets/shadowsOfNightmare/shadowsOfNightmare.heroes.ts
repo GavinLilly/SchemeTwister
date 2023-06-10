@@ -1,8 +1,12 @@
 import { Hero } from '../../../model';
 import { AVENGERS, MARVEL_KNIGHTS } from '../../teams';
 
-import { ASTRAL_PLANE, DEMONIC_BARGAIN, RITUAL_ARTIFACTS } from './keywords';
-import { META } from './meta';
+import {
+  ASTRAL_PLANE,
+  DEMONIC_BARGAIN,
+  RITUAL_ARTIFACTS,
+} from './shadowsOfNightmare.keywords';
+import { META } from './shadowsOfNightmare.meta';
 
 export const DOCTOR_STRANGE = new Hero({
   id: '8aeff104-5b7a-4e71-9dc4-e2287b33f0b5',

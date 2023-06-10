@@ -1,6 +1,6 @@
 import DARK_CITY from '../../data/gameSets/darkCity';
-import { MAGGIA_GOONS } from '../../data/gameSets/darkCity/henchmen';
-import { ORGANIZED_CRIME_WAVE } from '../../data/gameSets/darkCity/schemes';
+import { MAGGIA_GOONS } from '../../data/gameSets/darkCity/darkCity.henchmen';
+import { ORGANIZED_CRIME_WAVE } from '../../data/gameSets/darkCity/darkCity.schemes';
 import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';
 

@@ -1,12 +1,12 @@
 import { Hero } from '../../../model';
 import { AVENGERS, MARVEL_KNIGHTS, SHIELD } from '../../teams';
-import { WHEN_RECRUITED } from '../realmOfKings/keywords';
-import { DARK_MEMORIES } from '../revelations/keywords';
-import { UNDERCOVER } from '../shield/keywords';
-import { DODGE } from '../villains/keywords';
+import { WHEN_RECRUITED } from '../realmOfKings/realmOfKings.keywords';
+import { DARK_MEMORIES } from '../revelations/revelations.keywords';
+import { UNDERCOVER } from '../shield/shield.keywords';
+import { DODGE } from '../villains/villains.keywords';
 
-import { UNLEASH } from './keywords';
-import { META } from './meta';
+import { UNLEASH } from './blackWidow.keywords';
+import { META } from './blackWidow.meta';
 
 export const BLACK_WIDOW = new Hero({
   id: '45950633-2ab7-4bf8-87da-df45a1cd42af',

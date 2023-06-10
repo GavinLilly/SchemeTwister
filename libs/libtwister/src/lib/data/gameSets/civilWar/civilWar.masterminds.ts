@@ -1,6 +1,8 @@
 import { Mastermind } from '../../../model';
-import { BRIBE } from '../darkCity/keywords';
+import { BRIBE } from '../darkCity/darkCity.keywords';
 
+import { FORTIFY, SHIELD_CLEARANCE } from './civilWar.keywords';
+import { META } from './civilWar.meta';
 import {
   HEROES_FOR_HIRE,
   REGISTRATION_ENFORCERS,
@@ -8,8 +10,6 @@ import {
   SUPERHUMAN_REGISTRATION_ACT,
   THUNDERBOLTS,
 } from './civilWar.villains';
-import { FORTIFY, SHIELD_CLEARANCE } from './keywords';
-import { META } from './meta';
 
 export const AUTHORITARIAN_IRON_MAN = new Mastermind({
   id: 'e9052952-4b86-4718-b33f-2b926d32b833',

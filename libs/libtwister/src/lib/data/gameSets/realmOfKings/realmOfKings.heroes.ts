@@ -1,14 +1,14 @@
 import { Hero } from '../../../model';
 import { INHUMANS } from '../../teams';
-import { TELEPORT } from '../darkCity/keywords';
+import { TELEPORT } from '../darkCity/darkCity.keywords';
 
 import {
   ABOMINATION,
   CHOOSE_A_VILLAIN_GROUP,
   THRONES_FAVOR,
   WHEN_RECRUITED,
-} from './keywords';
-import { META } from './meta';
+} from './realmOfKings.keywords';
+import { META } from './realmOfKings.meta';
 
 export const BLACK_BOLT = new Hero({
   id: 'f78985a9-729d-446f-8a03-4c037f4f8fd9',

@@ -3,9 +3,9 @@ import { injectGameSetToMany } from '../../../utils/schemeInjector';
 
 import * as Heroes from './fantasticFour.heroes';
 import * as Masterminds from './fantasticFour.masterminds';
+import { META } from './fantasticFour.meta';
+import * as Schemes from './fantasticFour.schemes';
 import * as Villains from './fantasticFour.villains';
-import { META } from './meta';
-import * as Schemes from './schemes';
 
 const schemes = injectGameSetToMany(META, Object.values(Schemes));
 

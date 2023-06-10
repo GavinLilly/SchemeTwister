@@ -1,9 +1,9 @@
 import { VillainGroup } from '../../../model';
-import { DARK_MEMORIES } from '../revelations/keywords';
-import { UNDERCOVER } from '../shield/keywords';
+import { DARK_MEMORIES } from '../revelations/revelations.keywords';
+import { UNDERCOVER } from '../shield/shield.keywords';
 
-import { UNLEASH } from './keywords';
-import { META } from './meta';
+import { UNLEASH } from './blackWidow.keywords';
+import { META } from './blackWidow.meta';
 
 export const TASKMASTERS_THUNDERBOLTS = new VillainGroup({
   id: 'b5a3e933-d0e6-4e73-a786-49bb07df113f',

@@ -1,10 +1,10 @@
 import { Hero } from '../../../model';
 import { VENOMVERSE } from '../../teams';
-import { EXCESSIVE_VIOLENCE } from '../deadpool/keywords';
-import { FEAST } from '../paintTheTownRed/keywords';
+import { EXCESSIVE_VIOLENCE } from '../deadpool/deadpool.keywords';
+import { FEAST } from '../paintTheTownRed/paintTheTownRed.keywords';
 
-import { DIGEST, INDIGESTION } from './keywords';
-import { META } from './meta';
+import { DIGEST, INDIGESTION } from './venom.keywords';
+import { META } from './venom.meta';
 
 export const CARNAGE = new Hero({
   id: 'b8ae624d-403d-4b16-885d-57c4c5b3766f',

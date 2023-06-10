@@ -1,7 +1,7 @@
 import { VillainGroup } from '../../../model';
 
-import { DEMOLISH, ELUSIVE, X_TREME_ATTACK } from './keywords';
-import { META } from './meta';
+import { DEMOLISH, ELUSIVE, X_TREME_ATTACK } from './villains.keywords';
+import { META } from './villains.meta';
 
 export const AVENGERS = new VillainGroup({
   id: '5a6e5a2f-939c-4c7e-8d10-5261cf375553',

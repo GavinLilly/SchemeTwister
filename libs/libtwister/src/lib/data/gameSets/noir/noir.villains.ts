@@ -1,7 +1,7 @@
 import { VillainGroup } from '../../../model';
 
-import { HIDDEN_WITNESS, INVESTIGATE } from './keywords';
-import { META } from './meta';
+import { HIDDEN_WITNESS, INVESTIGATE } from './noir.keywords';
+import { META } from './noir.meta';
 
 export const GOBLINS_FREAK_SHOW = new VillainGroup({
   id: '815b3ca9-d3f0-43b3-9d9c-8cf8fd32fd33',

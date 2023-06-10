@@ -1,7 +1,7 @@
 import { VillainGroup } from '../../../model';
 
-import { ABOMINATION, SAVIOR } from './keywords';
-import { META } from './meta';
+import { ABOMINATION, SAVIOR } from './captainAmerica.keywords';
+import { META } from './captainAmerica.meta';
 
 export const ZOLAS_CREATIONS = new VillainGroup({
   id: '755b1918-6f12-4871-8db4-b763a6032b54',

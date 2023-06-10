@@ -1,7 +1,7 @@
 import { VillainGroup } from '../../../model';
 
-import { ASTRAL_PLANE, DEMONIC_BARGAIN } from './keywords';
-import { META } from './meta';
+import { ASTRAL_PLANE, DEMONIC_BARGAIN } from './shadowsOfNightmare.keywords';
+import { META } from './shadowsOfNightmare.meta';
 
 export const LORDS_OF_NETHERWORLD = new VillainGroup({
   id: 'f356c475-f6ac-47a4-bf52-d7ccc813f89d',

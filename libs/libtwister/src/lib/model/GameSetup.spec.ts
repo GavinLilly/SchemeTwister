@@ -2,10 +2,10 @@
 
 import DARK_CITY from '../data/gameSets/darkCity';
 import { DOMINO } from '../data/gameSets/darkCity/darkCity.heroes';
-import { VERSATILE } from '../data/gameSets/darkCity/keywords';
+import { VERSATILE } from '../data/gameSets/darkCity/darkCity.keywords';
 import INTO_THE_COSMOS from '../data/gameSets/intoTheCosmos';
-import { CONTEST_OF_CHAMPIONS } from '../data/gameSets/intoTheCosmos/keywords';
-import { THE_CONTEST_OF_CHAMPIONS } from '../data/gameSets/intoTheCosmos/schemes';
+import { CONTEST_OF_CHAMPIONS } from '../data/gameSets/intoTheCosmos/intoTheCosmos.keywords';
+import { THE_CONTEST_OF_CHAMPIONS } from '../data/gameSets/intoTheCosmos/intoTheCosmos.schemes';
 import LEGENDARY from '../data/gameSets/legendary';
 import {
   CAPTAIN_AMERICA,
@@ -16,14 +16,14 @@ import {
 import {
   MIDTOWN_BANK_ROBBERY,
   REPLACE_EARTHS_LEADERS_WITH_KILLBOTS,
-} from '../data/gameSets/legendary/schemes';
+} from '../data/gameSets/legendary/legendary.schemes';
 import PAINT_THE_TOWN_RED from '../data/gameSets/paintTheTownRed';
 import { CARNAGE } from '../data/gameSets/paintTheTownRed/paintTheTownRed.masterminds';
+import { SPLICE_HUMANS_WITH_SPIDER_DNA } from '../data/gameSets/paintTheTownRed/paintTheTownRed.schemes';
 import {
   MAXIMUM_CARNAGE,
   SINISTER_SIX,
 } from '../data/gameSets/paintTheTownRed/paintTheTownRed.villains';
-import { SPLICE_HUMANS_WITH_SPIDER_DNA } from '../data/gameSets/paintTheTownRed/schemes';
 import { StoreBuilder, StoreOfStores } from '../factories';
 import { injectGameSet } from '../utils/schemeInjector';
 

@@ -1,10 +1,10 @@
 import { GameSet } from '../../../model';
 
-import * as Bystanders from './bystanders';
+import * as Bystanders from './dimensions.bystanders';
+import * as Henchmen from './dimensions.henchmen';
 import * as Heroes from './dimensions.heroes';
 import * as Masterminds from './dimensions.masterminds';
-import * as Henchmen from './henchmen';
-import { META } from './meta';
+import { META } from './dimensions.meta';
 
 export { Heroes, Masterminds, Henchmen, Bystanders };
 

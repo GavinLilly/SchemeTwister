@@ -1,7 +1,7 @@
 import { VillainGroup } from '../../../model';
-import { EMPOWERED } from '../antMan/keywords';
+import { EMPOWERED } from '../antMan/antMan.keywords';
 
-import { META } from './meta';
+import { META } from './blackPanther.meta';
 
 export const KILLMONGERS_LEAGUE = new VillainGroup({
   id: '92b6d184-167c-48c4-bfe3-af9647289783',

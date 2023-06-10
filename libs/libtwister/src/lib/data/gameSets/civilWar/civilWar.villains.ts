@@ -1,8 +1,8 @@
 import { VillainGroup } from '../../../model';
-import { BRIBE } from '../darkCity/keywords';
+import { BRIBE } from '../darkCity/darkCity.keywords';
 
-import { FORTIFY, SHIELD_CLEARANCE, SIZE_CHANGING } from './keywords';
-import { META } from './meta';
+import { FORTIFY, SHIELD_CLEARANCE, SIZE_CHANGING } from './civilWar.keywords';
+import { META } from './civilWar.meta';
 
 export const CSA_SPECIAL_MARSHALS = new VillainGroup({
   id: '329fc891-df4a-4e35-88fd-6f80286f1cef',

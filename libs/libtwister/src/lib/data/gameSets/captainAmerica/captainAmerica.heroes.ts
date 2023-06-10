@@ -1,8 +1,8 @@
 import { Hero } from '../../../model';
 import { AVENGERS, SHIELD } from '../../teams';
 
-import { MAN_OUT_OF_TIME, SAVIOR } from './keywords';
-import { META } from './meta';
+import { MAN_OUT_OF_TIME, SAVIOR } from './captainAmerica.keywords';
+import { META } from './captainAmerica.meta';
 
 export const AGENT_X13 = new Hero({
   id: '46c091cc-92aa-4424-aa0b-8cbb84d6799b',

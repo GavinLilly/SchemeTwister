@@ -1,7 +1,7 @@
 import { VillainGroup } from '../../../model';
 
-import { BRIBE, TELEPORT } from './keywords';
-import { META } from './meta';
+import { BRIBE, TELEPORT } from './darkCity.keywords';
+import { META } from './darkCity.meta';
 
 export const EMISSARIES_OF_EVIL = new VillainGroup({
   id: '2d106df3-c74d-4795-99b7-09d0ee33d87d',

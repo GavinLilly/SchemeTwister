@@ -1,7 +1,7 @@
 import { EpicMastermindBuilder } from '../../../model';
 
-import { HAUNT, HUNT_FOR_VICTIMS } from './keywords';
-import { META } from './meta';
+import { HAUNT, HUNT_FOR_VICTIMS } from './midnightSons.keywords';
+import { META } from './midnightSons.meta';
 import { LILIN, FALLEN } from './midnightSons.villains';
 
 const lilith = new EpicMastermindBuilder({

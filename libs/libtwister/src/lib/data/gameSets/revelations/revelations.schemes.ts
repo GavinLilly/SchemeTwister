@@ -1,8 +1,8 @@
 import { ShortScheme } from '../../../model';
 import { HouseOfMScheme } from '../../../model/schemes/HouseOfMScheme';
 
-import { DOUBLE_SIDED_TRANSFORMING_SCHEMES } from './keywords';
 import { SCARLET_WITCH } from './revelations.heroes';
+import { DOUBLE_SIDED_TRANSFORMING_SCHEMES } from './revelations.keywords';
 
 export const EARTHQUAKE_DRAINS_THE_OCEAN: ShortScheme = {
   id: '16800076-996c-4cea-89f9-4d5bb6969557',

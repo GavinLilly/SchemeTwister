@@ -3,9 +3,9 @@ import { injectGameSetToMany } from '../../../utils/schemeInjector';
 
 import * as Heroes from './blackWidow.heroes';
 import * as Masterminds from './blackWidow.masterminds';
+import { META } from './blackWidow.meta';
+import * as Schemes from './blackWidow.schemes';
 import * as Villains from './blackWidow.villains';
-import { META } from './meta';
-import * as Schemes from './schemes';
 
 const schemes = injectGameSetToMany(META, Object.values(Schemes));
 

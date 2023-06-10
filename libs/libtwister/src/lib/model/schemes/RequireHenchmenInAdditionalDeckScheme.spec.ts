@@ -1,6 +1,6 @@
 import VILLAINS from '../../data/gameSets/villains';
-import { COPS } from '../../data/gameSets/villains/henchmen';
-import { CAGE_VILLAINS_IN_POWERSUPPRESSING_CELLS } from '../../data/gameSets/villains/schemes';
+import { COPS } from '../../data/gameSets/villains/villains.henchmen';
+import { CAGE_VILLAINS_IN_POWERSUPPRESSING_CELLS } from '../../data/gameSets/villains/villains.schemes';
 import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';
 

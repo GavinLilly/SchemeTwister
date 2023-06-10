@@ -3,9 +3,9 @@ import { injectGameSetToMany } from '../../../utils/schemeInjector';
 
 import * as Heroes from './guardiansOfTheGalaxy.heroes';
 import * as Masterminds from './guardiansOfTheGalaxy.masterminds';
+import { META } from './guardiansOfTheGalaxy.meta';
+import * as Schemes from './guardiansOfTheGalaxy.schemes';
 import * as Villains from './guardiansOfTheGalaxy.villains';
-import { META } from './meta';
-import * as Schemes from './schemes';
 
 const schemes = injectGameSetToMany(META, Object.values(Schemes));
 

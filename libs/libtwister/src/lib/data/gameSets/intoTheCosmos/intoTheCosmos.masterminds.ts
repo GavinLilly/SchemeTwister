@@ -1,9 +1,13 @@
 import { EpicMastermindBuilder, IMastermind, Mastermind } from '../../../model';
 
-import { UNIVERSAL_CHURCH_OF_TRUTH } from './henchmen';
+import { UNIVERSAL_CHURCH_OF_TRUTH } from './intoTheCosmos.henchmen';
+import {
+  CONTEST_OF_CHAMPIONS,
+  COSMIC_THREAT,
+  SHARDS,
+} from './intoTheCosmos.keywords';
+import { META } from './intoTheCosmos.meta';
 import { ELDERS_OF_THE_UNIVERSE, FROM_BEYOND } from './intoTheCosmos.villains';
-import { CONTEST_OF_CHAMPIONS, COSMIC_THREAT, SHARDS } from './keywords';
-import { META } from './meta';
 
 type Specs = Pick<
   IMastermind,

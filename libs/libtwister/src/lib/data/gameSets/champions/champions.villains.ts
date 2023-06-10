@@ -1,8 +1,8 @@
 import { VillainGroup } from '../../../model';
-import { DEMOLISH } from '../villains/keywords';
+import { DEMOLISH } from '../villains/villains.keywords';
 
-import { SIZE_CHANGING } from './keywords';
-import { META } from './meta';
+import { SIZE_CHANGING } from './champions.keywords';
+import { META } from './champions.meta';
 
 export const MONSTERS_UNLEASHED = new VillainGroup({
   id: 'a189a196-91f3-496b-8ca4-39708c881bb1',

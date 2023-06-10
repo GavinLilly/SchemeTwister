@@ -1,13 +1,13 @@
 import { GameSet } from '../../../model';
 import { injectGameSetToMany } from '../../../utils/schemeInjector';
 
-import * as Bystanders from './bystanders';
-import * as Henchmen from './henchmen';
+import * as Bystanders from './marvelStudios.bystanders';
+import * as Henchmen from './marvelStudios.henchmen';
 import * as Heroes from './marvelStudios.heroes';
 import * as Masterminds from './marvelStudios.masterminds';
+import { META } from './marvelStudios.meta';
+import * as Schemes from './marvelStudios.schemes';
 import * as Villains from './marvelStudios.villains';
-import { META } from './meta';
-import * as Schemes from './schemes';
 
 const schemes = injectGameSetToMany(META, Object.values(Schemes));
 

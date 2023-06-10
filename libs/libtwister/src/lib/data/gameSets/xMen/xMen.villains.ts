@@ -7,8 +7,8 @@ import {
   TOKEN_CARDS,
   HUMAN_SHIELDS,
   SOARING_FLIGHT,
-} from './keywords';
-import { META } from './meta';
+} from './xMen.keywords';
+import { META } from './xMen.meta';
 
 export const DARK_DESCENDANTS = new VillainGroup({
   id: 'eb82a628-241e-496f-bb3a-65f05dd65162',

@@ -1,7 +1,10 @@
 import { VillainGroup } from '../../../model';
 
-import { MOONLIGHT_AND_SUNLIGHT, WAKING_NIGHTMARE } from './keywords';
-import { META } from './meta';
+import {
+  MOONLIGHT_AND_SUNLIGHT,
+  WAKING_NIGHTMARE,
+} from './theNewMutants.keywords';
+import { META } from './theNewMutants.meta';
 
 export const DEMONS_OF_LIMBO = new VillainGroup({
   id: 'c236e200-011d-4e56-b04a-b61b0011ced3',

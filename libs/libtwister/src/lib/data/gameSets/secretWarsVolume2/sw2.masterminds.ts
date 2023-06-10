@@ -1,8 +1,12 @@
 import { Mastermind } from '../../../model';
 
-import { SPIDERINFECTED } from './henchmen';
-import { CHARGE, CIRCLE_OF_KUNG_FU, FATEFUL_RESURRECTION } from './keywords';
-import { META } from './meta';
+import { SPIDERINFECTED } from './sw2.henchmen';
+import {
+  CHARGE,
+  CIRCLE_OF_KUNG_FU,
+  FATEFUL_RESURRECTION,
+} from './sw2.keywords';
+import { META } from './sw2.meta';
 import { KUNLUN, MONSTER_METROPOLIS, UTOPOLIS } from './sw2.villains';
 
 export const IMMORTAL_EMPEROR_ZHENGZHU = new Mastermind({

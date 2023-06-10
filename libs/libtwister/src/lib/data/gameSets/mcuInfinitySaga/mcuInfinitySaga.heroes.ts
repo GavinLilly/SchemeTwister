@@ -1,9 +1,9 @@
 import { CardType, Hero } from '../../../model';
 import { AVENGERS } from '../../teams';
-import { DIVIDED } from '../civilWar/keywords';
+import { DIVIDED } from '../civilWar/civilWar.keywords';
 
-import { ENDGAME, PHASING, SACRIFICE } from './keywords';
-import { META } from './meta';
+import { ENDGAME, PHASING, SACRIFICE } from './mcuInfinitySaga.keywords';
+import { META } from './mcuInfinitySaga.meta';
 
 export const BLACK_PANTHER = new Hero({
   id: 'd1072e65-7913-485e-b80b-84d4b8cc7b6e',

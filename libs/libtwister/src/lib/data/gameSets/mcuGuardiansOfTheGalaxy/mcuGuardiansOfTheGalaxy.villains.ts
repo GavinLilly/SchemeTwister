@@ -1,8 +1,11 @@
 import { VillainGroup } from '../../../model';
-import { VILLAINOUS_WEAPONS } from '../heroesOfAsgard/keywords';
+import { VILLAINOUS_WEAPONS } from '../heroesOfAsgard/heroesOfAsgard.keywords';
 
-import { COMMAND, TRIGGERED_ARTIFACTS } from './keywords';
-import { META } from './meta';
+import {
+  COMMAND,
+  TRIGGERED_ARTIFACTS,
+} from './mcuGuardiansOfTheGalaxy.keywords';
+import { META } from './mcuGuardiansOfTheGalaxy.meta';
 
 export const FOLLOWERS_OF_RONAN = new VillainGroup({
   id: '516413ba-1e1c-4d76-bdda-3b6eee1e16d0',

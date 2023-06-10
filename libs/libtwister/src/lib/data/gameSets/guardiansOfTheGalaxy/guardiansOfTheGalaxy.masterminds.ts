@@ -1,8 +1,8 @@
 import { Mastermind } from '../../../model';
 
+import { ARTIFACT, SHARDS } from './guardiansOfTheGalaxy.keywords';
+import { META } from './guardiansOfTheGalaxy.meta';
 import { INFINITY_GEMS, KREE_STARFORCE } from './guardiansOfTheGalaxy.villains';
-import { ARTIFACT, SHARDS } from './keywords';
-import { META } from './meta';
 
 export const SUPREME_INTELLIGENCE = new Mastermind({
   id: '4cc39f08-f904-433f-8345-abf183de331a',

@@ -1,7 +1,7 @@
 import { VillainGroup } from '../../../model';
 
-import { FEAST } from './keywords';
-import { META } from './meta';
+import { FEAST } from './paintTheTownRed.keywords';
+import { META } from './paintTheTownRed.meta';
 
 export const MAXIMUM_CARNAGE = new VillainGroup({
   id: '7a950d64-6bbf-4993-99f6-9071542ba6e0',

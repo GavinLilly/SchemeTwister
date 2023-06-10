@@ -1,11 +1,11 @@
 import { EpicMastermindBuilder } from '../../../model';
 import { randomize } from '../../../utils/randomize';
-import { SENTINELS } from '../legendary/henchmen';
+import { SENTINELS } from '../legendary/legendary.henchmen';
 
-import { SENTINEL_SQUAD_ONE } from './henchmen';
-import { PREY, SHATTER } from './keywords';
+import { SENTINEL_SQUAD_ONE } from './messiahComplex.henchmen';
+import { PREY, SHATTER } from './messiahComplex.keywords';
+import { META } from './messiahComplex.meta';
 import { ACOLYTES, PURIFIERS, REAVERS } from './messiahComplex.villains';
-import { META } from './meta';
 
 const ladyDeathstrike = new EpicMastermindBuilder({
   name: 'Lady Deathstrike',

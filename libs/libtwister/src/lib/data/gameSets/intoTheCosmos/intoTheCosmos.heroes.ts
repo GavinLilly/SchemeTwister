@@ -1,14 +1,14 @@
 import { Hero } from '../../../model';
 import { AVENGERS, GUARDIANS_OF_THE_GALAXY } from '../../teams';
-import { DANGER_SENSE } from '../spidermanHomecoming/keywords';
+import { DANGER_SENSE } from '../spidermanHomecoming/spidermanHomecoming.keywords';
 
 import {
   BURNING_SHARDS,
   CONTEST_OF_CHAMPIONS,
   COSMIC_THREAT,
   SHARDS,
-} from './keywords';
-import { META } from './meta';
+} from './intoTheCosmos.keywords';
+import { META } from './intoTheCosmos.meta';
 
 export const ADAM_WARLOCK = new Hero({
   id: '8dff0c8f-5cac-4630-b96f-987e448328ba',

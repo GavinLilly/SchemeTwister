@@ -1,7 +1,7 @@
 import { VillainGroup } from '../../../model';
 
-import { HYDRA_LEVEL, UNDERCOVER } from './keywords';
-import { META } from './meta';
+import { HYDRA_LEVEL, UNDERCOVER } from './shield.keywords';
+import { META } from './shield.meta';
 
 export const HYDRA_ELITE = new VillainGroup({
   id: '4f17b2bc-e761-4684-b7c0-65b381f036d5',

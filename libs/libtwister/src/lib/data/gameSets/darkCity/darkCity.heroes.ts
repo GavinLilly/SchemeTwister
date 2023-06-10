@@ -1,8 +1,8 @@
 import { Hero } from '../../../model';
 import { MARVEL_KNIGHTS, X_FORCE, X_MEN } from '../../teams';
 
-import { TELEPORT, VERSATILE } from './keywords';
-import { META } from './meta';
+import { TELEPORT, VERSATILE } from './darkCity.keywords';
+import { META } from './darkCity.meta';
 
 export const ANGEL = new Hero({
   id: 'c59a1304-8773-4331-98d1-7f998ec441cb',

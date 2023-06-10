@@ -6,7 +6,7 @@ import {
   SHIELD,
   WARBOUND,
 } from '../../teams';
-import { FEAST } from '../paintTheTownRed/keywords';
+import { FEAST } from '../paintTheTownRed/paintTheTownRed.keywords';
 
 import {
   CROSS_DIMENSIONAL_RAMPAGE,
@@ -14,8 +14,8 @@ import {
   SMASH,
   TRANSFORM,
   WOUNDED_FURY,
-} from './keywords';
-import { META } from './meta';
+} from './worldWarHulk.keywords';
+import { META } from './worldWarHulk.meta';
 
 export const AMADEUS_CHO = new Hero({
   id: '1a632e24-b869-4b7c-8a8c-be005184ff1e',

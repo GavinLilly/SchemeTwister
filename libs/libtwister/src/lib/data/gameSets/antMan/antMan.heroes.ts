@@ -5,8 +5,8 @@ import {
   EMPOWERED,
   MICROSCOPIC_SIZE_CHANGING,
   SIZE_CHANGING,
-} from './keywords';
-import { META } from './meta';
+} from './antMan.keywords';
+import { META } from './antMan.meta';
 
 export const ANT_MAN = new Hero({
   id: '159f7a3b-6440-4acc-8601-23badb411a90',

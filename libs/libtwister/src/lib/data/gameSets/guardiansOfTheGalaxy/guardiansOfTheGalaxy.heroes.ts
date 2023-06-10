@@ -1,8 +1,8 @@
 import { Hero } from '../../../model';
 import { GUARDIANS_OF_THE_GALAXY } from '../../teams';
 
-import { ARTIFACT, SHARDS } from './keywords';
-import { META } from './meta';
+import { ARTIFACT, SHARDS } from './guardiansOfTheGalaxy.keywords';
+import { META } from './guardiansOfTheGalaxy.meta';
 
 export const DRAX = new Hero({
   id: 'c736b5ce-2fd8-4c8f-b36c-44b9d5b923f3',

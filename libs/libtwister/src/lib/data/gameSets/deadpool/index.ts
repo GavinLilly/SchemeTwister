@@ -3,9 +3,9 @@ import { injectGameSetToMany } from '../../../utils/schemeInjector';
 
 import * as Heroes from './deadpool.heroes';
 import * as Masterminds from './deadpool.masterminds';
+import { META } from './deadpool.meta';
+import * as Schemes from './deadpool.schemes';
 import * as Villains from './deadpool.villains';
-import { META } from './meta';
-import * as Schemes from './schemes';
 
 const schemes = injectGameSetToMany(META, Object.values(Schemes));
 

@@ -1,7 +1,7 @@
 import { EpicMastermindBuilder } from '../../../model';
 
-import { ABOMINATION, THRONES_FAVOR } from './keywords';
-import { META } from './meta';
+import { ABOMINATION, THRONES_FAVOR } from './realmOfKings.keywords';
+import { META } from './realmOfKings.meta';
 import {
   INHUMAN_REBELLION,
   SHIAR_IMPERIAL_ELITE,

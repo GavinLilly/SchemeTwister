@@ -1,9 +1,9 @@
 import { EpicMastermindBuilder, IMastermind, Mastermind } from '../../../model';
 import { randomize } from '../../../utils/randomize';
 
-import { SHIAR_DEATH_COMMANDOS, SHIAR_PATROL_CRAFT } from './henchmen';
-import { DOMINATE, HUMAN_SHIELDS, TOKEN_CARDS, TRAPS } from './keywords';
-import { META } from './meta';
+import { SHIAR_DEATH_COMMANDOS, SHIAR_PATROL_CRAFT } from './xMen.henchmen';
+import { DOMINATE, HUMAN_SHIELDS, TOKEN_CARDS, TRAPS } from './xMen.keywords';
+import { META } from './xMen.meta';
 import {
   DARK_DESCENDANTS,
   HELLFIRE_CLUB,

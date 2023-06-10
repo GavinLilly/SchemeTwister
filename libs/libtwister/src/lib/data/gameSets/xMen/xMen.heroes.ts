@@ -1,6 +1,6 @@
 import { Hero } from '../../../model';
 import { X_MEN } from '../../teams';
-import { DIVIDED } from '../civilWar/keywords';
+import { DIVIDED } from '../civilWar/civilWar.keywords';
 
 import {
   BERSERK,
@@ -8,8 +8,8 @@ import {
   PIERCING_ENERGY,
   SOARING_FLIGHT,
   X_GENE,
-} from './keywords';
-import { META } from './meta';
+} from './xMen.keywords';
+import { META } from './xMen.meta';
 
 export const AURORA_NORTHSTAR = new Hero({
   id: 'de49773c-6fef-46a9-b5e7-cce7ff87ebc0',

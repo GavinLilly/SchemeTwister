@@ -1,6 +1,6 @@
 import { Bystander } from '../../../model';
 
-import { META } from './meta';
+import { META } from './civilWar.meta';
 
 export const ASPIRING_HERO = new Bystander({
   id: '24fa23a2-69ed-4117-a55d-901b7064e4f1',

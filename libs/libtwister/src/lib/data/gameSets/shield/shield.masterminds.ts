@@ -1,7 +1,7 @@
 import { Mastermind } from '../../../model';
 
-import { ADAPT, HYDRA_LEVEL } from './keywords';
-import { META } from './meta';
+import { ADAPT, HYDRA_LEVEL } from './shield.keywords';
+import { META } from './shield.meta';
 import { AIM_HYDRA_OFFSHOOT, HYDRA_ELITE } from './shield.villains';
 
 export const HYDRA_HIGH_COUNCIL = new Mastermind({

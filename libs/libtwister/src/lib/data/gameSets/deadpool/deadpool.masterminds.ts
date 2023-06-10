@@ -1,8 +1,8 @@
 import { Mastermind } from '../../../model';
 
+import { REVENGE } from './deadpool.keywords';
+import { META } from './deadpool.meta';
 import { DEADPOOLS_FRIENDS, EVIL_DEADPOOL_CORPSE } from './deadpool.villains';
-import { REVENGE } from './keywords';
-import { META } from './meta';
 
 export const EVIL_DEADPOOL = new Mastermind({
   id: 'e9427fd1-f815-4a04-8ca9-822ae4152a9b',

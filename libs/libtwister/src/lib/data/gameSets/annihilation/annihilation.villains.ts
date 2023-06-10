@@ -1,8 +1,8 @@
 import { VillainGroup } from '../../../model';
-import { CONQUEROR } from '../marvelStudios/keywords';
+import { CONQUEROR } from '../marvelStudios/marvelStudios.keywords';
 
-import { MAN_OUT_OF_TIME, MOMENTUM } from './keywords';
-import { META } from './meta';
+import { MAN_OUT_OF_TIME, MOMENTUM } from './annihilation.keywords';
+import { META } from './annihilation.meta';
 
 export const ANNIHILATION_WAVE = new VillainGroup({
   id: 'efcbc5ba-b401-4268-844b-b35c97b4a274',

@@ -1,11 +1,11 @@
 import GUARDIANS from '../../data/gameSets/guardiansOfTheGalaxy';
+import { THE_KREE_SKRULL_WAR } from '../../data/gameSets/guardiansOfTheGalaxy/guardiansOfTheGalaxy.schemes';
 import { KREE_STARFORCE } from '../../data/gameSets/guardiansOfTheGalaxy/guardiansOfTheGalaxy.villains';
-import { THE_KREE_SKRULL_WAR } from '../../data/gameSets/guardiansOfTheGalaxy/schemes';
 import LEGENDARY from '../../data/gameSets/legendary';
+import { SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS } from '../../data/gameSets/legendary/legendary.schemes';
 import { SKRULLS } from '../../data/gameSets/legendary/legendary.villains';
-import { SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS } from '../../data/gameSets/legendary/schemes';
 import SHIELD from '../../data/gameSets/shield';
-import { SHIELD_VS_HYDRA_WAR } from '../../data/gameSets/shield/schemes';
+import { SHIELD_VS_HYDRA_WAR } from '../../data/gameSets/shield/shield.schemes';
 import {
   AIM_HYDRA_OFFSHOOT,
   HYDRA_ELITE,

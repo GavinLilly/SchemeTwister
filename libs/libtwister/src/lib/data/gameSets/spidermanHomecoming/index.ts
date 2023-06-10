@@ -1,11 +1,11 @@
 import { GameSet } from '../../../model';
 import { injectGameSetToMany } from '../../../utils/schemeInjector';
 
-import * as Bystanders from './bystanders';
-import { META } from './meta';
-import * as Schemes from './schemes';
+import * as Bystanders from './spidermanHomecoming.bystanders';
 import * as Heroes from './spidermanHomecoming.heroes';
 import * as Masterminds from './spidermanHomecoming.masterminds';
+import { META } from './spidermanHomecoming.meta';
+import * as Schemes from './spidermanHomecoming.schemes';
 import * as Villains from './spidermanHomecoming.villains';
 
 const schemes = injectGameSetToMany(META, Object.values(Schemes));

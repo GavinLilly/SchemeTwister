@@ -1,6 +1,6 @@
 import DARK_CITY from '../../data/gameSets/darkCity';
 import { JEAN_GREY } from '../../data/gameSets/darkCity/darkCity.heroes';
-import { TRANSFORM_CITIZENS_INTO_DEMONS } from '../../data/gameSets/darkCity/schemes';
+import { TRANSFORM_CITIZENS_INTO_DEMONS } from '../../data/gameSets/darkCity/darkCity.schemes';
 import { StoreBuilder, StoreOfStores } from '../../factories';
 import { injectGameSet } from '../../utils/schemeInjector';
 
