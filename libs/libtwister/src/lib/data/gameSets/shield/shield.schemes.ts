@@ -1,13 +1,14 @@
 import {
-  ShortScheme,
   RequireVillainsInVillainDeckScheme,
+  SchemeDefinition,
 } from '../../../model';
 import { HeroClass } from '../../enums';
 
 import { HYDRA_LEVEL, UNDERCOVER } from './shield.keywords';
+import { META } from './shield.meta';
 import { AIM_HYDRA_OFFSHOOT, HYDRA_ELITE } from './shield.villains';
 
-export const SHIELD_VS_HYDRA_WAR: ShortScheme = {
+export const SHIELD_VS_HYDRA_WAR = new SchemeDefinition({
   id: '05c59c1a-fa4e-4b84-a8f8-282e3d882454',
   name: 'S.H.I.E.L.D. vs. HYDRA War',
   setup:
@@ -22,9 +23,10 @@ export const SHIELD_VS_HYDRA_WAR: ShortScheme = {
       params: [HYDRA_ELITE, 1, true, AIM_HYDRA_OFFSHOOT],
     },
   },
-};
+  gameSet: META,
+});
 
-export const HAIL_HYDRA: ShortScheme = {
+export const HAIL_HYDRA = new SchemeDefinition({
   id: 'bf076369-d6e6-4b07-bb33-da2a7d476f14',
   name: 'Hail Hydra',
   setup: '11 twists.',
@@ -34,9 +36,10 @@ export const HAIL_HYDRA: ShortScheme = {
 Twist 10: Evil Wins!`,
   evilWins: 'On 10th twist',
   meta: { numTwists: 11 },
-};
+  gameSet: META,
+});
 
-export const HYDRA_HELICARRIERS_HUNT_HEROES: ShortScheme = {
+export const HYDRA_HELICARRIERS_HUNT_HEROES = new SchemeDefinition({
   id: 'ac946f50-a8c6-4d30-9df0-168a2bf240c1',
   name: 'Hydra Helicarriers Hunt Heroes',
   setup: '8 Twists. Add an extra Hero.',
@@ -49,9 +52,10 @@ export const HYDRA_HELICARRIERS_HUNT_HEROES: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const SECRET_EMPIRE_OF_BETRAYAL: ShortScheme = {
+export const SECRET_EMPIRE_OF_BETRAYAL = new SchemeDefinition({
   id: 'f14ce01a-5fc7-4866-8751-e70f6982dec9',
   name: 'Secret Empire of Betrayal',
   setup:
@@ -70,4 +74,5 @@ export const SECRET_EMPIRE_OF_BETRAYAL: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});

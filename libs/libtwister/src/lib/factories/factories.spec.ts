@@ -8,7 +8,7 @@ import { SingleCardFactory } from './singleCardFactory';
 const cardType = CardType.HERO;
 
 class LegCard implements IPlayableObject {
-  gameSet = LEGENDARY.default;
+  gameSet = LEGENDARY.GAME_SET;
   constructor(
     public name: string,
     public id: string,
@@ -17,7 +17,7 @@ class LegCard implements IPlayableObject {
 }
 
 class DcCard implements IPlayableObject {
-  gameSet = DARK_CITY.default;
+  gameSet = DARK_CITY.GAME_SET;
   constructor(
     public name: string,
     public id: string,
@@ -85,7 +85,7 @@ describe('Single Card Factory', () => {
     });
 
     it('should only give random Legendary cards', () => {
-      expect(instance.getOneRandom().gameSet.id).toEqual(LEGENDARY.default.id);
+      expect(instance.getOneRandom().gameSet.id).toEqual(LEGENDARY.GAME_SET.id);
     });
 
     describe('isAvailable()', () => {
@@ -145,7 +145,7 @@ describe('Multi Card Factory', () => {
       expect(
         instance
           .getManyRandom(3)
-          .every((item) => item.gameSet === LEGENDARY.default)
+          .every((item) => item.gameSet === LEGENDARY.GAME_SET)
       ).toBeTruthy();
     });
   });

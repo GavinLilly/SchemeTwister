@@ -1,18 +1,21 @@
-import { ShortScheme, PlayerPicksAHeroScheme } from '../../../model';
+import { PlayerPicksAHeroScheme, SchemeDefinition } from '../../../model';
 import { FOCUS } from '../fantasticFour/fantasticFour.keywords';
 
-export const PULSE_WAVES_FROM_THE_NEGATIVE_ZONE: ShortScheme = {
+import { META } from './annihilation.meta';
+
+export const PULSE_WAVES_FROM_THE_NEGATIVE_ZONE = new SchemeDefinition({
   id: 'f968b735-5575-407e-8dc9-091d1fef3b58',
   name: 'Pulse Waves from the Negative Zone',
+  gameSet: META,
   setup: '9 twists',
   twist: `1,3,5,7: "Negative Pulse": This turn, Heroes in the HQ cost -1 and Villains and Masterminds get -1 attack.
 2,4,6,8: This turn, Heroes in the HQ cost +1 and Villains and Masterminds get +1 attack.
 9: Evil wins!`,
   evilWins: 'When 9 twists revealed',
   meta: { numTwists: 9 },
-};
+});
 
-export const SNEAK_ATTACK_THE_HEROES_HOMES: ShortScheme = {
+export const SNEAK_ATTACK_THE_HEROES_HOMES = new SchemeDefinition({
   id: '0ab10c4f-6d7c-4f47-a4a7-e1af2aa23d6c',
   name: "Sneak Attack the Heroes' Homes",
   setup:
@@ -26,9 +29,10 @@ export const SNEAK_ATTACK_THE_HEROES_HOMES: ShortScheme = {
       schemeType: PlayerPicksAHeroScheme,
     },
   },
-};
+  gameSet: META,
+});
 
-export const PUT_HUMANITY_ON_TRIAL: ShortScheme = {
+export const PUT_HUMANITY_ON_TRIAL = new SchemeDefinition({
   id: '2a438d6d-3ec5-4e75-a97c-549f7317683e',
   name: 'Put Humanity on Trial',
   setup:
@@ -52,9 +56,10 @@ export const PUT_HUMANITY_ON_TRIAL: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const BREACH_PARALLEL_DIMENSIONS: ShortScheme = {
+export const BREACH_PARALLEL_DIMENSIONS = new SchemeDefinition({
   id: '554228f5-a706-4704-aebb-3ae09a593ddd',
   name: 'Breach Parallel Dimensions',
   setup: `6 Twists. Add 4 extra Bystanders to the Villain Deck. Deal the shuffled Deck into several "Dimension" decks where the first Dimension has 1 card, the next has 2 cards, then 3, 4 etc (The final Dimension might not have enough cards to reach it's full number)`,
@@ -70,4 +75,5 @@ export const BREACH_PARALLEL_DIMENSIONS: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});

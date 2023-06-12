@@ -1,8 +1,9 @@
-import { ShortScheme } from '../../../model';
+import { SchemeDefinition } from '../../../model';
 
 import { HIDDEN_WITNESS, INVESTIGATE } from './noir.keywords';
+import { META } from './noir.meta';
 
-export const FIND_THE_SPLIT_PERSONALITY_KILLER: ShortScheme = {
+export const FIND_THE_SPLIT_PERSONALITY_KILLER = new SchemeDefinition({
   id: '81435cb5-a05b-4cdd-8d8b-b602a7ce3a53',
   name: 'Find the Split Personality Killer',
   setup: '8 Twists.',
@@ -12,9 +13,10 @@ Twist 6: Each player writes down their guess for which Hero Name is the Split Pe
   specialRules:
     'Whenever you defeat a Villain, you may pay 1 Attack extra to Investigate the Murder Suspects for a Bystander and rescue it.',
   meta: { numTwists: 8 },
-};
+  gameSet: META,
+});
 
-export const SILENCE_THE_WITNESSES: ShortScheme = {
+export const SILENCE_THE_WITNESSES = new SchemeDefinition({
   id: '6bfc956d-2ebc-4fcf-9716-2a00b0c1b0c5',
   name: 'Silence the Witnesses',
   setup: '6 Twists.',
@@ -22,9 +24,10 @@ export const SILENCE_THE_WITNESSES: ShortScheme = {
   evilWins: 'When 6 Bystanders are in the Escape Pile.',
   keywords: [INVESTIGATE, HIDDEN_WITNESS],
   meta: { numTwists: 6 },
-};
+  gameSet: META,
+});
 
-export const FIVE_FAMILIES_OF_CRIM: ShortScheme = {
+export const FIVE_FAMILIES_OF_CRIM = new SchemeDefinition({
   id: 'f6393acd-4446-4278-83d0-e147d768e927',
   name: 'Five Families of Crime',
   setup:
@@ -40,9 +43,10 @@ export const FIVE_FAMILIES_OF_CRIM: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const HIDDEN_HEART_OF_DARKNESS: ShortScheme = {
+export const HIDDEN_HEART_OF_DARKNESS = new SchemeDefinition({
   id: '97c28f0b-ab2d-4f2c-864f-3743327324a6',
   name: 'Hidden Heart of Darkness',
   setup:
@@ -53,4 +57,5 @@ export const HIDDEN_HEART_OF_DARKNESS: ShortScheme = {
     'If there are no Tactics in the city, you can win the game by fighting the Mastermind card.',
   keywords: [INVESTIGATE],
   meta: { numTwists: 8 },
-};
+  gameSet: META,
+});

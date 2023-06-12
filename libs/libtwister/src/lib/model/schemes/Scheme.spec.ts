@@ -1,7 +1,7 @@
-import LEGENDARY from '../../data/gameSets/legendary';
+import { GAME_SET as LEGENDARY } from '../../data/gameSets/legendary';
 import { DOOMBOT_LEGION } from '../../data/gameSets/legendary/legendary.henchmen';
 import { DR_DOOM } from '../../data/gameSets/legendary/legendary.masterminds';
-import XMEN from '../../data/gameSets/xMen';
+import { GAME_SET as XMEN } from '../../data/gameSets/xMen';
 import { ARCADE } from '../../data/gameSets/xMen/xMen.masterminds';
 import {
   HELLFIRE_CLUB,

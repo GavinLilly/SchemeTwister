@@ -1,17 +1,16 @@
-import GUARDIANS from '../../data/gameSets/guardiansOfTheGalaxy';
+import { GAME_SET as GUARDIANS } from '../../data/gameSets/guardiansOfTheGalaxy';
 import { THE_KREE_SKRULL_WAR } from '../../data/gameSets/guardiansOfTheGalaxy/guardiansOfTheGalaxy.schemes';
 import { KREE_STARFORCE } from '../../data/gameSets/guardiansOfTheGalaxy/guardiansOfTheGalaxy.villains';
-import LEGENDARY from '../../data/gameSets/legendary';
+import { GAME_SET as LEGENDARY } from '../../data/gameSets/legendary';
 import { SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS } from '../../data/gameSets/legendary/legendary.schemes';
 import { SKRULLS } from '../../data/gameSets/legendary/legendary.villains';
-import SHIELD from '../../data/gameSets/shield';
+import { GAME_SET as SHIELD } from '../../data/gameSets/shield';
 import { SHIELD_VS_HYDRA_WAR } from '../../data/gameSets/shield/shield.schemes';
 import {
   AIM_HYDRA_OFFSHOOT,
   HYDRA_ELITE,
 } from '../../data/gameSets/shield/shield.villains';
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { injectGameSet } from '../../utils/schemeInjector';
 import { VillainGroup } from '../cards';
 import { IGameSetup } from '../interfaces';
 
@@ -37,7 +36,7 @@ describe('Require Villains In Villain Deck Scheme', () => {
   describe('Secret invastion of the Skurll shapeshifters', () => {
     it('It should include Skrulls in the villain deck', () => {
       const scheme = new RequireVillainsInVillainDeckScheme(
-        injectGameSet(LEGENDARY, SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS),
+        SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS,
         SKRULLS
       );
       const setup = scheme.getSetup(
@@ -56,7 +55,7 @@ describe('Require Villains In Villain Deck Scheme', () => {
 
     beforeEach(() => {
       scheme = new RequireVillainsInVillainDeckScheme(
-        injectGameSet(GUARDIANS, THE_KREE_SKRULL_WAR),
+        THE_KREE_SKRULL_WAR,
         SKRULLS,
         2,
         false,
@@ -81,7 +80,7 @@ describe('Require Villains In Villain Deck Scheme', () => {
 
     beforeEach(() => {
       scheme = new RequireVillainsInVillainDeckScheme(
-        injectGameSet(SHIELD, SHIELD_VS_HYDRA_WAR),
+        SHIELD_VS_HYDRA_WAR,
         HYDRA_ELITE,
         1,
         true,

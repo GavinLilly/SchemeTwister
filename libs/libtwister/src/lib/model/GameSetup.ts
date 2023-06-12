@@ -6,8 +6,8 @@ import {
   IKeyword,
   IVillainDeck,
   nameSorter,
+  IGameSetup,
 } from './interfaces';
-import { IGameSetup } from './interfaces/gameSetup.interface';
 import { Scheme } from './schemes';
 
 /**

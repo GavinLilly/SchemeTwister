@@ -1,8 +1,7 @@
-import DARK_CITY from '../../data/gameSets/darkCity';
+import { GAME_SET as DARK_CITY } from '../../data/gameSets/darkCity';
 import { MAGGIA_GOONS } from '../../data/gameSets/darkCity/darkCity.henchmen';
 import { ORGANIZED_CRIME_WAVE } from '../../data/gameSets/darkCity/darkCity.schemes';
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { injectGameSet } from '../../utils/schemeInjector';
 
 import { RequireHenchmenInVillainDeckScheme } from './RequireHenchmenInVillainDeckScheme';
 
@@ -15,7 +14,7 @@ describe('Require Henchmen In Villain Deck Scheme', () => {
 
   it('It should include Maggia Goons in the villain deck', () => {
     const scheme = new RequireHenchmenInVillainDeckScheme(
-      injectGameSet(DARK_CITY, ORGANIZED_CRIME_WAVE),
+      ORGANIZED_CRIME_WAVE,
       MAGGIA_GOONS
     );
     const setup = scheme.getSetup(

@@ -1,20 +1,21 @@
 import {
-  ShortScheme,
   RequireHenchmenInAdditionalDeckScheme,
   RequireHeroNameInHeroDeckScheme,
   RequireHeroNameInAdditionalDeckScheme,
   IOverrideScheme,
+  SchemeDefinition,
 } from '../../../model';
 
 import { CYTOPLASM_SPIKES } from './worldWarHulk.henchmen';
 import { CROSS_DIMENSIONAL_RAMPAGE } from './worldWarHulk.keywords';
+import { META } from './worldWarHulk.meta';
 
 const requireHulkScheme: IOverrideScheme = {
   schemeType: RequireHeroNameInAdditionalDeckScheme,
   params: ['hulk'],
 };
 
-export const BREAK_THE_PLANET_ASUNDER: ShortScheme = {
+export const BREAK_THE_PLANET_ASUNDER = new SchemeDefinition({
   id: '92fa1f10-1bee-468e-8a7c-6c008531e491',
   name: 'Break the Planet Asunder',
   setup: '9 Twists. 7 Heroes.',
@@ -27,9 +28,10 @@ export const BREAK_THE_PLANET_ASUNDER: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const CYTOPLASM_SPIKE_INVASION: ShortScheme = {
+export const CYTOPLASM_SPIKE_INVASION = new SchemeDefinition({
   id: '19b6bae6-3122-4893-b066-afb5e189697f',
   name: 'Cytoplasm Spike Invasion',
   setup:
@@ -54,9 +56,10 @@ export const CYTOPLASM_SPIKE_INVASION: ShortScheme = {
       params: [CYTOPLASM_SPIKES],
     },
   },
-};
+  gameSet: META,
+});
 
-export const FALL_OF_THE_HULKS: ShortScheme = {
+export const FALL_OF_THE_HULKS = new SchemeDefinition({
   id: '106067b6-7589-4ac8-afd5-31ca59d607ab',
   name: 'Fall of the Hulks',
   setup:
@@ -76,9 +79,10 @@ Twist 7-10: Each player gains a Wound.`,
       params: ['hulk', 2, true],
     },
   },
-};
+  gameSet: META,
+});
 
-export const GLADIATOR_PITS_OF_SAKAAR: ShortScheme = {
+export const GLADIATOR_PITS_OF_SAKAAR = new SchemeDefinition({
   id: 'bcd13b7e-d66e-4365-afb6-8163958871f9',
   name: 'Gladiator Pits of Sakaar',
   setup: '6 Twists.',
@@ -86,9 +90,10 @@ export const GLADIATOR_PITS_OF_SAKAAR: ShortScheme = {
   evilWins:
     'When 2 Villains per player have escaped or the Villain Deck runs out.',
   meta: { numTwists: 6 },
-};
+  gameSet: META,
+});
 
-export const MUTATING_GAMMA_RAYS: ShortScheme = {
+export const MUTATING_GAMMA_RAYS = new SchemeDefinition({
   id: 'c39541a2-9ba3-4491-b410-7ac6c4e8d8f9',
   name: 'Mutating Gamma Rays',
   setup:
@@ -109,9 +114,10 @@ Twist 7: Evil Wins!`,
     },
     overrideScheme: requireHulkScheme,
   },
-};
+  gameSet: META,
+});
 
-export const SHOOT_HULK_INTO_SPACE: ShortScheme = {
+export const SHOOT_HULK_INTO_SPACE = new SchemeDefinition({
   id: 'f39ee139-c92a-4c88-a68e-888414b3b00c',
   name: 'Shoot Hulk into Space',
   setup:
@@ -133,9 +139,10 @@ export const SHOOT_HULK_INTO_SPACE: ShortScheme = {
     },
     overrideScheme: requireHulkScheme,
   },
-};
+  gameSet: META,
+});
 
-export const SUBJUGATE_WITH_OBEDIENCE_DISKS: ShortScheme = {
+export const SUBJUGATE_WITH_OBEDIENCE_DISKS = new SchemeDefinition({
   id: '0954bf80-d875-4e60-9c92-ee7bc10190be',
   name: 'Subjugate with Obedience Disks',
   setup: '11 Twists.',
@@ -144,9 +151,10 @@ export const SUBJUGATE_WITH_OBEDIENCE_DISKS: ShortScheme = {
   specialRules:
     'To recruit a Hero in the HQ, you must also pay 1 Recruit for each Obedience Disk under it.',
   meta: { numTwists: 11 },
-};
+  gameSet: META,
+});
 
-export const WORLD_WAR_HULK: ShortScheme = {
+export const WORLD_WAR_HULK = new SchemeDefinition({
   id: 'f1b02846-eda3-422d-a5d5-3f42e9f66445',
   name: 'World War Hulk',
   setup:
@@ -168,4 +176,5 @@ Twist 9: Evil Wins!`,
       return rule;
     },
   },
-};
+  gameSet: META,
+});

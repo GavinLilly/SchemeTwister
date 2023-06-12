@@ -1,4 +1,3 @@
-import LEGENDARY from '../data/gameSets/legendary';
 import { Mastermind, VillainGroup, Henchmen, Hero } from '../model';
 
 import { MultiCardStore } from './multiCardStore';
@@ -17,12 +16,10 @@ export class StoreOfStores {
     henchmen: Henchmen[]
   );
   constructor(
-    heroes: Hero[] = LEGENDARY.heroes,
-    /* eslint-disable @typescript-eslint/no-non-null-assertion */
-    masterminds: Mastermind[] = LEGENDARY.masterminds!,
-    villains: VillainGroup[] = LEGENDARY.villains!,
-    henchmen: Henchmen[] = LEGENDARY.henchmen!
-    /* eslint-enable @typescript-eslint/no-non-null-assertion */
+    heroes: Hero[] = [],
+    masterminds: Mastermind[] = [],
+    villains: VillainGroup[] = [],
+    henchmen: Henchmen[] = []
   ) {
     this._heroStore = new MultiCardStore(heroes);
     this._mastermindStore = new MultiCardStore(masterminds);

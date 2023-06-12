@@ -1,8 +1,9 @@
-import { ShortScheme } from '../../../model';
+import { SchemeDefinition } from '../../../model';
 
 import { ABOMINATION, THRONES_FAVOR } from './realmOfKings.keywords';
+import { META } from './realmOfKings.meta';
 
-export const RUIN_THE_PERFECT_WEDDING: ShortScheme = {
+export const RUIN_THE_PERFECT_WEDDING = new SchemeDefinition({
   id: 'f5067ce4-63ef-4ae2-bded-02844e913c01',
   name: 'Ruin the Perfect Wedding',
   setup:
@@ -26,9 +27,10 @@ Twist 8-11: KO two cards from the top of each Wedding Hero Stack.`,
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const WAR_OF_KINGS: ShortScheme = {
+export const WAR_OF_KINGS = new SchemeDefinition({
   id: '6dcf3c43-2baf-4990-84e7-8b1d4fc34280',
   name: 'War of Kings',
   setup: '11 Twists.',
@@ -39,9 +41,10 @@ Twist 9-11: Same effect, but with two Victorious Generals.`,
   evilWins: 'When there are 6 Victorious Generals.',
   keywords: [THRONES_FAVOR],
   meta: { numTwists: 11 },
-};
+  gameSet: META,
+});
 
-export const TORNADO_OF_TERRIGEN_MISTS: ShortScheme = {
+export const TORNADO_OF_TERRIGEN_MISTS = new SchemeDefinition({
   id: '9f29f2c3-e539-48ae-a160-3df30018ac0c',
   name: 'Tornado of Terrigen Mists',
   setup:
@@ -54,9 +57,10 @@ Twist 10: Evil Wins!`,
   specialRules:
     "You can't fight Villains outside the city space where you are. (You can still recruit from all HQ spaces and fight the Mastermind.) During your turn, you can spend 1 Attack any number of times to move yourself one space left or right.",
   meta: { numTwists: 10 },
-};
+  gameSet: META,
+});
 
-export const DEVOLVE_WITH_XEROGEN_CRYSTALS: ShortScheme = {
+export const DEVOLVE_WITH_XEROGEN_CRYSTALS = new SchemeDefinition({
   id: 'bf9b7c30-493d-47a1-bff0-f785ee599fa0',
   name: 'Devolve with Xerogen Crystals',
   setup:
@@ -79,4 +83,5 @@ export const DEVOLVE_WITH_XEROGEN_CRYSTALS: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});

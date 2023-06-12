@@ -1,9 +1,8 @@
-import DARK_CITY from '../../data/gameSets/darkCity';
-import DEADPOOL from '../../data/gameSets/deadpool';
+import { GAME_SET as DARK_CITY } from '../../data/gameSets/darkCity';
+import { GAME_SET as DEADPOOL } from '../../data/gameSets/deadpool';
 import { DEADPOOL_KILLS_THE_MARVEL_UNIVERSE } from '../../data/gameSets/deadpool/deadpool.schemes';
-import LEGENDARY from '../../data/gameSets/legendary';
+import { GAME_SET as LEGENDARY } from '../../data/gameSets/legendary';
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { injectGameSet } from '../../utils/schemeInjector';
 import { Hero } from '../cards';
 import { IGameSetup } from '../interfaces';
 
@@ -28,7 +27,7 @@ describe('Require Hero Name In Hero Deck Scheme', () => {
       .build();
 
     scheme = new RequireHeroNameInHeroDeckScheme(
-      injectGameSet(DEADPOOL, DEADPOOL_KILLS_THE_MARVEL_UNIVERSE),
+      DEADPOOL_KILLS_THE_MARVEL_UNIVERSE,
       'deadpool'
     );
 

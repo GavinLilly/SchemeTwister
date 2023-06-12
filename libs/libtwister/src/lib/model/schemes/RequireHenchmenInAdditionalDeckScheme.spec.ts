@@ -1,8 +1,7 @@
-import VILLAINS from '../../data/gameSets/villains';
+import { GAME_SET as VILLAINS } from '../../data/gameSets/villains';
 import { COPS } from '../../data/gameSets/villains/villains.henchmen';
 import { CAGE_VILLAINS_IN_POWERSUPPRESSING_CELLS } from '../../data/gameSets/villains/villains.schemes';
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { injectGameSet } from '../../utils/schemeInjector';
 
 import { RequireHenchmenInAdditionalDeckScheme } from './RequireHenchmenInAdditionalDeckScheme';
 
@@ -15,7 +14,7 @@ describe('Require Henchmen In Additional Deck Scheme', () => {
 
   it('It should include Cops in the additional deck', () => {
     const scheme = new RequireHenchmenInAdditionalDeckScheme(
-      injectGameSet(VILLAINS, CAGE_VILLAINS_IN_POWERSUPPRESSING_CELLS),
+      CAGE_VILLAINS_IN_POWERSUPPRESSING_CELLS,
       COPS
     );
     const setup = scheme.getSetup(

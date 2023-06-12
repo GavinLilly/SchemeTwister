@@ -1,13 +1,14 @@
 import {
-  ShortScheme,
   RequireHeroNameInVillainDeckScheme,
   RitualSacrificeToSummonChthonScheme,
+  SchemeDefinition,
 } from '../../../model';
 import { MOONLIGHT_AND_SUNLIGHT } from '../theNewMutants/theNewMutants.keywords';
 
 import { BLOOD_FRENZY, HUNT_FOR_VICTIMS } from './midnightSons.keywords';
+import { META } from './midnightSons.meta';
 
-export const SIRE_VAMPIRES_AT_THE_BLOOD_BANK: ShortScheme = {
+export const SIRE_VAMPIRES_AT_THE_BLOOD_BANK = new SchemeDefinition({
   id: '35072834-b3dc-4e9f-922d-2adc010b9cac',
   name: 'Sire Vampires at the Blood Bank',
   setup:
@@ -24,9 +25,10 @@ export const SIRE_VAMPIRES_AT_THE_BLOOD_BANK: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const RITUAL_SACRIFICE_TO_SUMMON_CHTHON: ShortScheme = {
+export const RITUAL_SACRIFICE_TO_SUMMON_CHTHON = new SchemeDefinition({
   id: '50291f3a-b89e-486c-ac09-787ae29043c3',
   name: 'Ritual Sacrifice to Summon Chthon',
   setup:
@@ -55,9 +57,10 @@ export const RITUAL_SACRIFICE_TO_SUMMON_CHTHON: ShortScheme = {
       schemeType: RitualSacrificeToSummonChthonScheme,
     },
   },
-};
+  gameSet: META,
+});
 
-export const MIDNIGHT_MASSACRE: ShortScheme = {
+export const MIDNIGHT_MASSACRE = new SchemeDefinition({
   id: 'ea4c7dc2-ecc6-468a-8b4f-86e918f19a78',
   name: 'Midnight Massacre',
   setup: '11 Twists. Add all 14 cards for any Blade Hero to the Villain Deck',
@@ -73,9 +76,10 @@ export const MIDNIGHT_MASSACRE: ShortScheme = {
       params: ['Blade'],
     },
   },
-};
+  gameSet: META,
+});
 
-export const WAGER_AT_BLACKJACK_FOR_HEROES_SOULS: ShortScheme = {
+export const WAGER_AT_BLACKJACK_FOR_HEROES_SOULS = new SchemeDefinition({
   id: '2ec6574e-a50c-4855-92e3-22a246379b3b',
   name: "Wager at Blackjack for Heroes' Souls",
   setup: '11 Twists. Add two extra Heroes',
@@ -89,4 +93,5 @@ If you win, you may gain one of the revealed Heroes that costs 6 or less. If the
       return rule;
     },
   },
-};
+  gameSet: META,
+});

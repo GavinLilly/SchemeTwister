@@ -1,12 +1,13 @@
 import {
-  ShortScheme,
   RequireVillainInAdditionalDeckScheme,
+  SchemeDefinition,
 } from '../../../model';
 import { HeroClass } from '../../enums';
 
+import { META } from './champions.meta';
 import { MONSTERS_UNLEASHED } from './champions.villains';
 
-export const CLASH_OF_THE_MONSTERS_UNLEASHED: ShortScheme = {
+export const CLASH_OF_THE_MONSTERS_UNLEASHED = new SchemeDefinition({
   id: '0f59ccb0-e32a-4e5a-83b6-826dbc2a9640',
   name: 'Clash of the Monsters Unleashed',
   setup:
@@ -31,9 +32,10 @@ export const CLASH_OF_THE_MONSTERS_UNLEASHED: ShortScheme = {
       params: [MONSTERS_UNLEASHED],
     },
   },
-};
+  gameSet: META,
+});
 
-export const DIVIDE_AND_CONQUER: ShortScheme = {
+export const DIVIDE_AND_CONQUER = new SchemeDefinition({
   id: '4cd49303-2726-452c-9f19-c0241e521e95',
   name: 'Divide and Conquer',
   setup: `8 Twists. 7 Heroes. Sort the Hero Deck by Hero Class. ${HeroClass.STRENGTH} ${HeroClass.INSTINCT} ${HeroClass.COVERT} ${HeroClass.TECH} ${HeroClass.RANGED} (If a card has multiple Classes, break ties at random.). Put these 5 smaller, shuffled Hero Decks beneath the 5 HQ Spaces.`,
@@ -49,9 +51,10 @@ Twist 4-8: KO one of the Hero Decks.`,
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const HYPNOTIZE_EVERY_HUMAN: ShortScheme = {
+export const HYPNOTIZE_EVERY_HUMAN = new SchemeDefinition({
   id: 'c1aec589-0a31-4fe4-827a-e34b7415ffa6',
   name: 'Hypnotize Every Human',
   setup:
@@ -67,13 +70,15 @@ Twist 7-8: Each player puts a Villain from their Victory Pile into the Escape pi
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const STEAL_ALL_OXYGEN_ON_EARTH: ShortScheme = {
+export const STEAL_ALL_OXYGEN_ON_EARTH = new SchemeDefinition({
   id: '4b1a8d31-2967-4191-9f94-e717df20d05f',
   name: 'Steal All Oxygen on Earth',
   setup: '8 Twists. The "Oxygen Level" starts at 8.',
   twist: `Stack this Twist next to the Scheme. The Oxygen Level decreases by 1. Then KO each Hero from the HQ whose cost is greater than the Oxygen Level.`,
   evilWins: "When 20 non-grey Heroes are KO'd.",
   meta: { numTwists: 8 },
-};
+  gameSet: META,
+});

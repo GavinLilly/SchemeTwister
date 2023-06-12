@@ -1,9 +1,10 @@
-import { ShortScheme, RequireTeamInHeroDeckScheme } from '../../../model';
+import { RequireTeamInHeroDeckScheme, SchemeDefinition } from '../../../model';
 import { SPIDER_FRIENDS } from '../../teams';
 
 import { STRIKER } from './spidermanHomecoming.keywords';
+import { META } from './spidermanHomecoming.meta';
 
-export const DISTRACT_THE_HERO: ShortScheme = {
+export const DISTRACT_THE_HERO = new SchemeDefinition({
   id: '764951d6-5b1c-4bf4-985a-c5804ea9b32e',
   name: 'Distract the Hero',
   setup: '8 Twists. Use at least one Spider Friends Hero.',
@@ -16,9 +17,10 @@ export const DISTRACT_THE_HERO: ShortScheme = {
       params: [SPIDER_FRIENDS],
     },
   },
-};
+  gameSet: META,
+});
 
-export const EXPLOSION_AT_THE_WASHINGTON_MONUMENT: ShortScheme = {
+export const EXPLOSION_AT_THE_WASHINGTON_MONUMENT = new SchemeDefinition({
   id: 'aae82a96-6b45-4c36-b9bd-cc8ea15a2947',
   name: 'Explosion at the Washington Monument',
   setup:
@@ -42,9 +44,10 @@ export const EXPLOSION_AT_THE_WASHINGTON_MONUMENT: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const FERRY_DISASTER: ShortScheme = {
+export const FERRY_DISASTER = new SchemeDefinition({
   id: 'f5cde443-9109-436c-9393-082ab306d428',
   name: 'Ferry Disaster',
   setup: '9 Twists. Put the Bystander Stack above the Sewers as the "Ferry."',
@@ -53,9 +56,10 @@ Twist 5-8: Same effect, but it moves right.
 Twist 9: KO half the Bystanders from the Bystander deck, rounding up.`,
   evilWins: 'When 7 Bystanders are in the KO pile and/or Escape Pile.',
   meta: { numTwists: 9 },
-};
+  gameSet: META,
+});
 
-export const SCAVENGE_ALIEN_WEAPONRY: ShortScheme = {
+export const SCAVENGE_ALIEN_WEAPONRY = new SchemeDefinition({
   id: 'b28cb5ca-715f-4a3f-acf8-49d583131cc5',
   name: 'Scavenge Alien Weaponry',
   setup: '7 Twists. Add an extra Henchmen Group of 10 cards as "Smugglers."',
@@ -71,4 +75,5 @@ export const SCAVENGE_ALIEN_WEAPONRY: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});

@@ -1,14 +1,15 @@
 import {
-  ShortScheme,
   RequireHenchmenInAdditionalDeckScheme,
   RequireVillainInAdditionalDeckScheme,
   RequireHenchmenInVillainDeckScheme,
+  SchemeDefinition,
 } from '../../../model';
 
 import { COPS, SHIELD_ASSAULT_SQUAD } from './villains.henchmen';
+import { META } from './villains.meta';
 import { AVENGERS } from './villains.villains';
 
-export const BUILD_AN_UNDERGROUND_MEGAVAULT_PRISON: ShortScheme = {
+export const BUILD_AN_UNDERGROUND_MEGAVAULT_PRISON = new SchemeDefinition({
   id: 'ea05a9a1-39b0-4925-a85b-8b62b127d1e4',
   name: 'Build an Underground MegaVault Prison',
   setup: '8 Twists. The Bindings stack holds 5 Bindings per player.',
@@ -21,9 +22,10 @@ export const BUILD_AN_UNDERGROUND_MEGAVAULT_PRISON: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const CAGE_VILLAINS_IN_POWERSUPPRESSING_CELLS: ShortScheme = {
+export const CAGE_VILLAINS_IN_POWERSUPPRESSING_CELLS = new SchemeDefinition({
   id: '405c06f9-0366-4f42-95f4-00a9fd1aa6bf',
   name: 'Cage Villains in Power-Suppressing Cells',
   setup: '8 Twists. Stack 2 Cops per player next to this Plot.',
@@ -48,9 +50,10 @@ export const CAGE_VILLAINS_IN_POWERSUPPRESSING_CELLS: ShortScheme = {
       params: [COPS],
     },
   },
-};
+  gameSet: META,
+});
 
-export const CROWN_THOR_KING_OF_ASGARD: ShortScheme = {
+export const CROWN_THOR_KING_OF_ASGARD = new SchemeDefinition({
   id: 'f4cfb0cd-420f-4822-9b8a-b5cc7d48e1e7',
   name: 'Crown Thor King of Asgard',
   setup: '8 Twists. Put the Thor Adversary next to this Plot.',
@@ -74,9 +77,10 @@ export const CROWN_THOR_KING_OF_ASGARD: ShortScheme = {
       params: [AVENGERS],
     },
   },
-};
+  gameSet: META,
+});
 
-export const CRUSH_HYDRA: ShortScheme = {
+export const CRUSH_HYDRA = new SchemeDefinition({
   id: '6a2e33fd-c05d-4193-a9a4-9f405a9587b9',
   name: 'Crush HYDRA',
   setup: '8 Twists.',
@@ -86,9 +90,10 @@ Twist 8: Put all captured Allies from the city into the Overrun Pile.`,
   specialRules:
     'An Adversary gets +1 Attack for each Ally it has captured. When you fight that Adversary, gain those Allies.',
   meta: { numTwists: 8 },
-};
+  gameSet: META,
+});
 
-export const GRADUATION_AT_XAVIERS_XACADEMY: ShortScheme = {
+export const GRADUATION_AT_XAVIERS_XACADEMY = new SchemeDefinition({
   id: '7a3f81cd-79b7-42b0-a794-f2a28dedfb87',
   name: "Graduation at Xavier's X-Academy",
   setup: '8 Twists. Stack 8 Bystanders next to this Plot as "Young Mutants."',
@@ -106,9 +111,10 @@ export const GRADUATION_AT_XAVIERS_XACADEMY: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const INFILTRATE_THE_LAIR_WITH_SPIES: ShortScheme = {
+export const INFILTRATE_THE_LAIR_WITH_SPIES = new SchemeDefinition({
   id: 'fa017075-b03f-4767-802b-7f1de180fc99',
   name: 'Infiltrate the Lair with Spies',
   setup:
@@ -129,9 +135,10 @@ export const INFILTRATE_THE_LAIR_WITH_SPIES: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const MASS_PRODUCE_WAR_MACHINE_ARMOR: ShortScheme = {
+export const MASS_PRODUCE_WAR_MACHINE_ARMOR = new SchemeDefinition({
   id: '60e91be1-e1de-4ad7-bb32-61a28ebfec1b',
   name: 'Mass Produce War Machine Armor',
   setup:
@@ -147,9 +154,10 @@ export const MASS_PRODUCE_WAR_MACHINE_ARMOR: ShortScheme = {
       params: [SHIELD_ASSAULT_SQUAD],
     },
   },
-};
+  gameSet: META,
+});
 
-export const RESURRECT_HEROES_WITH_NORN_STONES: ShortScheme = {
+export const RESURRECT_HEROES_WITH_NORN_STONES = new SchemeDefinition({
   id: 'd673d8f2-c240-4e6b-aebb-df32af35045f',
   name: 'Resurrect Heroes with Norn Stones',
   setup: '8 Twists.',
@@ -157,4 +165,5 @@ export const RESURRECT_HEROES_WITH_NORN_STONES: ShortScheme = {
 Twists 7-8: Each player puts an Adversary from their Victory Pile into the Overrun Pile.`,
   evilWins: 'When there are 3 Adversaries per player in the Overrun Pile.',
   meta: { numTwists: 8 },
-};
+  gameSet: META,
+});

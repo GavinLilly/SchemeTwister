@@ -108,9 +108,9 @@ export class LibTwister {
 
     const gamesets = Object.values(GameSets);
 
-    gamesets.forEach((gameset) => {
-      gamesetMap.set(gameset.default.id, gameset.default);
-    });
+    gamesets.forEach((gameset) =>
+      gamesetMap.set(gameset.GAME_SET.id, gameset.GAME_SET)
+    );
 
     return gamesetMap;
   }

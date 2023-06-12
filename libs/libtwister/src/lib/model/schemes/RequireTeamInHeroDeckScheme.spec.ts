@@ -1,9 +1,8 @@
-import DARK_CITY from '../../data/gameSets/darkCity';
-import DEADPOOL from '../../data/gameSets/deadpool';
+import { GAME_SET as DARK_CITY } from '../../data/gameSets/darkCity';
+import { GAME_SET as DEADPOOL } from '../../data/gameSets/deadpool';
 import { EVERYBODY_HATES_DEADPOOL } from '../../data/gameSets/deadpool/deadpool.schemes';
 import { MERCS_FOR_MONEY } from '../../data/teams';
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { injectGameSet } from '../../utils/schemeInjector';
 
 import { RequireTeamInHeroDeckScheme } from './RequireTeamInHeroDeckScheme';
 
@@ -21,7 +20,7 @@ describe('Require Team In Hero Deck Scheme', () => {
 
   it('should have at least 1 Merc for Money hero', () => {
     const scheme = new RequireTeamInHeroDeckScheme(
-      injectGameSet(DARK_CITY, EVERYBODY_HATES_DEADPOOL),
+      EVERYBODY_HATES_DEADPOOL,
       MERCS_FOR_MONEY
     );
     const setup = scheme.getSetup(

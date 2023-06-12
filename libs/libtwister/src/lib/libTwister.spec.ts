@@ -1,23 +1,15 @@
-/* eslint-disable import/no-named-as-default-member */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import DARK_CITY from './data/gameSets/darkCity';
-import LEGENDARY from './data/gameSets/legendary';
-import MARVEL_STUDIOS from './data/gameSets/marvelStudios';
-import MCU_GUARDIANS_OF_THE_GALAXY from './data/gameSets/mcuGuardiansOfTheGalaxy';
+import { GAME_SET as DARK_CITY } from './data/gameSets/darkCity';
+import { GAME_SET as LEGENDARY } from './data/gameSets/legendary';
+import { GAME_SET as MARVEL_STUDIOS } from './data/gameSets/marvelStudios';
+import { GAME_SET as MCU_GUARDIANS_OF_THE_GALAXY } from './data/gameSets/mcuGuardiansOfTheGalaxy';
 import {
   EGO_THE_LIVING_PLANET,
   EPIC_EGO_THE_LIVING_PLANET,
 } from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.masterminds';
 import { UNLEASH_THE_ABILISK_SPACE_MONSTER } from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.schemes';
 import { LibTwister } from './libTwister';
-import {
-  CardType,
-  GameSetSize,
-  IPlayableObject,
-  NumPlayers,
-  SchemeMinusRules,
-} from './model';
-import { injectGameSet } from './utils/schemeInjector';
+import { CardType, GameSetSize, IPlayableObject, NumPlayers } from './model';
 
 describe('LibTwister', () => {
   describe('All game sets', () => {
@@ -243,18 +235,11 @@ describe('LibTwister', () => {
     it('should create', () => expect(twister).toBeTruthy());
 
     describe('getSetup()', () => {
-      let unleashScheme: SchemeMinusRules;
-      beforeEach(() => {
-        unleashScheme = injectGameSet(
-          MCU_GUARDIANS_OF_THE_GALAXY,
-          UNLEASH_THE_ABILISK_SPACE_MONSTER
-        );
-      });
       describe('with Ego as mastermind', () => {
         it('should have an additional villain group', () => {
           const setup = twister.getSetup(
             2,
-            unleashScheme,
+            UNLEASH_THE_ABILISK_SPACE_MONSTER,
             EGO_THE_LIVING_PLANET
           );
 
@@ -266,7 +251,7 @@ describe('LibTwister', () => {
         it('should have 2 additional villain groups', () => {
           const setup = twister.getSetup(
             2,
-            unleashScheme,
+            UNLEASH_THE_ABILISK_SPACE_MONSTER,
             EPIC_EGO_THE_LIVING_PLANET
           );
 

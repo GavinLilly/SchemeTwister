@@ -1,13 +1,14 @@
 import {
-  ShortScheme,
   RequireVillainsInVillainDeckScheme,
+  SchemeDefinition,
 } from '../../../model';
 import { SKRULLS } from '../legendary/legendary.villains';
 
 import { ARTIFACT, SHARDS } from './guardiansOfTheGalaxy.keywords';
+import { META } from './guardiansOfTheGalaxy.meta';
 import { INFINITY_GEMS, KREE_STARFORCE } from './guardiansOfTheGalaxy.villains';
 
-export const FORGE_THE_INFINITY_GAUNTLET: ShortScheme = {
+export const FORGE_THE_INFINITY_GAUNTLET = new SchemeDefinition({
   id: '628baaec-c104-437f-ab61-f4526e70ae5f',
   name: 'Forge the Infinity Gauntlet',
   setup: '8 Twists. Always include the Infinity Gems Villain Group.',
@@ -22,9 +23,10 @@ export const FORGE_THE_INFINITY_GAUNTLET: ShortScheme = {
       params: [INFINITY_GEMS],
     },
   },
-};
+  gameSet: META,
+});
 
-export const INTERGALACTIC_KREE_NEGA_BOMB: ShortScheme = {
+export const INTERGALACTIC_KREE_NEGA_BOMB = new SchemeDefinition({
   id: '129b64e2-e2ec-4662-944c-cfd1688497a4',
   name: 'Intergalactic Kree Nega-Bomb',
   setup: "8 Twists. Make a face down 'Nega-Bomb Deck' of 6 Bystanders.",
@@ -42,9 +44,10 @@ export const INTERGALACTIC_KREE_NEGA_BOMB: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const THE_KREE_SKRULL_WAR: ShortScheme = {
+export const THE_KREE_SKRULL_WAR = new SchemeDefinition({
   id: 'b0c2aafe-3df2-4fdb-813f-1493eec6e379',
   name: 'The Kree-Skrull War',
   setup: '8 Twists. Always include Kree Starforce and Skrull Villain Groups.',
@@ -64,9 +67,10 @@ export const THE_KREE_SKRULL_WAR: ShortScheme = {
       params: [KREE_STARFORCE, 2, false, SKRULLS],
     },
   },
-};
+  gameSet: META,
+});
 
-export const UNITE_THE_SHARDS: ShortScheme = {
+export const UNITE_THE_SHARDS = new SchemeDefinition({
   id: '3a4b7112-91dd-4f8d-9707-a3b447f231b6',
   name: 'Unite the Shards',
   setup:
@@ -90,4 +94,5 @@ export const UNITE_THE_SHARDS: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});

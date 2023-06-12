@@ -1,8 +1,9 @@
-import { ShortScheme } from '../../../model';
+import { SchemeDefinition } from '../../../model';
 
 import { VEILED_SCHEMES } from './messiahComplex.keywords';
+import { META } from './messiahComplex.meta';
 
-export const HACK_CEREBRO_SERVERS_TO: ShortScheme = {
+export const HACK_CEREBRO_SERVERS_TO = new SchemeDefinition({
   id: 'e25e8c41-af6f-4481-b2f0-d98f3113d492',
   name: 'Hack Cerebro Servers to...',
   setup: '10 Twists',
@@ -11,9 +12,10 @@ export const HACK_CEREBRO_SERVERS_TO: ShortScheme = {
   evilWins: 'N/A',
   keywords: [VEILED_SCHEMES],
   meta: { numTwists: 10 },
-};
+  gameSet: META,
+});
 
-export const RAID_GENE_BANK_TO: ShortScheme = {
+export const RAID_GENE_BANK_TO = new SchemeDefinition({
   id: 'f20c107f-bba4-4a2d-89ca-196a8f9ce902',
   name: 'Raid Gene Bank to...',
   setup: '8 Twists',
@@ -22,9 +24,10 @@ export const RAID_GENE_BANK_TO: ShortScheme = {
   evilWins: 'N/A',
   keywords: [VEILED_SCHEMES],
   meta: { numTwists: 8 },
-};
+  gameSet: META,
+});
 
-export const HIRE_SINGULARITY_INVESTIGATIONS_TO: ShortScheme = {
+export const HIRE_SINGULARITY_INVESTIGATIONS_TO = new SchemeDefinition({
   id: '5fd38dd7-1a83-4c9f-aea8-4500b6536659',
   name: 'Hire Singularity Investigations to...',
   setup: '9 Twists',
@@ -33,9 +36,10 @@ export const HIRE_SINGULARITY_INVESTIGATIONS_TO: ShortScheme = {
   evilWins: 'N/A',
   keywords: [VEILED_SCHEMES],
   meta: { numTwists: 9 },
-};
+  gameSet: META,
+});
 
-export const DRAIN_MUTANTS_POWERS_TO: ShortScheme = {
+export const DRAIN_MUTANTS_POWERS_TO = new SchemeDefinition({
   id: '9d1dc041-7072-4219-9846-062f4cb59581',
   name: "Drain Mutants' powers to...",
   setup: '11 Twists',
@@ -45,4 +49,5 @@ export const DRAIN_MUTANTS_POWERS_TO: ShortScheme = {
   evilWins: 'N/A',
   keywords: [VEILED_SCHEMES],
   meta: { numTwists: 11 },
-};
+  gameSet: META,
+});

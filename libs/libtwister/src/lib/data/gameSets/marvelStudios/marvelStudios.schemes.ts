@@ -1,13 +1,14 @@
 import {
-  ShortScheme,
   RequireVillainsInVillainDeckScheme,
   SoloBannedScheme,
+  SchemeDefinition,
 } from '../../../model';
 import { HeroClass } from '../../enums';
 
+import { META } from './marvelStudios.meta';
 import { CHITAURI } from './marvelStudios.villains';
 
-export const ASGARD_UNDER_SIEGE: ShortScheme = {
+export const ASGARD_UNDER_SIEGE = new SchemeDefinition({
   id: '8d4bc6fd-0fb5-448e-9799-1608a2e8dbc2',
   name: 'Asgard Under Siege',
   setup: '8 Twists. Add an extra Henchman group to the Villain Deck.',
@@ -20,9 +21,10 @@ export const ASGARD_UNDER_SIEGE: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const DESTROY_THE_CITIES_OF_EARTH: ShortScheme = {
+export const DESTROY_THE_CITIES_OF_EARTH = new SchemeDefinition({
   id: 'c61d6a77-7720-4eb0-803d-973ac9ce7edc',
   name: 'Destroy the Cities of Earth!',
   setup: '8 Twists. 12 Bystanders in the Villain Deck.',
@@ -36,9 +38,10 @@ export const DESTROY_THE_CITIES_OF_EARTH: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const ENSLAVE_MINDS_WITH_THE_CHITAURI_SCEPTER: ShortScheme = {
+export const ENSLAVE_MINDS_WITH_THE_CHITAURI_SCEPTER = new SchemeDefinition({
   id: 'd8a770ea-8fe0-4cc4-a5c6-912b1b4b2501',
   name: 'Enslave Minds with the Chitauri Scepter',
   setup:
@@ -57,9 +60,10 @@ export const ENSLAVE_MINDS_WITH_THE_CHITAURI_SCEPTER: ShortScheme = {
       params: [CHITAURI],
     },
   },
-};
+  gameSet: META,
+});
 
-export const INVADE_ASGARD: ShortScheme = {
+export const INVADE_ASGARD = new SchemeDefinition({
   id: '7c057e6d-9838-4bf3-ba50-78ce6f05e8fa',
   name: 'Invade Asgard',
   setup: '7 Twists. Each Twist is a Dark Portal.',
@@ -68,9 +72,10 @@ Twists 2-6: Put the Dark Portal in the leftmost city space that doesn't yet have
 Twist 7: Evil Wins!`,
   evilWins: 'When 7 twists revealed',
   meta: { numTwists: 7 },
-};
+  gameSet: META,
+});
 
-export const RADIOACTIVE_PALLADIUM_POISONING: ShortScheme = {
+export const RADIOACTIVE_PALLADIUM_POISONING = new SchemeDefinition({
   id: 'c9e29df3-9cc0-4c1b-a9be-4e9abc5ee0da',
   name: 'Radioactive Palladium Poisoning',
   setup: '8 Twists. Wound stack holds 6 Wounds per player.',
@@ -83,9 +88,10 @@ export const RADIOACTIVE_PALLADIUM_POISONING: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const REPLACE_EARTHS_LEADERS_WITH_HYDRA: ShortScheme = {
+export const REPLACE_EARTHS_LEADERS_WITH_HYDRA = new SchemeDefinition({
   id: 'ac8001c3-cd45-4d5e-a8e0-930e80874ec2',
   name: "Replace Earth's Leaders with HYDRA",
   setup:
@@ -106,9 +112,10 @@ export const REPLACE_EARTHS_LEADERS_WITH_HYDRA: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const SUPER_HERO_CIVIL_WAR: ShortScheme = {
+export const SUPER_HERO_CIVIL_WAR = new SchemeDefinition({
   id: '443832df-675d-44bc-8d27-5d8c0ee290be',
   name: 'Super Hero Civil War',
   setup:
@@ -133,9 +140,10 @@ export const SUPER_HERO_CIVIL_WAR: ShortScheme = {
       schemeType: SoloBannedScheme,
     },
   },
-};
+  gameSet: META,
+});
 
-export const UNLEASH_THE_POWER_OF_THE_COSMIC_CUBE: ShortScheme = {
+export const UNLEASH_THE_POWER_OF_THE_COSMIC_CUBE = new SchemeDefinition({
   id: '173ccd3c-09eb-4313-bc71-d650bc32d840',
   name: 'Unleash the Power of the Cosmic Cube',
   setup: '8 twists',
@@ -145,4 +153,5 @@ export const UNLEASH_THE_POWER_OF_THE_COSMIC_CUBE: ShortScheme = {
 8: Evil Wins!`,
   evilWins: 'If 8 twists are revealed',
   meta: { numTwists: 8 },
-};
+  gameSet: META,
+});

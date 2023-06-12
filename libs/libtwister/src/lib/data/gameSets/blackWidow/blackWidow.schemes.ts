@@ -1,11 +1,12 @@
-import { ShortScheme } from '../../../model';
+import { SchemeDefinition } from '../../../model';
 import { DARK_MEMORIES } from '../revelations/revelations.keywords';
 import { UNDERCOVER } from '../shield/shield.keywords';
 import { DODGE } from '../villains/villains.keywords';
 
 import { UNLEASH } from './blackWidow.keywords';
+import { META } from './blackWidow.meta';
 
-export const CORRUPT_THE_SPY_AGENCIES: ShortScheme = {
+export const CORRUPT_THE_SPY_AGENCIES = new SchemeDefinition({
   id: '92a8a127-c651-4e50-9bcd-8e75aeb031de',
   name: 'Corrupt the Spy Agencies',
   setup: '7 Twists',
@@ -14,9 +15,10 @@ export const CORRUPT_THE_SPY_AGENCIES: ShortScheme = {
   evilWins: 'On 7 twists',
   meta: { numTwists: 7 },
   keywords: [UNDERCOVER, UNLEASH],
-};
+  gameSet: META,
+});
 
-export const TRAIN_BLACK_WIDOWS_IN_THE_RED_ROOM: ShortScheme = {
+export const TRAIN_BLACK_WIDOWS_IN_THE_RED_ROOM = new SchemeDefinition({
   id: 'b1d67b24-45a6-4ede-a82b-e86aedfacea4',
   name: 'Train Black Widows in the Red Room',
   setup:
@@ -40,9 +42,10 @@ export const TRAIN_BLACK_WIDOWS_IN_THE_RED_ROOM: ShortScheme = {
     },
   },
   keywords: [DARK_MEMORIES, UNDERCOVER],
-};
+  gameSet: META,
+});
 
-export const SNIPER_RIFLE_ASSASSINS: ShortScheme = {
+export const SNIPER_RIFLE_ASSASSINS = new SchemeDefinition({
   id: '18c8046e-e21e-4b37-ae14-43f20dd17aa8',
   name: 'Sniper Rifle Assassins',
   setup: '11 Twists, minus 1 Twist per player',
@@ -58,9 +61,10 @@ export const SNIPER_RIFLE_ASSASSINS: ShortScheme = {
     },
   },
   keywords: [DODGE],
-};
+  gameSet: META,
+});
 
-export const FRAME_HEROES_FOR_MURDER: ShortScheme = {
+export const FRAME_HEROES_FOR_MURDER = new SchemeDefinition({
   id: '98eb4b69-ba00-41b7-8812-755b2d88cbb3',
   name: 'Frame Heroes for Murder',
   setup: '7 Twists, 6 Heroes.',
@@ -74,4 +78,5 @@ export const FRAME_HEROES_FOR_MURDER: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});

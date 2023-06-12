@@ -5,7 +5,7 @@ export * from './keyword.interface';
 export * from './rules.interface';
 export * from './gameSetup.interface';
 export * from './team.interface';
-export { IOverrideScheme, IScheme } from './scheme.interface';
+export { IOverrideScheme, IScheme, ISchemeMeta } from './scheme.interface';
 export * from './namedObject.interface';
 export * from './playableObject.interface';
 export { ICardType } from './cardType.interface';

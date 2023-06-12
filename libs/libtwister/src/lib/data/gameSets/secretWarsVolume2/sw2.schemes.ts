@@ -1,6 +1,6 @@
 import {
-  ShortScheme,
   RequireHenchmenInVillainDeckScheme,
+  SchemeDefinition,
 } from '../../../model';
 import { HeroClass } from '../../enums';
 
@@ -10,8 +10,9 @@ import {
   CIRCLE_OF_KUNG_FU,
   FATEFUL_RESURRECTION,
 } from './sw2.keywords';
+import { META } from './sw2.meta';
 
-export const DEADLANDS_HORDES_CHARGE_THE_WALL: ShortScheme = {
+export const DEADLANDS_HORDES_CHARGE_THE_WALL = new SchemeDefinition({
   id: 'ad8cc356-fe6f-4876-ab64-5703a0914b4c',
   name: 'Deadlands Hordes Charge the Wall',
   setup: '8 Twists. Add an extra Villain Group.',
@@ -26,9 +27,10 @@ export const DEADLANDS_HORDES_CHARGE_THE_WALL: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const ENTHRONE_THE_BARONS_OF_BATTLEWORLD: ShortScheme = {
+export const ENTHRONE_THE_BARONS_OF_BATTLEWORLD = new SchemeDefinition({
   id: '7b11db3d-9aed-4e6c-907b-df7717ea82b4',
   name: 'Enthrone the Barons of Battleworld',
   setup: '8 Twists.',
@@ -36,9 +38,10 @@ export const ENTHRONE_THE_BARONS_OF_BATTLEWORLD: ShortScheme = {
 Twist 8: The Villain in each player's Victory Pile with the highest printed Attack ascends the same way.`,
   evilWins: 'When there are 6 Masterminds.',
   meta: { numTwists: 8 },
-};
+  gameSet: META,
+});
 
-export const THE_FOUNTAIN_OF_ETERNAL_LIFE: ShortScheme = {
+export const THE_FOUNTAIN_OF_ETERNAL_LIFE = new SchemeDefinition({
   id: '996bc05f-5c6a-4758-a82d-899068b2777f',
   name: 'The Fountain of Eternal Life',
   setup: '8 Twists. (1 player 4 Twists.)',
@@ -57,9 +60,10 @@ export const THE_FOUNTAIN_OF_ETERNAL_LIFE: ShortScheme = {
       '5': 8,
     },
   },
-};
+  gameSet: META,
+});
 
-export const THE_GODEMPEROR_OF_BATTLEWORLD: ShortScheme = {
+export const THE_GODEMPEROR_OF_BATTLEWORLD = new SchemeDefinition({
   id: '271bd2be-2947-4f50-8249-ac33742cb62a',
   name: 'The God-Emperor of Battleworld',
   setup: '8 Twists.',
@@ -69,9 +73,10 @@ Twist 7: If the God-Emperor lives, it KOs all other Masterminds.
 Twist 8: Evil wins! (If any Mastermind still lives.)`,
   evilWins: 'When 8 twists revealed (If any Mastermind still lives.)',
   meta: { numTwists: 8 },
-};
+  gameSet: META,
+});
 
-export const THE_MARK_OF_KHONSHU: ShortScheme = {
+export const THE_MARK_OF_KHONSHU = new SchemeDefinition({
   id: '2f35b369-3dc6-4d1a-901f-1f94dadaae38',
   name: 'The Mark of Khonshu',
   setup:
@@ -91,9 +96,10 @@ export const THE_MARK_OF_KHONSHU: ShortScheme = {
       params: [KHONSHU_GUARDIANS],
     },
   },
-};
+  gameSet: META,
+});
 
-export const MASTER_THE_MYSTERIES_OF_KUNGFU: ShortScheme = {
+export const MASTER_THE_MYSTERIES_OF_KUNGFU = new SchemeDefinition({
   id: 'b4f89a6a-502f-46d0-991b-1b7535c5459f',
   name: 'Master the Mysteries of Kung-Fu',
   setup: '8 Twists.',
@@ -104,9 +110,10 @@ export const MASTER_THE_MYSTERIES_OF_KUNGFU: ShortScheme = {
     'Villains and the Mastermind have the Circle of Kung-Fu matching the number of Twists stacked here.',
   keywords: [CIRCLE_OF_KUNG_FU],
   meta: { numTwists: 8 },
-};
+  gameSet: META,
+});
 
-export const SECRET_WARS: ShortScheme = {
+export const SECRET_WARS = new SchemeDefinition({
   id: '11162a49-a687-4877-8283-8f59f26c7522',
   name: 'Secret Wars',
   setup: '8 Twists.',
@@ -125,9 +132,10 @@ Twist 8: Evil wins!`,
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const SINISTER_AMBITIONS: ShortScheme = {
+export const SINISTER_AMBITIONS = new SchemeDefinition({
   id: '639fd392-01f2-466c-9be2-a8092be34e7f',
   name: 'Sinister Ambitions',
   setup: '6 Twists. Add 10 random Ambition cards to the Villain Deck.',
@@ -143,4 +151,5 @@ Twist 6: Each Ambition Villain in the city escapes.`,
       return rule;
     },
   },
-};
+  gameSet: META,
+});

@@ -1,19 +1,20 @@
 import {
   IOverrideScheme,
   RequireHeroNameInHeroDeckScheme,
-  ShortScheme,
   RequireTeamInHeroDeckScheme,
+  SchemeDefinition,
 } from '../../../model';
 import { MERCS_FOR_MONEY } from '../../teams';
 
 import { REVENGE } from './deadpool.keywords';
+import { META } from './deadpool.meta';
 
 const includeDeadpool: IOverrideScheme = {
   schemeType: RequireHeroNameInHeroDeckScheme,
   params: ['deadpool'],
 };
 
-export const DEADPOOL_KILLS_THE_MARVEL_UNIVERSE: ShortScheme = {
+export const DEADPOOL_KILLS_THE_MARVEL_UNIVERSE = new SchemeDefinition({
   id: '30ae9e44-e03e-41b8-b67e-6e368a2f271c',
   name: 'Deadpool Kills the Marvel Universe',
   setup:
@@ -36,9 +37,10 @@ export const DEADPOOL_KILLS_THE_MARVEL_UNIVERSE: ShortScheme = {
     },
     overrideScheme: includeDeadpool,
   },
-};
+  gameSet: META,
+});
 
-export const DEADPOOL_WANTS_ACHIMICHANGA: ShortScheme = {
+export const DEADPOOL_WANTS_ACHIMICHANGA = new SchemeDefinition({
   id: 'de2d8afe-5342-48e8-95de-f0e42390f898',
   name: 'Deadpool Wants a Chimichanga',
   setup: `6 Twists. 12 total Bystanders in the Villain Deck. All Bystanders represent "Chimichangas." (They're Bystanders too). 3-5 players Add a Villain Group.`,
@@ -54,9 +56,10 @@ export const DEADPOOL_WANTS_ACHIMICHANGA: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const DEADPOOL_WRITES_ASCHEME: ShortScheme = {
+export const DEADPOOL_WRITES_ASCHEME = new SchemeDefinition({
   id: '77f7a81e-e83b-4587-b3b3-6733a27cb965',
   name: 'Deadpool Writes a Scheme',
   setup:
@@ -72,9 +75,10 @@ Twist 6: Deadpool wins 6 times! Wow, I'm way better at this game than you.`,
     numTwists: 6,
     overrideScheme: includeDeadpool,
   },
-};
+  gameSet: META,
+});
 
-export const EVERYBODY_HATES_DEADPOOL: ShortScheme = {
+export const EVERYBODY_HATES_DEADPOOL = new SchemeDefinition({
   id: '7b2e6a16-23d0-4a66-ba88-bbe0c7b6906d',
   name: 'Everybody Hates Deadpool',
   setup: '6 Twists. Use at least 1 Mercs for Money Hero.',
@@ -90,4 +94,5 @@ export const EVERYBODY_HATES_DEADPOOL: ShortScheme = {
       params: [MERCS_FOR_MONEY],
     },
   },
-};
+  gameSet: META,
+});

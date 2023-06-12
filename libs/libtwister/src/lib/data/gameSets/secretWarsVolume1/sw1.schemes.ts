@@ -1,6 +1,8 @@
-import { ShortScheme } from '../../../model';
+import { SchemeDefinition } from '../../../model';
 
-export const BUILD_AN_ARMY_OF_ANNIHILATION: ShortScheme = {
+import { META } from './sw1.meta';
+
+export const BUILD_AN_ARMY_OF_ANNIHILATION = new SchemeDefinition({
   id: '174cb194-92c5-467d-ba9f-d186e08f7f60',
   name: 'Build an Army of Annihilation',
   setup: '9 Twists. Put 10 extra Annihilation Wave Henchmen in that KO pile.',
@@ -16,9 +18,10 @@ export const BUILD_AN_ARMY_OF_ANNIHILATION: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const CORRUPT_THE_NEXT_GENERATION_OF_HEROES: ShortScheme = {
+export const CORRUPT_THE_NEXT_GENERATION_OF_HEROES = new SchemeDefinition({
   id: '10b0c10f-803e-4e39-8156-ed0bee57a98f',
   name: 'Corrupt the Next Generation of Heroes',
   setup: '8 Twists. Add 10 Sidekicks to the Villain Deck.',
@@ -34,9 +37,10 @@ Twist 8: All Sidekicks in the city escape.`,
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const CRUSH_THEM_WITH_MY_BARE_HANDS: ShortScheme = {
+export const CRUSH_THEM_WITH_MY_BARE_HANDS = new SchemeDefinition({
   id: '32f2a224-1c19-4638-8642-ce2e60097672',
   name: 'Crush Them With My Bare Hands',
   setup: '5 Twists. If playing solo, add an extra Villain Group.',
@@ -51,9 +55,10 @@ export const CRUSH_THEM_WITH_MY_BARE_HANDS: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const DARK_ALLIANCE: ShortScheme = {
+export const DARK_ALLIANCE = new SchemeDefinition({
   id: '9e11e876-2b5e-4883-8ab2-6ad1e0ad82b0',
   name: 'Dark Alliance',
   setup: '8 Twists.',
@@ -74,9 +79,10 @@ Twist 7: Evil Wins!`,
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const FRAGMENTED_REALITIES: ShortScheme = {
+export const FRAGMENTED_REALITIES = new SchemeDefinition({
   id: '31bd38a5-848e-456a-aaed-18266f3ee5c2',
   name: 'Fragmented Realities',
   setup:
@@ -99,9 +105,10 @@ export const FRAGMENTED_REALITIES: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const MASTER_OF_TYRANTS: ShortScheme = {
+export const MASTER_OF_TYRANTS = new SchemeDefinition({
   id: 'cf336e4c-9511-4fa9-bfca-49176c9b0124',
   name: 'Master of Tyrants',
   setup:
@@ -116,9 +123,10 @@ Twist 8: All Tyrant Villains in the city escape.`,
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const PANDIMENSIONAL_PLAGUE: ShortScheme = {
+export const PANDIMENSIONAL_PLAGUE = new SchemeDefinition({
   id: 'a4edcc4c-be8f-4eff-bdc5-54dcbaa3400d',
   name: 'Pan-Dimensional Plague',
   setup: '10 Twists.',
@@ -127,9 +135,10 @@ export const PANDIMENSIONAL_PLAGUE: ShortScheme = {
   specialRules:
     'When a player recruits a Hero with a Wound next to it, that player can either gain that Wound or pay 1 Recruit to return that Wound to the Wound Stack.',
   meta: { numTwists: 10 },
-};
+  gameSet: META,
+});
 
-export const SMASH_TWO_DIMENSIONS_TOGETHER: ShortScheme = {
+export const SMASH_TWO_DIMENSIONS_TOGETHER = new SchemeDefinition({
   id: 'b544db1e-4e14-41ff-b203-46094911d0fc',
   name: 'Smash Two Dimensions Together',
   setup:
@@ -146,4 +155,5 @@ Twist 8: All Villains in both dimensions escape.`,
       return rule;
     },
   },
-};
+  gameSet: META,
+});

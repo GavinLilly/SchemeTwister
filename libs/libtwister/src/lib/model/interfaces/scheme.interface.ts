@@ -21,14 +21,16 @@ export interface IOverrideScheme {
   params?: unknown[];
 }
 
+export interface ISchemeMeta {
+  numTwists: number | IEachPlayerTwists;
+  rules?: RulesModifierFunction;
+  overrideScheme?: IOverrideScheme;
+}
+
 export interface IScheme extends IPlayableObject, ICardType {
   setup: string;
   twist: string;
   evilWins: string;
   specialRules?: string;
-  meta: {
-    numTwists: number | IEachPlayerTwists;
-    rules?: RulesModifierFunction;
-    overrideScheme?: IOverrideScheme;
-  };
+  meta: ISchemeMeta;
 }

@@ -1,8 +1,7 @@
-import DARK_CITY from '../../data/gameSets/darkCity';
-import WWHULK from '../../data/gameSets/worldWarHulk';
+import { GAME_SET as DARK_CITY } from '../../data/gameSets/darkCity';
+import { GAME_SET as WWHULK } from '../../data/gameSets/worldWarHulk';
 import { MUTATING_GAMMA_RAYS } from '../../data/gameSets/worldWarHulk/worldWarHulk.schemes';
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { injectGameSet } from '../../utils/schemeInjector';
 import { Hero } from '../cards';
 import { IGameSetup } from '../interfaces';
 
@@ -22,7 +21,7 @@ describe('Require Hero Name in Additional Deck Scheme', () => {
     store = new StoreBuilder().withSingleGameset(WWHULK).build();
 
     scheme = new RequireHeroNameInAdditionalDeckScheme(
-      injectGameSet(WWHULK, MUTATING_GAMMA_RAYS),
+      MUTATING_GAMMA_RAYS,
       'hulk'
     );
 

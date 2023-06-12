@@ -1,15 +1,18 @@
-import { ShortScheme, SoloBannedScheme } from '../../../model';
+import { SchemeDefinition, SoloBannedScheme } from '../../../model';
 
-export const FEAR_ITSELF: ShortScheme = {
+import { META } from './fearItself.meta';
+
+export const FEAR_ITSELF = new SchemeDefinition({
   id: '895b4808-285a-4b4b-b997-93cacaa3a9ee',
   name: 'Fear Itself',
   setup: '10 Twists.',
   twist: `KO an Ally from the Lair. The Fear Level goes down by 1.`,
   evilWins: 'When the Fear Level is 0',
   meta: { numTwists: 10 },
-};
+  gameSet: META,
+});
 
-export const LAST_STAND_AT_AVENGERS_TOWER: ShortScheme = {
+export const LAST_STAND_AT_AVENGERS_TOWER = new SchemeDefinition({
   id: '5d754225-7031-4b95-b6dc-decbefcb81a2',
   name: 'Last Stand at Avengers Tower',
   setup: '6 Twists.',
@@ -18,9 +21,10 @@ export const LAST_STAND_AT_AVENGERS_TOWER: ShortScheme = {
   specialRules:
     'While an Adversary is on the Rooftops, it gets +1 Attack for each StarkTech Defenses.',
   meta: { numTwists: 6 },
-};
+  gameSet: META,
+});
 
-export const THE_TRAITOR: ShortScheme = {
+export const THE_TRAITOR = new SchemeDefinition({
   id: 'b2c79dfa-df65-45fb-91e3-9780bb565020',
   name: 'The Traitor',
   setup:
@@ -47,4 +51,5 @@ Twists 8: Good wins! The Traitor reveals themself and also wins.`,
       schemeType: SoloBannedScheme,
     },
   },
-};
+  gameSet: META,
+});

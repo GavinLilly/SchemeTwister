@@ -1,12 +1,13 @@
 import {
-  ShortScheme,
   RequireVillainsInVillainDeckScheme,
+  SchemeDefinition,
 } from '../../../model';
 
 import { MOONLIGHT_AND_SUNLIGHT } from './theNewMutants.keywords';
+import { META } from './theNewMutants.meta';
 import { DEMONS_OF_LIMBO } from './theNewMutants.villains';
 
-export const THE_DEMON_BEAR_SAGA: ShortScheme = {
+export const THE_DEMON_BEAR_SAGA = new SchemeDefinition({
   id: '38763bc5-1569-4752-a6dd-3829030e8b96',
   name: 'The Demon Bear Saga',
   setup:
@@ -23,9 +24,10 @@ export const THE_DEMON_BEAR_SAGA: ShortScheme = {
       params: [DEMONS_OF_LIMBO],
     },
   },
-};
+  gameSet: META,
+});
 
-export const CRASH_THE_MOON_INTO_THE_SUN: ShortScheme = {
+export const CRASH_THE_MOON_INTO_THE_SUN = new SchemeDefinition({
   id: '69ec1136-50ce-4acf-96e5-312d9cec240b',
   name: 'Crash the Moon into the Sun',
   setup: '11 Twists.',
@@ -34,9 +36,10 @@ Twist 2,4,6,8: Sunlight: Same effect.
 Twist 9,10,11: Same effect.`,
   evilWins: 'When there are 4 Altered Orbits.',
   meta: { numTwists: 8 },
-};
+  gameSet: META,
+});
 
-export const TRAPPED_IN_THE_INSANE_ASYLUM: ShortScheme = {
+export const TRAPPED_IN_THE_INSANE_ASYLUM = new SchemeDefinition({
   id: 'c18eeab3-13e1-452c-a15e-29f92c5c567d',
   name: 'Trapped in the Insane Asylum',
   setup: '1 Twist, plus 2 Twists per player.',
@@ -53,9 +56,10 @@ export const TRAPPED_IN_THE_INSANE_ASYLUM: ShortScheme = {
       '5': 11,
     },
   },
-};
+  gameSet: META,
+});
 
-export const SUPERHUMAN_BASEBALL_GAME: ShortScheme = {
+export const SUPERHUMAN_BASEBALL_GAME = new SchemeDefinition({
   id: 'e292f8a2-58c0-466b-97c8-5ca44e25ae61',
   name: 'Superhuman Baseball Game',
   setup: '9 Twists. Add an extra Villain Group.',
@@ -70,4 +74,5 @@ export const SUPERHUMAN_BASEBALL_GAME: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});

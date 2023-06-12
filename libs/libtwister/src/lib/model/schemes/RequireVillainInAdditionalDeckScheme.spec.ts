@@ -1,9 +1,8 @@
-import CHAMPIONS from '../../data/gameSets/champions';
+import { GAME_SET as CHAMPIONS } from '../../data/gameSets/champions';
+import { CLASH_OF_THE_MONSTERS_UNLEASHED } from '../../data/gameSets/champions/champions.schemes';
 import { MONSTERS_UNLEASHED } from '../../data/gameSets/champions/champions.villains';
-import { CLASH_OF_THE_MONSTERS_UNLEASHED } from '../../data/gameSets/champions/schemes';
-import LEGENDARY from '../../data/gameSets/legendary';
+import { GAME_SET as LEGENDARY } from '../../data/gameSets/legendary';
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { injectGameSet } from '../../utils/schemeInjector';
 
 import { RequireVillainInAdditionalDeckScheme } from './RequireVillainInAdditionalDeckScheme';
 
@@ -21,7 +20,7 @@ describe('Require Villain In Additional Deck Scheme', () => {
 
   it('It should include Monsters Unleashed in the additional deck', () => {
     const scheme = new RequireVillainInAdditionalDeckScheme(
-      injectGameSet(CHAMPIONS, CLASH_OF_THE_MONSTERS_UNLEASHED),
+      CLASH_OF_THE_MONSTERS_UNLEASHED,
       MONSTERS_UNLEASHED
     );
     const setup = scheme.getSetup(

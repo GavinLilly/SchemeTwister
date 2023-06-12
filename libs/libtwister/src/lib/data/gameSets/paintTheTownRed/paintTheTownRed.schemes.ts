@@ -1,12 +1,13 @@
 import {
-  ShortScheme,
   RequireVillainsInVillainDeckScheme,
+  SchemeDefinition,
 } from '../../../model';
 
 import { WALL_CRAWL } from './paintTheTownRed.keywords';
+import { META } from './paintTheTownRed.meta';
 import { SINISTER_SIX } from './paintTheTownRed.villains';
 
-export const THE_CLONE_SAGA: ShortScheme = {
+export const THE_CLONE_SAGA = new SchemeDefinition({
   id: '650a925c-d835-4a42-ac59-9a54e2ee3e08',
   name: 'The Clone Saga',
   setup: '8 Twists.',
@@ -14,9 +15,10 @@ export const THE_CLONE_SAGA: ShortScheme = {
   evilWins:
     'When 2 Villains with the same card name have escaped or the Villain Deck runs out',
   meta: { numTwists: 8 },
-};
+  gameSet: META,
+});
 
-export const INVADE_THE_DAILY_BUGLE_NEWS_HQ: ShortScheme = {
+export const INVADE_THE_DAILY_BUGLE_NEWS_HQ = new SchemeDefinition({
   id: 'bb4f86d6-8002-4bb4-abde-6b0e90ad132a',
   name: 'Invade the Daily Bugle News HQ',
   setup:
@@ -31,9 +33,10 @@ export const INVADE_THE_DAILY_BUGLE_NEWS_HQ: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const SPLICE_HUMANS_WITH_SPIDER_DNA: ShortScheme = {
+export const SPLICE_HUMANS_WITH_SPIDER_DNA = new SchemeDefinition({
   id: '89a783c0-006e-49b2-91fd-8c7cf4d314d3',
   name: 'Splice Humans with Spider DNA',
   setup: '8 Twists. Include Sinister Six as one of the Villain Groups.',
@@ -50,9 +53,10 @@ export const SPLICE_HUMANS_WITH_SPIDER_DNA: ShortScheme = {
       params: [SINISTER_SIX],
     },
   },
-};
+  gameSet: META,
+});
 
-export const WEAVE_AWEB_OF_LIES: ShortScheme = {
+export const WEAVE_AWEB_OF_LIES = new SchemeDefinition({
   id: '395e0e98-ad58-48e9-aa4a-5d20024ab848',
   name: 'Weave a Web of Lies',
   setup: '7 twists',
@@ -61,4 +65,5 @@ export const WEAVE_AWEB_OF_LIES: ShortScheme = {
     "Whenever you defeat a Villain, you may pay 1 Recruit. If you do, rescue a Bystander. You can't fight the Mastermind unless you have a Bystander in your Victory Pile for each Twist next to the Mastermind.",
   evilWins: 'When there are 7 twists next to the Mastermind',
   meta: { numTwists: 7 },
-};
+  gameSet: META,
+});

@@ -1,6 +1,8 @@
-import { ShortScheme } from '../../../model';
+import { SchemeDefinition } from '../../../model';
 
-export const SEIZE_THE_WAKANDAN_THRONE: ShortScheme = {
+import { META } from './blackPanther.meta';
+
+export const SEIZE_THE_WAKANDAN_THRONE = new SchemeDefinition({
   id: '3c3f5d0c-cb08-4cee-9a97-c62df7a8c526',
   name: 'Seize the Wakandan Throne',
   setup: '6 twists',
@@ -10,9 +12,10 @@ export const SEIZE_THE_WAKANDAN_THRONE: ShortScheme = {
     "Whenever you fight the Mastermind, you gain the Throne's Favor.",
   evilWins: 'When the 5 Trides of Wakanda have been defeated.',
   meta: { numTwists: 6 },
-};
+  gameSet: META,
+});
 
-export const POISON_LAKES_WITH_NANITE_MICROBOTS: ShortScheme = {
+export const POISON_LAKES_WITH_NANITE_MICROBOTS = new SchemeDefinition({
   id: 'eaabff3c-a087-4327-93db-e44565b10c27',
   name: 'Poison Lakes with Nanite Microbots',
   setup:
@@ -35,9 +38,10 @@ export const POISON_LAKES_WITH_NANITE_MICROBOTS: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const PLUNDER_WAKANDAS_VIBRANIUM: ShortScheme = {
+export const PLUNDER_WAKANDAS_VIBRANIUM = new SchemeDefinition({
   id: '9ad0e347-46d0-4cd6-b759-05a07c4709fa',
   name: "Plunder Wakanda's Vibranium",
   setup: '10 Twists, representing "Vibranium."',
@@ -48,9 +52,10 @@ export const PLUNDER_WAKANDAS_VIBRANIUM: ShortScheme = {
   evilWins:
     'When 4 Vibranium are in the Escape Pile or the Villain Deck runs out.',
   meta: { numTwists: 10 },
-};
+  gameSet: META,
+});
 
-export const PROVOKE_CLASH_OF_NATIONS: ShortScheme = {
+export const PROVOKE_CLASH_OF_NATIONS = new SchemeDefinition({
   id: '6af54094-b89a-4adf-abdc-a7354884c57e',
   name: 'Provoke Clash of Nations',
   setup: '11 Twists.',
@@ -63,4 +68,5 @@ export const PROVOKE_CLASH_OF_NATIONS: ShortScheme = {
 9-11: Do all three tasks this turn or add an International Crisis.`,
   evilWins: 'At 6 International Crises.',
   meta: { numTwists: 11 },
-};
+  gameSet: META,
+});

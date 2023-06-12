@@ -1,8 +1,9 @@
-import { ShortScheme } from '../../../model';
+import { SchemeDefinition } from '../../../model';
 
 import { CHIVALROUS_DUEL, EMPOWERED, SIZE_CHANGING } from './antMan.keywords';
+import { META } from './antMan.meta';
 
-export const AGE_OF_ULTRON: ShortScheme = {
+export const AGE_OF_ULTRON = new SchemeDefinition({
   id: 'bf5b5f7b-f7e8-4326-97a9-1f45267226b9',
   name: 'Age of Ultron',
   setup: '11 Twists. 4-5 Players: Add another Hero.',
@@ -22,9 +23,10 @@ export const AGE_OF_ULTRON: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const PULL_EARTH_INTO_MEDIEVAL_TIMES: ShortScheme = {
+export const PULL_EARTH_INTO_MEDIEVAL_TIMES = new SchemeDefinition({
   id: '34091fed-f614-48b0-bcac-5206f25d837e',
   name: 'Pull Earth into Medieval Times',
   setup: '9 twists.',
@@ -33,9 +35,10 @@ export const PULL_EARTH_INTO_MEDIEVAL_TIMES: ShortScheme = {
   evilWins: 'When 3 Villains per player have escaped.',
   keywords: [CHIVALROUS_DUEL],
   meta: { numTwists: 9 },
-};
+  gameSet: META,
+});
 
-export const TRANSFORM_COMMUTERS_INTO_GIANT_ANTS: ShortScheme = {
+export const TRANSFORM_COMMUTERS_INTO_GIANT_ANTS = new SchemeDefinition({
   id: '178c6dd1-1181-4e74-ad3e-0d368e7ad842',
   name: 'Transform Commuters into Giant Ants',
   setup: 'Twists equal to the number of players plus 6.',
@@ -50,9 +53,10 @@ export const TRANSFORM_COMMUTERS_INTO_GIANT_ANTS: ShortScheme = {
       '5': 11,
     },
   },
-};
+  gameSet: META,
+});
 
-export const TRAP_HEROES_IN_THE_MULTIVERSE: ShortScheme = {
+export const TRAP_HEROES_IN_THE_MULTIVERSE = new SchemeDefinition({
   id: 'cd5baad9-5ec9-4b40-b8a7-a3b20ec560d0',
   name: 'Trap Heroes in the Microverse',
   setup: '11 Twists. Add all 14 cards for an extra Hero to the Villain Deck.',
@@ -69,4 +73,5 @@ export const TRAP_HEROES_IN_THE_MULTIVERSE: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});

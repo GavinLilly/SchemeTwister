@@ -1,14 +1,15 @@
 import {
   RequireHenchmenInVillainDeckScheme,
   RequireHeroInVillainDeckScheme,
-  ShortScheme,
+  SchemeDefinition,
 } from '../../../model';
 import { HeroClass } from '../../enums';
 
 import { MAGGIA_GOONS } from './darkCity.henchmen';
 import { JEAN_GREY } from './darkCity.heroes';
+import { META } from './darkCity.meta';
 
-export const CAPTURE_BABY_HOPE: ShortScheme = {
+export const CAPTURE_BABY_HOPE = new SchemeDefinition({
   id: 'd4d841c0-5e46-4307-9436-39482fa5627b',
   name: 'Capture Baby Hope',
   setup:
@@ -19,9 +20,10 @@ export const CAPTURE_BABY_HOPE: ShortScheme = {
     'The Villain with the baby gets +4 Attack. If you defeat that Villain, rescue the baby to your Victory Pile (until the next Twist). The baby is worth 6 VP at the end of the game. If a Villain escapes with the baby, stack a Twist next to the Mastermind and return the baby to this Scheme card.',
   evilWins: 'When there are 3 Twists stacked next to the Mastermind.',
   meta: { numTwists: 8 },
-};
+  gameSet: META,
+});
 
-export const DETONATE_THE_HELICARRIER: ShortScheme = {
+export const DETONATE_THE_HELICARRIER = new SchemeDefinition({
   id: 'afe0c1bf-e25e-4321-9e60-6a864099ab32',
   name: 'Detonate the Helicarrier',
   setup: '8 Twists. 6 Heroes in the Hero Deck.',
@@ -37,9 +39,10 @@ export const DETONATE_THE_HELICARRIER: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const MASSIVE_EARTHQUAKE_GENERATOR: ShortScheme = {
+export const MASSIVE_EARTHQUAKE_GENERATOR = new SchemeDefinition({
   id: 'b5e7e6b9-d71e-4b97-9709-f34d4fb2a462',
   name: 'Massive Earthquake Generator',
   setup: '8 Twists.',
@@ -47,9 +50,10 @@ export const MASSIVE_EARTHQUAKE_GENERATOR: ShortScheme = {
   evilWins:
     'When the number of non grey Heroes in the KO pile is 3 times the number of players.',
   meta: { numTwists: 8 },
-};
+  gameSet: META,
+});
 
-export const ORGANIZED_CRIME_WAVE: ShortScheme = {
+export const ORGANIZED_CRIME_WAVE = new SchemeDefinition({
   id: 'c2a36b60-4a97-4e3d-9f7b-4a14750c1d24',
   name: 'Organized Crime Wave',
   setup: '8 Twists. Include 10 Maggia Goons as one of the Henchman Groups.',
@@ -65,9 +69,10 @@ export const ORGANIZED_CRIME_WAVE: ShortScheme = {
       params: [MAGGIA_GOONS],
     },
   },
-};
+  gameSet: META,
+});
 
-export const SAVE_HUMANITY: ShortScheme = {
+export const SAVE_HUMANITY = new SchemeDefinition({
   id: '48b8e045-c061-4e3a-877b-36e72f6b71ef',
   name: 'Save Humanity',
   setup:
@@ -86,9 +91,10 @@ export const SAVE_HUMANITY: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const STEAL_THE_WEAPONIZED_PLUTONIUM: ShortScheme = {
+export const STEAL_THE_WEAPONIZED_PLUTONIUM = new SchemeDefinition({
   id: '5c53d6e4-2b84-4fc1-81bc-750da3f899c7',
   name: 'Steal the Weaponized Plutonium',
   setup: '8 Twists representing Plutonium. Add an extra Villain Group.',
@@ -104,9 +110,10 @@ export const STEAL_THE_WEAPONIZED_PLUTONIUM: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const TRANSFORM_CITIZENS_INTO_DEMONS: ShortScheme = {
+export const TRANSFORM_CITIZENS_INTO_DEMONS = new SchemeDefinition({
   id: '2b991381-f7fe-44a4-adb5-99d10f936bb6',
   name: 'Transform Citizens Into Demons',
   setup:
@@ -127,9 +134,10 @@ export const TRANSFORM_CITIZENS_INTO_DEMONS: ShortScheme = {
       params: [JEAN_GREY],
     },
   },
-};
+  gameSet: META,
+});
 
-export const XCUTIONERS_SONG: ShortScheme = {
+export const XCUTIONERS_SONG = new SchemeDefinition({
   id: '05f48d7a-aa59-46af-b0e4-6e8b54395c70',
   name: "X-Cutioner's Song",
   setup:
@@ -147,4 +155,5 @@ export const XCUTIONERS_SONG: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});

@@ -1,10 +1,9 @@
 import { Teams } from '../../data';
-import DARK_CITY from '../../data/gameSets/darkCity';
-import REVELATIONS from '../../data/gameSets/revelations';
+import { GAME_SET as DARK_CITY } from '../../data/gameSets/darkCity';
+import { GAME_SET as REVELATIONS } from '../../data/gameSets/revelations';
 import { SCARLET_WITCH } from '../../data/gameSets/revelations/revelations.heroes';
 import { HOUSE_OF_M } from '../../data/gameSets/revelations/revelations.schemes';
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { injectGameSet } from '../../utils/schemeInjector';
 import { IGameSetup } from '../interfaces';
 
 import { HouseOfMScheme } from './HouseOfMScheme';
@@ -23,10 +22,7 @@ describe('House of M Scheme', () => {
       .withHenchmenGamesets(DARK_CITY)
       .build();
 
-    scheme = new HouseOfMScheme(
-      injectGameSet(REVELATIONS, HOUSE_OF_M),
-      SCARLET_WITCH
-    );
+    scheme = new HouseOfMScheme(HOUSE_OF_M, SCARLET_WITCH);
 
     setup = scheme.getSetup(2, store.mastermindStore.getOneRandom(), store);
   });

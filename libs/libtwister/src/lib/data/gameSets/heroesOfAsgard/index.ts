@@ -1,20 +1,5 @@
-import { GameSet } from '../../../model';
-import { injectGameSetToMany } from '../../../utils/schemeInjector';
-
-import * as Heroes from './heroesOfAsgard.heroes';
-import * as Masterminds from './heroesOfAsgard.masterminds';
-import { META } from './heroesOfAsgard.meta';
-import * as Schemes from './heroesOfAsgard.schemes';
-import * as Villains from './heroesOfAsgard.villains';
-
-const schemes = injectGameSetToMany(META, Object.values(Schemes));
-
-export { Heroes, schemes, Masterminds, Villains };
-
-export default new GameSet(
-  META,
-  Object.values(Heroes),
-  Object.values(Masterminds),
-  Object.values(schemes),
-  Object.values(Villains)
-);
+export * as Heroes from './heroesOfAsgard.heroes';
+export * as Masterminds from './heroesOfAsgard.masterminds';
+export * as Schemes from './heroesOfAsgard.schemes';
+export * as Villains from './heroesOfAsgard.villains';
+export { GAME_SET } from './heroesOfAsgard.gameset';

@@ -1,13 +1,14 @@
 import {
-  ShortScheme,
   SoloBannedScheme,
   RequireVillainsInVillainDeckScheme,
+  SchemeDefinition,
 } from '../../../model';
 import { HeroClass } from '../../enums';
 
+import { META } from './legendary.meta';
 import { SKRULLS } from './legendary.villains';
 
-export const THE_LEGACY_VIRUS: ShortScheme = {
+export const THE_LEGACY_VIRUS = new SchemeDefinition({
   id: 'b9171c60-c3c3-4482-91e5-38ba1d2b3a6a',
   name: 'The Legacy Virus',
   setup: '8 Twists. Wound stack holds 6 Wounds per player.',
@@ -20,9 +21,10 @@ export const THE_LEGACY_VIRUS: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const MIDTOWN_BANK_ROBBERY: ShortScheme = {
+export const MIDTOWN_BANK_ROBBERY = new SchemeDefinition({
   id: '7d06db7a-d3d0-48fe-be7a-dbe6a273ad03',
   name: 'Midtown Bank Robbery',
   setup: '8 Twists. 12 total Bystanders in the Villain Deck.',
@@ -37,9 +39,10 @@ export const MIDTOWN_BANK_ROBBERY: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const NEGATIVE_ZONE_PRISON_BREAKOUT: ShortScheme = {
+export const NEGATIVE_ZONE_PRISON_BREAKOUT = new SchemeDefinition({
   id: '7ad1b3ed-efd8-4b2a-bd6a-ca500fc0f1af',
   name: 'Negative Zone Prison Breakout',
   setup: '8 Twists. Add an extra Henchman group to the Villain Deck.',
@@ -55,9 +58,10 @@ export const NEGATIVE_ZONE_PRISON_BREAKOUT: ShortScheme = {
       schemeType: SoloBannedScheme,
     },
   },
-};
+  gameSet: META,
+});
 
-export const PORTALS_TO_THE_DARK_DIMENSION: ShortScheme = {
+export const PORTALS_TO_THE_DARK_DIMENSION = new SchemeDefinition({
   id: '9fd584fc-f6d5-4027-9a86-b1a2e11408de',
   name: 'Portals to the Dark Dimension',
   setup: '7 Twists. Each Twist is a Dark Portal.',
@@ -67,9 +71,10 @@ export const PORTALS_TO_THE_DARK_DIMENSION: ShortScheme = {
   evilWins: 'If 7 twists are revealed',
   specialRules: 'Each Twist is a Dark Portal.',
   meta: { numTwists: 7 },
-};
+  gameSet: META,
+});
 
-export const REPLACE_EARTHS_LEADERS_WITH_KILLBOTS: ShortScheme = {
+export const REPLACE_EARTHS_LEADERS_WITH_KILLBOTS = new SchemeDefinition({
   id: '34543e98-d863-4395-a1ec-c6a190b2fb08',
   name: "Replace Earth's Leaders with Killbots",
   setup:
@@ -90,32 +95,36 @@ export const REPLACE_EARTHS_LEADERS_WITH_KILLBOTS: ShortScheme = {
       return rule;
     },
   },
-};
+  gameSet: META,
+});
 
-export const SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS: ShortScheme = {
-  id: '81a8b233-aa28-4258-833e-4cd9fe5d051a',
-  name: 'Secret Invasion of the Skrull Shapeshifters',
-  setup:
-    '8 Twists. 6 Heroes. Skrull Villain Group required. Shuffle 12 random Heroes from the Hero Deck into the Villain Deck.',
-  specialRules:
-    "Heroes in the Villain Deck count as Skrull Villains with Attack equal to the Hero's Cost +2. If you defeat that Hero, you gain it.",
-  twist:
-    'The highest-cost Hero from the HQ moves into the Sewers as a Skrull Villain, as above.',
-  evilWins: 'If 6 Heroes get into the Escaped Villains pile.',
-  meta: {
-    numTwists: 8,
-    rules: (rule) => {
-      rule.heroDeck.numHeroes = 6;
-      return rule;
+export const SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS = new SchemeDefinition(
+  {
+    id: '81a8b233-aa28-4258-833e-4cd9fe5d051a',
+    name: 'Secret Invasion of the Skrull Shapeshifters',
+    setup:
+      '8 Twists. 6 Heroes. Skrull Villain Group required. Shuffle 12 random Heroes from the Hero Deck into the Villain Deck.',
+    specialRules:
+      "Heroes in the Villain Deck count as Skrull Villains with Attack equal to the Hero's Cost +2. If you defeat that Hero, you gain it.",
+    twist:
+      'The highest-cost Hero from the HQ moves into the Sewers as a Skrull Villain, as above.',
+    evilWins: 'If 6 Heroes get into the Escaped Villains pile.',
+    meta: {
+      numTwists: 8,
+      rules: (rule) => {
+        rule.heroDeck.numHeroes = 6;
+        return rule;
+      },
+      overrideScheme: {
+        schemeType: RequireVillainsInVillainDeckScheme,
+        params: [SKRULLS],
+      },
     },
-    overrideScheme: {
-      schemeType: RequireVillainsInVillainDeckScheme,
-      params: [SKRULLS],
-    },
-  },
-};
+    gameSet: META,
+  }
+);
 
-export const SUPER_HERO_CIVIL_WAR: ShortScheme = {
+export const SUPER_HERO_CIVIL_WAR = new SchemeDefinition({
   id: '8d8eb57c-ec8a-402c-b0de-8afd8805f00f',
   name: 'Super Hero Civil War',
   setup:
@@ -140,9 +149,10 @@ export const SUPER_HERO_CIVIL_WAR: ShortScheme = {
       schemeType: SoloBannedScheme,
     },
   },
-};
+  gameSet: META,
+});
 
-export const UNLEASH_THE_POWER_OF_THE_COSMIC_CUBE: ShortScheme = {
+export const UNLEASH_THE_POWER_OF_THE_COSMIC_CUBE = new SchemeDefinition({
   id: '6fc89682-eb0f-45b4-88c7-5f0e3dc8fcc0',
   name: 'Unleash the Power of the Cosmic Cube',
   setup: '8 twists',
@@ -152,4 +162,5 @@ export const UNLEASH_THE_POWER_OF_THE_COSMIC_CUBE: ShortScheme = {
 8: Evil Wins!`,
   evilWins: 'If 8 twists are revealed',
   meta: { numTwists: 8 },
-};
+  gameSet: META,
+});
