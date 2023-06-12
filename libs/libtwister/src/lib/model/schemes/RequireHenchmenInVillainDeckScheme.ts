@@ -1,31 +1,29 @@
-import { StoreOfStores } from '../../factories/storeOfStores';
-import { AbstractMastermind } from '../AbstractMastermind';
+import { StoreOfStores } from '../../factories';
+import { Henchmen, Mastermind } from '../cards';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  IHenchmen,
   VillainDeckMinimal,
 } from '../interfaces';
-import { SchemeMinusRules } from '../interfaces/newScheme.interface';
-import { NumPlayers } from '../types';
+import { NumPlayers, SchemeMinusRules } from '../types';
 
 import { Scheme } from './Scheme';
 
 export class RequireHenchmenInVillainDeckScheme extends Scheme {
-  constructor(scheme: SchemeMinusRules, private _requiredHenchmen: IHenchmen) {
+  constructor(scheme: SchemeMinusRules, private _requiredHenchmen: Henchmen) {
     super(scheme);
   }
 
-  public async getSetup(
+  public override getSetup(
     numPlayers: NumPlayers,
-    selectedMastermind: AbstractMastermind,
+    selectedMastermind: Mastermind,
     store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck: VillainDeckMinimal = {},
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): Promise<IGameSetup> {
+  ): IGameSetup {
     const henchmen = store.henchmenStore.getOne(this._requiredHenchmen.id);
 
     partialVillainDeck.henchmen = Scheme.addToDeck(
@@ -34,7 +32,7 @@ export class RequireHenchmenInVillainDeckScheme extends Scheme {
       this.rules[numPlayers].villainDeck.numHenchmenGroups
     );
 
-    return await super.getSetup(
+    return super.getSetup(
       numPlayers,
       selectedMastermind,
       store,

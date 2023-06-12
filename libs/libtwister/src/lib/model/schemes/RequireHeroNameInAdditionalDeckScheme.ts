@@ -1,15 +1,13 @@
-import { StoreOfStores } from '../../factories/storeOfStores';
+import { StoreOfStores } from '../../factories';
 import { randomize } from '../../utils/randomize';
-import { AbstractMastermind } from '../AbstractMastermind';
+import { Mastermind, Hero } from '../cards';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  IHero,
   VillainDeckMinimal,
 } from '../interfaces';
-import { SchemeMinusRules } from '../interfaces/newScheme.interface';
-import { NumPlayers } from '../types';
+import { NumPlayers, SchemeMinusRules } from '../types';
 
 import { Scheme } from './Scheme';
 
@@ -18,43 +16,43 @@ export class RequireHeroNameInAdditionalDeckScheme extends Scheme {
     super(scheme);
   }
 
-  public async getSetup(
+  public override getSetup(
     numPlayers: NumPlayers,
-    selectedMastermind: AbstractMastermind,
+    selectedMastermind: Mastermind,
     store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck: AdditionalDeckDeckMinimal = {}
-  ): Promise<IGameSetup> {
-    const heroes: IHero[] = store.heroStore.availableCards.filter((hero) =>
+  ): IGameSetup {
+    const heroes: Hero[] = store.heroStore.availableCards.filter((hero) =>
       hero.name.toLowerCase().includes(this._heroName.toLowerCase())
     );
 
-    if (heroes.length > 0) {
-      const hero = randomize(heroes, 1)[0];
-
-      const pickedHero = store.heroStore.getOne(hero.id);
-
-      partialAdditionalDeck.heroes = Scheme.addToDeck(
-        partialAdditionalDeck.heroes,
-        pickedHero,
-        this.rules[numPlayers].additionalDeck?.deck?.numHeroes
-      );
-
-      return await super.getSetup(
-        numPlayers,
-        selectedMastermind,
-        store,
-        advancedSolo,
-        partialHeroDeck,
-        partialVillainDeck,
-        partialAdditionalDeck
-      );
-    } else {
+    if (heroes.length === 0) {
       throw new Error(
         `No card with ${this._heroName} in it's name is available to be selected`
       );
     }
+
+    const hero = randomize(heroes, 1)[0];
+
+    const pickedHero = store.heroStore.getOne(hero.id);
+
+    partialAdditionalDeck.heroes = Scheme.addToDeck(
+      partialAdditionalDeck.heroes,
+      pickedHero,
+      this.rules[numPlayers].additionalDeck?.deck?.numHeroes
+    );
+
+    return super.getSetup(
+      numPlayers,
+      selectedMastermind,
+      store,
+      advancedSolo,
+      partialHeroDeck,
+      partialVillainDeck,
+      partialAdditionalDeck
+    );
   }
 }

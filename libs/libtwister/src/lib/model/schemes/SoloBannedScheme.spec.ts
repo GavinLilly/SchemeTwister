@@ -1,7 +1,6 @@
-import LEGENDARY from '../../data/gameSets/legendary';
-import { NEGATIVE_ZONE_PRISON_BREAKOUT } from '../../data/gameSets/legendary/schemes';
-import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
-import { injectGameSet } from '../../utils/schemeInjector';
+import { GAME_SET as LEGENDARY } from '../../data/gameSets/legendary';
+import { NEGATIVE_ZONE_PRISON_BREAKOUT } from '../../data/gameSets/legendary/legendary.schemes';
+import { StoreBuilder, StoreOfStores } from '../../factories';
 import { SinglePlayerError } from '../errors';
 import { NumPlayers } from '../types';
 
@@ -17,33 +16,26 @@ describe('Solo Banned Scheme', () => {
   beforeEach(() => store.reset());
 
   describe('Negative Zone Prison Breakout', () => {
-    it('should throw an error for 1 player', async () => {
+    it('should throw an error for 1 player', () => {
       expect.assertions(1);
 
-      const scheme = new SoloBannedScheme(
-        injectGameSet(LEGENDARY.id, NEGATIVE_ZONE_PRISON_BREAKOUT)
-      );
+      const scheme = new SoloBannedScheme(NEGATIVE_ZONE_PRISON_BREAKOUT);
       try {
-        await scheme.getSetup(1, store.mastermindStore.getOneRandom(), store);
+        scheme.getSetup(1, store.mastermindStore.getOneRandom(), store);
       } catch (e) {
         expect(e).toBeInstanceOf(SinglePlayerError);
       }
     });
 
-    it.each([2, 3, 4, 5])(
-      'should generate a setup for %p players',
-      async (arg) => {
-        const scheme2 = new SoloBannedScheme(
-          injectGameSet(LEGENDARY.id, NEGATIVE_ZONE_PRISON_BREAKOUT)
-        );
-        expect(
-          await scheme2.getSetup(
-            arg as NumPlayers,
-            store.mastermindStore.getOneRandom(),
-            store
-          )
-        ).toBeTruthy();
-      }
-    );
+    it.each([2, 3, 4, 5])('should generate a setup for %p players', (arg) => {
+      const scheme2 = new SoloBannedScheme(NEGATIVE_ZONE_PRISON_BREAKOUT);
+      expect(
+        scheme2.getSetup(
+          arg as NumPlayers,
+          store.mastermindStore.getOneRandom(),
+          store
+        )
+      ).toBeTruthy();
+    });
   });
 });

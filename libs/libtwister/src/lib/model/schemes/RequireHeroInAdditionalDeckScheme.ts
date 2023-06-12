@@ -1,31 +1,29 @@
-import { StoreOfStores } from '../../factories/storeOfStores';
-import { AbstractMastermind } from '../AbstractMastermind';
+import { StoreOfStores } from '../../factories';
+import { Hero, Mastermind } from '../cards';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  IHero,
   VillainDeckMinimal,
 } from '../interfaces';
-import { SchemeMinusRules } from '../interfaces/newScheme.interface';
-import { NumPlayers } from '../types';
+import { NumPlayers, SchemeMinusRules } from '../types';
 
 import { Scheme } from './Scheme';
 
 export class RequireHeroInAdditionalDeckScheme extends Scheme {
-  constructor(scheme: SchemeMinusRules, private _requiredHero: IHero) {
+  constructor(scheme: SchemeMinusRules, private _requiredHero: Hero) {
     super(scheme);
   }
 
-  public async getSetup(
+  public override getSetup(
     numPlayers: NumPlayers,
-    selectedMastermind: AbstractMastermind,
+    selectedMastermind: Mastermind,
     store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck: AdditionalDeckDeckMinimal = {}
-  ): Promise<IGameSetup> {
+  ): IGameSetup {
     const hero = store.heroStore.getOne(this._requiredHero.id);
 
     partialAdditionalDeck.heroes = Scheme.addToDeck(
@@ -34,7 +32,7 @@ export class RequireHeroInAdditionalDeckScheme extends Scheme {
       this.rules[numPlayers].additionalDeck?.deck?.numHeroes
     );
 
-    return await super.getSetup(
+    return super.getSetup(
       numPlayers,
       selectedMastermind,
       store,

@@ -8,5 +8,5 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private http: HttpClient, public route: ActivatedRoute) {}
+  constructor(private _http: HttpClient, public route: ActivatedRoute) {}
 }

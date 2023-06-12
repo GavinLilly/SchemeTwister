@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IBadGuyCard } from '@schemetwister/libtwister';
+import { IFightable } from '@schemetwister/libtwister';
 
 @Component({
   selector: 'schemetwister-badguy-card-content',
@@ -7,5 +7,5 @@ import { IBadGuyCard } from '@schemetwister/libtwister';
   styleUrls: ['./badguy-card-content.component.scss'],
 })
 export class BadguyCardContentComponent {
-  @Input() card!: IBadGuyCard;
+  @Input() card!: IFightable;
 }

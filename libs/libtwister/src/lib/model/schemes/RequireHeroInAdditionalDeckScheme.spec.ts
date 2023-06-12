@@ -1,9 +1,8 @@
-import DARK_CITY from '../../data/gameSets/darkCity';
-import INTO_THE_COSMOS from '../../data/gameSets/intoTheCosmos';
-import { ADAM_WARLOCK } from '../../data/gameSets/intoTheCosmos/heroes';
-import { TURN_THE_SOUL_OF_ADAM_WARLOCK } from '../../data/gameSets/intoTheCosmos/schemes';
-import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
-import { injectGameSet } from '../../utils/schemeInjector';
+import { GAME_SET as DARK_CITY } from '../../data/gameSets/darkCity';
+import { GAME_SET as INTO_THE_COSMOS } from '../../data/gameSets/intoTheCosmos';
+import { ADAM_WARLOCK } from '../../data/gameSets/intoTheCosmos/intoTheCosmos.heroes';
+import { TURN_THE_SOUL_OF_ADAM_WARLOCK } from '../../data/gameSets/intoTheCosmos/intoTheCosmos.schemes';
+import { StoreBuilder, StoreOfStores } from '../../factories';
 
 import { RequireHeroInAdditionalDeckScheme } from './RequireHeroInAdditionalDeckScheme';
 
@@ -19,12 +18,12 @@ describe('Require Hero In Additional Deck Scheme', () => {
       .build();
   });
 
-  it('It should include Adam Warlock in the additional deck', async () => {
+  it('It should include Adam Warlock in the additional deck', () => {
     const scheme = new RequireHeroInAdditionalDeckScheme(
-      injectGameSet(DARK_CITY.id, TURN_THE_SOUL_OF_ADAM_WARLOCK),
+      TURN_THE_SOUL_OF_ADAM_WARLOCK,
       ADAM_WARLOCK
     );
-    const setup = await scheme.getSetup(
+    const setup = scheme.getSetup(
       2,
       store.mastermindStore.getOneRandom(),
       store

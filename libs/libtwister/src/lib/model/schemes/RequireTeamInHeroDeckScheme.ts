@@ -1,6 +1,6 @@
-import { StoreOfStores } from '../../factories/storeOfStores';
+import { StoreOfStores } from '../../factories';
 import { randomize } from '../../utils/randomize';
-import { AbstractMastermind } from '../AbstractMastermind';
+import { Mastermind } from '../cards';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
@@ -8,8 +8,7 @@ import {
   ITeam,
   VillainDeckMinimal,
 } from '../interfaces';
-import { SchemeMinusRules } from '../interfaces/newScheme.interface';
-import { NumPlayers } from '../types';
+import { NumPlayers, SchemeMinusRules } from '../types';
 
 import { Scheme } from './Scheme';
 
@@ -18,15 +17,15 @@ export class RequireTeamInHeroDeckScheme extends Scheme {
     super(scheme);
   }
 
-  public async getSetup(
+  public override getSetup(
     numPlayers: NumPlayers,
-    selectedMastermind: AbstractMastermind,
+    selectedMastermind: Mastermind,
     store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck: HeroDeckMinimal = {},
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): Promise<IGameSetup> {
+  ): IGameSetup {
     const teamHeroes = store.heroStore.availableCards.filter(
       (merc) => merc.team === this._team
     );
@@ -41,7 +40,7 @@ export class RequireTeamInHeroDeckScheme extends Scheme {
       this.rules[numPlayers].heroDeck.numHeroes
     );
 
-    return await super.getSetup(
+    return super.getSetup(
       numPlayers,
       selectedMastermind,
       store,

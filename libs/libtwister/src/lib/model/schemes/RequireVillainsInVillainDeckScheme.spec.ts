@@ -1,18 +1,18 @@
-import GUARDIANS from '../../data/gameSets/guardiansOfTheGalaxy';
-import { THE_KREE_SKRULL_WAR } from '../../data/gameSets/guardiansOfTheGalaxy/schemes';
-import { KREE_STARFORCE } from '../../data/gameSets/guardiansOfTheGalaxy/villains';
-import LEGENDARY from '../../data/gameSets/legendary';
-import { SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS } from '../../data/gameSets/legendary/schemes';
-import { SKRULLS } from '../../data/gameSets/legendary/villains';
-import SHIELD from '../../data/gameSets/shield';
-import { SHIELD_VS_HYDRA_WAR } from '../../data/gameSets/shield/schemes';
+import { GAME_SET as GUARDIANS } from '../../data/gameSets/guardiansOfTheGalaxy';
+import { THE_KREE_SKRULL_WAR } from '../../data/gameSets/guardiansOfTheGalaxy/guardiansOfTheGalaxy.schemes';
+import { KREE_STARFORCE } from '../../data/gameSets/guardiansOfTheGalaxy/guardiansOfTheGalaxy.villains';
+import { GAME_SET as LEGENDARY } from '../../data/gameSets/legendary';
+import { SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS } from '../../data/gameSets/legendary/legendary.schemes';
+import { SKRULLS } from '../../data/gameSets/legendary/legendary.villains';
+import { GAME_SET as SHIELD } from '../../data/gameSets/shield';
+import { SHIELD_VS_HYDRA_WAR } from '../../data/gameSets/shield/shield.schemes';
 import {
   AIM_HYDRA_OFFSHOOT,
   HYDRA_ELITE,
-} from '../../data/gameSets/shield/villains';
-import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
-import { injectGameSet } from '../../utils/schemeInjector';
-import { IVillainGroup, IGameSetup } from '../interfaces';
+} from '../../data/gameSets/shield/shield.villains';
+import { StoreBuilder, StoreOfStores } from '../../factories';
+import { VillainGroup } from '../cards';
+import { IGameSetup } from '../interfaces';
 
 import { RequireVillainsInVillainDeckScheme } from './RequireVillainsInVillainDeckScheme';
 import { Scheme } from './Scheme';
@@ -34,15 +34,12 @@ describe('Require Villains In Villain Deck Scheme', () => {
   });
 
   describe('Secret invastion of the Skurll shapeshifters', () => {
-    it('It should include Skrulls in the villain deck', async () => {
+    it('It should include Skrulls in the villain deck', () => {
       const scheme = new RequireVillainsInVillainDeckScheme(
-        injectGameSet(
-          LEGENDARY.id,
-          SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS
-        ),
+        SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS,
         SKRULLS
       );
-      const setup = await scheme.getSetup(
+      const setup = scheme.getSetup(
         2,
         store.mastermindStore.getOneRandom(),
         store
@@ -56,25 +53,21 @@ describe('Require Villains In Villain Deck Scheme', () => {
     let scheme: Scheme;
     let setup: IGameSetup;
 
-    beforeEach(async () => {
+    beforeEach(() => {
       scheme = new RequireVillainsInVillainDeckScheme(
-        injectGameSet(GUARDIANS.id, THE_KREE_SKRULL_WAR),
+        THE_KREE_SKRULL_WAR,
         SKRULLS,
         2,
         false,
         KREE_STARFORCE
       );
-      setup = await scheme.getSetup(
-        2,
-        store.mastermindStore.getOneRandom(),
-        store
-      );
+      setup = scheme.getSetup(2, store.mastermindStore.getOneRandom(), store);
     });
 
-    it('It should include Skrulls in the villain deck', async () =>
+    it('It should include Skrulls in the villain deck', () =>
       expect(setup.villainDeck.villains).toContain(SKRULLS));
 
-    it('It should include Kree Starforce in the villain deck', async () =>
+    it('It should include Kree Starforce in the villain deck', () =>
       expect(setup.villainDeck.villains).toContain(KREE_STARFORCE));
   });
 
@@ -82,22 +75,18 @@ describe('Require Villains In Villain Deck Scheme', () => {
     let scheme: Scheme;
     let setup: IGameSetup;
 
-    const shieldVillainPredicate = (item: IVillainGroup) =>
+    const shieldVillainPredicate = (item: VillainGroup) =>
       [AIM_HYDRA_OFFSHOOT, HYDRA_ELITE].includes(item);
 
-    beforeEach(async () => {
+    beforeEach(() => {
       scheme = new RequireVillainsInVillainDeckScheme(
-        injectGameSet(SHIELD.id, SHIELD_VS_HYDRA_WAR),
+        SHIELD_VS_HYDRA_WAR,
         HYDRA_ELITE,
         1,
         true,
         AIM_HYDRA_OFFSHOOT
       );
-      setup = await scheme.getSetup(
-        3,
-        store.mastermindStore.getOneRandom(),
-        store
-      );
+      setup = scheme.getSetup(3, store.mastermindStore.getOneRandom(), store);
     });
 
     it('should include 1 S.H.I.E.L.D. villain group in the villain deck', () =>

@@ -1,16 +1,11 @@
-import { AbstractMastermind } from './AbstractMastermind';
+import * as uuid from 'uuid';
+
 import { CardType } from './cardType.enum';
+import { Bystander, Henchmen, Hero, Mastermind, VillainGroup } from './cards';
 import { GameSetSize } from './gameSetSize.enum';
-import {
-  IBystander,
-  ICard,
-  IGameSetMeta,
-  IHenchmen,
-  IHero,
-  IVillainGroup,
-} from './interfaces';
-import { SchemeMinusRules } from './interfaces/newScheme.interface';
+import { IGameSetMeta } from './interfaces';
 import { Series } from './series.enum';
+import { AllCardTypes, SchemeMinusRules } from './types';
 
 export class GameSet implements IGameSetMeta {
   readonly id: string;
@@ -21,12 +16,12 @@ export class GameSet implements IGameSetMeta {
 
   constructor(
     gameSetProps: IGameSetMeta,
-    readonly heroes: IHero[],
-    readonly masterminds?: AbstractMastermind[],
+    readonly heroes: Hero[],
+    readonly masterminds?: Mastermind[],
     readonly schemes?: SchemeMinusRules[],
-    readonly villains?: IVillainGroup[],
-    readonly henchmen?: IHenchmen[],
-    readonly bystanders?: IHero[] | IBystander[]
+    readonly villains?: VillainGroup[],
+    readonly henchmen?: Henchmen[],
+    readonly bystanders?: Hero[] | Bystander[]
   ) {
     ({
       id: this.id,
@@ -58,7 +53,29 @@ export class GameSet implements IGameSetMeta {
     }
   }
 
-  public get(cardType: CardType): ICard[] | SchemeMinusRules[] | undefined {
+  /**
+   * Creates an empty GameSet
+   * @returns a GameSet
+   */
+  public static empty(): GameSet {
+    return new GameSet(
+      {
+        id: uuid.v4(),
+        name: 'EMPTY GAME SET',
+        releaseYear: 1970,
+        series: Series.MAINLINE,
+        size: GameSetSize.PROMO,
+      },
+      []
+    );
+  }
+
+  /**
+   * Gets all the cards in the game set with the given type
+   * @param cardType the type of card to get
+   * @returns an array of cards
+   */
+  public get(cardType: CardType): AllCardTypes[] | undefined {
     switch (cardType) {
       case CardType.BYSTANDER:
         return this.bystanders;

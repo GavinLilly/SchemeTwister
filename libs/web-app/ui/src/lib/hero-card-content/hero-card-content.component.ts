@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IHero, LibTwister } from '@schemetwister/libtwister';
+import { Hero, LibTwister } from '@schemetwister/libtwister';
 
 @Component({
   selector: 'schemetwister-hero-card-content',
@@ -7,11 +7,11 @@ import { IHero, LibTwister } from '@schemetwister/libtwister';
   styleUrls: ['./hero-card-content.component.scss'],
 })
 export class HeroCardContentComponent implements OnInit {
-  @Input() hero!: IHero;
+  @Input() hero!: Hero;
   gameSetName!: string;
 
   ngOnInit(): void {
     this.gameSetName =
-      LibTwister.allGameSets.get(this.hero.gameSetId)?.name || '';
+      LibTwister.allGameSets.get(this.hero.gameSet.id)?.name || '';
   }
 }

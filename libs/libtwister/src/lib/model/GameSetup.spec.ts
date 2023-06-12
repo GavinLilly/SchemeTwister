@@ -1,31 +1,28 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-
-import DARK_CITY from '../data/gameSets/darkCity';
-import { DOMINO } from '../data/gameSets/darkCity/heroes';
-import { VERSATILE } from '../data/gameSets/darkCity/keywords';
-import INTO_THE_COSMOS from '../data/gameSets/intoTheCosmos';
-import { CONTEST_OF_CHAMPIONS } from '../data/gameSets/intoTheCosmos/keywords';
-import { THE_CONTEST_OF_CHAMPIONS } from '../data/gameSets/intoTheCosmos/schemes';
-import LEGENDARY from '../data/gameSets/legendary';
+import { GAME_SET as DARK_CITY } from '../data/gameSets/darkCity';
+import { DOMINO } from '../data/gameSets/darkCity/darkCity.heroes';
+import { VERSATILE } from '../data/gameSets/darkCity/darkCity.keywords';
+import { CONTEST_OF_CHAMPIONS } from '../data/gameSets/intoTheCosmos/intoTheCosmos.keywords';
+import { THE_CONTEST_OF_CHAMPIONS } from '../data/gameSets/intoTheCosmos/intoTheCosmos.schemes';
+import { GAME_SET as LEGENDARY } from '../data/gameSets/legendary';
 import {
   CAPTAIN_AMERICA,
   CYCLOPS,
   IRON_MAN,
   WOLVERINE,
-} from '../data/gameSets/legendary/heroes';
+} from '../data/gameSets/legendary/legendary.heroes';
 import {
   MIDTOWN_BANK_ROBBERY,
   REPLACE_EARTHS_LEADERS_WITH_KILLBOTS,
-} from '../data/gameSets/legendary/schemes';
-import PAINT_THE_TOWN_RED from '../data/gameSets/paintTheTownRed';
-import { CARNAGE } from '../data/gameSets/paintTheTownRed/masterminds';
-import { SPLICE_HUMANS_WITH_SPIDER_DNA } from '../data/gameSets/paintTheTownRed/schemes';
+} from '../data/gameSets/legendary/legendary.schemes';
+import { GAME_SET as PAINT_THE_TOWN_RED } from '../data/gameSets/paintTheTownRed';
+import { CARNAGE } from '../data/gameSets/paintTheTownRed/paintTheTownRed.masterminds';
+import { SPLICE_HUMANS_WITH_SPIDER_DNA } from '../data/gameSets/paintTheTownRed/paintTheTownRed.schemes';
 import {
   MAXIMUM_CARNAGE,
   SINISTER_SIX,
-} from '../data/gameSets/paintTheTownRed/villains';
-import { StoreBuilder, StoreOfStores } from '../factories/storeOfStores';
-import { injectGameSet } from '../utils/schemeInjector';
+} from '../data/gameSets/paintTheTownRed/paintTheTownRed.villains';
+import { StoreBuilder, StoreOfStores } from '../factories';
 
 import { GameSetup } from './GameSetup';
 import { RequireVillainsInVillainDeckScheme, Scheme } from './schemes';
@@ -47,15 +44,13 @@ describe('GameSetup', () => {
   describe('with Midtown Bank Robbery', () => {
     let setup: GameSetup;
 
-    beforeAll(async () => {
-      const scheme = new Scheme(
-        injectGameSet(LEGENDARY.id, MIDTOWN_BANK_ROBBERY)
-      );
-      setup = (await scheme.getSetup(
+    beforeAll(() => {
+      const scheme = new Scheme(MIDTOWN_BANK_ROBBERY);
+      setup = scheme.getSetup(
         2,
         store.mastermindStore.getOneRandom(),
         store
-      )) as GameSetup;
+      ) as GameSetup;
     });
 
     describe('getSelectedHeroes()', () => {
@@ -76,15 +71,13 @@ describe('GameSetup', () => {
   describe("with Replace Earth's Leaders with Killbots", () => {
     let setup: GameSetup;
 
-    beforeAll(async () => {
-      const scheme = new Scheme(
-        injectGameSet(LEGENDARY.id, REPLACE_EARTHS_LEADERS_WITH_KILLBOTS)
-      );
-      setup = (await scheme.getSetup(
+    beforeAll(() => {
+      const scheme = new Scheme(REPLACE_EARTHS_LEADERS_WITH_KILLBOTS);
+      setup = scheme.getSetup(
         2,
         store.mastermindStore.getOneRandom(),
         store
-      )) as GameSetup;
+      ) as GameSetup;
     });
 
     describe('getSelectedHeroes()', () => {
@@ -114,35 +107,31 @@ describe('GameSetup', () => {
         .build();
     });
 
-    it('should have no keywords', async () => {
-      const scheme = new Scheme(
-        injectGameSet(LEGENDARY.id, REPLACE_EARTHS_LEADERS_WITH_KILLBOTS)
-      );
-      const setup = (await scheme.getSetup(
+    it('should have no keywords', () => {
+      const scheme = new Scheme(REPLACE_EARTHS_LEADERS_WITH_KILLBOTS);
+      const setup = scheme.getSetup(
         2,
         legendaryStore.mastermindStore.getOneRandom(),
         legendaryStore
-      )) as GameSetup;
+      ) as GameSetup;
 
       expect(setup.keywords.size).toBe(0);
     });
 
-    it('should have only the "Contest of Champions" keyword', async () => {
-      const scheme = new Scheme(
-        injectGameSet(INTO_THE_COSMOS.id, THE_CONTEST_OF_CHAMPIONS)
-      );
+    it('should have only the "Contest of Champions" keyword', () => {
+      const scheme = new Scheme(THE_CONTEST_OF_CHAMPIONS);
 
-      const setup = (await scheme.getSetup(
+      const setup = scheme.getSetup(
         2,
         legendaryStore.mastermindStore.getOneRandom(),
         legendaryStore
-      )) as GameSetup;
+      ) as GameSetup;
 
       expect(setup.keywords.size).toBe(1);
       expect(setup.keywords.has(CONTEST_OF_CHAMPIONS)).toBeTruthy();
     });
 
-    it('should have only the "Versatile" keyword', async () => {
+    it('should have only the "Versatile" keyword', () => {
       const versatileStore: StoreOfStores = new StoreBuilder()
         .withHeroGamesets(LEGENDARY, DARK_CITY)
         .withMastermindGamesets(LEGENDARY)
@@ -151,10 +140,8 @@ describe('GameSetup', () => {
         .build();
       versatileStore;
 
-      const scheme = new Scheme(
-        injectGameSet(LEGENDARY.id, REPLACE_EARTHS_LEADERS_WITH_KILLBOTS)
-      );
-      const setup = (await scheme.getSetup(
+      const scheme = new Scheme(REPLACE_EARTHS_LEADERS_WITH_KILLBOTS);
+      const setup = scheme.getSetup(
         2,
         versatileStore.mastermindStore.getOneRandom(),
         versatileStore,
@@ -162,7 +149,7 @@ describe('GameSetup', () => {
         {
           heroes: [DOMINO, CYCLOPS, WOLVERINE, CAPTAIN_AMERICA, IRON_MAN],
         }
-      )) as GameSetup;
+      ) as GameSetup;
 
       expect(setup.keywords.size).toBe(1);
       expect(setup.keywords.has(VERSATILE)).toBeTruthy();
@@ -172,16 +159,16 @@ describe('GameSetup', () => {
   describe('with Splice Humans with Spider DNA + Carnage', () => {
     let setup: GameSetup;
 
-    beforeAll(async () => {
+    beforeAll(() => {
       const scheme = new RequireVillainsInVillainDeckScheme(
-        injectGameSet(LEGENDARY.id, SPLICE_HUMANS_WITH_SPIDER_DNA),
+        SPLICE_HUMANS_WITH_SPIDER_DNA,
         SINISTER_SIX
       );
-      setup = (await scheme.getSetup(
+      setup = scheme.getSetup(
         2,
         store.mastermindStore.getOne(CARNAGE.id),
         store
-      )) as GameSetup;
+      ) as GameSetup;
     });
 
     describe('getSelectedHeroes()', () => {
@@ -203,5 +190,9 @@ describe('GameSetup', () => {
 
     it('should have Maximum Carnage as a villain group', () =>
       expect(setup.getSelectedVillains()).toContain(MAXIMUM_CARNAGE));
+  });
+
+  describe('that is empty', () => {
+    it('should create', () => expect(GameSetup.empty()).toBeDefined());
   });
 });

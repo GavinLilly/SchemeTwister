@@ -1,45 +1,27 @@
 import * as GameSets from './data/gameSets';
-import { SingleCardFactory } from './factories';
-import { StoreOfStores } from './factories/storeOfStores';
+import { SingleCardFactory, StoreOfStores } from './factories';
 import {
-  AbstractMastermind,
   GameSet,
   GameSetSize,
   GameSetup,
-  IHenchmen,
-  IHero,
-  IVillainGroup,
+  Hero,
+  Henchmen,
+  Mastermind,
   NumPlayers,
+  VillainGroup,
+  SchemeMinusRules,
+  GameSetMap,
 } from './model';
-import { GameSetMap } from './model/gameSetMap';
-import { SchemeMinusRules } from './model/interfaces/newScheme.interface';
 import instantiateScheme from './utils/instantiateScheme';
 
 /**
  * A class to store which game sets are available and have been selected along
- * with all the of the associated cards
+ * with all of the associated cards
  */
 export class LibTwister {
   private _schemeFactory!: SingleCardFactory<SchemeMinusRules>;
-  /**
-   * The factory to pick schemes
-   */
-  public get schemeFactory() {
-    return this._schemeFactory;
-  }
-
   private _stores!: StoreOfStores;
-  public get stores() {
-    return this._stores;
-  }
-
-  /**
-   * The selected game sets
-   */
-  private _selectedGameSets: GameSet[] = [];
-  public get selectedGameSets(): GameSet[] {
-    return this._selectedGameSets;
-  }
+  private readonly _selectedGameSets: GameSet[] = [];
 
   /**
    * Create a new LibTwister instance with the given GameSets
@@ -49,6 +31,25 @@ export class LibTwister {
     this._selectedGameSets = selectedGameSets;
     this._selectedGameSets.sort(GameSet.sorter);
     this._onGameSetsChange();
+  }
+
+  /**
+   * The factory to pick schemes
+   */
+  public get schemeFactory() {
+    return this._schemeFactory;
+  }
+
+  public get stores() {
+    return this._stores;
+  }
+
+  /**
+   * The selected game sets
+   */
+
+  public get selectedGameSets(): GameSet[] {
+    return this._selectedGameSets;
   }
 
   /**
@@ -107,9 +108,9 @@ export class LibTwister {
 
     const gamesets = Object.values(GameSets);
 
-    gamesets.forEach((gameset) => {
-      gamesetMap.set(gameset.default.id, gameset.default);
-    });
+    gamesets.forEach((gameset) =>
+      gamesetMap.set(gameset.GAME_SET.id, gameset.GAME_SET)
+    );
 
     return gamesetMap;
   }
@@ -122,17 +123,17 @@ export class LibTwister {
    * @param advancedSolo if it is being set up for 1 player mode then this will enable "Advanced Solo"
    * @returns a promise of a GameSetup
    */
-  public async getSetup(
+  public getSetup(
     numPlayers: NumPlayers,
     scheme = this.schemeFactory.getOneRandom(),
     mastermind = this.stores.mastermindStore.getOneRandom(),
     advancedSolo = false
-  ): Promise<GameSetup> {
+  ): GameSetup {
     this._stores.reset();
 
     const createdScheme = instantiateScheme(scheme);
 
-    const setup = await createdScheme.getSetup(
+    const setup = createdScheme.getSetup(
       numPlayers,
       mastermind,
       this.stores,
@@ -146,28 +147,28 @@ export class LibTwister {
    * Performs actions when the selected Game Sets change
    */
   private _onGameSetsChange() {
-    const heroes: IHero[] = [];
-    const masterminds: AbstractMastermind[] = [];
+    const heroes: Hero[] = [];
+    const masterminds: Mastermind[] = [];
     const schemes: SchemeMinusRules[] = [];
-    const villains: IVillainGroup[] = [];
-    const henchmen: IHenchmen[] = [];
+    const villains: VillainGroup[] = [];
+    const henchmen: Henchmen[] = [];
 
     this._selectedGameSets.forEach((gameSet) => {
       heroes.push(...gameSet.heroes);
 
-      if (gameSet.masterminds !== undefined) {
+      if (gameSet.masterminds) {
         masterminds.push(...gameSet.masterminds);
       }
 
-      if (gameSet.schemes !== undefined) {
+      if (gameSet.schemes) {
         schemes.push(...gameSet.schemes);
       }
 
-      if (gameSet.villains !== undefined) {
+      if (gameSet.villains) {
         villains.push(...gameSet.villains);
       }
 
-      if (gameSet.henchmen !== undefined) {
+      if (gameSet.henchmen) {
         henchmen.push(...gameSet.henchmen);
       }
     });

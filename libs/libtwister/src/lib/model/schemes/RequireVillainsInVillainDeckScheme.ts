@@ -1,27 +1,25 @@
-import { StoreOfStores } from '../../factories/storeOfStores';
+import { StoreOfStores } from '../../factories';
 import { randomize } from '../../utils/randomize';
-import { AbstractMastermind } from '../AbstractMastermind';
+import { VillainGroup, Mastermind } from '../cards';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
-  IVillainGroup,
   VillainDeckMinimal,
 } from '../interfaces';
-import { SchemeMinusRules } from '../interfaces/newScheme.interface';
-import { NumPlayers } from '../types';
+import { NumPlayers, SchemeMinusRules } from '../types';
 
 import { Scheme } from './Scheme';
 
 export class RequireVillainsInVillainDeckScheme extends Scheme {
-  private _requiredVillains: IVillainGroup[];
+  private _requiredVillains: VillainGroup[];
 
   constructor(
     scheme: SchemeMinusRules,
-    requiredVillain: IVillainGroup,
+    requiredVillain: VillainGroup,
     private _numberRequired = 1,
     private _removeOthers = false,
-    ...requiredVillains: IVillainGroup[]
+    ...requiredVillains: VillainGroup[]
   ) {
     super(scheme);
 
@@ -34,15 +32,15 @@ export class RequireVillainsInVillainDeckScheme extends Scheme {
     this._requiredVillains = [requiredVillain, ...requiredVillains];
   }
 
-  public async getSetup(
+  public override getSetup(
     numPlayers: NumPlayers,
-    selectedMastermind: AbstractMastermind,
+    selectedMastermind: Mastermind,
     store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck?: HeroDeckMinimal,
     partialVillainDeck: VillainDeckMinimal = {},
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): Promise<IGameSetup> {
+  ): IGameSetup {
     const chosenVillains =
       this._requiredVillains.length === 1
         ? this._requiredVillains
@@ -72,7 +70,7 @@ export class RequireVillainsInVillainDeckScheme extends Scheme {
         .forEach((villain) => store.villainStore.removeCard(villain.id));
     }
 
-    return await super.getSetup(
+    return super.getSetup(
       numPlayers,
       selectedMastermind,
       store,

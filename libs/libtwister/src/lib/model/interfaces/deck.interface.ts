@@ -1,27 +1,23 @@
-import { AbstractMastermind } from '../AbstractMastermind';
-
-import { IHenchmen } from './henchmen.interface';
-import { IHero } from './hero.interface';
-import { IVillainGroup } from './villainGroup.interface';
+import { Hero, Henchmen, VillainGroup, Mastermind } from '../cards';
 
 interface IDeck {
-  heroes?: IHero[];
-  henchmen?: IHenchmen[];
+  heroes?: Hero[];
+  henchmen?: Henchmen[];
   numBystanders?: number;
 }
 
 export interface IHeroDeck extends IDeck {
-  heroes: IHero[];
+  heroes: Hero[];
 }
 
 export type HeroDeckMinimal = Partial<Pick<IHeroDeck, 'heroes' | 'henchmen'>>;
 
 export interface IVillainDeck extends IDeck {
-  villains: IVillainGroup[];
-  henchmen: IHenchmen[];
+  villains: VillainGroup[];
+  henchmen: Henchmen[];
   numTwists: number;
   numMasterStrikes: number;
-  masterminds?: AbstractMastermind[];
+  masterminds?: Mastermind[];
   numSidekicks?: number;
   numAmbitions?: number;
   numShieldOfficers?: number;
@@ -32,10 +28,10 @@ export type VillainDeckMinimal = Partial<
 >;
 
 export interface IAdditionalDeckDeck extends IDeck {
-  villains?: IVillainGroup[];
+  villains?: VillainGroup[];
   numTwists?: number;
   numWounds?: number;
-  masterminds?: AbstractMastermind[];
+  masterminds?: Mastermind[];
 }
 
 export type AdditionalDeckDeckMinimal = Partial<

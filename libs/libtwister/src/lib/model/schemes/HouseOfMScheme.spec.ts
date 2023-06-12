@@ -1,10 +1,9 @@
 import { Teams } from '../../data';
-import DARK_CITY from '../../data/gameSets/darkCity';
-import REVELATIONS from '../../data/gameSets/revelations';
-import { SCARLET_WITCH } from '../../data/gameSets/revelations/heroes';
-import { HOUSE_OF_M } from '../../data/gameSets/revelations/schemes';
-import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
-import { injectGameSet } from '../../utils/schemeInjector';
+import { GAME_SET as DARK_CITY } from '../../data/gameSets/darkCity';
+import { GAME_SET as REVELATIONS } from '../../data/gameSets/revelations';
+import { SCARLET_WITCH } from '../../data/gameSets/revelations/revelations.heroes';
+import { HOUSE_OF_M } from '../../data/gameSets/revelations/revelations.schemes';
+import { StoreBuilder, StoreOfStores } from '../../factories';
 import { IGameSetup } from '../interfaces';
 
 import { HouseOfMScheme } from './HouseOfMScheme';
@@ -15,7 +14,7 @@ describe('House of M Scheme', () => {
   let scheme: Scheme;
   let setup: IGameSetup;
 
-  beforeAll(async () => {
+  beforeAll(() => {
     store = new StoreBuilder()
       .withHeroGamesets(DARK_CITY, REVELATIONS)
       .withMastermindGamesets(DARK_CITY)
@@ -23,16 +22,9 @@ describe('House of M Scheme', () => {
       .withHenchmenGamesets(DARK_CITY)
       .build();
 
-    scheme = new HouseOfMScheme(
-      injectGameSet(REVELATIONS.id, HOUSE_OF_M),
-      SCARLET_WITCH
-    );
+    scheme = new HouseOfMScheme(HOUSE_OF_M, SCARLET_WITCH);
 
-    setup = await scheme.getSetup(
-      2,
-      store.mastermindStore.getOneRandom(),
-      store
-    );
+    setup = scheme.getSetup(2, store.mastermindStore.getOneRandom(), store);
   });
 
   it('should include Scarlet Witch in the villain deck', () =>

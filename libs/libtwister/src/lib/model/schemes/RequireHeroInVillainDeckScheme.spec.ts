@@ -1,8 +1,7 @@
-import DARK_CITY from '../../data/gameSets/darkCity';
-import { JEAN_GREY } from '../../data/gameSets/darkCity/heroes';
-import { TRANSFORM_CITIZENS_INTO_DEMONS } from '../../data/gameSets/darkCity/schemes';
-import { StoreBuilder, StoreOfStores } from '../../factories/storeOfStores';
-import { injectGameSet } from '../../utils/schemeInjector';
+import { GAME_SET as DARK_CITY } from '../../data/gameSets/darkCity';
+import { JEAN_GREY } from '../../data/gameSets/darkCity/darkCity.heroes';
+import { TRANSFORM_CITIZENS_INTO_DEMONS } from '../../data/gameSets/darkCity/darkCity.schemes';
+import { StoreBuilder, StoreOfStores } from '../../factories';
 
 import { RequireHeroInVillainDeckScheme } from './RequireHeroInVillainDeckScheme';
 
@@ -13,12 +12,12 @@ describe('Require Hero In Villain Deck Scheme', () => {
     store = new StoreBuilder().withSingleGameset(DARK_CITY).build();
   });
 
-  it('It should include Jean Grey in the villain deck', async () => {
+  it('It should include Jean Grey in the villain deck', () => {
     const scheme = new RequireHeroInVillainDeckScheme(
-      injectGameSet(DARK_CITY.id, TRANSFORM_CITIZENS_INTO_DEMONS),
+      TRANSFORM_CITIZENS_INTO_DEMONS,
       JEAN_GREY
     );
-    const setup = await scheme.getSetup(
+    const setup = scheme.getSetup(
       2,
       store.mastermindStore.getOneRandom(),
       store

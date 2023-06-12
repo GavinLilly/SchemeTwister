@@ -2,16 +2,13 @@
 import {
   GameSets,
   GameSetup,
-  injectGameSet,
   instantiateScheme,
   Scheme,
-} from '@schemetwister/libtwister';
-import LEGENDARY from 'libs/libtwister/src/lib/data/gameSets/legendary';
-import { MIDTOWN_BANK_ROBBERY } from 'libs/libtwister/src/lib/data/gameSets/legendary/schemes';
-import {
   StoreBuilder,
   StoreOfStores,
-} from 'libs/libtwister/src/lib/factories/storeOfStores';
+} from '@schemetwister/libtwister';
+import { GAME_SET as LEGENDARY } from 'libs/libtwister/src/lib/data/gameSets/legendary';
+import { MIDTOWN_BANK_ROBBERY } from 'libs/libtwister/src/lib/data/gameSets/legendary/legendary.schemes';
 
 import { IGameSetupState } from '../reducers/game-setup.reducer';
 
@@ -28,12 +25,7 @@ describe('GameSetupScheme Selectors', () => {
   });
 
   beforeEach(async () => {
-    const selectedScheme = injectGameSet(
-      GameSets.LEGENDARY.default.id,
-      MIDTOWN_BANK_ROBBERY
-    );
-
-    scheme = instantiateScheme(selectedScheme);
+    scheme = instantiateScheme(MIDTOWN_BANK_ROBBERY);
     const setup = await scheme.getSetup(2, selectedMastermind, store);
 
     initialState = {

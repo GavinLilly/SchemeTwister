@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import {
-  AbstractMastermind,
-  IHenchmen,
-  IHero,
-  IVillainGroup,
+  Mastermind,
+  Henchmen,
+  Hero,
   LibTwister,
   SchemeMinusRules,
+  VillainGroup,
 } from '@schemetwister/libtwister';
 
 @Component({
@@ -25,24 +25,22 @@ export class HomePageComponent {
     const allGameSets = LibTwister.allGameSets.asArray();
     this.numHenchmen = allGameSets
       .map((gameSet) => gameSet.henchmen)
-      .filter((henchmen): henchmen is IHenchmen[] => !!henchmen)
+      .filter((henchmen): henchmen is Henchmen[] => !!henchmen)
       .reduce((prev, next) => prev?.concat(next)).length;
 
     this.numHeroes = allGameSets
       .map((gameSet) => gameSet.heroes)
-      .filter((heroes): heroes is IHero[] => !!heroes)
+      .filter((heroes): heroes is Hero[] => !!heroes)
       .reduce((prev, next) => prev?.concat(next)).length;
 
     this.numMasterminds = allGameSets
       .map((gameSet) => gameSet.masterminds)
-      .filter(
-        (masterminds): masterminds is AbstractMastermind[] => !!masterminds
-      )
+      .filter((masterminds): masterminds is Mastermind[] => !!masterminds)
       .reduce((prev, next) => prev?.concat(next)).length;
 
     this.numVillains = allGameSets
       .map((gameSet) => gameSet.villains)
-      .filter((villains): villains is IVillainGroup[] => !!villains)
+      .filter((villains): villains is VillainGroup[] => !!villains)
       .reduce((prev, next) => prev?.concat(next)).length;
 
     this.numSchemes = allGameSets

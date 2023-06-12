@@ -6,7 +6,10 @@ import { selectGameSetIds, selectGameSets } from './game-sets.selectors';
 
 describe('GameSets Selectors', () => {
   const initialState: IGameSetsState = {
-    gameSetIds: [GameSets.LEGENDARY.default.id, GameSets.DARK_CITY.default.id],
+    gameSetIds: [
+      GameSets.LEGENDARY.GAME_SET.id,
+      GameSets.DARK_CITY.GAME_SET.id,
+    ],
     loading: false,
     error: '',
   };
@@ -14,12 +17,12 @@ describe('GameSets Selectors', () => {
   it('should select the IDs', () => {
     const result = selectGameSetIds.projector(initialState);
     expect(result).toHaveLength(2);
-    expect(result).toContain(GameSets.LEGENDARY.default.id);
+    expect(result).toContain(GameSets.LEGENDARY.GAME_SET.id);
   });
 
   it('should select the GameSets', () => {
     const result = selectGameSets.projector(initialState);
     expect(result).toHaveLength(2);
-    expect(result).toContain(GameSets.LEGENDARY.default);
+    expect(result).toContain(GameSets.LEGENDARY.GAME_SET);
   });
 });

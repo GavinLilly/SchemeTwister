@@ -1,23 +1,22 @@
-import { hasPresentKey } from 'ts-is-present';
-
-import { AbstractMastermind } from './AbstractMastermind';
+import { Mastermind, Hero, Henchmen, VillainGroup } from './cards';
 import {
   IAdditionalDeck,
-  ICard,
-  IHenchmen,
-  IHero,
+  IPlayableObject,
   IHeroDeck,
   IKeyword,
   IVillainDeck,
-  IVillainGroup,
+  nameSorter,
+  IGameSetup,
 } from './interfaces';
-import { IGameSetup } from './interfaces/gameSetup.interface';
 import { Scheme } from './schemes';
 
+/**
+ * A class to store the generated game setup.
+ */
 export class GameSetup implements IGameSetup {
   readonly numPlayers: number;
   readonly scheme: Scheme;
-  readonly mastermind: AbstractMastermind;
+  readonly mastermind: Mastermind;
   readonly numWounds?: number;
   readonly numShieldOfficers?: number;
   heroDeck: IHeroDeck;
@@ -37,11 +36,40 @@ export class GameSetup implements IGameSetup {
     } = setup);
   }
 
+  /**
+   * All the keywords contained in this game setup.
+   */
+  public get keywords(): Set<IKeyword> {
+    const cards: IPlayableObject[] = [
+      ...this.getSelectedHenchmen(),
+      ...this.getSelectedHeroes(),
+      ...this.getSelectedMasterminds(),
+      ...this.getSelectedVillains(),
+    ];
+
+    const keywords = cards
+      .flatMap((card) => card.keywords)
+      .filter((keyword): keyword is IKeyword => !!keyword);
+
+    if (this.scheme.keywords) {
+      this.scheme.keywords.forEach((keyword) => keywords.push(keyword));
+    }
+
+    const keywordSet: Set<IKeyword> = new Set();
+    keywords.sort(nameSorter).forEach((x) => keywordSet.add(x));
+
+    return keywordSet;
+  }
+
+  /**
+   * Creates an empty GameSetup.
+   * @returns an empty GameSetup
+   */
   public static empty(): GameSetup {
     const setup: IGameSetup = {
       numPlayers: 2,
       scheme: Scheme.empty(),
-      mastermind: AbstractMastermind.empty(),
+      mastermind: Mastermind.empty(),
       heroDeck: { heroes: [] },
       villainDeck: {
         villains: [],
@@ -54,60 +82,25 @@ export class GameSetup implements IGameSetup {
     return new GameSetup(setup);
   }
 
-  public getSelectedHeroes(): IHero[] {
-    const villainDeckHeroes = this.villainDeck.heroes || [];
-    const additionalDeckHeroes = this.additionalDeck?.deck.heroes || [];
-
+  public getSelectedHeroes(): Hero[] {
     return this.heroDeck.heroes
-      .concat(villainDeckHeroes)
-      .concat(additionalDeckHeroes);
+      .concat(this.villainDeck.heroes ?? [])
+      .concat(this.additionalDeck?.deck.heroes ?? []);
   }
 
-  public getSelectedHenchmen(): IHenchmen[] {
-    const heroDeckHenchmen = this.heroDeck.henchmen || [];
-    const additionalDeckHenchmen = this.additionalDeck?.deck.henchmen || [];
-
+  public getSelectedHenchmen(): Henchmen[] {
     return this.villainDeck.henchmen
-      .concat(heroDeckHenchmen)
-      .concat(additionalDeckHenchmen);
+      .concat(this.heroDeck.henchmen ?? [])
+      .concat(this.additionalDeck?.deck.henchmen ?? []);
   }
 
-  public getSelectedVillains(): IVillainGroup[] {
-    const additionalDeckVillains = this.additionalDeck?.deck.villains || [];
-
-    return this.villainDeck.villains.concat(additionalDeckVillains);
+  public getSelectedVillains(): VillainGroup[] {
+    return this.villainDeck.villains.concat(
+      this.additionalDeck?.deck.villains ?? []
+    );
   }
 
-  public getSelectedMasterminds(): AbstractMastermind[] {
-    const additionalDeckMasterminds =
-      this.additionalDeck?.deck.masterminds || [];
-
-    return additionalDeckMasterminds.concat(this.mastermind);
-  }
-
-  public get keywords(): Set<IKeyword> {
-    const keywordSet: Set<IKeyword> = new Set();
-
-    const cards: ICard[] = [
-      ...this.getSelectedHenchmen(),
-      ...this.getSelectedHeroes(),
-      ...this.getSelectedMasterminds(),
-      ...this.getSelectedVillains(),
-    ];
-
-    const keywords = cards
-      .filter(hasPresentKey('keywords'))
-      .map((card) => card.keywords)
-      .reduce((acc, val) => acc.concat(val), []);
-
-    if (this.scheme.keywords !== undefined) {
-      this.scheme.keywords.forEach((keyword) => keywords.push(keyword));
-    }
-
-    keywords
-      .sort((a: IKeyword, b: IKeyword) => (a.name < b.name ? -1 : 1))
-      .forEach((x) => keywordSet.add(x));
-
-    return keywordSet;
+  public getSelectedMasterminds(): Mastermind[] {
+    return [this.mastermind, ...(this.additionalDeck?.deck.masterminds ?? [])];
   }
 }

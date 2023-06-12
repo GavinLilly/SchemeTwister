@@ -1,20 +1,5 @@
-import { GameSet } from '../../../model';
-import { injectGameSetToMany } from '../../../utils/schemeInjector';
-
-import * as Heroes from './heroes';
-import * as Masterminds from './masterminds';
-import { META } from './meta';
-import * as Schemes from './schemes';
-import * as Villains from './villains';
-
-const schemes = injectGameSetToMany(META.id, Object.values(Schemes));
-
-export { Heroes, schemes, Masterminds, Villains };
-
-export default new GameSet(
-  META,
-  Object.values(Heroes),
-  Object.values(Masterminds),
-  Object.values(schemes),
-  Object.values(Villains)
-);
+export * as Heroes from './shield.heroes';
+export * as Masterminds from './shield.masterminds';
+export * as Schemes from './shield.schemes';
+export * as Villains from './shield.villains';
+export { GAME_SET } from './shield.gameset';
