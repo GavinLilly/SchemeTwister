@@ -66,8 +66,8 @@ export class GameSetupEffects {
           definedMastermind,
           isAdvancedSolo,
         ]) => {
-          const twister = LibTwister.withGameSets(gameSetIds);
-          return await twister.getSetup(
+          const twister = LibTwister.of(...gameSetIds);
+          return twister.getSetup(
             numPlayers,
             definedScheme,
             definedMastermind,

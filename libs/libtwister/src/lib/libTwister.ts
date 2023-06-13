@@ -40,6 +40,9 @@ export class LibTwister {
     return this._schemeFactory;
   }
 
+  /**
+   * The stores for each of the card types
+   */
   public get stores() {
     return this._stores;
   }
@@ -47,28 +50,29 @@ export class LibTwister {
   /**
    * The selected game sets
    */
-
   public get selectedGameSets(): GameSet[] {
     return this._selectedGameSets;
-  }
-
-  /**
-   * Create a LibTwister instance with the given Game Set IDs
-   * @param gameSetIds an array of Game Set IDs
-   * @returns a LibTwister instance
-   */
-  public static withGameSets(gameSetIds: string[]): LibTwister {
-    const gameSets: GameSet[] = LibTwister.gameSetIdsToGameSets(gameSetIds);
-
-    return new LibTwister(gameSets);
   }
 
   /**
    * Create a LibTwiser instance with all Game Sets
    * @returns a LibTwister instance
    */
-  public static withAllGameSets(): LibTwister {
-    return new LibTwister(LibTwister.allGameSets.asArray());
+  public static of(): LibTwister;
+  /**
+   * Create a LibTwister instance with the given Game Set IDs
+   * @param gameSetIds an array of Game Set IDs
+   * @returns a LibTwister instance
+   */
+  public static of(...gameSetIds: string[]): LibTwister;
+  public static of(...gameSetIds: string[]): LibTwister {
+    if (gameSetIds.length === 0) {
+      return new LibTwister(LibTwister.allGameSets.asArray());
+    }
+
+    const gameSets: GameSet[] = LibTwister.gameSetIdsToGameSets(gameSetIds);
+
+    return new LibTwister(gameSets);
   }
 
   /**
@@ -91,8 +95,19 @@ export class LibTwister {
       .filter((gameSet) => gameSetIds.includes(gameSet.id));
   }
 
+  /**
+   * Checks the array of game set IDs to make sure it's valid. This includes
+   * ensuring that all the IDs exist and that there is at least 1 core or large
+   * game set
+   * @param gameSetIds an array of game set IDs to check
+   * @returns true if the array of game set IDs is valid
+   */
   public static validateGameSetIds(gameSetIds: string[]): boolean {
     const gameSets = LibTwister.gameSetIdsToGameSets(gameSetIds);
+
+    if (gameSets.length !== gameSetIds.length) {
+      return false;
+    }
 
     return gameSets.some((gameSet) =>
       [GameSetSize.CORE, GameSetSize.LARGE].includes(gameSet.size)
