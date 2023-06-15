@@ -1,3 +1,6 @@
+import { customRandom } from 'nanoid';
+import seedrandom from 'seedrandom';
+
 import { Mastermind, Hero, Henchmen, VillainGroup } from './cards';
 import {
   IAdditionalDeck,
@@ -102,5 +105,42 @@ export class GameSetup implements IGameSetup {
 
   public getSelectedMasterminds(): Mastermind[] {
     return [this.mastermind, ...(this.additionalDeck?.deck.masterminds ?? [])];
+  }
+
+  /**
+   * Gets all the cards used in the game and returns their IDs as a JSON string
+   * @returns a json string of the game setup IDs
+   */
+  public asModelString(): string {
+    return JSON.stringify({
+      numPlayers: this.numPlayers,
+      scheme: this.scheme.id,
+      mastermind: this.mastermind.id,
+      heroDeck: [
+        ...this.heroDeck.heroes,
+        ...(this.heroDeck.henchmen ?? []),
+      ].map((card) => card.id),
+      villainDeck: [
+        ...this.villainDeck.henchmen,
+        ...this.villainDeck.villains,
+        ...(this.villainDeck.masterminds ?? []),
+        ...(this.villainDeck.heroes ?? []),
+      ].map((card) => card.id),
+      additionalDeck: [
+        ...(this.additionalDeck?.deck.henchmen ?? []),
+        ...(this.additionalDeck?.deck.heroes ?? []),
+        ...(this.additionalDeck?.deck.masterminds ?? []),
+        ...(this.additionalDeck?.deck.villains ?? []),
+      ].map((card) => card.id),
+    });
+  }
+
+  public getUniqueId(): string {
+    const seed = seedrandom(this.asModelString());
+    const nanoid = customRandom('abcdefghijklmnopqrstuvwxyz', 10, (size) =>
+      new Uint8Array(size).map(() => 256 * seed())
+    );
+
+    return nanoid();
   }
 }

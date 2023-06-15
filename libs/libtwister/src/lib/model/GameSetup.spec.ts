@@ -190,6 +190,13 @@ describe('GameSetup', () => {
 
     it('should have Maximum Carnage as a villain group', () =>
       expect(setup.getSelectedVillains()).toContain(MAXIMUM_CARNAGE));
+
+    it('should have the same UUID each time', () => {
+      const uuid1 = setup.getUniqueId();
+      const uuid2 = setup.getUniqueId();
+
+      expect(uuid1).toBe(uuid2);
+    });
   });
 
   describe('that is empty', () => {
