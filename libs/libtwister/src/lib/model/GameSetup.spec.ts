@@ -192,8 +192,8 @@ describe('GameSetup', () => {
       expect(setup.getSelectedVillains()).toContain(MAXIMUM_CARNAGE));
 
     it('should have the same UUID each time', () => {
-      const uuid1 = setup.getUniqueId();
-      const uuid2 = setup.getUniqueId();
+      const uuid1 = setup.uid;
+      const uuid2 = setup.uid;
 
       expect(uuid1).toBe(uuid2);
     });
