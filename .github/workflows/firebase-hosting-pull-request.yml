@@ -10,6 +10,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Substitute Secrets into Tokenised File
+        uses: Lambdaspire/action-substitute-secrets-in-file@v1.0.0
+        with:
+          file: apps/web-app/src/environments/environment.ts
+          tokenPattern: ${TOKEN}
+          secretsJson: ${{ toJSON(secrets) }}
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
