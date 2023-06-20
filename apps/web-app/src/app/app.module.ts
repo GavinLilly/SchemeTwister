@@ -1,13 +1,19 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EffectsModule } from '@ngrx/effects';
-import { WebAppFeatureRandomizeModule } from '@schemetwister/web-app/feature-randomize';
+import {
+  FIRESTORE_COLLECTION_TOKEN,
+  WebAppFeatureRandomizeModule,
+} from '@schemetwister/web-app/feature-randomize';
 import { WebAppFeatureStoreModule } from '@schemetwister/web-app/feature-store';
 import { WebAppUiModule } from '@schemetwister/web-app/ui';
+
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 
@@ -43,14 +49,20 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     NgbModule,
-    WebAppUiModule,
     FontAwesomeModule,
     RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
     EffectsModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
+    WebAppUiModule,
     WebAppFeatureRandomizeModule,
     WebAppFeatureStoreModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: FIRESTORE_COLLECTION_TOKEN,
+      useValue: environment.firestoreCollection,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -99,6 +99,14 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "local": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/web-app/src/environments/environment.ts",
+                  "with": "apps/web-app/src/environments/environment.local.ts"
+                }
+              ]
             }
           },
           "outputs": ["{options.outputPath}"]
@@ -112,6 +120,9 @@
           "configurations": {
             "production": {
               "browserTarget": "web-app:build:production"
+            },
+            "local": {
+              "browserTarget": "web-app:build:local"
             }
           }
         },
@@ -139,6 +150,10 @@
             "codeCoverage": true
           },
           "outputs": ["coverage/apps/web-app"]
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     },

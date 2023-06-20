@@ -52,3 +52,5 @@ Thumbs.db
 
 # Angular cache
 /.angular/cache
+
+/apps/web-app/src/environments/environment.local.ts

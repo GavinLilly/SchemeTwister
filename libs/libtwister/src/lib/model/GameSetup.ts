@@ -1,6 +1,3 @@
-import { customRandom } from 'nanoid';
-import seedrandom from 'seedrandom';
-
 import { Mastermind, Hero, Henchmen, VillainGroup } from './cards';
 import {
   IAdditionalDeck,
@@ -10,6 +7,7 @@ import {
   nameSorter,
   IGameSetup,
 } from './interfaces';
+import { LiteGameSetup } from './liteGameSetup';
 import { Scheme } from './schemes';
 
 type VillainAdditionalDeckCards = Henchmen | VillainGroup | Mastermind | Hero;
@@ -61,18 +59,6 @@ export class GameSetup implements IGameSetup {
     keywords.sort(nameSorter).forEach((x) => keywordSet.add(x));
 
     return keywordSet;
-  }
-
-  /**
-   * The unique ID of the setup
-   */
-  public get uid(): string {
-    const seed = seedrandom(this.toString());
-    const nanoid = customRandom('abcdefghijklmnopqrstuvwxyz', 10, (size) =>
-      new Uint8Array(size).map(() => 256 * seed())
-    );
-
-    return nanoid();
   }
 
   /**
@@ -192,18 +178,18 @@ export class GameSetup implements IGameSetup {
     return response;
   }
 
-  /**
-   * Gets all the cards used in the game and returns their IDs as a JSON string
-   * @returns a json string of the game setup IDs
-   */
-  public toString(): string {
-    return JSON.stringify({
+  public getLiteSetup(): LiteGameSetup {
+    return new LiteGameSetup({
       numPlayers: this.numPlayers,
-      scheme: this.scheme.id,
-      mastermind: this.mastermind.id,
+      schemeId: this.scheme.id,
+      mastermindId: this.mastermind.id,
       heroDeck: this.heroDeckAsArray().map((card) => card.id),
       villainDeck: this.villainDeckAsArray().map((card) => card.id),
       additionalDeck: this.additionalDeckAsArray().map((card) => card.id),
     });
+  }
+
+  public toString() {
+    return this.getLiteSetup().toString();
   }
 }
