@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Substitute Secrets into Tokenised File
-        uses: Lambdaspire/action-substitute-secrets-in-file@v1.0.0
+        uses: Lambdaspire/action-substitute-secrets-in-file@main
         with:
           file: apps/web-app/src/environments/environment.prod.ts
           tokenPattern: ${TOKEN}

@@ -14,7 +14,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
       - name: Substitute Secrets into Tokenised File
-        uses: Lambdaspire/action-substitute-secrets-in-file@v1.0.0
+        uses: Lambdaspire/action-substitute-secrets-in-file@main
         with:
           file: apps/web-app/src/environments/environment.ts
           tokenPattern: ${TOKEN}
