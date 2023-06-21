@@ -25,6 +25,7 @@ import {
 import { StoreBuilder, StoreOfStores } from '../factories';
 
 import { GameSetup } from './GameSetup';
+import { LiteGameSetup } from './liteGameSetup';
 import { RequireVillainsInVillainDeckScheme, Scheme } from './schemes';
 
 let store: StoreOfStores;
@@ -192,8 +193,8 @@ describe('GameSetup', () => {
       expect(setup.getSelectedVillains()).toContain(MAXIMUM_CARNAGE));
 
     it('should have the same UUID each time', () => {
-      const uuid1 = setup.getLiteSetup().uid;
-      const uuid2 = setup.getLiteSetup().uid;
+      const uuid1 = LiteGameSetup.calculateUid(setup.getLiteSetup());
+      const uuid2 = LiteGameSetup.calculateUid(setup.getLiteSetup());
 
       expect(uuid1).toBe(uuid2);
     });

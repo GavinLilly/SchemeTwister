@@ -1,10 +1,14 @@
 import { TestBed } from '@angular/core/testing';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 import { GameSetup } from '@schemetwister/libtwister';
 import { Observable } from 'rxjs';
 
-import { GameSetupEffects } from './game-setup.effects';
+import {
+  FIRESTORE_COLLECTION_TOKEN,
+  GameSetupEffects,
+} from './game-setup.effects';
 
 describe('GameSetupEffects', () => {
   let actions$: Observable<any>;
@@ -17,6 +21,8 @@ describe('GameSetupEffects', () => {
         GameSetupEffects,
         provideMockActions(() => actions$),
         provideMockStore({ initialState }),
+        { provide: FIRESTORE_COLLECTION_TOKEN, useValue: 'setups-test' },
+        { provide: AngularFirestore, useValue: AngularFirestore },
       ],
     });
 
