@@ -36,20 +36,31 @@ import { VillainDeckComponent } from './villain-deck/villain-deck.component';
 
 @NgModule({
   imports: [
+    // Angular
     CommonModule,
     FormsModule,
-    WebAppUiModule,
     RouterModule.forChild([
       { path: '', pathMatch: 'full', component: RandomizeComponent },
     ]),
+
+    // Bootstrap
     NgbModule,
-    FontAwesomeModule,
     NgbAccordionModule,
+
+    // Icons
+    FontAwesomeModule,
+
+    // NGRX
     StoreModule.forFeature(numPlayersFeatureKey, numPlayersReducer),
     StoreModule.forFeature(gameSetsFeatureKey, gameSetsReducer),
     StoreModule.forFeature(gameSetupFeatureKey, gameSetupReducer),
     EffectsModule.forFeature([GameSetupEffects, GameSetsEffects]),
+
+    // Firebase
     AngularFirestoreModule,
+
+    // Schemetwister
+    WebAppUiModule,
   ],
   declarations: [
     RandomizeComponent,

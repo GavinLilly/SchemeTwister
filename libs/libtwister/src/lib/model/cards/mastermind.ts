@@ -1,6 +1,11 @@
 import { CardType } from '../cardType.enum';
 import { GameSetSize } from '../gameSetSize.enum';
-import { INumPlayerRules, IFightable } from '../interfaces';
+import {
+  INumPlayerRules,
+  IFightable,
+  IPlayableObject,
+  ICardType,
+} from '../interfaces';
 import { Series } from '../series.enum';
 
 import { AbstractFightableCardGroup } from './fightableCardGroup';
@@ -67,6 +72,14 @@ export class Mastermind
       victoryPoints: 0,
       alwaysLeads: [],
     });
+  }
+
+  public static isMastermind = (
+    card: (IPlayableObject & ICardType) | undefined
+  ): card is Mastermind => card?.cardType === CardType.MASTERMIND;
+
+  public toString(): string {
+    return this.name;
   }
 }
 

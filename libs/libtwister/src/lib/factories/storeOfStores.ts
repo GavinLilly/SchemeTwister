@@ -1,4 +1,12 @@
-import { Mastermind, VillainGroup, Henchmen, Hero } from '../model';
+import {
+  Mastermind,
+  VillainGroup,
+  Henchmen,
+  Hero,
+  CardType,
+  ICardType,
+  IPlayableObject,
+} from '../model';
 
 import { MultiCardStore } from './multiCardStore';
 
@@ -63,5 +71,30 @@ export class StoreOfStores {
     this._heroStore.resetStore();
     this._mastermindStore.resetStore();
     this._villainStore.resetStore();
+  }
+
+  public getCardById(
+    id: string,
+    type?: CardType
+  ): (IPlayableObject & ICardType) | undefined {
+    if (type) {
+      switch (type) {
+        case CardType.HENCHMEN:
+          return this.henchmenStore.allCardsMap.get(id);
+        case CardType.HERO:
+          return this.heroStore.allCardsMap.get(id);
+        case CardType.MASTERMIND:
+          return this.mastermindStore.allCardsMap.get(id);
+        case CardType.VILLAINGROUP:
+          return this.villainStore.allCardsMap.get(id);
+      }
+    }
+
+    return [
+      ...this.henchmenStore.allCards,
+      ...this.heroStore.allCards,
+      ...this.mastermindStore.allCards,
+      ...this.villainStore.allCards,
+    ].find((card) => card.id === id);
   }
 }

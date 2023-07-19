@@ -3,21 +3,20 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { LibTwister, LiteGameSetup } from '@schemetwister/libtwister';
+import {
+  IStoredGameSetup,
+  TWIST_COUNT_NAME,
+} from '@schemetwister/web-app/shared';
 import firebase from 'firebase/app';
 import { of, from } from 'rxjs';
 import {
   catchError,
   map,
   repeat,
-  switchMap,
   debounceTime,
   mergeMap,
 } from 'rxjs/operators';
 
-import {
-  IStoredGameSetup,
-  TWIST_COUNT_NAME,
-} from '../../storedGameSetup.interface';
 import { setGameSetsSuccess } from '../actions/game-sets.actions';
 import {
   generateGameSetup,
@@ -53,6 +52,8 @@ export const FIRESTORE_COLLECTION_TOKEN = 'FireStoreCollection';
 
 @Injectable()
 export class GameSetupEffects {
+  private static _storeSendWaitSeconds = 5;
+
   constructor(
     private _actions$: Actions,
     private _store: Store<{
@@ -85,27 +86,25 @@ export class GameSetupEffects {
         this._store.select(selectDefinedMastermind),
         this._store.select(selectIsAdvancedSolo),
       ]),
-      switchMap(
-        async ([
+      map(
+        ([
           ,
           gameSetIds,
           numPlayers,
           definedScheme,
           definedMastermind,
           isAdvancedSolo,
-        ]) => {
-          const twister = LibTwister.of(...gameSetIds);
-          return twister.getSetup(
+        ]) =>
+          LibTwister.of(...gameSetIds).getSetup(
             numPlayers,
             definedScheme,
             definedMastermind,
             isAdvancedSolo
-          );
-        }
+          )
       ),
       map((setup) => generateGameSetupSuccess({ gameSetup: setup })),
       catchError((error) => {
-        console.log(error);
+        console.error('Error while generating setup', error);
         return of(generateGameSetupFailure(error));
       }),
       repeat()
@@ -115,7 +114,7 @@ export class GameSetupEffects {
   storeGameSetup$ = createEffect(() =>
     this._actions$.pipe(
       ofType(generateGameSetupSuccess),
-      debounceTime(3000),
+      debounceTime(GameSetupEffects._storeSendWaitSeconds * 1000),
       map((action) => action.gameSetup),
       mergeMap((setup) =>
         this._firestore
@@ -139,6 +138,10 @@ export class GameSetupEffects {
           const newSetup = {
             ...setup.getLiteSetup(),
             twistCount: 1,
+            created: firebase.firestore.Timestamp.now(),
+            updated: firebase.firestore.Timestamp.now(),
+            playCount: 0,
+            winCount: 0,
           } as IStoredGameSetup;
 
           return from(queryResult.ref.set(newSetup));
@@ -146,7 +149,7 @@ export class GameSetupEffects {
       }),
       map(() => saveGameSetupSuccess()),
       catchError((error) => {
-        console.log(error);
+        console.error('Error while sending setup to Firestore', error);
         return of(saveGameSetupFailure(error));
       })
     )

@@ -1,0 +1,62 @@
+<table class="table table-striped" *ngIf="setups$ | async as setups">
+  <thead>
+    <tr>
+      <th scope="col">Time</th>
+      <th scope="col">Times twisted</th>
+      <th scope="col">Scheme</th>
+      <th scope="col">Mastermind</th>
+      <th scope="col">Hero deck</th>
+      <th scope="col">Villain deck</th>
+      <th scope="col">Additional deck</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let setup of setups; index as i">
+      <ng-container *ngIf="setup | storedSetupToGameSetup as gameSetup">
+        <td>{{ setup.updated.toDate() | date : 'yyyy-MMM-dd HH:mm' }}</td>
+        <td>{{ setup.twistCount }}</td>
+        <td>{{ gameSetup.scheme }}</td>
+        <td>{{ gameSetup.mastermind }}</td>
+        <td *ngIf="gameSetup.heroDeck as heroDeck">
+          <p *ngFor="let hero of heroDeck.heroes">{{ hero.name }}</p>
+          <p *ngFor="let henchmen of heroDeck.henchmen">
+            {{ henchmen.name }}
+          </p>
+        </td>
+        <td *ngIf="gameSetup.villainDeck as villainDeck">
+          <p *ngFor="let villain of villainDeck.villains">
+            {{ villain.name }}
+          </p>
+          <p *ngFor="let henchmen of villainDeck.henchmen">
+            {{ henchmen.name }}
+          </p>
+          <p *ngFor="let heroes of villainDeck.heroes">
+            {{ heroes.name }}
+          </p>
+          <p *ngFor="let masterminds of villainDeck.masterminds">
+            {{ masterminds.name }}
+          </p>
+        </td>
+        <td>
+          <div *ngIf="gameSetup.additionalDeck; then content"></div>
+          <ng-template #content>
+            <div *ngIf="gameSetup.additionalDeck?.deck as addDeck">
+              <p *ngFor="let villain of addDeck.villains">
+                {{ villain.name }}
+              </p>
+              <p *ngFor="let henchmen of addDeck.henchmen">
+                {{ henchmen.name }}
+              </p>
+              <p *ngFor="let heroes of addDeck.heroes">
+                {{ heroes.name }}
+              </p>
+              <p *ngFor="let masterminds of addDeck.masterminds">
+                {{ masterminds.name }}
+              </p>
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+    </tr>
+  </tbody>
+</table>

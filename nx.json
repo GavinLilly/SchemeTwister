@@ -37,6 +37,12 @@
     "web-app-feature-store": {
       "tags": ["type:feature", "scope:web-app"]
     },
+    "web-app-feature-view": {
+      "tags": []
+    },
+    "web-app-shared": {
+      "tags": []
+    },
     "web-app-ui": {
       "tags": ["type:ui", "scope:web-app"]
     }

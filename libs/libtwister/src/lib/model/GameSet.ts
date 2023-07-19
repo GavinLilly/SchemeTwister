@@ -75,7 +75,7 @@ export class GameSet implements IGameSetMeta {
    * @param cardType the type of card to get
    * @returns an array of cards
    */
-  public get(cardType: CardType): AllCardTypes[] | undefined {
+  public get(cardType?: CardType): AllCardTypes[] | undefined {
     switch (cardType) {
       case CardType.BYSTANDER:
         return this.bystanders;
@@ -90,7 +90,14 @@ export class GameSet implements IGameSetMeta {
       case CardType.VILLAINGROUP:
         return this.villains;
       default:
-        return undefined;
+        return [
+          ...(this.bystanders ?? []),
+          ...(this.schemes ?? []),
+          ...(this.henchmen ?? []),
+          ...this.heroes,
+          ...(this.masterminds ?? []),
+          ...(this.villains ?? []),
+        ];
     }
   }
 }

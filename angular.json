@@ -273,6 +273,56 @@
         }
       }
     },
+    "web-app-feature-view": {
+      "projectType": "library",
+      "root": "libs/web-app/feature-view",
+      "sourceRoot": "libs/web-app/feature-view/src",
+      "prefix": "schemetwister",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web-app/feature-view"],
+          "options": {
+            "jestConfig": "libs/web-app/feature-view/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web-app/feature-view/src/**/*.ts",
+              "libs/web-app/feature-view/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "web-app-shared": {
+      "projectType": "library",
+      "root": "libs/web-app/shared",
+      "sourceRoot": "libs/web-app/shared/src",
+      "prefix": "schemetwister",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web-app/shared"],
+          "options": {
+            "jestConfig": "libs/web-app/shared/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web-app/shared/src/**/*.ts",
+              "libs/web-app/shared/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "web-app-ui": {
       "projectType": "library",
       "root": "libs/web-app/ui",
