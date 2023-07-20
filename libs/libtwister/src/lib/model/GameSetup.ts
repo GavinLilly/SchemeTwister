@@ -7,7 +7,6 @@ import {
   nameSorter,
   IGameSetup,
 } from './interfaces';
-import { LiteGameSetup } from './liteGameSetup';
 import { Scheme } from './schemes';
 
 type VillainAdditionalDeckCards = Henchmen | VillainGroup | Mastermind | Hero;
@@ -178,18 +177,18 @@ export class GameSetup implements IGameSetup {
     return response;
   }
 
-  public getLiteSetup(): LiteGameSetup {
-    return new LiteGameSetup({
+  /**
+   * Gets all the cards used in the game and returns their IDs as a JSON string
+   * @returns a json string of the game setup IDs
+   */
+  public toString(): string {
+    return JSON.stringify({
       numPlayers: this.numPlayers,
-      schemeId: this.scheme.id,
-      mastermindId: this.mastermind.id,
-      heroDeck: this.heroDeckAsArray().map((card) => card.id),
-      villainDeck: this.villainDeckAsArray().map((card) => card.id),
-      additionalDeck: this.additionalDeckAsArray().map((card) => card.id),
+      scheme: this.scheme.name,
+      mastermind: this.mastermind.name,
+      heroDeck: this.heroDeckAsArray().map((card) => card.name),
+      villainDeck: this.villainDeckAsArray().map((card) => card.name),
+      additionalDeck: this.additionalDeckAsArray().map((card) => card.name),
     });
-  }
-
-  public toString() {
-    return this.getLiteSetup().toString();
   }
 }

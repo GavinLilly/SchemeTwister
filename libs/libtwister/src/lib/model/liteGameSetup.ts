@@ -26,24 +26,101 @@ export class LiteGameSetup {
     villainDeck: string[];
     additionalDeck?: string[];
   }) {
-    if (config === undefined) {
-      return this;
+    if (config !== undefined) {
+      ({
+        numPlayers: this.numPlayers,
+        schemeId: this.schemeId,
+        mastermindId: this.mastermindId,
+        heroDeck: this.heroDeck,
+        villainDeck: this.villainDeck,
+        additionalDeck: this.additionalDeck,
+      } = config);
     }
-    ({
-      numPlayers: this.numPlayers,
-      schemeId: this.schemeId,
-      mastermindId: this.mastermindId,
-      heroDeck: this.heroDeck,
-      villainDeck: this.villainDeck,
-      additionalDeck: this.additionalDeck,
-    } = config);
+  }
+
+  public static of(setup: GameSetup): LiteGameSetup {
+    return new LiteGameSetup({
+      numPlayers: setup.numPlayers,
+      schemeId: setup.scheme.id,
+      mastermindId: setup.mastermind.id,
+      heroDeck: setup.heroDeckAsArray().map((card) => card.id),
+      villainDeck: setup.villainDeckAsArray().map((card) => card.id),
+      additionalDeck: setup.additionalDeckAsArray().map((card) => card.id),
+    });
+  }
+
+  public toGameSetup(): GameSetup {
+    const twister = LibTwister.of();
+
+    const mastermind = twister.stores.getCardById(
+      this.mastermindId,
+      CardType.MASTERMIND
+    ) as Mastermind;
+    const scheme = twister.schemeFactory.allCardsMap.get(this.schemeId);
+
+    const getHenchmenById = (ids: string[]) =>
+      ids
+        .map((id) => twister.stores.getCardById(id, CardType.HENCHMEN))
+        .filter((card): card is Henchmen => !!card);
+    const getHeroById = (ids: string[]) =>
+      ids
+        .map((id) => twister.stores.getCardById(id, CardType.HERO))
+        .filter((card): card is Hero => !!card);
+    const getVillainsById = (ids: string[]) =>
+      ids
+        .map((id) => twister.stores.getCardById(id, CardType.VILLAINGROUP))
+        .filter((card): card is VillainGroup => !!card);
+    const getMastermindsById = (ids: string[]) =>
+      ids
+        .map((id) => twister.stores.getCardById(id, CardType.MASTERMIND))
+        .filter((card): card is Mastermind => !!card);
+
+    if (scheme) {
+      const instantiatedScheme = instantiateScheme(scheme);
+
+      const rules = instantiatedScheme.rules[this.numPlayers as NumPlayers];
+
+      const filledAdditionalDeck: IAdditionalDeck | undefined =
+        this.additionalDeck !== undefined && rules.additionalDeck
+          ? {
+              name: rules.additionalDeck?.name,
+              deck: {
+                henchmen: getHenchmenById(this.additionalDeck),
+                heroes: getHeroById(this.additionalDeck),
+                villains: getVillainsById(this.additionalDeck),
+                masterminds: getMastermindsById(this.additionalDeck),
+              },
+            }
+          : undefined;
+
+      return new GameSetup({
+        heroDeck: {
+          heroes: getHeroById(this.heroDeck),
+          henchmen: getHenchmenById(this.heroDeck),
+        },
+        mastermind,
+        numPlayers: this.numPlayers,
+        scheme: instantiatedScheme,
+        villainDeck: {
+          henchmen: getHenchmenById(this.villainDeck),
+          villains: getVillainsById(this.villainDeck),
+          heroes: getHeroById(this.villainDeck),
+          masterminds: getMastermindsById(this.villainDeck),
+          numMasterStrikes: 5,
+          numTwists: rules.villainDeck.numTwists,
+        },
+        additionalDeck: filledAdditionalDeck,
+      });
+    }
+
+    throw new Error();
   }
 
   /**
    * The unique ID of the setup
    */
-  public static calculateUid(setup: LiteGameSetup): string {
-    const seed = seedrandom(setup.toString());
+  public calculateUid(): string {
+    const seed = seedrandom(this.toString());
     const nanoid = customRandom('abcdefghijklmnopqrstuvwxyz', 10, (size) =>
       new Uint8Array(size).map(() => 256 * seed())
     );
@@ -64,61 +141,5 @@ export class LiteGameSetup {
       villainDeck: this.villainDeck,
       additionalDeck: this.additionalDeck,
     });
-  }
-
-  public toFullGameSetup() {
-    const twister = LibTwister.of();
-
-    const mastermind = twister.stores.getCardById(
-      this.mastermindId,
-      CardType.MASTERMIND
-    ) as Mastermind;
-    const scheme = twister.schemeFactory.allCardsMap.get(this.schemeId);
-
-    const getById = (id: string) => twister.stores.getCardById(id);
-
-    const villainDeck = this.villainDeck.map(getById);
-    const additionalDeck = this.additionalDeck?.map(getById);
-    const heroDeck = this.heroDeck.map(getById);
-
-    if (scheme) {
-      const instantiatedScheme = instantiateScheme(scheme);
-
-      const rules = instantiatedScheme.rules[this.numPlayers as NumPlayers];
-
-      const filledAdditionalDeck: IAdditionalDeck | undefined =
-        additionalDeck && rules.additionalDeck
-          ? {
-              name: rules.additionalDeck?.name,
-              deck: {
-                henchmen: additionalDeck.filter(Henchmen.isHenchmen),
-                heroes: additionalDeck.filter(Hero.isHero),
-                villains: additionalDeck.filter(VillainGroup.isVillainGroup),
-                masterminds: additionalDeck.filter(Mastermind.isMastermind),
-              },
-            }
-          : undefined;
-
-      return new GameSetup({
-        heroDeck: {
-          heroes: heroDeck.filter(Hero.isHero),
-          henchmen: heroDeck.filter(Henchmen.isHenchmen),
-        },
-        mastermind,
-        numPlayers: this.numPlayers,
-        scheme: instantiatedScheme,
-        villainDeck: {
-          henchmen: villainDeck.filter(Henchmen.isHenchmen),
-          villains: villainDeck.filter(VillainGroup.isVillainGroup),
-          heroes: villainDeck.filter(Hero.isHero),
-          masterminds: villainDeck.filter(Mastermind.isMastermind),
-          numMasterStrikes: 5,
-          numTwists: rules.villainDeck.numTwists,
-        },
-        additionalDeck: filledAdditionalDeck,
-      });
-    }
-
-    throw new Error();
   }
 }

@@ -119,9 +119,7 @@ export class GameSetupEffects {
       mergeMap((setup) =>
         this._firestore
           .doc<IStoredGameSetup>(
-            `${this._collectionName}/${LiteGameSetup.calculateUid(
-              setup.getLiteSetup()
-            )}`
+            `${this._collectionName}/${LiteGameSetup.of(setup).calculateUid()}`
           )
           .get()
           .pipe(map((queryResult) => ({ queryResult, setup })))
@@ -136,7 +134,7 @@ export class GameSetupEffects {
           );
         } else {
           const newSetup = {
-            ...setup.getLiteSetup(),
+            ...LiteGameSetup.of(setup),
             twistCount: 1,
             created: firebase.firestore.Timestamp.now(),
             updated: firebase.firestore.Timestamp.now(),

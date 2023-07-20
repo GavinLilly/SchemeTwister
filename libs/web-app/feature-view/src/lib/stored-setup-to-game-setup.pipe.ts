@@ -9,6 +9,6 @@ import { plainToInstance } from 'class-transformer';
 export class StoredSetupToGameSetupPipe implements PipeTransform {
   transform(value: IStoredGameSetup): GameSetup {
     const liteSetup = plainToInstance(LiteGameSetup, value);
-    return liteSetup.toFullGameSetup();
+    return liteSetup.toGameSetup();
   }
 }

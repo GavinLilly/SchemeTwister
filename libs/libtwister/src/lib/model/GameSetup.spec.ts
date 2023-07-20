@@ -192,9 +192,9 @@ describe('GameSetup', () => {
     it('should have Maximum Carnage as a villain group', () =>
       expect(setup.getSelectedVillains()).toContain(MAXIMUM_CARNAGE));
 
-    it('should have the same UUID each time', () => {
-      const uuid1 = LiteGameSetup.calculateUid(setup.getLiteSetup());
-      const uuid2 = LiteGameSetup.calculateUid(setup.getLiteSetup());
+    it('should have the same UUID each time', async () => {
+      const uuid1 = await LiteGameSetup.of(setup).calculateUid();
+      const uuid2 = await LiteGameSetup.of(setup).calculateUid();
 
       expect(uuid1).toBe(uuid2);
     });

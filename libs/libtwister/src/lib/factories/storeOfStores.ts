@@ -75,26 +75,17 @@ export class StoreOfStores {
 
   public getCardById(
     id: string,
-    type?: CardType
+    type: CardType
   ): (IPlayableObject & ICardType) | undefined {
-    if (type) {
-      switch (type) {
-        case CardType.HENCHMEN:
-          return this.henchmenStore.allCardsMap.get(id);
-        case CardType.HERO:
-          return this.heroStore.allCardsMap.get(id);
-        case CardType.MASTERMIND:
-          return this.mastermindStore.allCardsMap.get(id);
-        case CardType.VILLAINGROUP:
-          return this.villainStore.allCardsMap.get(id);
-      }
+    switch (type) {
+      case CardType.HENCHMEN:
+        return this.henchmenStore.allCardsMap.get(id);
+      case CardType.HERO:
+        return this.heroStore.allCardsMap.get(id);
+      case CardType.MASTERMIND:
+        return this.mastermindStore.allCardsMap.get(id);
+      case CardType.VILLAINGROUP:
+        return this.villainStore.allCardsMap.get(id);
     }
-
-    return [
-      ...this.henchmenStore.allCards,
-      ...this.heroStore.allCards,
-      ...this.mastermindStore.allCards,
-      ...this.villainStore.allCards,
-    ].find((card) => card.id === id);
   }
 }
