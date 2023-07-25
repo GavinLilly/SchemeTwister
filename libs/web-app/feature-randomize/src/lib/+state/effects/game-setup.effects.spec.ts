@@ -8,12 +8,12 @@ import { WebAppFeatureRandomizeModule } from '../../web-app-feature-randomize.mo
 import { GameSetupEffects } from './game-setup.effects';
 
 describe('GameSetupEffects', () => {
-  beforeEach(() => {
-    return MockBuilder(
+  beforeEach(() =>
+    MockBuilder(
       [GameSetupEffects, StoreModule.forRoot({}), EffectsModule.forRoot()],
       [WebAppFeatureRandomizeModule, WebAppSharedModule]
-    );
-  });
+    )
+  );
 
   it('should be created', () => {
     const fixture = MockRender(GameSetupEffects);

@@ -1,31 +1,21 @@
-import { TestBed } from '@angular/core/testing';
-import { provideMockActions } from '@ngrx/effects/testing';
-import { provideMockStore } from '@ngrx/store/testing';
-import { GameSetup } from '@schemetwister/libtwister';
-import { CookieService } from 'ngx-cookie-service';
-import { Observable } from 'rxjs';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { MockBuilder, MockRender } from 'ng-mocks';
+
+import { WebAppFeatureRandomizeModule } from '../../web-app-feature-randomize.module';
 
 import { GameSetsEffects } from './game-sets.effects';
 
 describe('GameSetsEffects', () => {
-  let actions$: Observable<any>;
-  const initialState = { gameSetup: GameSetup.empty() };
-  let effects: GameSetsEffects;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [
-        GameSetsEffects,
-        provideMockActions(() => actions$),
-        provideMockStore({ initialState }),
-        CookieService,
-      ],
-    });
-
-    effects = TestBed.inject(GameSetsEffects);
-  });
+  beforeEach(() =>
+    MockBuilder(
+      [GameSetsEffects, StoreModule.forRoot({}), EffectsModule.forRoot()],
+      WebAppFeatureRandomizeModule
+    )
+  );
 
   it('should be created', () => {
-    expect(effects).toBeTruthy();
+    const fixture = MockRender(GameSetsEffects);
+    expect(fixture.point.componentInstance).toBeTruthy();
   });
 });
