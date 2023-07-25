@@ -1,35 +1,22 @@
-import { TestBed } from '@angular/core/testing';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { provideMockActions } from '@ngrx/effects/testing';
-import { provideMockStore } from '@ngrx/store/testing';
-import { GameSetup } from '@schemetwister/libtwister';
-import { Observable } from 'rxjs';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { WebAppSharedModule } from '@schemetwister/web-app/shared';
+import { MockBuilder, MockRender } from 'ng-mocks';
 
-import {
-  FIRESTORE_COLLECTION_TOKEN,
-  GameSetupEffects,
-} from './game-setup.effects';
+import { WebAppFeatureRandomizeModule } from '../../web-app-feature-randomize.module';
+
+import { GameSetupEffects } from './game-setup.effects';
 
 describe('GameSetupEffects', () => {
-  let actions$: Observable<any>;
-  const initialState = { gameSetup: GameSetup.empty() };
-  let effects: GameSetupEffects;
-
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [
-        GameSetupEffects,
-        provideMockActions(() => actions$),
-        provideMockStore({ initialState }),
-        { provide: FIRESTORE_COLLECTION_TOKEN, useValue: 'setups-test' },
-        { provide: AngularFirestore, useValue: AngularFirestore },
-      ],
-    });
-
-    effects = TestBed.inject(GameSetupEffects);
+    return MockBuilder(
+      [GameSetupEffects, StoreModule.forRoot({}), EffectsModule.forRoot()],
+      [WebAppFeatureRandomizeModule, WebAppSharedModule]
+    );
   });
 
   it('should be created', () => {
-    expect(effects).toBeTruthy();
+    const fixture = MockRender(GameSetupEffects);
+    expect(fixture.point.componentInstance).toBeTruthy();
   });
 });

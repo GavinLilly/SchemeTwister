@@ -6,13 +6,12 @@ import {
 import { MockBuilder, MockRender } from 'ng-mocks';
 import { of } from 'rxjs';
 
-import { WebAppFeatureViewModule } from '../web-app-feature-view.module';
+import { LatestSetupsStore } from './latest-setups.store';
+import { WebAppFeatureViewModule } from './web-app-feature-view.module';
 
-import { LatestSetupsComponent } from './latest-setups.component';
-
-describe('LatestSetupsComponent', () => {
+describe('LatestSetupsStore', () => {
   beforeEach(() =>
-    MockBuilder(LatestSetupsComponent, [
+    MockBuilder(LatestSetupsStore, [
       WebAppFeatureViewModule,
       WebAppSharedModule,
     ]).mock(StoredSetupsService, {
@@ -20,8 +19,8 @@ describe('LatestSetupsComponent', () => {
     })
   );
 
-  it('should create', () => {
-    const fixture = MockRender(LatestSetupsComponent);
+  it('should be created', () => {
+    const fixture = MockRender(LatestSetupsStore);
     expect(fixture.point.componentInstance).toBeTruthy();
   });
 });

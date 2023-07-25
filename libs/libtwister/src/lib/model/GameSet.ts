@@ -100,6 +100,8 @@ export class GameSet implements IGameSetMeta {
         return this.masterminds;
       case CardType.VILLAINGROUP:
         return this.villains;
+      default:
+        return undefined;
     }
   }
 }

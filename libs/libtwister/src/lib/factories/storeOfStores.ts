@@ -86,6 +86,8 @@ export class StoreOfStores {
         return this.mastermindStore.allCardsMap.get(id);
       case CardType.VILLAINGROUP:
         return this.villainStore.allCardsMap.get(id);
+      default:
+        return undefined;
     }
   }
 }

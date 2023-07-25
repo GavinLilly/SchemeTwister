@@ -122,6 +122,7 @@
     "jest": "^27.4.3",
     "jest-preset-angular": "10.1.0",
     "jsonc-parser": "^3.0.0",
+    "ng-mocks": "^14.11.0",
     "open": "^7.0.3",
     "prettier": "^2.5.1",
     "semantic-release": "^19.0.3",
