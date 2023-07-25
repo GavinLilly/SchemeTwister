@@ -5,12 +5,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EffectsModule } from '@ngrx/effects';
-import {
-  FIRESTORE_COLLECTION_TOKEN,
-  WebAppFeatureRandomizeModule,
-} from '@schemetwister/web-app/feature-randomize';
+import { WebAppFeatureRandomizeModule } from '@schemetwister/web-app/feature-randomize';
 import { WebAppFeatureStoreModule } from '@schemetwister/web-app/feature-store';
 import { WebAppUiModule } from '@schemetwister/web-app/ui';
+import { FIRESTORE_COLLECTION_TOKEN } from '@schemetwister/web-app-feature-view';
 
 import { environment } from '../environments/environment';
 

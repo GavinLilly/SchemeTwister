@@ -11,4 +11,3 @@ export {
   INumPlayersState,
   numPlayersReducer,
 } from './lib/+state/reducers/num-players.reducer';
-export { FIRESTORE_COLLECTION_TOKEN } from './lib/+state/effects/game-setup.effects';
