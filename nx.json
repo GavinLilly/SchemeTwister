@@ -25,9 +25,6 @@
     "web-app": {
       "tags": []
     },
-    "web-app-e2e": {
-      "tags": []
-    },
     "web-app-feature-home": {
       "tags": ["type:feature", "scope:web-app"]
     },
