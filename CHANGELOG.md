@@ -1,3 +1,10 @@
+## [3.7.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.6.1...v3.7.0) (2023-07-26)
+
+
+### Features
+
+* store game setups ([79c9020](https://github.com/GavinLilly/SchemeTwister/commit/79c902033c81d28eb7bc1964e34582377288f91f))
+
 ## [3.6.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.6.0...v3.6.1) (2023-07-19)
 
 
