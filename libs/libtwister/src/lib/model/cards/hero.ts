@@ -36,4 +36,8 @@ export class Hero extends AbstractCardGroup implements IHero {
       gameSet: GameSet.empty(),
     });
   }
+
+  public static isHero = (
+    card: (IPlayableObject & ICardType) | undefined
+  ): card is Hero => card?.cardType === CardType.HERO;
 }

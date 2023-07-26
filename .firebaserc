@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "schemetwister"
+  },
+  "targets": {
+    "schemetwister": {
+      "hosting": {
+        "web-app": [
+          "schemetwister"
+        ]
+      }
+    }
   }
 }

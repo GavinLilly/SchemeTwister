@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   public isMenuCollapsed = true;
+
+  public links: { name: string; link: string }[] = [
+    {
+      name: 'Home',
+      link: '/home',
+    },
+    {
+      name: 'Randomize',
+      link: '/randomize',
+    },
+    {
+      name: 'View setups',
+      link: '/view/setups',
+    },
+  ];
 }

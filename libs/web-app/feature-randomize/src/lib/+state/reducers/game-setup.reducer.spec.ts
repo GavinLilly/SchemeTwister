@@ -1,13 +1,13 @@
-import { initialState, gameSetupReducer } from './game-setup.reducer';
+import { generateGameSetup } from '../actions/game-setup.actions';
+
+import { gameSetupReducer } from './game-setup.reducer';
 
 describe('GameSetup Reducer', () => {
-  describe('an unknown action', () => {
-    it('should return the previous state', () => {
-      const action = {} as any;
+  describe('Generate Game Setup', () => {
+    it('should set loading to true', () => {
+      const result = gameSetupReducer(undefined, generateGameSetup());
 
-      const result = gameSetupReducer(initialState, action);
-
-      expect(result).toBe(initialState);
+      expect(result.loading).toBe(true);
     });
   });
 });

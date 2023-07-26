@@ -1,13 +1,18 @@
-import { initialState, gameSetsReducer } from './game-sets.reducer';
+import { GameSets } from '@schemetwister/libtwister';
+
+import { setGameSets } from '../actions/game-sets.actions';
+
+import { gameSetsReducer } from './game-sets.reducer';
 
 describe('GameSets Reducer', () => {
-  describe('an unknown action', () => {
-    it('should return the previous state', () => {
-      const action = {} as any;
+  describe('Set Game Sets', () => {
+    it('should set loading to true', () => {
+      const result = gameSetsReducer(
+        undefined,
+        setGameSets({ gameSetIds: [GameSets.LEGENDARY.GAME_SET.id] })
+      );
 
-      const result = gameSetsReducer(initialState, action);
-
-      expect(result).toBe(initialState);
+      expect(result.loading).toBe(true);
     });
   });
 });

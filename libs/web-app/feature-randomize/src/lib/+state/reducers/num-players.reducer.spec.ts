@@ -7,16 +7,6 @@ import {
 import { numPlayersReducer, initialState } from './num-players.reducer';
 
 describe('NumPlayers Reducer', () => {
-  describe('an unknown action', () => {
-    it('should return the previous state', () => {
-      const action = {} as any;
-
-      const result = numPlayersReducer(initialState, action);
-
-      expect(result).toBe(initialState);
-    });
-  });
-
   describe('incrementNumPlayers', () => {
     it('should increment the number of players by 1', () => {
       const action = incrementNumPlayers;

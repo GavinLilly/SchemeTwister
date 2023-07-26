@@ -38,3 +38,14 @@ export const setDefinedMastermind = createAction(
 export const resetDefinedMastermind = createAction(
   `${domain} Reset Defined Mastermind`
 );
+
+export const saveGameSetupSuccess = createAction(
+  `${domain} Save GameSetup Success`
+);
+
+export const saveGameSetupFailure = createAction(
+  `${domain} Save GameSetup Failure`,
+  (errorMessage = 'Error saving Game Setup') => ({
+    payload: { errorMessage },
+  })
+);

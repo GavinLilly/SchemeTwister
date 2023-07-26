@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule, NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { WebAppSharedModule } from '@schemetwister/web-app/shared';
 import { WebAppUiModule } from '@schemetwister/web-app/ui';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -35,19 +37,32 @@ import { VillainDeckComponent } from './villain-deck/villain-deck.component';
 
 @NgModule({
   imports: [
+    // Angular
     CommonModule,
     FormsModule,
-    WebAppUiModule,
     RouterModule.forChild([
       { path: '', pathMatch: 'full', component: RandomizeComponent },
     ]),
+
+    // Bootstrap
     NgbModule,
-    FontAwesomeModule,
     NgbAccordionModule,
+
+    // Icons
+    FontAwesomeModule,
+
+    // NGRX
     StoreModule.forFeature(numPlayersFeatureKey, numPlayersReducer),
     StoreModule.forFeature(gameSetsFeatureKey, gameSetsReducer),
     StoreModule.forFeature(gameSetupFeatureKey, gameSetupReducer),
     EffectsModule.forFeature([GameSetupEffects, GameSetsEffects]),
+
+    // Firebase
+    AngularFirestoreModule,
+
+    // Schemetwister
+    WebAppUiModule,
+    WebAppSharedModule,
   ],
   declarations: [
     RandomizeComponent,

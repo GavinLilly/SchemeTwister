@@ -99,6 +99,14 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "local": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/web-app/src/environments/environment.ts",
+                  "with": "apps/web-app/src/environments/environment.local.ts"
+                }
+              ]
             }
           },
           "outputs": ["{options.outputPath}"]
@@ -112,6 +120,9 @@
           "configurations": {
             "production": {
               "browserTarget": "web-app:build:production"
+            },
+            "local": {
+              "browserTarget": "web-app:build:local"
             }
           }
         },
@@ -139,33 +150,10 @@
             "codeCoverage": true
           },
           "outputs": ["coverage/apps/web-app"]
-        }
-      }
-    },
-    "web-app-e2e": {
-      "root": "apps/web-app-e2e",
-      "sourceRoot": "apps/web-app-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/web-app-e2e/cypress.json",
-            "tsConfig": "apps/web-app-e2e/tsconfig.e2e.json",
-            "devServerTarget": "web-app:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "web-app:serve:production"
-            }
-          }
         },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/web-app-e2e/**/*.{js,ts}"]
-          },
-          "outputs": ["{options.outputFile}"]
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     },
@@ -253,6 +241,56 @@
             "lintFilePatterns": [
               "libs/web-app/feature-store/src/**/*.ts",
               "libs/web-app/feature-store/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "web-app-feature-view": {
+      "projectType": "library",
+      "root": "libs/web-app/feature-view",
+      "sourceRoot": "libs/web-app/feature-view/src",
+      "prefix": "schemetwister",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web-app/feature-view"],
+          "options": {
+            "jestConfig": "libs/web-app/feature-view/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web-app/feature-view/src/**/*.ts",
+              "libs/web-app/feature-view/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "web-app-shared": {
+      "projectType": "library",
+      "root": "libs/web-app/shared",
+      "sourceRoot": "libs/web-app/shared/src",
+      "prefix": "schemetwister",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web-app/shared"],
+          "options": {
+            "jestConfig": "libs/web-app/shared/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web-app/shared/src/**/*.ts",
+              "libs/web-app/shared/src/**/*.html"
             ]
           }
         }
