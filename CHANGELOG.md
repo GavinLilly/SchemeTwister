@@ -1,3 +1,10 @@
+## [3.6.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.6.0...v3.6.1) (2023-07-19)
+
+
+### Dependencies
+
+* **deps:** bump word-wrap from 1.2.3 to 1.2.4 ([13401ee](https://github.com/GavinLilly/SchemeTwister/commit/13401eeb25fa99f0cb5ee82fbd69e6979eeb1da3))
+
 ## [3.6.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.5.1...v3.6.0) (2023-05-12)
 
 
