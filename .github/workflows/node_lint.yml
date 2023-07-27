@@ -5,7 +5,7 @@ name: Node.js Lint
 
 on:
   pull_request:
-    branches: [master]
+    branches: [main]
 
 jobs:
   build:
@@ -32,5 +32,5 @@ jobs:
           node-version: ${{ matrix.node }}
       - run: npm ci
       - run: npm run build-version
-      - run: npm run affected:build -- --base=origin/master
-      - run: npm run affected:lint -- --base=origin/master
+      - run: npm run affected:build -- --base=origin/main
+      - run: npm run affected:lint -- --base=origin/main
