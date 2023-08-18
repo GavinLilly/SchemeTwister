@@ -40,7 +40,7 @@ export class RequireHeroNameInAdditionalDeckScheme extends Scheme {
     const pickedHero = store.heroStore.getOne(hero.id);
 
     partialAdditionalDeck.heroes = Scheme.addToDeck(
-      partialAdditionalDeck.heroes,
+      partialAdditionalDeck.heroes ?? [],
       pickedHero,
       this.rules[numPlayers].additionalDeck?.deck?.numHeroes
     );

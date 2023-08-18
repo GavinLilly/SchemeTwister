@@ -37,7 +37,7 @@ export class TheDarkPhoenixSagaScheme extends RequireVillainsInVillainDeckScheme
     const pickedHero = store.heroStore.getOne(hero.id);
 
     partialVillainDeck.heroes = Scheme.addToDeck(
-      partialVillainDeck.heroes,
+      partialVillainDeck.heroes ?? [],
       pickedHero,
       this.rules[numPlayers].villainDeck.numHeroes
     );

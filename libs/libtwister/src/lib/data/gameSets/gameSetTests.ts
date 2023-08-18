@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+/* eslint-disable max-nested-callbacks */
 import { GameSet, CardType, AllCardTypes } from '../../model';
 
 export function gameSetTest(

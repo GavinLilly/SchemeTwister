@@ -29,7 +29,7 @@ export class RequireHeroNameInVillainDeckScheme extends Scheme {
       hero.name.toLowerCase().includes(this._heroName.toLowerCase())
     );
 
-    if (heroes.length == 0) {
+    if (heroes.length === 0) {
       throw new Error(
         `No card with ${this._heroName} in it's name is available to be selected`
       );
@@ -40,7 +40,7 @@ export class RequireHeroNameInVillainDeckScheme extends Scheme {
     const pickedHero = store.heroStore.getOne(hero.id);
 
     partialAdditionalDeck.heroes = Scheme.addToDeck(
-      partialAdditionalDeck.heroes,
+      partialAdditionalDeck.heroes ?? [],
       pickedHero,
       this.rules[numPlayers].additionalDeck?.deck?.numHeroes
     );

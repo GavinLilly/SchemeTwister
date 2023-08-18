@@ -29,13 +29,9 @@ export class RequireVillainInAdditionalDeckScheme extends Scheme {
   ): IGameSetup {
     const villain = store.villainStore.getOne(this._requiredVillain.id);
 
-    if (
-      this.rules[numPlayers].additionalDeck &&
-      this.rules[numPlayers].additionalDeck?.deck &&
-      this.rules[numPlayers].additionalDeck?.deck?.numVillainGroups
-    ) {
+    if (this.rules[numPlayers].additionalDeck?.deck?.numVillainGroups) {
       partialAdditionalDeck.villains = Scheme.addToDeck(
-        partialAdditionalDeck.villains,
+        partialAdditionalDeck.villains ?? [],
         villain,
         this.rules[numPlayers].additionalDeck?.deck?.numVillainGroups
       );

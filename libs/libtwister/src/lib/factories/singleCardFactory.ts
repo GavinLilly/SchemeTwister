@@ -9,7 +9,7 @@ export class SingleCardFactory<T extends IPlayableObject> {
   private readonly _excludedCardIds: Set<string>;
 
   constructor(allCards: T[], excludedCardIds?: string[]) {
-    if (allCards.length == 0) {
+    if (allCards.length === 0) {
       throw new Error('Empty array of records not allowed');
     }
 

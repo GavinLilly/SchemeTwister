@@ -75,6 +75,7 @@ export class GameSet implements IGameSetMeta {
    * @param cardType the type of card to get
    * @returns an array of cards
    */
+  // eslint-disable-next-line complexity
   public get(cardType?: CardType): AllCardTypes[] | undefined {
     if (cardType === undefined) {
       return [

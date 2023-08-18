@@ -35,7 +35,7 @@ export class RequireTeamInHeroDeckScheme extends Scheme {
     const heroPicked = store.heroStore.getOne(hero.id);
 
     partialHeroDeck.heroes = Scheme.addToDeck(
-      partialHeroDeck.heroes,
+      partialHeroDeck.heroes ?? [],
       heroPicked,
       this.rules[numPlayers].heroDeck.numHeroes
     );

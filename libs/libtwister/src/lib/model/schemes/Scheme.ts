@@ -141,60 +141,57 @@ export class Scheme implements IPlayableObject {
   /**
    * Adds the provided card to the provided deck, checking to make sure the new
    * deck size does not exceed the configured maximum.
-   * @param existingCards the deck of cards to add to
+   * @param deck the deck of cards to add to
    * @param card the card to add to the deck
    * @param maxLength the maximum size of the deck
    */
   protected static addToDeck<T extends IPlayableObject>(
-    existingCards: T[] | undefined,
+    deck: T[],
     card: T,
     maxLength?: number
   ): T[];
   /**
    * Adds the provided cards to the provided deck, checking to make sure the new
    * deck size does not exceed the configured maximum.
-   * @param existingCards the deck of cards to add to
+   * @param deck the deck of cards to add to
    * @param card the card to add to the deck
    * @param maxLength the maximum size of the deck
    * @param extraCards an array of additional cards to add to the deck
    */
   protected static addToDeck<T extends IPlayableObject>(
-    existingCards: T[] | undefined,
+    deck: T[],
     card: T,
     maxLength?: number,
     ...extraCards: T[]
   ): T[];
   protected static addToDeck<T extends IPlayableObject>(
-    existingCards: T[] | undefined,
+    deck: T[],
     card: T,
     maxLength?: number,
     ...extraCards: T[]
   ): T[] {
-    const cards: T[] = [card, ...extraCards];
-
-    if (existingCards === undefined) {
-      return cards;
-    }
-
-    const newDeck = Array.from(existingCards);
+    const cardsToAdd: T[] = [card, ...extraCards];
+    const newDeck = [...deck, ...cardsToAdd];
 
     if (maxLength === undefined) {
       return newDeck;
     }
 
-    if (cards.length > maxLength) {
+    if (cardsToAdd.length > maxLength) {
       throw new Error(
-        "The number of cards to add can't be more than the maximum length of the array"
+        `The number of cards to add (${cardsToAdd.length}) can't be more than the maximum length of the array (${maxLength})`
       );
     }
 
-    if (cards.length > maxLength - existingCards.length) {
+    if (cardsToAdd.length > maxLength - deck.length) {
       throw new Error(
-        "The number of cards to add can't be more than the amount of space in the array"
+        `The number of cards to add (${
+          cardsToAdd.length
+        }) can't be more than the amount of space in the array (${
+          maxLength - deck.length
+        })`
       );
     }
-
-    newDeck.push(...cards);
 
     if (newDeck.length >= maxLength) {
       newDeck.splice(0, newDeck.length - maxLength);
@@ -492,10 +489,7 @@ export class Scheme implements IPlayableObject {
       scheme: this,
       heroDeck: {
         heroes: [],
-        numBystanders:
-          heroRules.numBystanders !== undefined
-            ? heroRules.numBystanders
-            : undefined,
+        numBystanders: heroRules.numBystanders ?? undefined,
         ...partialHeroDeck,
       },
       villainDeck: {

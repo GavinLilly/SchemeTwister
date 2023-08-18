@@ -27,7 +27,7 @@ export class RequireHeroInVillainDeckScheme extends Scheme {
     const hero = store.heroStore.getOne(this.requiredHero.id);
 
     partialVillainDeck.heroes = Scheme.addToDeck(
-      partialVillainDeck.heroes,
+      partialVillainDeck.heroes ?? [],
       hero,
       this.rules[numPlayers].villainDeck.numHeroes
     );

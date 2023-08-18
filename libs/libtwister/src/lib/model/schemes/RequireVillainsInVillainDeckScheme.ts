@@ -50,19 +50,14 @@ export class RequireVillainsInVillainDeckScheme extends Scheme {
       store.villainStore.getOne(villain.id)
     );
 
-    partialVillainDeck.villains =
-      villains.length > 1
-        ? Scheme.addToDeck(
-            partialVillainDeck.villains,
-            villains[0],
-            this.rules[numPlayers].villainDeck.numVillainGroups,
-            ...villains.slice(1)
-          )
-        : Scheme.addToDeck(
-            partialVillainDeck.villains,
-            villains[0],
-            this.rules[numPlayers].villainDeck.numVillainGroups
-          );
+    const extraVillains = villains.length > 1 ? villains.slice(1) : [];
+
+    partialVillainDeck.villains = Scheme.addToDeck(
+      partialVillainDeck.villains ?? [],
+      villains[0],
+      this.rules[numPlayers].villainDeck.numVillainGroups,
+      ...extraVillains
+    );
 
     if (this._removeOthers) {
       this._requiredVillains

@@ -48,19 +48,14 @@ export class RequireHeroNameInHeroDeckScheme extends Scheme {
 
     heroes.forEach((hero) => store.heroStore.removeCard(hero.id));
 
-    partialHeroDeck.heroes =
-      pickedHeroes.length > 1
-        ? Scheme.addToDeck(
-            partialHeroDeck.heroes,
-            pickedHeroes[0],
-            this.rules[numPlayers].heroDeck.numHeroes,
-            ...pickedHeroes.slice(1)
-          )
-        : Scheme.addToDeck(
-            partialHeroDeck.heroes,
-            pickedHeroes[0],
-            this.rules[numPlayers].heroDeck.numHeroes
-          );
+    const extraHeroes = pickedHeroes.length > 1 ? pickedHeroes.slice(1) : [];
+
+    partialHeroDeck.heroes = Scheme.addToDeck(
+      partialHeroDeck.heroes ?? [],
+      pickedHeroes[0],
+      this.rules[numPlayers].heroDeck.numHeroes,
+      ...extraHeroes
+    );
 
     if (this._removeOthers) {
       heroes

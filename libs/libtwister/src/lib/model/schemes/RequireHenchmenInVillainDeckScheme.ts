@@ -27,7 +27,7 @@ export class RequireHenchmenInVillainDeckScheme extends Scheme {
     const henchmen = store.henchmenStore.getOne(this._requiredHenchmen.id);
 
     partialVillainDeck.henchmen = Scheme.addToDeck(
-      partialVillainDeck.henchmen,
+      partialVillainDeck.henchmen ?? [],
       henchmen,
       this.rules[numPlayers].villainDeck.numHenchmenGroups
     );

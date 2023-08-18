@@ -36,7 +36,7 @@ export class HouseOfMScheme extends RequireHeroInVillainDeckScheme {
     );
 
     partialHeroDeck.heroes = Scheme.addToDeck(
-      partialHeroDeck.heroes,
+      partialHeroDeck.heroes ?? [],
       otherHeroes[0],
       this.rules[numPlayers].heroDeck.numHeroes,
       otherHeroes[1],
