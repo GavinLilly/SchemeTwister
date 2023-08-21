@@ -30,4 +30,8 @@ export abstract class AbstractCardGroup implements IPlayableObject, ICardType {
   get keywords() {
     return this._keywords;
   }
+
+  public toString(): string {
+    return this.name;
+  }
 }

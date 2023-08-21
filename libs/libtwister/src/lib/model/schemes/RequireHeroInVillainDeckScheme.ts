@@ -11,7 +11,7 @@ import { NumPlayers, SchemeMinusRules } from '../types';
 import { Scheme } from './Scheme';
 
 export class RequireHeroInVillainDeckScheme extends Scheme {
-  constructor(scheme: SchemeMinusRules, protected requiredHero: Hero) {
+  constructor(scheme: SchemeMinusRules, protected _requiredHero: Hero) {
     super(scheme);
   }
 
@@ -24,7 +24,7 @@ export class RequireHeroInVillainDeckScheme extends Scheme {
     partialVillainDeck: VillainDeckMinimal = {},
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
   ): IGameSetup {
-    const hero = store.heroStore.getOne(this.requiredHero.id);
+    const hero = store.heroStore.getOne(this._requiredHero.id);
 
     partialVillainDeck.heroes = Scheme.addToDeck(
       partialVillainDeck.heroes ?? [],

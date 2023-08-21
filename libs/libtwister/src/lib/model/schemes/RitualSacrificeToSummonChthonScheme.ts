@@ -14,6 +14,9 @@ import {
 
 import { RequireVillainsInVillainDeckScheme } from './RequireVillainsInVillainDeckScheme';
 
+/**
+ * This scheme class checks if Lilith is the mastermind and if so it sets the number of twists to 1.
+ */
 export class RitualSacrificeToSummonChthonScheme extends RequireVillainsInVillainDeckScheme {
   constructor(
     scheme: SchemeMinusRules,

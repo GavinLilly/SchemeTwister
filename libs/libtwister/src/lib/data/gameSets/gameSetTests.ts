@@ -23,7 +23,7 @@ export function gameSetTest(
       let cards: AllCardTypes[];
 
       beforeAll(() => {
-        cards = gameSet.get(cardType) || [];
+        cards = gameSet.getCards(cardType) || [];
       });
 
       it(`should have ${numCards} cards`, () =>

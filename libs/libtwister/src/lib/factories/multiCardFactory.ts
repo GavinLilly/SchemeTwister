@@ -11,17 +11,18 @@ export class MultiCardFactory<
 > extends SingleCardFactory<T> {
   /**
    * Gets a number of random cards from the list of filtered cards while also
-   * removing those carsd from the record so they can't be selected later
+   * removing those cards from the record so they can't be selected later
    * @param count the number of cards to get
+   * @param func an optional function for filtering the cards to randomize from
    * @returns an array of cards
    */
   public getManyRandom(count: number, func?: (card: T) => boolean): T[] {
     try {
-      if (func === undefined) {
-        return randomize(this.availableCards, count);
-      } else {
+      if (func !== undefined) {
         return randomize(this.availableCards.filter(func), count);
       }
+
+      return randomize(this.availableCards, count);
     } catch (e) {
       if (e instanceof RangeError) {
         throw e;
@@ -46,10 +47,11 @@ Number of available cards: ${this.availableCards.length}`
     ids.forEach((id) => {
       const card = this.getOne(id);
 
-      if (card) {
+      if (card !== undefined) {
         cards.push(card);
       }
     });
+
     return cards;
   }
 }

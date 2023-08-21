@@ -65,6 +65,20 @@ describe('Single Card Factory', () => {
 
     it('should give 1 random card', () =>
       expect(instance.getOneRandom()).toBeTruthy());
+
+    it("should give 1 random card, provided it's a DC card", () => {
+      const selected = instance.getOneRandom((card) =>
+        card.name.startsWith('DC')
+      );
+      expect(selected).toBeTruthy();
+      expect(selected.name).toContain('DC');
+    });
+
+    it('should get the DC1 card', () =>
+      expect(instance.getOne(dcData[0].id)).toBeDefined());
+
+    it("should return 'LegCard'", () =>
+      expect(instance.getStoreType()).toEqual('LegCard'));
   });
 
   describe('with no cards', () => {

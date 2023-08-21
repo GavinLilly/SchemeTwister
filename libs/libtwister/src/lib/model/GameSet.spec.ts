@@ -1,4 +1,8 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { LEGENDARY } from '../data/gameSets';
+
 import { GameSet } from './GameSet';
+import { Bystander } from './cards';
 import { GameSetSize } from './gameSetSize.enum';
 import { Series } from './series.enum';
 
@@ -48,5 +52,34 @@ describe('GameSet', () => {
       expect(GameSet.sorter(firstBox, firstBox)).toBe(0);
     });
   });
-  it('Empty gameset', () => expect(GameSet.empty()).toBeInstanceOf(GameSet));
+  it('Empty gameset', () => {
+    const empty = GameSet.empty();
+    expect(empty).toBeInstanceOf(GameSet);
+    expect(empty.name).toBe('EMPTY GAME SET');
+  });
+
+  describe('getCards', () => {
+    it('should return all cards', () => {
+      const cards = LEGENDARY.GAME_SET.getCards();
+
+      expect(cards).toBeDefined();
+      expect(cards).toBeInstanceOf(Array);
+      expect(cards).toEqual(
+        expect.arrayContaining(LEGENDARY.GAME_SET.bystanders as Bystander[])
+      );
+      expect(cards).toEqual(
+        expect.arrayContaining(LEGENDARY.GAME_SET.schemes!)
+      );
+      expect(cards).toEqual(
+        expect.arrayContaining(LEGENDARY.GAME_SET.henchmen!)
+      );
+      expect(cards).toEqual(expect.arrayContaining(LEGENDARY.GAME_SET.heroes));
+      expect(cards).toEqual(
+        expect.arrayContaining(LEGENDARY.GAME_SET.masterminds!)
+      );
+      expect(cards).toEqual(
+        expect.arrayContaining(LEGENDARY.GAME_SET.villains!)
+      );
+    });
+  });
 });

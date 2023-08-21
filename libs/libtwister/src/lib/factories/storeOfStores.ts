@@ -16,18 +16,11 @@ export class StoreOfStores {
   private _villainStore!: MultiCardStore<VillainGroup>;
   private _henchmenStore!: MultiCardStore<Henchmen>;
 
-  constructor();
   constructor(
     heroes: Hero[],
     masterminds: Mastermind[],
     villains: VillainGroup[],
     henchmen: Henchmen[]
-  );
-  constructor(
-    heroes: Hero[] = [],
-    masterminds: Mastermind[] = [],
-    villains: VillainGroup[] = [],
-    henchmen: Henchmen[] = []
   ) {
     this._heroStore = new MultiCardStore(heroes);
     this._mastermindStore = new MultiCardStore(masterminds);

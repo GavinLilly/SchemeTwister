@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { GAME_SET as DARK_CITY } from './data/gameSets/darkCity';
+import { GAME_SET as INTO_THE_COSMOS } from './data/gameSets/intoTheCosmos';
 import { GAME_SET as LEGENDARY } from './data/gameSets/legendary';
 import { GAME_SET as MARVEL_STUDIOS } from './data/gameSets/marvelStudios';
 import { GAME_SET as MCU_GUARDIANS_OF_THE_GALAXY } from './data/gameSets/mcuGuardiansOfTheGalaxy';
@@ -8,6 +9,7 @@ import {
   EPIC_EGO_THE_LIVING_PLANET,
 } from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.masterminds';
 import { UNLEASH_THE_ABILISK_SPACE_MONSTER } from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.schemes';
+import { GAME_SET as XMEN } from './data/gameSets/xMen';
 import { LibTwister } from './libTwister';
 import { CardType, GameSetSize, IPlayableObject, NumPlayers } from './model';
 
@@ -61,7 +63,7 @@ describe('LibTwister', () => {
       allGamesets.forEach((gameSet) => {
         // Get all card types from the gameset
         for (const cardType of Object.values(CardType)) {
-          const cards = gameSet.get(cardType);
+          const cards = gameSet.getCards(cardType);
           // Push it into our array
           if (cards !== undefined) {
             allCards.push(...cards);
@@ -258,6 +260,63 @@ describe('LibTwister', () => {
           expect(setup?.villainDeck.villains).toHaveLength(4);
         });
       });
+
+      it('should have Marvel Studios and MCU Guardians of the Galaxy game sets', () => {
+        const guardiansId = MCU_GUARDIANS_OF_THE_GALAXY.id;
+        const marvelStudiosId = MARVEL_STUDIOS.id;
+
+        const instance = LibTwister.of(guardiansId, marvelStudiosId);
+        const ids = instance.selectedGameSets.map((gameSet) => gameSet.id);
+
+        expect(instance.selectedGameSets).toHaveLength(2);
+        expect(ids).toContain(guardiansId);
+        expect(ids).toContain(marvelStudiosId);
+      });
     });
+  });
+
+  describe('with no game set IDs', () => {
+    it('should create a LibTwister instance with all Game Sets', () =>
+      expect(LibTwister.of().selectedGameSets).toHaveLength(34));
+  });
+
+  describe('gameSetIdToGameSet', () => {
+    it('should return the Marvel Studios game set', () => {
+      const gameSet = LibTwister.gameSetIdToGameSet(MARVEL_STUDIOS.id);
+      expect(gameSet).toBeDefined();
+      expect(gameSet?.name).toBe(MARVEL_STUDIOS.name);
+    });
+
+    it('should return undefined', () => {
+      expect(LibTwister.gameSetIdToGameSet('')).toBeUndefined();
+      expect(LibTwister.gameSetIdToGameSet('FOOBAR')).toBeUndefined();
+    });
+  });
+
+  describe('validateGameSetIds', () => {
+    it('should return true for a core and medium size game set IDs', () =>
+      expect(
+        LibTwister.validateGameSetIds([LEGENDARY.id, INTO_THE_COSMOS.id])
+      ).toBe(true));
+
+    it('should return true for a single large set', () =>
+      expect(LibTwister.validateGameSetIds([XMEN.id])).toBe(true));
+
+    it('should return false for a single medium set', () =>
+      expect(LibTwister.validateGameSetIds([INTO_THE_COSMOS.id])).toBe(false));
+
+    it('should return false for a single small set', () =>
+      expect(
+        LibTwister.validateGameSetIds([MCU_GUARDIANS_OF_THE_GALAXY.id])
+      ).toBe(false));
+
+    it('should return false for a non-valid game set id', () =>
+      expect(LibTwister.validateGameSetIds(['FOOBAR'])).toBe(false));
+
+    it('should return false for an empty string game set id', () =>
+      expect(LibTwister.validateGameSetIds([''])).toBe(false));
+
+    it('should return false for an empty game set ID array', () =>
+      expect(LibTwister.validateGameSetIds([])).toBe(false));
   });
 });

@@ -76,7 +76,7 @@ export class GameSet implements IGameSetMeta {
    * @returns an array of cards
    */
   // eslint-disable-next-line complexity
-  public get(cardType?: CardType): AllCardTypes[] | undefined {
+  public getCards(cardType?: CardType): AllCardTypes[] | undefined {
     if (cardType === undefined) {
       return [
         ...(this.bystanders ?? []),

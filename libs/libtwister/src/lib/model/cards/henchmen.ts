@@ -1,7 +1,7 @@
 import { CardType } from '../cardType.enum';
-import { ICardType, IFightable, IPlayableObject } from '../interfaces';
+import { IFightable } from '../interfaces';
 
-import { AbstractFightableCardGroup } from './fightableCardGroup';
+import { AbstractFightableCardGroup } from './abstractFightableCardGroup';
 
 interface IHenchmen extends IFightable {
   fight: string;
@@ -39,8 +39,4 @@ export class Henchmen extends AbstractFightableCardGroup implements IHenchmen {
   get ability() {
     return this._ability;
   }
-
-  public static isHenchmen = (
-    card: (IPlayableObject & ICardType) | undefined
-  ): card is Henchmen => card?.cardType === CardType.HENCHMEN;
 }

@@ -22,7 +22,9 @@ import {
   MAXIMUM_CARNAGE,
   SINISTER_SIX,
 } from '../data/gameSets/paintTheTownRed/paintTheTownRed.villains';
+import { MUTATING_GAMMA_RAYS } from '../data/gameSets/worldWarHulk/worldWarHulk.schemes';
 import { StoreBuilder, StoreOfStores } from '../factories';
+import instantiateScheme from '../utils/instantiateScheme';
 
 import { GameSetup } from './GameSetup';
 import { LiteGameSetup } from './liteGameSetup';
@@ -54,22 +56,68 @@ describe('GameSetup', () => {
       ) as GameSetup;
     });
 
-    describe('getSelectedHeroes()', () => {
-      it('should have 5 heroes', () =>
-        expect(setup.getSelectedHeroes()).toHaveLength(5));
+    it('should have 5 heroes', () =>
+      expect(setup.getSelectedHeroes()).toHaveLength(5));
 
-      it('should have 1 henchmen group', () =>
-        expect(setup.getSelectedHenchmen()).toHaveLength(1));
+    it('should have 1 henchmen group', () =>
+      expect(setup.getSelectedHenchmen()).toHaveLength(1));
 
-      it('should have 2 villain groups', () =>
-        expect(setup.getSelectedVillains()).toHaveLength(2));
+    it('should have 2 villain groups', () =>
+      expect(setup.getSelectedVillains()).toHaveLength(2));
 
-      it('should have 1 mastermind', () =>
-        expect(setup.getSelectedMasterminds()).toHaveLength(1));
+    it('should have 1 mastermind', () =>
+      expect(setup.getSelectedMasterminds()).toHaveLength(1));
+
+    it('toString', () => {
+      const {
+        numPlayers,
+        scheme,
+        mastermind,
+        heroDeck,
+        villainDeck,
+        additionalDeck,
+      } = JSON.parse(setup.toString());
+      expect(numPlayers).toBe(2);
+      expect(scheme).toBe(MIDTOWN_BANK_ROBBERY.name);
+      expect(mastermind).toBe(setup.mastermind.name);
+      expect(heroDeck).toEqual(
+        expect.arrayContaining(setup.heroDeck.heroes.map((hero) => hero.name))
+      );
+      expect(villainDeck).toEqual(
+        expect.arrayContaining(
+          setup.villainDeck.henchmen.map((henchmen) => henchmen.name)
+        )
+      );
+      expect(villainDeck).toEqual(
+        expect.arrayContaining(
+          setup.villainDeck.villains.map((villains) => villains.name)
+        )
+      );
+      expect(additionalDeck).toHaveLength(0);
     });
   });
 
-  describe("with Replace Earth's Leaders with Killbots", () => {
+  describe('Mutating Gamma Rays', () => {
+    const scheme = instantiateScheme(MUTATING_GAMMA_RAYS);
+    const store = new StoreBuilder()
+      .withHeroGamesets(LEGENDARY)
+      .withMastermindGamesets(LEGENDARY)
+      .withVillainGamesets(LEGENDARY)
+      .withHenchmenGamesets(LEGENDARY)
+      .build();
+
+    const setup = scheme.getSetup(
+      2,
+      store.mastermindStore.getOneRandom(),
+      store
+    ) as GameSetup;
+
+    const { additionalDeck } = JSON.parse(setup.toString());
+
+    expect(additionalDeck).toEqual(expect.arrayContaining(['Hulk']));
+  });
+
+  describe('with "Replace Earth\'s Leaders with Killbots"', () => {
     let setup: GameSetup;
 
     beforeAll(() => {

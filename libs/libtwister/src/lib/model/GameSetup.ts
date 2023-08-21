@@ -124,13 +124,7 @@ export class GameSetup implements IGameSetup {
    * @returns an array of Heroes and Henchmen
    */
   public heroDeckAsArray(): (Hero | Henchmen)[] {
-    const response: (Hero | Henchmen)[] = this.heroDeck.heroes;
-
-    if (this.heroDeck.henchmen) {
-      response.push(...this.heroDeck.henchmen);
-    }
-
-    return response;
+    return [...this.heroDeck.heroes, ...(this.heroDeck.henchmen ?? [])];
   }
 
   /**
@@ -138,20 +132,12 @@ export class GameSetup implements IGameSetup {
    * @returns an array of Heroes, Henchmen, Villain groups and Masterminds
    */
   public villainDeckAsArray(): VillainAdditionalDeckCards[] {
-    const response: VillainAdditionalDeckCards[] = [
+    return [
       ...this.villainDeck.henchmen,
       ...this.villainDeck.villains,
+      ...(this.villainDeck.masterminds ?? []),
+      ...(this.villainDeck.heroes ?? []),
     ];
-
-    if (this.villainDeck.masterminds) {
-      response.push(...this.villainDeck.masterminds);
-    }
-
-    if (this.villainDeck.heroes) {
-      response.push(...this.villainDeck.heroes);
-    }
-
-    return response;
   }
 
   /**
@@ -159,22 +145,16 @@ export class GameSetup implements IGameSetup {
    * @returns an array of Heroes, Henchmen, Villain groups and Masterminds
    */
   public additionalDeckAsArray(): VillainAdditionalDeckCards[] {
-    if (!this.additionalDeck) {
+    if (this.additionalDeck === undefined) {
       return [];
     }
 
-    const deck = this.additionalDeck.deck;
-    const response: VillainAdditionalDeckCards[] = [];
-
-    [deck.henchmen, deck.heroes, deck.masterminds, deck.villains].forEach(
-      (cards) => {
-        if (cards) {
-          response.push(...cards);
-        }
-      }
-    );
-
-    return response;
+    return [
+      ...(this.additionalDeck.deck.henchmen ?? []),
+      ...(this.additionalDeck.deck.heroes ?? []),
+      ...(this.additionalDeck.deck.masterminds ?? []),
+      ...(this.additionalDeck.deck.villains ?? []),
+    ];
   }
 
   /**

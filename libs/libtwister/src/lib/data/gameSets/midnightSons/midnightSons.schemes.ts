@@ -7,6 +7,7 @@ import { MOONLIGHT_AND_SUNLIGHT } from '../theNewMutants/theNewMutants.keywords'
 
 import { BLOOD_FRENZY, HUNT_FOR_VICTIMS } from './midnightSons.keywords';
 import { META } from './midnightSons.meta';
+import { LILIN } from './midnightSons.villains';
 
 export const SIRE_VAMPIRES_AT_THE_BLOOD_BANK = new SchemeDefinition({
   id: '35072834-b3dc-4e9f-922d-2adc010b9cac',
@@ -55,6 +56,7 @@ export const RITUAL_SACRIFICE_TO_SUMMON_CHTHON = new SchemeDefinition({
     },
     overrideScheme: {
       schemeType: RitualSacrificeToSummonChthonScheme,
+      params: [LILIN],
     },
   },
   gameSet: META,

@@ -22,8 +22,8 @@ export class RequireHeroNameInVillainDeckScheme extends Scheme {
     store: StoreOfStores,
     advancedSolo?: boolean,
     partialHeroDeck?: HeroDeckMinimal,
-    partialVillainDeck?: VillainDeckMinimal,
-    partialAdditionalDeck: AdditionalDeckDeckMinimal = {}
+    partialVillainDeck: VillainDeckMinimal = {},
+    partialAdditionalDeck?: AdditionalDeckDeckMinimal
   ): IGameSetup {
     const heroes: Hero[] = store.heroStore.availableCards.filter((hero) =>
       hero.name.toLowerCase().includes(this._heroName.toLowerCase())
@@ -39,10 +39,10 @@ export class RequireHeroNameInVillainDeckScheme extends Scheme {
 
     const pickedHero = store.heroStore.getOne(hero.id);
 
-    partialAdditionalDeck.heroes = Scheme.addToDeck(
-      partialAdditionalDeck.heroes ?? [],
+    partialVillainDeck.heroes = Scheme.addToDeck(
+      partialVillainDeck.heroes ?? [],
       pickedHero,
-      this.rules[numPlayers].additionalDeck?.deck?.numHeroes
+      this.rules[numPlayers].villainDeck?.numHeroes
     );
 
     return super.getSetup(

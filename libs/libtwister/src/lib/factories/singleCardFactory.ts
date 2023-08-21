@@ -108,11 +108,11 @@ export class SingleCardFactory<T extends IPlayableObject> {
    * @returns a single card entry
    */
   public getOneRandom(func?: (card: T) => boolean): T {
-    if (func === undefined) {
-      return randomize(this.availableCards, 1)[0];
-    } else {
+    if (func !== undefined) {
       return randomize(this.availableCards.filter(func), 1)[0];
     }
+
+    return randomize(this.availableCards, 1)[0];
   }
 
   /**
@@ -139,9 +139,9 @@ export class SingleCardFactory<T extends IPlayableObject> {
   public isAvailable(item: string | T): boolean {
     if (typeof item === 'string' || item instanceof String) {
       return this.availableCardsMap.get(item as string) !== undefined;
-    } else {
-      return this.availableCards.includes(item);
     }
+
+    return this.availableCards.includes(item);
   }
 
   /**
