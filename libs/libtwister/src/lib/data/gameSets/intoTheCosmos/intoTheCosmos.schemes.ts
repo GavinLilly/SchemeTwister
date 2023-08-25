@@ -1,5 +1,6 @@
 import {
-  RequireHeroInAdditionalDeckScheme,
+  DECK_TYPE,
+  RequireHeroInDeckScheme,
   RequireHeroNameInHeroDeckScheme,
   SchemeDefinition,
 } from '../../../model';
@@ -51,8 +52,8 @@ export const TURN_THE_SOUL_OF_ADAM_WARLOCK = new SchemeDefinition({
       return rule;
     },
     overrideScheme: {
-      schemeType: RequireHeroInAdditionalDeckScheme,
-      params: [ADAM_WARLOCK],
+      schemeType: RequireHeroInDeckScheme,
+      params: [ADAM_WARLOCK, DECK_TYPE.ADDITIONAL],
     },
   },
   gameSet: META,

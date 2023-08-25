@@ -1,8 +1,8 @@
 import {
-  RequireHenchmenInAdditionalDeckScheme,
-  RequireVillainInAdditionalDeckScheme,
-  RequireHenchmenInVillainDeckScheme,
   SchemeDefinition,
+  RequireHenchmenInDeckScheme,
+  RequireVillainGroupInDeckScheme,
+  DECK_TYPE,
 } from '../../../model';
 
 import { COPS, SHIELD_ASSAULT_SQUAD } from './villains.henchmen';
@@ -46,8 +46,8 @@ export const CAGE_VILLAINS_IN_POWERSUPPRESSING_CELLS = new SchemeDefinition({
       return rule;
     },
     overrideScheme: {
-      schemeType: RequireHenchmenInAdditionalDeckScheme,
-      params: [COPS],
+      schemeType: RequireHenchmenInDeckScheme,
+      params: [COPS, DECK_TYPE.ADDITIONAL],
     },
   },
   gameSet: META,
@@ -73,8 +73,8 @@ export const CROWN_THOR_KING_OF_ASGARD = new SchemeDefinition({
       return rule;
     },
     overrideScheme: {
-      schemeType: RequireVillainInAdditionalDeckScheme,
-      params: [AVENGERS],
+      schemeType: RequireVillainGroupInDeckScheme,
+      params: [AVENGERS, DECK_TYPE.ADDITIONAL],
     },
   },
   gameSet: META,
@@ -150,8 +150,8 @@ export const MASS_PRODUCE_WAR_MACHINE_ARMOR = new SchemeDefinition({
   meta: {
     numTwists: 8,
     overrideScheme: {
-      schemeType: RequireHenchmenInVillainDeckScheme,
-      params: [SHIELD_ASSAULT_SQUAD],
+      schemeType: RequireHenchmenInDeckScheme,
+      params: [SHIELD_ASSAULT_SQUAD, DECK_TYPE.VILLAIN],
     },
   },
   gameSet: META,

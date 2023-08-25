@@ -1,9 +1,10 @@
 import {
-  RequireHenchmenInAdditionalDeckScheme,
   RequireHeroNameInHeroDeckScheme,
   RequireHeroNameInAdditionalDeckScheme,
   IOverrideScheme,
   SchemeDefinition,
+  RequireHenchmenInDeckScheme,
+  DECK_TYPE,
 } from '../../../model';
 
 import { CYTOPLASM_SPIKES } from './worldWarHulk.henchmen';
@@ -52,8 +53,8 @@ export const CYTOPLASM_SPIKE_INVASION = new SchemeDefinition({
       return rule;
     },
     overrideScheme: {
-      schemeType: RequireHenchmenInAdditionalDeckScheme,
-      params: [CYTOPLASM_SPIKES],
+      schemeType: RequireHenchmenInDeckScheme,
+      params: [CYTOPLASM_SPIKES, DECK_TYPE.ADDITIONAL],
     },
   },
   gameSet: META,

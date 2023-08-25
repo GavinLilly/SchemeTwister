@@ -1,7 +1,8 @@
 import {
-  RequireHenchmenInVillainDeckScheme,
   TheDarkPhoenixSagaScheme,
   SchemeDefinition,
+  RequireHenchmenInDeckScheme,
+  DECK_TYPE,
 } from '../../../model';
 import { JEAN_GREY } from '../darkCity/darkCity.heroes';
 import { SENTINELS } from '../legendary/legendary.henchmen';
@@ -31,8 +32,8 @@ export const ALIEN_BROOD_ENCOUNTER = new SchemeDefinition({
       return rule;
     },
     overrideScheme: {
-      schemeType: RequireHenchmenInVillainDeckScheme,
-      params: [THE_BROOD],
+      schemeType: RequireHenchmenInDeckScheme,
+      params: [THE_BROOD, DECK_TYPE.VILLAIN],
     },
   },
   gameSet: META,
@@ -105,8 +106,8 @@ export const MUTANT_HUNTING_SUPER_SENTINELS = new SchemeDefinition({
       return rule;
     },
     overrideScheme: {
-      schemeType: RequireHenchmenInVillainDeckScheme,
-      params: [SENTINELS],
+      schemeType: RequireHenchmenInDeckScheme,
+      params: [SENTINELS, DECK_TYPE.VILLAIN],
     },
   },
   gameSet: META,

@@ -1,18 +1,22 @@
 import { X_MEN } from '../../data/teams';
 import { StoreOfStores } from '../../factories';
-import { Mastermind } from '../cards';
+import { Hero, Mastermind } from '../cards';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IGameSetup,
   VillainDeckMinimal,
 } from '../interfaces';
-import { NumPlayers } from '../types';
+import { DECK_TYPE, NumPlayers, SchemeMinusRules } from '../types';
 
-import { RequireHeroInVillainDeckScheme } from './RequireHeroInVillainDeckScheme';
 import { Scheme } from './Scheme';
+import { RequireHeroInDeckScheme } from './requireHeroInDeckScheme';
 
-export class HouseOfMScheme extends RequireHeroInVillainDeckScheme {
+export class HouseOfMScheme extends RequireHeroInDeckScheme {
+  constructor(scheme: SchemeMinusRules, required: Hero) {
+    super(scheme, required, DECK_TYPE.VILLAIN);
+  }
+
   public override getSetup(
     numPlayers: NumPlayers,
     selectedMastermind: Mastermind,
@@ -28,7 +32,7 @@ export class HouseOfMScheme extends RequireHeroInVillainDeckScheme {
     );
     const otherHeroes = store.heroStore.getManyRandom(
       2,
-      (hero) => hero.team !== X_MEN && hero !== this.requiredHero
+      (hero) => hero.team !== X_MEN && hero !== this.required
     );
 
     partialHeroDeck.heroes = Scheme.addToDeck(

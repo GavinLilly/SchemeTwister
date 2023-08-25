@@ -1,6 +1,7 @@
 import {
-  RequireHenchmenInVillainDeckScheme,
-  RequireHeroInVillainDeckScheme,
+  DECK_TYPE,
+  RequireHenchmenInDeckScheme,
+  RequireHeroInDeckScheme,
   SchemeDefinition,
 } from '../../../model';
 import { HeroClass } from '../../enums';
@@ -65,8 +66,8 @@ export const ORGANIZED_CRIME_WAVE = new SchemeDefinition({
   meta: {
     numTwists: 8,
     overrideScheme: {
-      schemeType: RequireHenchmenInVillainDeckScheme,
-      params: [MAGGIA_GOONS],
+      schemeType: RequireHenchmenInDeckScheme,
+      params: [MAGGIA_GOONS, DECK_TYPE.VILLAIN],
     },
   },
   gameSet: META,
@@ -130,8 +131,8 @@ export const TRANSFORM_CITIZENS_INTO_DEMONS = new SchemeDefinition({
       return rule;
     },
     overrideScheme: {
-      schemeType: RequireHeroInVillainDeckScheme,
-      params: [JEAN_GREY],
+      schemeType: RequireHeroInDeckScheme,
+      params: [JEAN_GREY, DECK_TYPE.VILLAIN],
     },
   },
   gameSet: META,

@@ -26,7 +26,6 @@ describe('RitualSacrificeToSummonChthonScheme', () => {
       RITUAL_SACRIFICE_TO_SUMMON_CHTHON,
       LILIN
     );
-    console.log('BeforeEach', scheme);
   });
 
   describe('with Lilith as the Mastermind', () => {
