@@ -8,6 +8,5 @@ export { GameSetup } from './GameSetup';
 export { GameSet } from './GameSet';
 export { GameSetSize } from './gameSetSize.enum';
 export { CardType } from './cardType.enum';
-export { Series } from './series.enum';
 export { GameSetMap } from './gameSetMap';
 export { LiteGameSetup } from './liteGameSetup';

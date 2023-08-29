@@ -2,7 +2,7 @@ import { LibTwister } from '../libTwister';
 
 import { GameSetMap } from './gameSetMap';
 import { GameSetSize } from './gameSetSize.enum';
-import { Series } from './series.enum';
+import { SERIES } from './types';
 
 describe('GameSetMap', () => {
   let map: GameSetMap;
@@ -24,7 +24,7 @@ describe('GameSetMap', () => {
 
     it('should only have MCU game sets', () => {
       const sizes = new Set(
-        map.asArray({ series: Series.MCU }).map((gameset) => gameset.series)
+        map.asArray({ series: SERIES.mcu }).map((gameset) => gameset.series)
       );
       expect(sizes.size).toEqual(1);
     });

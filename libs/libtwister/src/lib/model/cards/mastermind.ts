@@ -1,7 +1,7 @@
 import { CardType } from '../cardType.enum';
 import { GameSetSize } from '../gameSetSize.enum';
 import { INumPlayerRules, IFightable } from '../interfaces';
-import { Series } from '../series.enum';
+import { SERIES } from '../types';
 
 import { AbstractFightableCardGroup } from './abstractFightableCardGroup';
 import { Henchmen } from './henchmen';
@@ -58,7 +58,7 @@ export class Mastermind
         id: '4ac65530-33b5-454d-b5c2-74ab0d08b898',
         name: 'EMPTY_GAME_SET',
         releaseYear: 1970,
-        series: Series.MAINLINE,
+        series: SERIES.mainline,
         size: GameSetSize.PROMO,
       },
       name: 'EMPTY_MASTERMIND',

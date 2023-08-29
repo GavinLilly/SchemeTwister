@@ -1,6 +1,6 @@
 import { GameSet } from './GameSet';
 import { GameSetSize } from './gameSetSize.enum';
-import { Series } from './series.enum';
+import { Series } from './types';
 
 /**
  * An extension of a Map specifically for Game Sets.
