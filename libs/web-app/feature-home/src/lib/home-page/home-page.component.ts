@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import {
   Mastermind,
   Henchmen,
@@ -21,7 +22,7 @@ export class HomePageComponent {
   numVillains: number;
   numSchemes: number;
 
-  constructor() {
+  constructor(meta: Meta) {
     const allGameSets = LibTwister.allGameSets.asArray();
     this.numHenchmen = allGameSets
       .map((gameSet) => gameSet.henchmen)
@@ -47,5 +48,11 @@ export class HomePageComponent {
       .map((gameSet) => gameSet.schemes)
       .filter((schemes): schemes is SchemeMinusRules[] => !!schemes)
       .reduce((prev, next) => prev?.concat(next)).length;
+
+    meta.updateTag({
+      name: 'description',
+      content:
+        'Schemetwister is an app for generating random Legendary: Marvel setups',
+    });
   }
 }

@@ -52,7 +52,7 @@ export class SchemeMastermindSelectComponent implements OnInit {
 
   ngOnInit(): void {
     this.numPlayers$.subscribe((value: number) => {
-      if (this.itemType === CARD_TYPE.SCHEME) {
+      if (this.itemType === CARD_TYPE.scheme) {
         if (Number(value) === 1) {
           this.availableItems = this.availableItems.filter(
             (scheme) => !(scheme instanceof SoloBannedScheme)
@@ -62,9 +62,9 @@ export class SchemeMastermindSelectComponent implements OnInit {
     });
 
     this.libTwister$.subscribe((value: LibTwister) => {
-      if (this.itemType === CARD_TYPE.SCHEME) {
+      if (this.itemType === CARD_TYPE.scheme) {
         this.availableItems = value.schemeFactory.availableCards;
-      } else if (this.itemType === CARD_TYPE.MASTERMIND) {
+      } else if (this.itemType === CARD_TYPE.mastermind) {
         this.availableItems = value.stores.mastermindStore.availableCards;
       }
 
@@ -75,16 +75,16 @@ export class SchemeMastermindSelectComponent implements OnInit {
       });
     });
 
-    if (this.itemType === CARD_TYPE.SCHEME) {
+    if (this.itemType === CARD_TYPE.scheme) {
       this._subscribeToDefined(this.definedScheme$);
-    } else if (this.itemType === CARD_TYPE.MASTERMIND) {
+    } else if (this.itemType === CARD_TYPE.mastermind) {
       this._subscribeToDefined(this.definedMastermind$);
     }
   }
 
   setItem(value: string) {
     const item = this.availableItems.find((card) => card.id === value);
-    if (this.itemType === CARD_TYPE.SCHEME) {
+    if (this.itemType === CARD_TYPE.scheme) {
       if (item !== undefined) {
         this._store.dispatch(
           setDefinedScheme({ scheme: item as SchemeMinusRules })
@@ -92,7 +92,7 @@ export class SchemeMastermindSelectComponent implements OnInit {
       } else {
         this._store.dispatch(resetDefinedScheme());
       }
-    } else if (this.itemType === CARD_TYPE.MASTERMIND) {
+    } else if (this.itemType === CARD_TYPE.mastermind) {
       if (item !== undefined) {
         this._store.dispatch(
           setDefinedMastermind({ mastermind: item as Mastermind })

@@ -27,19 +27,19 @@ export class GameSetSelectComponent {
     );
 
   coreSets = this._allGameSets.filter(
-    (item) => item.size === GAME_SET_SIZE.CORE
+    (item) => item.size === GAME_SET_SIZE.core
   );
   lrgSets = this._allGameSets.filter(
-    (item) => item.size === GAME_SET_SIZE.LARGE
+    (item) => item.size === GAME_SET_SIZE.large
   );
   medSets = this._allGameSets.filter(
-    (item) => item.size === GAME_SET_SIZE.MEDIUM
+    (item) => item.size === GAME_SET_SIZE.medium
   );
   smlSets = this._allGameSets.filter(
-    (item) => item.size === GAME_SET_SIZE.SMALL
+    (item) => item.size === GAME_SET_SIZE.small
   );
   promoSets = this._allGameSets.filter(
-    (item) => item.size === GAME_SET_SIZE.PROMO
+    (item) => item.size === GAME_SET_SIZE.promo
   );
 
   constructor(

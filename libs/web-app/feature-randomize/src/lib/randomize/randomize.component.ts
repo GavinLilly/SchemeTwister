@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
@@ -46,8 +47,16 @@ export class RandomizeComponent implements OnInit {
     private _store: Store<{
       numPlayers: INumPlayersState;
       gameSetup: IGameSetupState;
-    }>
-  ) {}
+    }>,
+    meta: Meta
+  ) {
+    this.gameSetup$.subscribe((setup) => {
+      meta.updateTag({
+        name: 'description',
+        content: `Scheme: ${setup.scheme}, Mastermind: ${setup.mastermind}, Number of players: ${setup.numPlayers}`,
+      });
+    });
+  }
 
   ngOnInit(): void {
     this.isAdvancedSolo$.subscribe(

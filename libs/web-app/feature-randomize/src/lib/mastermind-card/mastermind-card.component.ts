@@ -35,6 +35,6 @@ export class MastermindCardComponent {
 
   pickMastermind() {
     const modalRef = this._modalService.open(SchemeMastermindSelectComponent);
-    modalRef.componentInstance.itemType = CARD_TYPE.MASTERMIND;
+    modalRef.componentInstance.itemType = CARD_TYPE.mastermind;
   }
 }
