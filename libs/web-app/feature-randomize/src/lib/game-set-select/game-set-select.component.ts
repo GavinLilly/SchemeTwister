@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import { GameSet, GameSetSize, LibTwister } from '@schemetwister/libtwister';
+import { GameSet, GAME_SET_SIZE, LibTwister } from '@schemetwister/libtwister';
 import { Observable } from 'rxjs';
 
 import { setGameSets } from '../+state/actions/game-sets.actions';
@@ -26,14 +26,20 @@ export class GameSetSelectComponent {
       a.size < b.size ? 1 : a.size > b.size ? -1 : a.name > b.name ? 1 : -1
     );
 
-  coreSets = this._allGameSets.filter((item) => item.size === GameSetSize.CORE);
-  lrgSets = this._allGameSets.filter((item) => item.size === GameSetSize.LARGE);
-  medSets = this._allGameSets.filter(
-    (item) => item.size === GameSetSize.MEDIUM
+  coreSets = this._allGameSets.filter(
+    (item) => item.size === GAME_SET_SIZE.CORE
   );
-  smlSets = this._allGameSets.filter((item) => item.size === GameSetSize.SMALL);
+  lrgSets = this._allGameSets.filter(
+    (item) => item.size === GAME_SET_SIZE.LARGE
+  );
+  medSets = this._allGameSets.filter(
+    (item) => item.size === GAME_SET_SIZE.MEDIUM
+  );
+  smlSets = this._allGameSets.filter(
+    (item) => item.size === GAME_SET_SIZE.SMALL
+  );
   promoSets = this._allGameSets.filter(
-    (item) => item.size === GameSetSize.PROMO
+    (item) => item.size === GAME_SET_SIZE.PROMO
   );
 
   constructor(

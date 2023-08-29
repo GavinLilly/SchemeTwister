@@ -2,7 +2,7 @@ import * as GameSets from './data/gameSets';
 import { SingleCardFactory, StoreOfStores } from './factories';
 import {
   GameSet,
-  GameSetSize,
+  GAME_SET_SIZE,
   GameSetup,
   Hero,
   Henchmen,
@@ -110,7 +110,7 @@ export class LibTwister {
     }
 
     return gameSets.some((gameSet) =>
-      [GameSetSize.CORE, GameSetSize.LARGE].includes(gameSet.size)
+      [GAME_SET_SIZE.core, GAME_SET_SIZE.large].includes(gameSet.size)
     );
   }
 

@@ -1,5 +1,5 @@
 import { CARD_TYPE } from '../types/cardType.type';
-import { GameSetSize } from '../gameSetSize.enum';
+import { GAME_SET_SIZE } from '../types/gameSetSize.type';
 import { INumPlayerRules, IFightable } from '../interfaces';
 import { SERIES } from '../types';
 
@@ -59,7 +59,7 @@ export class Mastermind
         name: 'EMPTY_GAME_SET',
         releaseYear: 1970,
         series: SERIES.mainline,
-        size: GameSetSize.PROMO,
+        size: GAME_SET_SIZE.promo,
       },
       name: 'EMPTY_MASTERMIND',
       id: 'c3af35df-7b37-49c4-9c56-640591c94bd9',

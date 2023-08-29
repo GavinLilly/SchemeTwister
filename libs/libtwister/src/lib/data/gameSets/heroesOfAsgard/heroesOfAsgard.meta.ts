@@ -1,9 +1,9 @@
-import { IGameSetMeta, GameSetSize, SERIES } from '../../../model';
+import { IGameSetMeta, GAME_SET_SIZE, SERIES } from '../../../model';
 
 export const META: IGameSetMeta = {
   id: '9adad8eb-55b4-4fbe-b6db-f6a0c35cf809',
   name: 'Heroes of Asgard',
-  size: GameSetSize.SMALL,
+  size: GAME_SET_SIZE.small,
   releaseYear: 2020,
   series: SERIES.mainline,
 };

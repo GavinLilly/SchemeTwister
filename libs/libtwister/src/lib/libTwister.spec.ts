@@ -11,7 +11,7 @@ import {
 import { UNLEASH_THE_ABILISK_SPACE_MONSTER } from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.schemes';
 import { GAME_SET as XMEN } from './data/gameSets/xMen';
 import { LibTwister } from './libTwister';
-import { CARD_TYPE, GameSetSize, IPlayableObject, NumPlayers } from './model';
+import { CARD_TYPE, GAME_SET_SIZE, IPlayableObject, NumPlayers } from './model';
 
 describe('LibTwister', () => {
   describe('All game sets', () => {
@@ -21,28 +21,28 @@ describe('LibTwister', () => {
     it('should have 6 big boxes', () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
-          (item) => item.size === GameSetSize.LARGE
+          (item) => item.size === GAME_SET_SIZE.large
         )
       ).toHaveLength(6));
 
     it('should have 21 small boxes', () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
-          (item) => item.size === GameSetSize.SMALL
+          (item) => item.size === GAME_SET_SIZE.small
         )
       ).toHaveLength(21));
 
     it('should have 3 medium boxes', () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
-          (item) => item.size === GameSetSize.MEDIUM
+          (item) => item.size === GAME_SET_SIZE.medium
         )
       ).toHaveLength(3));
 
     it('should have 3 core sets', () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
-          (item) => item.size === GameSetSize.CORE
+          (item) => item.size === GAME_SET_SIZE.core
         )
       ).toHaveLength(3));
 

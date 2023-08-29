@@ -3,7 +3,7 @@ import { LEGENDARY } from '../data/gameSets';
 
 import { GameSet } from './GameSet';
 import { Bystander } from './cards';
-import { GameSetSize } from './gameSetSize.enum';
+import { GAME_SET_SIZE } from './types/gameSetSize.type';
 import { SERIES } from './types/series.type';
 
 describe('GameSet', () => {
@@ -14,7 +14,7 @@ describe('GameSet', () => {
         name: 'core',
         releaseYear: 1970,
         series: SERIES.mainline,
-        size: GameSetSize.CORE,
+        size: GAME_SET_SIZE.core,
       },
       []
     );
@@ -25,7 +25,7 @@ describe('GameSet', () => {
         name: 'large',
         releaseYear: 1970,
         series: SERIES.mainline,
-        size: GameSetSize.LARGE,
+        size: GAME_SET_SIZE.large,
       },
       []
     );
@@ -36,7 +36,7 @@ describe('GameSet', () => {
         name: 'First',
         releaseYear: 1970,
         series: SERIES.mainline,
-        size: GameSetSize.LARGE,
+        size: GAME_SET_SIZE.large,
       },
       []
     );

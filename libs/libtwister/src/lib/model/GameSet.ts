@@ -1,10 +1,15 @@
 import * as uuid from 'uuid';
 
-import { CardType } from './types/cardType.type';
 import { Bystander, Henchmen, Hero, Mastermind, VillainGroup } from './cards';
-import { GameSetSize } from './gameSetSize.enum';
+import { GAME_SET_SIZE, GameSetSize } from './types/gameSetSize.type';
 import { IGameSetMeta } from './interfaces';
-import { AllCardTypes, SchemeMinusRules, Series, SERIES } from './types';
+import {
+  AllCardTypes,
+  CardType,
+  SchemeMinusRules,
+  Series,
+  SERIES,
+} from './types';
 
 export class GameSet implements IGameSetMeta {
   readonly id: string;
@@ -63,7 +68,7 @@ export class GameSet implements IGameSetMeta {
         name: 'EMPTY GAME SET',
         releaseYear: 1970,
         series: SERIES.mainline,
-        size: GameSetSize.PROMO,
+        size: GAME_SET_SIZE.promo,
       },
       []
     );

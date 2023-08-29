@@ -1,9 +1,9 @@
-import { IGameSetMeta, GameSetSize, SERIES } from '../../../model';
+import { IGameSetMeta, GAME_SET_SIZE, SERIES } from '../../../model';
 
 export const META: IGameSetMeta = {
   id: 'ff993ba1-8ebd-46fc-9d90-b9f05ecf68f3',
   name: 'Marvel Studios, Phase 1',
-  size: GameSetSize.CORE,
+  size: GAME_SET_SIZE.core,
   releaseYear: 2018,
   series: SERIES.mcu,
 };

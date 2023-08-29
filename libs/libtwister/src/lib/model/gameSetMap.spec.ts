@@ -1,7 +1,7 @@
 import { LibTwister } from '../libTwister';
 
 import { GameSetMap } from './gameSetMap';
-import { GameSetSize } from './gameSetSize.enum';
+import { GAME_SET_SIZE } from './types/gameSetSize.type';
 import { SERIES } from './types';
 
 describe('GameSetMap', () => {
@@ -17,7 +17,7 @@ describe('GameSetMap', () => {
 
     it('should only have core game sets', () => {
       const sizes = new Set(
-        map.asArray({ size: GameSetSize.CORE }).map((gameset) => gameset.size)
+        map.asArray({ size: GAME_SET_SIZE.core }).map((gameset) => gameset.size)
       );
       expect(sizes.size).toEqual(1);
     });

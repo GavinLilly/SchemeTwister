@@ -1,4 +1,4 @@
-import { GameSetSize } from '../gameSetSize.enum';
+import { GameSetSize } from '../types/gameSetSize.type';
 import { Series } from '../types/series.type';
 
 import { INamedObject } from './namedObject.interface';
