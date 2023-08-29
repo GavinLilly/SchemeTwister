@@ -229,6 +229,7 @@ export class Scheme implements IPlayableObject {
 
     if (numHeroes > 0) {
       deck.deck.heroes = [...store.heroStore.getManyRandom(numHeroes)];
+      deck.deck.heroes.sort(nameSorter);
     }
 
     // Populate the henchmen
@@ -238,6 +239,7 @@ export class Scheme implements IPlayableObject {
 
     if (numHenchmen > 0) {
       deck.deck.henchmen = [...store.henchmenStore.getManyRandom(numHenchmen)];
+      deck.deck.henchmen.sort(nameSorter);
     }
 
     // Populate the villains
@@ -247,6 +249,7 @@ export class Scheme implements IPlayableObject {
 
     if (numVillains > 0) {
       deck.deck.villains = [...store.villainStore.getManyRandom(numVillains)];
+      deck.deck.villains.sort(nameSorter);
     }
 
     const numMasterminds =
@@ -257,12 +260,8 @@ export class Scheme implements IPlayableObject {
       deck.deck.masterminds = [
         ...store.mastermindStore.getManyRandom(numMasterminds),
       ];
+      deck.deck.masterminds.sort(nameSorter);
     }
-
-    deck.deck.heroes?.sort(nameSorter);
-    deck.deck.henchmen?.sort(nameSorter);
-    deck.deck.villains?.sort(nameSorter);
-    deck.deck.masterminds?.sort(nameSorter);
 
     return deck;
   }

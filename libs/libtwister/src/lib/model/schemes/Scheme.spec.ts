@@ -1,5 +1,15 @@
+import {
+  BLADE,
+  CABLE,
+  COLUSSUS,
+  JEAN_GREY,
+} from '../../data/gameSets/darkCity/darkCity.heroes';
 import { GAME_SET as LEGENDARY } from '../../data/gameSets/legendary';
 import { DOOMBOT_LEGION } from '../../data/gameSets/legendary/legendary.henchmen';
+import {
+  DEADPOOL,
+  WOLVERINE,
+} from '../../data/gameSets/legendary/legendary.heroes';
 import { DR_DOOM } from '../../data/gameSets/legendary/legendary.masterminds';
 import { GAME_SET as XMEN } from '../../data/gameSets/xMen';
 import { ARCADE } from '../../data/gameSets/xMen/xMen.masterminds';
@@ -24,6 +34,7 @@ const baseSchemeDesc: Omit<SchemeMinusRules, 'meta'> = {
   evilWins: 'Evil wins',
   setup: 'Setup',
   cardType: CardType.SCHEME,
+  specialRules: 'Special rules',
 
   gameSet: LEGENDARY,
 };
@@ -48,7 +59,28 @@ const schemeDescComplexTwist: SchemeMinusRules = {
   },
 };
 
-describe('Base Scheme', () => {
+describe('Scheme', () => {
+  let baseScheme: Scheme;
+
+  beforeAll(() => {
+    baseScheme = new Scheme(schemeDescSimpleTwist);
+  });
+
+  it('should have a scheme Card Type', () =>
+    expect(baseScheme.cardType).toBe(CardType.SCHEME));
+
+  it('should have an unchanged setup text', () =>
+    expect(baseScheme.setup).toEqual('Setup'));
+
+  it('should have an unchanged twist text', () =>
+    expect(baseScheme.twist).toEqual("There's some twists"));
+
+  it('should have an unchanged evil wins text', () =>
+    expect(baseScheme.evilWins).toEqual('Evil wins'));
+
+  it('should have an unchanged special rules text', () =>
+    expect(baseScheme.specialRules).toEqual('Special rules'));
+
   it('should create with 1 count of twists', () =>
     expect(new Scheme(schemeDescSimpleTwist)).toBeTruthy());
 
@@ -295,5 +327,25 @@ describe('Base Scheme', () => {
         expect(setup.villainDeck.numMasterStrikes).toBe(5);
       });
     });
+  });
+
+  describe('addToDeck', () => {
+    const origDeck = [CABLE, DEADPOOL, JEAN_GREY];
+
+    it('should add Wolverine to the original deck', () => {
+      const newDeck = Scheme.addToDeck(origDeck, WOLVERINE);
+      expect(newDeck).toHaveLength(4);
+      expect(newDeck).toEqual(expect.arrayContaining([...origDeck, WOLVERINE]));
+    });
+
+    it('should throw an error when the number of cards to add is larger than the maximum length', () =>
+      expect(() =>
+        Scheme.addToDeck(origDeck, WOLVERINE, 1, COLUSSUS)
+      ).toThrow());
+
+    it('should throw an error when the number of cards to add is larger than the space in the array', () =>
+      expect(() =>
+        Scheme.addToDeck(origDeck, WOLVERINE, 5, COLUSSUS, BLADE)
+      ).toThrow());
   });
 });

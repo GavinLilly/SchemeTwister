@@ -8,6 +8,6 @@ export class RequireCardWithBackup<TCard extends AbstractCardGroup>
 {
   constructor(private _preferred: TCard, private _backup: TCard) {}
 
-  getRequiredCard = (store: MultiCardStore<TCard>): TCard | TCard[] =>
+  getRequiredCard = (store: MultiCardStore<TCard>): TCard =>
     store.isAvailable(this._preferred) ? this._preferred : this._backup;
 }

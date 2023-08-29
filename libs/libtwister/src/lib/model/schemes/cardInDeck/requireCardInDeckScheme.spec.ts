@@ -43,7 +43,7 @@ import { DECK_TYPE } from '../../types';
 import { Scheme } from '../Scheme';
 
 import { RequireCard } from './requireCard';
-import { RequireCardInDeckScheme } from './requireCardInDeck.scheme';
+import { RequireCardInDeckScheme } from './requireCardInDeckScheme';
 import { RequireCardName } from './requireCardName';
 import { RequireHenchmen } from './requireHenchmen';
 import { RequireHero } from './requireHero';

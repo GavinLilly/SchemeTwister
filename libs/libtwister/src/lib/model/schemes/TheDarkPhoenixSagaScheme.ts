@@ -41,10 +41,6 @@ export class TheDarkPhoenixSagaScheme extends RequireCardInDeckScheme<VillainGro
   ): IGameSetup {
     const hero = this._requiredHero.getRequiredCard(store.heroStore);
 
-    if (hero instanceof Array) {
-      throw new Error('Only one Hero can be chosen for the Dark Phoenix Saga');
-    }
-
     const pickedHero = store.heroStore.getOne(hero);
 
     partialVillainDeck.heroes = Scheme.addToDeck(

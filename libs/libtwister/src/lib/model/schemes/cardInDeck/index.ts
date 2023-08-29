@@ -7,4 +7,4 @@ export { RequireHenchmen } from './requireHenchmen';
 export { RequireHero } from './requireHero';
 export { RequireVillainGroup } from './requireVillainGroup';
 
-export { RequireCardInDeckScheme } from './requireCardInDeck.scheme';
+export { RequireCardInDeckScheme } from './requireCardInDeckScheme';
