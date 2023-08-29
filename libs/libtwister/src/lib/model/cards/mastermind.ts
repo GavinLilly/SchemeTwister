@@ -1,4 +1,4 @@
-import { CardType } from '../cardType.enum';
+import { CARD_TYPE } from '../types/cardType.type';
 import { GameSetSize } from '../gameSetSize.enum';
 import { INumPlayerRules, IFightable } from '../interfaces';
 import { SERIES } from '../types';
@@ -49,7 +49,7 @@ export class Mastermind
   }
 
   get cardType() {
-    return CardType.MASTERMIND;
+    return CARD_TYPE.mastermind;
   }
 
   public static empty(): Mastermind {

@@ -1,7 +1,7 @@
 import * as uuid from 'uuid';
 
 import { GameSet } from '../GameSet';
-import { CardType } from '../cardType.enum';
+import { CardType } from '../types/cardType.type';
 import { ICardType, IPlayableObject, ITeam } from '../interfaces';
 
 import { AbstractCardGroup } from './abstractCardGroup';
@@ -18,7 +18,7 @@ export class Hero extends AbstractCardGroup implements IHero {
 
     ({ team: this._team } = heroConfig);
 
-    this._cardType = heroConfig.cardType ?? CardType.HERO;
+    this._cardType = heroConfig.cardType ?? 'Hero';
   }
 
   get team() {

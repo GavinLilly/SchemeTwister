@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { faCog, faLock } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import { CardType, Scheme } from '@schemetwister/libtwister';
+import { CARD_TYPE, Scheme } from '@schemetwister/libtwister';
 import { Observable } from 'rxjs';
 
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
@@ -34,6 +34,6 @@ export class SchemeCardComponent {
 
   pickScheme() {
     const modalRef = this._modalService.open(SchemeMastermindSelectComponent);
-    modalRef.componentInstance.itemType = CardType.SCHEME;
+    modalRef.componentInstance.itemType = CARD_TYPE.SCHEME;
   }
 }

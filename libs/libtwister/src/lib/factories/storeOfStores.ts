@@ -3,10 +3,10 @@ import {
   VillainGroup,
   Henchmen,
   Hero,
-  CardType,
   ICardType,
   IPlayableObject,
 } from '../model';
+import { CardType } from '../model/types/cardType.type';
 
 import { MultiCardStore } from './multiCardStore';
 
@@ -71,13 +71,13 @@ export class StoreOfStores {
     type: CardType
   ): (IPlayableObject & ICardType) | undefined {
     switch (type) {
-      case CardType.HENCHMEN:
+      case 'Henchmen':
         return this.henchmenStore.allCardsMap.get(id);
-      case CardType.HERO:
+      case 'Hero':
         return this.heroStore.allCardsMap.get(id);
-      case CardType.MASTERMIND:
+      case 'Mastermind':
         return this.mastermindStore.allCardsMap.get(id);
-      case CardType.VILLAINGROUP:
+      case 'Villain Group':
         return this.villainStore.allCardsMap.get(id);
       default:
         return undefined;

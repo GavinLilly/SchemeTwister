@@ -5,7 +5,7 @@ import { LibTwister } from '../libTwister';
 import instantiateScheme from '../utils/instantiateScheme';
 
 import { GameSetup } from './GameSetup';
-import { CardType } from './cardType.enum';
+import { CARD_TYPE, CardType } from './types/cardType.type';
 import { Henchmen, Hero, Mastermind, VillainGroup } from './cards';
 import { AbstractCardGroup } from './cards/abstractCardGroup';
 import { IAdditionalDeck, IAdditionalDeckRules } from './interfaces';
@@ -69,7 +69,7 @@ export class LiteGameSetup {
 
     const mastermind = twister.stores.getCardById(
       this.mastermindId,
-      CardType.MASTERMIND
+      CARD_TYPE.mastermind
     ) as Mastermind;
 
     const scheme = twister.schemeFactory.allCardsMap.get(this.schemeId);
@@ -88,10 +88,10 @@ export class LiteGameSetup {
 
     return new GameSetup({
       heroDeck: {
-        heroes: LiteGameSetup._getById(this.heroDeck, CardType.HERO, twister),
+        heroes: LiteGameSetup._getById(this.heroDeck, CARD_TYPE.hero, twister),
         henchmen: LiteGameSetup._getById(
           this.heroDeck,
-          CardType.HENCHMEN,
+          CARD_TYPE.henchmen,
           twister
         ),
       },
@@ -101,22 +101,22 @@ export class LiteGameSetup {
       villainDeck: {
         henchmen: LiteGameSetup._getById(
           this.villainDeck,
-          CardType.HENCHMEN,
+          CARD_TYPE.henchmen,
           twister
         ),
         villains: LiteGameSetup._getById(
           this.villainDeck,
-          CardType.VILLAINGROUP,
+          CARD_TYPE.villainGroup,
           twister
         ),
         heroes: LiteGameSetup._getById(
           this.villainDeck,
-          CardType.HERO,
+          CARD_TYPE.hero,
           twister
         ),
         masterminds: LiteGameSetup._getById(
           this.villainDeck,
-          CardType.MASTERMIND,
+          CARD_TYPE.mastermind,
           twister
         ),
         numMasterStrikes: 5,
@@ -136,10 +136,10 @@ export class LiteGameSetup {
     return {
       name: rules.name,
       deck: {
-        henchmen: getAdditionalDeck(CardType.HENCHMEN) as Henchmen[],
-        heroes: getAdditionalDeck(CardType.HERO) as Hero[],
-        masterminds: getAdditionalDeck(CardType.MASTERMIND) as Mastermind[],
-        villains: getAdditionalDeck(CardType.VILLAINGROUP) as VillainGroup[],
+        henchmen: getAdditionalDeck(CARD_TYPE.henchmen) as Henchmen[],
+        heroes: getAdditionalDeck(CARD_TYPE.hero) as Hero[],
+        masterminds: getAdditionalDeck(CARD_TYPE.mastermind) as Mastermind[],
+        villains: getAdditionalDeck(CARD_TYPE.villainGroup) as VillainGroup[],
       },
     };
   }

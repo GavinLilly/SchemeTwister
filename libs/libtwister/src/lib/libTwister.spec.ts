@@ -11,7 +11,7 @@ import {
 import { UNLEASH_THE_ABILISK_SPACE_MONSTER } from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.schemes';
 import { GAME_SET as XMEN } from './data/gameSets/xMen';
 import { LibTwister } from './libTwister';
-import { CardType, GameSetSize, IPlayableObject, NumPlayers } from './model';
+import { CARD_TYPE, GameSetSize, IPlayableObject, NumPlayers } from './model';
 
 describe('LibTwister', () => {
   describe('All game sets', () => {
@@ -62,7 +62,7 @@ describe('LibTwister', () => {
       // Iterate over all game sets
       allGamesets.forEach((gameSet) => {
         // Get all card types from the gameset
-        for (const cardType of Object.values(CardType)) {
+        for (const cardType of Object.values(CARD_TYPE)) {
           const cards = gameSet.getCards(cardType);
           // Push it into our array
           if (cards !== undefined) {

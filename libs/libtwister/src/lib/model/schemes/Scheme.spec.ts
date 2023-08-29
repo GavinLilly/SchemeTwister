@@ -19,7 +19,7 @@ import {
 } from '../../data/gameSets/xMen/xMen.villains';
 import { StoreBuilder, StoreOfStores } from '../../factories';
 import { GameSetup } from '../GameSetup';
-import { CardType } from '../cardType.enum';
+import { CARD_TYPE } from '../types/cardType.type';
 import { IGameSetup } from '../interfaces/gameSetup.interface';
 import { Rules } from '../rules';
 import { SchemeMinusRules } from '../types';
@@ -33,7 +33,7 @@ const baseSchemeDesc: Omit<SchemeMinusRules, 'meta'> = {
   twist: "There's some twists",
   evilWins: 'Evil wins',
   setup: 'Setup',
-  cardType: CardType.SCHEME,
+  cardType: CARD_TYPE.scheme,
   specialRules: 'Special rules',
 
   gameSet: LEGENDARY,
@@ -67,7 +67,7 @@ describe('Scheme', () => {
   });
 
   it('should have a scheme Card Type', () =>
-    expect(baseScheme.cardType).toBe(CardType.SCHEME));
+    expect(baseScheme.cardType).toBe(CARD_TYPE.scheme));
 
   it('should have an unchanged setup text', () =>
     expect(baseScheme.setup).toEqual('Setup'));

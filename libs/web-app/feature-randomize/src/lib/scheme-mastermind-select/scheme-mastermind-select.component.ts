@@ -4,10 +4,11 @@ import { Store } from '@ngrx/store';
 import {
   Mastermind,
   SchemeMinusRules,
-  CardType,
+  CARD_TYPE,
   LibTwister,
   NumPlayers,
   SoloBannedScheme,
+  CardType,
 } from '@schemetwister/libtwister';
 import { Observable } from 'rxjs';
 
@@ -51,7 +52,7 @@ export class SchemeMastermindSelectComponent implements OnInit {
 
   ngOnInit(): void {
     this.numPlayers$.subscribe((value: number) => {
-      if (this.itemType === CardType.SCHEME) {
+      if (this.itemType === CARD_TYPE.SCHEME) {
         if (Number(value) === 1) {
           this.availableItems = this.availableItems.filter(
             (scheme) => !(scheme instanceof SoloBannedScheme)
@@ -61,9 +62,9 @@ export class SchemeMastermindSelectComponent implements OnInit {
     });
 
     this.libTwister$.subscribe((value: LibTwister) => {
-      if (this.itemType === CardType.SCHEME) {
+      if (this.itemType === CARD_TYPE.SCHEME) {
         this.availableItems = value.schemeFactory.availableCards;
-      } else if (this.itemType === CardType.MASTERMIND) {
+      } else if (this.itemType === CARD_TYPE.MASTERMIND) {
         this.availableItems = value.stores.mastermindStore.availableCards;
       }
 
@@ -74,16 +75,16 @@ export class SchemeMastermindSelectComponent implements OnInit {
       });
     });
 
-    if (this.itemType === CardType.SCHEME) {
+    if (this.itemType === CARD_TYPE.SCHEME) {
       this._subscribeToDefined(this.definedScheme$);
-    } else if (this.itemType === CardType.MASTERMIND) {
+    } else if (this.itemType === CARD_TYPE.MASTERMIND) {
       this._subscribeToDefined(this.definedMastermind$);
     }
   }
 
   setItem(value: string) {
     const item = this.availableItems.find((card) => card.id === value);
-    if (this.itemType === CardType.SCHEME) {
+    if (this.itemType === CARD_TYPE.SCHEME) {
       if (item !== undefined) {
         this._store.dispatch(
           setDefinedScheme({ scheme: item as SchemeMinusRules })
@@ -91,7 +92,7 @@ export class SchemeMastermindSelectComponent implements OnInit {
       } else {
         this._store.dispatch(resetDefinedScheme());
       }
-    } else if (this.itemType === CardType.MASTERMIND) {
+    } else if (this.itemType === CARD_TYPE.MASTERMIND) {
       if (item !== undefined) {
         this._store.dispatch(
           setDefinedMastermind({ mastermind: item as Mastermind })

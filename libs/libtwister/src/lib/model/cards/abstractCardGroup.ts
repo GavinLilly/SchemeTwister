@@ -1,4 +1,4 @@
-import { CardType } from '../cardType.enum';
+import { CardType } from '../types/cardType.type';
 import { IPlayableObject, IGameSetMeta, IKeyword } from '../interfaces';
 import { ICardType } from '../interfaces/cardType.interface';
 

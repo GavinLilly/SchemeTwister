@@ -1,4 +1,4 @@
-import { CardType, Hero } from '../../../model';
+import { CARD_TYPE, Hero } from '../../../model';
 import { AVENGERS } from '../../teams';
 import { DIVIDED } from '../civilWar/civilWar.keywords';
 
@@ -10,7 +10,7 @@ export const BLACK_PANTHER = new Hero({
   name: 'Black Panther',
   team: AVENGERS,
   gameSet: META,
-  cardType: CardType.HERO,
+  cardType: CARD_TYPE.hero,
   keywords: [SACRIFICE],
 });
 
@@ -19,7 +19,7 @@ export const DOCTOR_STRANGE = new Hero({
   name: 'Doctor Strange',
   team: AVENGERS,
   gameSet: META,
-  cardType: CardType.HERO,
+  cardType: CARD_TYPE.hero,
   keywords: [PHASING, SACRIFICE],
 });
 
@@ -28,7 +28,7 @@ export const BRUCE_BANNER = new Hero({
   name: 'Bruce Banner',
   team: AVENGERS,
   gameSet: META,
-  cardType: CardType.HERO,
+  cardType: CARD_TYPE.hero,
   keywords: [SACRIFICE],
 });
 
@@ -37,7 +37,7 @@ export const CAPTAIN_MARVEL = new Hero({
   name: 'Captain Marvel',
   team: AVENGERS,
   gameSet: META,
-  cardType: CardType.HERO,
+  cardType: CARD_TYPE.hero,
   keywords: [ENDGAME],
 });
 
@@ -46,6 +46,6 @@ export const WANDA_AND_VISION = new Hero({
   name: 'Wanda & Vision',
   team: AVENGERS,
   gameSet: META,
-  cardType: CardType.HERO,
+  cardType: CARD_TYPE.hero,
   keywords: [PHASING, DIVIDED],
 });

@@ -1,4 +1,4 @@
-import { CardType, Hero } from '../../../model';
+import { CARD_TYPE, Hero } from '../../../model';
 import { X_MEN } from '../../teams';
 import { TELEPORT } from '../darkCity/darkCity.keywords';
 
@@ -9,14 +9,14 @@ export const CYPHER = new Hero({
   name: 'Cypher',
   team: X_MEN,
   gameSet: META,
-  cardType: CardType.BYSTANDER,
+  cardType: CARD_TYPE.bystander,
 });
 
 export const HEARTLESS_COMPUTER_SCIENTIST = new Hero({
   id: 'f36a5f45-66d1-4841-84b1-72b66517fae5',
   name: 'Heartless Computer Scientist',
   gameSet: META,
-  cardType: CardType.BYSTANDER,
+  cardType: CARD_TYPE.bystander,
 });
 
 export const KARMA = new Hero({
@@ -24,7 +24,7 @@ export const KARMA = new Hero({
   name: 'Karma',
   team: X_MEN,
   gameSet: META,
-  cardType: CardType.BYSTANDER,
+  cardType: CARD_TYPE.bystander,
 });
 
 export const MAGIK = new Hero({
@@ -33,7 +33,7 @@ export const MAGIK = new Hero({
   team: X_MEN,
   gameSet: META,
   keywords: [TELEPORT],
-  cardType: CardType.BYSTANDER,
+  cardType: CARD_TYPE.bystander,
 });
 
 export const MAGMA = new Hero({
@@ -41,14 +41,14 @@ export const MAGMA = new Hero({
   name: 'Magma',
   team: X_MEN,
   gameSet: META,
-  cardType: CardType.BYSTANDER,
+  cardType: CARD_TYPE.bystander,
 });
 
 export const MARTIAL_ARTS_MASTER = new Hero({
   id: '5ec56fec-0b61-47b2-b19c-76d3098c9da0',
   name: 'Martial Arts Master',
   gameSet: META,
-  cardType: CardType.BYSTANDER,
+  cardType: CARD_TYPE.bystander,
 });
 
 export const MIRAGE = new Hero({
@@ -56,7 +56,7 @@ export const MIRAGE = new Hero({
   name: 'Mirage',
   team: X_MEN,
   gameSet: META,
-  cardType: CardType.BYSTANDER,
+  cardType: CARD_TYPE.bystander,
 });
 
 export const SUNSPOT = new Hero({
@@ -64,7 +64,7 @@ export const SUNSPOT = new Hero({
   name: 'Sunspot',
   team: X_MEN,
   gameSet: META,
-  cardType: CardType.BYSTANDER,
+  cardType: CARD_TYPE.bystander,
 });
 
 export const WARLOCK = new Hero({
@@ -72,7 +72,7 @@ export const WARLOCK = new Hero({
   name: 'Warlock',
   team: X_MEN,
   gameSet: META,
-  cardType: CardType.BYSTANDER,
+  cardType: CARD_TYPE.bystander,
 });
 
 export const WOLFSBANE = new Hero({
@@ -80,5 +80,5 @@ export const WOLFSBANE = new Hero({
   name: 'Wolfsbane',
   team: X_MEN,
   gameSet: META,
-  cardType: CardType.BYSTANDER,
+  cardType: CARD_TYPE.bystander,
 });

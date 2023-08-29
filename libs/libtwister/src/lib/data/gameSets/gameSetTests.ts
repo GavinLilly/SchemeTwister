@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable max-nested-callbacks */
-import { GameSet, CardType, AllCardTypes } from '../../model';
+import { GameSet, CARD_TYPE, AllCardTypes } from '../../model';
 
 export function gameSetTest(
   gameSet: GameSet,
@@ -13,13 +13,13 @@ export function gameSetTest(
 ) {
   describe(`${gameSet.name} game set`, () => {
     describe.each([
-      ['bystanders', numBystanders, CardType.BYSTANDER],
-      ['heroes', numHeroes, CardType.HERO],
-      ['villains', numVillains, CardType.VILLAINGROUP],
-      ['henchmen', numHenchmen, CardType.HENCHMEN],
-      ['masterminds', numMasterminds, CardType.MASTERMIND],
-      ['schemes', numSchemes, CardType.SCHEME],
-    ])('%s deck', (readableCardType, numCards, cardType) => {
+      ['bystanders', numBystanders, CARD_TYPE.bystander],
+      ['heroes', numHeroes, CARD_TYPE.hero],
+      ['villains', numVillains, CARD_TYPE.villainGroup],
+      ['henchmen', numHenchmen, CARD_TYPE.henchmen],
+      ['masterminds', numMasterminds, CARD_TYPE.mastermind],
+      ['schemes', numSchemes, CARD_TYPE.scheme],
+    ])('%s deck', (_, numCards, cardType) => {
       let cards: AllCardTypes[];
 
       beforeAll(() => {

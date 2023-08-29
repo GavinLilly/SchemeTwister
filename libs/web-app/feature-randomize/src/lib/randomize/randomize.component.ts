@@ -83,7 +83,5 @@ export class RandomizeComponent implements OnInit {
   reset() {
     this._store.dispatch(resetDefinedScheme());
     this._store.dispatch(resetDefinedMastermind());
-    // this.gameSetupStore.setDefinedItem({ random: true }, CardType.SCHEME);
-    // this.gameSetupStore.setDefinedItem({ random: true }, CardType.MASTERMIND);
   }
 }

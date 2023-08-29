@@ -1,6 +1,6 @@
 import * as uuid from 'uuid';
 
-import { CardType } from './cardType.enum';
+import { CardType } from './types/cardType.type';
 import { Bystander, Henchmen, Hero, Mastermind, VillainGroup } from './cards';
 import { GameSetSize } from './gameSetSize.enum';
 import { IGameSetMeta } from './interfaces';
@@ -88,17 +88,17 @@ export class GameSet implements IGameSetMeta {
     }
 
     switch (cardType) {
-      case CardType.BYSTANDER:
+      case 'Bystander':
         return this.bystanders;
-      case CardType.SCHEME:
+      case 'Scheme':
         return this.schemes;
-      case CardType.HENCHMEN:
+      case 'Henchmen':
         return this.henchmen;
-      case CardType.HERO:
+      case 'Hero':
         return this.heroes;
-      case CardType.MASTERMIND:
+      case 'Mastermind':
         return this.masterminds;
-      case CardType.VILLAINGROUP:
+      case 'Villain Group':
         return this.villains;
       default:
         return undefined;

@@ -15,6 +15,6 @@ export const SERIES = {
   /** The villains series of game sets. Legendary Marvel: Villains is the base
    * set for this series. */
   villains: 'Villains',
-};
+} as const;
 
 export type Series = ObjectValues<typeof SERIES>;

@@ -1,4 +1,4 @@
-import { CardType } from '../cardType.enum';
+import { CARD_TYPE } from '../types/cardType.type';
 import { IFightable } from '../interfaces';
 
 import { AbstractFightableCardGroup } from './abstractFightableCardGroup';
@@ -25,7 +25,7 @@ export class Henchmen extends AbstractFightableCardGroup implements IHenchmen {
   }
 
   get cardType() {
-    return CardType.HENCHMEN;
+    return CARD_TYPE.henchmen;
   }
 
   get fight() {

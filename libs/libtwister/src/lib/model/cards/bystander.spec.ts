@@ -1,5 +1,5 @@
 import { GameSet } from '../GameSet';
-import { CardType } from '../cardType.enum';
+import { CARD_TYPE } from '../types/cardType.type';
 
 import { Bystander } from './bystander';
 
@@ -17,7 +17,7 @@ describe('Bystander', () => {
   });
 
   it('should be a "BYSTANDER" card type', () =>
-    expect(bystander.cardType).toBe(CardType.BYSTANDER));
+    expect(bystander.cardType).toBe(CARD_TYPE.bystander));
 
   it('should have 10 copies', () => expect(bystander.copies).toEqual(10));
 

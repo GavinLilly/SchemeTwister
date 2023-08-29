@@ -1,11 +1,11 @@
 import { DARK_CITY, LEGENDARY } from '../data/gameSets';
-import { CardType, IPlayableObject } from '../model';
+import { CARD_TYPE, CardType, IPlayableObject } from '../model';
 
 import { MultiCardFactory } from './multiCardFactory';
 import { MultiCardStore } from './multiCardStore';
 import { SingleCardFactory } from './singleCardFactory';
 
-const cardType = CardType.HERO;
+const cardType = CARD_TYPE.hero;
 
 class LegCard implements IPlayableObject {
   gameSet = LEGENDARY.GAME_SET;

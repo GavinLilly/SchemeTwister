@@ -5,7 +5,7 @@ import * as uuid from 'uuid';
 import { StoreOfStores } from '../../factories';
 import { GameSet } from '../GameSet';
 import { GameSetup } from '../GameSetup';
-import { CardType } from '../cardType.enum';
+import { CARD_TYPE } from '../types/cardType.type';
 import { Mastermind } from '../cards';
 import {
   AdditionalDeckDeckMinimal,
@@ -92,7 +92,7 @@ export class Scheme implements IPlayableObject {
   }
 
   public get cardType() {
-    return CardType.SCHEME;
+    return CARD_TYPE.scheme;
   }
 
   public get rules() {
@@ -130,7 +130,7 @@ export class Scheme implements IPlayableObject {
       setup: 'n/a',
       evilWins: 'n/a',
       twist: 'n/a',
-      cardType: CardType.SCHEME,
+      cardType: CARD_TYPE.scheme,
       gameSet: GameSet.empty(),
       meta: {
         numTwists: 0,
@@ -325,7 +325,7 @@ export class Scheme implements IPlayableObject {
     // Check to see if any more henchmen are needed and if so,
     // whether the mastermind demands any
     const alwaysLeadsHenchmen = selectedMastermind.alwaysLeads?.filter(
-      (item) => item.cardType === CardType.HENCHMEN
+      (item) => item.cardType === CARD_TYPE.henchmen
     );
     if (
       numRemVillDeckHenchmen() > 0 &&
@@ -352,7 +352,7 @@ export class Scheme implements IPlayableObject {
     // Check to see if any more villains are needed and if so,
     // whether the mastermind demands any
     const alwaysLeadsVillains = selectedMastermind.alwaysLeads.filter(
-      (item) => item.cardType === CardType.VILLAINGROUP
+      (item) => item.cardType === CARD_TYPE.villainGroup
     );
     if (
       numRemVillDeckVillains() > 0 &&

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { faCog, faLock } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import { Mastermind, CardType } from '@schemetwister/libtwister';
+import { Mastermind, CARD_TYPE } from '@schemetwister/libtwister';
 import { Observable } from 'rxjs';
 
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
@@ -35,6 +35,6 @@ export class MastermindCardComponent {
 
   pickMastermind() {
     const modalRef = this._modalService.open(SchemeMastermindSelectComponent);
-    modalRef.componentInstance.itemType = CardType.MASTERMIND;
+    modalRef.componentInstance.itemType = CARD_TYPE.MASTERMIND;
   }
 }

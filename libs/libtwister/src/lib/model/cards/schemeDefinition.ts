@@ -1,4 +1,4 @@
-import { CardType } from '../cardType.enum';
+import { CARD_TYPE } from '../types/cardType.type';
 import { IKeyword, IScheme, IGameSetMeta, ISchemeMeta } from '../interfaces';
 
 export class SchemeDefinition implements IScheme {
@@ -64,6 +64,6 @@ export class SchemeDefinition implements IScheme {
   }
 
   get cardType() {
-    return CardType.SCHEME;
+    return CARD_TYPE.scheme;
   }
 }

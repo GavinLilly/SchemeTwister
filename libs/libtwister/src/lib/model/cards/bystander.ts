@@ -1,4 +1,4 @@
-import { CardType } from '../cardType.enum';
+import { CARD_TYPE } from '../types/cardType.type';
 import { IVictoryPileCard } from '../interfaces/victoryPileCard.interface';
 
 import { AbstractCardGroup } from './abstractCardGroup';
@@ -18,7 +18,7 @@ export class Bystander extends AbstractCardGroup implements IBystander {
   }
 
   get cardType() {
-    return CardType.BYSTANDER;
+    return CARD_TYPE.bystander;
   }
 
   get copies() {

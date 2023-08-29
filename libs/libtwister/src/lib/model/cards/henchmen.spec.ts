@@ -1,5 +1,5 @@
 import { GameSet } from '../GameSet';
-import { CardType } from '../cardType.enum';
+import { CARD_TYPE } from '../types/cardType.type';
 
 import { Henchmen } from './henchmen';
 
@@ -20,7 +20,7 @@ describe('Henchmen', () => {
   });
 
   it('should be a "HENCHMEN" card type', () =>
-    expect(henchmen.cardType).toBe(CardType.HENCHMEN));
+    expect(henchmen.cardType).toBe(CARD_TYPE.henchmen));
 
   it('should have a matching fight clause', () =>
     expect(henchmen.fight).toEqual('FIGHT'));

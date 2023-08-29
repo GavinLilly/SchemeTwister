@@ -1,9 +1,9 @@
-import { CardType } from '../cardType.enum';
+import { CARD_TYPE } from '../types/cardType.type';
 
 import { AbstractCardGroup } from './abstractCardGroup';
 
 export class VillainGroup extends AbstractCardGroup {
   get cardType() {
-    return CardType.VILLAINGROUP;
+    return CARD_TYPE.villainGroup;
   }
 }

@@ -4,7 +4,7 @@ import { DOOMBOT_LEGION } from '../data/gameSets/legendary/legendary.henchmen';
 import { HAWKEYE } from '../data/gameSets/legendary/legendary.heroes';
 import { LOKI } from '../data/gameSets/legendary/legendary.masterminds';
 import { BROTHERHOOD } from '../data/gameSets/legendary/legendary.villains';
-import { CardType } from '../model';
+import { CARD_TYPE } from '../model';
 
 import { StoreOfStores } from './storeOfStores';
 
@@ -34,25 +34,25 @@ describe('StoreOfStores', () => {
       expect(store.henchmenStore.allCards.length).toBeGreaterThan(0));
 
     it('should return Loki', () =>
-      expect(store.getCardById(LOKI.id, CardType.MASTERMIND)).toBe(LOKI));
+      expect(store.getCardById(LOKI.id, CARD_TYPE.mastermind)).toBe(LOKI));
 
     it('should return Doombot legion', () =>
-      expect(store.getCardById(DOOMBOT_LEGION.id, CardType.HENCHMEN)).toBe(
+      expect(store.getCardById(DOOMBOT_LEGION.id, CARD_TYPE.henchmen)).toBe(
         DOOMBOT_LEGION
       ));
 
     it('should return Hawkeye', () =>
-      expect(store.getCardById(HAWKEYE.id, CardType.HERO)).toBe(HAWKEYE));
+      expect(store.getCardById(HAWKEYE.id, CARD_TYPE.hero)).toBe(HAWKEYE));
 
     it('should return Brotherhood', () =>
-      expect(store.getCardById(BROTHERHOOD.id, CardType.VILLAINGROUP)).toBe(
+      expect(store.getCardById(BROTHERHOOD.id, CARD_TYPE.villainGroup)).toBe(
         BROTHERHOOD
       ));
 
     it('should return undefined for a bystander card', () =>
-      expect(store.getCardById('', CardType.BYSTANDER)).toBeUndefined());
+      expect(store.getCardById('', CARD_TYPE.bystander)).toBeUndefined());
 
     it('should return undefined for an invalid hero ID', () =>
-      expect(store.getCardById('FOOBAR', CardType.HERO)).toBeUndefined());
+      expect(store.getCardById('FOOBAR', CARD_TYPE.hero)).toBeUndefined());
   });
 });
