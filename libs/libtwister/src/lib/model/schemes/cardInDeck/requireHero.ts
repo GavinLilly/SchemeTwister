@@ -6,7 +6,7 @@ import {
   AdditionalDeckDeckMinimal,
   INumPlayerRules,
 } from '../../interfaces';
-import { DECK_TYPE, DeckType } from '../../types';
+import { DeckType } from '../../types';
 import { Scheme } from '../Scheme';
 
 import { IRequireCardTypeBehaviour } from './requireCardTypeBehaviour.interface';
@@ -20,10 +20,10 @@ export class RequireHero implements IRequireCardTypeBehaviour<Hero> {
   ): HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal {
     let numHeroes: number | undefined;
 
-    if (deckType === DECK_TYPE.VILLAIN && rules.villainDeck.numHeroes) {
+    if (deckType === 'VILLAIN' && rules.villainDeck.numHeroes) {
       numHeroes = rules.villainDeck.numHeroes;
     } else if (
-      deckType === DECK_TYPE.ADDITIONAL &&
+      deckType === 'ADDITIONAL' &&
       rules.additionalDeck?.deck?.numHeroes
     ) {
       numHeroes = rules.additionalDeck.deck.numHeroes;

@@ -56,7 +56,7 @@ export const SPLICE_HUMANS_WITH_SPIDER_DNA = new SchemeDefinition({
       params: [
         new RequireCard(SINISTER_SIX),
         new RequireVillainGroup(),
-        DECK_TYPE.VILLAIN,
+        DECK_TYPE.villain,
       ],
     },
   },

@@ -26,7 +26,7 @@ export class TheDarkPhoenixSagaScheme extends RequireCardInDeckScheme<VillainGro
       scheme,
       requiredVillain,
       new RequireVillainGroup(),
-      DECK_TYPE.VILLAIN
+      DECK_TYPE.villain
     );
   }
 

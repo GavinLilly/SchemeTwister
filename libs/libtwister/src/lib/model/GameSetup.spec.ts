@@ -219,7 +219,7 @@ describe('GameSetup', () => {
         SPLICE_HUMANS_WITH_SPIDER_DNA,
         new RequireCard(SINISTER_SIX),
         new RequireVillainGroup(),
-        DECK_TYPE.VILLAIN
+        DECK_TYPE.villain
       );
       setup = scheme.getSetup(
         2,

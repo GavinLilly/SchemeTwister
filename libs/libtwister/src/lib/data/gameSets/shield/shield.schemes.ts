@@ -26,7 +26,7 @@ export const SHIELD_VS_HYDRA_WAR = new SchemeDefinition({
       params: [
         new RequireCard(HYDRA_ELITE, 1, true, AIM_HYDRA_OFFSHOOT),
         new RequireVillainGroup(),
-        DECK_TYPE.VILLAIN,
+        DECK_TYPE.villain,
       ],
     },
   },

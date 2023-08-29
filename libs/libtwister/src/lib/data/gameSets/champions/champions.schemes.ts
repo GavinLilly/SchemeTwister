@@ -35,7 +35,7 @@ export const CLASH_OF_THE_MONSTERS_UNLEASHED = new SchemeDefinition({
       params: [
         new RequireCard(MONSTERS_UNLEASHED),
         new RequireVillainGroup(),
-        DECK_TYPE.ADDITIONAL,
+        DECK_TYPE.additional,
       ],
     },
   },

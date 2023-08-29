@@ -72,7 +72,7 @@ export const ORGANIZED_CRIME_WAVE = new SchemeDefinition({
       params: [
         new RequireCard(MAGGIA_GOONS),
         new RequireHenchmen(),
-        DECK_TYPE.VILLAIN,
+        DECK_TYPE.villain,
       ],
     },
   },
@@ -141,7 +141,7 @@ export const TRANSFORM_CITIZENS_INTO_DEMONS = new SchemeDefinition({
       params: [
         new RequireCard(JEAN_GREY),
         new RequireHero(),
-        DECK_TYPE.VILLAIN,
+        DECK_TYPE.villain,
       ],
     },
   },

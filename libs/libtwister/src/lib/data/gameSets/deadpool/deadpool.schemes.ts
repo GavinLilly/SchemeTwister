@@ -14,7 +14,7 @@ import { META } from './deadpool.meta';
 
 const includeDeadpool: IOverrideScheme = {
   schemeType: RequireCardInDeckScheme,
-  params: [new RequireCardName('deadpool'), new RequireHero(), DECK_TYPE.HERO],
+  params: [new RequireCardName('deadpool'), new RequireHero(), DECK_TYPE.hero],
 };
 
 export const DEADPOOL_KILLS_THE_MARVEL_UNIVERSE = new SchemeDefinition({
@@ -97,7 +97,7 @@ export const EVERYBODY_HATES_DEADPOOL = new SchemeDefinition({
       params: [
         new RequireTeam(MERCS_FOR_MONEY),
         new RequireHero(),
-        DECK_TYPE.HERO,
+        DECK_TYPE.hero,
       ],
     },
   },

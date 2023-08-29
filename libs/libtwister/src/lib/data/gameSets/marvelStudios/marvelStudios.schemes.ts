@@ -63,7 +63,7 @@ export const ENSLAVE_MINDS_WITH_THE_CHITAURI_SCEPTER = new SchemeDefinition({
       params: [
         new RequireCard(CHITAURI),
         new RequireVillainGroup(),
-        DECK_TYPE.VILLAIN,
+        DECK_TYPE.villain,
       ],
     },
   },

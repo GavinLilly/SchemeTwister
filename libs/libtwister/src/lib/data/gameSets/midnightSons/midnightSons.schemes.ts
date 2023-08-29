@@ -82,7 +82,7 @@ export const MIDNIGHT_MASSACRE = new SchemeDefinition({
       params: [
         new RequireCardName('Blade'),
         new RequireHero(),
-        DECK_TYPE.VILLAIN,
+        DECK_TYPE.villain,
       ],
     },
   },

@@ -63,7 +63,7 @@ describe('Require Henchmen', () => {
         ORGANIZED_CRIME_WAVE,
         new RequireCard(MAGGIA_GOONS),
         new RequireHenchmen(),
-        DECK_TYPE.VILLAIN
+        DECK_TYPE.villain
       );
       const setup = scheme.getSetup(
         2,
@@ -87,7 +87,7 @@ describe('Require Henchmen', () => {
         CAGE_VILLAINS_IN_POWERSUPPRESSING_CELLS,
         new RequireCard(COPS),
         new RequireHenchmen(),
-        DECK_TYPE.ADDITIONAL
+        DECK_TYPE.additional
       );
       const setup = scheme.getSetup(
         2,
@@ -118,7 +118,7 @@ describe('Require Hero', () => {
         TURN_THE_SOUL_OF_ADAM_WARLOCK,
         new RequireCard(ADAM_WARLOCK),
         new RequireHero(),
-        DECK_TYPE.ADDITIONAL
+        DECK_TYPE.additional
       );
       const setup = scheme.getSetup(
         2,
@@ -142,7 +142,7 @@ describe('Require Hero', () => {
         TRANSFORM_CITIZENS_INTO_DEMONS,
         new RequireCard(JEAN_GREY),
         new RequireHero(),
-        DECK_TYPE.VILLAIN
+        DECK_TYPE.villain
       );
       const setup = scheme.getSetup(
         2,
@@ -170,7 +170,7 @@ describe('Require Hero Name', () => {
         MUTATING_GAMMA_RAYS,
         new RequireCardName('hulk'),
         new RequireHero(),
-        DECK_TYPE.ADDITIONAL
+        DECK_TYPE.additional
       );
 
       setup = scheme.getSetup(2, store.mastermindStore.getOneRandom(), store);
@@ -216,7 +216,7 @@ describe('Require Hero Name', () => {
         DEADPOOL_KILLS_THE_MARVEL_UNIVERSE,
         new RequireCardName('deadpool', 1, true),
         new RequireHero(),
-        DECK_TYPE.HERO
+        DECK_TYPE.hero
       );
 
       setup = scheme.getSetup(2, store.mastermindStore.getOneRandom(), store);
@@ -267,7 +267,7 @@ describe('Require Hero Name', () => {
         MIDNIGHT_MASSACRE,
         new RequireCardName('blade'),
         new RequireHero(),
-        DECK_TYPE.VILLAIN
+        DECK_TYPE.villain
       );
 
       setup = scheme.getSetup(2, store.mastermindStore.getOneRandom(), store);
@@ -311,7 +311,7 @@ describe('Require Team', () => {
         EVERYBODY_HATES_DEADPOOL,
         new RequireTeam(MERCS_FOR_MONEY),
         new RequireHero(),
-        DECK_TYPE.HERO
+        DECK_TYPE.hero
       );
       const setup = scheme.getSetup(
         2,
@@ -345,7 +345,7 @@ describe('Require Villain Group', () => {
         CLASH_OF_THE_MONSTERS_UNLEASHED,
         new RequireCard(MONSTERS_UNLEASHED),
         new RequireVillainGroup(),
-        DECK_TYPE.ADDITIONAL
+        DECK_TYPE.additional
       );
       const setup = scheme.getSetup(
         2,
@@ -381,7 +381,7 @@ describe('Require Villains Groups', () => {
           SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS,
           new RequireCard(SKRULLS),
           new RequireVillainGroup(),
-          DECK_TYPE.VILLAIN
+          DECK_TYPE.villain
         );
         const setup = scheme.getSetup(
           2,
@@ -402,7 +402,7 @@ describe('Require Villains Groups', () => {
           THE_KREE_SKRULL_WAR,
           new RequireCard(SKRULLS, 2, false, KREE_STARFORCE),
           new RequireVillainGroup(),
-          DECK_TYPE.VILLAIN
+          DECK_TYPE.villain
         );
         setup = scheme.getSetup(2, store.mastermindStore.getOneRandom(), store);
       });
@@ -426,7 +426,7 @@ describe('Require Villains Groups', () => {
           SHIELD_VS_HYDRA_WAR,
           new RequireCard(HYDRA_ELITE, 1, true, AIM_HYDRA_OFFSHOOT),
           new RequireVillainGroup(),
-          DECK_TYPE.VILLAIN
+          DECK_TYPE.villain
         );
         setup = scheme.getSetup(3, store.mastermindStore.getOneRandom(), store);
       });

@@ -22,7 +22,7 @@ export class HouseOfMScheme extends RequireCardInDeckScheme<Hero> {
       scheme,
       new RequireCard(_required),
       new RequireHero(),
-      DECK_TYPE.VILLAIN
+      DECK_TYPE.villain
     );
   }
 

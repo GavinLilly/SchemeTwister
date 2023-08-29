@@ -23,7 +23,7 @@ export const DISTRACT_THE_HERO = new SchemeDefinition({
       params: [
         new RequireTeam(SPIDER_FRIENDS),
         new RequireHero(),
-        DECK_TYPE.HERO,
+        DECK_TYPE.hero,
       ],
     },
   },

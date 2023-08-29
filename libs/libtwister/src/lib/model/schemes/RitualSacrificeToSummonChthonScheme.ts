@@ -31,7 +31,7 @@ export class RitualSacrificeToSummonChthonScheme extends RequireCardInDeckScheme
       scheme,
       requiredVillain,
       new RequireVillainGroup(),
-      DECK_TYPE.VILLAIN
+      DECK_TYPE.villain
     );
   }
 

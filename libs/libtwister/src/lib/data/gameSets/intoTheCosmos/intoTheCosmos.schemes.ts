@@ -58,7 +58,7 @@ export const TURN_THE_SOUL_OF_ADAM_WARLOCK = new SchemeDefinition({
       params: [
         new RequireCard(ADAM_WARLOCK),
         new RequireHero(),
-        DECK_TYPE.ADDITIONAL,
+        DECK_TYPE.additional,
       ],
     },
   },
@@ -86,7 +86,7 @@ Twist 6-9: Each player must KO a Nova Centurion from the S.H.I.E.L.D. Officer St
     },
     overrideScheme: {
       schemeType: RequireCardInDeckScheme,
-      params: [new RequireCardName('nova'), new RequireHero(), DECK_TYPE.HERO],
+      params: [new RequireCardName('nova'), new RequireHero(), DECK_TYPE.hero],
     },
   },
   gameSet: META,

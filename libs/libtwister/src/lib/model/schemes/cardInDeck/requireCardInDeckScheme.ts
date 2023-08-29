@@ -7,7 +7,7 @@ import {
   IGameSetup,
   VillainDeckMinimal,
 } from '../../interfaces';
-import { DECK_TYPE, DeckType, NumPlayers, SchemeMinusRules } from '../../types';
+import { DeckType, NumPlayers, SchemeMinusRules } from '../../types';
 import { Scheme } from '../Scheme';
 
 import { IRequireCardBehaviour } from './requireCardBehaviour.interface';
@@ -43,7 +43,7 @@ export class RequireCardInDeckScheme<
     const rules = this.rules[numPlayers];
 
     switch (this._deck) {
-      case DECK_TYPE.HERO:
+      case 'HERO':
         partialHeroDeck = this._requireCardType.createDeck(
           partialHeroDeck,
           chosen,
@@ -51,7 +51,7 @@ export class RequireCardInDeckScheme<
           this._deck
         );
         break;
-      case DECK_TYPE.VILLAIN:
+      case 'VILLAIN':
         partialVillainDeck = this._requireCardType.createDeck(
           partialVillainDeck,
           chosen,
@@ -59,7 +59,7 @@ export class RequireCardInDeckScheme<
           this._deck
         );
         break;
-      case DECK_TYPE.ADDITIONAL:
+      case 'ADDITIONAL':
         partialAdditionalDeck = this._requireCardType.createDeck(
           partialAdditionalDeck,
           chosen,

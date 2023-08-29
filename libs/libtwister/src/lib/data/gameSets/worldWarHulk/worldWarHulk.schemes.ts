@@ -18,7 +18,7 @@ const requireHulkScheme: IOverrideScheme = {
   params: [
     new RequireCardName('hulk'),
     new RequireHero(),
-    DECK_TYPE.ADDITIONAL,
+    DECK_TYPE.additional,
   ],
 };
 
@@ -63,7 +63,7 @@ export const CYTOPLASM_SPIKE_INVASION = new SchemeDefinition({
       params: [
         new RequireCard(CYTOPLASM_SPIKES),
         new RequireHenchmen(),
-        DECK_TYPE.ADDITIONAL,
+        DECK_TYPE.additional,
       ],
     },
   },
@@ -90,7 +90,7 @@ Twist 7-10: Each player gains a Wound.`,
       params: [
         new RequireCardName('hulk', 2, true),
         new RequireHero(),
-        DECK_TYPE.HERO,
+        DECK_TYPE.hero,
       ],
     },
   },

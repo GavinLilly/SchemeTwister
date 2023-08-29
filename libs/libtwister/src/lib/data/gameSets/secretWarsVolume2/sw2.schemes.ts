@@ -99,7 +99,7 @@ export const THE_MARK_OF_KHONSHU = new SchemeDefinition({
       params: [
         new RequireCard(KHONSHU_GUARDIANS),
         new RequireHenchmen(),
-        DECK_TYPE.VILLAIN,
+        DECK_TYPE.villain,
       ],
     },
   },

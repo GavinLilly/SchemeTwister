@@ -38,7 +38,7 @@ export const ALIEN_BROOD_ENCOUNTER = new SchemeDefinition({
       params: [
         new RequireCard(THE_BROOD),
         new RequireHenchmen(),
-        DECK_TYPE.VILLAIN,
+        DECK_TYPE.villain,
       ],
     },
   },
@@ -116,7 +116,7 @@ export const MUTANT_HUNTING_SUPER_SENTINELS = new SchemeDefinition({
       params: [
         new RequireCard(SENTINELS),
         new RequireHenchmen(),
-        DECK_TYPE.VILLAIN,
+        DECK_TYPE.villain,
       ],
     },
   },

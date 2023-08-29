@@ -27,7 +27,7 @@ export const THE_DEMON_BEAR_SAGA = new SchemeDefinition({
       params: [
         new RequireCard(DEMONS_OF_LIMBO),
         new RequireVillainGroup(),
-        DECK_TYPE.VILLAIN,
+        DECK_TYPE.villain,
       ],
     },
   },

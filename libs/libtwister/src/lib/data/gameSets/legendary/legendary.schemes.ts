@@ -123,7 +123,7 @@ export const SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS = new SchemeDefinition(
         params: [
           new RequireCard(SKRULLS),
           new RequireVillainGroup(),
-          DECK_TYPE.VILLAIN,
+          DECK_TYPE.villain,
         ],
       },
     },

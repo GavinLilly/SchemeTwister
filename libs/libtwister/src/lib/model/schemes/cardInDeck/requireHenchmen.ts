@@ -6,7 +6,7 @@ import {
   AdditionalDeckDeckMinimal,
   INumPlayerRules,
 } from '../../interfaces';
-import { DECK_TYPE, DeckType } from '../../types';
+import { DeckType } from '../../types';
 import { Scheme } from '../Scheme';
 
 import { IRequireCardTypeBehaviour } from './requireCardTypeBehaviour.interface';
@@ -20,13 +20,10 @@ export class RequireHenchmen implements IRequireCardTypeBehaviour<Henchmen> {
   ): HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal {
     let numHenchmen: number | undefined;
 
-    if (
-      deckType === DECK_TYPE.HERO &&
-      rules.heroDeck.numHenchmenGroups !== undefined
-    ) {
+    if (deckType === 'HERO' && rules.heroDeck.numHenchmenGroups !== undefined) {
       numHenchmen = rules.heroDeck.numHenchmenGroups;
     } else if (
-      deckType === DECK_TYPE.ADDITIONAL &&
+      deckType === 'ADDITIONAL' &&
       rules.additionalDeck?.deck?.numHenchmenGroups !== undefined
     ) {
       numHenchmen = rules.additionalDeck?.deck?.numHenchmenGroups;

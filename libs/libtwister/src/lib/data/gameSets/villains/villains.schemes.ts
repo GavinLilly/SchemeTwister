@@ -52,7 +52,7 @@ export const CAGE_VILLAINS_IN_POWERSUPPRESSING_CELLS = new SchemeDefinition({
       params: [
         new RequireCard(COPS),
         new RequireHenchmen(),
-        DECK_TYPE.ADDITIONAL,
+        DECK_TYPE.additional,
       ],
     },
   },
@@ -83,7 +83,7 @@ export const CROWN_THOR_KING_OF_ASGARD = new SchemeDefinition({
       params: [
         new RequireCard(AVENGERS),
         new RequireVillainGroup(),
-        DECK_TYPE.ADDITIONAL,
+        DECK_TYPE.additional,
       ],
     },
   },
@@ -164,7 +164,7 @@ export const MASS_PRODUCE_WAR_MACHINE_ARMOR = new SchemeDefinition({
       params: [
         new RequireCard(SHIELD_ASSAULT_SQUAD),
         new RequireHenchmen(),
-        DECK_TYPE.VILLAIN,
+        DECK_TYPE.villain,
       ],
     },
   },

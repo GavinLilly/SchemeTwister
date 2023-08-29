@@ -70,7 +70,7 @@ export const STAR_LORDS_AWESOME_MIX_TAPE = new SchemeDefinition({
       params: [
         new RequireTeam(GUARDIANS_OF_THE_GALAXY),
         new RequireHero(),
-        DECK_TYPE.HERO,
+        DECK_TYPE.hero,
       ],
     },
   },

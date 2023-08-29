@@ -26,7 +26,7 @@ export const FORGE_THE_INFINITY_GAUNTLET = new SchemeDefinition({
       params: [
         new RequireCard(INFINITY_GEMS),
         new RequireVillainGroup(),
-        DECK_TYPE.VILLAIN,
+        DECK_TYPE.villain,
       ],
     },
   },
@@ -74,7 +74,7 @@ export const THE_KREE_SKRULL_WAR = new SchemeDefinition({
       params: [
         new RequireCard(KREE_STARFORCE, 2, false, SKRULLS),
         new RequireVillainGroup(),
-        DECK_TYPE.VILLAIN,
+        DECK_TYPE.villain,
       ],
     },
   },
