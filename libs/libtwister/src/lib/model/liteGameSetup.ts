@@ -11,31 +11,36 @@ import { AbstractCardGroup } from './cards/abstractCardGroup';
 import { IAdditionalDeck, IAdditionalDeckRules } from './interfaces';
 import { NumPlayers } from './types';
 
-export class LiteGameSetup {
+interface LiteGameSetupConfig {
   numPlayers: number;
   schemeId: string;
   mastermindId: string;
   heroDeck: string[];
   villainDeck: string[];
-  additionalDeck: string[];
+  additionalDeck?: string[];
+}
+export class LiteGameSetup {
+  numPlayers = 2;
+  schemeId = '';
+  mastermindId = '';
+  heroDeck: string[] = [];
+  villainDeck: string[] = [];
+  additionalDeck: string[] = [];
 
-  constructor(config: {
-    numPlayers: number;
-    schemeId: string;
-    mastermindId: string;
-    heroDeck: string[];
-    villainDeck: string[];
-    additionalDeck?: string[];
-  }) {
-    ({
-      numPlayers: this.numPlayers,
-      schemeId: this.schemeId,
-      mastermindId: this.mastermindId,
-      heroDeck: this.heroDeck,
-      villainDeck: this.villainDeck,
-    } = config);
+  constructor();
+  constructor(config: LiteGameSetupConfig);
+  constructor(config?: LiteGameSetupConfig) {
+    if (config !== undefined) {
+      ({
+        numPlayers: this.numPlayers,
+        schemeId: this.schemeId,
+        mastermindId: this.mastermindId,
+        heroDeck: this.heroDeck,
+        villainDeck: this.villainDeck,
+      } = config);
 
-    this.additionalDeck = config.additionalDeck ?? [];
+      this.additionalDeck = config.additionalDeck ?? [];
+    }
   }
 
   private static _getById<T extends AbstractCardGroup>(
