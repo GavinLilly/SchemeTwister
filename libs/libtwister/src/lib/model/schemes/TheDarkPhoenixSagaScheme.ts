@@ -6,19 +6,28 @@ import {
   IGameSetup,
   VillainDeckMinimal,
 } from '../interfaces';
-import { NumPlayers, SchemeMinusRules } from '../types';
+import { DECK_TYPE, NumPlayers, SchemeMinusRules } from '../types';
 
-import { RequireVillainsInVillainDeckScheme } from './RequireVillainsInVillainDeckScheme';
 import { Scheme } from './Scheme';
+import {
+  RequireCard,
+  RequireCardInDeckScheme,
+  RequireCardWithBackup,
+  RequireVillainGroup,
+} from './cardInDeck';
 
-export class TheDarkPhoenixSagaScheme extends RequireVillainsInVillainDeckScheme {
+export class TheDarkPhoenixSagaScheme extends RequireCardInDeckScheme<VillainGroup> {
   constructor(
     scheme: SchemeMinusRules,
-    requiredVillain: VillainGroup,
-    private _preferredHero: Hero,
-    private _backupHero: Hero
+    requiredVillain: RequireCard<VillainGroup>,
+    private _requiredHero: RequireCardWithBackup<Hero>
   ) {
-    super(scheme, requiredVillain);
+    super(
+      scheme,
+      requiredVillain,
+      new RequireVillainGroup(),
+      DECK_TYPE.VILLAIN
+    );
   }
 
   public override getSetup(
@@ -30,11 +39,13 @@ export class TheDarkPhoenixSagaScheme extends RequireVillainsInVillainDeckScheme
     partialVillainDeck: VillainDeckMinimal = {},
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
   ): IGameSetup {
-    const hero = store.heroStore.isAvailable(this._preferredHero)
-      ? this._preferredHero
-      : this._backupHero;
+    const hero = this._requiredHero.getRequiredCard(store.heroStore);
 
-    const pickedHero = store.heroStore.getOne(hero.id);
+    if (hero instanceof Array) {
+      throw new Error('Only one Hero can be chosen for the Dark Phoenix Saga');
+    }
+
+    const pickedHero = store.heroStore.getOne(hero);
 
     partialVillainDeck.heroes = Scheme.addToDeck(
       partialVillainDeck.heroes ?? [],

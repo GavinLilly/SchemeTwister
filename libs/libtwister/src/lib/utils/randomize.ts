@@ -5,7 +5,11 @@
  * @param count The number of cards to return
  * @returns An array of cards
  */
-export function randomize<T>(originalArray: T[], count: number): T[] {
+export function randomize<T>(originalArray: T[]): T;
+// eslint-disable-next-line no-redeclare
+export function randomize<T>(originalArray: T[], count: number): T | T[];
+// eslint-disable-next-line no-redeclare
+export function randomize<T>(originalArray: T[], count: number = 1): T | T[] {
   if (count < 1) {
     throw new RangeError(`Count must be 1 or higher`);
   } else if (count > originalArray.length) {
@@ -34,5 +38,11 @@ export function randomize<T>(originalArray: T[], count: number): T[] {
     }
   }
 
-  return getRandomElement(pickFrom);
+  const chosenRandoms = getRandomElement(pickFrom);
+
+  if (chosenRandoms.length === 1) {
+    return chosenRandoms[0];
+  }
+
+  return chosenRandoms;
 }

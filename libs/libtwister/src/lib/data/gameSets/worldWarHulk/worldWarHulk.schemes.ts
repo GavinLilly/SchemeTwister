@@ -1,10 +1,12 @@
 import {
-  RequireHeroNameInHeroDeckScheme,
-  RequireHeroNameInAdditionalDeckScheme,
   IOverrideScheme,
   SchemeDefinition,
-  RequireHenchmenInDeckScheme,
   DECK_TYPE,
+  RequireCard,
+  RequireCardInDeckScheme,
+  RequireHenchmen,
+  RequireCardName,
+  RequireHero,
 } from '../../../model';
 
 import { CYTOPLASM_SPIKES } from './worldWarHulk.henchmen';
@@ -12,8 +14,12 @@ import { CROSS_DIMENSIONAL_RAMPAGE } from './worldWarHulk.keywords';
 import { META } from './worldWarHulk.meta';
 
 const requireHulkScheme: IOverrideScheme = {
-  schemeType: RequireHeroNameInAdditionalDeckScheme,
-  params: ['hulk'],
+  schemeType: RequireCardInDeckScheme,
+  params: [
+    new RequireCardName('hulk'),
+    new RequireHero(),
+    DECK_TYPE.ADDITIONAL,
+  ],
 };
 
 export const BREAK_THE_PLANET_ASUNDER = new SchemeDefinition({
@@ -53,8 +59,12 @@ export const CYTOPLASM_SPIKE_INVASION = new SchemeDefinition({
       return rule;
     },
     overrideScheme: {
-      schemeType: RequireHenchmenInDeckScheme,
-      params: [CYTOPLASM_SPIKES, DECK_TYPE.ADDITIONAL],
+      schemeType: RequireCardInDeckScheme,
+      params: [
+        new RequireCard(CYTOPLASM_SPIKES),
+        new RequireHenchmen(),
+        DECK_TYPE.ADDITIONAL,
+      ],
     },
   },
   gameSet: META,
@@ -76,8 +86,12 @@ Twist 7-10: Each player gains a Wound.`,
       return rule;
     },
     overrideScheme: {
-      schemeType: RequireHeroNameInHeroDeckScheme,
-      params: ['hulk', 2, true],
+      schemeType: RequireCardInDeckScheme,
+      params: [
+        new RequireCardName('hulk', 2, true),
+        new RequireHero(),
+        DECK_TYPE.HERO,
+      ],
     },
   },
   gameSet: META,

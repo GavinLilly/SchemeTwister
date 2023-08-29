@@ -33,7 +33,7 @@ const bastion = new EpicMastermindBuilder({
   name: 'Bastion',
   gameSet: META,
   victoryPoints: 6,
-  alwaysLeads: [PURIFIERS, ...randomize([SENTINELS, SENTINEL_SQUAD_ONE], 1)],
+  alwaysLeads: [PURIFIERS, randomize([SENTINELS, SENTINEL_SQUAD_ONE])],
 });
 
 export const BASTION = bastion.buildNormal({

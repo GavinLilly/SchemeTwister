@@ -28,7 +28,13 @@ import instantiateScheme from '../utils/instantiateScheme';
 
 import { GameSetup } from './GameSetup';
 import { LiteGameSetup } from './liteGameSetup';
-import { RequireVillainsInVillainDeckScheme, Scheme } from './schemes';
+import {
+  RequireCard,
+  RequireCardInDeckScheme,
+  RequireVillainGroup,
+  Scheme,
+} from './schemes';
+import { DECK_TYPE } from './types';
 
 let store: StoreOfStores;
 
@@ -209,9 +215,11 @@ describe('GameSetup', () => {
     let setup: GameSetup;
 
     beforeAll(() => {
-      const scheme = new RequireVillainsInVillainDeckScheme(
+      const scheme = new RequireCardInDeckScheme(
         SPLICE_HUMANS_WITH_SPIDER_DNA,
-        SINISTER_SIX
+        new RequireCard(SINISTER_SIX),
+        new RequireVillainGroup(),
+        DECK_TYPE.VILLAIN
       );
       setup = scheme.getSetup(
         2,

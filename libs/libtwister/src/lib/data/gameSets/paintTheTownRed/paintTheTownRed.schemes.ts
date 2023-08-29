@@ -1,5 +1,8 @@
 import {
-  RequireVillainsInVillainDeckScheme,
+  DECK_TYPE,
+  RequireCard,
+  RequireCardInDeckScheme,
+  RequireVillainGroup,
   SchemeDefinition,
 } from '../../../model';
 
@@ -49,8 +52,12 @@ export const SPLICE_HUMANS_WITH_SPIDER_DNA = new SchemeDefinition({
   meta: {
     numTwists: 8,
     overrideScheme: {
-      schemeType: RequireVillainsInVillainDeckScheme,
-      params: [SINISTER_SIX],
+      schemeType: RequireCardInDeckScheme,
+      params: [
+        new RequireCard(SINISTER_SIX),
+        new RequireVillainGroup(),
+        DECK_TYPE.VILLAIN,
+      ],
     },
   },
   gameSet: META,

@@ -7,30 +7,31 @@ import {
   AdditionalDeckDeckMinimal,
 } from '../interfaces';
 import {
+  DECK_TYPE,
   NumPlayers,
   SchemeMinusRules,
   numPlayers as numPlayersCount,
 } from '../types';
 
-import { RequireVillainsInVillainDeckScheme } from './RequireVillainsInVillainDeckScheme';
+import {
+  RequireCard,
+  RequireCardInDeckScheme,
+  RequireVillainGroup,
+} from './cardInDeck';
 
 /**
  * This scheme class checks if Lilith is the mastermind and if so it sets the number of twists to 1.
  */
-export class RitualSacrificeToSummonChthonScheme extends RequireVillainsInVillainDeckScheme {
+export class RitualSacrificeToSummonChthonScheme extends RequireCardInDeckScheme<VillainGroup> {
   constructor(
     scheme: SchemeMinusRules,
-    requiredVillain: VillainGroup,
-    numberRequired = 1,
-    removeOthers = false,
-    ...requiredVillains: VillainGroup[]
+    requiredVillain: RequireCard<VillainGroup>
   ) {
     super(
       scheme,
       requiredVillain,
-      numberRequired,
-      removeOthers,
-      ...requiredVillains
+      new RequireVillainGroup(),
+      DECK_TYPE.VILLAIN
     );
   }
 

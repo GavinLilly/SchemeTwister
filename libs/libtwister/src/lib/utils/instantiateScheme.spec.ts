@@ -3,11 +3,7 @@ import {
   SUPER_HERO_CIVIL_WAR,
   THE_LEGACY_VIRUS,
 } from '../data/gameSets/legendary/legendary.schemes';
-import {
-  RequireVillainsInVillainDeckScheme,
-  Scheme,
-  SoloBannedScheme,
-} from '../model';
+import { RequireCardInDeckScheme, Scheme, SoloBannedScheme } from '../model';
 
 import instantiateScheme from './instantiateScheme';
 
@@ -21,7 +17,7 @@ describe('instantiateScheme', () => {
   describe('with parameters in the overridden scheme', () => {
     expect(
       instantiateScheme(SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS)
-    ).toBeInstanceOf(RequireVillainsInVillainDeckScheme);
+    ).toBeInstanceOf(RequireCardInDeckScheme);
   });
 
   describe('with no parameters in the overridden scheme', () => {

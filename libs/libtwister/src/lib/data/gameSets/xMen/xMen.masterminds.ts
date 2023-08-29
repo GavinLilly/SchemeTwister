@@ -56,7 +56,7 @@ const deathbird = new EpicMastermindBuilder({
   name: 'Deathbird',
   gameSet: META,
   victoryPoints: 6,
-  alwaysLeads: randomize([SHIAR_DEATH_COMMANDOS, SHIAR_PATROL_CRAFT], 1),
+  alwaysLeads: [randomize([SHIAR_DEATH_COMMANDOS, SHIAR_PATROL_CRAFT])],
   keywords: [TOKEN_CARDS],
 });
 

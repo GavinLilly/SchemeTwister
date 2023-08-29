@@ -1,5 +1,9 @@
 import {
-  RequireHeroNameInVillainDeckScheme,
+  DECK_TYPE,
+  RequireCard,
+  RequireCardInDeckScheme,
+  RequireCardName,
+  RequireHero,
   RitualSacrificeToSummonChthonScheme,
   SchemeDefinition,
 } from '../../../model';
@@ -56,7 +60,7 @@ export const RITUAL_SACRIFICE_TO_SUMMON_CHTHON = new SchemeDefinition({
     },
     overrideScheme: {
       schemeType: RitualSacrificeToSummonChthonScheme,
-      params: [LILIN],
+      params: [new RequireCard(LILIN)],
     },
   },
   gameSet: META,
@@ -74,8 +78,12 @@ export const MIDNIGHT_MASSACRE = new SchemeDefinition({
   meta: {
     numTwists: 11,
     overrideScheme: {
-      schemeType: RequireHeroNameInVillainDeckScheme,
-      params: ['Blade'],
+      schemeType: RequireCardInDeckScheme,
+      params: [
+        new RequireCardName('Blade'),
+        new RequireHero(),
+        DECK_TYPE.VILLAIN,
+      ],
     },
   },
   gameSet: META,

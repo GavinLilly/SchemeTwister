@@ -1,6 +1,7 @@
 import { IPlayableObject } from '../model';
 
 import { MultiCardFactory } from './multiCardFactory';
+import { SingleCardFactory } from './singleCardFactory';
 
 /**
  * A MultiCardFactory with memory!
@@ -64,30 +65,49 @@ export class MultiCardStore<
    * @param id the ID of the item that is requested
    * @returns the requested item or undefined if it's not found
    */
-  public override getOne(id: string): T {
-    const card = super.availableCardsMap.get(id);
+  public override getOne(id: string): T;
+  /**
+   * Get's the full item associated with the given card and removes it from
+   * the store
+   * @param card the card that is requested
+   * @returns the requested card if it's in the list of available cards
+   */
+  public override getOne(card: T): T;
+  public override getOne(idOrCard: string | T): T {
+    const cardId = SingleCardFactory.getCardId(idOrCard);
 
-    if (card) {
-      this._chosenCards.add(id);
+    const card = super.availableCardsMap.get(cardId);
+
+    if (card !== undefined) {
+      this._chosenCards.add(cardId);
       return card;
     }
 
     throw new Error(
-      `Provided card ID (${id}) is not in the list of available cards.`
+      `Provided card ID (${cardId}) is not in the list of available cards.`
     );
   }
 
   /**
-   * For each ID passed to the function, get the full item assocaited with it
+   * For each ID passed to the function, get the full item associated with it
    * and remove it from the store.
    * Note: IDs that are not matched are skipped.
+   * @param ids the card IDs that are requested
+   * @returns the requested items
    */
-  public override getAll(ids: string[]): T[] {
-    const cards = super.getAll(ids);
-
-    cards.forEach((card) => this.getOne(card.id));
-
-    return cards;
+  public override getAll(ids: string[]): T[];
+  /**
+   * For each card passed to the function, remove it from the store and return it.
+   * Note: IDs that are not matched are skipped.
+   * @param cards the card that are requested
+   * @returns the requested items
+   */
+  public override getAll(cards: T[]): T[];
+  public override getAll(idsOrCards: string[] | T[]): T[] {
+    return idsOrCards.map((idOrCard) => {
+      const cardId = SingleCardFactory.getCardId(idOrCard);
+      return this.getOne(cardId);
+    });
   }
 
   /**
@@ -100,11 +120,18 @@ export class MultiCardStore<
   }
 
   /**
-   * Removes the given card from the list of available cards
+   * Removes the given card ID from the list of available cards
    * @param id the id of the card to remove
    */
-  public removeCard(id: string) {
-    this._excludedCardsForSetup.add(id);
+  public removeCard(id: string): void;
+  /**
+   * Removes the given card from the list of available cards
+   * @param card the card to remove
+   */
+  public removeCard(card: T): void;
+  public removeCard(idOrCard: string | T): void {
+    const cardId = SingleCardFactory.getCardId(idOrCard);
+    this._excludedCardsForSetup.add(cardId);
   }
 
   public override get excludedCardsMap(): Map<string, T> {

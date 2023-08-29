@@ -145,7 +145,7 @@ export class Scheme implements IPlayableObject {
    * @param card the card to add to the deck
    * @param maxLength the maximum size of the deck
    */
-  protected static addToDeck<T extends IPlayableObject>(
+  public static addToDeck<T extends IPlayableObject>(
     deck: T[],
     card: T,
     maxLength?: number
@@ -158,13 +158,13 @@ export class Scheme implements IPlayableObject {
    * @param maxLength the maximum size of the deck
    * @param extraCards an array of additional cards to add to the deck
    */
-  protected static addToDeck<T extends IPlayableObject>(
+  public static addToDeck<T extends IPlayableObject>(
     deck: T[],
     card: T,
     maxLength?: number,
     ...extraCards: T[]
   ): T[];
-  protected static addToDeck<T extends IPlayableObject>(
+  public static addToDeck<T extends IPlayableObject>(
     deck: T[],
     card: T,
     maxLength?: number,

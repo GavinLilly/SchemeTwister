@@ -1,5 +1,8 @@
 import {
-  RequireVillainsInVillainDeckScheme,
+  DECK_TYPE,
+  RequireCard,
+  RequireCardInDeckScheme,
+  RequireVillainGroup,
   SchemeDefinition,
 } from '../../../model';
 
@@ -20,8 +23,12 @@ export const THE_DEMON_BEAR_SAGA = new SchemeDefinition({
   meta: {
     numTwists: 8,
     overrideScheme: {
-      schemeType: RequireVillainsInVillainDeckScheme,
-      params: [DEMONS_OF_LIMBO],
+      schemeType: RequireCardInDeckScheme,
+      params: [
+        new RequireCard(DEMONS_OF_LIMBO),
+        new RequireVillainGroup(),
+        DECK_TYPE.VILLAIN,
+      ],
     },
   },
   gameSet: META,

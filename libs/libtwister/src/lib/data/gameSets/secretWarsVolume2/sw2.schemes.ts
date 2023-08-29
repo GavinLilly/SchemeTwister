@@ -1,6 +1,8 @@
 import {
   DECK_TYPE,
-  RequireHenchmenInDeckScheme,
+  RequireCard,
+  RequireCardInDeckScheme,
+  RequireHenchmen,
   SchemeDefinition,
 } from '../../../model';
 import { HeroClass } from '../../enums';
@@ -93,8 +95,12 @@ export const THE_MARK_OF_KHONSHU = new SchemeDefinition({
       return rule;
     },
     overrideScheme: {
-      schemeType: RequireHenchmenInDeckScheme,
-      params: [KHONSHU_GUARDIANS, DECK_TYPE.VILLAIN],
+      schemeType: RequireCardInDeckScheme,
+      params: [
+        new RequireCard(KHONSHU_GUARDIANS),
+        new RequireHenchmen(),
+        DECK_TYPE.VILLAIN,
+      ],
     },
   },
   gameSet: META,

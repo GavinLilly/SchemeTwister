@@ -18,11 +18,13 @@ export class MultiCardFactory<
    */
   public getManyRandom(count: number, func?: (card: T) => boolean): T[] {
     try {
-      if (func !== undefined) {
-        return randomize(this.availableCards.filter(func), count);
-      }
+      const cards =
+        func !== undefined
+          ? this.availableCards.filter(func)
+          : this.availableCards;
 
-      return randomize(this.availableCards, count);
+      const random = randomize(cards, count);
+      return random instanceof Array ? random : [random];
     } catch (e) {
       if (e instanceof RangeError) {
         throw e;

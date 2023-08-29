@@ -1,7 +1,10 @@
 import {
-  RequireVillainsInVillainDeckScheme,
   SoloBannedScheme,
   SchemeDefinition,
+  RequireCardInDeckScheme,
+  RequireCard,
+  RequireVillainGroup,
+  DECK_TYPE,
 } from '../../../model';
 import { HeroClass } from '../../enums';
 
@@ -56,8 +59,12 @@ export const ENSLAVE_MINDS_WITH_THE_CHITAURI_SCEPTER = new SchemeDefinition({
       return rule;
     },
     overrideScheme: {
-      schemeType: RequireVillainsInVillainDeckScheme,
-      params: [CHITAURI],
+      schemeType: RequireCardInDeckScheme,
+      params: [
+        new RequireCard(CHITAURI),
+        new RequireVillainGroup(),
+        DECK_TYPE.VILLAIN,
+      ],
     },
   },
   gameSet: META,

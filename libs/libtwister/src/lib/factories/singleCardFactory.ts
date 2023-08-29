@@ -18,6 +18,13 @@ export class SingleCardFactory<T extends IPlayableObject> {
     this._excludedCardIds = new Set(excludedCardIds);
   }
 
+  protected static getCardId = <T extends IPlayableObject>(
+    idOrCard: string | T
+  ): string =>
+    typeof idOrCard === 'string' || idOrCard instanceof String
+      ? (idOrCard as string)
+      : (idOrCard as T).id;
+
   /**
    * Removes cards from the map of cards
    * @param toExclude the cards to remove from the collection
@@ -109,10 +116,10 @@ export class SingleCardFactory<T extends IPlayableObject> {
    */
   public getOneRandom(func?: (card: T) => boolean): T {
     if (func !== undefined) {
-      return randomize(this.availableCards.filter(func), 1)[0];
+      return randomize(this.availableCards.filter(func));
     }
 
-    return randomize(this.availableCards, 1)[0];
+    return randomize(this.availableCards);
   }
 
   /**

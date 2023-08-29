@@ -1,5 +1,8 @@
 import {
-  RequireVillainsInVillainDeckScheme,
+  DECK_TYPE,
+  RequireCard,
+  RequireCardInDeckScheme,
+  RequireVillainGroup,
   SchemeDefinition,
 } from '../../../model';
 import { HeroClass } from '../../enums';
@@ -19,8 +22,12 @@ export const SHIELD_VS_HYDRA_WAR = new SchemeDefinition({
   meta: {
     numTwists: 7,
     overrideScheme: {
-      schemeType: RequireVillainsInVillainDeckScheme,
-      params: [HYDRA_ELITE, 1, true, AIM_HYDRA_OFFSHOOT],
+      schemeType: RequireCardInDeckScheme,
+      params: [
+        new RequireCard(HYDRA_ELITE, 1, true, AIM_HYDRA_OFFSHOOT),
+        new RequireVillainGroup(),
+        DECK_TYPE.VILLAIN,
+      ],
     },
   },
   gameSet: META,

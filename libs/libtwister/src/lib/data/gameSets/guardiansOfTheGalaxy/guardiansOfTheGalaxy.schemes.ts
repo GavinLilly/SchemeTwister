@@ -1,5 +1,8 @@
 import {
-  RequireVillainsInVillainDeckScheme,
+  DECK_TYPE,
+  RequireCard,
+  RequireCardInDeckScheme,
+  RequireVillainGroup,
   SchemeDefinition,
 } from '../../../model';
 import { SKRULLS } from '../legendary/legendary.villains';
@@ -19,8 +22,12 @@ export const FORGE_THE_INFINITY_GAUNTLET = new SchemeDefinition({
   meta: {
     numTwists: 8,
     overrideScheme: {
-      schemeType: RequireVillainsInVillainDeckScheme,
-      params: [INFINITY_GEMS],
+      schemeType: RequireCardInDeckScheme,
+      params: [
+        new RequireCard(INFINITY_GEMS),
+        new RequireVillainGroup(),
+        DECK_TYPE.VILLAIN,
+      ],
     },
   },
   gameSet: META,
@@ -63,8 +70,12 @@ export const THE_KREE_SKRULL_WAR = new SchemeDefinition({
       return rule;
     },
     overrideScheme: {
-      schemeType: RequireVillainsInVillainDeckScheme,
-      params: [KREE_STARFORCE, 2, false, SKRULLS],
+      schemeType: RequireCardInDeckScheme,
+      params: [
+        new RequireCard(KREE_STARFORCE, 2, false, SKRULLS),
+        new RequireVillainGroup(),
+        DECK_TYPE.VILLAIN,
+      ],
     },
   },
   gameSet: META,

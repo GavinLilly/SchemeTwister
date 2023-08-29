@@ -10,11 +10,20 @@ import {
 import { DECK_TYPE, NumPlayers, SchemeMinusRules } from '../types';
 
 import { Scheme } from './Scheme';
-import { RequireHeroInDeckScheme } from './requireHeroInDeckScheme';
+import {
+  RequireCard,
+  RequireCardInDeckScheme,
+  RequireHero,
+} from './cardInDeck';
 
-export class HouseOfMScheme extends RequireHeroInDeckScheme {
-  constructor(scheme: SchemeMinusRules, required: Hero) {
-    super(scheme, required, DECK_TYPE.VILLAIN);
+export class HouseOfMScheme extends RequireCardInDeckScheme<Hero> {
+  constructor(scheme: SchemeMinusRules, private _required: Hero) {
+    super(
+      scheme,
+      new RequireCard(_required),
+      new RequireHero(),
+      DECK_TYPE.VILLAIN
+    );
   }
 
   public override getSetup(
@@ -32,7 +41,7 @@ export class HouseOfMScheme extends RequireHeroInDeckScheme {
     );
     const otherHeroes = store.heroStore.getManyRandom(
       2,
-      (hero) => hero.team !== X_MEN && hero !== this.required
+      (hero) => hero.team !== X_MEN && hero !== this._required
     );
 
     partialHeroDeck.heroes = Scheme.addToDeck(

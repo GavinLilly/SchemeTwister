@@ -1,7 +1,10 @@
 import {
+  DECK_TYPE,
   IOverrideScheme,
-  RequireHeroNameInHeroDeckScheme,
-  RequireTeamInHeroDeckScheme,
+  RequireCardInDeckScheme,
+  RequireCardName,
+  RequireHero,
+  RequireTeam,
   SchemeDefinition,
 } from '../../../model';
 import { MERCS_FOR_MONEY } from '../../teams';
@@ -10,8 +13,8 @@ import { REVENGE } from './deadpool.keywords';
 import { META } from './deadpool.meta';
 
 const includeDeadpool: IOverrideScheme = {
-  schemeType: RequireHeroNameInHeroDeckScheme,
-  params: ['deadpool'],
+  schemeType: RequireCardInDeckScheme,
+  params: [new RequireCardName('deadpool'), new RequireHero(), DECK_TYPE.HERO],
 };
 
 export const DEADPOOL_KILLS_THE_MARVEL_UNIVERSE = new SchemeDefinition({
@@ -90,8 +93,12 @@ export const EVERYBODY_HATES_DEADPOOL = new SchemeDefinition({
   meta: {
     numTwists: 6,
     overrideScheme: {
-      schemeType: RequireTeamInHeroDeckScheme,
-      params: [MERCS_FOR_MONEY],
+      schemeType: RequireCardInDeckScheme,
+      params: [
+        new RequireTeam(MERCS_FOR_MONEY),
+        new RequireHero(),
+        DECK_TYPE.HERO,
+      ],
     },
   },
   gameSet: META,

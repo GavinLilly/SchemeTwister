@@ -9,6 +9,7 @@ import { GameSetup } from '../GameSetup';
 
 import { RitualSacrificeToSummonChthonScheme } from './RitualSacrificeToSummonChthonScheme';
 import { Scheme } from './Scheme';
+import { RequireCard } from './cardInDeck';
 
 describe('RitualSacrificeToSummonChthonScheme', () => {
   let store: StoreOfStores;
@@ -24,7 +25,7 @@ describe('RitualSacrificeToSummonChthonScheme', () => {
 
     scheme = new RitualSacrificeToSummonChthonScheme(
       RITUAL_SACRIFICE_TO_SUMMON_CHTHON,
-      LILIN
+      new RequireCard(LILIN)
     );
   });
 

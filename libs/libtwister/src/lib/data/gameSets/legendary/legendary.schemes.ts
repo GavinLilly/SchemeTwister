@@ -1,7 +1,10 @@
 import {
   SoloBannedScheme,
-  RequireVillainsInVillainDeckScheme,
   SchemeDefinition,
+  RequireCardInDeckScheme,
+  RequireCard,
+  RequireVillainGroup,
+  DECK_TYPE,
 } from '../../../model';
 import { HeroClass } from '../../enums';
 
@@ -116,8 +119,12 @@ export const SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS = new SchemeDefinition(
         return rule;
       },
       overrideScheme: {
-        schemeType: RequireVillainsInVillainDeckScheme,
-        params: [SKRULLS],
+        schemeType: RequireCardInDeckScheme,
+        params: [
+          new RequireCard(SKRULLS),
+          new RequireVillainGroup(),
+          DECK_TYPE.VILLAIN,
+        ],
       },
     },
     gameSet: META,

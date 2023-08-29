@@ -1,6 +1,8 @@
 import {
   DECK_TYPE,
-  RequireVillainGroupInDeckScheme,
+  RequireCard,
+  RequireCardInDeckScheme,
+  RequireVillainGroup,
   SchemeDefinition,
 } from '../../../model';
 import { HeroClass } from '../../enums';
@@ -29,8 +31,12 @@ export const CLASH_OF_THE_MONSTERS_UNLEASHED = new SchemeDefinition({
       return rule;
     },
     overrideScheme: {
-      schemeType: RequireVillainGroupInDeckScheme,
-      params: [MONSTERS_UNLEASHED, DECK_TYPE.ADDITIONAL],
+      schemeType: RequireCardInDeckScheme,
+      params: [
+        new RequireCard(MONSTERS_UNLEASHED),
+        new RequireVillainGroup(),
+        DECK_TYPE.ADDITIONAL,
+      ],
     },
   },
   gameSet: META,

@@ -1,4 +1,10 @@
-import { RequireTeamInHeroDeckScheme, SchemeDefinition } from '../../../model';
+import {
+  DECK_TYPE,
+  RequireCardInDeckScheme,
+  RequireHero,
+  RequireTeam,
+  SchemeDefinition,
+} from '../../../model';
 import { SPIDER_FRIENDS } from '../../teams';
 
 import { STRIKER } from './spidermanHomecoming.keywords';
@@ -13,8 +19,12 @@ export const DISTRACT_THE_HERO = new SchemeDefinition({
   meta: {
     numTwists: 8,
     overrideScheme: {
-      schemeType: RequireTeamInHeroDeckScheme,
-      params: [SPIDER_FRIENDS],
+      schemeType: RequireCardInDeckScheme,
+      params: [
+        new RequireTeam(SPIDER_FRIENDS),
+        new RequireHero(),
+        DECK_TYPE.HERO,
+      ],
     },
   },
   gameSet: META,

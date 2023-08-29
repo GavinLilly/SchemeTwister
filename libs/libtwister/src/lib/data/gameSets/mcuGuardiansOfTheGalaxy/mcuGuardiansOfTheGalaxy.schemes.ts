@@ -1,4 +1,10 @@
-import { RequireTeamInHeroDeckScheme, SchemeDefinition } from '../../../model';
+import {
+  DECK_TYPE,
+  RequireCardInDeckScheme,
+  RequireHero,
+  RequireTeam,
+  SchemeDefinition,
+} from '../../../model';
 import { GUARDIANS_OF_THE_GALAXY } from '../../teams';
 
 import { META } from './mcuGuardiansOfTheGalaxy.meta';
@@ -60,8 +66,12 @@ export const STAR_LORDS_AWESOME_MIX_TAPE = new SchemeDefinition({
       return rule;
     },
     overrideScheme: {
-      schemeType: RequireTeamInHeroDeckScheme,
-      params: [GUARDIANS_OF_THE_GALAXY],
+      schemeType: RequireCardInDeckScheme,
+      params: [
+        new RequireTeam(GUARDIANS_OF_THE_GALAXY),
+        new RequireHero(),
+        DECK_TYPE.HERO,
+      ],
     },
   },
   gameSet: META,

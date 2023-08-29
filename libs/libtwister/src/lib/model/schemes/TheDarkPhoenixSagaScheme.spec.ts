@@ -9,6 +9,7 @@ import { IGameSetup } from '../interfaces';
 
 import { Scheme } from './Scheme';
 import { TheDarkPhoenixSagaScheme } from './TheDarkPhoenixSagaScheme';
+import { RequireCard, RequireCardWithBackup } from './cardInDeck';
 
 describe('The Dark Phoenix Saga Scheme', () => {
   let store: StoreOfStores;
@@ -18,9 +19,8 @@ describe('The Dark Phoenix Saga Scheme', () => {
     store = new StoreBuilder().withSingleGameset(XMEN).build();
     scheme = new TheDarkPhoenixSagaScheme(
       THE_DARK_PHOENIX_SAGA,
-      HELLFIRE_CLUB,
-      JEAN_GREY,
-      PHOENIX
+      new RequireCard(HELLFIRE_CLUB),
+      new RequireCardWithBackup(JEAN_GREY, PHOENIX)
     );
   });
 
