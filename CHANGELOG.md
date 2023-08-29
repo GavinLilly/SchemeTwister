@@ -1,3 +1,10 @@
+## [3.7.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.7.0...v3.7.1) (2023-08-29)
+
+
+### Bug Fixes
+
+* **libtwister:** ensure litegamesetup can be instantiated ([f1a3025](https://github.com/GavinLilly/SchemeTwister/commit/f1a3025104bf20d3c51bedc6fbfc7ae3df0cf71c))
+
 ## [3.7.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.6.1...v3.7.0) (2023-07-26)
 
 
