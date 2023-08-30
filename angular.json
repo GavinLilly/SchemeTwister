@@ -63,14 +63,16 @@
             "aot": true,
             "assets": [
               "apps/web-app/src/favicon.ico",
-              "apps/web-app/src/assets"
+              "apps/web-app/src/assets",
+              "apps/web-app/src/manifest.webmanifest"
             ],
             "styles": ["apps/web-app/src/styles.scss"],
             "scripts": [],
             "sourceMap": true,
             "buildOptimizer": false,
             "optimization": false,
-            "serviceWorker": false
+            "serviceWorker": true,
+            "ngswConfigPath": "apps/web-app/ngsw-config.json"
           },
           "configurations": {
             "production": {
