@@ -27,7 +27,7 @@ describe('SchemeMastermindSelectComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SchemeMastermindSelectComponent);
     component = fixture.componentInstance;
-    component.itemType = CARD_TYPE.MASTERMIND;
+    component.itemType = CARD_TYPE.mastermind;
     fixture.detectChanges();
   });
 
