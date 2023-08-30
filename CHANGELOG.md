@@ -1,3 +1,10 @@
+## [3.8.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.7.1...v3.8.0) (2023-08-30)
+
+
+### Features
+
+* **app:** make app installable as PWA ([a9b4d69](https://github.com/GavinLilly/SchemeTwister/commit/a9b4d69416d08370d130e165e09f56b578b4d028))
+
 ## [3.7.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.7.0...v3.7.1) (2023-08-29)
 
 
