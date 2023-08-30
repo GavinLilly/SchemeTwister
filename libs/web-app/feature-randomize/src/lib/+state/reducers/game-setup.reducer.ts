@@ -3,6 +3,7 @@ import {
   Mastermind,
   GameSetup,
   SchemeMinusRules,
+  IGameSetup,
 } from '@schemetwister/libtwister';
 
 import {
@@ -18,7 +19,7 @@ import {
 export const gameSetupFeatureKey = 'gameSetup';
 
 export interface IGameSetupState {
-  gameSetup: GameSetup;
+  gameSetup: IGameSetup;
   loading: boolean;
   error: string;
   definedScheme?: SchemeMinusRules;

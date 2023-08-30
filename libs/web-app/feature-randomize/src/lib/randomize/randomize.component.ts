@@ -3,7 +3,12 @@ import { Meta } from '@angular/platform-browser';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import { GameSetup, NumPlayers, numPlayers } from '@schemetwister/libtwister';
+import {
+  AbstractCardGroup,
+  GameSetup,
+  NumPlayers,
+  numPlayers,
+} from '@schemetwister/libtwister';
 import { Observable } from 'rxjs';
 
 import { migrateGameSetsCookie } from '../+state/actions/game-sets.actions';
@@ -18,7 +23,11 @@ import {
 } from '../+state/actions/num-players.actions';
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
 import { INumPlayersState } from '../+state/reducers/num-players.reducer';
-import { selectNumPlayers } from '../+state/selectors/num-players.selectors';
+import { selectGameSetup } from '../+state/selectors/game-setup-scheme.selectors';
+import {
+  selectIsAdvancedSolo,
+  selectNumPlayers,
+} from '../+state/selectors/num-players.selectors';
 import { GameSetSelectComponent } from '../game-set-select/game-set-select.component';
 
 @Component({
@@ -29,14 +38,12 @@ import { GameSetSelectComponent } from '../game-set-select/game-set-select.compo
 export class RandomizeComponent implements OnInit {
   numPlayers$: Observable<NumPlayers> = this._store.select(selectNumPlayers);
 
-  isAdvancedSolo$: Observable<boolean> = this._store.select(
-    (state) => state.numPlayers.isAdvancedSolo
-  );
+  isAdvancedSolo$: Observable<boolean> =
+    this._store.select(selectIsAdvancedSolo);
+
   isAdvancedSoloValue!: boolean;
 
-  gameSetup$: Observable<GameSetup> = this._store.select(
-    (state) => state.gameSetup.gameSetup
-  );
+  gameSetup$: Observable<GameSetup> = this._store.select(selectGameSetup);
 
   faCog = faCog;
 
@@ -50,10 +57,18 @@ export class RandomizeComponent implements OnInit {
     }>,
     meta: Meta
   ) {
+    const deckAsNameString = (cards: AbstractCardGroup[]) =>
+      cards.map((card) => card.name).join(', ');
+
     this.gameSetup$.subscribe((setup) => {
       meta.updateTag({
         name: 'description',
-        content: `Scheme: ${setup.scheme}, Mastermind: ${setup.mastermind}, Number of players: ${setup.numPlayers}`,
+        content:
+          `Scheme: ${setup.scheme}; ` +
+          `Mastermind: ${setup.mastermind}; ` +
+          `Number of players: ${setup.numPlayers}; ` +
+          `Hero deck: ${deckAsNameString(setup.heroDeckAsArray())}; ` +
+          `Villain deck: ${deckAsNameString(setup.villainDeckAsArray())}`,
       });
     });
   }

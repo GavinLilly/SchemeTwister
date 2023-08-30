@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { GameSetup } from '@schemetwister/libtwister';
 
 import {
   gameSetupFeatureKey,
@@ -7,6 +8,11 @@ import {
 
 const selectGameSetupFeature =
   createFeatureSelector<IGameSetupState>(gameSetupFeatureKey);
+
+export const selectGameSetup = createSelector(
+  selectGameSetupFeature,
+  (state: IGameSetupState): GameSetup => new GameSetup(state.gameSetup)
+);
 
 export const selectGameSetupScheme = createSelector(
   selectGameSetupFeature,
