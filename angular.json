@@ -64,7 +64,12 @@
             "assets": [
               "apps/web-app/src/favicon.ico",
               "apps/web-app/src/assets",
-              "apps/web-app/src/manifest.webmanifest"
+              "apps/web-app/src/manifest.webmanifest",
+              {
+                "glob": "*",
+                "input": "libs/libtwister/src/assets/icons/teams",
+                "output": "./assets/icons/teams"
+              }
             ],
             "styles": ["apps/web-app/src/styles.scss"],
             "scripts": [],
