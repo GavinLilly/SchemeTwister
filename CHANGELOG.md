@@ -1,3 +1,10 @@
+## [3.8.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.8.0...v3.8.1) (2023-08-30)
+
+
+### Bug Fixes
+
+* **app:** fix instantiation of game setup from the store ([f34b748](https://github.com/GavinLilly/SchemeTwister/commit/f34b74823dbe4468589cd7afe8ba8c45c5251620))
+
 ## [3.8.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.7.1...v3.8.0) (2023-08-30)
 
 
