@@ -22,7 +22,7 @@ describe('Player Picks a Hero Scheme', () => {
       const scheme = new PlayerPicksAHeroScheme(SNEAK_ATTACK_THE_HEROES_HOMES);
       const setup = scheme.getSetup(
         3,
-        store.mastermindStore.getOneRandom(),
+        store.mastermindStore.getRandom(),
         store
       );
 

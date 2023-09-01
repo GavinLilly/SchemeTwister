@@ -4,8 +4,8 @@ import { Scheme, SchemeMinusRules } from '../model';
  * Instantiates a scheme based on the definition passed to the function. If
  * there is no override of the scheme type then it will instantiate a default
  * scheme.
- * @param scheme the scheme to instantiate, as an object definition
- * @returns the instantiated scheme
+ * @param scheme The scheme to instantiate, as an object definition
+ * @returns The instantiated scheme
  */
 export default function instantiateScheme(scheme: SchemeMinusRules): Scheme {
   if (scheme.meta.overrideScheme === undefined) {

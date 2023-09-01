@@ -1,6 +1,5 @@
 import { GameSet } from './GameSet';
-import { GameSetSize } from './types/gameSetSize.type';
-import { Series } from './types';
+import { GameSetSize, Series } from './types';
 
 /**
  * An extension of a Map specifically for Game Sets.
@@ -9,8 +8,10 @@ export class GameSetMap extends Map<string, GameSet> {
   /**
    * Returns the GameSets from the map as an array, optionally limiting by size
    * or set.
-   * @param limitBy an optional config that allows to limit the array
-   * @returns an array of GameSets
+   * @param limitBy An optional config that allows to limit the array
+   * @param limitBy.size Limit the game sets to only those of the chosen size
+   * @param limitBy.series Limit the game sets to only those from the chosen series
+   * @returns An array of GameSets
    */
   public asArray(limitBy?: { size?: GameSetSize; series?: Series }): GameSet[] {
     const thisAsArray = Array.from(this.values());

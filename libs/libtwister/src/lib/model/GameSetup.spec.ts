@@ -57,7 +57,7 @@ describe('GameSetup', () => {
       const scheme = new Scheme(MIDTOWN_BANK_ROBBERY);
       setup = scheme.getSetup(
         2,
-        store.mastermindStore.getOneRandom(),
+        store.mastermindStore.getRandom(),
         store
       ) as GameSetup;
     });
@@ -114,7 +114,7 @@ describe('GameSetup', () => {
 
     const setup = scheme.getSetup(
       2,
-      store.mastermindStore.getOneRandom(),
+      store.mastermindStore.getRandom(),
       store
     ) as GameSetup;
 
@@ -130,7 +130,7 @@ describe('GameSetup', () => {
       const scheme = new Scheme(REPLACE_EARTHS_LEADERS_WITH_KILLBOTS);
       setup = scheme.getSetup(
         2,
-        store.mastermindStore.getOneRandom(),
+        store.mastermindStore.getRandom(),
         store
       ) as GameSetup;
     });
@@ -166,7 +166,7 @@ describe('GameSetup', () => {
       const scheme = new Scheme(REPLACE_EARTHS_LEADERS_WITH_KILLBOTS);
       const setup = scheme.getSetup(
         2,
-        legendaryStore.mastermindStore.getOneRandom(),
+        legendaryStore.mastermindStore.getRandom(),
         legendaryStore
       ) as GameSetup;
 
@@ -178,7 +178,7 @@ describe('GameSetup', () => {
 
       const setup = scheme.getSetup(
         2,
-        legendaryStore.mastermindStore.getOneRandom(),
+        legendaryStore.mastermindStore.getRandom(),
         legendaryStore
       ) as GameSetup;
 
@@ -198,7 +198,7 @@ describe('GameSetup', () => {
       const scheme = new Scheme(REPLACE_EARTHS_LEADERS_WITH_KILLBOTS);
       const setup = scheme.getSetup(
         2,
-        versatileStore.mastermindStore.getOneRandom(),
+        versatileStore.mastermindStore.getRandom(),
         versatileStore,
         undefined,
         {
@@ -223,7 +223,7 @@ describe('GameSetup', () => {
       );
       setup = scheme.getSetup(
         2,
-        store.mastermindStore.getOne(CARNAGE.id),
+        store.mastermindStore.pickOne(CARNAGE.id),
         store
       ) as GameSetup;
     });

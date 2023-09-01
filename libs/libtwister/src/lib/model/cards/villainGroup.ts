@@ -1,4 +1,4 @@
-import { CARD_TYPE } from '../types/cardType.type';
+import { CARD_TYPE } from '../types';
 
 import { AbstractCardGroup } from './abstractCardGroup';
 

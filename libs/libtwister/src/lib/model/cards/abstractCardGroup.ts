@@ -1,6 +1,6 @@
-import { CardType } from '../types/cardType.type';
 import { IPlayableObject, IGameSetMeta, IKeyword } from '../interfaces';
 import { ICardType } from '../interfaces/cardType.interface';
+import { CardType } from '../types';
 
 export abstract class AbstractCardGroup implements IPlayableObject, ICardType {
   private readonly _id: string;

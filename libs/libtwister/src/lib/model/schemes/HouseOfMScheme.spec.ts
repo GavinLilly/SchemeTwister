@@ -24,7 +24,7 @@ describe('House of M Scheme', () => {
 
     scheme = new HouseOfMScheme(HOUSE_OF_M, SCARLET_WITCH);
 
-    setup = scheme.getSetup(2, store.mastermindStore.getOneRandom(), store);
+    setup = scheme.getSetup(2, store.mastermindStore.getRandom(), store);
   });
 
   it('should include Scarlet Witch in the villain deck', () =>

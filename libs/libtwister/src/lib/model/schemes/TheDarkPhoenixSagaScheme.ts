@@ -41,7 +41,7 @@ export class TheDarkPhoenixSagaScheme extends RequireCardInDeckScheme<VillainGro
   ): IGameSetup {
     const hero = this._requiredHero.getRequiredCard(store.heroStore);
 
-    const pickedHero = store.heroStore.getOne(hero);
+    const pickedHero = store.heroStore.pickOne(hero);
 
     partialVillainDeck.heroes = Scheme.addToDeck(
       partialVillainDeck.heroes ?? [],

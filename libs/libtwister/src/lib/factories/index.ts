@@ -1,5 +1,4 @@
-export { MultiCardFactory } from './multiCardFactory';
-export { MultiCardStore } from './multiCardStore';
-export { SingleCardFactory } from './singleCardFactory';
+export { CardStore as MultiCardStore } from './cardStore';
+export { CardFactory as SingleCardFactory } from './cardFactory';
 export { StoreOfStores } from './storeOfStores';
 export { StoreBuilder } from './storeBuilder';

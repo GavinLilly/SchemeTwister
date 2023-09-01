@@ -35,14 +35,14 @@ export class HouseOfMScheme extends RequireCardInDeckScheme<Hero> {
     partialVillainDeck?: VillainDeckMinimal,
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
   ): IGameSetup {
-    const xMenHeroes = store.heroStore.getManyRandom(
+    const xMenHeroes = store.heroStore.pickRandom(
       4,
       (hero) => hero.team === X_MEN
-    );
-    const otherHeroes = store.heroStore.getManyRandom(
+    ) as Hero[];
+    const otherHeroes = store.heroStore.pickRandom(
       2,
       (hero) => hero.team !== X_MEN && hero !== this._required
-    );
+    ) as Hero[];
 
     partialHeroDeck.heroes = Scheme.addToDeck(
       partialHeroDeck.heroes ?? [],

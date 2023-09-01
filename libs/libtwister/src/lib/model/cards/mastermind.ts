@@ -1,7 +1,5 @@
-import { CARD_TYPE } from '../types/cardType.type';
-import { GAME_SET_SIZE } from '../types/gameSetSize.type';
 import { INumPlayerRules, IFightable } from '../interfaces';
-import { SERIES } from '../types';
+import { CARD_TYPE, GAME_SET_SIZE, SERIES } from '../types';
 
 import { AbstractFightableCardGroup } from './abstractFightableCardGroup';
 import { Henchmen } from './henchmen';
@@ -18,7 +16,7 @@ export interface IMastermind extends IFightable {
   /**
    * Override the rules for each number of players. Useful for setting a rule
    * based on the number of players
-   * */
+   */
   readonly ruleOverride?: RuleOverrideFunction;
 }
 

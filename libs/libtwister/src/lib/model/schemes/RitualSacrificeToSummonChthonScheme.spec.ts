@@ -36,7 +36,7 @@ describe('RitualSacrificeToSummonChthonScheme', () => {
       store.reset();
       setup = scheme.getSetup(
         2,
-        store.mastermindStore.getOne(LILITH.id),
+        store.mastermindStore.pickOne(LILITH.id),
         store
       ) as GameSetup;
     });
@@ -54,7 +54,7 @@ describe('RitualSacrificeToSummonChthonScheme', () => {
       store.reset();
       setup = scheme.getSetup(
         2,
-        store.mastermindStore.getOne(KINGPIN.id),
+        store.mastermindStore.pickOne(KINGPIN.id),
         store
       ) as GameSetup;
     });

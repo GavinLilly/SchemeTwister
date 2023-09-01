@@ -39,6 +39,7 @@ export class GameSetup implements IGameSetup {
 
   /**
    * All the keywords contained in this game setup.
+   * @returns A set of keywords in use in this game setup
    */
   public get keywords(): Set<IKeyword> {
     const keywords = [

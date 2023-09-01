@@ -26,7 +26,7 @@ describe('LiteGameSetup', () => {
     const scheme = instantiateScheme(MIDTOWN_BANK_ROBBERY);
     const setup = scheme.getSetup(
       2,
-      store.mastermindStore.getOneRandom(),
+      store.mastermindStore.getRandom(),
       store
     ) as GameSetup;
 

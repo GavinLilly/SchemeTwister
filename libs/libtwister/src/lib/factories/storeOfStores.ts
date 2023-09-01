@@ -8,13 +8,13 @@ import {
 } from '../model';
 import { CardType } from '../model/types/cardType.type';
 
-import { MultiCardStore } from './multiCardStore';
+import { CardStore } from './cardStore';
 
 export class StoreOfStores {
-  private _mastermindStore!: MultiCardStore<Mastermind>;
-  private _heroStore!: MultiCardStore<Hero>;
-  private _villainStore!: MultiCardStore<VillainGroup>;
-  private _henchmenStore!: MultiCardStore<Henchmen>;
+  private _mastermindStore!: CardStore<Mastermind>;
+  private _heroStore!: CardStore<Hero>;
+  private _villainStore!: CardStore<VillainGroup>;
+  private _henchmenStore!: CardStore<Henchmen>;
 
   constructor(
     heroes: Hero[],
@@ -22,10 +22,10 @@ export class StoreOfStores {
     villains: VillainGroup[],
     henchmen: Henchmen[]
   ) {
-    this._heroStore = new MultiCardStore(heroes);
-    this._mastermindStore = new MultiCardStore(masterminds);
-    this._villainStore = new MultiCardStore(villains);
-    this._henchmenStore = new MultiCardStore(henchmen);
+    this._heroStore = new CardStore(heroes);
+    this._mastermindStore = new CardStore(masterminds);
+    this._villainStore = new CardStore(villains);
+    this._henchmenStore = new CardStore(henchmen);
   }
 
   /**

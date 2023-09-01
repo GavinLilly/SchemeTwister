@@ -1,5 +1,5 @@
-import { CARD_TYPE } from '../types/cardType.type';
 import { IVictoryPileCard } from '../interfaces/victoryPileCard.interface';
+import { CARD_TYPE } from '../types';
 
 import { AbstractCardGroup } from './abstractCardGroup';
 

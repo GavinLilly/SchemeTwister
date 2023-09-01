@@ -1,8 +1,8 @@
 import * as uuid from 'uuid';
 
 import { GameSet } from '../GameSet';
-import { CardType } from '../types/cardType.type';
 import { ICardType, IPlayableObject, ITeam } from '../interfaces';
+import { CardType } from '../types';
 
 import { AbstractCardGroup } from './abstractCardGroup';
 

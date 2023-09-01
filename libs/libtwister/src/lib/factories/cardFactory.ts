@@ -2,9 +2,9 @@ import { IPlayableObject } from '../model';
 import { randomize } from '../utils/randomize';
 
 /**
- * A factory for selecting a single card from a large set.
+ * A factory for selecting cards from a large set.
  */
-export class SingleCardFactory<T extends IPlayableObject> {
+export class CardFactory<T extends IPlayableObject> {
   private readonly _allCards: Map<string, T> = new Map();
   private readonly _excludedCardIds: Set<string>;
 
@@ -43,7 +43,7 @@ export class SingleCardFactory<T extends IPlayableObject> {
   }
 
   /**
-   * Creates a map of cards to the their IDs as a subset of the entire
+   * Creates a map of cards to their IDs as a subset of the entire
    * collection of cards in the factory.
    * @param set the subset of cards that are wanted
    * @param allCards the entire collection of cards in the factory
@@ -67,6 +67,7 @@ export class SingleCardFactory<T extends IPlayableObject> {
 
   /**
    * The set of all records (i.e. pre-filtered)
+   * @returns All the records in the factory
    */
   public get allCards(): T[] {
     return Array.from(this.allCardsMap.values());
@@ -74,36 +75,41 @@ export class SingleCardFactory<T extends IPlayableObject> {
 
   /**
    * The map of all records as ID => record (i.e. pre-filtered)
+   * @returns A Map of record IDs to records
    */
   public get allCardsMap(): Map<string, T> {
     return this._allCards;
   }
 
   /**
-   * The set of excluded records
+   * The array of excluded records
+   * @returns An array of records excluded from use in the factory
    */
-  public get excludedCards(): T[] | undefined {
+  public get excludedCards(): T[] {
     return Array.from(this.excludedCardsMap.values());
   }
 
   /**
    * The map of excluded records as ID => record
+   * @returns A Map of record IDs to records
    */
-  public get excludedCardsMap(): Map<string, T> {
+  protected get excludedCardsMap(): Map<string, T> {
     return this.getMapFromSet(this._excludedCardIds);
   }
 
   /**
-   * The set of available records (i.e. has already been filtered)
+   * The set of available records (i.e.post-filtered)
+   * @returns an array of records allowed to be selected from
    */
   public get availableCards(): T[] {
     return Array.from(this.availableCardsMap.values());
   }
 
   /**
-   * The map of available records as ID => record (i.e. has already been filtered)
+   * The map of available records as ID => record (i.e. post-filtered)
+   * @returns A Map of record IDs to records
    */
-  public get availableCardsMap(): Map<string, T> {
+  protected get availableCardsMap(): Map<string, T> {
     return this._excludedCardIds.size > 0
       ? this.excludeFromMap(this._excludedCardIds)
       : this._allCards;
@@ -111,15 +117,32 @@ export class SingleCardFactory<T extends IPlayableObject> {
 
   /**
    * Returns 1 random card entry from the list of available cards
-   * @param func an optional function to filter the cards before randomisation
-   * @returns a single card entry
+   * @returns A single card entry
    */
-  public getOneRandom(func?: (card: T) => boolean): T {
-    if (func !== undefined) {
-      return randomize(this.availableCards.filter(func));
+  public getRandom(): T;
+  /**
+   * Gets a number of random cards from the list of filtered cards
+   * @param count The number of cards to get. Defaults to 1
+   * @param func An optional function for filtering the cards to randomize from
+   * @returns An array of cards
+   */
+  public getRandom(count?: number, func?: (card: T) => boolean): T | T[];
+  public getRandom(count = 1, func?: (card: T) => boolean): T | T[] {
+    if (count === 1) {
+      if (func !== undefined) {
+        return randomize(this.availableCards.filter(func));
+      }
+
+      return randomize(this.availableCards);
     }
 
-    return randomize(this.availableCards);
+    const cards =
+      func !== undefined
+        ? this.availableCards.filter(func)
+        : this.availableCards;
+
+    const random = randomize(cards, count);
+    return random instanceof Array ? random : [random];
   }
 
   /**
@@ -127,8 +150,35 @@ export class SingleCardFactory<T extends IPlayableObject> {
    * @param id the ID of the item that is requested
    * @returns the requested item or undefined if it's not found
    */
-  public getOne(id: string): T | undefined {
-    return this.availableCardsMap.get(id);
+  public getOne(id: string): T {
+    const card = this.availableCardsMap.get(id);
+
+    if (card === undefined) {
+      throw new Error(
+        `Provided card ID (${id}) is not in the list of available cards.`
+      );
+    }
+
+    return card;
+  }
+
+  /**
+   * For each ID passed to the function, get the full item associated with it.
+   * Note: IDs that are not matched are skipped.
+   * @param ids An array of ID strings
+   * @returns An array of cards
+   */
+  public getMany(ids: string[]): T[] {
+    const cards: T[] = [];
+    ids.forEach((id) => {
+      const card = this.getOne(id);
+
+      if (card !== undefined) {
+        cards.push(card);
+      }
+    });
+
+    return cards;
   }
 
   /**

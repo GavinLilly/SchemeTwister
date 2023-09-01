@@ -1,9 +1,8 @@
 import { DARK_CITY, LEGENDARY } from '../data/gameSets';
 import { CARD_TYPE, CardType, IPlayableObject } from '../model';
 
-import { MultiCardFactory } from './multiCardFactory';
-import { MultiCardStore } from './multiCardStore';
-import { SingleCardFactory } from './singleCardFactory';
+import { CardFactory } from './cardFactory';
+import { CardStore } from './cardStore';
 
 const cardType = CARD_TYPE.hero;
 
@@ -50,12 +49,12 @@ beforeEach(() => {
   jest.resetModules();
 });
 
-describe('Single Card Factory', () => {
+describe('Card Factory', () => {
   describe('with all cards', () => {
-    let instance: SingleCardFactory<IPlayableObject>;
+    let instance: CardFactory<IPlayableObject>;
 
     beforeAll(() => {
-      instance = new SingleCardFactory([...legData, ...dcData]);
+      instance = new CardFactory([...legData, ...dcData]);
     });
 
     it('should create', () => expect(instance).toBeTruthy());
@@ -64,14 +63,30 @@ describe('Single Card Factory', () => {
       expect(instance.allCards).toHaveLength(10));
 
     it('should give 1 random card', () =>
-      expect(instance.getOneRandom()).toBeTruthy());
+      expect(instance.getRandom()).toBeTruthy());
 
     it("should give 1 random card, provided it's a DC card", () => {
-      const selected = instance.getOneRandom((card) =>
+      const selected = instance.getRandom(undefined, (card) =>
         card.name.startsWith('DC')
       );
-      expect(selected).toBeTruthy();
-      expect(selected.name).toContain('DC');
+      expect(selected).not.toBeInstanceOf(Array);
+
+      expect((selected as IPlayableObject).name).toContain('DC');
+    });
+
+    it('should have 3 random cards', () =>
+      expect(instance.getRandom(3)).toHaveLength(3));
+
+    it('should fail with 0 random cards', () => {
+      expect(() => instance.getRandom(0)).toThrow();
+    });
+
+    it('should fail with negative random cards', () => {
+      expect(() => instance.getRandom(-1)).toThrow();
+    });
+
+    it('should not be able to shuffle more cards than are in the deck', () => {
+      expect(() => instance.getRandom(100)).toThrow(RangeError);
     });
 
     it('should get the DC1 card', () =>
@@ -83,15 +98,15 @@ describe('Single Card Factory', () => {
 
   describe('with no cards', () => {
     it('should fail', () => {
-      expect(() => new SingleCardFactory([])).toThrow(Error);
+      expect(() => new CardFactory([])).toThrow(Error);
     });
   });
 
   describe('with only Legendary cards', () => {
-    let instance: SingleCardFactory<IPlayableObject>;
+    let instance: CardFactory<IPlayableObject>;
 
     beforeAll(() => {
-      instance = new SingleCardFactory(legData);
+      instance = new CardFactory(legData);
     });
 
     it('should have 5 card entries', () => {
@@ -99,7 +114,12 @@ describe('Single Card Factory', () => {
     });
 
     it('should only give random Legendary cards', () => {
-      expect(instance.getOneRandom().gameSet.id).toEqual(LEGENDARY.GAME_SET.id);
+      expect(instance.getRandom().gameSet.id).toEqual(LEGENDARY.GAME_SET.id);
+      expect(
+        (instance.getRandom(3) as IPlayableObject[]).every(
+          (item) => item.gameSet === LEGENDARY.GAME_SET
+        )
+      ).toBeTruthy();
     });
 
     describe('isAvailable()', () => {
@@ -116,7 +136,7 @@ describe('Single Card Factory', () => {
 
   describe('with excluded cards', () => {
     it('should not include the excluded card', () => {
-      const instance = new SingleCardFactory(
+      const instance = new CardFactory(
         [...legData, ...dcData],
         [dcExcludeCard.id]
       );
@@ -126,51 +146,12 @@ describe('Single Card Factory', () => {
   });
 });
 
-describe('Multi Card Factory', () => {
+describe('Card Store', () => {
   describe('with all cards', () => {
-    let instance: MultiCardFactory<IPlayableObject>;
+    let store: CardStore<IPlayableObject>;
 
     beforeAll(() => {
-      instance = new MultiCardFactory([...legData, ...dcData]);
-    });
-
-    it('should create', () => expect(instance).toBeTruthy());
-
-    it('should have 3 random cards', () =>
-      expect(instance.getManyRandom(3)).toHaveLength(3));
-
-    it('should fail with 0 random cards', () => {
-      expect(() => instance.getManyRandom(0)).toThrow();
-    });
-
-    it('should fail with negative random cards', () => {
-      expect(() => instance.getManyRandom(-1)).toThrow();
-    });
-
-    it('should not be able to shuffle more cards than are in the deck', () => {
-      expect(() => instance.getManyRandom(100)).toThrow(RangeError);
-    });
-  });
-
-  describe('with only Legendary cards', () => {
-    it('should only give random Legendary cards', () => {
-      const instance = new MultiCardFactory(legData);
-
-      expect(
-        instance
-          .getManyRandom(3)
-          .every((item) => item.gameSet === LEGENDARY.GAME_SET)
-      ).toBeTruthy();
-    });
-  });
-});
-
-describe('Multi Card Store', () => {
-  describe('with all cards', () => {
-    let store: MultiCardStore<IPlayableObject>;
-
-    beforeAll(() => {
-      store = new MultiCardStore([...legData, ...dcData]);
+      store = new CardStore([...legData, ...dcData]);
     });
 
     afterEach(() => {
@@ -180,7 +161,7 @@ describe('Multi Card Store', () => {
     it('should create', () => expect(store).toBeTruthy());
 
     it('should reset the store', () => {
-      store.getManyRandom(3);
+      store.pickRandom(3);
 
       expect(store.excludedCards).toHaveLength(3);
 
@@ -193,7 +174,7 @@ describe('Multi Card Store', () => {
       expect(store.availableCards).toHaveLength(10));
 
     it('should select 1 random card', () => {
-      const selectedCard = store.getOneRandom();
+      const selectedCard = store.pickRandom();
 
       expect(store.availableCards).not.toContain(selectedCard);
 
@@ -201,7 +182,7 @@ describe('Multi Card Store', () => {
     });
 
     it('should select 3 random cards', () => {
-      const selectedCards = store.getManyRandom(3);
+      const selectedCards = store.pickRandom(3) as IPlayableObject[];
 
       expect(
         store.availableCards.every((item) => !selectedCards.includes(item))
@@ -213,7 +194,7 @@ describe('Multi Card Store', () => {
     });
 
     it('should remove the specific card from the available list', () => {
-      expect(store.getOne(legData[0].id)).toBeTruthy();
+      expect(store.pickOne(legData[0])).toBeTruthy();
       expect(store.availableCards).not.toContain(legData[0]);
       expect(store.excludedCards).toContain(legData[0]);
     });
@@ -221,7 +202,7 @@ describe('Multi Card Store', () => {
     it('should remove specific cards from the available list', () => {
       const picked = legData.slice(3, 5);
 
-      expect(store.getAll(picked.map((item) => item.id))).toHaveLength(2);
+      expect(store.pickMany(picked.map((item) => item.id))).toHaveLength(2);
       expect(store.availableCards).not.toEqual(expect.arrayContaining(picked));
       expect(store.excludedCards).toEqual(expect.arrayContaining(picked));
     });

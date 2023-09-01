@@ -21,7 +21,7 @@ describe('Solo Banned Scheme', () => {
 
       const scheme = new SoloBannedScheme(NEGATIVE_ZONE_PRISON_BREAKOUT);
       try {
-        scheme.getSetup(1, store.mastermindStore.getOneRandom(), store);
+        scheme.getSetup(1, store.mastermindStore.getRandom(), store);
       } catch (e) {
         expect(e).toBeInstanceOf(SinglePlayerError);
       }
@@ -32,7 +32,7 @@ describe('Solo Banned Scheme', () => {
       expect(
         scheme2.getSetup(
           arg as NumPlayers,
-          store.mastermindStore.getOneRandom(),
+          store.mastermindStore.getRandom(),
           store
         )
       ).toBeTruthy();

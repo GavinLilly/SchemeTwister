@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import merge from 'ts-deepmerge';
 import { PartialDeep } from 'type-fest';
 import * as uuid from 'uuid';
@@ -5,8 +6,7 @@ import * as uuid from 'uuid';
 import { StoreOfStores } from '../../factories';
 import { GameSet } from '../GameSet';
 import { GameSetup } from '../GameSetup';
-import { CARD_TYPE } from '../types/cardType.type';
-import { Mastermind } from '../cards';
+import { Henchmen, Hero, Mastermind, VillainGroup } from '../cards';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
@@ -25,7 +25,7 @@ import {
   nameSorter,
 } from '../interfaces';
 import { Rules, RulesType } from '../rules';
-import { NumPlayers, SchemeMinusRules, numPlayers } from '../types';
+import { CARD_TYPE, NumPlayers, SchemeMinusRules, numPlayers } from '../types';
 
 /**
  * Scheme allows for a Scheme-rules from the game to be instantiated and
@@ -228,7 +228,9 @@ export class Scheme implements IPlayableObject {
       (additionalRules.deck.numHeroes ?? 0) - (deck.deck.heroes?.length ?? 0);
 
     if (numHeroes > 0) {
-      deck.deck.heroes = [...store.heroStore.getManyRandom(numHeroes)];
+      deck.deck.heroes = new Array<Hero>().concat(
+        store.heroStore.pickRandom(numHeroes)
+      );
       deck.deck.heroes.sort(nameSorter);
     }
 
@@ -238,7 +240,9 @@ export class Scheme implements IPlayableObject {
       (deck.deck.henchmen?.length ?? 0);
 
     if (numHenchmen > 0) {
-      deck.deck.henchmen = [...store.henchmenStore.getManyRandom(numHenchmen)];
+      deck.deck.henchmen = new Array<Henchmen>().concat(
+        store.henchmenStore.pickRandom(numHenchmen)
+      );
       deck.deck.henchmen.sort(nameSorter);
     }
 
@@ -248,7 +252,9 @@ export class Scheme implements IPlayableObject {
       (deck.deck.villains?.length ?? 0);
 
     if (numVillains > 0) {
-      deck.deck.villains = [...store.villainStore.getManyRandom(numVillains)];
+      deck.deck.villains = new Array<VillainGroup>().concat(
+        store.villainStore.pickRandom(numVillains)
+      );
       deck.deck.villains.sort(nameSorter);
     }
 
@@ -257,10 +263,10 @@ export class Scheme implements IPlayableObject {
       (deck.deck.masterminds?.length ?? 0);
 
     if (numMasterminds > 0) {
-      deck.deck.masterminds = [
-        ...store.mastermindStore.getManyRandom(numMasterminds),
-      ];
-      deck.deck.masterminds.sort(nameSorter);
+      (deck.deck.masterminds = new Array<Mastermind>().concat(
+        store.mastermindStore.pickRandom(numMasterminds)
+      )),
+        deck.deck.masterminds.sort(nameSorter);
     }
 
     return deck;
@@ -281,8 +287,8 @@ export class Scheme implements IPlayableObject {
     const numRemainingHeroDeckHeroes =
       heroRules.numHeroes - partialHeroDeck.heroes.length;
     if (numRemainingHeroDeckHeroes > 0) {
-      partialHeroDeck.heroes.push(
-        ...store.heroStore.getManyRandom(numRemainingHeroDeckHeroes)
+      partialHeroDeck.heroes = partialHeroDeck.heroes.concat(
+        store.heroStore.pickRandom(numRemainingHeroDeckHeroes)
       );
     }
 
@@ -292,9 +298,9 @@ export class Scheme implements IPlayableObject {
       (heroRules.numHenchmenGroups ?? 0) -
       (partialHeroDeck.henchmen?.length ?? 0);
     if (numRemainingHeroDeckHenchmen > 0) {
-      partialHeroDeck.henchmen = [
-        ...store.henchmenStore.getManyRandom(numRemainingHeroDeckHenchmen),
-      ];
+      partialHeroDeck.henchmen = new Array<Henchmen>().concat(
+        store.henchmenStore.pickRandom(numRemainingHeroDeckHenchmen)
+      );
     }
 
     partialHeroDeck.heroes.sort(nameSorter);
@@ -313,9 +319,9 @@ export class Scheme implements IPlayableObject {
     const numRemVillDeckHeroes =
       (villainRules.numHeroes ?? 0) - (partialDeck.heroes?.length ?? 0);
     if (numRemVillDeckHeroes > 0) {
-      partialDeck.heroes = [
-        ...store.heroStore.getManyRandom(numRemVillDeckHeroes),
-      ];
+      partialDeck.heroes = new Array<Hero>().concat(
+        store.heroStore.pickRandom(numRemVillDeckHeroes)
+      );
     }
 
     // Next add henchmen
@@ -331,7 +337,7 @@ export class Scheme implements IPlayableObject {
       numRemVillDeckHenchmen() > 0 &&
       alwaysLeadsHenchmen.length < numRemVillDeckHenchmen()
     ) {
-      const mastermindHenchmen = store.henchmenStore.getAll(
+      const mastermindHenchmen = store.henchmenStore.pickMany(
         alwaysLeadsHenchmen.map((henchmen) => henchmen.id)
       );
 
@@ -340,8 +346,8 @@ export class Scheme implements IPlayableObject {
 
     // Check again in case the mastermind did not fill all the slots
     if (numRemVillDeckHenchmen() > 0) {
-      partialDeck.henchmen.push(
-        ...store.henchmenStore.getManyRandom(numRemVillDeckHenchmen())
+      partialDeck.henchmen = partialDeck.henchmen.concat(
+        store.henchmenStore.pickRandom(numRemVillDeckHenchmen())
       );
     }
 
@@ -358,7 +364,7 @@ export class Scheme implements IPlayableObject {
       numRemVillDeckVillains() > 0 &&
       alwaysLeadsVillains.length <= numRemVillDeckVillains()
     ) {
-      const mastermindVillains = store.villainStore.getAll(
+      const mastermindVillains = store.villainStore.pickMany(
         alwaysLeadsVillains.map((villain) => villain.id)
       );
 
@@ -367,8 +373,8 @@ export class Scheme implements IPlayableObject {
 
     // Check again in case the mastermind did not fill all the slots
     if (numRemVillDeckVillains() > 0) {
-      partialDeck.villains.push(
-        ...store.villainStore.getManyRandom(numRemVillDeckVillains())
+      partialDeck.villains = partialDeck.villains.concat(
+        store.villainStore.pickRandom(numRemVillDeckVillains())
       );
     }
 
@@ -377,9 +383,9 @@ export class Scheme implements IPlayableObject {
       (villainRules.numMasterminds ?? 0) -
       (partialDeck.masterminds?.length ?? 0);
     if (numRemVillDeckMasterminds > 0) {
-      partialDeck.masterminds = [
-        ...store.mastermindStore.getManyRandom(numRemVillDeckMasterminds),
-      ];
+      partialDeck.masterminds = new Array<Mastermind>().concat(
+        store.mastermindStore.pickRandom(numRemVillDeckMasterminds)
+      );
     }
 
     // Finally add remaining deck elements

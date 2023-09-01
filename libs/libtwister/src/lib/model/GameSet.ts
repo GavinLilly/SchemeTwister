@@ -1,11 +1,12 @@
 import * as uuid from 'uuid';
 
 import { Bystander, Henchmen, Hero, Mastermind, VillainGroup } from './cards';
-import { GAME_SET_SIZE, GameSetSize } from './types/gameSetSize.type';
 import { IGameSetMeta } from './interfaces';
 import {
   AllCardTypes,
   CardType,
+  GAME_SET_SIZE,
+  GameSetSize,
   SchemeMinusRules,
   Series,
   SERIES,
@@ -47,14 +48,18 @@ export class GameSet implements IGameSetMeta {
       return -1;
     } else if (a.size < b.size) {
       return 1;
-    } else {
-      const nameA = a.name.toUpperCase();
-      const nameB = b.name.toUpperCase();
-
-      if (nameA < nameB) return -1;
-      else if (nameA > nameB) return 1;
-      else return 0;
     }
+
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase();
+
+    if (nameA < nameB) {
+      return -1;
+    } else if (nameA > nameB) {
+      return 1;
+    }
+
+    return 0;
   }
 
   /**

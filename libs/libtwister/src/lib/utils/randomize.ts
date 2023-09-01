@@ -1,13 +1,26 @@
 /**
  * This method will return an array of random card entries from a list of
  * available cards
- * @param originalArray the array to randomize from
- * @param count The number of cards to return
+ * @param originalArray The array to randomize from
  * @returns An array of cards
  */
 export function randomize<T>(originalArray: T[]): T;
+/**
+ * This method will return an array of random card entries from a list of
+ * available cards
+ * @param originalArray The array to randomize from
+ * @param count The number of cards to return
+ * @returns An array of cards
+ */
 // eslint-disable-next-line no-redeclare
 export function randomize<T>(originalArray: T[], count: number): T | T[];
+/**
+ * This method will return an array of random card entries from a list of
+ * available cards
+ * @param originalArray The array to randomize from
+ * @param count The number of cards to return
+ * @returns An array of cards
+ */
 // eslint-disable-next-line no-redeclare
 export function randomize<T>(originalArray: T[], count: number = 1): T | T[] {
   if (count < 1) {
@@ -28,15 +41,15 @@ export function randomize<T>(originalArray: T[], count: number = 1): T | T[] {
    * @param arr The array to select from
    * @returns An array of selected items
    */
-  function getRandomElement(arr: T[]): T[] {
+  const getRandomElement = (arr: T[]): T[] => {
     if (elements.length < count) {
       elements.push(arr.splice(Math.floor(Math.random() * arr.length), 1)[0]);
 
       return getRandomElement(arr);
-    } else {
-      return elements;
     }
-  }
+
+    return elements;
+  };
 
   const chosenRandoms = getRandomElement(pickFrom);
 

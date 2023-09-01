@@ -35,13 +35,15 @@ export class LibTwister {
 
   /**
    * The factory to pick schemes
+   * @returns The scheme factory in use
    */
-  public get schemeFactory() {
+  public get schemeFactory(): SingleCardFactory<SchemeMinusRules> {
     return this._schemeFactory;
   }
 
   /**
    * The stores for each of the card types
+   * @returns The StoreOfStores used in this LibTwister instance
    */
   public get stores() {
     return this._stores;
@@ -49,6 +51,7 @@ export class LibTwister {
 
   /**
    * The selected game sets
+   * @returns An array of Game Sets used in this LibTwiser instance
    */
   public get selectedGameSets(): GameSet[] {
     return this._selectedGameSets;
@@ -140,8 +143,8 @@ export class LibTwister {
    */
   public getSetup(
     numPlayers: NumPlayers,
-    scheme = this.schemeFactory.getOneRandom(),
-    mastermind = this.stores.mastermindStore.getOneRandom(),
+    scheme = this.schemeFactory.getRandom(),
+    mastermind = this.stores.mastermindStore.getRandom(),
     advancedSolo = false
   ): GameSetup {
     this._stores.reset();

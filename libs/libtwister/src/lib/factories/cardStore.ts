@@ -1,23 +1,20 @@
 import { IPlayableObject } from '../model';
 
-import { MultiCardFactory } from './multiCardFactory';
-import { SingleCardFactory } from './singleCardFactory';
+import { CardFactory } from './cardFactory';
 
 /**
  * A MultiCardFactory with memory!
  */
-export class MultiCardStore<
-  T extends IPlayableObject
-> extends MultiCardFactory<T> {
-  private readonly _chosenCards: Set<string> = new Set();
+export class CardStore<T extends IPlayableObject> extends CardFactory<T> {
+  private readonly _pickedCards: Set<string> = new Set();
   private readonly _excludedCardsForSetup: Set<string> = new Set();
 
-  public override get availableCardsMap(): Map<string, T> {
+  protected override get availableCardsMap(): Map<string, T> {
     const excluded = super.availableCardsMap;
 
     const minusChosen =
-      this._chosenCards.size > 0
-        ? this.excludeFromMap(this._chosenCards, excluded)
+      this._pickedCards.size > 0
+        ? this.excludeFromMap(this._pickedCards, excluded)
         : excluded;
 
     const minusExcluded =
@@ -31,32 +28,26 @@ export class MultiCardStore<
   /**
    * Gets a random card from the list of filtered cards while also removing that
    * card from the record so it can't be selected later
-   * @returns a single card entry
+   * @returns A single card entry
    */
-  public override getOneRandom(func?: (card: T) => boolean): T {
-    const card = super.getOneRandom(func);
-
-    this._chosenCards.add(card.id);
-
-    return card;
-  }
-
+  public pickRandom(): T;
   /**
    * Gets a number of random cards from the list of filtered cards while also
-   * removing those carsd from the record so they can't be selected later
-   * @param count the number of cards to get
-   * @returns an array of cards
+   * removing those cards from the record so they can't be selected later.
+   * Optionally filters the cards before random selection too.
+   * @param count The number of cards to get. Defaults to 1
+   * @param func An optional function for filtering the cards to randomize from
+   * @returns An array of cards
    */
-  public override getManyRandom(
-    count: number,
-    func?: (card: T) => boolean
-  ): T[] {
-    const cards = super.getManyRandom(count, func);
+  public pickRandom(count?: number, func?: (card: T) => boolean): T | T[];
+  public pickRandom(count = 1, func?: (card: T) => boolean): T | T[] {
+    const randoms = this.getRandom(count, func);
 
-    // Remove each card from the index
-    cards.forEach((card) => this._chosenCards.add(card.id));
+    const randomsArray = randoms instanceof Array ? randoms : [randoms];
 
-    return cards;
+    randomsArray.forEach((card) => this._pickedCards.add(card.id));
+
+    return randoms;
   }
 
   /**
@@ -65,27 +56,32 @@ export class MultiCardStore<
    * @param id the ID of the item that is requested
    * @returns the requested item or undefined if it's not found
    */
-  public override getOne(id: string): T;
+  public pickOne(id: string): T;
   /**
    * Get's the full item associated with the given card and removes it from
    * the store
    * @param card the card that is requested
    * @returns the requested card if it's in the list of available cards
    */
-  public override getOne(card: T): T;
-  public override getOne(idOrCard: string | T): T {
-    const cardId = SingleCardFactory.getCardId(idOrCard);
+  public pickOne(card: T): T;
+  public pickOne(idOrCard: string | T): T {
+    const cardId = CardFactory.getCardId(idOrCard);
 
-    const card = super.availableCardsMap.get(cardId);
-
-    if (card !== undefined) {
-      this._chosenCards.add(cardId);
-      return card;
+    if (this._pickedCards.has(cardId)) {
+      console.log('Requested card already picked. Returning requested card');
+      const alreadyPicked = this.allCardsMap.get(cardId);
+      if (alreadyPicked === undefined) {
+        throw new Error(
+          'Picked card is not in list of all cards. Unable to continue'
+        );
+      }
+      return alreadyPicked;
     }
 
-    throw new Error(
-      `Provided card ID (${cardId}) is not in the list of available cards.`
-    );
+    const card = this.getOne(cardId);
+    this._pickedCards.add(cardId);
+
+    return card;
   }
 
   /**
@@ -95,18 +91,18 @@ export class MultiCardStore<
    * @param ids the card IDs that are requested
    * @returns the requested items
    */
-  public override getAll(ids: string[]): T[];
+  public pickMany(ids: string[]): T[];
   /**
    * For each card passed to the function, remove it from the store and return it.
    * Note: IDs that are not matched are skipped.
    * @param cards the card that are requested
    * @returns the requested items
    */
-  public override getAll(cards: T[]): T[];
-  public override getAll(idsOrCards: string[] | T[]): T[] {
+  public pickMany(cards: T[]): T[];
+  public pickMany(idsOrCards: string[] | T[]): T[] {
     return idsOrCards.map((idOrCard) => {
-      const cardId = SingleCardFactory.getCardId(idOrCard);
-      return this.getOne(cardId);
+      const cardId = CardFactory.getCardId(idOrCard);
+      return this.pickOne(cardId);
     });
   }
 
@@ -115,7 +111,7 @@ export class MultiCardStore<
    * already selected cards are added back into the list of available ones
    */
   public resetStore() {
-    this._chosenCards.clear();
+    this._pickedCards.clear();
     this._excludedCardsForSetup.clear();
   }
 
@@ -130,13 +126,13 @@ export class MultiCardStore<
    */
   public removeCard(card: T): void;
   public removeCard(idOrCard: string | T): void {
-    const cardId = SingleCardFactory.getCardId(idOrCard);
+    const cardId = CardFactory.getCardId(idOrCard);
     this._excludedCardsForSetup.add(cardId);
   }
 
-  public override get excludedCardsMap(): Map<string, T> {
+  protected override get excludedCardsMap(): Map<string, T> {
     const excludedFromSetup = new Set([
-      ...this._chosenCards,
+      ...this._pickedCards,
       ...this._excludedCardsForSetup,
     ]);
 

@@ -5,11 +5,10 @@ import { LibTwister } from '../libTwister';
 import instantiateScheme from '../utils/instantiateScheme';
 
 import { GameSetup } from './GameSetup';
-import { CARD_TYPE, CardType } from './types/cardType.type';
 import { Henchmen, Hero, Mastermind, VillainGroup } from './cards';
 import { AbstractCardGroup } from './cards/abstractCardGroup';
 import { IAdditionalDeck, IAdditionalDeckRules } from './interfaces';
-import { NumPlayers } from './types';
+import { CARD_TYPE, CardType, NumPlayers } from './types';
 
 interface LiteGameSetupConfig {
   numPlayers: number;
@@ -72,10 +71,7 @@ export class LiteGameSetup {
       CARD_TYPE.mastermind
     ) as Mastermind;
 
-    const scheme = twister.schemeFactory.allCardsMap.get(this.schemeId);
-    if (scheme === undefined) {
-      throw new Error();
-    }
+    const scheme = twister.schemeFactory.getOne(this.schemeId);
 
     const instantiatedScheme = instantiateScheme(scheme);
 
@@ -146,6 +142,7 @@ export class LiteGameSetup {
 
   /**
    * The unique ID of the setup
+   * @returns A 10 digit string containing the unique ID of this setup
    */
   public calculateUid(): string {
     const seed = seedrandom(this.toString());

@@ -111,6 +111,7 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsdoc": "^46.5.1",
     "eslint-plugin-ordered-imports": "^0.6.0",
     "firebase-tools": "^8.0.0 || ^9.0.0",
     "fuzzy": "^0.1.3",

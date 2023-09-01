@@ -29,7 +29,7 @@ describe('The Dark Phoenix Saga Scheme', () => {
   describe('with X-Men expansion', () => {
     let setup: IGameSetup;
     beforeAll(() => {
-      setup = scheme.getSetup(2, store.mastermindStore.getOneRandom(), store);
+      setup = scheme.getSetup(2, store.mastermindStore.getRandom(), store);
     });
 
     it('should include Phoenix in the villain deck', () =>
@@ -50,7 +50,7 @@ describe('The Dark Phoenix Saga Scheme', () => {
         .build();
       setup = scheme.getSetup(
         2,
-        dcHeroStore.mastermindStore.getOneRandom(),
+        dcHeroStore.mastermindStore.getRandom(),
         dcHeroStore
       );
     });

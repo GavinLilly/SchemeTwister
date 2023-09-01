@@ -1,5 +1,5 @@
-import { CARD_TYPE } from '../types/cardType.type';
 import { IFightable } from '../interfaces';
+import { CARD_TYPE } from '../types';
 
 import { AbstractFightableCardGroup } from './abstractFightableCardGroup';
 

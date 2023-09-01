@@ -12,10 +12,10 @@ export class Rules {
   private readonly _rules = Rules.defaultRules;
 
   constructor(func?: RulesModifierFunction) {
-    if (func) {
-      numPlayers.forEach((num) => {
-        this._rules[num] = func(this._rules[num], num);
-      });
+    if (func !== undefined) {
+      numPlayers.forEach(
+        (num) => (this._rules[num] = func(this._rules[num], num))
+      );
     }
   }
 

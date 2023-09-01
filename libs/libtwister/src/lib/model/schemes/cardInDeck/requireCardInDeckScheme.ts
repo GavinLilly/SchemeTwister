@@ -38,7 +38,7 @@ export class RequireCardInDeckScheme<
     const cards = this._requireCard.getRequiredCard(applicableStore);
 
     const cardsAsArray = cards instanceof Array ? cards : [cards];
-    const chosen = cardsAsArray.map((card) => applicableStore.getOne(card));
+    const picked = cardsAsArray.map((card) => applicableStore.pickOne(card));
 
     const rules = this.rules[numPlayers];
 
@@ -46,7 +46,7 @@ export class RequireCardInDeckScheme<
       case 'HERO':
         partialHeroDeck = this._requireCardType.createDeck(
           partialHeroDeck,
-          chosen,
+          picked,
           rules,
           this._deck
         );
@@ -54,7 +54,7 @@ export class RequireCardInDeckScheme<
       case 'VILLAIN':
         partialVillainDeck = this._requireCardType.createDeck(
           partialVillainDeck,
-          chosen,
+          picked,
           rules,
           this._deck
         );
@@ -62,7 +62,7 @@ export class RequireCardInDeckScheme<
       case 'ADDITIONAL':
         partialAdditionalDeck = this._requireCardType.createDeck(
           partialAdditionalDeck,
-          chosen,
+          picked,
           rules,
           this._deck
         );

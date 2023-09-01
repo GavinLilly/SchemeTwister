@@ -67,7 +67,7 @@ describe('Require Henchmen', () => {
       );
       const setup = scheme.getSetup(
         2,
-        store.mastermindStore.getOneRandom(),
+        store.mastermindStore.getRandom(),
         store
       );
 
@@ -91,7 +91,7 @@ describe('Require Henchmen', () => {
       );
       const setup = scheme.getSetup(
         2,
-        store.mastermindStore.getOneRandom(),
+        store.mastermindStore.getRandom(),
         store
       );
 
@@ -122,7 +122,7 @@ describe('Require Hero', () => {
       );
       const setup = scheme.getSetup(
         2,
-        store.mastermindStore.getOneRandom(),
+        store.mastermindStore.getRandom(),
         store
       );
 
@@ -146,7 +146,7 @@ describe('Require Hero', () => {
       );
       const setup = scheme.getSetup(
         2,
-        store.mastermindStore.getOneRandom(),
+        store.mastermindStore.getRandom(),
         store
       );
 
@@ -173,7 +173,7 @@ describe('Require Hero Name', () => {
         DECK_TYPE.additional
       );
 
-      setup = scheme.getSetup(2, store.mastermindStore.getOneRandom(), store);
+      setup = scheme.getSetup(2, store.mastermindStore.getRandom(), store);
     });
 
     it('should include 1 "Hulk" hero in the additional deck', () => {
@@ -191,7 +191,7 @@ describe('Require Hero Name', () => {
         .build();
 
       expect(() =>
-        scheme.getSetup(3, store.mastermindStore.getOneRandom(), store)
+        scheme.getSetup(3, store.mastermindStore.getRandom(), store)
       ).toThrow();
     });
   });
@@ -219,7 +219,7 @@ describe('Require Hero Name', () => {
         DECK_TYPE.hero
       );
 
-      setup = scheme.getSetup(2, store.mastermindStore.getOneRandom(), store);
+      setup = scheme.getSetup(2, store.mastermindStore.getRandom(), store);
     });
 
     it('should only include 1 Deadpool hero', () => {
@@ -243,7 +243,7 @@ describe('Require Hero Name', () => {
         .build();
 
       expect(() =>
-        scheme.getSetup(3, store.mastermindStore.getOneRandom(), store)
+        scheme.getSetup(3, store.mastermindStore.getRandom(), store)
       ).toThrow();
     });
   });
@@ -270,7 +270,7 @@ describe('Require Hero Name', () => {
         DECK_TYPE.villain
       );
 
-      setup = scheme.getSetup(2, store.mastermindStore.getOneRandom(), store);
+      setup = scheme.getSetup(2, store.mastermindStore.getRandom(), store);
     });
 
     it('should only include 1 Blade hero', () => {
@@ -287,7 +287,7 @@ describe('Require Hero Name', () => {
         .build();
 
       expect(() =>
-        scheme.getSetup(3, store.mastermindStore.getOneRandom(), store)
+        scheme.getSetup(3, store.mastermindStore.getRandom(), store)
       ).toThrow();
     });
   });
@@ -315,7 +315,7 @@ describe('Require Team', () => {
       );
       const setup = scheme.getSetup(
         2,
-        store.mastermindStore.getOneRandom(),
+        store.mastermindStore.getRandom(),
         store
       );
 
@@ -349,7 +349,7 @@ describe('Require Villain Group', () => {
       );
       const setup = scheme.getSetup(
         2,
-        store.mastermindStore.getOneRandom(),
+        store.mastermindStore.getRandom(),
         store
       );
 
@@ -385,7 +385,7 @@ describe('Require Villains Groups', () => {
         );
         const setup = scheme.getSetup(
           2,
-          store.mastermindStore.getOneRandom(),
+          store.mastermindStore.getRandom(),
           store
         );
 
@@ -404,7 +404,7 @@ describe('Require Villains Groups', () => {
           new RequireVillainGroup(),
           DECK_TYPE.villain
         );
-        setup = scheme.getSetup(2, store.mastermindStore.getOneRandom(), store);
+        setup = scheme.getSetup(2, store.mastermindStore.getRandom(), store);
       });
 
       it('should include Skrulls in the villain deck', () =>
@@ -428,7 +428,7 @@ describe('Require Villains Groups', () => {
           new RequireVillainGroup(),
           DECK_TYPE.villain
         );
-        setup = scheme.getSetup(3, store.mastermindStore.getOneRandom(), store);
+        setup = scheme.getSetup(3, store.mastermindStore.getRandom(), store);
       });
 
       it('should include 1 S.H.I.E.L.D. villain group in the villain deck', () =>

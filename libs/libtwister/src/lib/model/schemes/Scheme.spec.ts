@@ -187,7 +187,7 @@ describe('Scheme', () => {
 
       const additionalSetup = heroAdditional.getSetup(
         3,
-        store.mastermindStore.getOneRandom(),
+        store.mastermindStore.getRandom(),
         store
       );
 
@@ -209,7 +209,7 @@ describe('Scheme', () => {
 
       const heroHenchmenSetup = henchmenHero.getSetup(
         3,
-        store.mastermindStore.getOneRandom(),
+        store.mastermindStore.getRandom(),
         store
       );
 
@@ -232,7 +232,7 @@ describe('Scheme', () => {
 
       const mastermindVillainSetup = mastermindVillain.getSetup(
         3,
-        store.mastermindStore.getOneRandom(),
+        store.mastermindStore.getRandom(),
         store
       );
 
@@ -254,7 +254,7 @@ describe('Scheme', () => {
 
       const bystanderSetup = bystanderScheme.getSetup(
         3,
-        store.mastermindStore.getOneRandom(),
+        store.mastermindStore.getRandom(),
         store
       );
 
@@ -277,7 +277,7 @@ describe('Scheme', () => {
       const villains = [HELLFIRE_CLUB, MURDERWORLD];
       const filledSetup = scheme.getSetup(
         2,
-        store.mastermindStore.getOneRandom(),
+        store.mastermindStore.getRandom(),
         store,
         undefined,
         undefined,
@@ -302,7 +302,7 @@ describe('Scheme', () => {
 
         const setup = soloScheme.getSetup(
           1,
-          store.mastermindStore.getOneRandom(),
+          store.mastermindStore.getRandom(),
           store
         );
 
@@ -319,7 +319,7 @@ describe('Scheme', () => {
 
         const setup = soloScheme.getSetup(
           1,
-          store.mastermindStore.getOneRandom(),
+          store.mastermindStore.getRandom(),
           store,
           true
         );
