@@ -90,7 +90,7 @@ describe('Card Factory', () => {
     });
 
     it('should get the DC1 card', () =>
-      expect(instance.getOne(dcData[0].id)).toBeDefined());
+      expect(instance.get(dcData[0].id)).toBeDefined());
 
     it("should return 'LegCard'", () =>
       expect(instance.getStoreType()).toEqual('LegCard'));
@@ -208,7 +208,7 @@ describe('Card Store', () => {
     });
 
     it("should fail if the specific card ID doesn't exist", () => {
-      expect(() => store.getOne('foo')).toThrow();
+      expect(() => store.get('foo')).toThrow();
     });
   });
 });

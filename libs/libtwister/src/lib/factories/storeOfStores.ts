@@ -6,7 +6,6 @@ import {
   ICardType,
   IPlayableObject,
 } from '../model';
-import { CardType } from '../model/types/cardType.type';
 
 import { CardStore } from './cardStore';
 
@@ -30,6 +29,7 @@ export class StoreOfStores {
 
   /**
    * The mastermind store and picker
+   * @returns A store for Masterminds
    */
   public get mastermindStore() {
     return this._mastermindStore;
@@ -37,6 +37,7 @@ export class StoreOfStores {
 
   /**
    * The hero store and picker
+   * @returns A store for Heroes
    */
   public get heroStore() {
     return this._heroStore;
@@ -44,6 +45,7 @@ export class StoreOfStores {
 
   /**
    * The villain store and picker
+   * @returns A store for Villains
    */
   public get villainStore() {
     return this._villainStore;
@@ -51,9 +53,19 @@ export class StoreOfStores {
 
   /**
    * The henchmen store and picker
+   * @returns A store for Henchmen
    */
   public get henchmenStore() {
     return this._henchmenStore;
+  }
+
+  private get _allStores() {
+    return [
+      this.heroStore,
+      this.villainStore,
+      this.henchmenStore,
+      this.mastermindStore,
+    ];
   }
 
   /**
@@ -66,21 +78,15 @@ export class StoreOfStores {
     this._villainStore.resetStore();
   }
 
-  public getCardById(
-    id: string,
-    type: CardType
-  ): (IPlayableObject & ICardType) | undefined {
-    switch (type) {
-      case 'Henchmen':
-        return this.henchmenStore.allCardsMap.get(id);
-      case 'Hero':
-        return this.heroStore.allCardsMap.get(id);
-      case 'Mastermind':
-        return this.mastermindStore.allCardsMap.get(id);
-      case 'Villain Group':
-        return this.villainStore.allCardsMap.get(id);
-      default:
-        return undefined;
+  public getCardById(id: string): (IPlayableObject & ICardType) | undefined {
+    for (const store of this._allStores) {
+      try {
+        return store.get(id);
+      } catch (e) {
+        console.log(
+          `Error caught while looking for card ID (${id}) in ${store.getStoreType()} store. This is expected so continuing to the next store...`
+        );
+      }
     }
   }
 }

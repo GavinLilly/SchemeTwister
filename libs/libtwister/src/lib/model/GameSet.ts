@@ -1,5 +1,7 @@
 import * as uuid from 'uuid';
 
+import { nameSorter } from '../utils/nameSorter';
+
 import { Bystander, Henchmen, Hero, Mastermind, VillainGroup } from './cards';
 import { IGameSetMeta } from './interfaces';
 import {
@@ -50,16 +52,7 @@ export class GameSet implements IGameSetMeta {
       return 1;
     }
 
-    const nameA = a.name.toUpperCase();
-    const nameB = b.name.toUpperCase();
-
-    if (nameA < nameB) {
-      return -1;
-    } else if (nameA > nameB) {
-      return 1;
-    }
-
-    return 0;
+    return nameSorter(a, b);
   }
 
   /**

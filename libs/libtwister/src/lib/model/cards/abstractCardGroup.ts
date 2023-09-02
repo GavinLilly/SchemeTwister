@@ -7,6 +7,8 @@ export abstract class AbstractCardGroup implements IPlayableObject, ICardType {
   private readonly _name: string;
   private readonly _gameSet: IGameSetMeta;
   private readonly _keywords: IKeyword[];
+
+  /** The type of the card */
   public abstract readonly cardType: CardType;
 
   constructor(config: IPlayableObject) {

@@ -25,7 +25,7 @@ export class LibTwister {
 
   /**
    * Create a new LibTwister instance with the given GameSets
-   * @param selectedGameSets an array of Game Set items to create the LibTwister instance with
+   * @param selectedGameSets An array of Game Set items to create the LibTwister instance with
    */
   constructor(selectedGameSets: GameSet[]) {
     this._selectedGameSets = selectedGameSets;
@@ -58,8 +58,22 @@ export class LibTwister {
   }
 
   /**
+   * Get all the game sets available in this app
+   * @returns a map of Game Set IDs to GameSet objects
+   */
+  public static get allGameSets(): GameSetMap {
+    const gamesetMap = new GameSetMap();
+
+    Object.values(GameSets).forEach((gameset) =>
+      gamesetMap.set(gameset.GAME_SET.id, gameset.GAME_SET)
+    );
+
+    return gamesetMap;
+  }
+
+  /**
    * Create a LibTwiser instance with all Game Sets
-   * @returns a LibTwister instance
+   * @returns A LibTwister instance
    */
   public static of(): LibTwister;
   /**
@@ -80,22 +94,26 @@ export class LibTwister {
 
   /**
    * Gets the Game Set with the given ID
-   * @param gameSetId the ID of the Game Set to get
-   * @returns a GameSet instance
+   * @param gameSetId The ID of the Game Set to get
+   * @returns A GameSet instance
    */
-  public static gameSetIdToGameSet(gameSetId: string): GameSet | undefined {
-    return this.allGameSets.get(gameSetId);
-  }
-
+  public static gameSetIdsToGameSets(gameSetId: string): GameSet;
   /**
    * Transforms the provided Game Set ID array into a GameSet array
    * @param gameSetIds the array of Game Set IDs to get
    * @returns an array of Game Sets
    */
-  public static gameSetIdsToGameSets(gameSetIds: string[]): GameSet[] {
+  public static gameSetIdsToGameSets(gameSetIds: string[]): GameSet[];
+  public static gameSetIdsToGameSets(
+    gameSetIdOrIds: string | string[]
+  ): GameSet | GameSet[] | undefined {
+    if (!(gameSetIdOrIds instanceof Array)) {
+      return this.allGameSets.get(gameSetIdOrIds);
+    }
+
     return this.allGameSets
       .asArray()
-      .filter((gameSet) => gameSetIds.includes(gameSet.id));
+      .filter((gameSet) => gameSetIdOrIds.includes(gameSet.id));
   }
 
   /**
@@ -115,22 +133,6 @@ export class LibTwister {
     return gameSets.some((gameSet) =>
       [GAME_SET_SIZE.core, GAME_SET_SIZE.large].includes(gameSet.size)
     );
-  }
-
-  /**
-   * Get all the game sets available in this app
-   * @returns a map of Game Set IDs to GameSet objects
-   */
-  public static get allGameSets(): GameSetMap {
-    const gamesetMap = new GameSetMap();
-
-    const gamesets = Object.values(GameSets);
-
-    gamesets.forEach((gameset) =>
-      gamesetMap.set(gameset.GAME_SET.id, gameset.GAME_SET)
-    );
-
-    return gamesetMap;
   }
 
   /**

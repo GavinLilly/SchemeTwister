@@ -9,6 +9,7 @@ import { AbstractCardGroup } from './abstractCardGroup';
 interface IHero extends IPlayableObject {
   team?: ITeam;
 }
+
 export class Hero extends AbstractCardGroup implements IHero {
   private readonly _team?: ITeam;
   private readonly _cardType: CardType;
@@ -29,6 +30,10 @@ export class Hero extends AbstractCardGroup implements IHero {
     return this._cardType;
   }
 
+  /**
+   * Creates an empty Hero that is part of an empty Game Set with a random UUID
+   * @returns A Hero instance
+   */
   public static empty(): Hero {
     return new Hero({
       id: uuid.v4(),

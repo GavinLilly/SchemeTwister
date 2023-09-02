@@ -1,10 +1,11 @@
+import { nameSorter } from '../utils/nameSorter';
+
 import { Mastermind, Hero, Henchmen, VillainGroup } from './cards';
 import {
   IAdditionalDeck,
   IHeroDeck,
   IKeyword,
   IVillainDeck,
-  nameSorter,
   IGameSetup,
 } from './interfaces';
 import { Scheme } from './schemes';
@@ -52,13 +53,10 @@ export class GameSetup implements IGameSetup {
       .filter((keyword): keyword is IKeyword => !!keyword);
 
     if (this.scheme.keywords) {
-      this.scheme.keywords.forEach((keyword) => keywords.push(keyword));
+      keywords.push(...this.scheme.keywords);
     }
 
-    const keywordSet: Set<IKeyword> = new Set();
-    keywords.sort(nameSorter).forEach((x) => keywordSet.add(x));
-
-    return keywordSet;
+    return new Set(keywords.sort(nameSorter));
   }
 
   /**
