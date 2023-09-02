@@ -8,7 +8,7 @@ import { GameSetup } from './GameSetup';
 import { Henchmen, Hero, Mastermind, VillainGroup } from './cards';
 import { AbstractCardGroup } from './cards/abstractCardGroup';
 import { IAdditionalDeck, IAdditionalDeckRules } from './interfaces';
-import { CARD_TYPE, CardType, NumPlayers } from './types';
+import { NumPlayers } from './types';
 
 interface LiteGameSetupConfig {
   numPlayers: number;
@@ -18,6 +18,11 @@ interface LiteGameSetupConfig {
   villainDeck: string[];
   additionalDeck?: string[];
 }
+
+/**
+ * A class for storing a "lite" instance of a game setup. This means only
+ * storing the card IDs in arrays.
+ */
 export class LiteGameSetup {
   numPlayers = 2;
   schemeId = '';
@@ -26,9 +31,14 @@ export class LiteGameSetup {
   villainDeck: string[] = [];
   additionalDeck: string[] = [];
 
+  /**
+   * Creates an "empty" LiteGameSetup instance. This shouldn't normally be used
+   * and is only available for use with class-transformer
+   */
   constructor();
   constructor(config: LiteGameSetupConfig);
   constructor(config?: LiteGameSetupConfig) {
+    // Config can be undefined to allow class-transformer to instantiate
     if (config !== undefined) {
       ({
         numPlayers: this.numPlayers,
@@ -42,16 +52,25 @@ export class LiteGameSetup {
     }
   }
 
-  private static _getById<T extends AbstractCardGroup>(
+  /**
+   * Gets the cards for all provided card IDs
+   * @param ids The array of card IDs to get from the LibTwister instance
+   * @param twister The LibTwister instance to search within
+   * @returns An array of card groups
+   */
+  private static _getById = <T extends AbstractCardGroup>(
     ids: string[],
-    cardType: CardType,
     twister: LibTwister
-  ): T[] {
-    return ids
-      .map((id) => twister.stores.getCardById(id, cardType))
+  ): T[] =>
+    ids
+      .map((id) => twister.stores.getCardById(id))
       .filter((card): card is T => !!card);
-  }
 
+  /**
+   * Creates a LiteGameSetup instance from the provided "full" Game Setup
+   * @param setup The GameSetup to create a LiteGameSetup from
+   * @returns A LiteGameSetup instance
+   */
   public static of(setup: GameSetup): LiteGameSetup {
     return new LiteGameSetup({
       numPlayers: setup.numPlayers,
@@ -67,77 +86,38 @@ export class LiteGameSetup {
     const twister = LibTwister.of();
 
     const mastermind = twister.stores.getCardById(
-      this.mastermindId,
-      CARD_TYPE.mastermind
+      this.mastermindId
     ) as Mastermind;
 
-    const scheme = twister.schemeFactory.getOne(this.schemeId);
+    const scheme = twister.schemeFactory.get(this.schemeId);
 
     const instantiatedScheme = instantiateScheme(scheme);
 
     const rules = instantiatedScheme.rules[this.numPlayers as NumPlayers];
 
-    const filledAdditionalDeck =
-      rules.additionalDeck !== undefined
-        ? this._buildFullAdditionalDeck(rules.additionalDeck, twister)
-        : undefined;
+    const filledAdditionalDeck = this._buildFullAdditionalDeck(
+      rules.additionalDeck,
+      twister
+    );
 
     return new GameSetup({
       heroDeck: {
-        heroes: LiteGameSetup._getById(this.heroDeck, CARD_TYPE.hero, twister),
-        henchmen: LiteGameSetup._getById(
-          this.heroDeck,
-          CARD_TYPE.henchmen,
-          twister
-        ),
+        heroes: LiteGameSetup._getById(this.heroDeck, twister),
+        henchmen: LiteGameSetup._getById(this.heroDeck, twister),
       },
       mastermind,
       numPlayers: this.numPlayers,
       scheme: instantiatedScheme,
       villainDeck: {
-        henchmen: LiteGameSetup._getById(
-          this.villainDeck,
-          CARD_TYPE.henchmen,
-          twister
-        ),
-        villains: LiteGameSetup._getById(
-          this.villainDeck,
-          CARD_TYPE.villainGroup,
-          twister
-        ),
-        heroes: LiteGameSetup._getById(
-          this.villainDeck,
-          CARD_TYPE.hero,
-          twister
-        ),
-        masterminds: LiteGameSetup._getById(
-          this.villainDeck,
-          CARD_TYPE.mastermind,
-          twister
-        ),
+        henchmen: LiteGameSetup._getById(this.villainDeck, twister),
+        villains: LiteGameSetup._getById(this.villainDeck, twister),
+        heroes: LiteGameSetup._getById(this.villainDeck, twister),
+        masterminds: LiteGameSetup._getById(this.villainDeck, twister),
         numMasterStrikes: 5,
         numTwists: rules.villainDeck.numTwists,
       },
       additionalDeck: filledAdditionalDeck,
     });
-  }
-
-  private _buildFullAdditionalDeck(
-    rules: IAdditionalDeckRules,
-    twister: LibTwister
-  ): IAdditionalDeck | undefined {
-    const getAdditionalDeck = (cardType: CardType) =>
-      LiteGameSetup._getById(this.additionalDeck, cardType, twister);
-
-    return {
-      name: rules.name,
-      deck: {
-        henchmen: getAdditionalDeck(CARD_TYPE.henchmen) as Henchmen[],
-        heroes: getAdditionalDeck(CARD_TYPE.hero) as Hero[],
-        masterminds: getAdditionalDeck(CARD_TYPE.mastermind) as Mastermind[],
-        villains: getAdditionalDeck(CARD_TYPE.villainGroup) as VillainGroup[],
-      },
-    };
   }
 
   /**
@@ -166,5 +146,37 @@ export class LiteGameSetup {
       villainDeck: this.villainDeck,
       additionalDeck: this.additionalDeck,
     });
+  }
+
+  private _buildFullAdditionalDeck(
+    rules: IAdditionalDeckRules | undefined,
+    twister: LibTwister
+  ): IAdditionalDeck | undefined {
+    if (rules === undefined) {
+      return undefined;
+    }
+
+    const additionalDeckCards = LiteGameSetup._getById(
+      this.additionalDeck,
+      twister
+    );
+
+    return {
+      name: rules.name,
+      deck: {
+        henchmen: additionalDeckCards.filter(
+          (card) => card.cardType === 'Henchmen'
+        ) as Henchmen[],
+        heroes: additionalDeckCards.filter(
+          (card) => card.cardType === 'Hero'
+        ) as Hero[],
+        masterminds: additionalDeckCards.filter(
+          (card) => card.cardType === 'Mastermind'
+        ) as Mastermind[],
+        villains: additionalDeckCards.filter(
+          (card) => card.cardType === 'Villain Group'
+        ) as VillainGroup[],
+      },
+    };
   }
 }

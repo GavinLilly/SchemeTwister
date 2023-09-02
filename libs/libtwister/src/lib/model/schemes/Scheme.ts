@@ -4,6 +4,7 @@ import { PartialDeep } from 'type-fest';
 import * as uuid from 'uuid';
 
 import { StoreOfStores } from '../../factories';
+import { nameSorter } from '../../utils/nameSorter';
 import { GameSet } from '../GameSet';
 import { GameSetup } from '../GameSetup';
 import { Henchmen, Hero, Mastermind, VillainGroup } from '../cards';
@@ -22,7 +23,6 @@ import {
   IVillainDeck,
   IVillainDeckRequirements,
   VillainDeckMinimal,
-  nameSorter,
 } from '../interfaces';
 import { Rules, RulesType } from '../rules';
 import { CARD_TYPE, NumPlayers, SchemeMinusRules, numPlayers } from '../types';
