@@ -282,14 +282,14 @@ describe('LibTwister', () => {
 
   describe('gameSetIdToGameSet', () => {
     it('should return the Marvel Studios game set', () => {
-      const gameSet = LibTwister.gameSetIdToGameSet(MARVEL_STUDIOS.id);
+      const gameSet = LibTwister.gameSetIdsToGameSets(MARVEL_STUDIOS.id);
       expect(gameSet).toBeDefined();
       expect(gameSet?.name).toBe(MARVEL_STUDIOS.name);
     });
 
     it('should return undefined', () => {
-      expect(LibTwister.gameSetIdToGameSet('')).toBeUndefined();
-      expect(LibTwister.gameSetIdToGameSet('FOOBAR')).toBeUndefined();
+      expect(LibTwister.gameSetIdsToGameSets('')).toBeUndefined();
+      expect(LibTwister.gameSetIdsToGameSets('FOOBAR')).toBeUndefined();
     });
   });
 

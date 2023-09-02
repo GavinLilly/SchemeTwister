@@ -3,7 +3,7 @@ import { IPlayableObject } from '../model';
 import { CardFactory } from './cardFactory';
 
 /**
- * A MultiCardFactory with memory!
+ * A CardFactory with memory!
  */
 export class CardStore<
   TCard extends IPlayableObject
@@ -33,15 +33,16 @@ export class CardStore<
     count = 1,
     func?: (card: TCard) => boolean
   ): TCard | TCard[] {
+    const randoms = this.getRandom(count, func);
+
+    const randomsAsArray = randoms instanceof Array ? randoms : [randoms];
+    randomsAsArray.forEach((card) => this._pickedCards.add(card.id));
+
     if (count === 1) {
-      return this.getRandom(1, func);
+      return randoms as TCard;
     }
 
-    const randoms = this.getRandom(count, func) as TCard[];
-
-    randoms.forEach((card) => this._pickedCards.add(card.id));
-
-    return randoms;
+    return randoms as TCard[];
   }
 
   /**

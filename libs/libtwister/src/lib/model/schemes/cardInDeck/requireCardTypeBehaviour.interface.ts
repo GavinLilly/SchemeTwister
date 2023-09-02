@@ -1,4 +1,4 @@
-import { MultiCardStore, StoreOfStores } from '../../../factories';
+import { CardStore, StoreOfStores } from '../../../factories';
 import { AbstractCardGroup } from '../../cards/abstractCardGroup';
 import {
   HeroDeckMinimal,
@@ -20,5 +20,5 @@ export interface IRequireCardTypeBehaviour<TCard extends AbstractCardGroup> {
     deckType: DeckType
   ): HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal;
 
-  getStore(storeOfStores: StoreOfStores): MultiCardStore<TCard>;
+  getStore(storeOfStores: StoreOfStores): CardStore<TCard>;
 }

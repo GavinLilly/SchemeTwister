@@ -1,5 +1,5 @@
 import * as GameSets from './data/gameSets';
-import { SingleCardFactory, StoreOfStores } from './factories';
+import { CardFactory, StoreOfStores } from './factories';
 import {
   GameSet,
   GAME_SET_SIZE,
@@ -19,7 +19,7 @@ import instantiateScheme from './utils/instantiateScheme';
  * with all of the associated cards
  */
 export class LibTwister {
-  private _schemeFactory!: SingleCardFactory<SchemeMinusRules>;
+  private _schemeFactory!: CardFactory<SchemeMinusRules>;
   private _stores!: StoreOfStores;
   private readonly _selectedGameSets: GameSet[] = [];
 
@@ -37,7 +37,7 @@ export class LibTwister {
    * The factory to pick schemes
    * @returns The scheme factory in use
    */
-  public get schemeFactory(): SingleCardFactory<SchemeMinusRules> {
+  public get schemeFactory(): CardFactory<SchemeMinusRules> {
     return this._schemeFactory;
   }
 
@@ -195,6 +195,6 @@ export class LibTwister {
 
     this._stores = new StoreOfStores(heroes, masterminds, villains, henchmen);
 
-    this._schemeFactory = new SingleCardFactory(schemes);
+    this._schemeFactory = new CardFactory(schemes);
   }
 }
