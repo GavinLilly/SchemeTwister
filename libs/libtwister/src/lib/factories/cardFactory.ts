@@ -195,7 +195,7 @@ export class CardFactory<TCard extends IPlayableObject> {
       return this.availableCardsMap.get(item as string) !== undefined;
     }
 
-    return this.availableCards.includes(item);
+    return this.availableCards.includes(item as TCard);
   }
 
   /**
