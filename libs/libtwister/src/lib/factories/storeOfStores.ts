@@ -88,5 +88,7 @@ export class StoreOfStores {
         );
       }
     }
+
+    return undefined;
   }
 }
