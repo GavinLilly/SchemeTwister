@@ -1,4 +1,4 @@
-import { MultiCardStore } from '../../../factories';
+import { CardStore } from '../../../factories';
 import { randomize } from '../../../utils/randomize';
 import { AbstractCardGroup } from '../../cards/abstractCardGroup';
 
@@ -34,7 +34,7 @@ export class RequireCard<TCard extends AbstractCardGroup>
     }
   }
 
-  getRequiredCard(store: MultiCardStore<TCard>): TCard | TCard[] {
+  getRequiredCard(store: CardStore<TCard>): TCard | TCard[] {
     if (this._availableCards.length === 1) {
       return this._availableCards[0];
     }

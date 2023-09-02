@@ -1,4 +1,4 @@
-import { MultiCardStore, StoreOfStores } from '../../../factories';
+import { CardStore, StoreOfStores } from '../../../factories';
 import { Hero } from '../../cards';
 import {
   HeroDeckMinimal,
@@ -43,6 +43,6 @@ export class RequireHero implements IRequireCardTypeBehaviour<Hero> {
     return deck;
   }
 
-  getStore = (storeOfStores: StoreOfStores): MultiCardStore<Hero> =>
+  getStore = (storeOfStores: StoreOfStores): CardStore<Hero> =>
     storeOfStores.heroStore;
 }

@@ -1,4 +1,4 @@
-import { StoreOfStores, MultiCardStore } from '../../../factories';
+import { StoreOfStores, CardStore } from '../../../factories';
 import { VillainGroup } from '../../cards';
 import {
   HeroDeckMinimal,
@@ -43,6 +43,6 @@ export class RequireVillainGroup
     return deck;
   }
 
-  getStore = (storeOfStores: StoreOfStores): MultiCardStore<VillainGroup> =>
+  getStore = (storeOfStores: StoreOfStores): CardStore<VillainGroup> =>
     storeOfStores.villainStore;
 }
