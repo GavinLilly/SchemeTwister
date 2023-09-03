@@ -44,10 +44,10 @@ describe('StoreOfStores', () => {
     it('should return Brotherhood', () =>
       expect(store.getCardById(BROTHERHOOD.id)).toBe(BROTHERHOOD));
 
-    it('should return undefined for a bystander card', () =>
-      expect(store.getCardById('')).toBeUndefined());
+    it('should throw for an empty ID', () =>
+      expect(() => store.getCardById('')).toThrow());
 
-    it('should throw for an invalid hero ID', () =>
-      expect(store.getCardById('FOOBAR')).toBeUndefined());
+    it('should throw for an invalid ID', () =>
+      expect(() => store.getCardById('FOOBAR')).toThrow());
   });
 });

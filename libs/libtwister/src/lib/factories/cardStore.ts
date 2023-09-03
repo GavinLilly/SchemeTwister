@@ -1,3 +1,5 @@
+import isUUID from 'validator/lib/isUUID';
+
 import { IPlayableObject } from '../model';
 
 import { CardFactory } from './cardFactory';
@@ -62,6 +64,10 @@ export class CardStore<
   public pickOne(idOrCard: string | TCard): TCard {
     const cardId = CardFactory.getCardId(idOrCard);
 
+    if (!isUUID(cardId)) {
+      throw new Error(`The provided card ID (${cardId}) is not a valid UUID`);
+    }
+
     if (!this._pickedCards.has(cardId)) {
       const card = this.get(cardId);
       this._pickedCards.add(cardId);
@@ -124,6 +130,11 @@ export class CardStore<
   public removeCard(card: TCard): void;
   public removeCard(idOrCard: string | TCard): void {
     const cardId = CardFactory.getCardId(idOrCard);
+
+    if (!isUUID(cardId)) {
+      throw new Error(`The provided card ID (${cardId}) is not a valid UUID`);
+    }
+
     this._excludedCardsForSetup.add(cardId);
   }
 

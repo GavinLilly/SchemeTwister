@@ -1,3 +1,5 @@
+import isUUID from 'validator/lib/isUUID';
+
 import { IPlayableObject } from '../model';
 import { randomize } from '../utils/randomize';
 
@@ -159,6 +161,10 @@ export class CardFactory<TCard extends IPlayableObject> {
 
     const cards: TCard[] = [];
     ids.forEach((id) => {
+      if (!isUUID(id)) {
+        throw new Error(`The provided card ID (${id}) is not a valid UUID`);
+      }
+
       const card = this.availableCardsMap.get(id);
 
       if (card === undefined) {
@@ -192,7 +198,12 @@ export class CardFactory<TCard extends IPlayableObject> {
   public isAvailable(item: string | TCard): boolean {
     const itemIsString = typeof item === 'string' || item instanceof String;
     if (itemIsString) {
-      return this.availableCardsMap.get(item as string) !== undefined;
+      const itemId = item as string;
+      if (!isUUID(itemId)) {
+        throw new Error(`The provided card ID (${itemId}) is not a valid UUID`);
+      }
+
+      return this.availableCardsMap.get(itemId) !== undefined;
     }
 
     return this.availableCards.includes(item as TCard);

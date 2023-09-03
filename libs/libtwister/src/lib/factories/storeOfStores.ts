@@ -1,3 +1,5 @@
+import isUUID from 'validator/lib/isUUID';
+
 import {
   Mastermind,
   VillainGroup,
@@ -79,6 +81,10 @@ export class StoreOfStores {
   }
 
   public getCardById(id: string): (IPlayableObject & ICardType) | undefined {
+    if (!isUUID(id)) {
+      throw new Error(`The provided card ID (${id}) is not a valid UUID`);
+    }
+
     for (const store of this._allStores) {
       try {
         return store.get(id);

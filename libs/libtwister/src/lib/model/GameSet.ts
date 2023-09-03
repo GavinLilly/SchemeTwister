@@ -73,10 +73,16 @@ export class GameSet implements IGameSetMeta {
   }
 
   /**
-   * Gets all the cards in the game set with the given type
-   * @param cardType the type of card to get
-   * @returns an array of cards
+   * Gets all the cards in the game set
+   * @returns An array of cards
    */
+  public getCards(): AllCardTypes[];
+  /**
+   * Gets all the cards in the game set with the given type
+   * @param cardType The type of card to get
+   * @returns An array of cards
+   */
+  public getCards(cardType: CardType): AllCardTypes[] | undefined;
   // eslint-disable-next-line complexity
   public getCards(cardType?: CardType): AllCardTypes[] | undefined {
     if (cardType === undefined) {

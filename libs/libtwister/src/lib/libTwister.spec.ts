@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+import isUUID from 'validator/lib/isUUID';
+
 import { GAME_SET as DARK_CITY } from './data/gameSets/darkCity';
 import { GAME_SET as INTO_THE_COSMOS } from './data/gameSets/intoTheCosmos';
 import { GAME_SET as LEGENDARY } from './data/gameSets/legendary';
@@ -11,7 +13,39 @@ import {
 import { UNLEASH_THE_ABILISK_SPACE_MONSTER } from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.schemes';
 import { GAME_SET as XMEN } from './data/gameSets/xMen';
 import { LibTwister } from './libTwister';
-import { CARD_TYPE, GAME_SET_SIZE, IPlayableObject, NumPlayers } from './model';
+import { GAME_SET_SIZE, NumPlayers } from './model';
+
+expect.extend({
+  toBeUUID(received) {
+    if (isUUID(received)) {
+      return {
+        message: () => `ID (${received}) should NOT be a UUID`,
+        pass: true,
+      };
+    }
+
+    return {
+      message: () => `ID (${received}) should be a UUID`,
+      pass: false,
+    };
+  },
+});
+
+interface CustomMatchers<R = unknown> {
+  toBeUUID(): R;
+}
+
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace jest {
+    // eslint-disable-next-line @typescript-eslint/no-empty-interface
+    interface Expect extends CustomMatchers {}
+    // eslint-disable-next-line @typescript-eslint/no-empty-interface
+    interface Matchers<R> extends CustomMatchers<R> {}
+    // eslint-disable-next-line @typescript-eslint/no-empty-interface
+    interface InverseAsymmetricMatchers extends CustomMatchers {}
+  }
+}
 
 describe('LibTwister', () => {
   describe('All game sets', () => {
@@ -46,35 +80,29 @@ describe('LibTwister', () => {
         )
       ).toHaveLength(3));
 
-    it('should not have any duplicate card IDs', () => {
-      const findDupes = (arr: string[]) => {
-        const sortedArr = arr.slice().sort();
-        const results = [];
-        for (let i = 0; i < sortedArr.length - 1; i++) {
-          if (sortedArr[i + 1] === sortedArr[i]) results.push(sortedArr[i]);
-        }
-        return results;
-      };
+    describe('all cards', () => {
+      const allCards = Array.from(LibTwister.allGameSets.values()).flatMap(
+        (gameSet) => gameSet.getCards()
+      );
 
-      const allGamesets = Array.from(LibTwister.allGameSets.values());
-      const allCards: IPlayableObject[] = [];
-
-      // Iterate over all game sets
-      allGamesets.forEach((gameSet) => {
-        // Get all card types from the gameset
-        for (const cardType of Object.values(CARD_TYPE)) {
-          const cards = gameSet.getCards(cardType);
-          // Push it into our array
-          if (cards !== undefined) {
-            allCards.push(...cards);
+      it('should not have any duplicate card IDs', () => {
+        const findDupes = (arr: string[]) => {
+          const sortedArr = arr.slice().sort();
+          const results = [];
+          for (let i = 0; i < sortedArr.length - 1; i++) {
+            if (sortedArr[i + 1] === sortedArr[i]) results.push(sortedArr[i]);
           }
-        }
+          return results;
+        };
+
+        expect(allCards.length).toBeGreaterThan(0);
+
+        const dupes = findDupes(allCards.map((card) => card.id));
+        expect(dupes).toHaveLength(0);
       });
 
-      expect(allCards.length).toBeGreaterThan(0);
-
-      const dupes = findDupes(allCards.map((card) => card.id));
-      expect(dupes).toHaveLength(0);
+      it('should have valid IDs', () =>
+        allCards.forEach((card) => expect(card.id).toBeUUID));
     });
   });
 
@@ -311,10 +339,10 @@ describe('LibTwister', () => {
       ).toBe(false));
 
     it('should return false for a non-valid game set id', () =>
-      expect(LibTwister.validateGameSetIds(['FOOBAR'])).toBe(false));
+      expect(() => LibTwister.validateGameSetIds(['FOOBAR'])).toThrow());
 
     it('should return false for an empty string game set id', () =>
-      expect(LibTwister.validateGameSetIds([''])).toBe(false));
+      expect(() => LibTwister.validateGameSetIds([''])).toThrow());
 
     it('should return false for an empty game set ID array', () =>
       expect(LibTwister.validateGameSetIds([])).toBe(false));
