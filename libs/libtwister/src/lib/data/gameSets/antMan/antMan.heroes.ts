@@ -27,7 +27,7 @@ export const WASP = new Hero({
 });
 
 export const JOCASTA = new Hero({
-  id: 'b563c38c-a421-45d6-b0fe-674fed7c5a072',
+  id: '31bc3cd5-d405-42b6-80b9-00f91deb1d95',
   name: 'Jocasta',
   team: AVENGERS,
 
