@@ -1,8 +1,7 @@
 import { LibTwister } from '../libTwister';
 
 import { GameSetMap } from './gameSetMap';
-import { GAME_SET_SIZE } from './types/gameSetSize.type';
-import { SERIES } from './types';
+import { GAME_SET_SIZE, SERIES } from './types';
 
 describe('GameSetMap', () => {
   let map: GameSetMap;
