@@ -130,7 +130,7 @@ describe('Card Factory', () => {
         expect(instance.isAvailable(legData[0].id)).toBeTruthy());
 
       it("should return false when the given card isn't available", () =>
-        expect(instance.isAvailable('foo')).toBeFalsy());
+        expect(() => instance.isAvailable('foo')).toThrow());
     });
   });
 

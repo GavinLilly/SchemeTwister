@@ -1,3 +1,5 @@
+import isUUID from 'validator/lib/isUUID';
+
 import * as GameSets from './data/gameSets';
 import { CardFactory, StoreOfStores } from './factories';
 import {
@@ -124,6 +126,14 @@ export class LibTwister {
    * @returns true if the array of game set IDs is valid
    */
   public static validateGameSetIds(gameSetIds: string[]): boolean {
+    const invalidIds = gameSetIds.filter((id) => !isUUID(id));
+
+    if (invalidIds.length > 0) {
+      throw new Error(
+        `The provided game set IDs (${invalidIds}) are not valid UUIDs`
+      );
+    }
+
     const gameSets = LibTwister.gameSetIdsToGameSets(gameSetIds);
 
     if (gameSets.length !== gameSetIds.length) {
