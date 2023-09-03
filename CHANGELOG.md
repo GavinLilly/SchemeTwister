@@ -1,3 +1,13 @@
+## [3.8.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.8.1...v3.8.2) (2023-09-03)
+
+
+### Bug Fixes
+
+* **libtwister:** assert card type if not string ([80f0521](https://github.com/GavinLilly/SchemeTwister/commit/80f0521b32485faa14b2239f91a3ccb19ef9b426))
+* **libtwister:** ensure blade is included in Midnight Massacre ([f2efdfa](https://github.com/GavinLilly/SchemeTwister/commit/f2efdfa9f4326ef9357512727e36a085ea1196bb))
+* **libtwister:** ensure undefined is returned if no card is found ([4b11131](https://github.com/GavinLilly/SchemeTwister/commit/4b111313a881b34be99a85c5fc2e05e4ad733e65))
+* **libtwister:** fix naming of card store ([53c31fb](https://github.com/GavinLilly/SchemeTwister/commit/53c31fb11968141df64ae8f24fd47161ff2911be))
+
 ## [3.8.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.8.0...v3.8.1) (2023-08-30)
 
 
