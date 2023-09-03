@@ -77,6 +77,10 @@ export const MIDNIGHT_MASSACRE = new SchemeDefinition({
   keywords: [MOONLIGHT_AND_SUNLIGHT, BLOOD_FRENZY],
   meta: {
     numTwists: 11,
+    rules: (rule) => {
+      rule.villainDeck.numHeroes = 1;
+      return rule;
+    },
     overrideScheme: {
       schemeType: RequireCardInDeckScheme,
       params: [
