@@ -1,3 +1,15 @@
+## [3.9.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.8.2...v3.9.0) (2023-09-03)
+
+
+### Features
+
+* **libtwister:** check IDs for UUID ([8ccf5db](https://github.com/GavinLilly/SchemeTwister/commit/8ccf5db9ed76d2f3c5fd284ace7f59358ddd4b6c))
+
+
+### Bug Fixes
+
+* **libtwister:** change ID for Jocasta to be valid ([95dcc91](https://github.com/GavinLilly/SchemeTwister/commit/95dcc919863e07db488d8bbb59d1f827f6eebbaa))
+
 ## [3.8.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.8.1...v3.8.2) (2023-09-03)
 
 
