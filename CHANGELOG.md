@@ -1,3 +1,10 @@
+## [3.9.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.9.0...v3.9.1) (2023-09-03)
+
+
+### Bug Fixes
+
+* **libtwister:** add missing Infinity Saga and Midnight Sons ([da28f58](https://github.com/GavinLilly/SchemeTwister/commit/da28f583c39d6660fb9e0f8ddedef123e3dac0b4))
+
 ## [3.9.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.8.2...v3.9.0) (2023-09-03)
 
 
