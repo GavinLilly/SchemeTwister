@@ -19,10 +19,9 @@ import {
 } from '../../data/gameSets/xMen/xMen.villains';
 import { StoreBuilder, StoreOfStores } from '../../factories';
 import { GameSetup } from '../GameSetup';
-import { CARD_TYPE } from '../types/cardType.type';
 import { IGameSetup } from '../interfaces/gameSetup.interface';
 import { Rules } from '../rules';
-import { SchemeMinusRules } from '../types';
+import { CARD_TYPE, SchemeMinusRules } from '../types';
 import { NumPlayers, numPlayers } from '../types/numPlayers.type';
 
 import { Scheme } from './Scheme';

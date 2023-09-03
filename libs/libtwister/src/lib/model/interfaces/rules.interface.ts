@@ -19,7 +19,7 @@ export interface IHeroDeckRequirements extends IDeckRequirements {
   numHeroes: number;
 }
 
-interface IAdditionalDeckRequirements extends IDeckRequirements {
+export interface IAdditionalDeckRequirements extends IDeckRequirements {
   numMasterminds?: number;
   numTwists?: number;
   numVillainGroups?: number;
