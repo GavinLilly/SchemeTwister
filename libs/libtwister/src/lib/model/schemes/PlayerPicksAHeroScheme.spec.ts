@@ -27,7 +27,7 @@ describe('Player Picks a Hero Scheme', () => {
       );
 
       expect(
-        setup.heroDeck.heroes.filter((hero) =>
+        Array.from(setup.heroDeck.heroes).filter((hero) =>
           hero.name.match('Player \\d picks a hero')
         )
       ).toHaveLength(3);

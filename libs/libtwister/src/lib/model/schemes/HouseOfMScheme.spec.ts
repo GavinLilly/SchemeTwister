@@ -32,11 +32,15 @@ describe('House of M Scheme', () => {
 
   it('should include 4 X-Men heroes in the hero deck', () =>
     expect(
-      setup.heroDeck.heroes.filter((hero) => hero.team === Teams.X_MEN)
+      Array.from(setup.heroDeck.heroes).filter(
+        (hero) => hero.team === Teams.X_MEN
+      )
     ).toHaveLength(4));
 
   it('should include 2 non-X-Men heroes in the hero deck', () =>
     expect(
-      setup.heroDeck.heroes.filter((hero) => hero.team !== Teams.X_MEN)
+      Array.from(setup.heroDeck.heroes).filter(
+        (hero) => hero.team !== Teams.X_MEN
+      )
     ).toHaveLength(2));
 });

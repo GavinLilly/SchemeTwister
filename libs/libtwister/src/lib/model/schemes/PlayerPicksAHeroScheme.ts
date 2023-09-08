@@ -32,7 +32,7 @@ export class PlayerPicksAHeroScheme extends Scheme {
     }
 
     partialHeroDeck.heroes = Scheme.addToDeck(
-      partialHeroDeck.heroes ?? [],
+      partialHeroDeck.heroes ?? new Set(),
       nonPickedHeroes[0],
       this.rules[numPlayers].villainDeck.numVillainGroups,
       ...nonPickedHeroes.slice(1)

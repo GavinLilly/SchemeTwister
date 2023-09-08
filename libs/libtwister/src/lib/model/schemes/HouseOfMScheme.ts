@@ -45,7 +45,7 @@ export class HouseOfMScheme extends RequireCardInDeckScheme<Hero> {
     ) as Hero[];
 
     partialHeroDeck.heroes = Scheme.addToDeck(
-      partialHeroDeck.heroes ?? [],
+      partialHeroDeck.heroes ?? new Set(),
       otherHeroes[0],
       this.rules[numPlayers].heroDeck.numHeroes,
       otherHeroes[1],

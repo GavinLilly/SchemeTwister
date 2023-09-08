@@ -56,7 +56,9 @@ export class GameSetup implements IGameSetup {
       keywords.push(...this.scheme.keywords);
     }
 
-    return new Set(keywords.sort(nameSorter));
+    keywords.sort(nameSorter);
+
+    return new Set(keywords);
   }
 
   /**
@@ -68,10 +70,10 @@ export class GameSetup implements IGameSetup {
       numPlayers: 2,
       scheme: Scheme.empty(),
       mastermind: Mastermind.empty(),
-      heroDeck: { heroes: [] },
+      heroDeck: { heroes: new Set() },
       villainDeck: {
-        villains: [],
-        henchmen: [],
+        villains: new Set(),
+        henchmen: new Set(),
         numTwists: 0,
         numMasterStrikes: 0,
       },
@@ -84,38 +86,46 @@ export class GameSetup implements IGameSetup {
    * Gets all the Heroes in the setup
    * @returns an array of Heroes
    */
-  public getSelectedHeroes(): Hero[] {
-    return this.heroDeck.heroes
-      .concat(this.villainDeck.heroes ?? [])
-      .concat(this.additionalDeck?.deck.heroes ?? []);
+  public getSelectedHeroes(): Set<Hero> {
+    return new Set([
+      ...this.heroDeck.heroes,
+      ...(this.villainDeck.heroes ?? []),
+      ...(this.additionalDeck?.deck.heroes ?? []),
+    ]);
   }
 
   /**
    * Gets all the Henchmen in the setup
    * @returns an array of Henchmen
    */
-  public getSelectedHenchmen(): Henchmen[] {
-    return this.villainDeck.henchmen
-      .concat(this.heroDeck.henchmen ?? [])
-      .concat(this.additionalDeck?.deck.henchmen ?? []);
+  public getSelectedHenchmen(): Set<Henchmen> {
+    return new Set([
+      ...this.villainDeck.henchmen,
+      ...(this.heroDeck.henchmen ?? []),
+      ...(this.additionalDeck?.deck.henchmen ?? []),
+    ]);
   }
 
   /**
    * Gets all the Villains in the setup
    * @returns an array of Villains
    */
-  public getSelectedVillains(): VillainGroup[] {
-    return this.villainDeck.villains.concat(
-      this.additionalDeck?.deck.villains ?? []
-    );
+  public getSelectedVillains(): Set<VillainGroup> {
+    return new Set([
+      ...this.villainDeck.villains,
+      ...(this.additionalDeck?.deck.villains ?? []),
+    ]);
   }
 
   /**
    * Gets all the Masterminds in the setup
    * @returns an array of Masterminds
    */
-  public getSelectedMasterminds(): Mastermind[] {
-    return [this.mastermind, ...(this.additionalDeck?.deck.masterminds ?? [])];
+  public getSelectedMasterminds(): Set<Mastermind> {
+    return new Set([
+      this.mastermind,
+      ...(this.additionalDeck?.deck.masterminds ?? []),
+    ]);
   }
 
   /**

@@ -3,7 +3,6 @@ import { PartialDeep } from 'type-fest';
 import * as uuid from 'uuid';
 
 import { CardStore, StoreOfStores } from '../../factories';
-import { nameSorter } from '../../utils/nameSorter';
 import { GameSet } from '../GameSet';
 import { GameSetup } from '../GameSetup';
 import { Henchmen, Hero, Mastermind, VillainGroup } from '../cards';
@@ -145,10 +144,10 @@ export class Scheme implements IPlayableObject {
    * @param maxLength the maximum size of the deck
    */
   public static addToDeck<T extends IPlayableObject>(
-    deck: T[],
+    deck: Set<T>,
     card: T,
     maxDeckLength?: number
-  ): T[];
+  ): Set<T>;
   /**
    * Adds the provided cards to the provided deck, checking to make sure the new
    * deck size does not exceed the configured maximum.
@@ -158,19 +157,19 @@ export class Scheme implements IPlayableObject {
    * @param extraCards an array of additional cards to add to the deck
    */
   public static addToDeck<T extends IPlayableObject>(
-    deck: T[],
+    deck: Set<T>,
     card: T,
     maxDeckLength?: number,
     ...extraCards: T[]
-  ): T[];
+  ): Set<T>;
   public static addToDeck<T extends IPlayableObject>(
-    deck: T[],
+    deck: Set<T>,
     card: T,
     maxDeckLength?: number,
     ...extraCards: T[]
-  ): T[] {
+  ): Set<T> {
     const cardsToAdd = [card, ...extraCards];
-    const newDeck = [...deck, ...cardsToAdd];
+    let newDeck = new Set([...deck, ...cardsToAdd]);
 
     if (maxDeckLength === undefined) {
       return newDeck;
@@ -182,16 +181,18 @@ export class Scheme implements IPlayableObject {
       );
     }
 
-    const remainingSpace = maxDeckLength - deck.length;
+    const remainingSpace = maxDeckLength - deck.size;
     if (cardsToAdd.length > remainingSpace) {
       throw new Error(
         `The number of cards to add (${cardsToAdd.length}) can't be more than the amount of space in the array (${remainingSpace})`
       );
     }
 
-    const isNewDeckTooLong = newDeck.length >= maxDeckLength;
+    const isNewDeckTooLong = newDeck.size >= maxDeckLength;
     if (isNewDeckTooLong) {
-      newDeck.splice(0, newDeck.length - maxDeckLength);
+      const newDeckArray = [...newDeck];
+      newDeckArray.splice(0, newDeck.size - maxDeckLength);
+      newDeck = new Set(newDeckArray);
     }
 
     return newDeck;
@@ -199,22 +200,31 @@ export class Scheme implements IPlayableObject {
 
   private static _buildCards<
     T extends Hero | Henchmen | VillainGroup | Mastermind
-  >(store: CardStore<T>, existingCards: T[] | undefined, deckNumRequired = 0) {
+  >(
+    store: CardStore<T>,
+    existingCards: Set<T> | undefined,
+    deckNumRequired = 0
+  ): Set<T> {
     if (deckNumRequired === 0) {
-      return undefined;
+      return new Set();
     }
 
-    const existingLength =
-      existingCards !== undefined ? existingCards.length : 0;
+    const existingLength = existingCards !== undefined ? existingCards.size : 0;
     const numRequired = deckNumRequired - existingLength;
 
+    const returnCards = new Set(existingCards);
+
     if (numRequired > 0) {
-      const returnCards = existingCards !== undefined ? existingCards : [];
-      existingCards = returnCards.concat(store.pickRandom(numRequired));
-      return existingCards.sort(nameSorter);
+      const newCards = store.pickRandom(numRequired);
+
+      if (newCards instanceof Array) {
+        newCards.forEach((card) => returnCards.add(card));
+      } else {
+        returnCards.add(newCards);
+      }
     }
 
-    return existingCards;
+    return returnCards;
   }
 
   /**
@@ -283,7 +293,7 @@ export class Scheme implements IPlayableObject {
       store.heroStore,
       partialHeroDeck.heroes,
       heroRules.numHeroes
-    ) as Hero[];
+    );
 
     partialHeroDeck.henchmen = this._buildCards(
       store.henchmenStore,
@@ -309,7 +319,7 @@ export class Scheme implements IPlayableObject {
 
     // Next add henchmen
     const numRemVillDeckHenchmen =
-      villainRules.numHenchmenGroups - partialDeck.henchmen.length;
+      villainRules.numHenchmenGroups - partialDeck.henchmen.size;
 
     // Check to see if any more henchmen are needed and if so,
     // whether the mastermind demands any
@@ -321,7 +331,7 @@ export class Scheme implements IPlayableObject {
         store.henchmenStore.pickOne(henchmen)
       );
 
-      partialDeck.henchmen.push(...mastermindHenchmen);
+      mastermindHenchmen.forEach((card) => partialDeck.henchmen.add(card));
     }
 
     // Check again in case the mastermind did not fill all the slots
@@ -329,11 +339,11 @@ export class Scheme implements IPlayableObject {
       store.henchmenStore,
       partialDeck.henchmen,
       villainRules.numHenchmenGroups
-    ) as Henchmen[];
+    );
 
     // Next add villains
     const numRemVillDeckVillains =
-      villainRules.numVillainGroups - partialDeck.villains.length;
+      villainRules.numVillainGroups - partialDeck.villains.size;
 
     // Check to see if any more villains are needed and if so,
     // whether the mastermind demands any
@@ -345,7 +355,7 @@ export class Scheme implements IPlayableObject {
         store.villainStore.pickOne(villains)
       );
 
-      partialDeck.villains.push(...mastermindVillains);
+      mastermindVillains.forEach((card) => partialDeck.villains.add(card));
     }
 
     // Check again in case the mastermind did not fill all the slots
@@ -353,7 +363,7 @@ export class Scheme implements IPlayableObject {
       store.villainStore,
       partialDeck.villains,
       villainRules.numVillainGroups
-    ) as VillainGroup[];
+    );
 
     // Next add masterminds
     partialDeck.masterminds = this._buildCards(
@@ -462,13 +472,13 @@ export class Scheme implements IPlayableObject {
       mastermind: selectedMastermind,
       scheme: this,
       heroDeck: {
-        heroes: [],
+        heroes: new Set(),
         numBystanders: heroRules.numBystanders ?? undefined,
         ...partialHeroDeck,
       },
       villainDeck: {
-        villains: [],
-        henchmen: [],
+        villains: new Set(),
+        henchmen: new Set(),
         numTwists: villainRules.numTwists,
         numMasterStrikes: advancedSolo ? 5 : villainRules.numMasterStrikes,
         ...partialVillainDeck,

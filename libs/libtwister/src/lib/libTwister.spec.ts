@@ -49,8 +49,8 @@ declare global {
 
 describe('LibTwister', () => {
   describe('All game sets', () => {
-    it('should have 34 sets', () =>
-      expect(LibTwister.allGameSets.size).toBe(34));
+    it('should have 36 sets', () =>
+      expect(LibTwister.allGameSets.size).toBe(36));
 
     it('should have 6 big boxes', () =>
       expect(
@@ -59,12 +59,12 @@ describe('LibTwister', () => {
         )
       ).toHaveLength(6));
 
-    it('should have 21 small boxes', () =>
+    it('should have 23 small boxes', () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
           (item) => item.size === GAME_SET_SIZE.small
         )
-      ).toHaveLength(21));
+      ).toHaveLength(23));
 
     it('should have 3 medium boxes', () =>
       expect(
@@ -155,20 +155,20 @@ describe('LibTwister', () => {
       (numPlayers) => {
         const setup = twister.getSetup(numPlayers as NumPlayers);
 
-        expect(setup?.scheme.gameSet.id).toBe(LEGENDARY.id);
-        expect(setup?.mastermind.gameSet.id).toBe(LEGENDARY.id);
+        expect(setup.scheme.gameSet.id).toBe(LEGENDARY.id);
+        expect(setup.mastermind.gameSet.id).toBe(LEGENDARY.id);
         expect(
-          setup?.heroDeck.heroes.every(
+          Array.from(setup.heroDeck.heroes).every(
             (hero) => hero.gameSet.id === LEGENDARY.id
           )
         ).toBeTruthy();
         expect(
-          setup?.villainDeck.henchmen.every(
+          Array.from(setup.villainDeck.henchmen).every(
             (henchmen) => henchmen.gameSet.id === LEGENDARY.id
           )
         ).toBeTruthy();
         expect(
-          setup?.villainDeck.villains.every(
+          Array.from(setup.villainDeck.villains).every(
             (villain) => villain.gameSet.id === LEGENDARY.id
           )
         ).toBeTruthy();
@@ -273,7 +273,7 @@ describe('LibTwister', () => {
             EGO_THE_LIVING_PLANET
           );
 
-          expect(setup?.villainDeck.villains).toHaveLength(3);
+          expect(Array.from(setup.villainDeck.villains)).toHaveLength(3);
         });
       });
 
@@ -285,7 +285,7 @@ describe('LibTwister', () => {
             EPIC_EGO_THE_LIVING_PLANET
           );
 
-          expect(setup?.villainDeck.villains).toHaveLength(4);
+          expect(Array.from(setup.villainDeck.villains)).toHaveLength(4);
         });
       });
 
@@ -305,7 +305,7 @@ describe('LibTwister', () => {
 
   describe('with no game set IDs', () => {
     it('should create a LibTwister instance with all Game Sets', () =>
-      expect(LibTwister.of().selectedGameSets).toHaveLength(34));
+      expect(LibTwister.of().selectedGameSets).toHaveLength(36));
   });
 
   describe('gameSetIdToGameSet', () => {

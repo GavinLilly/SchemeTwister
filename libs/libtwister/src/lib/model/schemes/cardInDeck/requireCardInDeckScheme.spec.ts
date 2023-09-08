@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { GAME_SET as CHAMPIONS } from '../../../data/gameSets/champions';
 import { CLASH_OF_THE_MONSTERS_UNLEASHED } from '../../../data/gameSets/champions/champions.schemes';
 import { MONSTERS_UNLEASHED } from '../../../data/gameSets/champions/champions.villains';
@@ -177,7 +178,11 @@ describe('Require Hero Name', () => {
     });
 
     it('should include 1 "Hulk" hero in the additional deck', () => {
-      const hulkHeroes = setup.additionalDeck?.deck.heroes?.filter(isHulk);
+      expect(setup.additionalDeck).toBeDefined();
+      expect(setup.additionalDeck!.deck.heroes).toBeDefined();
+      const hulkHeroes = Array.from(setup.additionalDeck!.deck.heroes!).filter(
+        isHulk
+      );
 
       expect(hulkHeroes).toHaveLength(1);
     });
@@ -223,7 +228,9 @@ describe('Require Hero Name', () => {
     });
 
     it('should only include 1 Deadpool hero', () => {
-      const deadpoolHeroes = setup.heroDeck.heroes.filter(isDeadpool);
+      const deadpoolHeroes = Array.from(setup.heroDeck.heroes).filter(
+        isDeadpool
+      );
 
       expect(deadpoolHeroes).toHaveLength(1);
     });
@@ -275,7 +282,8 @@ describe('Require Hero Name', () => {
 
     it('should only include 1 Blade hero', () => {
       expect(setup.villainDeck.heroes).toBeDefined();
-      expect(setup.villainDeck.heroes?.filter(isBlade)).toHaveLength(1);
+      const blade = Array.from(setup.villainDeck.heroes!).filter(isBlade);
+      expect(blade).toHaveLength(1);
     });
 
     it('should throw an error when no Blades are available', () => {
@@ -319,10 +327,10 @@ describe('Require Team', () => {
         store
       );
 
-      expect(
-        setup.heroDeck.heroes.filter((hero) => hero.team === MERCS_FOR_MONEY)
-          .length
-      ).toBeGreaterThanOrEqual(1);
+      const merc = Array.from(setup.heroDeck.heroes).filter(
+        (hero) => hero.team === MERCS_FOR_MONEY
+      );
+      expect(merc.length).toBeGreaterThanOrEqual(1);
     });
   });
 });
@@ -431,10 +439,12 @@ describe('Require Villains Groups', () => {
         setup = scheme.getSetup(3, store.mastermindStore.getRandom(), store);
       });
 
-      it('should include 1 S.H.I.E.L.D. villain group in the villain deck', () =>
-        expect(
-          setup.villainDeck.villains.filter(shieldVillainPredicate)
-        ).toHaveLength(1));
+      it('should include 1 S.H.I.E.L.D. villain group in the villain deck', () => {
+        const shieldVillains = Array.from(setup.villainDeck.villains).filter(
+          shieldVillainPredicate
+        );
+        expect(shieldVillains).toHaveLength(1);
+      });
 
       it('should remove the chosen and non-chosen villain from the store', () =>
         expect(

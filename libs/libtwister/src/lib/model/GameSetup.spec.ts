@@ -63,16 +63,16 @@ describe('GameSetup', () => {
     });
 
     it('should have 5 heroes', () =>
-      expect(setup.getSelectedHeroes()).toHaveLength(5));
+      expect(Array.from(setup.getSelectedHeroes())).toHaveLength(5));
 
     it('should have 1 henchmen group', () =>
-      expect(setup.getSelectedHenchmen()).toHaveLength(1));
+      expect(Array.from(setup.getSelectedHenchmen())).toHaveLength(1));
 
     it('should have 2 villain groups', () =>
-      expect(setup.getSelectedVillains()).toHaveLength(2));
+      expect(Array.from(setup.getSelectedVillains())).toHaveLength(2));
 
     it('should have 1 mastermind', () =>
-      expect(setup.getSelectedMasterminds()).toHaveLength(1));
+      expect(Array.from(setup.getSelectedMasterminds())).toHaveLength(1));
 
     it('toString', () => {
       const {
@@ -87,16 +87,22 @@ describe('GameSetup', () => {
       expect(scheme).toBe(MIDTOWN_BANK_ROBBERY.name);
       expect(mastermind).toBe(setup.mastermind.name);
       expect(heroDeck).toEqual(
-        expect.arrayContaining(setup.heroDeck.heroes.map((hero) => hero.name))
-      );
-      expect(villainDeck).toEqual(
         expect.arrayContaining(
-          setup.villainDeck.henchmen.map((henchmen) => henchmen.name)
+          Array.from(setup.heroDeck.heroes).map((hero) => hero.name)
         )
       );
       expect(villainDeck).toEqual(
         expect.arrayContaining(
-          setup.villainDeck.villains.map((villains) => villains.name)
+          Array.from(setup.villainDeck.henchmen).map(
+            (henchmen) => henchmen.name
+          )
+        )
+      );
+      expect(villainDeck).toEqual(
+        expect.arrayContaining(
+          Array.from(setup.villainDeck.villains).map(
+            (villains) => villains.name
+          )
         )
       );
       expect(additionalDeck).toHaveLength(0);
@@ -137,16 +143,16 @@ describe('GameSetup', () => {
 
     describe('getSelectedHeroes()', () => {
       it('should have 5 heroes', () =>
-        expect(setup.getSelectedHeroes()).toHaveLength(5));
+        expect(Array.from(setup.getSelectedHeroes())).toHaveLength(5));
 
       it('should have 2 henchmen group', () =>
-        expect(setup.getSelectedHenchmen()).toHaveLength(1));
+        expect(Array.from(setup.getSelectedHenchmen())).toHaveLength(1));
 
       it('should have 2 villain groups', () =>
-        expect(setup.getSelectedVillains()).toHaveLength(2));
+        expect(Array.from(setup.getSelectedVillains())).toHaveLength(2));
 
       it('should have 1 mastermind', () =>
-        expect(setup.getSelectedMasterminds()).toHaveLength(1));
+        expect(Array.from(setup.getSelectedMasterminds())).toHaveLength(1));
     });
   });
 
@@ -202,7 +208,13 @@ describe('GameSetup', () => {
         versatileStore,
         undefined,
         {
-          heroes: [DOMINO, CYCLOPS, WOLVERINE, CAPTAIN_AMERICA, IRON_MAN],
+          heroes: new Set([
+            DOMINO,
+            CYCLOPS,
+            WOLVERINE,
+            CAPTAIN_AMERICA,
+            IRON_MAN,
+          ]),
         }
       ) as GameSetup;
 
@@ -230,16 +242,16 @@ describe('GameSetup', () => {
 
     describe('getSelectedHeroes()', () => {
       it('should have 5 heroes', () =>
-        expect(setup.getSelectedHeroes()).toHaveLength(5));
+        expect(Array.from(setup.getSelectedHeroes())).toHaveLength(5));
 
       it('should have 1 henchmen group', () =>
-        expect(setup.getSelectedHenchmen()).toHaveLength(1));
+        expect(Array.from(setup.getSelectedHenchmen())).toHaveLength(1));
 
       it('should have 2 villain groups', () =>
-        expect(setup.getSelectedVillains()).toHaveLength(2));
+        expect(Array.from(setup.getSelectedVillains())).toHaveLength(2));
 
       it('should have 1 mastermind', () =>
-        expect(setup.getSelectedMasterminds()).toHaveLength(1));
+        expect(Array.from(setup.getSelectedMasterminds())).toHaveLength(1));
     });
 
     it('should have the Sinister Six as a villain group', () =>
@@ -249,8 +261,8 @@ describe('GameSetup', () => {
       expect(setup.getSelectedVillains()).toContain(MAXIMUM_CARNAGE));
 
     it('should have the same UUID each time', async () => {
-      const uuid1 = await LiteGameSetup.of(setup).calculateUid();
-      const uuid2 = await LiteGameSetup.of(setup).calculateUid();
+      const uuid1 = LiteGameSetup.of(setup).calculateUid();
+      const uuid2 = LiteGameSetup.of(setup).calculateUid();
 
       expect(uuid1).toBe(uuid2);
     });

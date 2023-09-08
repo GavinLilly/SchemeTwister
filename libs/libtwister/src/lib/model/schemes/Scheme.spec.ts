@@ -191,7 +191,11 @@ describe('Scheme', () => {
       );
 
       expect(additionalSetup.additionalDeck).toBeTruthy();
-      expect(additionalSetup.additionalDeck?.deck.heroes).toHaveLength(1);
+      expect(additionalSetup.additionalDeck?.deck).toBeTruthy();
+      expect(
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        Array.from(additionalSetup.additionalDeck!.deck.heroes!)
+      ).toHaveLength(1);
     });
 
     it('should put 1 henchmen in the hero deck', () => {
@@ -212,7 +216,8 @@ describe('Scheme', () => {
         store
       );
 
-      expect(heroHenchmenSetup.heroDeck.henchmen).toHaveLength(1);
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      expect(Array.from(heroHenchmenSetup.heroDeck.henchmen!)).toHaveLength(1);
     });
 
     it('should put 1 mastermind in the villain deck', () => {
@@ -236,7 +241,10 @@ describe('Scheme', () => {
       );
 
       expect(mastermindVillainSetup.villainDeck.masterminds).toBeTruthy();
-      expect(mastermindVillainSetup.villainDeck.masterminds).toHaveLength(1);
+      expect(
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        Array.from(mastermindVillainSetup.villainDeck.masterminds!)
+      ).toHaveLength(1);
     });
 
     it('should put 5 bystanders in the hero deck', () => {
@@ -281,11 +289,11 @@ describe('Scheme', () => {
         undefined,
         undefined,
         {
-          villains: villains,
+          villains: new Set(villains),
         }
       );
 
-      expect(filledSetup.villainDeck.villains).toEqual(
+      expect(Array.from(filledSetup.villainDeck.villains)).toEqual(
         expect.arrayContaining(villains)
       );
     });
@@ -329,10 +337,10 @@ describe('Scheme', () => {
   });
 
   describe('addToDeck', () => {
-    const origDeck = [CABLE, DEADPOOL, JEAN_GREY];
+    const origDeck = new Set([CABLE, DEADPOOL, JEAN_GREY]);
 
     it('should add Wolverine to the original deck', () => {
-      const newDeck = Scheme.addToDeck(origDeck, WOLVERINE);
+      const newDeck = Array.from(Scheme.addToDeck(origDeck, WOLVERINE));
       expect(newDeck).toHaveLength(4);
       expect(newDeck).toEqual(expect.arrayContaining([...origDeck, WOLVERINE]));
     });

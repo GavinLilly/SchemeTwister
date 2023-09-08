@@ -7,7 +7,7 @@ import instantiateScheme from '../utils/instantiateScheme';
 import { GameSetup } from './GameSetup';
 import { Henchmen, Hero, Mastermind, VillainGroup } from './cards';
 import { AbstractCardGroup } from './cards/abstractCardGroup';
-import { IAdditionalDeck, IAdditionalDeckRules } from './interfaces';
+import { IAdditionalDeck, IAdditionalDeckRules, IHeroDeck } from './interfaces';
 import { NumPlayers } from './types';
 
 interface LiteGameSetupConfig {
@@ -61,10 +61,48 @@ export class LiteGameSetup {
   private static _getById = <T extends AbstractCardGroup>(
     ids: string[],
     twister: LibTwister
-  ): T[] =>
-    ids
-      .map((id) => twister.stores.getCardById(id))
-      .filter((card): card is T => !!card);
+  ): Set<T> =>
+    new Set(
+      ids
+        .map((id) => twister.stores.getCardById(id))
+        .filter((card): card is T => !!card)
+    );
+
+  private static _builAdditionalOrVillainDeck(
+    deck: string[],
+    twister: LibTwister
+  ) {
+    const henchmen = new Set<Henchmen>();
+    const heroes = new Set<Hero>();
+    const masterminds = new Set<Mastermind>();
+    const villains = new Set<VillainGroup>();
+
+    LiteGameSetup._getById(deck, twister).forEach((card) => {
+      switch (card.cardType) {
+        case 'Henchmen':
+          henchmen.add(card as Henchmen);
+          break;
+        case 'Hero':
+          heroes.add(card as Hero);
+          break;
+        case 'Mastermind':
+          masterminds.add(card as Mastermind);
+          break;
+        case 'Villain Group':
+          villains.add(card as VillainGroup);
+          break;
+        default:
+          throw new Error('Unsupported card type in deck');
+      }
+    });
+
+    return {
+      henchmen,
+      heroes,
+      masterminds,
+      villains,
+    };
+  }
 
   /**
    * Creates a LiteGameSetup instance from the provided "full" Game Setup
@@ -95,28 +133,23 @@ export class LiteGameSetup {
 
     const rules = instantiatedScheme.rules[this.numPlayers as NumPlayers];
 
-    const filledAdditionalDeck = this._buildFullAdditionalDeck(
-      rules.additionalDeck,
-      twister
-    );
-
     return new GameSetup({
-      heroDeck: {
-        heroes: LiteGameSetup._getById(this.heroDeck, twister),
-        henchmen: LiteGameSetup._getById(this.heroDeck, twister),
-      },
-      mastermind,
-      numPlayers: this.numPlayers,
-      scheme: instantiatedScheme,
+      heroDeck: this._buildHeroDeck(twister),
       villainDeck: {
-        henchmen: LiteGameSetup._getById(this.villainDeck, twister),
-        villains: LiteGameSetup._getById(this.villainDeck, twister),
-        heroes: LiteGameSetup._getById(this.villainDeck, twister),
-        masterminds: LiteGameSetup._getById(this.villainDeck, twister),
+        ...LiteGameSetup._builAdditionalOrVillainDeck(
+          this.villainDeck,
+          twister
+        ),
         numMasterStrikes: 5,
         numTwists: rules.villainDeck.numTwists,
       },
-      additionalDeck: filledAdditionalDeck,
+      additionalDeck: this._buildFullAdditionalDeck(
+        rules.additionalDeck,
+        twister
+      ),
+      mastermind,
+      numPlayers: this.numPlayers,
+      scheme: instantiatedScheme,
     });
   }
 
@@ -148,6 +181,29 @@ export class LiteGameSetup {
     });
   }
 
+  private _buildHeroDeck(twister: LibTwister): IHeroDeck {
+    const henchmen = new Set<Henchmen>();
+    const heroes = new Set<Hero>();
+
+    LiteGameSetup._getById(this.heroDeck, twister).forEach((card) => {
+      switch (card.cardType) {
+        case 'Henchmen':
+          henchmen.add(card as Henchmen);
+          break;
+        case 'Hero':
+          heroes.add(card as Hero);
+          break;
+        default:
+          throw new Error('Unsupported card type in the hero deck');
+      }
+    });
+
+    return {
+      heroes,
+      henchmen,
+    };
+  }
+
   private _buildFullAdditionalDeck(
     rules: IAdditionalDeckRules | undefined,
     twister: LibTwister
@@ -156,27 +212,16 @@ export class LiteGameSetup {
       return undefined;
     }
 
-    const additionalDeckCards = LiteGameSetup._getById(
-      this.additionalDeck,
-      twister
-    );
-
-    return {
-      name: rules.name,
-      deck: {
-        henchmen: additionalDeckCards.filter(
-          (card) => card.cardType === 'Henchmen'
-        ) as Henchmen[],
-        heroes: additionalDeckCards.filter(
-          (card) => card.cardType === 'Hero'
-        ) as Hero[],
-        masterminds: additionalDeckCards.filter(
-          (card) => card.cardType === 'Mastermind'
-        ) as Mastermind[],
-        villains: additionalDeckCards.filter(
-          (card) => card.cardType === 'Villain Group'
-        ) as VillainGroup[],
-      },
-    };
+    try {
+      return {
+        name: rules.name,
+        deck: LiteGameSetup._builAdditionalOrVillainDeck(
+          this.additionalDeck,
+          twister
+        ),
+      };
+    } catch (err) {
+      throw new Error('Unsupported card type in the additional deck');
+    }
   }
 }
