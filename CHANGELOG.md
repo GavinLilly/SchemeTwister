@@ -1,3 +1,10 @@
+## [3.9.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.9.1...v3.9.2) (2023-09-08)
+
+
+### Bug Fixes
+
+* **libtwister:** prevent repeating cards in history view ([42a1553](https://github.com/GavinLilly/SchemeTwister/commit/42a15535191a0afd7755c63fe23a725be2113d2b))
+
 ## [3.9.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.9.0...v3.9.1) (2023-09-03)
 
 
