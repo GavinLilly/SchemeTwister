@@ -1,3 +1,10 @@
+## [3.9.3](https://github.com/GavinLilly/SchemeTwister/compare/v3.9.2...v3.9.3) (2023-09-16)
+
+
+### Bug Fixes
+
+* **libtwister:** fix alphabetical sorting of decks ([d5cbdaa](https://github.com/GavinLilly/SchemeTwister/commit/d5cbdaaf23b81da032977c004a0d285c37471170))
+
 ## [3.9.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.9.1...v3.9.2) (2023-09-08)
 
 
