@@ -212,19 +212,20 @@ export class Scheme implements IPlayableObject {
     const existingLength = existingCards !== undefined ? existingCards.size : 0;
     const numRequired = deckNumRequired - existingLength;
 
-    const returnCards = new Set(existingCards);
+    const returnCards: T[] =
+      existingCards !== undefined ? Array.from(existingCards) : [];
 
     if (numRequired > 0) {
       const newCards = store.pickRandom(numRequired);
 
       if (newCards instanceof Array) {
-        newCards.forEach((card) => returnCards.add(card));
+        returnCards.push(...newCards);
       } else {
-        returnCards.add(newCards);
+        returnCards.push(newCards);
       }
     }
 
-    return returnCards;
+    return new Set(returnCards);
   }
 
   /**
