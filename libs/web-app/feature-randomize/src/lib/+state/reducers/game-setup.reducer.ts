@@ -4,6 +4,7 @@ import {
   GameSetup,
   SchemeMinusRules,
   IGameSetup,
+  TransformingMastermind,
 } from '@schemetwister/libtwister';
 
 import {
@@ -23,7 +24,7 @@ export interface IGameSetupState {
   loading: boolean;
   error: string;
   definedScheme?: SchemeMinusRules;
-  definedMastermind?: Mastermind;
+  definedMastermind?: Mastermind | TransformingMastermind;
 }
 
 export const initialState: IGameSetupState = {

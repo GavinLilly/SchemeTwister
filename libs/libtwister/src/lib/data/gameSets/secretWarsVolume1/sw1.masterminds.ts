@@ -1,4 +1,5 @@
 import { Mastermind } from '../../../model';
+import { HeroClass } from '../../enums';
 import { TELEPORT } from '../darkCity/darkCity.keywords';
 
 import {
@@ -20,6 +21,10 @@ export const MADELYNE_PRYOR_GOBLIN_QUEEN = new Mastermind({
   attackPoints: 10,
   victoryPoints: 6,
   alwaysLeads: [LIMBO],
+  specialRules:
+    'Bystanders captured by Madelyne are "Demon Goblin" Villains with 2 Attack. You can fight them to rescue them as Bystanders. You can\'t fight her while she has any Demon Goblins.',
+  masterStrike:
+    'Madelyne captures 4 Bystanders. If she already had any Bystanders before that, then each player gains a Wound.',
 });
 
 export const NIMROD_SUPER_SENTINEL = new Mastermind({
@@ -30,6 +35,9 @@ export const NIMROD_SUPER_SENTINEL = new Mastermind({
   victoryPoints: 6,
   alwaysLeads: [SENTINEL_TERRITORIES],
   keywords: [TELEPORT],
+  specialRules:
+    "You can't fight Nimrod unless you made at least 6 Recruit this turn.",
+  masterStrike: `Each player who does not reveal a ${HeroClass.TECH} Hero must choose Recruit or Attack, then discard all their cards with that icon.`,
 });
 
 export const WASTELAND_HULK = new Mastermind({
@@ -40,6 +48,9 @@ export const WASTELAND_HULK = new Mastermind({
   victoryPoints: 6,
   alwaysLeads: [WASTELAND],
   keywords: [CROSS_DIMENSIONAL_RAMPAGE],
+  specialRules:
+    "Wasteland Hulk gets +3 Attack for each of his Mastermind Tactics among all players' Victory Piles.",
+  masterStrike: 'Cross-Dimensional Hulk Rampage',
 });
 
 export const ZOMBIE_GREEN_GOBLIN = new Mastermind({
@@ -50,4 +61,8 @@ export const ZOMBIE_GREEN_GOBLIN = new Mastermind({
   victoryPoints: 6,
   alwaysLeads: [THE_DEADLANDS],
   keywords: [RISE_OF_THE_LIVING_DEAD],
+  specialRules:
+    'Zombie Green Goblin gets +1 Attack for each Hero in the KO pile that costs 7 or more.',
+  masterStrike:
+    'Rise of the Living Dead. KO each Hero in the HQ that costs 7 or more. Then, each player discards a card for each Hero in the KO pile that costs 7 or more.',
 });

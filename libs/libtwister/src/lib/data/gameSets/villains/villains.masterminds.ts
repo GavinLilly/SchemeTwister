@@ -12,6 +12,8 @@ export const DR_STRANGE = new Mastermind({
   attackPoints: 8,
   victoryPoints: 6,
   alwaysLeads: [DEFENDERS],
+  masterStrike:
+    'Reveal the top three cards of the Adversary Deck. Put the Adversary you revealed with the highest printed Attack on top of that deck. Then play a Plot Twist from among the cards you revealed. Then put the rest of those cards on the bottom of that deck in random order.',
 });
 
 export const NICK_FURY = new Mastermind({
@@ -22,6 +24,8 @@ export const NICK_FURY = new Mastermind({
   victoryPoints: 6,
   alwaysLeads: [AVENGERS],
   keywords: [DEMOLISH],
+  masterStrike:
+    'Stack this Strike next to Nick Fury. Then demolish each player once for each Strike stacked here.',
 });
 
 export const ODIN = new Mastermind({
@@ -31,6 +35,10 @@ export const ODIN = new Mastermind({
   attackPoints: 10,
   victoryPoints: 6,
   alwaysLeads: [ASGARDIAN_WARRIORS],
+  specialRules:
+    'Odin gets +1 Attack for each Asgardian Warrior in the city and in the Overrun Pile.',
+  masterStrike:
+    'Each player puts an Asgardian Warrior from their Victory Pile into an empty city space. Any player who cannot do so gains a Bindings.',
 });
 
 export const PROFESSOR_X = new Mastermind({
@@ -41,4 +49,6 @@ export const PROFESSOR_X = new Mastermind({
   victoryPoints: 6,
   alwaysLeads: [XMEN_FIRST_CLASS],
   keywords: [X_TREME_ATTACK],
+  masterStrike:
+    'Choose the two highest-cost Allies in the Lair. Stack them next to Professor X as "Telepathic Pawns." Professor X gets +1 Attack for each Ally stacked next to him. Players can recrut the top Ally in the stack next to Professor X.',
 });

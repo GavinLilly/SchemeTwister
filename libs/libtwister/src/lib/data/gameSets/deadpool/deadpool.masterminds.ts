@@ -12,6 +12,9 @@ export const EVIL_DEADPOOL = new Mastermind({
   victoryPoints: 6,
   alwaysLeads: [EVIL_DEADPOOL_CORPSE],
   keywords: [REVENGE],
+  specialRules: 'Revenge for Mastermind Tactics',
+  masterStrike:
+    'Without talking, each player simultaneously discards a card. Whoever discards the lowest-costing card (or tied for lowest) gains a Wound.',
 });
 
 export const MACHO_GOMEZ = new Mastermind({
@@ -22,4 +25,7 @@ export const MACHO_GOMEZ = new Mastermind({
   victoryPoints: 6,
   alwaysLeads: [DEADPOOLS_FRIENDS],
   keywords: [REVENGE],
+  specialRules: 'Revenge for Deadpool\'s "Friends"',
+  masterStrike:
+    'Put this Strike in front of you as a "Bounty on Your Head." Then, each player gains a Wound for each Bounty on them. Any number of times during your turn, you may pay 1 Recruit to move a Bounty from you to the player on your left.',
 });

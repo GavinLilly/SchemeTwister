@@ -1,7 +1,7 @@
-import { GAME_SET as legendary } from '../../data/gameSets/legendary';
+import { GAME_SET as legendary } from '../../../data/gameSets/legendary';
+import { VillainGroup } from '../villainGroup';
 
 import { Mastermind } from './mastermind';
-import { VillainGroup } from './villainGroup';
 
 const epicRegex = new RegExp(`^Epic?`);
 
@@ -34,6 +34,7 @@ describe('Mastermind', () => {
           ...BASE_MASTERMIND,
           id: '31b9bf7f-c139-4566-8ca7-eac1b666b4cc',
           name: 'Test Mastermind',
+          masterStrike: 'Test master strike',
         });
       });
 
@@ -64,6 +65,7 @@ describe('Mastermind', () => {
           ...BASE_MASTERMIND,
           id: '2e9b13a8-e954-48f4-b1a1-7f7d7aae8db7',
           name: 'Epic Test Mastermind',
+          masterStrike: 'Test master strike',
         });
       });
 
@@ -85,6 +87,7 @@ describe('Mastermind', () => {
         id: '31b9bf7f-c139-4566-8ca7-eac1b666b4cc',
         name: 'Multi villain mastermind',
         alwaysLeads: [testVillain1, testVillain2],
+        masterStrike: 'Test master strike',
       });
     });
 

@@ -12,6 +12,9 @@ export const GALACTUS = new Mastermind({
   victoryPoints: 7,
   alwaysLeads: [HERALDS_OF_GALACTUS],
   keywords: [GALACTUS_COSMIC_THREAT],
+  mastermindWins: 'When the city is destroyed.',
+  masterStrike:
+    'Destroy the city space closest to Galactus. Any Villain there escapes. Put this Master Strike there.',
 });
 
 export const MOLE_MAN = new Mastermind({
@@ -21,4 +24,6 @@ export const MOLE_MAN = new Mastermind({
   attackPoints: 7,
   victoryPoints: 6,
   alwaysLeads: [SUBTERRANEA],
+  masterStrike:
+    'All Subterranea Villains in the city escape. If any Villains escaped this way, each player gains a Wound.',
 });

@@ -12,6 +12,9 @@ export const CHARLES_XAVIER_PROFESSOR_OF_CRIME = new Mastermind({
   victoryPoints: 6,
   alwaysLeads: [XMEN_NOIR],
   keywords: [INVESTIGATE, HIDDEN_WITNESS],
+  specialRules:
+    'Charles Xavier gets +1 Attack for each Bystander in the HQ and city.',
+  masterStrike: 'Four Heroes in the HQ capture Hidden Witnesses.',
 });
 
 export const THE_GOBLIN_UNDERWORLD_BOSS = new Mastermind({
@@ -22,4 +25,7 @@ export const THE_GOBLIN_UNDERWORLD_BOSS = new Mastermind({
   victoryPoints: 6,
   alwaysLeads: [GOBLINS_FREAK_SHOW],
   keywords: [INVESTIGATE, HIDDEN_WITNESS],
+  startOfGame: 'The Goblin captures 2 Hidden Witnesses',
+  masterStrike:
+    "Two random Bystanders from each player's Victory Pile become Hidden Witnesses held by The Goblin. Any player who didn't have two Bystanders gains a Wound instead.",
 });

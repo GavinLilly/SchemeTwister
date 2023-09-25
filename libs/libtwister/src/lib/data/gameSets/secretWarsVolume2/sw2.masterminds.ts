@@ -17,6 +17,8 @@ export const IMMORTAL_EMPEROR_ZHENGZHU = new Mastermind({
   victoryPoints: 5,
   alwaysLeads: [KUNLUN],
   keywords: [CIRCLE_OF_KUNG_FU],
+  masterStrike:
+    'Each player reveals a Hero that costs 7 or more, or they discard down to 3 cards.',
 });
 
 export const KING_HYPERION = new Mastermind({
@@ -27,6 +29,10 @@ export const KING_HYPERION = new Mastermind({
   victoryPoints: 6,
   alwaysLeads: [UTOPOLIS],
   keywords: [CHARGE],
+  masterStrike:
+    'King Hyperion enters the city if he was not already there. Then, he charges three spaces.',
+  specialRules:
+    'Escape: Each player gains a wound. Put King Hyperion on the Mastermind space.',
 });
 
 export const SHIKLAH_THE_DEMON_BRIDE = new Mastermind({
@@ -37,6 +43,8 @@ export const SHIKLAH_THE_DEMON_BRIDE = new Mastermind({
   victoryPoints: 6,
   alwaysLeads: [MONSTER_METROPOLIS],
   keywords: [FATEFUL_RESURRECTION],
+  masterStrike:
+    'Reveal the top three cards of the Villain Deck. Put all the Scheme Twists you revealed on top of the Villain Deck. Put the rest on the bottom of that deck in random order.',
 });
 
 export const SPIDERQUEEN = new Mastermind({
@@ -46,4 +54,6 @@ export const SPIDERQUEEN = new Mastermind({
   attackPoints: '8+',
   victoryPoints: 6,
   alwaysLeads: [SPIDERINFECTED],
+  masterStrike:
+    'Each player puts a Spider-Infected from their Victory Pile into an empty city space. Any player who cannot do so gains a Wound.',
 });

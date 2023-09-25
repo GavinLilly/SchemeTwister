@@ -1,4 +1,4 @@
-import { Mastermind } from '../cards';
+import { Mastermind, TransformingMastermind } from '../cards';
 import { Scheme } from '../schemes';
 
 import { IAdditionalDeck, IHeroDeck, IVillainDeck } from './deck.interface';
@@ -11,7 +11,7 @@ export interface IGameSetup {
   scheme: Scheme;
 
   /** The Mastermind for the setup */
-  mastermind: Mastermind;
+  mastermind: Mastermind | TransformingMastermind;
 
   /**
    * How many wounds are in the wound pile.
