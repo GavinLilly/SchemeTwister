@@ -9,7 +9,7 @@ import { DEMONS_OF_LIMBO, HELLIONS } from './theNewMutants.villains';
 
 type MastermindCommons = Pick<
   IMastermind,
-  'gameSet' | 'victoryPoints' | 'alwaysLeads' | 'keywords'
+  'gameSet' | 'victoryPoints' | 'alwaysLeads' | 'keywords' | 'specialRules'
 >;
 
 const belascoCommons: MastermindCommons = {
@@ -17,6 +17,8 @@ const belascoCommons: MastermindCommons = {
   victoryPoints: 6,
   alwaysLeads: [DEMONS_OF_LIMBO],
   keywords: [MOONLIGHT_AND_SUNLIGHT, WAKING_NIGHTMARE],
+  specialRules:
+    'Belasco gets +Attack equal to the number of non-grey Heroes in the KO pile, divided by the number of players (round down).',
 };
 
 export const BELASCO_DEMON_LORD_OF_LIMBO = new Mastermind({
@@ -24,6 +26,8 @@ export const BELASCO_DEMON_LORD_OF_LIMBO = new Mastermind({
   name: 'Belasco, Demon Lord of Limbo',
   attackPoints: 9,
   ...belascoCommons,
+  masterStrike:
+    'Sunlight: Each player KOs a non-grey Hero from their discard pile. Moonlight: Each player has a Waking Nightmare. KO Heroes discarded this way.',
 });
 
 export const EPIC_BELASCO = new Mastermind({
@@ -31,6 +35,8 @@ export const EPIC_BELASCO = new Mastermind({
   name: 'Epic Belasco',
   attackPoints: '10+',
   ...belascoCommons,
+  masterStrike:
+    'Sunlight: Each player KOs two non-grey Heroes from their discard pile. Moonlight: Each player has two Waking Nightmares. KO Heroes discarded this way.',
 });
 
 const emmaFrostCommons: MastermindCommons = {
@@ -45,6 +51,10 @@ export const EMMA_FROST_THE_WHITE_QUEEN = new Mastermind({
   name: 'Emma Frost, The White Queen',
   attackPoints: 8,
   ...emmaFrostCommons,
+  specialRules:
+    'During your turn, Emma Frost gets +1 Attack for each grey Hero you have.',
+  masterStrike:
+    'Stack this Strike next to Emma Frost. Then each player has a Waking Nightmare for each Strike stacked here.',
 });
 
 export const EPIC_EMMA_FROST = new Mastermind({
@@ -52,4 +62,8 @@ export const EPIC_EMMA_FROST = new Mastermind({
   name: 'Epic Emma Frost',
   attackPoints: '8+',
   ...emmaFrostCommons,
+  specialRules:
+    'During your turn, Emma Frost gets +2 Attack for each grey Hero you have.',
+  masterStrike:
+    'Stack this Strike next to Emma Frost. Then each player has a Waking Nightmare for each Strike stacked here, then one more Waking Nightmare.',
 });

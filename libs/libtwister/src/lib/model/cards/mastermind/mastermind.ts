@@ -1,10 +1,10 @@
-import { GameSet } from '../GameSet';
-import { INumPlayerRules, IFightable } from '../interfaces';
-import { CARD_TYPE } from '../types';
-
-import { AbstractFightableCardGroup } from './abstractFightableCardGroup';
-import { Henchmen } from './henchmen';
-import { VillainGroup } from './villainGroup';
+import { GameSet } from '../../GameSet';
+import { INumPlayerRules, IFightable } from '../../interfaces';
+import { ISpecialRules } from '../../interfaces/specialRules.interface';
+import { CARD_TYPE } from '../../types';
+import { AbstractFightableCardGroup } from '../abstractFightableCardGroup';
+import { Henchmen } from '../henchmen';
+import { VillainGroup } from '../villainGroup';
 
 /**
  * A function that will override the rules provided,
@@ -15,13 +15,16 @@ type RuleOverrideFunction = (
   num: number
 ) => INumPlayerRules;
 
-export interface IMastermind extends IFightable {
+export interface IMastermind extends IFightable, ISpecialRules {
   readonly alwaysLeads: (VillainGroup | Henchmen)[];
   /**
    * Override the rules for each number of players.
    * Useful for setting a rule based on the number of players
    */
   readonly ruleOverride?: RuleOverrideFunction;
+  readonly masterStrike: string;
+  readonly startOfGame?: string;
+  readonly mastermindWins?: string;
 }
 
 export class Mastermind
@@ -30,12 +33,26 @@ export class Mastermind
 {
   private readonly _alwaysLeads: (VillainGroup | Henchmen)[];
   private readonly _overrideFunction?: RuleOverrideFunction;
+  private readonly _masterStrike: string;
+  private readonly _specialRules?: string;
+  private readonly _startOfGame?: string;
+  private readonly _escape?: string;
+  private readonly _finishThePrey?: string;
+  private readonly _mastermindWins?: string;
 
   constructor(mastermindConfig: IMastermind) {
     super(mastermindConfig);
 
-    ({ alwaysLeads: this._alwaysLeads, ruleOverride: this._overrideFunction } =
-      mastermindConfig);
+    ({
+      alwaysLeads: this._alwaysLeads,
+      ruleOverride: this._overrideFunction,
+      masterStrike: this._masterStrike,
+      escape: this._escape,
+      finishThePrey: this._finishThePrey,
+      specialRules: this._specialRules,
+      startOfGame: this._startOfGame,
+      mastermindWins: this._mastermindWins,
+    } = mastermindConfig);
   }
 
   get alwaysLeads() {
@@ -50,8 +67,32 @@ export class Mastermind
     return this._overrideFunction;
   }
 
+  get masterStrike() {
+    return this._masterStrike;
+  }
+
+  get specialRules() {
+    return this._specialRules;
+  }
+
   get cardType() {
     return CARD_TYPE.mastermind;
+  }
+
+  get startOfGame() {
+    return this._startOfGame;
+  }
+
+  get escape() {
+    return this._escape;
+  }
+
+  get finishThePrey() {
+    return this._finishThePrey;
+  }
+
+  get mastermindWins() {
+    return this._mastermindWins;
   }
 
   /**
@@ -67,18 +108,32 @@ export class Mastermind
       attackPoints: 0,
       victoryPoints: 0,
       alwaysLeads: [],
+      masterStrike: '',
     });
   }
 }
 
 type CommonMastermindAttributes = Pick<
   IMastermind,
-  'name' | 'gameSet' | 'alwaysLeads' | 'keywords' | 'victoryPoints'
+  | 'name'
+  | 'gameSet'
+  | 'alwaysLeads'
+  | 'keywords'
+  | 'victoryPoints'
+  | 'specialRules'
+  | 'escape'
+  | 'mastermindWins'
 >;
 
 type SpecificMastermindAttributes = Pick<
   IMastermind,
-  'id' | 'attackPoints' | 'ruleOverride'
+  | 'id'
+  | 'attackPoints'
+  | 'ruleOverride'
+  | 'masterStrike'
+  | 'specialRules'
+  | 'startOfGame'
+  | 'finishThePrey'
 >;
 
 /**
@@ -93,11 +148,14 @@ export class EpicMastermindBuilder {
       ...config,
     });
 
-  public buildEpic = (config: SpecificMastermindAttributes): Mastermind =>
+  public buildEpic = (
+    config: SpecificMastermindAttributes,
+    nameOverride?: string
+  ): Mastermind =>
     this._buildMastermind({
       ...this._config,
       ...config,
-      name: `Epic ${this._config.name}`,
+      name: nameOverride ? nameOverride : `Epic ${this._config.name}`,
     });
 
   private _buildMastermind(config: IMastermind) {

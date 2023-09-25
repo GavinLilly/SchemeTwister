@@ -1,4 +1,5 @@
 import { Mastermind } from '../../../model';
+import { HeroClass } from '../../enums';
 
 import { DOOMBOT_LEGION } from './legendary.henchmen';
 import { META } from './legendary.meta';
@@ -11,6 +12,7 @@ export const DR_DOOM = new Mastermind({
   attackPoints: 9,
   victoryPoints: 5,
   alwaysLeads: [DOOMBOT_LEGION],
+  masterStrike: `Each player with exactly 6 cards in hand reveals a ${HeroClass.TECH} Hero or puts 2 cards from their hand on top of their deck.`,
 });
 
 export const LOKI = new Mastermind({
@@ -20,6 +22,7 @@ export const LOKI = new Mastermind({
   attackPoints: 10,
   victoryPoints: 5,
   alwaysLeads: [ENEMIES_OF_ASGARD],
+  masterStrike: `Each player reveals a ${HeroClass.STRENGTH} Hero or gains a Wound`,
 });
 
 export const MAGNETO = new Mastermind({
@@ -29,6 +32,8 @@ export const MAGNETO = new Mastermind({
   attackPoints: 8,
   victoryPoints: 5,
   alwaysLeads: [BROTHERHOOD],
+  masterStrike:
+    'Each player reveals an X-Men Hero or discards down to four cards.',
 });
 
 export const RED_SKULL = new Mastermind({
@@ -38,4 +43,5 @@ export const RED_SKULL = new Mastermind({
   attackPoints: 7,
   victoryPoints: 5,
   alwaysLeads: [HYDRA],
+  masterStrike: 'Each player KOs a Hero from their hand.',
 });

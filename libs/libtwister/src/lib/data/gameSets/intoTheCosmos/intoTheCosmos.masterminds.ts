@@ -26,6 +26,9 @@ export const THE_BEYONDER = new Mastermind({
   name: 'The Beyonder',
   attackPoints: 21,
   ...beyonderSpecs,
+  specialRules: 'Cosmic Threat for cards that cost 5 or more.',
+  masterStrike:
+    "Each player reveals a card that costs 5 or more or gains a Wound. Then put this Strike under an HQ space (that doesn't already have a Strike) pulling that space into a Pocket Dimension. To recruit a card from a Pocket Dimension, you must pay 1 Attack for each Pocket Dimension in play.",
 });
 
 export const EPIC_BEYONDER = new Mastermind({
@@ -33,6 +36,9 @@ export const EPIC_BEYONDER = new Mastermind({
   name: 'Epic Beyonder',
   attackPoints: 24,
   ...beyonderSpecs,
+  specialRules: 'Cosmic Threat for cards that cost 6 or more.',
+  masterStrike:
+    "Each player reveals a card that costs 6 or more or gains a Wound. Then put this Strike under an HQ space (that doesn't already have a Strike) pulling that space into a Pocket Dimension. To recruit a card from a Pocket Dimension, you must pay 1 Attack for each Pocket Dimension in play.",
 });
 
 const grandmasterSpecs: Specs = {
@@ -47,6 +53,8 @@ export const THE_GRANDMASTER = new Mastermind({
   name: 'The Grandmaster',
   attackPoints: 10,
   ...grandmasterSpecs,
+  masterStrike:
+    "Reveal the top card of the Hero Deck then put it back. Contest of Champions for that card's color(s). Each player that loses gains a Wound. If the Grandmaster wins, he gains a Shard.",
 });
 
 export const EPIC_GRANDMASTER = new Mastermind({
@@ -54,6 +62,10 @@ export const EPIC_GRANDMASTER = new Mastermind({
   name: 'Epic Grandmaster',
   attackPoints: 11,
   ...grandmasterSpecs,
+  specialRules:
+    'Evil adds +2 to its final total in every Contest of Champions caused by any card.',
+  masterStrike:
+    "Reveal the top card of the Hero Deck then put it back. Contest of Champions for that card's color(s). Each player that loses gains a Wound. If the Grandmaster wins, he gains 2 Shards.",
 });
 
 const magus = new EpicMastermindBuilder({
@@ -67,9 +79,17 @@ const magus = new EpicMastermindBuilder({
 export const MAGUS = magus.buildNormal({
   id: '286d73ed-cd99-4991-bee0-6cdf252e8061',
   attackPoints: 9,
+  specialRules:
+    'Magus gets +1 Attack for each Villain in the city that has any Shards.',
+  masterStrike:
+    'If there are already any Villains with Shards in the city, each player gains a Wound. Then this Strike enters the city as a "Cosmic Wraith" Villain with 4 Attack worth 4 VP. Then put a Shard on each Villain in the city.',
 });
 
 export const EPIC_MAGUS = magus.buildEpic({
   id: 'a61bdc52-85c1-494d-bd3e-a84920b6289c',
   attackPoints: '11+',
+  specialRules:
+    'Magus gets +2 Attack for each Villain in the city that has any Shards.',
+  masterStrike:
+    'If there are already any Villains with Shards in the city, each player gains a Wound to the top of their deck. Then this Strike enters the city as a "Cosmic Wraith" Villain with 6 Attack worth 6 VP. Then put a Shard on each Villain in the city.',
 });

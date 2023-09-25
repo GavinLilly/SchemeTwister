@@ -17,11 +17,15 @@ const finFangFoom = new EpicMastermindBuilder({
 export const FIN_FANG_FOOM = finFangFoom.buildNormal({
   id: 'c5cf4934-68cf-4ac6-9ac9-65a1f4307ff4',
   attackPoints: '20*',
+  masterStrike:
+    'Demolish each player, then do it again for each Monsters Unleashed Villain in the city and Escape Pile.',
 });
 
 export const EPIC_FIN_FANG_FOOM = finFangFoom.buildEpic({
   id: '30469c57-f4e3-4255-b642-f37aa49eb6b9',
   attackPoints: '24*',
+  masterStrike:
+    'Demolish each player, then do it again for each Monsters Unleashed Villain in the city and Escape Pile. KO all the Heroes Demolished this way.',
 });
 
 const pagliacci = new EpicMastermindBuilder({
@@ -35,9 +39,13 @@ const pagliacci = new EpicMastermindBuilder({
 export const PAGLIACCI = pagliacci.buildNormal({
   id: 'bc34e995-15f6-4918-922d-7e3c1e6f1a12',
   attackPoints: 9,
+  masterStrike: `1, 5: This card becomes a Scheme Twist that takes effect immediately.
+2, 3, 4: Demolish each player.`,
 });
 
 export const EPIC_PAGLIACCI = pagliacci.buildEpic({
   id: '10fdfc96-fd5d-402f-945e-f800d83fd7ea',
   attackPoints: 11,
+  masterStrike: `1, 3, 5: This card becomes a Scheme Twist that takes effect immediately.
+2, 4: Demolish each player.`,
 });

@@ -4,7 +4,7 @@ import { RulesModifierFunction } from '../rules';
 import { Scheme } from '../schemes/Scheme';
 
 import { ICardType } from './cardType.interface';
-import { IPlayableObject } from './playableObject.interface';
+import { ISpecialRules } from './specialRules.interface';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 interface IEachPlayerTwists {
@@ -27,10 +27,9 @@ export interface ISchemeMeta {
   overrideScheme?: IOverrideScheme;
 }
 
-export interface IScheme extends IPlayableObject, ICardType {
+export interface IScheme extends ISpecialRules, ICardType {
   setup: string;
   twist: string;
   evilWins: string;
-  specialRules?: string;
   meta: ISchemeMeta;
 }

@@ -19,11 +19,15 @@ const toomesAttackPoints: Pick<IMastermind, 'attackPoints'> = {
 export const ADRIAN_TOOMES = adrianToomes.buildNormal({
   id: '2b7ede2e-4f67-4152-9dcd-e91ae624c454',
   ...toomesAttackPoints,
+  masterStrike:
+    'Starting from the Sewers, each Villain in the city uses its "Escape" ability.',
 });
 
 export const EPIC_ADRIAN_TOOMES = adrianToomes.buildEpic({
   id: 'a06ffef2-06a0-4475-9110-ebe5ca46402e',
   ...toomesAttackPoints,
+  masterStrike:
+    'Starting from the Sewers, each Villain in the city uses its "Ambush" ability, then its "Escape" ability.',
 });
 
 const vulture = new EpicMastermindBuilder({
@@ -37,9 +41,13 @@ const vulture = new EpicMastermindBuilder({
 export const VULTURE = vulture.buildNormal({
   id: '5826e339-b396-4b55-95bd-cb1867bb7991',
   attackPoints: '8+',
+  masterStrike:
+    'Put a Wound from the Wound Stack below each HQ space as a "Winged Assault." Whenever a player gains or KOs a Hero from the HQ, the player on their right gains one of the Wounds below that HQ space.',
 });
 
 export const EPIC_VULTURE = vulture.buildEpic({
   id: 'c172fb7e-ff79-4837-b5cf-974ee4148c81',
   attackPoints: '10+',
+  masterStrike:
+    'Put a Wound from the Wound Stack or KO pile below each HQ space as a "Winged Assault." Whenever a player gains or KOs a Hero from the HQ, the player on their right gains one of the Wounds below that HQ space, putting it on top of their deck.',
 });

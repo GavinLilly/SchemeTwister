@@ -12,4 +12,6 @@ export const URUENCHANTED_IRON_MAN = new Mastermind({
   victoryPoints: 6,
   alwaysLeads: [THE_MIGHTY],
   keywords: [DEMOLISH],
+  masterStrike:
+    'Demolish each player. Then stack this Strike next to Iron Man. Uru-Enchanted Iron Man has an Uru-Enchanted Weapon for each Strike stacked here.',
 });

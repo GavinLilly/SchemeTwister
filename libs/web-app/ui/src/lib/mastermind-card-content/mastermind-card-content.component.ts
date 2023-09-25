@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Mastermind } from '@schemetwister/libtwister';
+import { Mastermind, TransformingMastermind } from '@schemetwister/libtwister';
 
 @Component({
   selector: 'schemetwister-mastermind-card-content',
@@ -7,5 +7,5 @@ import { Mastermind } from '@schemetwister/libtwister';
   styleUrls: ['./mastermind-card-content.component.scss'],
 })
 export class MastermindCardContentComponent {
-  @Input() mastermind!: Mastermind;
+  @Input() mastermind!: Mastermind | TransformingMastermind;
 }

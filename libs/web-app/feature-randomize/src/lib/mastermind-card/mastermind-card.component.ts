@@ -2,7 +2,11 @@ import { Component } from '@angular/core';
 import { faCog, faLock } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import { Mastermind, CARD_TYPE } from '@schemetwister/libtwister';
+import {
+  Mastermind,
+  CARD_TYPE,
+  TransformingMastermind,
+} from '@schemetwister/libtwister';
 import { Observable } from 'rxjs';
 
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
@@ -18,7 +22,8 @@ import { SchemeMastermindSelectComponent } from '../scheme-mastermind-select/sch
   styleUrls: ['./mastermind-card.component.scss'],
 })
 export class MastermindCardComponent {
-  mastermind$: Observable<Mastermind> = this._store.select(selectMastermind);
+  mastermind$: Observable<Mastermind | TransformingMastermind> =
+    this._store.select(selectMastermind);
   mastermindLocked$: Observable<boolean> = this._store.select(
     selectIsDefinedMastermind
   );

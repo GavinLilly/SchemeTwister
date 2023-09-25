@@ -15,6 +15,8 @@ export const ARNIM_ZOLA = new Mastermind({
   attackPoints: 6,
   alwaysLeads: [ZOLAS_CREATIONS],
   keywords: [SAVIOR, ABOMINATION],
+  masterStrike:
+    "For each Hero in the HQ that has less than 2 printed Attack, put that Hero on the bottom of the Hero Deck, and each player discards a card of that Hero's cost.",
 });
 
 export const BARON_HEINRICH_ZEMO = new Mastermind({
@@ -24,4 +26,8 @@ export const BARON_HEINRICH_ZEMO = new Mastermind({
   attackPoints: '9+',
   victoryPoints: 6,
   alwaysLeads: [MASTERS_OF_EVIL_WWII],
+  specialRules:
+    'Whenever you fight a Villain, you may use 2 Recruit to rescue a Bystander. Baron Zemo gets +9 Attack unless you are a Savior.',
+  masterStrike:
+    'Each player KOs a Bystander from their Victory Pile. Any player who cannot do so gains a Wound.',
 });
