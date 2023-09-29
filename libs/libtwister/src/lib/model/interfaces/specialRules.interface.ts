@@ -1,5 +1,5 @@
 import { IPlayableObject } from './playableObject.interface';
 
 export interface ISpecialRules extends IPlayableObject {
-  specialRules?: string;
+  readonly specialRules?: string;
 }

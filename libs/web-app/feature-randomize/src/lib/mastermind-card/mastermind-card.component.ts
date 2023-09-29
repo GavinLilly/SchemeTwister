@@ -6,6 +6,7 @@ import {
   Mastermind,
   CARD_TYPE,
   TransformingMastermind,
+  MultiMastermind,
 } from '@schemetwister/libtwister';
 import { Observable } from 'rxjs';
 
@@ -22,8 +23,9 @@ import { SchemeMastermindSelectComponent } from '../scheme-mastermind-select/sch
   styleUrls: ['./mastermind-card.component.scss'],
 })
 export class MastermindCardComponent {
-  mastermind$: Observable<Mastermind | TransformingMastermind> =
-    this._store.select(selectMastermind);
+  mastermind$: Observable<
+    Mastermind | TransformingMastermind | MultiMastermind
+  > = this._store.select(selectMastermind);
   mastermindLocked$: Observable<boolean> = this._store.select(
     selectIsDefinedMastermind
   );
