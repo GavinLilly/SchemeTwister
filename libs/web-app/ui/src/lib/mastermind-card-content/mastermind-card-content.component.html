@@ -1,12 +1,63 @@
 <div class="card-text">
+  <p *ngIf="mastermind.specialRules">
+    {{ mastermind.specialRules }}
+  </p>
   <b>Always leads: </b>
   <ul *ngFor="let item of mastermind.alwaysLeads">
     <li>{{ item.name }}</li>
   </ul>
+  <div *ngIf="isMulti(mastermind); else elseBlock">
+    <p><b>Victory Points: </b>{{ mastermind.victoryPoints }}</p>
+    <div *ngFor="let multiMastermind of mastermind.masterminds">
+      <hr />
+      <h5>{{ multiMastermind.name }}</h5>
+      <p *ngIf="multiMastermind.startOfGame">
+        <b>Start of game: </b>{{ multiMastermind.startOfGame }}
+      </p>
+      <p><b>Master Strike: </b>{{ multiMastermind.masterStrike }}</p>
+      <p *ngIf="multiMastermind.mastermindWins">
+        <b>Mastermind wins: </b>{{ multiMastermind.mastermindWins }}
+      </p>
+      <p *ngIf="multiMastermind.escape">
+        <b>Escape: </b>{{ multiMastermind.escape }}
+      </p>
+      <p *ngIf="multiMastermind.finishThePrey">
+        <b>Finish the Prey: </b>{{ multiMastermind.finishThePrey }}
+      </p>
+      <p><b>Attack Points: </b>{{ multiMastermind.attackPoints }}</p>
+    </div>
+  </div>
+
+  <ng-template #elseBlock>
+    <p *ngIf="mastermind.startOfGame">
+      <b>Start of game: </b>{{ mastermind.startOfGame }}
+    </p>
+    <p><b>Master Strike: </b>{{ mastermind.masterStrike }}</p>
+    <p *ngIf="mastermind.mastermindWins">
+      <b>Mastermind wins: </b>{{ mastermind.mastermindWins }}
+    </p>
+    <p *ngIf="mastermind.escape"><b>Escape: </b>{{ mastermind.escape }}</p>
+    <p *ngIf="mastermind.finishThePrey">
+      <b>Finish the Prey: </b>{{ mastermind.finishThePrey }}
+    </p>
+    <schemetwister-badguy-card-content
+      [card]="mastermind"
+    ></schemetwister-badguy-card-content>
+    <div *ngIf="isTransforming(mastermind)">
+      <hr />
+      <div *ngIf="mastermind.transformed as transformed">
+        <h5>{{ transformed.name }} (Transformed)</h5>
+        <p *ngIf="transformed.specialRules">
+          {{ transformed.specialRules }}
+        </p>
+        <p><b>Master Strike: </b>{{ transformed.masterStrike }}</p>
+        <p><b>Attack Points: </b>{{ transformed.attackPoints }}</p>
+      </div>
+    </div>
+  </ng-template>
+
+  <hr />
+  <schemetwister-base-card-content
+    [card]="mastermind"
+  ></schemetwister-base-card-content>
 </div>
-<schemetwister-badguy-card-content
-  [card]="mastermind"
-></schemetwister-badguy-card-content>
-<schemetwister-base-card-content
-  [card]="mastermind"
-></schemetwister-base-card-content>

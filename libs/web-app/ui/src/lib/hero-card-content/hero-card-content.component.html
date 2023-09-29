@@ -1,6 +1,5 @@
 <p *ngIf="hero.team"><b>Team: </b>{{ hero.team!.name }}</p>
 <p *ngIf="hero.keywords"><b>Keywords</b></p>
-<ul *ngIf="hero.keywords">
-  <li *ngFor="let keyword of hero.keywords">{{ keyword.name }}</li>
-</ul>
-<p><b>GameSet: </b>{{ gameSetName }}</p>
+<schemetwister-base-card-content
+  [card]="hero"
+></schemetwister-base-card-content>
