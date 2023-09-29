@@ -1,3 +1,11 @@
+## [3.10.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.9.3...v3.10.0) (2023-09-29)
+
+
+### Features
+
+* **app:** show new Mastermind information ([17bfb72](https://github.com/GavinLilly/SchemeTwister/commit/17bfb72c20b55f4d4f5302f48ed53876044a2ce9))
+* **libtwister:** add master strike information ([4232e8f](https://github.com/GavinLilly/SchemeTwister/commit/4232e8f270f644005397424c868eeed9f2b4b99a))
+
 ## [3.9.3](https://github.com/GavinLilly/SchemeTwister/compare/v3.9.2...v3.9.3) (2023-09-16)
 
 
