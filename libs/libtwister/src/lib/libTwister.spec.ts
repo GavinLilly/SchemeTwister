@@ -49,8 +49,8 @@ declare global {
 
 describe('LibTwister', () => {
   describe('All game sets', () => {
-    it('should have 36 sets', () =>
-      expect(LibTwister.allGameSets.size).toBe(36));
+    it('should have 37 sets', () =>
+      expect(LibTwister.allGameSets.size).toBe(37));
 
     it('should have 6 big boxes', () =>
       expect(
@@ -73,12 +73,12 @@ describe('LibTwister', () => {
         )
       ).toHaveLength(3));
 
-    it('should have 3 core sets', () =>
+    it('should have 4 core sets', () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
           (item) => item.size === GAME_SET_SIZE.core
         )
-      ).toHaveLength(3));
+      ).toHaveLength(4));
 
     describe('all cards', () => {
       const allCards = Array.from(LibTwister.allGameSets.values()).flatMap(
@@ -150,10 +150,10 @@ describe('LibTwister', () => {
         expect(store.allCards).toEqual(cards)
     );
 
-    it.each([2, 3, 4, 5])(
+    it.each([2, 3, 4, 5] as NumPlayers[])(
       'should generate a setup with %p players, only using Legendary cards',
       (numPlayers) => {
-        const setup = twister.getSetup(numPlayers as NumPlayers);
+        const setup = twister.getSetup(numPlayers);
 
         expect(setup.scheme.gameSet.id).toBe(LEGENDARY.id);
         expect(setup.mastermind.gameSet.id).toBe(LEGENDARY.id);
@@ -305,7 +305,7 @@ describe('LibTwister', () => {
 
   describe('with no game set IDs', () => {
     it('should create a LibTwister instance with all Game Sets', () =>
-      expect(LibTwister.of().selectedGameSets).toHaveLength(36));
+      expect(LibTwister.of().selectedGameSets).toHaveLength(37));
   });
 
   describe('gameSetIdToGameSet', () => {

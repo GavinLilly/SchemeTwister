@@ -105,6 +105,8 @@ export enum KeywordName {
 
   LAST_STAND = 'Last Stand',
 
+  LIBERATE = 'Liberate',
+
   LIGHTSHOW = 'Lightshow',
 
   LOCATIONS = 'Locations',
@@ -157,6 +159,8 @@ export enum KeywordName {
 
   SOARING_FLIGHT = 'Soaring Flight',
 
+  SOULBIND = 'Soulbind',
+
   SPECTRUM = 'Spectrum',
 
   STRIKER = 'Striker',
@@ -196,6 +200,8 @@ export enum KeywordName {
   WAKING_NIGHTMARE = 'Waking Nightmare',
 
   WALL_CRAWL = 'Wall Crawl',
+
+  WHAT_IF = 'What If...?',
 
   WHEN_RECRUITED_ABILITIES = '"When Recruited" Abilities',
 

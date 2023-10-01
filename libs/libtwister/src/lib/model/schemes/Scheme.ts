@@ -257,7 +257,7 @@ export class Scheme implements IPlayableObject {
     store: StoreOfStores,
     partialAdditionalDeck?: AdditionalDeckDeckMinimal
   ): IAdditionalDeck {
-    const deck: IAdditionalDeck = {
+    const addDeck: IAdditionalDeck = {
       name: additionalRules.name,
       instructions: additionalRules.instruction,
       deck: { ...additionalRules.deck, ...partialAdditionalDeck },
@@ -265,34 +265,34 @@ export class Scheme implements IPlayableObject {
 
     // Some setups don't specify cards to go in the deck
     if (additionalRules.deck === undefined) {
-      return deck;
+      return addDeck;
     }
 
-    deck.deck.heroes = this._buildCards(
+    addDeck.deck.heroes = this._buildCards(
       store.heroStore,
-      deck.deck.heroes,
+      addDeck.deck.heroes,
       additionalRules.deck.numHeroes
     );
 
-    deck.deck.henchmen = this._buildCards(
+    addDeck.deck.henchmen = this._buildCards(
       store.henchmenStore,
-      deck.deck.henchmen,
+      addDeck.deck.henchmen,
       additionalRules.deck.numHenchmenGroups
     );
 
-    deck.deck.villains = this._buildCards(
+    addDeck.deck.villains = this._buildCards(
       store.villainStore,
-      deck.deck.villains,
+      addDeck.deck.villains,
       additionalRules.deck.numVillainGroups
     );
 
-    deck.deck.masterminds = this._buildCards(
+    addDeck.deck.masterminds = this._buildCards(
       store.mastermindStore,
-      deck.deck.masterminds,
+      addDeck.deck.masterminds,
       additionalRules.deck.numMasterminds
     );
 
-    return deck;
+    return addDeck;
   }
 
   /**
@@ -431,8 +431,7 @@ export class Scheme implements IPlayableObject {
    * @returns a fully populated setup for a game
    */
   public getSetup(config: IGetSetupConfig): IGameSetup {
-    const advancedSolo =
-      config.advancedSolo !== undefined ? config.advancedSolo : false;
+    const advancedSolo = config.advancedSolo ?? false;
     // Get player rules
     const ruleSet =
       config.selectedMastermind?.ruleOverride !== undefined
@@ -445,6 +444,14 @@ export class Scheme implements IPlayableObject {
       additionalDeck: additionalRules,
     } = ruleSet[config.numPlayers];
 
+    const heroDeckSeed = config.partialHeroDeck?.heroes ?? new Set();
+
+    if (config.selectedMastermind?.alwaysInclude !== undefined) {
+      config.store.heroStore
+        .pickMany(config.selectedMastermind.alwaysInclude)
+        .forEach((hero) => heroDeckSeed.add(hero));
+    }
+
     // Create skeleton decks
     const fullDeck = new GameSetup({
       numPlayers: config.numPlayers,
@@ -454,9 +461,9 @@ export class Scheme implements IPlayableObject {
           : config.store.mastermindStore.getRandom(),
       scheme: this,
       heroDeck: {
-        heroes: new Set(),
-        numBystanders: heroRules.numBystanders ?? undefined,
         ...config.partialHeroDeck,
+        heroes: heroDeckSeed,
+        numBystanders: heroRules.numBystanders ?? undefined,
       },
       villainDeck: {
         villains: new Set(),

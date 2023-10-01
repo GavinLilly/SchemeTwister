@@ -1,4 +1,5 @@
 import { IFightable } from '../interfaces';
+import { IVictoryPileCard } from '../interfaces/victoryPileCard.interface';
 import { CARD_TYPE } from '../types';
 
 import { AbstractFightableCardGroup } from './abstractFightableCardGroup';
@@ -14,8 +15,13 @@ export class Henchmen extends AbstractFightableCardGroup implements IHenchmen {
   private readonly _ambush?: string;
   private readonly _ability?: string;
 
-  constructor(config: IHenchmen) {
-    super(config);
+  constructor(
+    config: Omit<IHenchmen, 'victoryPoints'> & Partial<IVictoryPileCard>
+  ) {
+    super({
+      ...config,
+      victoryPoints: config.victoryPoints ?? 1,
+    });
 
     ({
       fight: this._fight,
