@@ -32,5 +32,6 @@ export * as THE_NEW_MUTANTS from './theNewMutants';
 export * as THREE_D from './threeD';
 export * as VENOM from './venom';
 export * as VILLAINS from './villains';
+export * as WHAT_IF from './whatIf';
 export * as WORLD_WAR_HULK from './worldWarHulk';
 export * as XMEN from './xMen';

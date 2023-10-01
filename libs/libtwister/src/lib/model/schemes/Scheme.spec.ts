@@ -11,6 +11,14 @@ import {
   WOLVERINE,
 } from '../../data/gameSets/legendary/legendary.heroes';
 import { DR_DOOM } from '../../data/gameSets/legendary/legendary.masterminds';
+import { GAME_SET as WHAT_IF } from '../../data/gameSets/whatIf';
+import { ULTRON_SENTRIES } from '../../data/gameSets/whatIf/whatIf.henchmen';
+import { KILLMONGER_SPEC_OPS } from '../../data/gameSets/whatIf/whatIf.heroes';
+import {
+  EPIC_KILLMONGER_THE_BETRAYER,
+  KILLMONGER_THE_BETRAYER,
+  ULTRON_INFINITY,
+} from '../../data/gameSets/whatIf/whatIf.masterminds';
 import { GAME_SET as XMEN } from '../../data/gameSets/xMen';
 import { ARCADE } from '../../data/gameSets/xMen/xMen.masterminds';
 import {
@@ -274,6 +282,64 @@ describe('Scheme', () => {
 
       expect(doomSetup.villainDeck.henchmen).toContain(DOOMBOT_LEGION);
     });
+
+    it.each([2, 3, 4, 5] as NumPlayers[])(
+      'should always put Ultron Sentries in the villain deck',
+      (numPlayers) => {
+        const ultronStore = new StoreBuilder()
+          .withHeroGamesets(XMEN)
+          .withMastermindGamesets(LEGENDARY, WHAT_IF)
+          .withVillainGamesets(XMEN)
+          .withHenchmenGamesets(LEGENDARY, WHAT_IF)
+          .build();
+
+        const ultronScheme = new Scheme({
+          ...baseSchemeDesc,
+          meta: {
+            numTwists: 8,
+          },
+        });
+
+        const setup = ultronScheme.getSetup({
+          selectedMastermind: ULTRON_INFINITY,
+          numPlayers,
+          store: ultronStore,
+        });
+
+        expect(Array.from(setup.villainDeck.henchmen)).toContain(
+          ULTRON_SENTRIES
+        );
+      }
+    );
+
+    it.each([KILLMONGER_THE_BETRAYER, EPIC_KILLMONGER_THE_BETRAYER])(
+      'should always put Killmonger Spec Ops in the hero deck',
+      (killmonger) => {
+        const killmongerStore = new StoreBuilder()
+          .withHeroGamesets(XMEN, WHAT_IF)
+          .withMastermindGamesets(LEGENDARY, WHAT_IF)
+          .withVillainGamesets(XMEN)
+          .withHenchmenGamesets(LEGENDARY, WHAT_IF)
+          .build();
+
+        const killmongerScheme = new Scheme({
+          ...baseSchemeDesc,
+          meta: {
+            numTwists: 8,
+          },
+        });
+
+        const setup = killmongerScheme.getSetup({
+          selectedMastermind: killmonger,
+          numPlayers: 3,
+          store: killmongerStore,
+        });
+
+        expect(Array.from(setup.heroDeck.heroes)).toContain(
+          KILLMONGER_SPEC_OPS
+        );
+      }
+    );
 
     it('should not need to fill in any more slots in the villain deck', () => {
       const villains = [HELLFIRE_CLUB, MURDERWORLD];

@@ -4,6 +4,7 @@ import { ISpecialRules } from '../../interfaces/specialRules.interface';
 import { CARD_TYPE } from '../../types';
 import { AbstractFightableCardGroup } from '../abstractFightableCardGroup';
 import { Henchmen } from '../henchmen';
+import { Hero } from '../hero';
 import { VillainGroup } from '../villainGroup';
 
 /**
@@ -25,6 +26,7 @@ export interface IMastermind extends IFightable, ISpecialRules {
   readonly masterStrike: string;
   readonly startOfGame?: string;
   readonly mastermindWins?: string;
+  readonly alwaysInclude?: Hero[];
 }
 
 export class Mastermind
@@ -39,6 +41,7 @@ export class Mastermind
   private readonly _escape?: string;
   private readonly _finishThePrey?: string;
   private readonly _mastermindWins?: string;
+  private readonly _alwaysInclude: Hero[];
 
   constructor(mastermindConfig: IMastermind) {
     super(mastermindConfig);
@@ -53,6 +56,8 @@ export class Mastermind
       startOfGame: this._startOfGame,
       mastermindWins: this._mastermindWins,
     } = mastermindConfig);
+
+    this._alwaysInclude = mastermindConfig.alwaysInclude ?? [];
   }
 
   get alwaysLeads() {
@@ -95,6 +100,10 @@ export class Mastermind
     return this._mastermindWins;
   }
 
+  get alwaysInclude() {
+    return this._alwaysInclude;
+  }
+
   /**
    * Creates an empty Mastermind that is part of an empty Game Set with a random
    * UUID
@@ -109,6 +118,7 @@ export class Mastermind
       victoryPoints: 0,
       alwaysLeads: [],
       masterStrike: '',
+      alwaysInclude: [],
     });
   }
 }
@@ -123,6 +133,7 @@ type CommonMastermindAttributes = Pick<
   | 'specialRules'
   | 'escape'
   | 'mastermindWins'
+  | 'alwaysInclude'
 >;
 
 type SpecificMastermindAttributes = Pick<
@@ -134,6 +145,8 @@ type SpecificMastermindAttributes = Pick<
   | 'specialRules'
   | 'startOfGame'
   | 'finishThePrey'
+  | 'mastermindWins'
+  | 'keywords'
 >;
 
 /**

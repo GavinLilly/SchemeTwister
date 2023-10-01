@@ -11,10 +11,13 @@ export class Bystander extends AbstractCardGroup implements IBystander {
   private readonly _copies: number;
   private readonly _victoryPoints: number;
 
-  constructor(config: IBystander) {
+  constructor(
+    config: Omit<IBystander, 'victoryPoints'> & Partial<IVictoryPileCard>
+  ) {
     super(config);
 
-    ({ copies: this._copies, victoryPoints: this._victoryPoints } = config);
+    this._copies = config.copies;
+    this._victoryPoints = config.victoryPoints ?? 1;
   }
 
   get cardType() {
