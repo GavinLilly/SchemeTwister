@@ -153,7 +153,11 @@ describe('Scheme', () => {
     beforeAll(() => {
       scheme = new Scheme(schemeDescSimpleTwist);
       store = new StoreBuilder().withSingleGameset(XMEN).build();
-      setup = scheme.getSetup(2, ARCADE, store);
+      setup = scheme.getSetup({
+        numPlayers: 2,
+        selectedMastermind: ARCADE,
+        store,
+      });
     });
 
     beforeEach(() => store.reset());
@@ -184,11 +188,7 @@ describe('Scheme', () => {
         },
       });
 
-      const additionalSetup = heroAdditional.getSetup(
-        3,
-        store.mastermindStore.getRandom(),
-        store
-      );
+      const additionalSetup = heroAdditional.getSetup({ numPlayers: 3, store });
 
       expect(additionalSetup.additionalDeck).toBeTruthy();
       expect(additionalSetup.additionalDeck?.deck).toBeTruthy();
@@ -210,11 +210,7 @@ describe('Scheme', () => {
         },
       });
 
-      const heroHenchmenSetup = henchmenHero.getSetup(
-        3,
-        store.mastermindStore.getRandom(),
-        store
-      );
+      const heroHenchmenSetup = henchmenHero.getSetup({ numPlayers: 3, store });
 
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       expect(Array.from(heroHenchmenSetup.heroDeck.henchmen!)).toHaveLength(1);
@@ -234,11 +230,10 @@ describe('Scheme', () => {
 
       expect(mastermindVillain.rules[3].villainDeck.numMasterminds).toBe(1);
 
-      const mastermindVillainSetup = mastermindVillain.getSetup(
-        3,
-        store.mastermindStore.getRandom(),
-        store
-      );
+      const mastermindVillainSetup = mastermindVillain.getSetup({
+        numPlayers: 3,
+        store,
+      });
 
       expect(mastermindVillainSetup.villainDeck.masterminds).toBeTruthy();
       expect(
@@ -259,11 +254,7 @@ describe('Scheme', () => {
         },
       });
 
-      const bystanderSetup = bystanderScheme.getSetup(
-        3,
-        store.mastermindStore.getRandom(),
-        store
-      );
+      const bystanderSetup = bystanderScheme.getSetup({ numPlayers: 3, store });
 
       expect(bystanderSetup.heroDeck.numBystanders).toBe(5);
     });
@@ -275,23 +266,24 @@ describe('Scheme', () => {
         .withVillainGamesets(XMEN)
         .withHenchmenGamesets(LEGENDARY, XMEN)
         .build();
-      const doomSetup = scheme.getSetup(4, DR_DOOM, doomHenchmenStore);
+      const doomSetup = scheme.getSetup({
+        numPlayers: 4,
+        selectedMastermind: DR_DOOM,
+        store: doomHenchmenStore,
+      });
 
       expect(doomSetup.villainDeck.henchmen).toContain(DOOMBOT_LEGION);
     });
 
     it('should not need to fill in any more slots in the villain deck', () => {
       const villains = [HELLFIRE_CLUB, MURDERWORLD];
-      const filledSetup = scheme.getSetup(
-        2,
-        store.mastermindStore.getRandom(),
+      const filledSetup = scheme.getSetup({
+        numPlayers: 2,
         store,
-        undefined,
-        undefined,
-        {
+        partialVillainDeck: {
           villains: new Set(villains),
-        }
-      );
+        },
+      });
 
       expect(Array.from(filledSetup.villainDeck.villains)).toEqual(
         expect.arrayContaining(villains)
@@ -307,11 +299,7 @@ describe('Scheme', () => {
           },
         });
 
-        const setup = soloScheme.getSetup(
-          1,
-          store.mastermindStore.getRandom(),
-          store
-        );
+        const setup = soloScheme.getSetup({ numPlayers: 1, store });
 
         expect(setup.villainDeck.numMasterStrikes).toBe(1);
       });
@@ -324,12 +312,11 @@ describe('Scheme', () => {
           },
         });
 
-        const setup = soloScheme.getSetup(
-          1,
-          store.mastermindStore.getRandom(),
+        const setup = soloScheme.getSetup({
+          numPlayers: 1,
           store,
-          true
-        );
+          advancedSolo: true,
+        });
 
         expect(setup.villainDeck.numMasterStrikes).toBe(5);
       });

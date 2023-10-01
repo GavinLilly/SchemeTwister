@@ -66,11 +66,11 @@ describe('Require Henchmen', () => {
         new RequireHenchmen(),
         DECK_TYPE.villain
       );
-      const setup = scheme.getSetup(
-        2,
-        store.mastermindStore.getRandom(),
-        store
-      );
+      const setup = scheme.getSetup({
+        numPlayers: 2,
+        selectedMastermind: store.mastermindStore.getRandom(),
+        store,
+      });
 
       expect(setup.villainDeck.henchmen).toContain(MAGGIA_GOONS);
     });
@@ -90,11 +90,7 @@ describe('Require Henchmen', () => {
         new RequireHenchmen(),
         DECK_TYPE.additional
       );
-      const setup = scheme.getSetup(
-        2,
-        store.mastermindStore.getRandom(),
-        store
-      );
+      const setup = scheme.getSetup({ numPlayers: 2, store });
 
       expect(setup.additionalDeck?.deck.henchmen).toContain(COPS);
     });
@@ -121,11 +117,7 @@ describe('Require Hero', () => {
         new RequireHero(),
         DECK_TYPE.additional
       );
-      const setup = scheme.getSetup(
-        2,
-        store.mastermindStore.getRandom(),
-        store
-      );
+      const setup = scheme.getSetup({ numPlayers: 2, store });
 
       expect(setup.additionalDeck?.deck.heroes).toContain(ADAM_WARLOCK);
     });
@@ -145,11 +137,7 @@ describe('Require Hero', () => {
         new RequireHero(),
         DECK_TYPE.villain
       );
-      const setup = scheme.getSetup(
-        2,
-        store.mastermindStore.getRandom(),
-        store
-      );
+      const setup = scheme.getSetup({ numPlayers: 2, store });
 
       expect(setup.villainDeck.heroes).toContain(JEAN_GREY);
     });
@@ -174,7 +162,7 @@ describe('Require Hero Name', () => {
         DECK_TYPE.additional
       );
 
-      setup = scheme.getSetup(2, store.mastermindStore.getRandom(), store);
+      setup = scheme.getSetup({ numPlayers: 2, store });
     });
 
     it('should include 1 "Hulk" hero in the additional deck', () => {
@@ -195,9 +183,7 @@ describe('Require Hero Name', () => {
         .withHenchmenGamesets(WWHULK)
         .build();
 
-      expect(() =>
-        scheme.getSetup(3, store.mastermindStore.getRandom(), store)
-      ).toThrow();
+      expect(() => scheme.getSetup({ numPlayers: 3, store })).toThrow();
     });
   });
 
@@ -224,7 +210,7 @@ describe('Require Hero Name', () => {
         DECK_TYPE.hero
       );
 
-      setup = scheme.getSetup(2, store.mastermindStore.getRandom(), store);
+      setup = scheme.getSetup({ numPlayers: 2, store });
     });
 
     it('should only include 1 Deadpool hero', () => {
@@ -249,9 +235,7 @@ describe('Require Hero Name', () => {
         .withHenchmenGamesets(LEGENDARY)
         .build();
 
-      expect(() =>
-        scheme.getSetup(3, store.mastermindStore.getRandom(), store)
-      ).toThrow();
+      expect(() => scheme.getSetup({ numPlayers: 3, store })).toThrow();
     });
   });
 
@@ -277,7 +261,7 @@ describe('Require Hero Name', () => {
         DECK_TYPE.villain
       );
 
-      setup = scheme.getSetup(2, store.mastermindStore.getRandom(), store);
+      setup = scheme.getSetup({ numPlayers: 2, store });
     });
 
     it('should only include 1 Blade hero', () => {
@@ -294,9 +278,7 @@ describe('Require Hero Name', () => {
         .withHenchmenGamesets(LEGENDARY)
         .build();
 
-      expect(() =>
-        scheme.getSetup(3, store.mastermindStore.getRandom(), store)
-      ).toThrow();
+      expect(() => scheme.getSetup({ numPlayers: 3, store })).toThrow();
     });
   });
 });
@@ -321,11 +303,7 @@ describe('Require Team', () => {
         new RequireHero(),
         DECK_TYPE.hero
       );
-      const setup = scheme.getSetup(
-        2,
-        store.mastermindStore.getRandom(),
-        store
-      );
+      const setup = scheme.getSetup({ numPlayers: 2, store });
 
       const merc = Array.from(setup.heroDeck.heroes).filter(
         (hero) => hero.team === MERCS_FOR_MONEY
@@ -355,11 +333,7 @@ describe('Require Villain Group', () => {
         new RequireVillainGroup(),
         DECK_TYPE.additional
       );
-      const setup = scheme.getSetup(
-        2,
-        store.mastermindStore.getRandom(),
-        store
-      );
+      const setup = scheme.getSetup({ numPlayers: 2, store });
 
       expect(setup.additionalDeck?.deck.villains).toContain(MONSTERS_UNLEASHED);
     });
@@ -391,11 +365,7 @@ describe('Require Villains Groups', () => {
           new RequireVillainGroup(),
           DECK_TYPE.villain
         );
-        const setup = scheme.getSetup(
-          2,
-          store.mastermindStore.getRandom(),
-          store
-        );
+        const setup = scheme.getSetup({ numPlayers: 2, store });
 
         expect(setup.villainDeck.villains).toContain(SKRULLS);
       });
@@ -412,7 +382,7 @@ describe('Require Villains Groups', () => {
           new RequireVillainGroup(),
           DECK_TYPE.villain
         );
-        setup = scheme.getSetup(2, store.mastermindStore.getRandom(), store);
+        setup = scheme.getSetup({ numPlayers: 2, store });
       });
 
       it('should include Skrulls in the villain deck', () =>
@@ -436,7 +406,7 @@ describe('Require Villains Groups', () => {
           new RequireVillainGroup(),
           DECK_TYPE.villain
         );
-        setup = scheme.getSetup(3, store.mastermindStore.getRandom(), store);
+        setup = scheme.getSetup({ numPlayers: 3, store });
       });
 
       it('should include 1 S.H.I.E.L.D. villain group in the villain deck', () => {

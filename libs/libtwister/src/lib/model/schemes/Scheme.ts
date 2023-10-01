@@ -25,6 +25,23 @@ import {
 import { Rules, RulesType } from '../rules';
 import { CARD_TYPE, NumPlayers, SchemeMinusRules, numPlayers } from '../types';
 
+export interface IGetSetupConfig {
+  /** The number of players to build the setup for */
+  numPlayers: NumPlayers;
+  /** The mastermind to inject into this setup */
+  selectedMastermind?: Mastermind;
+  /** A collection of stores to select cards from */
+  store: StoreOfStores;
+  /** If the number of players is 1, whether to enable the advance solo mode (harder gameplay) */
+  advancedSolo?: boolean;
+  /** A hero deck to start the setup from */
+  partialHeroDeck?: HeroDeckMinimal;
+  /** A villain deck to start the setup from */
+  partialVillainDeck?: VillainDeckMinimal;
+  /** An additional deck to start the setup from */
+  partialAdditionalDeck?: AdditionalDeckDeckMinimal;
+}
+
 /**
  * Scheme allows for a Scheme-rules from the game to be instantiated and
  * generate a game setup.
@@ -410,79 +427,43 @@ export class Scheme implements IPlayableObject {
 
   /**
    * Builds a game setup using the rules defined for this scheme
-   * @param numPlayers the number of players to build the setup for
-   * @param selectedMastermind the mastermind to inject into this setup
-   * @param heroStore a hero factory to get heroes for the setup
-   * @param villainStore a villain factory to get heroes for the setup
-   * @param henchmenStore a henchmen factory to get heroes for the setup
-   * @param mastermindStore a mastermind factory to get heroes for the setup
+   * @param config the config to use to create a game setup
    * @returns a fully populated setup for a game
    */
-  public getSetup(
-    numPlayers: NumPlayers,
-    selectedMastermind: Mastermind,
-    store: StoreOfStores,
-    advancedSolo?: boolean
-  ): IGameSetup;
-  /**
-   * Builds a game setup using the rules defined for this scheme
-   * @param numPlayers the number of players to build the setup for
-   * @param selectedMastermind the mastermind to inject into this setup
-   * @param heroStore a hero factory to get heroes for the setup
-   * @param villainStore a villain factory to get heroes for the setup
-   * @param henchmenStore a henchmen factory to get heroes for the setup
-   * @param mastermindStore a mastermind factory to get heroes for the setup
-   * @param partialHeroDeck a hero deck to start the setup from
-   * @param partialVillainDeck a villain deck to start the setup from
-   * @param partialAdditionalDeck an additional deck to start the setup from
-   * @returns a fully populated setup for a game
-   */
-  public getSetup(
-    numPlayers: NumPlayers,
-    selectedMastermind: Mastermind,
-    store: StoreOfStores,
-    advancedSolo?: boolean,
-    partialHeroDeck?: HeroDeckMinimal,
-    partialVillainDeck?: VillainDeckMinimal,
-    partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): IGameSetup;
-  public getSetup(
-    numPlayers: NumPlayers,
-    selectedMastermind: Mastermind,
-    store: StoreOfStores,
-    advancedSolo = false,
-    partialHeroDeck?: HeroDeckMinimal,
-    partialVillainDeck?: VillainDeckMinimal,
-    partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): IGameSetup {
+  public getSetup(config: IGetSetupConfig): IGameSetup {
+    const advancedSolo =
+      config.advancedSolo !== undefined ? config.advancedSolo : false;
     // Get player rules
     const ruleSet =
-      selectedMastermind.ruleOverride !== undefined
-        ? this.overrideEachRule(selectedMastermind.ruleOverride).rules
+      config.selectedMastermind?.ruleOverride !== undefined
+        ? this.overrideEachRule(config.selectedMastermind.ruleOverride).rules
         : this.rules;
-    const playerRules = ruleSet[numPlayers];
+    const playerRules = ruleSet[config.numPlayers];
     const {
       heroDeck: heroRules,
       villainDeck: villainRules,
       additionalDeck: additionalRules,
-    } = ruleSet[numPlayers];
+    } = ruleSet[config.numPlayers];
 
     // Create skeleton decks
     const fullDeck = new GameSetup({
-      numPlayers: numPlayers,
-      mastermind: selectedMastermind,
+      numPlayers: config.numPlayers,
+      mastermind:
+        config.selectedMastermind !== undefined
+          ? config.selectedMastermind
+          : config.store.mastermindStore.getRandom(),
       scheme: this,
       heroDeck: {
         heroes: new Set(),
         numBystanders: heroRules.numBystanders ?? undefined,
-        ...partialHeroDeck,
+        ...config.partialHeroDeck,
       },
       villainDeck: {
         villains: new Set(),
         henchmen: new Set(),
         numTwists: villainRules.numTwists,
         numMasterStrikes: advancedSolo ? 5 : villainRules.numMasterStrikes,
-        ...partialVillainDeck,
+        ...config.partialVillainDeck,
       },
       numShieldOfficers: playerRules.numShieldOfficers,
       numWounds: playerRules.numWounds,
@@ -492,24 +473,24 @@ export class Scheme implements IPlayableObject {
     if (additionalRules !== undefined) {
       fullDeck.additionalDeck = Scheme._buildAdditionalDeck(
         additionalRules,
-        store,
-        partialAdditionalDeck
+        config.store,
+        config.partialAdditionalDeck
       );
     }
 
     // Build hero deck
     fullDeck.heroDeck = Scheme._buildHeroDeck(
       heroRules,
-      store,
+      config.store,
       fullDeck.heroDeck
     );
 
     // Build villain deck
     fullDeck.villainDeck = Scheme._buildVillainDeck(
       villainRules,
-      store,
+      config.store,
       fullDeck.villainDeck,
-      selectedMastermind
+      fullDeck.mastermind
     );
 
     return fullDeck;

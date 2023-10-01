@@ -163,12 +163,12 @@ export class LibTwister {
 
     const createdScheme = instantiateScheme(scheme);
 
-    const setup = createdScheme.getSetup(
+    const setup = createdScheme.getSetup({
       numPlayers,
-      mastermind,
-      this.stores,
-      advancedSolo
-    );
+      selectedMastermind: mastermind,
+      store: this.stores,
+      advancedSolo,
+    });
 
     return new GameSetup(setup);
   }

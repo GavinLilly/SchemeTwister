@@ -1,14 +1,8 @@
-import { StoreOfStores } from '../../factories';
-import { VillainGroup, Hero, Mastermind } from '../cards';
-import {
-  AdditionalDeckDeckMinimal,
-  HeroDeckMinimal,
-  IGameSetup,
-  VillainDeckMinimal,
-} from '../interfaces';
-import { DECK_TYPE, NumPlayers, SchemeMinusRules } from '../types';
+import { VillainGroup, Hero } from '../cards';
+import { IGameSetup } from '../interfaces';
+import { DECK_TYPE, SchemeMinusRules } from '../types';
 
-import { Scheme } from './Scheme';
+import { IGetSetupConfig, Scheme } from './Scheme';
 import {
   RequireCard,
   RequireCardInDeckScheme,
@@ -30,33 +24,20 @@ export class TheDarkPhoenixSagaScheme extends RequireCardInDeckScheme<VillainGro
     );
   }
 
-  public override getSetup(
-    numPlayers: NumPlayers,
-    selectedMastermind: Mastermind,
-    store: StoreOfStores,
-    advancedSolo?: boolean,
-    partialHeroDeck?: HeroDeckMinimal,
-    partialVillainDeck: VillainDeckMinimal = {},
-    partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): IGameSetup {
-    const hero = this._requiredHero.getRequiredCard(store.heroStore);
+  public override getSetup(config: IGetSetupConfig): IGameSetup {
+    const hero = this._requiredHero.getRequiredCard(config.store.heroStore);
 
-    const pickedHero = store.heroStore.pickOne(hero);
+    const pickedHero = config.store.heroStore.pickOne(hero);
 
-    partialVillainDeck.heroes = Scheme.addToDeck(
-      partialVillainDeck.heroes ?? new Set(),
-      pickedHero,
-      this.rules[numPlayers].villainDeck.numHeroes
-    );
-
-    return super.getSetup(
-      numPlayers,
-      selectedMastermind,
-      store,
-      advancedSolo,
-      partialHeroDeck,
-      partialVillainDeck,
-      partialAdditionalDeck
-    );
+    return super.getSetup({
+      ...config,
+      partialVillainDeck: {
+        heroes: Scheme.addToDeck(
+          config.partialVillainDeck?.heroes ?? new Set(),
+          pickedHero,
+          this.rules[config.numPlayers].villainDeck.numHeroes
+        ),
+      },
+    });
   }
 }

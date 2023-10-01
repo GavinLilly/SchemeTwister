@@ -1,15 +1,9 @@
 import { X_MEN } from '../../data/teams';
-import { StoreOfStores } from '../../factories';
-import { Hero, Mastermind } from '../cards';
-import {
-  AdditionalDeckDeckMinimal,
-  HeroDeckMinimal,
-  IGameSetup,
-  VillainDeckMinimal,
-} from '../interfaces';
-import { DECK_TYPE, NumPlayers, SchemeMinusRules } from '../types';
+import { Hero } from '../cards';
+import { IGameSetup } from '../interfaces';
+import { DECK_TYPE, SchemeMinusRules } from '../types';
 
-import { Scheme } from './Scheme';
+import { IGetSetupConfig, Scheme } from './Scheme';
 import {
   RequireCard,
   RequireCardInDeckScheme,
@@ -26,40 +20,27 @@ export class HouseOfMScheme extends RequireCardInDeckScheme<Hero> {
     );
   }
 
-  public override getSetup(
-    numPlayers: NumPlayers,
-    selectedMastermind: Mastermind,
-    store: StoreOfStores,
-    advancedSolo?: boolean,
-    partialHeroDeck: HeroDeckMinimal = {},
-    partialVillainDeck?: VillainDeckMinimal,
-    partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): IGameSetup {
-    const xMenHeroes = store.heroStore.pickRandom(
+  public override getSetup(config: IGetSetupConfig): IGameSetup {
+    const xMenHeroes = config.store.heroStore.pickRandom(
       4,
       (hero) => hero.team === X_MEN
     ) as Hero[];
-    const otherHeroes = store.heroStore.pickRandom(
+    const otherHeroes = config.store.heroStore.pickRandom(
       2,
       (hero) => hero.team !== X_MEN && hero !== this._required
     ) as Hero[];
 
-    partialHeroDeck.heroes = Scheme.addToDeck(
-      partialHeroDeck.heroes ?? new Set(),
-      otherHeroes[0],
-      this.rules[numPlayers].heroDeck.numHeroes,
-      otherHeroes[1],
-      ...xMenHeroes
-    );
-
-    return super.getSetup(
-      numPlayers,
-      selectedMastermind,
-      store,
-      advancedSolo,
-      partialHeroDeck,
-      partialVillainDeck,
-      partialAdditionalDeck
-    );
+    return super.getSetup({
+      ...config,
+      partialHeroDeck: {
+        heroes: Scheme.addToDeck(
+          config.partialHeroDeck?.heroes ?? new Set(),
+          otherHeroes[0],
+          this.rules[config.numPlayers].heroDeck.numHeroes,
+          otherHeroes[1],
+          ...xMenHeroes
+        ),
+      },
+    });
   }
 }

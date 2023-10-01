@@ -1,27 +1,12 @@
-import { StoreOfStores } from '../../factories/storeOfStores';
-import { Mastermind, Hero } from '../cards';
-import {
-  AdditionalDeckDeckMinimal,
-  HeroDeckMinimal,
-  IGameSetup,
-  VillainDeckMinimal,
-} from '../interfaces';
-import { NumPlayers } from '../types';
+import { Hero } from '../cards';
+import { IGameSetup } from '../interfaces';
 
-import { Scheme } from './Scheme';
+import { IGetSetupConfig, Scheme } from './Scheme';
 
 export class PlayerPicksAHeroScheme extends Scheme {
-  public override getSetup(
-    numPlayers: NumPlayers,
-    selectedMastermind: Mastermind,
-    store: StoreOfStores,
-    advancedSolo?: boolean,
-    partialHeroDeck: HeroDeckMinimal = {},
-    partialVillainDeck?: VillainDeckMinimal,
-    partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): IGameSetup {
+  public override getSetup(config: IGetSetupConfig): IGameSetup {
     const nonPickedHeroes: Hero[] = [];
-    for (let i = 1; i <= numPlayers; i++) {
+    for (let i = 1; i <= config.numPlayers; i++) {
       nonPickedHeroes.push(
         new Hero({
           gameSet: this.gameSet,
@@ -31,21 +16,16 @@ export class PlayerPicksAHeroScheme extends Scheme {
       );
     }
 
-    partialHeroDeck.heroes = Scheme.addToDeck(
-      partialHeroDeck.heroes ?? new Set(),
-      nonPickedHeroes[0],
-      this.rules[numPlayers].villainDeck.numVillainGroups,
-      ...nonPickedHeroes.slice(1)
-    );
-
-    return super.getSetup(
-      numPlayers,
-      selectedMastermind,
-      store,
-      advancedSolo,
-      partialHeroDeck,
-      partialVillainDeck,
-      partialAdditionalDeck
-    );
+    return super.getSetup({
+      ...config,
+      partialHeroDeck: {
+        heroes: Scheme.addToDeck(
+          config.partialHeroDeck?.heroes ?? new Set(),
+          nonPickedHeroes[0],
+          this.rules[config.numPlayers].villainDeck.numVillainGroups,
+          ...nonPickedHeroes.slice(1)
+        ),
+      },
+    });
   }
 }

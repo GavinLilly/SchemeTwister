@@ -55,11 +55,7 @@ describe('GameSetup', () => {
 
     beforeAll(() => {
       const scheme = new Scheme(MIDTOWN_BANK_ROBBERY);
-      setup = scheme.getSetup(
-        2,
-        store.mastermindStore.getRandom(),
-        store
-      ) as GameSetup;
+      setup = scheme.getSetup({ numPlayers: 2, store }) as GameSetup;
     });
 
     it('should have 5 heroes', () =>
@@ -118,11 +114,7 @@ describe('GameSetup', () => {
       .withHenchmenGamesets(LEGENDARY)
       .build();
 
-    const setup = scheme.getSetup(
-      2,
-      store.mastermindStore.getRandom(),
-      store
-    ) as GameSetup;
+    const setup = scheme.getSetup({ numPlayers: 2, store }) as GameSetup;
 
     const { additionalDeck } = JSON.parse(setup.toString());
 
@@ -134,11 +126,7 @@ describe('GameSetup', () => {
 
     beforeAll(() => {
       const scheme = new Scheme(REPLACE_EARTHS_LEADERS_WITH_KILLBOTS);
-      setup = scheme.getSetup(
-        2,
-        store.mastermindStore.getRandom(),
-        store
-      ) as GameSetup;
+      setup = scheme.getSetup({ numPlayers: 2, store }) as GameSetup;
     });
 
     describe('getSelectedHeroes()', () => {
@@ -170,11 +158,11 @@ describe('GameSetup', () => {
 
     it('should have no keywords', () => {
       const scheme = new Scheme(REPLACE_EARTHS_LEADERS_WITH_KILLBOTS);
-      const setup = scheme.getSetup(
-        2,
-        legendaryStore.mastermindStore.getRandom(),
-        legendaryStore
-      ) as GameSetup;
+      const setup = scheme.getSetup({
+        numPlayers: 2,
+        selectedMastermind: legendaryStore.mastermindStore.getRandom(),
+        store: legendaryStore,
+      }) as GameSetup;
 
       expect(setup.keywords.size).toBe(0);
     });
@@ -182,11 +170,11 @@ describe('GameSetup', () => {
     it('should have only the "Contest of Champions" keyword', () => {
       const scheme = new Scheme(THE_CONTEST_OF_CHAMPIONS);
 
-      const setup = scheme.getSetup(
-        2,
-        legendaryStore.mastermindStore.getRandom(),
-        legendaryStore
-      ) as GameSetup;
+      const setup = scheme.getSetup({
+        numPlayers: 2,
+        selectedMastermind: legendaryStore.mastermindStore.getRandom(),
+        store: legendaryStore,
+      }) as GameSetup;
 
       expect(setup.keywords.size).toBe(1);
       expect(setup.keywords.has(CONTEST_OF_CHAMPIONS)).toBeTruthy();
@@ -202,12 +190,11 @@ describe('GameSetup', () => {
       versatileStore;
 
       const scheme = new Scheme(REPLACE_EARTHS_LEADERS_WITH_KILLBOTS);
-      const setup = scheme.getSetup(
-        2,
-        versatileStore.mastermindStore.getRandom(),
-        versatileStore,
-        undefined,
-        {
+      const setup = scheme.getSetup({
+        numPlayers: 2,
+        selectedMastermind: versatileStore.mastermindStore.getRandom(),
+        store: versatileStore,
+        partialHeroDeck: {
           heroes: new Set([
             DOMINO,
             CYCLOPS,
@@ -215,8 +202,8 @@ describe('GameSetup', () => {
             CAPTAIN_AMERICA,
             IRON_MAN,
           ]),
-        }
-      ) as GameSetup;
+        },
+      }) as GameSetup;
 
       expect(setup.keywords.size).toBe(1);
       expect(setup.keywords.has(VERSATILE)).toBeTruthy();
@@ -233,11 +220,11 @@ describe('GameSetup', () => {
         new RequireVillainGroup(),
         DECK_TYPE.villain
       );
-      setup = scheme.getSetup(
-        2,
-        store.mastermindStore.pickOne(CARNAGE.id),
-        store
-      ) as GameSetup;
+      setup = scheme.getSetup({
+        numPlayers: 2,
+        selectedMastermind: store.mastermindStore.pickOne(CARNAGE),
+        store,
+      }) as GameSetup;
     });
 
     describe('getSelectedHeroes()', () => {
