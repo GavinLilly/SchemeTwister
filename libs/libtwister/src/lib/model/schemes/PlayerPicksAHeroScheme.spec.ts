@@ -20,11 +20,7 @@ describe('Player Picks a Hero Scheme', () => {
   describe("Sneak Attack the Heroes' Homes", () => {
     it('should put 3 blank heroes in the hero deck', () => {
       const scheme = new PlayerPicksAHeroScheme(SNEAK_ATTACK_THE_HEROES_HOMES);
-      const setup = scheme.getSetup(
-        3,
-        store.mastermindStore.getRandom(),
-        store
-      );
+      const setup = scheme.getSetup({ numPlayers: 3, store });
 
       expect(
         Array.from(setup.heroDeck.heroes).filter((hero) =>

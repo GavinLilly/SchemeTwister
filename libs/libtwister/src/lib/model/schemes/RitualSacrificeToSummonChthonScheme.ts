@@ -1,18 +1,12 @@
-import { StoreOfStores } from '../../factories';
-import { VillainGroup, Mastermind } from '../cards';
-import {
-  IGameSetup,
-  HeroDeckMinimal,
-  VillainDeckMinimal,
-  AdditionalDeckDeckMinimal,
-} from '../interfaces';
+import { VillainGroup } from '../cards';
+import { IGameSetup } from '../interfaces';
 import {
   DECK_TYPE,
-  NumPlayers,
   SchemeMinusRules,
   numPlayers as numPlayersCount,
 } from '../types';
 
+import { IGetSetupConfig } from './Scheme';
 import {
   RequireCard,
   RequireCardInDeckScheme,
@@ -35,29 +29,13 @@ export class RitualSacrificeToSummonChthonScheme extends RequireCardInDeckScheme
     );
   }
 
-  public override getSetup(
-    numPlayers: NumPlayers,
-    selectedMastermind: Mastermind,
-    store: StoreOfStores,
-    advancedSolo?: boolean,
-    partialHeroDeck?: HeroDeckMinimal,
-    partialVillainDeck: VillainDeckMinimal = {},
-    partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): IGameSetup {
-    if (selectedMastermind.name.includes('Lilith')) {
+  public override getSetup(config: IGetSetupConfig): IGameSetup {
+    if (config.selectedMastermind?.name.includes('Lilith')) {
       numPlayersCount.forEach(
         (num) => (this.rules[num].villainDeck.numTwists = 1)
       );
     }
 
-    return super.getSetup(
-      numPlayers,
-      selectedMastermind,
-      store,
-      advancedSolo,
-      partialHeroDeck,
-      partialVillainDeck,
-      partialAdditionalDeck
-    );
+    return super.getSetup(config);
   }
 }

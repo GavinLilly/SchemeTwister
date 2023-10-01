@@ -1,14 +1,7 @@
-import { StoreOfStores } from '../../../factories';
-import { Mastermind } from '../../cards';
 import { AbstractCardGroup } from '../../cards/abstractCardGroup';
-import {
-  AdditionalDeckDeckMinimal,
-  HeroDeckMinimal,
-  IGameSetup,
-  VillainDeckMinimal,
-} from '../../interfaces';
-import { DeckType, NumPlayers, SchemeMinusRules } from '../../types';
-import { Scheme } from '../Scheme';
+import { IGameSetup } from '../../interfaces';
+import { DeckType, SchemeMinusRules } from '../../types';
+import { IGetSetupConfig, Scheme } from '../Scheme';
 
 import { IRequireCardBehaviour } from './requireCardBehaviour.interface';
 import { IRequireCardTypeBehaviour } from './requireCardTypeBehaviour.interface';
@@ -25,58 +18,46 @@ export class RequireCardInDeckScheme<
     super(scheme);
   }
 
-  public override getSetup(
-    numPlayers: NumPlayers,
-    selectedMastermind: Mastermind,
-    store: StoreOfStores,
-    advancedSolo?: boolean,
-    partialHeroDeck?: HeroDeckMinimal,
-    partialVillainDeck?: VillainDeckMinimal,
-    partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): IGameSetup {
-    const applicableStore = this._requireCardType.getStore(store);
+  public override getSetup(config: IGetSetupConfig): IGameSetup {
+    const applicableStore = this._requireCardType.getStore(config.store);
     const cards = this._requireCard.getRequiredCard(applicableStore);
 
     const cardsAsArray = cards instanceof Array ? cards : [cards];
     const picked = cardsAsArray.map((card) => applicableStore.pickOne(card));
 
-    const rules = this.rules[numPlayers];
+    const rules = this.rules[config.numPlayers];
 
     switch (this._deck) {
       case 'HERO':
-        partialHeroDeck = this._requireCardType.createDeck(
-          partialHeroDeck,
-          picked,
-          rules,
-          this._deck
-        );
-        break;
+        return super.getSetup({
+          ...config,
+          partialHeroDeck: this._requireCardType.createDeck(
+            config.partialHeroDeck,
+            picked,
+            rules,
+            this._deck
+          ),
+        });
       case 'VILLAIN':
-        partialVillainDeck = this._requireCardType.createDeck(
-          partialVillainDeck,
-          picked,
-          rules,
-          this._deck
-        );
-        break;
+        return super.getSetup({
+          ...config,
+          partialVillainDeck: this._requireCardType.createDeck(
+            config.partialVillainDeck,
+            picked,
+            rules,
+            this._deck
+          ),
+        });
       case 'ADDITIONAL':
-        partialAdditionalDeck = this._requireCardType.createDeck(
-          partialAdditionalDeck,
-          picked,
-          rules,
-          this._deck
-        );
-        break;
+        return super.getSetup({
+          ...config,
+          partialAdditionalDeck: this._requireCardType.createDeck(
+            config.partialAdditionalDeck,
+            picked,
+            rules,
+            this._deck
+          ),
+        });
     }
-
-    return super.getSetup(
-      numPlayers,
-      selectedMastermind,
-      store,
-      advancedSolo,
-      partialHeroDeck,
-      partialVillainDeck,
-      partialAdditionalDeck
-    );
   }
 }

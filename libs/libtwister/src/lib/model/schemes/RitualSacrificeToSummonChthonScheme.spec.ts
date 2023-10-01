@@ -34,11 +34,11 @@ describe('RitualSacrificeToSummonChthonScheme', () => {
 
     beforeEach(() => {
       store.reset();
-      setup = scheme.getSetup(
-        2,
-        store.mastermindStore.pickOne(LILITH.id),
-        store
-      ) as GameSetup;
+      setup = scheme.getSetup({
+        numPlayers: 2,
+        selectedMastermind: store.mastermindStore.pickOne(LILITH.id),
+        store,
+      }) as GameSetup;
     });
     it('should set number of twists to 1', () =>
       expect(setup.villainDeck.numTwists).toBe(1));
@@ -52,11 +52,11 @@ describe('RitualSacrificeToSummonChthonScheme', () => {
 
     beforeEach(() => {
       store.reset();
-      setup = scheme.getSetup(
-        2,
-        store.mastermindStore.pickOne(KINGPIN.id),
-        store
-      ) as GameSetup;
+      setup = scheme.getSetup({
+        numPlayers: 2,
+        selectedMastermind: store.mastermindStore.pickOne(KINGPIN.id),
+        store,
+      }) as GameSetup;
     });
 
     it('should set number of twists to 8', () =>

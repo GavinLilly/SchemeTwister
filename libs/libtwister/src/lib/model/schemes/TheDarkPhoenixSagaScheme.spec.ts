@@ -29,7 +29,7 @@ describe('The Dark Phoenix Saga Scheme', () => {
   describe('with X-Men expansion', () => {
     let setup: IGameSetup;
     beforeAll(() => {
-      setup = scheme.getSetup(2, store.mastermindStore.getRandom(), store);
+      setup = scheme.getSetup({ numPlayers: 2, store });
     });
 
     it('should include Phoenix in the villain deck', () =>
@@ -48,11 +48,11 @@ describe('The Dark Phoenix Saga Scheme', () => {
         .withVillainGamesets(XMEN)
         .withHenchmenGamesets(XMEN)
         .build();
-      setup = scheme.getSetup(
-        2,
-        dcHeroStore.mastermindStore.getRandom(),
-        dcHeroStore
-      );
+      setup = scheme.getSetup({
+        numPlayers: 2,
+        selectedMastermind: dcHeroStore.mastermindStore.getRandom(),
+        store: dcHeroStore,
+      });
     });
 
     it('should include Jean Grey in the villain deck', () =>

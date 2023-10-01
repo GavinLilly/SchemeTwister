@@ -24,11 +24,7 @@ describe('LiteGameSetup', () => {
 
   beforeAll(() => {
     const scheme = instantiateScheme(MIDTOWN_BANK_ROBBERY);
-    const setup = scheme.getSetup(
-      2,
-      store.mastermindStore.getRandom(),
-      store
-    ) as GameSetup;
+    const setup = scheme.getSetup({ numPlayers: 2, store }) as GameSetup;
 
     liteSetup = LiteGameSetup.of(setup);
   });
