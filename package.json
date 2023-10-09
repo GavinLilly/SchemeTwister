@@ -57,7 +57,7 @@
     "@ngrx/component-store": "^12.5.1",
     "@ngrx/effects": "^12.5.1",
     "@ngrx/store": "^12.5.1",
-    "@nrwl/angular": "12.10.1",
+    "@nrwl/angular": "16.10.0",
     "bootstrap": "^4.6.0",
     "class-transformer": "^0.5.1",
     "firebase": "^7.0 || ^8.0",
