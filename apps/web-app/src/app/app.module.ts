@@ -15,6 +15,7 @@ import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { UpdateService } from './update.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -48,6 +49,7 @@ import { AppComponent } from './app.component';
     }),
   ],
   providers: [
+    UpdateService,
     {
       provide: FIRESTORE_COLLECTION_TOKEN,
       useValue: environment.firestoreCollection,

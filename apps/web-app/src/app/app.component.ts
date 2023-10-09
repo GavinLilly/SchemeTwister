@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+
+import { UpdateService } from './update.service';
 
 @Component({
   selector: 'schemetwister-root',
@@ -8,5 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private _http: HttpClient, public route: ActivatedRoute) {}
+  constructor(private _sw: UpdateService) {
+    // check the service worker for updates
+  }
 }
