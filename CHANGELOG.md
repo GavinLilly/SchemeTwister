@@ -1,3 +1,10 @@
+## [3.10.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.10.0...v3.10.1) (2023-10-09)
+
+
+### Bug Fixes
+
+* **app:** ensure web page reloads on updates ([4d80001](https://github.com/GavinLilly/SchemeTwister/commit/4d80001ee5bb132e1c2fefc6eb3a6953ccfa5968))
+
 ## [3.10.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.9.3...v3.10.0) (2023-09-29)
 
 
