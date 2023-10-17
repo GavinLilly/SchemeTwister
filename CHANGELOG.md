@@ -1,3 +1,10 @@
+## [3.11.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.10.1...v3.11.0) (2023-10-17)
+
+
+### Features
+
+* **libtwister:** add What If game set ([4a093c4](https://github.com/GavinLilly/SchemeTwister/commit/4a093c45ec1188c218e128396d88429fe2a1b2d1))
+
 ## [3.10.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.10.0...v3.10.1) (2023-10-09)
 
 
