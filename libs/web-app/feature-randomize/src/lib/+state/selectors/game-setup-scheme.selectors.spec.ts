@@ -26,7 +26,11 @@ describe('GameSetupScheme Selectors', () => {
 
   beforeEach(async () => {
     scheme = instantiateScheme(MIDTOWN_BANK_ROBBERY);
-    const setup = await scheme.getSetup(2, selectedMastermind, store);
+    const setup = await scheme.getSetup({
+      numPlayers: 2,
+      selectedMastermind,
+      store,
+    });
 
     initialState = {
       error: '',

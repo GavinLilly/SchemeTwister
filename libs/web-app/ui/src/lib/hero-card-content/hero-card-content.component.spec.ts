@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { GameSets } from '@schemetwister/libtwister';
 
+import { BaseCardContentComponent } from '../base-card-content/base-card-content.component';
+
 import { HeroCardContentComponent } from './hero-card-content.component';
 
 describe('HeroCardContentComponent', () => {
@@ -9,7 +11,7 @@ describe('HeroCardContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HeroCardContentComponent],
+      declarations: [HeroCardContentComponent, BaseCardContentComponent],
     }).compileComponents();
   });
 

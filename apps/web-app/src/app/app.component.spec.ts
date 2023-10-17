@@ -1,29 +1,18 @@
-import { HttpClientModule } from '@angular/common/http';
-import { TestBed, waitForAsync } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
-import { WebAppUiModule } from '@schemetwister/web-app/ui';
+import { SwUpdate } from '@angular/service-worker';
+import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { AppComponent } from './app.component';
+import { AppModule } from './app.module';
+import { UpdateService } from './update.service';
 
 describe('AppComponent', () => {
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [AppComponent],
-        imports: [
-          HttpClientModule,
-          WebAppUiModule,
-          RouterTestingModule,
-          NgbCollapseModule,
-        ],
-      }).compileComponents();
-    })
+  beforeEach(() =>
+    MockBuilder(AppComponent, AppModule).keep(UpdateService).mock(SwUpdate)
   );
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    const fixture = MockRender(AppComponent);
+    fixture.detectChanges();
+    expect(fixture.point.componentInstance).toBeTruthy();
   });
 });
