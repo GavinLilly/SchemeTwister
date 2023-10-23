@@ -12,7 +12,7 @@
   </div>
   <div class="card-body p-0" *ngIf="mastermind$ | async as mastermind">
     <ngb-accordion>
-      <ngb-panel cardClass="Mastermind" title="{{ mastermind.name }}">
+      <ngb-panel cardClass="mastermind" title="{{ mastermind.name }}">
         <ng-template ngbPanelContent>
           <schemetwister-mastermind-card-content [mastermind]="mastermind">
           </schemetwister-mastermind-card-content>

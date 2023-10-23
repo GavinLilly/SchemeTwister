@@ -2,11 +2,9 @@
   margin: 0rem 0rem 1rem 0rem;
 }
 
-::ng-deep .accordion {
-  .Mastermind {
-    .card-header {
-      background-color: rgb(255, 227, 227);
-    }
+.mastermind {
+  .card-header {
+    background-color: rgb(255, 227, 227);
   }
 }
 
