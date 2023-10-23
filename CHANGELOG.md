@@ -1,3 +1,10 @@
+## [3.11.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.11.0...v3.11.1) (2023-10-23)
+
+
+### Dependencies
+
+* **deps:** bump @babel/traverse from 7.21.5 to 7.23.2 ([0887fa7](https://github.com/GavinLilly/SchemeTwister/commit/0887fa76f1c223d32312a3706998e7a8cc4e64d1))
+
 ## [3.11.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.10.1...v3.11.0) (2023-10-17)
 
 
