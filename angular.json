@@ -27,7 +27,7 @@
           "outputs": ["coverage/libs/libtwister"]
         },
         "build": {
-          "builder": "@nrwl/node:package",
+          "builder": "@nrwl/js:tsc",
           "options": {
             "outputPath": "dist/libs/libtwister",
             "tsConfig": "libs/libtwister/tsconfig.lib.json",
@@ -39,7 +39,8 @@
           },
           "outputs": ["{options.outputPath}"]
         }
-      }
+      },
+      "tags": []
     },
     "web-app": {
       "projectType": "application",
@@ -162,7 +163,8 @@
           "builder": "@angular/fire:deploy",
           "options": {}
         }
-      }
+      },
+      "tags": []
     },
     "web-app-feature-home": {
       "projectType": "library",
@@ -194,7 +196,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": ["type:feature", "scope:web-app"]
     },
     "web-app-feature-randomize": {
       "projectType": "library",
@@ -226,7 +229,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": ["type:feature", "scope:web-app"]
     },
     "web-app-feature-store": {
       "projectType": "library",
@@ -251,7 +255,8 @@
             ]
           }
         }
-      }
+      },
+      "tags": ["type:feature", "scope:web-app"]
     },
     "web-app-feature-view": {
       "projectType": "library",
@@ -276,7 +281,8 @@
             ]
           }
         }
-      }
+      },
+      "tags": []
     },
     "web-app-shared": {
       "projectType": "library",
@@ -301,7 +307,8 @@
             ]
           }
         }
-      }
+      },
+      "tags": []
     },
     "web-app-ui": {
       "projectType": "library",
@@ -333,23 +340,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": ["type:ui", "scope:web-app"]
     }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/angular"
-  },
-  "schematics": {
-    "@nrwl/angular:application": {
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {}
-  },
-  "defaultProject": "web-app"
+  }
 }

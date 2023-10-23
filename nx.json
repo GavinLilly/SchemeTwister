@@ -12,36 +12,16 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+      "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ],
+        "parallel": 1
       }
-    }
-  },
-  "projects": {
-    "libtwister": {
-      "tags": []
-    },
-    "web-app": {
-      "tags": []
-    },
-    "web-app-feature-home": {
-      "tags": ["type:feature", "scope:web-app"]
-    },
-    "web-app-feature-randomize": {
-      "tags": ["type:feature", "scope:web-app"]
-    },
-    "web-app-feature-store": {
-      "tags": ["type:feature", "scope:web-app"]
-    },
-    "web-app-feature-view": {
-      "tags": []
-    },
-    "web-app-shared": {
-      "tags": []
-    },
-    "web-app-ui": {
-      "tags": ["type:ui", "scope:web-app"]
     }
   },
   "affected": {
@@ -54,5 +34,21 @@
         "projects": "dependencies"
       }
     ]
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "defaultProject": "web-app",
+  "generators": {
+    "@nrwl/angular:application": {
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {}
   }
 }
