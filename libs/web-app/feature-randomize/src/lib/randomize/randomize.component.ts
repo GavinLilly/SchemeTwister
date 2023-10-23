@@ -57,8 +57,10 @@ export class RandomizeComponent implements OnInit {
     }>,
     meta: Meta
   ) {
-    const deckAsNameString = (cards: AbstractCardGroup[]) =>
-      cards.map((card) => card.name).join(', ');
+    const deckAsNameString = (cards: Set<AbstractCardGroup>) =>
+      Array.from(cards)
+        .map((card) => card.name)
+        .join(', ');
 
     this.gameSetup$.subscribe((setup) => {
       meta.updateTag({

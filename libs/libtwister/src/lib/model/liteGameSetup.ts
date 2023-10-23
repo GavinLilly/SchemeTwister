@@ -114,9 +114,13 @@ export class LiteGameSetup {
       numPlayers: setup.numPlayers,
       schemeId: setup.scheme.id,
       mastermindId: setup.mastermind.id,
-      heroDeck: setup.heroDeckAsArray().map((card) => card.id),
-      villainDeck: setup.villainDeckAsArray().map((card) => card.id),
-      additionalDeck: setup.additionalDeckAsArray().map((card) => card.id),
+      heroDeck: Array.from(setup.heroDeckAsArray()).map((card) => card.id),
+      villainDeck: Array.from(setup.villainDeckAsArray()).map(
+        (card) => card.id
+      ),
+      additionalDeck: Array.from(setup.additionalDeckAsArray()).map(
+        (card) => card.id
+      ),
     });
   }
 

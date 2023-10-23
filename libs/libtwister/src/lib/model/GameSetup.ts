@@ -132,38 +132,41 @@ export class GameSetup implements IGameSetup {
    * Gets the hero deck as an array rather than a structured object
    * @returns an array of Heroes and Henchmen
    */
-  public heroDeckAsArray(): (Hero | Henchmen)[] {
-    return [...this.heroDeck.heroes, ...(this.heroDeck.henchmen ?? [])];
+  public heroDeckAsArray(): Set<Hero | Henchmen> {
+    return new Set([
+      ...(this.heroDeck.heroes ?? []),
+      ...(this.heroDeck.henchmen ?? []),
+    ]);
   }
 
   /**
    * Gets the villain deck as an array rather than a structured object
    * @returns an array of Heroes, Henchmen, Villain groups and Masterminds
    */
-  public villainDeckAsArray(): VillainAdditionalDeckCards[] {
-    return [
+  public villainDeckAsArray(): Set<VillainAdditionalDeckCards> {
+    return new Set([
       ...this.villainDeck.henchmen,
       ...this.villainDeck.villains,
       ...(this.villainDeck.masterminds ?? []),
       ...(this.villainDeck.heroes ?? []),
-    ];
+    ]);
   }
 
   /**
    * Gets the additional deck as an array rather than a structured object
    * @returns an array of Heroes, Henchmen, Villain groups and Masterminds
    */
-  public additionalDeckAsArray(): VillainAdditionalDeckCards[] {
+  public additionalDeckAsArray(): Set<VillainAdditionalDeckCards> {
     if (this.additionalDeck === undefined) {
-      return [];
+      return new Set();
     }
 
-    return [
+    return new Set([
       ...(this.additionalDeck.deck.henchmen ?? []),
       ...(this.additionalDeck.deck.heroes ?? []),
       ...(this.additionalDeck.deck.masterminds ?? []),
       ...(this.additionalDeck.deck.villains ?? []),
-    ];
+    ]);
   }
 
   /**
@@ -175,9 +178,13 @@ export class GameSetup implements IGameSetup {
       numPlayers: this.numPlayers,
       scheme: this.scheme.name,
       mastermind: this.mastermind.name,
-      heroDeck: this.heroDeckAsArray().map((card) => card.name),
-      villainDeck: this.villainDeckAsArray().map((card) => card.name),
-      additionalDeck: this.additionalDeckAsArray().map((card) => card.name),
+      heroDeck: Array.from(this.heroDeckAsArray()).map((card) => card.name),
+      villainDeck: Array.from(this.villainDeckAsArray()).map(
+        (card) => card.name
+      ),
+      additionalDeck: Array.from(this.additionalDeckAsArray()).map(
+        (card) => card.name
+      ),
     });
   }
 }
