@@ -1,3 +1,10 @@
+## [3.11.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.11.1...v3.11.2) (2023-10-23)
+
+
+### Bug Fixes
+
+* **app:** fix icons missing from additional deck ([9c181a2](https://github.com/GavinLilly/SchemeTwister/commit/9c181a2090b645db414bb65cd74e272719c97dc1))
+
 ## [3.11.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.11.0...v3.11.1) (2023-10-23)
 
 
