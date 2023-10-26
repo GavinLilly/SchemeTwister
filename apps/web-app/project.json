@@ -1,0 +1,125 @@
+{
+  "name": "web-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "generators": {
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "sourceRoot": "apps/web-app/src",
+  "prefix": "schemetwister",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/web-app",
+        "index": "apps/web-app/src/index.html",
+        "main": "apps/web-app/src/main.ts",
+        "polyfills": "apps/web-app/src/polyfills.ts",
+        "tsConfig": "apps/web-app/tsconfig.app.json",
+        "aot": true,
+        "assets": [
+          "apps/web-app/src/favicon.ico",
+          "apps/web-app/src/assets",
+          "apps/web-app/src/manifest.webmanifest",
+          {
+            "glob": "*",
+            "input": "libs/libtwister/src/assets/icons/teams",
+            "output": "./assets/icons/teams"
+          }
+        ],
+        "styles": ["apps/web-app/src/styles.scss"],
+        "scripts": [],
+        "sourceMap": true,
+        "buildOptimizer": false,
+        "optimization": false,
+        "serviceWorker": true,
+        "ngswConfigPath": "apps/web-app/ngsw-config.json"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/web-app/src/environments/environment.ts",
+              "with": "apps/web-app/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
+          ]
+        },
+        "local": {
+          "fileReplacements": [
+            {
+              "replace": "apps/web-app/src/environments/environment.ts",
+              "with": "apps/web-app/src/environments/environment.local.ts"
+            }
+          ]
+        }
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "web-app:build",
+        "proxyConfig": "apps/web-app/proxy.conf.json"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "web-app:build:production"
+        },
+        "local": {
+          "browserTarget": "web-app:build:local"
+        }
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "web-app:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/web-app/src/**/*.ts",
+          "apps/web-app/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "apps/web-app/jest.config.ts",
+        "passWithNoTests": true,
+        "codeCoverage": true
+      },
+      "outputs": ["{workspaceRoot}/coverage/apps/web-app"]
+    },
+    "deploy": {
+      "executor": "@angular/fire:deploy",
+      "options": {}
+    }
+  },
+  "tags": []
+}
