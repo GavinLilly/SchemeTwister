@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'web-app-shared',
+/* eslint-disable */
+export default {
+  displayName: 'web-app-feature-view',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +9,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/web-app/shared',
+  coverageDirectory: '../../../coverage/libs/web-app/feature-view',
   transform: {
     '^.+.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

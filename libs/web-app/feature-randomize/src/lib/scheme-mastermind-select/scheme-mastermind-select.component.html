@@ -2,16 +2,14 @@
   <h4 class="modal-title">Select {{ itemType }}</h4>
   <button
     type="button"
-    class="close"
+    class="btn-close"
     aria-label="Close"
     (click)="activeModal.dismiss('Cross click')"
-  >
-    <span aria-hidden="true" style="font-family: Arial">&times;</span>
-  </button>
+  ></button>
 </div>
 <div class="modal-body">
   <select
-    class="form-control"
+    class="form-select form-control"
     #itemSelect
     [ngModel]="selectedItem"
     [ngModelOptions]="{ standalone: true }"

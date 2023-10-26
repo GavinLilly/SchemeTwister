@@ -1,7 +1,7 @@
-module.exports = {
+/* eslint-disable */
+export default {
+  displayName: 'web-app-feature-store',
   preset: '../../../jest.preset.js',
-  coverageDirectory: '../../../coverage/libs/web-app/feature-home',
-
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -9,8 +9,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  displayName: 'web-app-feature-home',
-
+  coverageDirectory: '../../../coverage/libs/web-app/feature-store',
   transform: {
     '^.+.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

@@ -1,6 +1,7 @@
-module.exports = {
+/* eslint-disable */
+export default {
   preset: '../../../jest.preset.js',
-  coverageDirectory: '../../../coverage/libs/web-app/ui',
+  coverageDirectory: '../../../coverage/libs/web-app/feature-randomize',
 
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +10,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  displayName: 'web-app-ui',
+  displayName: 'web-app-feature-randomize',
 
   transform: {
     '^.+.(ts|mjs|js|html)$': 'jest-preset-angular',

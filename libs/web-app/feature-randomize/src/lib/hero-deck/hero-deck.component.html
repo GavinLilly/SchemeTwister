@@ -13,16 +13,16 @@
       >
         <ng-template ngbPanelHeader>
           <div class="d-flex align-items-center justify-content-between">
-            <button ngbPanelToggle class="btn btn-link m-0">
-              {{ hero.name }}
+            <button ngbPanelToggle class="accordion-button">
+              <span>{{ hero.name }}</span>
+              <img
+                *ngIf="hero.team"
+                src="/assets/icons/teams/{{ hero.team.icon }}"
+                alt="{{ hero.team.name }}"
+                class="img-fluid"
+                id="hero-team"
+              />
             </button>
-            <img
-              *ngIf="hero.team"
-              src="/assets/icons/teams/{{ hero.team.icon }}"
-              alt="{{ hero.team.name }}"
-              class="img-fluid"
-              id="hero-team"
-            />
           </div>
         </ng-template>
         <ng-template ngbPanelContent>

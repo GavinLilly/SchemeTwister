@@ -242,6 +242,8 @@ export class Scheme implements IPlayableObject {
       }
     }
 
+    returnCards.sort((a, b) => a.name.localeCompare(b.name));
+
     return new Set(returnCards);
   }
 

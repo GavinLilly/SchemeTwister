@@ -20,7 +20,7 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/libtwister/jest.config.js",
+            "jestConfig": "libs/libtwister/jest.config.ts",
             "passWithNoTests": true,
             "codeCoverage": true
           },
@@ -153,7 +153,7 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/web-app/jest.config.js",
+            "jestConfig": "apps/web-app/jest.config.ts",
             "passWithNoTests": true,
             "codeCoverage": true
           },
@@ -185,7 +185,7 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/web-app/feature-home/jest.config.js",
+            "jestConfig": "libs/web-app/feature-home/jest.config.ts",
             "passWithNoTests": true,
             "codeCoverage": true
           },
@@ -218,7 +218,7 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/web-app/feature-randomize/jest.config.js",
+            "jestConfig": "libs/web-app/feature-randomize/jest.config.ts",
             "passWithNoTests": true,
             "codeCoverage": true
           },
@@ -242,7 +242,7 @@
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web-app/feature-store"],
           "options": {
-            "jestConfig": "libs/web-app/feature-store/jest.config.js",
+            "jestConfig": "libs/web-app/feature-store/jest.config.ts",
             "passWithNoTests": true
           }
         },
@@ -268,7 +268,7 @@
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web-app/feature-view"],
           "options": {
-            "jestConfig": "libs/web-app/feature-view/jest.config.js",
+            "jestConfig": "libs/web-app/feature-view/jest.config.ts",
             "passWithNoTests": true
           }
         },
@@ -294,7 +294,7 @@
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web-app/shared"],
           "options": {
-            "jestConfig": "libs/web-app/shared/jest.config.js",
+            "jestConfig": "libs/web-app/shared/jest.config.ts",
             "passWithNoTests": true
           }
         },
@@ -329,7 +329,7 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/web-app/ui/jest.config.js",
+            "jestConfig": "libs/web-app/ui/jest.config.ts",
             "passWithNoTests": true,
             "codeCoverage": true
           },

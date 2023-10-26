@@ -26,3 +26,13 @@
 #keywords {
   margin: 0;
 }
+
+@media all and (max-width: 950px) {
+  #hero-deck-container {
+    margin-top: 1rem;
+  }
+
+  #additional-deck-container {
+    margin-bottom: 1rem;
+  }
+}

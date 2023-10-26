@@ -31,17 +31,9 @@
     class="navbar-collapse"
     id="navbarContent"
   >
-    <ul class="navbar-nav mr-auto">
-      <li
-        *ngFor="let link of links"
-        class="nav-item"
-        [routerLinkActive]="['active']"
-      >
-        <a
-          class="nav-link"
-          [routerLink]="link.link"
-          (click)="isMenuCollapsed = true"
-        >
+    <ul ngbNav>
+      <li ngbNavItem *ngFor="let link of links">
+        <a ngbNavLink [routerLink]="link.link" (click)="isMenuCollapsed = true">
           {{ link.name }}
         </a>
       </li>
