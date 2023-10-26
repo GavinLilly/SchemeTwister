@@ -74,7 +74,7 @@
     "tslib": "^2.0.0",
     "uuid": "^8.2.0",
     "validator": "^13.11.0",
-    "zone.js": "0.12.0"
+    "zone.js": "~0.13.0"
   },
   "devDependencies": {
     "@angular-devkit/architect": "0.1502.10",
