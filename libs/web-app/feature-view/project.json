@@ -6,7 +6,7 @@
   "prefix": "schemetwister",
   "targets": {
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/web-app/feature-view"],
       "options": {
         "jestConfig": "libs/web-app/feature-view/jest.config.ts",
@@ -14,7 +14,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/web-app/feature-view/src/**/*.ts",
