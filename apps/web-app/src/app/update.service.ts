@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { SwUpdate } from '@angular/service-worker';
+import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
+import { filter, tap } from 'rxjs/operators';
 
 @Injectable()
 export class UpdateService {
@@ -8,7 +9,10 @@ export class UpdateService {
       console.log(
         'Updates enabled. Will reload when an a new SchemeTwister version is available'
       );
-      _updates.available.subscribe(() => this._promptUser());
+      _updates.versionUpdates.pipe(
+        filter((evt): evt is VersionReadyEvent => evt.type === 'VERSION_READY'),
+        tap(() => this._promptUser())
+      );
     }
   }
 

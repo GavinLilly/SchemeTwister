@@ -1,5 +1,5 @@
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
+import { EffectsFeatureModule, EffectsModule } from '@ngrx/effects';
+import { StoreFeatureModule, StoreModule } from '@ngrx/store';
 import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { WebAppFeatureRandomizeModule } from '../../web-app-feature-randomize.module';
@@ -12,6 +12,8 @@ describe('GameSetsEffects', () => {
       [GameSetsEffects, StoreModule.forRoot({}), EffectsModule.forRoot()],
       WebAppFeatureRandomizeModule
     )
+      .keep(StoreFeatureModule)
+      .keep(EffectsFeatureModule)
   );
 
   it('should be created', () => {

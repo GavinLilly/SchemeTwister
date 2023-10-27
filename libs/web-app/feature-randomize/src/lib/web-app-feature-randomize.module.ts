@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -76,6 +76,5 @@ import { VillainDeckComponent } from './villain-deck/villain-deck.component';
     MastermindCardComponent,
   ],
   providers: [CookieService],
-  entryComponents: [GameSetSelectComponent],
 })
 export class WebAppFeatureRandomizeModule {}

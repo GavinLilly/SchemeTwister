@@ -1,0 +1,27 @@
+{
+  "name": "web-app-shared",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/web-app/shared/src",
+  "prefix": "schemetwister",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/web-app/shared"],
+      "options": {
+        "jestConfig": "libs/web-app/shared/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web-app/shared/src/**/*.ts",
+          "libs/web-app/shared/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

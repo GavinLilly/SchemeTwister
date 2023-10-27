@@ -21,7 +21,7 @@
               <div class="form-group text-left">
                 <label for="numPlayersSelect">Players</label>
                 <select
-                  class="custom-select mb-1 form-control"
+                  class="form-select mb-3 form-control"
                   #numPlayersSelect
                   [ngModel]="numberPlayers"
                   [ngModelOptions]="{ standalone: true }"
@@ -82,7 +82,7 @@
     </div>
 
     <!--Hero deck-->
-    <div class="col-12 col-lg-4">
+    <div class="col-12 col-lg-4" id="hero-deck-container">
       <schemetwister-hero-deck></schemetwister-hero-deck>
     </div>
   </div>
@@ -102,6 +102,7 @@
           : 'col-12'
       "
       *ngIf="gameSetup.additionalDeck"
+      id="additional-deck-container"
     >
       <schemetwister-additional-deck></schemetwister-additional-deck>
     </div>

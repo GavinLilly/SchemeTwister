@@ -1,8 +1,8 @@
-FROM node:16 as builder
+FROM node:16 AS builder
 
 WORKDIR /build
 
-COPY angular.json decorate-angular-cli.js nx.json package-lock.json package.json tsconfig.base.json ./
+COPY decorate-angular-cli.js nx.json package-lock.json package.json tsconfig.base.json ./
 COPY apps apps/
 COPY libs libs/
 

@@ -21,7 +21,7 @@ import { IGameSetsState } from '../reducers/game-sets.reducer';
 export class GameSetsEffects {
   private static readonly _cookieName = 'SelectedGameSets';
 
-  validateSetGameSets$ = createEffect(() =>
+  readonly validateSetGameSets$ = createEffect(() =>
     this._actions$.pipe(
       ofType(setGameSets),
       map((action) =>
@@ -32,7 +32,7 @@ export class GameSetsEffects {
     )
   );
 
-  validateAddGameSet$ = createEffect(() =>
+  readonly validateAddGameSet$ = createEffect(() =>
     this._actions$.pipe(
       ofType(addGameSet),
       withLatestFrom(this._store.select((state) => state.gameSets.gameSetIds)),
@@ -46,7 +46,7 @@ export class GameSetsEffects {
     )
   );
 
-  validateRemoveGameSet$ = createEffect(() =>
+  readonly validateRemoveGameSet$ = createEffect(() =>
     this._actions$.pipe(
       ofType(removeGameSet),
       withLatestFrom(this._store.select((state) => state.gameSets.gameSetIds)),

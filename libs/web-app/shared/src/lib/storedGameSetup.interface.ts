@@ -1,6 +1,5 @@
-import { Timestamp } from '@firebase/firestore-types';
+import { Timestamp } from '@angular/fire/firestore';
 import { GameSetup, LiteGameSetup } from '@schemetwister/libtwister';
-import firebase from 'firebase/app';
 
 export const TWIST_COUNT_NAME = 'twistCount';
 
@@ -18,6 +17,6 @@ export const EMPTY_STORED_SETUP: IStoredGameSetup = {
   twistCount: 1,
   playCount: 0,
   winCount: 0,
-  created: firebase.firestore.Timestamp.now(),
-  updated: firebase.firestore.Timestamp.now(),
+  created: Timestamp.now(),
+  updated: Timestamp.now(),
 };

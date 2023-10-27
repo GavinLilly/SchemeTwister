@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { increment, Timestamp } from '@angular/fire/firestore';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { LibTwister, LiteGameSetup } from '@schemetwister/libtwister';
@@ -7,7 +8,6 @@ import {
   StoredSetupsService,
   TWIST_COUNT_NAME,
 } from '@schemetwister/web-app/shared';
-import firebase from 'firebase/app';
 import { of, from } from 'rxjs';
 import {
   catchError,
@@ -47,7 +47,7 @@ export class GameSetupEffects {
     private _storedSetupsService: StoredSetupsService
   ) {}
 
-  generateGameSetup$ = createEffect(() =>
+  readonly generateGameSetup$ = createEffect(() =>
     this._actions$.pipe(
       ofType(
         fromGameSetupActions.generateGameSetup,
@@ -95,7 +95,7 @@ export class GameSetupEffects {
     )
   );
 
-  storeGameSetup$ = createEffect(() =>
+  readonly storeGameSetup$ = createEffect(() =>
     this._actions$.pipe(
       ofType(fromGameSetupActions.generateGameSetupSuccess),
       debounceTime(GameSetupEffects._storeSendWaitSeconds * 1000),
@@ -108,18 +108,13 @@ export class GameSetupEffects {
       }),
       map(({ queryResult, setup }) => {
         if (queryResult.exists) {
-          return from(
-            queryResult.ref.update(
-              TWIST_COUNT_NAME,
-              firebase.firestore.FieldValue.increment(1)
-            )
-          );
+          return from(queryResult.ref.update(TWIST_COUNT_NAME, increment(1)));
         } else {
           const newSetup = {
             ...LiteGameSetup.of(setup),
             twistCount: 1,
-            created: firebase.firestore.Timestamp.now(),
-            updated: firebase.firestore.Timestamp.now(),
+            created: Timestamp.now(),
+            updated: Timestamp.now(),
             playCount: 0,
             winCount: 0,
           } as IStoredGameSetup;

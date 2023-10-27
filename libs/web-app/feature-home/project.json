@@ -1,0 +1,34 @@
+{
+  "name": "web-app-feature-home",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/web-app/feature-home/src",
+  "prefix": "schemetwister",
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web-app/feature-home/src/**/*.ts",
+          "libs/web-app/feature-home/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "libs/web-app/feature-home/jest.config.ts",
+        "passWithNoTests": true,
+        "codeCoverage": true
+      },
+      "outputs": ["{workspaceRoot}/coverage/libs/web-app/feature-home"]
+    }
+  },
+  "generators": {
+    "@nx/angular:component": {
+      "style": "scss"
+    }
+  },
+  "tags": ["type:feature", "scope:web-app"]
+}

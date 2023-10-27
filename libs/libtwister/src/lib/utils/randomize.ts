@@ -22,7 +22,7 @@ export function randomize<T>(originalArray: T[], count: number): T | T[];
  * @returns An array of cards
  */
 // eslint-disable-next-line no-redeclare
-export function randomize<T>(originalArray: T[], count: number = 1): T | T[] {
+export function randomize<T>(originalArray: T[], count = 1): T | T[] {
   if (count < 1) {
     throw new RangeError(`Count must be 1 or higher`);
   }

@@ -1,0 +1,27 @@
+{
+  "name": "web-app-feature-store",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/web-app/feature-store/src",
+  "prefix": "schemetwister",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/web-app/feature-store"],
+      "options": {
+        "jestConfig": "libs/web-app/feature-store/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web-app/feature-store/src/**/*.ts",
+          "libs/web-app/feature-store/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["type:feature", "scope:web-app"]
+}
