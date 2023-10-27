@@ -47,7 +47,7 @@ export class GameSetupEffects {
     private _storedSetupsService: StoredSetupsService
   ) {}
 
-  generateGameSetup$ = createEffect(() =>
+  readonly generateGameSetup$ = createEffect(() =>
     this._actions$.pipe(
       ofType(
         fromGameSetupActions.generateGameSetup,
@@ -95,7 +95,7 @@ export class GameSetupEffects {
     )
   );
 
-  storeGameSetup$ = createEffect(() =>
+  readonly storeGameSetup$ = createEffect(() =>
     this._actions$.pipe(
       ofType(fromGameSetupActions.generateGameSetupSuccess),
       debounceTime(GameSetupEffects._storeSendWaitSeconds * 1000),
