@@ -1,9 +1,5 @@
-import {
-  EffectsFeatureModule,
-  EffectsModule,
-  EffectsRootModule,
-} from '@ngrx/effects';
-import { StoreFeatureModule, StoreModule, StoreRootModule } from '@ngrx/store';
+import { EffectsFeatureModule, EffectsModule } from '@ngrx/effects';
+import { StoreFeatureModule, StoreModule } from '@ngrx/store';
 import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { WebAppFeatureRandomizeModule } from '../../web-app-feature-randomize.module';

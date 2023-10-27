@@ -1,6 +1,5 @@
 import { EffectsFeatureModule, EffectsModule } from '@ngrx/effects';
 import { StoreFeatureModule, StoreModule } from '@ngrx/store';
-import { WebAppSharedModule } from '@schemetwister/web-app/shared';
 import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { WebAppFeatureRandomizeModule } from '../../web-app-feature-randomize.module';
