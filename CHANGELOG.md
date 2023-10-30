@@ -1,3 +1,10 @@
+## [3.11.3](https://github.com/GavinLilly/SchemeTwister/compare/v3.11.2...v3.11.3) (2023-10-30)
+
+
+### Dependencies
+
+* **deps:** bump got and firebase-tools ([#127](https://github.com/GavinLilly/SchemeTwister/issues/127)) ([9206bf9](https://github.com/GavinLilly/SchemeTwister/commit/9206bf9dee7029b05a2d3b1c3f153da64e777948))
+
 ## [3.11.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.11.1...v3.11.2) (2023-10-23)
 
 
