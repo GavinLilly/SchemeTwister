@@ -57,6 +57,7 @@
     "@ngrx/component-store": "16.0.1",
     "@ngrx/effects": "16.0.1",
     "@ngrx/store": "16.0.1",
+    "@nx/angular": "16.10.0",
     "@popperjs/core": "^2.11.6",
     "bootstrap": "~5.2.3",
     "class-transformer": "^0.5.1",
@@ -68,13 +69,12 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "7.8.1",
     "seedrandom": "^3.0.5",
-    "ts-deepmerge": "^2.0.2",
+    "ts-deepmerge": "^6.2.0",
     "ts-is-present": "^1.2.2",
     "tslib": "^2.0.0",
     "uuid": "^8.2.0",
     "validator": "^13.11.0",
-    "zone.js": "0.13.3",
-    "@nx/angular": "16.10.0"
+    "zone.js": "0.13.3"
   },
   "devDependencies": {
     "@angular-devkit/architect": "0.1602.8",
@@ -91,12 +91,12 @@
     "@commitlint/config-conventional": "^15.0.0",
     "@ngrx/schematics": "16.0.1",
     "@ngrx/store-devtools": "16.0.1",
-    "@nx/workspace": "16.10.0",
-    "@nx/js": "16.10.0",
     "@nx/eslint-plugin": "16.10.0",
-    "@nx/node": "16.10.0",
     "@nx/jest": "16.10.0",
+    "@nx/js": "16.10.0",
     "@nx/linter": "16.10.0",
+    "@nx/node": "16.10.0",
+    "@nx/workspace": "16.10.0",
     "@schematics/angular": "16.2.8",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/exec": "^6.0.2",
@@ -135,7 +135,7 @@
     "ts-jest": "29.1.1",
     "ts-node": "10.9.1",
     "ts-prune": "^0.10.3",
-    "type-fest": "2.18",
+    "type-fest": "^4.6.0",
     "typescript": "5.1.6"
   },
   "config": {

@@ -407,7 +407,7 @@ export class Scheme implements IPlayableObject {
    * @returns a configured instance of an {@link Scheme}
    */
   public overrideDefaultRules(override: PartialDeep<INumPlayerRules>): this {
-    this.overrideEachRule((rule) => merge(rule, override));
+    this.overrideEachRule((rule) => merge(rule, override) as INumPlayerRules);
     return this;
   }
 
