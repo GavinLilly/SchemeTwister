@@ -1,22 +1,13 @@
-import { createAction, props } from '@ngrx/store';
+/* eslint-disable @typescript-eslint/naming-convention */
+import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { NumPlayers } from '@schemetwister/libtwister';
 
-const domain = '[Randomize Page]';
-
-export const incrementNumPlayers = createAction(
-  `${domain} Increment NumPlayers`
-);
-
-export const decrementNumPlayers = createAction(
-  `${domain} Decrement NumPlayers`
-);
-
-export const setNumPlayers = createAction(
-  `${domain} Set NumPlayers`,
-  props<{ numPlayers: NumPlayers }>()
-);
-
-export const setAdvancedSolo = createAction(
-  `${domain} Set AdvancedSolo`,
-  props<{ isAdvancedSolo: boolean }>()
-);
+export const numPlayersActions = createActionGroup({
+  source: 'Number of players component',
+  events: {
+    'Increment Number of Players': emptyProps(),
+    'Decrement Number of Players': emptyProps(),
+    'Set Number of Players': props<{ numPlayers: NumPlayers }>(),
+    'Set AdvancedSolo': props<{ isAdvancedSolo: boolean }>(),
+  },
+});

@@ -2,11 +2,8 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { LibTwister } from '@schemetwister/libtwister';
 
 import {
-  addGameSet,
-  removeGameSet,
-  setGameSets,
-  setGameSetsFailure,
-  setGameSetsSuccess,
+  gameSetSelectionActions as fromGameSetDialog,
+  gameSetCheckerActions as fromGameSetChecker,
 } from '../actions/game-sets.actions';
 
 export const gameSetsFeatureKey = 'gameSets';
@@ -26,19 +23,24 @@ export const initialState: IGameSetsState = {
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const _gameSetsReducer = createReducer(
   initialState,
-  on(setGameSets, addGameSet, removeGameSet, (state) => ({
-    ...state,
-    loading: true,
-    error: '',
-  })),
-  on(setGameSetsSuccess, (state, { gameSetIds }) => ({
+  on(
+    fromGameSetDialog.setGameSets,
+    fromGameSetDialog.addGameSet,
+    fromGameSetDialog.removeGameSet,
+    (state) => ({
+      ...state,
+      loading: true,
+      error: '',
+    })
+  ),
+  on(fromGameSetChecker.setGameSetsSuccess, (state, { gameSetIds }) => ({
     ...state,
     gameSetIds: gameSetIds,
     loading: false,
   })),
-  on(setGameSetsFailure, (state, { payload }) => ({
+  on(fromGameSetChecker.setGameSetsFailure, (state, { payload }) => ({
     ...state,
-    error: payload.errorMessage,
+    error: payload.error,
   }))
 );
 

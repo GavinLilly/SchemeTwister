@@ -5,11 +5,8 @@ import { LibTwister } from '@schemetwister/libtwister';
 import { map, withLatestFrom } from 'rxjs/operators';
 
 import {
-  addGameSet,
-  removeGameSet,
-  setGameSets,
-  setGameSetsFailure,
-  setGameSetsSuccess,
+  gameSetSelectionActions as fromGameSetDialog,
+  gameSetCheckerActions as fromGameSetChecker,
 } from '../actions/game-sets.actions';
 import { IGameSetsState } from '../reducers/game-sets.reducer';
 
@@ -17,32 +14,34 @@ import { IGameSetsState } from '../reducers/game-sets.reducer';
 export class GameSetsEffects {
   readonly validateSetGameSets$ = createEffect(() =>
     this._actions$.pipe(
-      ofType(setGameSets),
+      ofType(fromGameSetDialog.setGameSets),
       map((action) =>
         LibTwister.validateGameSetIds(action.gameSetIds)
-          ? setGameSetsSuccess({ gameSetIds: action.gameSetIds })
-          : setGameSetsFailure()
+          ? fromGameSetChecker.setGameSetsSuccess({
+              gameSetIds: action.gameSetIds,
+            })
+          : fromGameSetChecker.setGameSetsFailure()
       )
     )
   );
 
   readonly validateAddGameSet$ = createEffect(() =>
     this._actions$.pipe(
-      ofType(addGameSet),
+      ofType(fromGameSetDialog.addGameSet),
       withLatestFrom(this._store.select((state) => state.gameSets.gameSetIds)),
       map(([action, gameSetIds]) => {
         const newGameSetIds: string[] = gameSetIds.concat(action.gameSetId);
 
         return LibTwister.validateGameSetIds(newGameSetIds)
-          ? setGameSetsSuccess({ gameSetIds: newGameSetIds })
-          : setGameSetsFailure();
+          ? fromGameSetChecker.setGameSetsSuccess({ gameSetIds: newGameSetIds })
+          : fromGameSetChecker.setGameSetsFailure();
       })
     )
   );
 
   readonly validateRemoveGameSet$ = createEffect(() =>
     this._actions$.pipe(
-      ofType(removeGameSet),
+      ofType(fromGameSetDialog.removeGameSet),
       withLatestFrom(this._store.select((state) => state.gameSets.gameSetIds)),
       map(([action, gameSets]) => {
         const deleteIdx = gameSets.indexOf(action.gameSetId);
@@ -53,8 +52,8 @@ export class GameSetsEffects {
         const newGameSetIds = [...firstSection, ...secondSection];
 
         return LibTwister.validateGameSetIds(newGameSetIds)
-          ? setGameSetsSuccess({ gameSetIds: newGameSetIds })
-          : setGameSetsFailure();
+          ? fromGameSetChecker.setGameSetsSuccess({ gameSetIds: newGameSetIds })
+          : fromGameSetChecker.setGameSetsFailure();
       })
     )
   );

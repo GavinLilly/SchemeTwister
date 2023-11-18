@@ -1,12 +1,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { NumPlayers } from '@schemetwister/libtwister';
 
-import {
-  decrementNumPlayers,
-  incrementNumPlayers,
-  setAdvancedSolo,
-  setNumPlayers,
-} from '../actions/num-players.actions';
+import { numPlayersActions } from '../actions/num-players.actions';
 
 export const numPlayersFeatureKey = 'numPlayers';
 
@@ -23,19 +18,19 @@ export const initialState: INumPlayersState = {
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const _numPlayersReducer = createReducer(
   initialState,
-  on(incrementNumPlayers, (state) => ({
+  on(numPlayersActions.incrementNumberOfPlayers, (state) => ({
     ...state,
     numPlayers: (state.numPlayers + 1) as NumPlayers,
   })),
-  on(decrementNumPlayers, (state) => ({
+  on(numPlayersActions.decrementNumberOfPlayers, (state) => ({
     ...state,
     numPlayers: (state.numPlayers - 1) as NumPlayers,
   })),
-  on(setNumPlayers, (state, { numPlayers }) => ({
+  on(numPlayersActions.setNumberOfPlayers, (state, { numPlayers }) => ({
     ...state,
     numPlayers: numPlayers,
   })),
-  on(setAdvancedSolo, (state, { isAdvancedSolo }) => ({
+  on(numPlayersActions.setAdvancedSolo, (state, { isAdvancedSolo }) => ({
     ...state,
     isAdvancedSolo: isAdvancedSolo,
   }))
