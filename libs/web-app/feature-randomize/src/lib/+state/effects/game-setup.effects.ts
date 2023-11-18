@@ -17,9 +17,9 @@ import {
   mergeMap,
 } from 'rxjs/operators';
 
-import { setGameSetsSuccess } from '../actions/game-sets.actions';
+import { gameSetCheckerActions } from '../actions/game-sets.actions';
 import * as fromGameSetupActions from '../actions/game-setup.actions';
-import * as fromNumPlayersActions from '../actions/num-players.actions';
+import { numPlayersActions } from '../actions/num-players.actions';
 import { IGameSetsState } from '../reducers/game-sets.reducer';
 import { IGameSetupState } from '../reducers/game-setup.reducer';
 import { INumPlayersState } from '../reducers/num-players.reducer';
@@ -55,11 +55,11 @@ export class GameSetupEffects {
         fromGameSetupActions.setDefinedMastermind,
         fromGameSetupActions.resetDefinedScheme,
         fromGameSetupActions.resetDefinedMastermind,
-        fromNumPlayersActions.setNumPlayers,
-        fromNumPlayersActions.incrementNumPlayers,
-        fromNumPlayersActions.decrementNumPlayers,
-        fromNumPlayersActions.setAdvancedSolo,
-        setGameSetsSuccess
+        numPlayersActions.setNumberOfPlayers,
+        numPlayersActions.incrementNumberOfPlayers,
+        numPlayersActions.decrementNumberOfPlayers,
+        numPlayersActions.setAdvancedSolo,
+        gameSetCheckerActions.setGameSetsSuccess
       ),
       concatLatestFrom(() => [
         this._store.select(selectGameSetIds),
