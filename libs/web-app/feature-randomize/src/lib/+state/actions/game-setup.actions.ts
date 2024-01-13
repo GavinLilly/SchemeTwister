@@ -1,51 +1,42 @@
-import { createAction, props } from '@ngrx/store';
+/* eslint-disable @typescript-eslint/naming-convention */
+import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import {
   Mastermind,
   SchemeMinusRules,
   GameSetup,
 } from '@schemetwister/libtwister';
 
-const domain = '[Randomize Page]';
+export const randomizePageActions = createActionGroup({
+  source: 'Randomize Page',
+  events: {
+    'Generate GameSetup': emptyProps(),
+    'Set Defined Scheme': props<{ scheme: SchemeMinusRules }>(),
+    'Reset Defined Scheme': emptyProps(),
+    'Set Defined Mastermind': props<{ mastermind: Mastermind }>(),
+    'Reset Defined Mastermind': emptyProps(),
+  },
+});
 
-export const generateGameSetup = createAction(`${domain} Generate GameSetup`);
+export const gameSetupGeneratorActions = createActionGroup({
+  source: 'Game Setup Generator',
+  events: {
+    Success: props<{ gameSetup: GameSetup }>(),
+    Failure: (error?: Error) => ({
+      payload: {
+        error: error?.message ?? 'Error generating Game Setup',
+      },
+    }),
+  },
+});
 
-export const generateGameSetupSuccess = createAction(
-  `${domain} Generate GameSetup Success`,
-  props<{ gameSetup: GameSetup }>()
-);
-
-export const generateGameSetupFailure = createAction(
-  `${domain} Generate GameSetup Failure`,
-  (errorMessage = 'Error generating Game Setup') => ({
-    payload: { errorMessage },
-  })
-);
-
-export const setDefinedScheme = createAction(
-  `${domain} Set Defined Scheme`,
-  props<{ scheme: SchemeMinusRules }>()
-);
-
-export const resetDefinedScheme = createAction(
-  `${domain} Reset Defined Scheme`
-);
-
-export const setDefinedMastermind = createAction(
-  `${domain} Set Defined Mastermind`,
-  props<{ mastermind: Mastermind }>()
-);
-
-export const resetDefinedMastermind = createAction(
-  `${domain} Reset Defined Mastermind`
-);
-
-export const saveGameSetupSuccess = createAction(
-  `${domain} Save GameSetup Success`
-);
-
-export const saveGameSetupFailure = createAction(
-  `${domain} Save GameSetup Failure`,
-  (errorMessage = 'Error saving Game Setup') => ({
-    payload: { errorMessage },
-  })
-);
+export const saveGameSetupActions = createActionGroup({
+  source: 'Game Setup Saver',
+  events: {
+    Success: emptyProps(),
+    Failure: (error?: Error) => ({
+      payload: {
+        error: error?.message ?? 'Error saving Game Setup',
+      },
+    }),
+  },
+});

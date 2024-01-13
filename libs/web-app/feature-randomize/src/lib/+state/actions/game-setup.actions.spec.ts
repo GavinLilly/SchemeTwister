@@ -1,8 +1,8 @@
-import * as fromGameSetup from './game-setup.actions';
+import { randomizePageActions } from './game-setup.actions';
 
 describe('generateGameSetups', () => {
   it('should return an action', () => {
-    expect(fromGameSetup.generateGameSetup().type).toBe(
+    expect(randomizePageActions.generateGameSetup().type).toBe(
       '[Randomize Page] Generate GameSetup'
     );
   });

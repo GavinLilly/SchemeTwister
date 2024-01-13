@@ -12,12 +12,7 @@ import {
 } from '@schemetwister/libtwister';
 import { Observable } from 'rxjs';
 
-import {
-  resetDefinedMastermind,
-  resetDefinedScheme,
-  setDefinedMastermind,
-  setDefinedScheme,
-} from '../+state/actions/game-setup.actions';
+import { randomizePageActions } from '../+state/actions/game-setup.actions';
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
 import { INumPlayersState } from '../+state/reducers/num-players.reducer';
 import { selectLibTwister } from '../+state/selectors/game-sets.selectors';
@@ -87,18 +82,22 @@ export class SchemeMastermindSelectComponent implements OnInit {
     if (this.itemType === CARD_TYPE.scheme) {
       if (item !== undefined) {
         this._store.dispatch(
-          setDefinedScheme({ scheme: item as SchemeMinusRules })
+          randomizePageActions.setDefinedScheme({
+            scheme: item as SchemeMinusRules,
+          })
         );
       } else {
-        this._store.dispatch(resetDefinedScheme());
+        this._store.dispatch(randomizePageActions.resetDefinedScheme());
       }
     } else if (this.itemType === CARD_TYPE.mastermind) {
       if (item !== undefined) {
         this._store.dispatch(
-          setDefinedMastermind({ mastermind: item as Mastermind })
+          randomizePageActions.setDefinedMastermind({
+            mastermind: item as Mastermind,
+          })
         );
       } else {
-        this._store.dispatch(resetDefinedMastermind());
+        this._store.dispatch(randomizePageActions.resetDefinedMastermind());
       }
     }
   }

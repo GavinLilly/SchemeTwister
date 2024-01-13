@@ -8,13 +8,8 @@ import {
 } from '@schemetwister/libtwister';
 
 import {
-  generateGameSetup,
-  generateGameSetupFailure,
-  generateGameSetupSuccess,
-  resetDefinedMastermind,
-  resetDefinedScheme,
-  setDefinedMastermind,
-  setDefinedScheme,
+  gameSetupGeneratorActions,
+  randomizePageActions,
 } from '../actions/game-setup.actions';
 
 export const gameSetupFeatureKey = 'gameSetup';
@@ -36,26 +31,32 @@ export const initialState: IGameSetupState = {
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const _gameSetupReducer = createReducer(
   initialState,
-  on(generateGameSetup, (state) => ({ ...state, loading: true })),
-  on(generateGameSetupSuccess, (state, { gameSetup }) => ({
+  on(randomizePageActions.generateGameSetup, (state) => ({
+    ...state,
+    loading: true,
+  })),
+  on(gameSetupGeneratorActions.success, (state, { gameSetup }) => ({
     ...state,
     gameSetup: gameSetup,
     loading: false,
   })),
-  on(generateGameSetupFailure, (state, { payload }) => ({
+  on(gameSetupGeneratorActions.failure, (state, { payload }) => ({
     ...state,
-    error: payload.errorMessage,
+    error: payload.error,
   })),
-  on(setDefinedScheme, (state, { scheme }) => ({
+  on(randomizePageActions.setDefinedScheme, (state, { scheme }) => ({
     ...state,
     definedScheme: scheme,
   })),
-  on(setDefinedMastermind, (state, { mastermind }) => ({
+  on(randomizePageActions.setDefinedMastermind, (state, { mastermind }) => ({
     ...state,
     definedMastermind: mastermind,
   })),
-  on(resetDefinedScheme, (state) => ({ ...state, definedScheme: undefined })),
-  on(resetDefinedMastermind, (state) => ({
+  on(randomizePageActions.resetDefinedScheme, (state) => ({
+    ...state,
+    definedScheme: undefined,
+  })),
+  on(randomizePageActions.resetDefinedMastermind, (state) => ({
     ...state,
     definedMastermind: undefined,
   }))
