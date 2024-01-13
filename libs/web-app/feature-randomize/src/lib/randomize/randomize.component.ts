@@ -16,10 +16,7 @@ import {
   resetDefinedMastermind,
   resetDefinedScheme,
 } from '../+state/actions/game-setup.actions';
-import {
-  setAdvancedSolo,
-  setNumPlayers,
-} from '../+state/actions/num-players.actions';
+import { numPlayersActions } from '../+state/actions/num-players.actions';
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
 import { INumPlayersState } from '../+state/reducers/num-players.reducer';
 import { selectGameSetup } from '../+state/selectors/game-setup-scheme.selectors';
@@ -83,12 +80,16 @@ export class RandomizeComponent implements OnInit {
   setPlayers(value: string) {
     const realValue = parseInt(value);
     this._store.dispatch(
-      setNumPlayers({ numPlayers: realValue as NumPlayers })
+      numPlayersActions.setNumberOfPlayers({
+        numPlayers: realValue as NumPlayers,
+      })
     );
   }
 
   setAdvancedSolo(isEnabled: boolean) {
-    this._store.dispatch(setAdvancedSolo({ isAdvancedSolo: isEnabled }));
+    this._store.dispatch(
+      numPlayersActions.setAdvancedSolo({ isAdvancedSolo: isEnabled })
+    );
   }
 
   pickGameSets() {

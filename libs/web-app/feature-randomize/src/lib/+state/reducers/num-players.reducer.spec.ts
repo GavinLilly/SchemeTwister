@@ -1,15 +1,11 @@
-import {
-  decrementNumPlayers,
-  incrementNumPlayers,
-  setNumPlayers,
-} from '../actions/num-players.actions';
+import { numPlayersActions } from '../actions/num-players.actions';
 
 import { numPlayersReducer, initialState } from './num-players.reducer';
 
 describe('NumPlayers Reducer', () => {
   describe('incrementNumPlayers', () => {
     it('should increment the number of players by 1', () => {
-      const action = incrementNumPlayers;
+      const action = numPlayersActions.incrementNumberOfPlayers;
 
       const result = numPlayersReducer(initialState, action);
 
@@ -19,7 +15,7 @@ describe('NumPlayers Reducer', () => {
 
   describe('decrementNumPlayers', () => {
     it('should decrement the number of players by 1', () => {
-      const action = decrementNumPlayers;
+      const action = numPlayersActions.decrementNumberOfPlayers;
 
       const result = numPlayersReducer(initialState, action);
 
@@ -29,7 +25,7 @@ describe('NumPlayers Reducer', () => {
 
   describe('setNumPlayers', () => {
     it('should set the number of players to 4', () => {
-      const action = setNumPlayers;
+      const action = numPlayersActions.setNumberOfPlayers;
 
       const result = numPlayersReducer(initialState, action({ numPlayers: 4 }));
 
