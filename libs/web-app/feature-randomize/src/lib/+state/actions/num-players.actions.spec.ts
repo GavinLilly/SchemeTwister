@@ -1,25 +1,25 @@
-import * as fromNumPlayers from './num-players.actions';
+import { numPlayersActions } from './num-players.actions';
 
 describe('incrementNumPlayers', () => {
   it('should return an action', () => {
-    expect(fromNumPlayers.incrementNumPlayers().type).toBe(
-      '[Randomize Page] Increment NumPlayers'
+    expect(numPlayersActions.incrementNumberOfPlayers().type).toBe(
+      '[Number of players component] Increment Number of Players'
     );
   });
 });
 
 describe('decrementNumPlayers', () => {
   it('should return an action', () => {
-    expect(fromNumPlayers.decrementNumPlayers().type).toBe(
-      '[Randomize Page] Decrement NumPlayers'
+    expect(numPlayersActions.decrementNumberOfPlayers().type).toBe(
+      '[Number of players component] Decrement Number of Players'
     );
   });
 });
 
 describe('setNumPlayers', () => {
   it('should return an action', () => {
-    expect(fromNumPlayers.setNumPlayers({ numPlayers: 2 }).type).toBe(
-      '[Randomize Page] Set NumPlayers'
+    expect(numPlayersActions.setNumberOfPlayers({ numPlayers: 2 }).type).toBe(
+      '[Number of players component] Set Number of Players'
     );
   });
 });

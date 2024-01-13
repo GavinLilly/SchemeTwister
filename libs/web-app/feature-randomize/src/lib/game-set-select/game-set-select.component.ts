@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { GameSet, GAME_SET_SIZE, LibTwister } from '@schemetwister/libtwister';
 import { Observable } from 'rxjs';
 
-import { setGameSets } from '../+state/actions/game-sets.actions';
+import { gameSetSelectionActions as fromGameSetDialog } from '../+state/actions/game-sets.actions';
 import { IGameSetsState } from '../+state/reducers/game-sets.reducer';
 import { selectGameSets } from '../+state/selectors/game-sets.selectors';
 
@@ -47,7 +47,9 @@ export class GameSetSelectComponent {
 
   onSelectedUpdate(selected: GameSet[]) {
     this._store.dispatch(
-      setGameSets({ gameSetIds: selected.map((item) => item.id) })
+      fromGameSetDialog.setGameSets({
+        gameSetIds: selected.map((item) => item.id),
+      })
     );
   }
 }
