@@ -18,7 +18,11 @@ import {
 } from 'rxjs/operators';
 
 import { gameSetCheckerActions } from '../actions/game-sets.actions';
-import * as fromGameSetupActions from '../actions/game-setup.actions';
+import {
+  randomizePageActions,
+  gameSetupGeneratorActions,
+  saveGameSetupActions,
+} from '../actions/game-setup.actions';
 import { numPlayersActions } from '../actions/num-players.actions';
 import { IGameSetsState } from '../reducers/game-sets.reducer';
 import { IGameSetupState } from '../reducers/game-setup.reducer';
@@ -50,11 +54,11 @@ export class GameSetupEffects {
   readonly generateGameSetup$ = createEffect(() =>
     this._actions$.pipe(
       ofType(
-        fromGameSetupActions.generateGameSetup,
-        fromGameSetupActions.setDefinedScheme,
-        fromGameSetupActions.setDefinedMastermind,
-        fromGameSetupActions.resetDefinedScheme,
-        fromGameSetupActions.resetDefinedMastermind,
+        randomizePageActions.generateGameSetup,
+        randomizePageActions.setDefinedScheme,
+        randomizePageActions.setDefinedMastermind,
+        randomizePageActions.resetDefinedScheme,
+        randomizePageActions.resetDefinedMastermind,
         numPlayersActions.setNumberOfPlayers,
         numPlayersActions.incrementNumberOfPlayers,
         numPlayersActions.decrementNumberOfPlayers,
@@ -84,12 +88,10 @@ export class GameSetupEffects {
             isAdvancedSolo
           )
       ),
-      map((setup) =>
-        fromGameSetupActions.generateGameSetupSuccess({ gameSetup: setup })
-      ),
+      map((setup) => gameSetupGeneratorActions.success({ gameSetup: setup })),
       catchError((error) => {
         console.error('Error while generating setup', error);
-        return of(fromGameSetupActions.generateGameSetupFailure(error));
+        return of(gameSetupGeneratorActions.failure(error));
       }),
       repeat()
     )
@@ -97,7 +99,7 @@ export class GameSetupEffects {
 
   readonly storeGameSetup$ = createEffect(() =>
     this._actions$.pipe(
-      ofType(fromGameSetupActions.generateGameSetupSuccess),
+      ofType(gameSetupGeneratorActions.success),
       debounceTime(GameSetupEffects._storeSendWaitSeconds * 1000),
       map((action) => action.gameSetup),
       mergeMap((setup) => {
@@ -122,10 +124,10 @@ export class GameSetupEffects {
           return from(queryResult.ref.set(newSetup));
         }
       }),
-      map(() => fromGameSetupActions.saveGameSetupSuccess()),
+      map(() => saveGameSetupActions.success()),
       catchError((error) => {
         console.error('Error while sending setup to Firestore', error);
-        return of(fromGameSetupActions.saveGameSetupFailure(error));
+        return of(saveGameSetupActions.failure(error));
       })
     )
   );

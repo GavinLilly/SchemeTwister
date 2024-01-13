@@ -11,11 +11,7 @@ import {
 } from '@schemetwister/libtwister';
 import { Observable } from 'rxjs';
 
-import {
-  generateGameSetup,
-  resetDefinedMastermind,
-  resetDefinedScheme,
-} from '../+state/actions/game-setup.actions';
+import { randomizePageActions } from '../+state/actions/game-setup.actions';
 import { numPlayersActions } from '../+state/actions/num-players.actions';
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
 import { INumPlayersState } from '../+state/reducers/num-players.reducer';
@@ -74,7 +70,7 @@ export class RandomizeComponent implements OnInit {
   }
 
   generateDecks() {
-    this._store.dispatch(generateGameSetup());
+    this._store.dispatch(randomizePageActions.generateGameSetup());
   }
 
   setPlayers(value: string) {
@@ -97,7 +93,7 @@ export class RandomizeComponent implements OnInit {
   }
 
   reset() {
-    this._store.dispatch(resetDefinedScheme());
-    this._store.dispatch(resetDefinedMastermind());
+    this._store.dispatch(randomizePageActions.resetDefinedScheme());
+    this._store.dispatch(randomizePageActions.resetDefinedMastermind());
   }
 }
