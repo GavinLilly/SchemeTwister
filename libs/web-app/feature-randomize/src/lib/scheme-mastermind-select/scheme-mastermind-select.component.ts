@@ -47,27 +47,20 @@ export class SchemeMastermindSelectComponent implements OnInit {
 
   ngOnInit(): void {
     this.numPlayers$.subscribe((value: number) => {
-      if (this.itemType === CARD_TYPE.scheme) {
-        if (Number(value) === 1) {
-          this.availableItems = this.availableItems.filter(
-            (scheme) => !(scheme instanceof SoloBannedScheme)
-          );
-        }
+      if (this.itemType === CARD_TYPE.scheme && value === 1) {
+        this.availableItems = this.availableItems.filter(
+          (scheme) => !(scheme instanceof SoloBannedScheme)
+        );
       }
     });
 
     this.libTwister$.subscribe((value: LibTwister) => {
-      if (this.itemType === CARD_TYPE.scheme) {
-        this.availableItems = value.schemeFactory.availableCards;
-      } else if (this.itemType === CARD_TYPE.mastermind) {
-        this.availableItems = value.stores.mastermindStore.availableCards;
-      }
+      this.availableItems =
+        this.itemType === CARD_TYPE.scheme
+          ? value.schemeFactory.availableCards
+          : value.stores.mastermindStore.availableCards;
 
-      this.availableItems.sort((a, b) => {
-        if (a.name < b.name) return -1;
-        if (a.name > b.name) return 1;
-        return 0;
-      });
+      this.availableItems.sort((a, b) => a.name.localeCompare(b.name));
     });
 
     if (this.itemType === CARD_TYPE.scheme) {
