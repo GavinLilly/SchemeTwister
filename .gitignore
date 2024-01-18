@@ -50,7 +50,8 @@ Thumbs.db
 # Footer version file
 /libs/web-app/ui/src/lib/footer/version.ts
 
-# Angular cache
+# Angular/NX cache
 /.angular/cache
+/.nx/cache
 
 /apps/web-app/src/environments/environment.local.ts

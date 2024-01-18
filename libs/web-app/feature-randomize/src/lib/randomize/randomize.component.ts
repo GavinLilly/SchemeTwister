@@ -11,7 +11,6 @@ import {
 } from '@schemetwister/libtwister';
 import { Observable } from 'rxjs';
 
-import { migrateGameSetsCookie } from '../+state/actions/game-sets.actions';
 import {
   generateGameSetup,
   resetDefinedMastermind,
@@ -81,8 +80,6 @@ export class RandomizeComponent implements OnInit {
     );
 
     this.generateDecks();
-
-    this._store.dispatch(migrateGameSetsCookie());
   }
 
   generateDecks() {

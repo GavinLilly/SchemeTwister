@@ -10,28 +10,24 @@ import { ReplacePipe } from '../replace.pipe';
 
 import { RandomizeComponent } from './randomize.component';
 
-jest.genMockFromModule('ngx-cookie-service');
-
 describe('RandomizeComponent', () => {
   let component: RandomizeComponent;
   const initialState = { gameSetup: GameSetup.empty() };
   let fixture: ComponentFixture<RandomizeComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [RandomizeComponent, ReplacePipe],
-        imports: [
-          FormsModule,
-          WebAppUiModule,
-          FontAwesomeModule,
-          NgbModalModule,
-          NgbAccordionModule,
-        ],
-        providers: [provideMockStore({ initialState })],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [RandomizeComponent, ReplacePipe],
+      imports: [
+        FormsModule,
+        WebAppUiModule,
+        FontAwesomeModule,
+        NgbModalModule,
+        NgbAccordionModule,
+      ],
+      providers: [provideMockStore({ initialState })],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(RandomizeComponent);

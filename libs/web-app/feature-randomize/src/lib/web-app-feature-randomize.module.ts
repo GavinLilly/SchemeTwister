@@ -9,7 +9,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { WebAppSharedModule } from '@schemetwister/web-app/shared';
 import { WebAppUiModule } from '@schemetwister/web-app/ui';
-import { CookieService } from 'ngx-cookie-service';
 
 import { GameSetsEffects } from './+state/effects/game-sets.effects';
 import { GameSetupEffects } from './+state/effects/game-setup.effects';
@@ -75,6 +74,5 @@ import { VillainDeckComponent } from './villain-deck/villain-deck.component';
     SchemeCardComponent,
     MastermindCardComponent,
   ],
-  providers: [CookieService],
 })
 export class WebAppFeatureRandomizeModule {}

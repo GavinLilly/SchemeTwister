@@ -28,16 +28,3 @@ export const setGameSetsFailure = createAction(
     payload: { errorMessage },
   })
 );
-
-export const migrateGameSetsCookie = createAction(
-  `${domain} Migrate Game Sets Cookie`
-);
-
-export const migrateGameSetsCookieSuccess = createAction(
-  `${domain} Migrate Game Sets Cookie Success`,
-  props<{ gameSetIds: string[] }>()
-);
-
-export const noGameSetCookie = createAction(
-  `${domain} No Game Sets Cookie Found`
-);

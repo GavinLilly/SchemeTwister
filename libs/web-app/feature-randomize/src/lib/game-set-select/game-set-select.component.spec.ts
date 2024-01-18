@@ -6,22 +6,18 @@ import { GameSetup } from '@schemetwister/libtwister';
 
 import { GameSetSelectComponent } from './game-set-select.component';
 
-jest.genMockFromModule('ngx-cookie-service');
-
 describe('GameSetSelectComponent', () => {
   let component: GameSetSelectComponent;
   const initialState = { gameSetup: GameSetup.empty() };
   let fixture: ComponentFixture<GameSetSelectComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [GameSetSelectComponent],
-        imports: [NgbModalModule, FormsModule],
-        providers: [NgbActiveModal, provideMockStore({ initialState })],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [GameSetSelectComponent],
+      imports: [NgbModalModule, FormsModule],
+      providers: [NgbActiveModal, provideMockStore({ initialState })],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(GameSetSelectComponent);

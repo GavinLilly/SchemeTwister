@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { NgbActiveModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideMockStore } from '@ngrx/store/testing';
 import { CARD_TYPE } from '@schemetwister/libtwister';
-import { CookieService } from 'ngx-cookie-service';
 
 import { SchemeMastermindSelectComponent } from './scheme-mastermind-select.component';
 
@@ -16,11 +15,7 @@ describe('SchemeMastermindSelectComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [SchemeMastermindSelectComponent],
       imports: [NgbModalModule, FormsModule],
-      providers: [
-        CookieService,
-        NgbActiveModal,
-        provideMockStore({ initialState }),
-      ],
+      providers: [NgbActiveModal, provideMockStore({ initialState })],
     }).compileComponents();
   });
 
