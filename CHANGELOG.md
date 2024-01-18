@@ -1,3 +1,11 @@
+## [3.11.4](https://github.com/GavinLilly/SchemeTwister/compare/v3.11.3...v3.11.4) (2024-01-18)
+
+
+### Dependencies
+
+* **deps:** bump @adobe/css-tools from 4.3.1 to 4.3.2 ([c7e04eb](https://github.com/GavinLilly/SchemeTwister/commit/c7e04eb769bf223627cd6000a1fa6b2835a8c6ee))
+* **deps:** bump follow-redirects from 1.15.3 to 1.15.4 ([bdc309b](https://github.com/GavinLilly/SchemeTwister/commit/bdc309bdc15135b131a1a7411d081d6626b44ad8))
+
 ## [3.11.3](https://github.com/GavinLilly/SchemeTwister/compare/v3.11.2...v3.11.3) (2023-10-30)
 
 
