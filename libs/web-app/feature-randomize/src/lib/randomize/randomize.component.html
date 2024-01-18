@@ -36,11 +36,12 @@
 
               <div class="form-group" *ngIf="numberPlayers === 1">
                 <input
+                  #advancedSoloInput
                   class="form-check-input"
                   type="checkbox"
                   [ngModel]="isAdvancedSolo$ | async"
                   [ngModelOptions]="{ standalone: true }"
-                  (ngModelChange)="setAdvancedSolo()"
+                  (click)="setAdvancedSolo(advancedSoloInput.checked)"
                   id="advancedSoloCheck"
                 />
                 <label class="form-check-label" for="advancedSoloCheck"

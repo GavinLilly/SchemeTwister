@@ -40,8 +40,6 @@ export class RandomizeComponent implements OnInit {
   isAdvancedSolo$: Observable<boolean> =
     this._store.select(selectIsAdvancedSolo);
 
-  isAdvancedSoloValue!: boolean;
-
   gameSetup$: Observable<GameSetup> = this._store.select(selectGameSetup);
 
   faCog = faCog;
@@ -75,10 +73,6 @@ export class RandomizeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isAdvancedSolo$.subscribe(
-      (value) => (this.isAdvancedSoloValue = value)
-    );
-
     this.generateDecks();
   }
 
@@ -93,10 +87,8 @@ export class RandomizeComponent implements OnInit {
     );
   }
 
-  setAdvancedSolo() {
-    this._store.dispatch(
-      setAdvancedSolo({ isAdvancedSolo: !this.isAdvancedSoloValue })
-    );
+  setAdvancedSolo(isEnabled: boolean) {
+    this._store.dispatch(setAdvancedSolo({ isAdvancedSolo: isEnabled }));
   }
 
   pickGameSets() {
