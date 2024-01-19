@@ -1,4 +1,4 @@
-<div class="container" *ngIf="gameSetup$ | async as gameSetup">
+<div class="container" *ngIf="gameSetup() as gameSetup">
   <div class="row">
     <div class="col-12 col-md-6 mx-auto">
       <!--Picker-->
@@ -17,38 +17,36 @@
         </div>
         <div class="card-body">
           <form>
-            <ng-container *ngIf="numPlayers$ | async as numberPlayers">
-              <div class="form-group text-left">
-                <label for="numPlayersSelect">Players</label>
-                <select
-                  class="form-select mb-3 form-control"
-                  #numPlayersSelect
-                  [ngModel]="numberPlayers"
-                  [ngModelOptions]="{ standalone: true }"
-                  (change)="setPlayers(numPlayersSelect.value)"
-                  id="numPlayersSelect"
-                >
-                  <option *ngFor="let num of numPlayers" value="{{ num }}">
-                    {{ num }}
-                  </option>
-                </select>
-              </div>
+            <div class="form-group text-left">
+              <label for="numPlayersSelect">Players</label>
+              <select
+                class="form-select mb-3 form-control"
+                #numPlayersSelect
+                [ngModel]="numberOfPlayers()"
+                [ngModelOptions]="{ standalone: true }"
+                (change)="setPlayers(numPlayersSelect.value)"
+                id="numPlayersSelect"
+              >
+                <option *ngFor="let num of numPlayerOptions" value="{{ num }}">
+                  {{ num }}
+                </option>
+              </select>
+            </div>
 
-              <div class="form-group" *ngIf="numberPlayers === 1">
-                <input
-                  #advancedSoloInput
-                  class="form-check-input"
-                  type="checkbox"
-                  [ngModel]="isAdvancedSolo$ | async"
-                  [ngModelOptions]="{ standalone: true }"
-                  (click)="setAdvancedSolo(advancedSoloInput.checked)"
-                  id="advancedSoloCheck"
-                />
-                <label class="form-check-label" for="advancedSoloCheck"
-                  >Advanced solo mode?</label
-                >
-              </div>
-            </ng-container>
+            <div class="form-group" *ngIf="numberOfPlayers() === 1">
+              <input
+                #advancedSoloInput
+                class="form-check-input"
+                type="checkbox"
+                [ngModel]="isAdvancedSolo()"
+                [ngModelOptions]="{ standalone: true }"
+                (click)="setAdvancedSolo(advancedSoloInput.checked)"
+                id="advancedSoloCheck"
+              />
+              <label class="form-check-label" for="advancedSoloCheck"
+                >Advanced solo mode?</label
+              >
+            </div>
 
             <div class="form-group">
               <a

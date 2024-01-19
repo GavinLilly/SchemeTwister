@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Signal } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { GameSet, GAME_SET_SIZE, LibTwister } from '@schemetwister/libtwister';
-import { Observable } from 'rxjs';
 
 import { gameSetSelectionActions as fromGameSetDialog } from '../+state/actions/game-sets.actions';
 import { IGameSetsState } from '../+state/reducers/game-sets.reducer';
@@ -14,9 +13,10 @@ import { selectGameSets } from '../+state/selectors/game-sets.selectors';
   styleUrls: ['./game-set-select.component.scss'],
 })
 export class GameSetSelectComponent {
-  selectedGameSets$: Observable<GameSet[]> = this._store.select(selectGameSets);
+  selectedGameSets: Signal<GameSet[]> =
+    this._store.selectSignal(selectGameSets);
 
-  gameSelectError$: Observable<string> = this._store.select(
+  gameSelectError: Signal<string> = this._store.selectSignal(
     (state) => state.gameSets.error
   );
 

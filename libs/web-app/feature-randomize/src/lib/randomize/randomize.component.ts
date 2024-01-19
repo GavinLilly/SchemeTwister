@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Signal, effect } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -9,7 +9,6 @@ import {
   NumPlayers,
   numPlayers,
 } from '@schemetwister/libtwister';
-import { Observable } from 'rxjs';
 
 import { randomizePageActions } from '../+state/actions/game-setup.actions';
 import { numPlayersActions } from '../+state/actions/num-players.actions';
@@ -28,16 +27,17 @@ import { GameSetSelectComponent } from '../game-set-select/game-set-select.compo
   styleUrls: ['./randomize.component.scss'],
 })
 export class RandomizeComponent implements OnInit {
-  numPlayers$: Observable<NumPlayers> = this._store.select(selectNumPlayers);
+  numberOfPlayers: Signal<NumPlayers> =
+    this._store.selectSignal(selectNumPlayers);
 
-  isAdvancedSolo$: Observable<boolean> =
-    this._store.select(selectIsAdvancedSolo);
+  isAdvancedSolo: Signal<boolean> =
+    this._store.selectSignal(selectIsAdvancedSolo);
 
-  gameSetup$: Observable<GameSetup> = this._store.select(selectGameSetup);
+  gameSetup: Signal<GameSetup> = this._store.selectSignal(selectGameSetup);
 
   faCog = faCog;
 
-  numPlayers = numPlayers;
+  numPlayerOptions = numPlayers;
 
   constructor(
     private _modalService: NgbModal,
@@ -52,7 +52,8 @@ export class RandomizeComponent implements OnInit {
         .map((card) => card.name)
         .join(', ');
 
-    this.gameSetup$.subscribe((setup) => {
+    effect(() => {
+      const setup = this.gameSetup();
       meta.updateTag({
         name: 'description',
         content:

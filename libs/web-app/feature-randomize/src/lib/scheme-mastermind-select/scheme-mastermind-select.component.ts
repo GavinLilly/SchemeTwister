@@ -1,4 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Injector,
+  Input,
+  OnInit,
+  Signal,
+  effect,
+} from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import {
@@ -9,8 +16,8 @@ import {
   NumPlayers,
   SoloBannedScheme,
   CardType,
+  TransformingMastermind,
 } from '@schemetwister/libtwister';
-import { Observable } from 'rxjs';
 
 import { randomizePageActions } from '../+state/actions/game-setup.actions';
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
@@ -30,44 +37,64 @@ export class SchemeMastermindSelectComponent implements OnInit {
   @Input() itemType!: CardType;
   availableItems!: (SchemeMinusRules | Mastermind)[];
   selectedItem = '**Random**';
-  numPlayers$: Observable<NumPlayers> = this._store.select(
+
+  private _libTwister: Signal<LibTwister> =
+    this._store.selectSignal(selectLibTwister);
+  private _definedScheme: Signal<SchemeMinusRules | undefined> =
+    this._store.selectSignal(selectDefinedScheme);
+  private _definedMastermind: Signal<
+    Mastermind | TransformingMastermind | undefined
+  > = this._store.selectSignal(selectDefinedMastermind);
+  private _numPlayers: Signal<NumPlayers> = this._store.selectSignal(
     (state) => state.numPlayers.numPlayers
   );
-  libTwister$: Observable<LibTwister> = this._store.select(selectLibTwister);
-  definedScheme$ = this._store.select(selectDefinedScheme);
-  definedMastermind$ = this._store.select(selectDefinedMastermind);
 
   constructor(
     public activeModal: NgbActiveModal,
     private _store: Store<{
       numPlayers: INumPlayersState;
       setupState: IGameSetupState;
-    }>
+    }>,
+    private _injector: Injector
   ) {}
 
   ngOnInit(): void {
-    this.numPlayers$.subscribe((value: number) => {
-      if (this.itemType === CARD_TYPE.scheme && value === 1) {
-        this.availableItems = this.availableItems.filter(
-          (scheme) => !(scheme instanceof SoloBannedScheme)
-        );
+    effect(
+      () => {
+        if (this.itemType === CARD_TYPE.scheme && this._numPlayers() === 1) {
+          this.availableItems = this.availableItems.filter(
+            (scheme) => !(scheme instanceof SoloBannedScheme)
+          );
+        }
+      },
+      { injector: this._injector }
+    );
+
+    effect(
+      () => {
+        this.availableItems =
+          this.itemType === CARD_TYPE.scheme
+            ? this._libTwister().schemeFactory.availableCards
+            : this._libTwister().stores.mastermindStore.availableCards;
+
+        this.availableItems.sort((a, b) => a.name.localeCompare(b.name));
+      },
+      { injector: this._injector }
+    );
+
+    effect(() => {
+      const scheme = this._definedScheme();
+      if (this.itemType === CARD_TYPE.scheme && scheme !== undefined) {
+        this.selectedItem = scheme.id;
       }
     });
 
-    this.libTwister$.subscribe((value: LibTwister) => {
-      this.availableItems =
-        this.itemType === CARD_TYPE.scheme
-          ? value.schemeFactory.availableCards
-          : value.stores.mastermindStore.availableCards;
-
-      this.availableItems.sort((a, b) => a.name.localeCompare(b.name));
+    effect(() => {
+      const mastermind = this._definedMastermind();
+      if (this.itemType === CARD_TYPE.mastermind && mastermind !== undefined) {
+        this.selectedItem = mastermind.id;
+      }
     });
-
-    if (this.itemType === CARD_TYPE.scheme) {
-      this._subscribeToDefined(this.definedScheme$);
-    } else if (this.itemType === CARD_TYPE.mastermind) {
-      this._subscribeToDefined(this.definedMastermind$);
-    }
   }
 
   setItem(value: string) {
@@ -93,15 +120,5 @@ export class SchemeMastermindSelectComponent implements OnInit {
         this._store.dispatch(randomizePageActions.resetDefinedMastermind());
       }
     }
-  }
-
-  private _subscribeToDefined(
-    observable: Observable<SchemeMinusRules | Mastermind | undefined>
-  ) {
-    observable.subscribe((value) => {
-      if (value !== undefined) {
-        this.selectedItem = value.id;
-      }
-    });
   }
 }
