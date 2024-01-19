@@ -20,6 +20,7 @@ import {
 } from '@schemetwister/libtwister';
 
 import { randomizePageActions } from '../+state/actions/game-setup.actions';
+import { IGameSetsState } from '../+state/reducers/game-sets.reducer';
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
 import { INumPlayersState } from '../+state/reducers/num-players.reducer';
 import { selectLibTwister } from '../+state/selectors/game-sets.selectors';
@@ -54,6 +55,7 @@ export class SchemeMastermindSelectComponent implements OnInit {
     private _store: Store<{
       numPlayers: INumPlayersState;
       setupState: IGameSetupState;
+      gameSets: IGameSetsState;
     }>,
     private _injector: Injector
   ) {}
@@ -82,19 +84,28 @@ export class SchemeMastermindSelectComponent implements OnInit {
       { injector: this._injector }
     );
 
-    effect(() => {
-      const scheme = this._definedScheme();
-      if (this.itemType === CARD_TYPE.scheme && scheme !== undefined) {
-        this.selectedItem = scheme.id;
-      }
-    });
+    effect(
+      () => {
+        const scheme = this._definedScheme();
+        if (this.itemType === CARD_TYPE.scheme && scheme !== undefined) {
+          this.selectedItem = scheme.id;
+        }
+      },
+      { injector: this._injector }
+    );
 
-    effect(() => {
-      const mastermind = this._definedMastermind();
-      if (this.itemType === CARD_TYPE.mastermind && mastermind !== undefined) {
-        this.selectedItem = mastermind.id;
-      }
-    });
+    effect(
+      () => {
+        const mastermind = this._definedMastermind();
+        if (
+          this.itemType === CARD_TYPE.mastermind &&
+          mastermind !== undefined
+        ) {
+          this.selectedItem = mastermind.id;
+        }
+      },
+      { injector: this._injector }
+    );
   }
 
   setItem(value: string) {

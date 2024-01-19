@@ -7,14 +7,22 @@ import { HeroDeckComponent } from './hero-deck.component';
 
 describe('HeroDeckComponent', () => {
   let component: HeroDeckComponent;
-  const initialState = { gameSetup: GameSetup.empty() };
   let fixture: ComponentFixture<HeroDeckComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HeroDeckComponent],
       imports: [NgbAccordionModule],
-      providers: [provideMockStore({ initialState })],
+      providers: [
+        provideMockStore({
+          initialState: {
+            gameSetup: {
+              gameSetup: GameSetup.empty(),
+            },
+            numPlayers: 2,
+          },
+        }),
+      ],
     }).compileComponents();
   });
 
