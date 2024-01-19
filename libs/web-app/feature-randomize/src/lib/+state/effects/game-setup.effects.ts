@@ -41,16 +41,6 @@ import {
 export class GameSetupEffects {
   private static _storeSendWaitSeconds = 5;
 
-  constructor(
-    private _actions$: Actions,
-    private _store: Store<{
-      gameSets: IGameSetsState;
-      numPlayers: INumPlayersState;
-      gameSetup: IGameSetupState;
-    }>,
-    private _storedSetupsService: StoredSetupsService
-  ) {}
-
   readonly generateGameSetup$ = createEffect(() =>
     this._actions$.pipe(
       ofType(
@@ -131,4 +121,14 @@ export class GameSetupEffects {
       })
     )
   );
+
+  constructor(
+    private _actions$: Actions,
+    private _store: Store<{
+      gameSets: IGameSetsState;
+      numPlayers: INumPlayersState;
+      gameSetup: IGameSetupState;
+    }>,
+    private _storedSetupsService: StoredSetupsService
+  ) {}
 }

@@ -1,4 +1,4 @@
-<div class="card" *ngIf="gameSetup$ | async as gameSetup">
+<div class="card" *ngIf="gameSetup() as gameSetup">
   <div class="card-header">{{ gameSetup.name || 'Additional Deck' }}</div>
   <div class="card-body p-0">
     <p *ngIf="gameSetup.instructions">{{ gameSetup.instructions }}</p>

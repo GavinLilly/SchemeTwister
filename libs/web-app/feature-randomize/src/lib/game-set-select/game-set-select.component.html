@@ -10,7 +10,7 @@
 <div class="modal-body">
   <select
     multiple="true"
-    [ngModel]="selectedGameSets$ | async"
+    [ngModel]="selectedGameSets()"
     (ngModelChange)="onSelectedUpdate($event)"
     class="form-control"
     size="20"
@@ -51,7 +51,7 @@
 </div>
 <ngb-alert
   #selfClosingAlert
-  *ngIf="gameSelectError$ | async as gameSelectError"
+  *ngIf="gameSelectError() as gameSelectError"
   type="danger"
   (closed)="(gameSelectError === '')"
   >{{ gameSelectError }}</ngb-alert

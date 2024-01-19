@@ -2,7 +2,7 @@
   <div class="card-header d-flex align-items-center justify-content-between">
     Mastermind
     <fa-icon
-      *ngIf="mastermindLocked$ | async"
+      *ngIf="mastermindLocked()"
       [icon]="faLock"
       class="ml-auto lock-item"
     ></fa-icon>
@@ -10,7 +10,7 @@
       <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
     </a>
   </div>
-  <div class="card-body p-0" *ngIf="mastermind$ | async as mastermind">
+  <div class="card-body p-0" *ngIf="mastermind() as mastermind">
     <ngb-accordion>
       <ngb-panel cardClass="mastermind" title="{{ mastermind.name }}">
         <ng-template ngbPanelContent>

@@ -2,7 +2,7 @@
   <div class="card-header d-flex align-items-center justify-content-between">
     Scheme
     <fa-icon
-      *ngIf="schemeLocked$ | async"
+      *ngIf="schemeLocked()"
       [icon]="faLock"
       class="ml-auto lock-item"
     ></fa-icon>
@@ -10,7 +10,7 @@
       <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
     </a>
   </div>
-  <div class="card-body p-0" *ngIf="scheme$ | async as scheme">
+  <div class="card-body p-0" *ngIf="scheme() as scheme">
     <ngb-accordion>
       <ngb-panel title="{{ scheme.name }}">
         <ng-template ngbPanelContent>

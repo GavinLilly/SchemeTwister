@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Signal } from '@angular/core';
 import { faCog, faLock } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { CARD_TYPE, Scheme } from '@schemetwister/libtwister';
-import { Observable } from 'rxjs';
 
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
 import {
@@ -18,12 +17,13 @@ import { SchemeMastermindSelectComponent } from '../scheme-mastermind-select/sch
   styleUrls: ['./scheme-card.component.scss'],
 })
 export class SchemeCardComponent {
-  schemeLocked$: Observable<boolean> = this._store.select(
+  schemeLocked: Signal<boolean> = this._store.selectSignal(
     selectIsDefinedScheme
   );
+  scheme: Signal<Scheme> = this._store.selectSignal(selectGameSetupScheme);
+
   faLock = faLock;
   faCog = faCog;
-  scheme$: Observable<Scheme> = this._store.select(selectGameSetupScheme);
 
   constructor(
     private _modalService: NgbModal,

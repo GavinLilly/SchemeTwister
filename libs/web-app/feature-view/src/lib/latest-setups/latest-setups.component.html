@@ -1,4 +1,7 @@
-<table class="table table-striped" *ngIf="setups$ | async as setups">
+<table class="table table-striped">
+  <caption>
+    Recent game setups
+  </caption>
   <thead>
     <tr>
       <th scope="col">Time</th>
@@ -11,9 +14,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let setup of setups; index as i">
+    <tr *ngFor="let setup of setups(); index as i">
       <ng-container *ngIf="setup | storedSetupToGameSetup as gameSetup">
-        <td>{{ setup.updated.toDate() | date : 'yyyy-MMM-dd HH:mm' }}</td>
+        <td>{{ setup.updated.toDate() | date: 'yyyy-MMM-dd HH:mm' }}</td>
         <td>{{ setup.twistCount }}</td>
         <td>{{ gameSetup.scheme }}</td>
         <td>{{ gameSetup.mastermind }}</td>

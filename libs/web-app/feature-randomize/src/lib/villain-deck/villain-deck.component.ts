@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Signal } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IVillainDeck } from '@schemetwister/libtwister';
-import { Observable } from 'rxjs';
 
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
 import { selectVillainDeck } from '../+state/selectors/game-setup-scheme.selectors';
@@ -12,8 +11,8 @@ import { selectVillainDeck } from '../+state/selectors/game-setup-scheme.selecto
   styleUrls: ['./villain-deck.component.scss'],
 })
 export class VillainDeckComponent {
-  villainDeck$: Observable<IVillainDeck> =
-    this._store.select(selectVillainDeck);
+  villainDeck: Signal<IVillainDeck> =
+    this._store.selectSignal(selectVillainDeck);
 
   constructor(
     private _store: Store<{

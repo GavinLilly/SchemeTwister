@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 import { LatestSetupsStore } from '../latest-setups.store';
 
@@ -9,7 +10,7 @@ import { LatestSetupsStore } from '../latest-setups.store';
   providers: [LatestSetupsStore],
 })
 export class LatestSetupsComponent {
-  public setups$ = this._store.setups$;
+  public setups = toSignal(this._store.setups$);
 
   constructor(private readonly _store: LatestSetupsStore) {}
 }
