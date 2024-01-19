@@ -7,21 +7,28 @@ import { VillainDeckComponent } from './villain-deck.component';
 
 describe('VillainDeckComponent', () => {
   let component: VillainDeckComponent;
-  const initialState = { gameSetup: GameSetup.empty() };
   let fixture: ComponentFixture<VillainDeckComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [VillainDeckComponent],
       imports: [NgbAccordionModule],
-      providers: [provideMockStore({ initialState })],
+      providers: [
+        provideMockStore({
+          initialState: {
+            gameSetup: {
+              gameSetup: GameSetup.empty(),
+            },
+            numPlayers: 2,
+          },
+        }),
+      ],
     }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(VillainDeckComponent);
     component = fixture.componentInstance;
-    component.villainDeck$;
     fixture.detectChanges();
   });
 

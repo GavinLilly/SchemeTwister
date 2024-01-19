@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideMockStore } from '@ngrx/store/testing';
 import { GameSetup } from '@schemetwister/libtwister';
 
@@ -7,14 +8,22 @@ import { MastermindCardComponent } from './mastermind-card.component';
 
 describe('MastermindCardComponent', () => {
   let component: MastermindCardComponent;
-  const initialState = { gameSetup: GameSetup.empty() };
   let fixture: ComponentFixture<MastermindCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FontAwesomeModule],
+      imports: [FontAwesomeModule, NgbAccordionModule],
       declarations: [MastermindCardComponent],
-      providers: [provideMockStore({ initialState })],
+      providers: [
+        provideMockStore({
+          initialState: {
+            gameSetup: {
+              gameSetup: GameSetup.empty(),
+            },
+            numPlayers: 2,
+          },
+        }),
+      ],
     }).compileComponents();
   });
 

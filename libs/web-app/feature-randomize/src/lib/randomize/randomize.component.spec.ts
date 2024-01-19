@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -12,7 +13,6 @@ import { RandomizeComponent } from './randomize.component';
 
 describe('RandomizeComponent', () => {
   let component: RandomizeComponent;
-  const initialState = { gameSetup: GameSetup.empty() };
   let fixture: ComponentFixture<RandomizeComponent>;
 
   beforeEach(waitForAsync(() => {
@@ -25,7 +25,17 @@ describe('RandomizeComponent', () => {
         NgbModalModule,
         NgbAccordionModule,
       ],
-      providers: [provideMockStore({ initialState })],
+      providers: [
+        provideMockStore({
+          initialState: {
+            gameSetup: {
+              gameSetup: GameSetup.empty(),
+            },
+            numPlayers: 2,
+          },
+        }),
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   }));
 

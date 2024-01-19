@@ -6,13 +6,21 @@ import { AdditionalDeckComponent } from './additional-deck.component';
 
 describe('AdditionalDeckComponent', () => {
   let component: AdditionalDeckComponent;
-  const initialState = { gameSetup: GameSetup.empty() };
   let fixture: ComponentFixture<AdditionalDeckComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AdditionalDeckComponent],
-      providers: [provideMockStore({ initialState })],
+      providers: [
+        provideMockStore({
+          initialState: {
+            gameSetup: {
+              gameSetup: GameSetup.empty(),
+            },
+            numPlayers: 2,
+          },
+        }),
+      ],
     }).compileComponents();
   });
 
