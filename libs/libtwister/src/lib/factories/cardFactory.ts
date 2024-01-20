@@ -27,7 +27,7 @@ export class CardFactory<TCard extends IPlayableObject> {
   ): string =>
     typeof idOrCard === 'string' || idOrCard instanceof String
       ? (idOrCard as string)
-      : (idOrCard as T).id;
+      : idOrCard.id;
 
   /**
    * The set of all cards (i.e. pre-filtered)
@@ -197,16 +197,17 @@ export class CardFactory<TCard extends IPlayableObject> {
   public isAvailable(item: TCard): boolean;
   public isAvailable(item: string | TCard): boolean {
     const itemIsString = typeof item === 'string' || item instanceof String;
-    if (itemIsString) {
-      const itemId = item as string;
-      if (!isUUID(itemId)) {
-        throw new Error(`The provided card ID (${itemId}) is not a valid UUID`);
-      }
 
-      return this.availableCardsMap.get(itemId) !== undefined;
+    if (!itemIsString) {
+      return this.availableCards.includes(item);
     }
 
-    return this.availableCards.includes(item as TCard);
+    const itemId = item as string;
+    if (!isUUID(itemId)) {
+      throw new Error(`The provided card ID (${itemId}) is not a valid UUID`);
+    }
+
+    return this.availableCardsMap.get(itemId) !== undefined;
   }
 
   /**
