@@ -45,15 +45,8 @@ export class GameSet implements IGameSetMeta {
    * @param b the second GameSet
    * @returns -1 if param a comes first. 1 if param b. 0 if they're equal
    */
-  public static sorter(a: GameSet, b: GameSet): number {
-    if (a.size > b.size) {
-      return -1;
-    } else if (a.size < b.size) {
-      return 1;
-    }
-
-    return nameSorter(a, b);
-  }
+  public static sorter = (a: GameSet, b: GameSet): number =>
+    b.size - a.size || nameSorter(a, b);
 
   /**
    * Creates an empty GameSet
