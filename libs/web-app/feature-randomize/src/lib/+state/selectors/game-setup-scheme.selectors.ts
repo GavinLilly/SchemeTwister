@@ -31,8 +31,7 @@ export const selectVillainDeck = createSelector(
 
 export const selectAdditionalDeck = createSelector(
   selectGameSetupFeature,
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  (state: IGameSetupState) => state.gameSetup.additionalDeck!
+  (state: IGameSetupState) => state.gameSetup.additionalDeck
 );
 
 export const selectMastermind = createSelector(

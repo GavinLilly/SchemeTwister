@@ -11,7 +11,7 @@ import { selectAdditionalDeck } from '../+state/selectors/game-setup-scheme.sele
   styleUrls: ['./additional-deck.component.scss'],
 })
 export class AdditionalDeckComponent {
-  gameSetup: Signal<IAdditionalDeck> =
+  gameSetup: Signal<IAdditionalDeck | undefined> =
     this._store.selectSignal(selectAdditionalDeck);
 
   constructor(
