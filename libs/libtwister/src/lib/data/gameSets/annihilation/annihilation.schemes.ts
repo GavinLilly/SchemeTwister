@@ -71,7 +71,7 @@ export const BREACH_PARALLEL_DIMENSIONS = new SchemeDefinition({
     numTwists: 6,
     rules: (rule) => {
       rule.villainDeck.numBystanders =
-        (rule.villainDeck.numBystanders || 0) + 4;
+        (rule.villainDeck.numBystanders ?? 0) + 4;
       return rule;
     },
   },

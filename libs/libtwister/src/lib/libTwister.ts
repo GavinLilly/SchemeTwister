@@ -109,13 +109,13 @@ export class LibTwister {
   public static gameSetIdsToGameSets(
     gameSetIdOrIds: string | string[]
   ): GameSet | GameSet[] | undefined {
-    if (!(gameSetIdOrIds instanceof Array)) {
-      return this.allGameSets.get(gameSetIdOrIds);
+    if (gameSetIdOrIds instanceof Array) {
+      return this.allGameSets
+        .asArray()
+        .filter((gameSet) => gameSetIdOrIds.includes(gameSet.id));
     }
 
-    return this.allGameSets
-      .asArray()
-      .filter((gameSet) => gameSetIdOrIds.includes(gameSet.id));
+    return this.allGameSets.get(gameSetIdOrIds);
   }
 
   /**

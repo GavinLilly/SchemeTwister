@@ -168,7 +168,7 @@ export class EpicMastermindBuilder {
     this._buildMastermind({
       ...this._config,
       ...config,
-      name: nameOverride ? nameOverride : `Epic ${this._config.name}`,
+      name: nameOverride ?? `Epic ${this._config.name}`,
     });
 
   private _buildMastermind(config: IMastermind) {

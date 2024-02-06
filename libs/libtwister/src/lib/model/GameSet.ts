@@ -21,6 +21,17 @@ export class GameSet implements IGameSetMeta {
   readonly releaseYear: number;
   readonly series: Series;
 
+  private get _allCards(): AllCardTypes[] | undefined {
+    return [
+      ...(this.bystanders ?? []),
+      ...(this.schemes ?? []),
+      ...(this.henchmen ?? []),
+      ...this.heroes,
+      ...(this.masterminds ?? []),
+      ...(this.villains ?? []),
+    ];
+  }
+
   constructor(
     gameSetProps: IGameSetMeta,
     readonly heroes: Hero[],
@@ -76,17 +87,9 @@ export class GameSet implements IGameSetMeta {
    * @returns An array of cards
    */
   public getCards(cardType: CardType): AllCardTypes[] | undefined;
-  // eslint-disable-next-line complexity
   public getCards(cardType?: CardType): AllCardTypes[] | undefined {
     if (cardType === undefined) {
-      return [
-        ...(this.bystanders ?? []),
-        ...(this.schemes ?? []),
-        ...(this.henchmen ?? []),
-        ...this.heroes,
-        ...(this.masterminds ?? []),
-        ...(this.villains ?? []),
-      ];
+      return this._allCards;
     }
 
     switch (cardType) {

@@ -14,6 +14,6 @@ export class BaseCardContentComponent<T extends IPlayableObject>
 
   ngOnInit(): void {
     this.gameSetName =
-      LibTwister.allGameSets.get(this.card.gameSet.id)?.name || '';
+      LibTwister.allGameSets.get(this.card.gameSet.id)?.name ?? '';
   }
 }

@@ -29,11 +29,13 @@ export const BREACH_THE_NEXUS_OF_ALL_REALITIES = new SchemeDefinition({
   meta: {
     // 2 twists per villain group
     numTwists: {
+      /* eslint-disable @typescript-eslint/naming-convention */
       '1': 6,
       '2': 6,
       '3': 6,
       '4': 6,
       '5': 8,
+      /* eslint-enable @typescript-eslint/naming-convention */
     },
     rules: (rule, num) => {
       if (num === 1 || num === 2) {

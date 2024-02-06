@@ -12,6 +12,6 @@ export class HeroCardContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.gameSetName =
-      LibTwister.allGameSets.get(this.hero.gameSet.id)?.name || '';
+      LibTwister.allGameSets.get(this.hero.gameSet.id)?.name ?? '';
   }
 }

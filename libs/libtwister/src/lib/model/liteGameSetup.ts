@@ -162,8 +162,9 @@ export class LiteGameSetup {
    * @returns A 10 digit string containing the unique ID of this setup
    */
   public calculateUid(): string {
+    const allowedCharacters = 'abcdefghijklmnopqrstuvwxyz';
     const seed = seedrandom(this.toString());
-    const nanoid = customRandom('abcdefghijklmnopqrstuvwxyz', 10, (size) =>
+    const nanoid = customRandom(allowedCharacters, 10, (size) =>
       new Uint8Array(size).map(() => 256 * seed())
     );
 
