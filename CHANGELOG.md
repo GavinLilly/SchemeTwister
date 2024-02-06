@@ -1,3 +1,10 @@
+## [3.11.5](https://github.com/GavinLilly/SchemeTwister/compare/v3.11.4...v3.11.5) (2024-02-04)
+
+
+### Dependencies
+
+* **deps:** bump vite and @angular-devkit/build-angular ([#136](https://github.com/GavinLilly/SchemeTwister/issues/136)) ([866d56a](https://github.com/GavinLilly/SchemeTwister/commit/866d56a350f9d91fecb09e44f8aa20918f9e70aa))
+
 ## [3.11.4](https://github.com/GavinLilly/SchemeTwister/compare/v3.11.3...v3.11.4) (2024-01-18)
 
 
