@@ -8,7 +8,6 @@ export const SIDERA_MARIS_BRIDGE_BUILDERS = new Henchmen({
   name: 'Sidera Maris, Bridge Builders',
   attackPoints: '3',
   victoryPoints: 1,
-
   gameSet: META,
   fight: 'KO one of your Heroes.',
   keywords: [SHARDS],
@@ -19,7 +18,6 @@ export const UNIVERSAL_CHURCH_OF_TRUTH = new Henchmen({
   name: 'Universal Church of Truth',
   attackPoints: '2',
   victoryPoints: 1,
-
   gameSet: META,
   fight: 'Burn 2 Shards: KO one of your Heroes',
   keywords: [SHARDS, BURNING_SHARDS],

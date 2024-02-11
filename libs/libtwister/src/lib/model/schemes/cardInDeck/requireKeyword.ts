@@ -11,10 +11,10 @@ export class RequireKeyword<TCard extends AbstractCardGroup>
   constructor(private _keyword: KeywordName) {}
 
   getRequiredCard(store: CardStore<TCard>): TCard | TCard[] {
-    const applicableVillains = store.availableCards.filter((villain) =>
-      villain.keywords.map((keyword) => keyword.name).includes(this._keyword)
+    const applicableCards = store.availableCards.filter((card) =>
+      card.keywords.map((keyword) => keyword.name).includes(this._keyword)
     );
 
-    return randomize(applicableVillains);
+    return randomize(applicableCards);
   }
 }
