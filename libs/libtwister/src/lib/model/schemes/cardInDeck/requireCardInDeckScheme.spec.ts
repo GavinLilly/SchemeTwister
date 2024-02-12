@@ -92,7 +92,7 @@ describe('Require Henchmen', () => {
       );
       const setup = scheme.getSetup({ numPlayers: 2, store });
 
-      expect(setup.additionalDeck?.deck.henchmen).toContain(COPS);
+      expect(setup.additionalDecks[0].deck.henchmen).toContain(COPS);
     });
   });
 });
@@ -119,7 +119,7 @@ describe('Require Hero', () => {
       );
       const setup = scheme.getSetup({ numPlayers: 2, store });
 
-      expect(setup.additionalDeck?.deck.heroes).toContain(ADAM_WARLOCK);
+      expect(setup.additionalDecks[0].deck.heroes).toContain(ADAM_WARLOCK);
     });
   });
 
@@ -166,11 +166,11 @@ describe('Require Hero Name', () => {
     });
 
     it('should include 1 "Hulk" hero in the additional deck', () => {
-      expect(setup.additionalDeck).toBeDefined();
-      expect(setup.additionalDeck!.deck.heroes).toBeDefined();
-      const hulkHeroes = Array.from(setup.additionalDeck!.deck.heroes!).filter(
-        isHulk
-      );
+      expect(setup.additionalDecks).toHaveLength(1);
+      expect(setup.additionalDecks[0].deck.heroes).toBeDefined();
+      const hulkHeroes = Array.from(
+        setup.additionalDecks[0].deck.heroes!
+      ).filter(isHulk);
 
       expect(hulkHeroes).toHaveLength(1);
     });
@@ -335,7 +335,9 @@ describe('Require Villain Group', () => {
       );
       const setup = scheme.getSetup({ numPlayers: 2, store });
 
-      expect(setup.additionalDeck?.deck.villains).toContain(MONSTERS_UNLEASHED);
+      expect(setup.additionalDecks[0].deck.villains).toContain(
+        MONSTERS_UNLEASHED
+      );
     });
   });
 });
