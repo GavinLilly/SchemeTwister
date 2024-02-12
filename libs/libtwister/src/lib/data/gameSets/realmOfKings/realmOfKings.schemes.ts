@@ -16,14 +16,14 @@ Twist 8-11: KO two cards from the top of each Wedding Hero Stack.`,
   meta: {
     numTwists: 11,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Wedding Decks',
         deck: {
           numHeroes: 2,
         },
         instruction:
           'Set aside two extra Heroes to get married. Prepare each Wedding Hero into a seperate 14-card stack, ordered by cost with the lowest cost on top.',
-      };
+      });
       return rule;
     },
   },
@@ -72,11 +72,13 @@ export const DEVOLVE_WITH_XEROGEN_CRYSTALS = new SchemeDefinition({
   keywords: [ABOMINATION],
   meta: {
     numTwists: {
+      /* eslint-disable @typescript-eslint/naming-convention */
       '1': 4,
       '2': 5,
       '3': 6,
       '4': 7,
       '5': 8,
+      /* eslint-enable @typescript-eslint/naming-convention */
     },
     rules: (rule) => {
       rule.villainDeck.numHenchmenGroups++;

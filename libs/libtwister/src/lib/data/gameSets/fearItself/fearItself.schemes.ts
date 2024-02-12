@@ -37,13 +37,13 @@ Twists 8: Good wins! The Traitor reveals themself and also wins.`,
   meta: {
     numTwists: 8,
     rules: (rule, num) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Betrayal Deck',
         deck: {
           numTwists: 1,
           numWounds: num * 3,
         },
-      };
+      });
 
       return rule;
     },

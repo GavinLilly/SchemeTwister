@@ -5,6 +5,8 @@ export enum KeywordName {
 
   AMBUSH_ON_HEROES = 'Ambush Abilities on Heroes',
 
+  ANTICS = 'Antics',
+
   ARTIFACT = 'Artifact',
 
   ASTRAL_PLANE = 'Astral Plane',
@@ -65,6 +67,8 @@ export enum KeywordName {
 
   DOMINATE = 'Dominate',
 
+  DOUBLE_CROSS = 'Double Cross',
+
   DOUBLE_SIDED_TRANSFORMING_SCHEMES = 'Double-Sided Transforming Schemes',
 
   ELUSIVE = 'Elusive',
@@ -77,6 +81,8 @@ export enum KeywordName {
 
   EXCESSIVE_VIOLENCE = 'Excessive Violence',
 
+  EXPLORE = 'Explore',
+
   FATEFUL_RESURRECTION = 'Fateful Resurrection',
 
   FEAST = 'Feast',
@@ -88,6 +94,8 @@ export enum KeywordName {
   GALACTUS_COSMIC_THREAT = 'Galactus Cosmic Threat',
 
   HAUNT = 'Haunt',
+
+  HEIST = 'Heist',
 
   HIDDEN_WITNESS = 'Hidden Witness',
 

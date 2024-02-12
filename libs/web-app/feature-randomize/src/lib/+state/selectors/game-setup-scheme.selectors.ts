@@ -29,9 +29,9 @@ export const selectVillainDeck = createSelector(
   (state: IGameSetupState) => state.gameSetup.villainDeck
 );
 
-export const selectAdditionalDeck = createSelector(
+export const selectAdditionalDecks = createSelector(
   selectGameSetupFeature,
-  (state: IGameSetupState) => state.gameSetup.additionalDeck
+  (state: IGameSetupState) => state.gameSetup.additionalDecks
 );
 
 export const selectMastermind = createSelector(

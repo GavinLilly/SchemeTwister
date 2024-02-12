@@ -36,7 +36,7 @@ export interface INumPlayerRules {
   heroDeck: IHeroDeckRequirements;
   villainDeck: IVillainDeckRequirements;
 
-  additionalDeck?: IAdditionalDeckRules;
+  additionalDeck: IAdditionalDeckRules[];
   numWounds?: number;
   numShieldOfficers?: number;
   numShards?: number;

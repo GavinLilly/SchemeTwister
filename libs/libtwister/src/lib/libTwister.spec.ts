@@ -47,38 +47,57 @@ declare global {
   }
 }
 
+const BIG_BOX_COUNT = 6;
+const SMALL_BOX_COUNT = 23;
+const MEDIUM_BOX_COUNT = 4;
+const CORE_SET_COUNT = 4;
+const PROMO_SET_COUNT = 1;
+const GAME_SET_COUNT =
+  BIG_BOX_COUNT +
+  SMALL_BOX_COUNT +
+  MEDIUM_BOX_COUNT +
+  CORE_SET_COUNT +
+  PROMO_SET_COUNT;
+
 describe('LibTwister', () => {
   describe('All game sets', () => {
-    it('should have 37 sets', () =>
-      expect(LibTwister.allGameSets.size).toBe(37));
+    it(`should have ${GAME_SET_COUNT} sets`, () =>
+      expect(LibTwister.allGameSets.size).toBe(GAME_SET_COUNT));
 
-    it('should have 6 big boxes', () =>
+    it(`should have ${BIG_BOX_COUNT} big boxes`, () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
           (item) => item.size === GAME_SET_SIZE.large
         )
-      ).toHaveLength(6));
+      ).toHaveLength(BIG_BOX_COUNT));
 
-    it('should have 23 small boxes', () =>
+    it(`should have ${SMALL_BOX_COUNT} small boxes`, () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
           (item) => item.size === GAME_SET_SIZE.small
         )
-      ).toHaveLength(23));
+      ).toHaveLength(SMALL_BOX_COUNT));
 
-    it('should have 3 medium boxes', () =>
+    it(`should have ${MEDIUM_BOX_COUNT} medium boxes`, () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
           (item) => item.size === GAME_SET_SIZE.medium
         )
-      ).toHaveLength(3));
+      ).toHaveLength(MEDIUM_BOX_COUNT));
 
-    it('should have 4 core sets', () =>
+    it(`should have ${CORE_SET_COUNT} core sets`, () =>
       expect(
         Array.from(LibTwister.allGameSets.values()).filter(
           (item) => item.size === GAME_SET_SIZE.core
         )
-      ).toHaveLength(4));
+      ).toHaveLength(CORE_SET_COUNT));
+
+    it(`should have ${PROMO_SET_COUNT} promo sets`, () =>
+      expect(
+        Array.from(LibTwister.allGameSets.values()).filter(
+          (item) => item.size === GAME_SET_SIZE.promo
+        )
+      ).toHaveLength(PROMO_SET_COUNT));
 
     describe('all cards', () => {
       const allCards = Array.from(LibTwister.allGameSets.values()).flatMap(
@@ -305,7 +324,7 @@ describe('LibTwister', () => {
 
   describe('with no game set IDs', () => {
     it('should create a LibTwister instance with all Game Sets', () =>
-      expect(LibTwister.of().selectedGameSets).toHaveLength(37));
+      expect(LibTwister.of().selectedGameSets).toHaveLength(GAME_SET_COUNT));
   });
 
   describe('gameSetIdToGameSet', () => {

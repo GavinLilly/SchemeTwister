@@ -43,14 +43,14 @@ export const EXPLOSION_AT_THE_WASHINGTON_MONUMENT = new SchemeDefinition({
   meta: {
     numTwists: 8,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Floors of the Washington Monument',
         deck: {
           numBystanders: 18,
           numWounds: 14,
         },
         instruction: 'Deal them evenly into eight decks',
-      };
+      });
       return rule;
     },
   },

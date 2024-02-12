@@ -23,7 +23,7 @@ export class GameSetup implements IGameSetup {
   readonly numShieldOfficers?: number;
   heroDeck: IHeroDeck;
   villainDeck: IVillainDeck;
-  additionalDeck?: IAdditionalDeck;
+  additionalDecks: IAdditionalDeck[];
 
   constructor(setup: IGameSetup) {
     ({
@@ -34,7 +34,7 @@ export class GameSetup implements IGameSetup {
       numShieldOfficers: this.numShieldOfficers,
       heroDeck: this.heroDeck,
       villainDeck: this.villainDeck,
-      additionalDeck: this.additionalDeck,
+      additionalDecks: this.additionalDecks,
     } = setup);
   }
 
@@ -61,6 +61,34 @@ export class GameSetup implements IGameSetup {
     return new Set(keywords);
   }
 
+  private get _additionalDeckHeroes() {
+    return this.additionalDecks
+      .map((deck) => deck.deck.heroes)
+      .filter((heroes): heroes is Set<Hero> => !!heroes)
+      .flatMap((heroes) => Array.from(heroes));
+  }
+
+  private get _additionalDeckHenchmen() {
+    return this.additionalDecks
+      .map((deck) => deck.deck.henchmen)
+      .filter((henchmen): henchmen is Set<Henchmen> => !!henchmen)
+      .flatMap((henchmen) => Array.from(henchmen));
+  }
+
+  private get _additionalDeckVillains() {
+    return this.additionalDecks
+      .map((deck) => deck.deck.villains)
+      .filter((villains): villains is Set<VillainGroup> => !!villains)
+      .flatMap((villains) => Array.from(villains));
+  }
+
+  private get _additionalDeckMasterminds() {
+    return this.additionalDecks
+      .map((deck) => deck.deck.masterminds)
+      .filter((masterminds): masterminds is Set<Mastermind> => !!masterminds)
+      .flatMap((masterminds) => Array.from(masterminds));
+  }
+
   /**
    * Creates an empty GameSetup.
    * @returns an empty GameSetup
@@ -77,6 +105,7 @@ export class GameSetup implements IGameSetup {
         numTwists: 0,
         numMasterStrikes: 0,
       },
+      additionalDecks: [],
     };
 
     return new GameSetup(setup);
@@ -90,7 +119,7 @@ export class GameSetup implements IGameSetup {
     return new Set([
       ...this.heroDeck.heroes,
       ...(this.villainDeck.heroes ?? []),
-      ...(this.additionalDeck?.deck.heroes ?? []),
+      ...this._additionalDeckHeroes,
     ]);
   }
 
@@ -102,7 +131,7 @@ export class GameSetup implements IGameSetup {
     return new Set([
       ...this.villainDeck.henchmen,
       ...(this.heroDeck.henchmen ?? []),
-      ...(this.additionalDeck?.deck.henchmen ?? []),
+      ...this._additionalDeckHenchmen,
     ]);
   }
 
@@ -113,7 +142,7 @@ export class GameSetup implements IGameSetup {
   public getSelectedVillains(): Set<VillainGroup> {
     return new Set([
       ...this.villainDeck.villains,
-      ...(this.additionalDeck?.deck.villains ?? []),
+      ...this._additionalDeckVillains,
     ]);
   }
 
@@ -122,10 +151,7 @@ export class GameSetup implements IGameSetup {
    * @returns an array of Masterminds
    */
   public getSelectedMasterminds(): Set<Mastermind> {
-    return new Set([
-      this.mastermind,
-      ...(this.additionalDeck?.deck.masterminds ?? []),
-    ]);
+    return new Set([this.mastermind, ...this._additionalDeckMasterminds]);
   }
 
   /**
@@ -156,16 +182,16 @@ export class GameSetup implements IGameSetup {
    * Gets the additional deck as an array rather than a structured object
    * @returns an array of Heroes, Henchmen, Villain groups and Masterminds
    */
-  public additionalDeckAsArray(): Set<VillainAdditionalDeckCards> {
-    if (this.additionalDeck === undefined) {
+  public additionalDecksAsArray(): Set<VillainAdditionalDeckCards> {
+    if (this.additionalDecks === undefined) {
       return new Set();
     }
 
     return new Set([
-      ...(this.additionalDeck.deck.henchmen ?? []),
-      ...(this.additionalDeck.deck.heroes ?? []),
-      ...(this.additionalDeck.deck.masterminds ?? []),
-      ...(this.additionalDeck.deck.villains ?? []),
+      ...this._additionalDeckHeroes,
+      ...this._additionalDeckHenchmen,
+      ...this._additionalDeckMasterminds,
+      ...this._additionalDeckVillains,
     ]);
   }
 
@@ -182,7 +208,7 @@ export class GameSetup implements IGameSetup {
       villainDeck: Array.from(this.villainDeckAsArray()).map(
         (card) => card.name
       ),
-      additionalDeck: Array.from(this.additionalDeckAsArray()).map(
+      additionalDeck: Array.from(this.additionalDecksAsArray()).map(
         (card) => card.name
       ),
     });

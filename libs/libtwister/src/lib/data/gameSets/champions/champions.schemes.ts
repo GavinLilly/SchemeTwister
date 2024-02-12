@@ -20,12 +20,12 @@ export const CLASH_OF_THE_MONSTERS_UNLEASHED = new SchemeDefinition({
   meta: {
     numTwists: 10,
     rules: (rule, num) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Monster Pit',
         deck: {
           numVillainGroups: 1,
         },
-      };
+      });
       rule.numWounds = num * 6;
 
       return rule;

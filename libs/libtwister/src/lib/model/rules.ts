@@ -37,6 +37,7 @@ export class Rules {
           numTwists: 8,
           numMasterStrikes: 1,
         },
+        additionalDeck: [],
       },
       2: {
         heroDeck: {
@@ -49,6 +50,7 @@ export class Rules {
           numTwists: 8,
           numMasterStrikes: 5,
         },
+        additionalDeck: [],
       },
       3: {
         heroDeck: {
@@ -61,6 +63,7 @@ export class Rules {
           numTwists: 8,
           numMasterStrikes: 5,
         },
+        additionalDeck: [],
       },
       4: {
         heroDeck: {
@@ -73,6 +76,7 @@ export class Rules {
           numTwists: 8,
           numMasterStrikes: 5,
         },
+        additionalDeck: [],
       },
       5: {
         heroDeck: {
@@ -85,6 +89,7 @@ export class Rules {
           numTwists: 8,
           numMasterStrikes: 5,
         },
+        additionalDeck: [],
       },
       /* eslint-enable @typescript-eslint/naming-convention */
     };

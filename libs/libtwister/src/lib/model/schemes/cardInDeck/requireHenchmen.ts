@@ -20,13 +20,17 @@ export class RequireHenchmen implements IRequireCardTypeBehaviour<Henchmen> {
   ): HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal {
     let numHenchmen: number | undefined;
 
+    const isAdditionalDeckHenchmen = rules.additionalDeck.some(
+      (deck) => deck.deck?.numHenchmenGroups !== undefined
+    );
+
     if (deckType === 'HERO' && rules.heroDeck.numHenchmenGroups !== undefined) {
       numHenchmen = rules.heroDeck.numHenchmenGroups;
-    } else if (
-      deckType === 'ADDITIONAL' &&
-      rules.additionalDeck?.deck?.numHenchmenGroups !== undefined
-    ) {
-      numHenchmen = rules.additionalDeck?.deck?.numHenchmenGroups;
+    } else if (deckType === 'ADDITIONAL' && isAdditionalDeckHenchmen) {
+      numHenchmen = rules.additionalDeck
+        .map((deck) => deck.deck?.numHenchmenGroups)
+        .filter((numHenchmen): numHenchmen is number => !!numHenchmen)
+        .reduce((prev, curr) => prev + curr);
     } else {
       numHenchmen = rules.villainDeck.numHenchmenGroups;
     }

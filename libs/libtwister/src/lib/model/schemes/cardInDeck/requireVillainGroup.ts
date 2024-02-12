@@ -22,11 +22,17 @@ export class RequireVillainGroup
   ): HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal {
     let numVillainGroups: number | undefined;
 
-    if (
-      deckType === 'ADDITIONAL' &&
-      rules.additionalDeck?.deck?.numVillainGroups
-    ) {
-      numVillainGroups = rules.additionalDeck.deck.numVillainGroups;
+    const isAdditionalDeckVillains = rules.additionalDeck.some(
+      (deck) => deck.deck?.numVillainGroups !== undefined
+    );
+
+    if (deckType === 'ADDITIONAL' && isAdditionalDeckVillains) {
+      numVillainGroups = rules.additionalDeck
+        .map((deck) => deck.deck?.numVillainGroups)
+        .filter(
+          (numVillainGroups): numVillainGroups is number => !!numVillainGroups
+        )
+        .reduce((prev, curr) => prev + curr);
     } else {
       numVillainGroups = rules.villainDeck.numVillainGroups;
     }

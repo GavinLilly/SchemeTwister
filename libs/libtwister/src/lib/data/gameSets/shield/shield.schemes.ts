@@ -72,12 +72,12 @@ export const SECRET_EMPIRE_OF_BETRAYAL = new SchemeDefinition({
   meta: {
     numTwists: 11,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Dark Loyalty',
         deck: {
           numHeroes: 1,
         },
-      };
+      });
       return rule;
     },
   },

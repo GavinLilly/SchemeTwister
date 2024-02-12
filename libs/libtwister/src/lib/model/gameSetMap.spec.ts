@@ -12,7 +12,7 @@ describe('GameSetMap', () => {
 
   describe('asArray', () => {
     it('should have all game sets', () =>
-      expect(map.asArray()).toHaveLength(37));
+      expect(map.asArray()).toHaveLength(38));
 
     it('should only have core game sets', () => {
       const sizes = new Set(

@@ -59,12 +59,12 @@ export const THE_TIME_HEIST = new SchemeDefinition({
     numTwists: 11,
     rules: (rule) => {
       rule.heroDeck.numHeroes = 4;
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Past Hero Deck',
         deck: {
           numHeroes: 4,
         },
-      };
+      });
 
       return rule;
     },

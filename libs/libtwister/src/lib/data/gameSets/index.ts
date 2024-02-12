@@ -15,6 +15,7 @@ export * as HEROES_OF_ASGARD from './heroesOfAsgard';
 export * as INTO_THE_COSMOS from './intoTheCosmos';
 export * as LEGENDARY from './legendary';
 export * as MARVEL_STUDIOS from './marvelStudios';
+export * as MCU_ANT_MAN from './mcuAntMan';
 export * as MCU_GUARDIANS_OF_THE_GALAXY from './mcuGuardiansOfTheGalaxy';
 export * as MCU_INFINITY_SAGA from './mcuInfinitySaga';
 export * as MESSIAH_COMPLEX from './messiahComplex';

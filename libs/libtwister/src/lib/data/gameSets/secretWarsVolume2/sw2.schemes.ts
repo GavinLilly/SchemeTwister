@@ -38,7 +38,7 @@ export const ENTHRONE_THE_BARONS_OF_BATTLEWORLD = new SchemeDefinition({
   name: 'Enthrone the Barons of Battleworld',
   setup: '8 Twists.',
   twist: `The Villain in the city or Escape Pile with the highest printed Attack ascends to become a new Mastermind. It gets +2 Attack. It gains the ability "Master Strike: Each Player discards a card with cost equal to this Mastermind's printed VP." (Keep them separate from any Villains who ascend through Escape effects.)
-Twist 8: The Villain in each player's Victory Pile with the highest printed Attack ascends the same way.`,
+  Twist 8: The Villain in each player's Victory Pile with the highest printed Attack ascends the same way.`,
   evilWins: 'When there are 6 Masterminds.',
   meta: { numTwists: 8 },
   gameSet: META,
@@ -56,11 +56,13 @@ export const THE_FOUNTAIN_OF_ETERNAL_LIFE = new SchemeDefinition({
   keywords: [FATEFUL_RESURRECTION],
   meta: {
     numTwists: {
+      /* eslint-disable @typescript-eslint/naming-convention */
       '1': 4,
       '2': 8,
       '3': 8,
       '4': 8,
       '5': 8,
+      /* eslint-enable @typescript-eslint/naming-convention */
     },
   },
   gameSet: META,
@@ -130,12 +132,12 @@ Twist 8: Evil wins!`,
   meta: {
     numTwists: 8,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Additional Masterminds',
         deck: {
           numMasterminds: 3,
         },
-      };
+      });
       return rule;
     },
   },

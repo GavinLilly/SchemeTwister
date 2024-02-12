@@ -179,18 +179,18 @@ describe('Scheme', () => {
     it('should include Murderworld in the villain deck', () =>
       expect(setup.villainDeck.villains).toContain(MURDERWORLD));
 
-    it('should put 1 hero in the additional deck', () => {
+    it('should put 1 hero in an additional deck', () => {
       const heroAdditional = new Scheme({
         ...baseSchemeDesc,
         meta: {
           numTwists: 8,
           rules: (rule) => {
-            rule.additionalDeck = {
+            rule.additionalDeck.push({
               name: 'Foo',
               deck: {
                 numHeroes: 1,
               },
-            };
+            });
             return rule;
           },
         },
@@ -198,11 +198,11 @@ describe('Scheme', () => {
 
       const additionalSetup = heroAdditional.getSetup({ numPlayers: 3, store });
 
-      expect(additionalSetup.additionalDeck).toBeTruthy();
-      expect(additionalSetup.additionalDeck?.deck).toBeTruthy();
+      expect(additionalSetup.additionalDecks).toHaveLength(1);
+      expect(additionalSetup.additionalDecks[0].deck).toBeTruthy();
       expect(
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        Array.from(additionalSetup.additionalDeck!.deck.heroes!)
+        Array.from(additionalSetup.additionalDecks[0].deck.heroes!)
       ).toHaveLength(1);
     });
 

@@ -49,13 +49,13 @@ export const CYTOPLASM_SPIKE_INVASION = new SchemeDefinition({
   meta: {
     numTwists: 10,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Infected Deck',
         deck: {
           numBystanders: 20,
           numHenchmenGroups: 1,
         },
-      };
+      });
       return rule;
     },
     overrideScheme: {
@@ -119,12 +119,12 @@ Twist 7: Evil Wins!`,
   meta: {
     numTwists: 7,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Mutation Pile',
         deck: {
           numHeroes: 1,
         },
-      };
+      });
       return rule;
     },
     overrideScheme: requireHulkScheme,
@@ -144,12 +144,12 @@ export const SHOOT_HULK_INTO_SPACE = new SchemeDefinition({
   meta: {
     numTwists: 8,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Hulk Deck',
         deck: {
           numHeroes: 1,
         },
-      };
+      });
       return rule;
     },
     overrideScheme: requireHulkScheme,
@@ -182,12 +182,12 @@ Twist 9: Evil Wins!`,
   meta: {
     numTwists: 9,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Lurking',
         deck: {
           numMasterminds: 3,
         },
-      };
+      });
       return rule;
     },
   },

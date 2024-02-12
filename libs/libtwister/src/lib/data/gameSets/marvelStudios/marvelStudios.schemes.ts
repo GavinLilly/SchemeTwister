@@ -111,10 +111,10 @@ export const REPLACE_EARTHS_LEADERS_WITH_HYDRA = new SchemeDefinition({
     numTwists: 5,
     rules: (rule) => {
       rule.villainDeck.numBystanders = 18;
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Infiltrator attack',
         deck: { numTwists: 3 },
-      };
+      });
 
       return rule;
     },
@@ -131,11 +131,13 @@ export const SUPER_HERO_CIVIL_WAR = new SchemeDefinition({
   evilWins: 'If the Hero Deck runs out.',
   meta: {
     numTwists: {
+      /* eslint-disable @typescript-eslint/naming-convention */
       '1': 0,
       '2': 8,
       '3': 8,
       '4': 5,
       '5': 5,
+      /* eslint-enable @typescript-eslint/naming-convention */
     },
     rules: (rule, num) => {
       if (num === 2) {

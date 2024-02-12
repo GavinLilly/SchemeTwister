@@ -43,10 +43,10 @@ export const INTERGALACTIC_KREE_NEGA_BOMB = new SchemeDefinition({
   meta: {
     numTwists: 8,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Nega-Bomb Deck',
         deck: { numBystanders: 6 },
-      };
+      });
 
       return rule;
     },
@@ -94,11 +94,13 @@ export const UNITE_THE_SHARDS = new SchemeDefinition({
   keywords: [SHARDS],
   meta: {
     numTwists: {
+      /* eslint-disable @typescript-eslint/naming-convention */
       '1': 6,
       '2': 7,
       '3': 8,
       '4': 9,
       '5': 10,
+      /* eslint-enable @typescript-eslint/naming-convention */
     },
     rules: (rule) => {
       rule.numShards = 30;

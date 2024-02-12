@@ -118,7 +118,7 @@ export class LiteGameSetup {
       villainDeck: Array.from(setup.villainDeckAsArray()).map(
         (card) => card.id
       ),
-      additionalDeck: Array.from(setup.additionalDeckAsArray()).map(
+      additionalDeck: Array.from(setup.additionalDecksAsArray()).map(
         (card) => card.id
       ),
     });
@@ -147,7 +147,7 @@ export class LiteGameSetup {
         numMasterStrikes: 5,
         numTwists: rules.villainDeck.numTwists,
       },
-      additionalDeck: this._buildFullAdditionalDeck(
+      additionalDecks: this._buildFullAdditionalDeck(
         rules.additionalDeck,
         twister
       ),
@@ -210,21 +210,17 @@ export class LiteGameSetup {
   }
 
   private _buildFullAdditionalDeck(
-    rules: IAdditionalDeckRules | undefined,
+    rules: IAdditionalDeckRules[],
     twister: LibTwister
-  ): IAdditionalDeck | undefined {
-    if (rules === undefined) {
-      return undefined;
-    }
-
+  ): IAdditionalDeck[] {
     try {
-      return {
-        name: rules.name,
+      return rules.map((rule) => ({
+        name: rule.name,
         deck: LiteGameSetup._builAdditionalOrVillainDeck(
           this.additionalDeck,
           twister
         ),
-      };
+      }));
     } catch (err) {
       throw new Error('Unsupported card type in the additional deck');
     }

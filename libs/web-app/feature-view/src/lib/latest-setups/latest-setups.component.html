@@ -41,9 +41,8 @@
           </p>
         </td>
         <td>
-          <div *ngIf="gameSetup.additionalDeck; then content"></div>
-          <ng-template #content>
-            <div *ngIf="gameSetup.additionalDeck?.deck as addDeck">
+          <div *ngFor="let additionalDeck of gameSetup.additionalDecks">
+            <div *ngIf="additionalDeck.deck as addDeck">
               <p *ngFor="let villain of addDeck.villains">
                 {{ villain.name }}
               </p>
@@ -57,7 +56,7 @@
                 {{ masterminds.name }}
               </p>
             </div>
-          </ng-template>
+          </div>
         </td>
       </ng-container>
     </tr>
