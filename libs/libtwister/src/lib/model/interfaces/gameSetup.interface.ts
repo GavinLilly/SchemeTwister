@@ -33,9 +33,9 @@ export interface IGameSetup {
   villainDeck: IVillainDeck;
 
   /**
-   * The definition of the additional deck. Will be undefined if there is no
-   * additional deck
+   * The definition of the additional decks. Will be empty if there are no
+   * additional decks
    *
    */
-  additionalDeck?: IAdditionalDeck;
+  additionalDecks: IAdditionalDeck[];
 }

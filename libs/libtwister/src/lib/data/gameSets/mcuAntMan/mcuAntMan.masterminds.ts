@@ -32,7 +32,6 @@ export const GHOST = new Mastermind({
   alwaysLeads: [GHOST_CHASERS],
 });
 
-// TODO add the ability to have multiple additional decks
 export const KANG = new Mastermind({
   id: 'f7b1aaf7-2025-49d4-bab0-dcd7959a1123',
   name: 'Kang',
@@ -42,13 +41,12 @@ export const KANG = new Mastermind({
   masterStrike: `Each player discards a ${HeroClass.STRENGTH} Hero or gains a wound. Put a random Timeline Variant Villain face up in the 'Multiverse' space. Kang Transforms`,
   alwaysLeads: [ARMADA_OF_KANG],
   ruleOverride: (rule) => {
-    rule.additionalDeck = {
+    rule.additionalDeck.push({
       name: 'Timeline Variants',
       deck: {
-        numVillainGroups:
-          (rule.additionalDeck?.deck?.numVillainGroups ?? 0) + 1,
+        numVillainGroups: 1,
       },
-    };
+    });
     return rule;
   },
   keywords: [CONQUEROR, DOUBLE_CROSS],

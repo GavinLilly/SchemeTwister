@@ -39,12 +39,12 @@ export const CAGE_VILLAINS_IN_POWERSUPPRESSING_CELLS = new SchemeDefinition({
   meta: {
     numTwists: 8,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Cop stack',
         deck: {
           numHenchmenGroups: 1,
         },
-      };
+      });
       return rule;
     },
     overrideScheme: {
@@ -70,12 +70,12 @@ export const CROWN_THOR_KING_OF_ASGARD = new SchemeDefinition({
   meta: {
     numTwists: 8,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Thor',
         deck: {
           numHenchmenGroups: 1,
         },
-      };
+      });
       return rule;
     },
     overrideScheme: {
@@ -112,12 +112,12 @@ export const GRADUATION_AT_XAVIERS_XACADEMY = new SchemeDefinition({
   meta: {
     numTwists: 8,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Young Mutants',
         deck: {
           numBystanders: 8,
         },
-      };
+      });
       return rule;
     },
   },
@@ -136,12 +136,12 @@ export const INFILTRATE_THE_LAIR_WITH_SPIES = new SchemeDefinition({
   meta: {
     numTwists: 8,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Infiltrating Spies',
         deck: {
           numBystanders: 21,
         },
-      };
+      });
       return rule;
     },
   },

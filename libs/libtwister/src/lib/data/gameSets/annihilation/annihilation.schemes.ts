@@ -47,12 +47,12 @@ export const PUT_HUMANITY_ON_TRIAL = new SchemeDefinition({
   meta: {
     numTwists: 11,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Galactic Jurors',
         deck: {
           numBystanders: 11,
         },
-      };
+      });
       return rule;
     },
   },

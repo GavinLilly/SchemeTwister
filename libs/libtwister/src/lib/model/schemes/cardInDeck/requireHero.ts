@@ -20,13 +20,17 @@ export class RequireHero implements IRequireCardTypeBehaviour<Hero> {
   ): HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal {
     let numHeroes: number | undefined;
 
+    const isAdditionalDeckHeroes = rules.additionalDeck.some(
+      (deck) => deck.deck?.numHeroes !== undefined
+    );
+
     if (deckType === 'VILLAIN' && rules.villainDeck.numHeroes) {
       numHeroes = rules.villainDeck.numHeroes;
-    } else if (
-      deckType === 'ADDITIONAL' &&
-      rules.additionalDeck?.deck?.numHeroes
-    ) {
-      numHeroes = rules.additionalDeck.deck.numHeroes;
+    } else if (deckType === 'ADDITIONAL' && isAdditionalDeckHeroes) {
+      numHeroes = rules.additionalDeck
+        .map((deck) => deck.deck?.numHeroes)
+        .filter((numHeroes): numHeroes is number => !!numHeroes)
+        .reduce((prev, curr) => prev + curr);
     } else {
       numHeroes = rules.heroDeck.numHeroes;
     }

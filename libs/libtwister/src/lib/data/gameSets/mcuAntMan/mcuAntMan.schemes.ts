@@ -31,10 +31,10 @@ export const AUCTION_SHRINK_TECH_TO_HIGHEST_BIDDER = new SchemeDefinition({
       ],
     },
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Shrink Tech',
         deck: { numHeroes: 1 },
-      };
+      });
 
       return rule;
     },
@@ -81,10 +81,10 @@ export const SIPHON_ENERGY_FROM_THE_QUANTUM_REALM = new SchemeDefinition({
   meta: {
     numTwists: 9,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Quantum Realm Villains',
         deck: { numVillainGroups: 1 },
-      };
+      });
       return rule;
     },
     overrideScheme: {

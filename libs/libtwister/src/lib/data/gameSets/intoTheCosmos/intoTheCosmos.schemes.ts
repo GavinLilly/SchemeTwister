@@ -24,10 +24,10 @@ Twist 9-11: Same effect, but in the Contest, Evil selects from 6 cards from the 
   meta: {
     numTwists: 11,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Contest Row',
         instruction: 'Put 11 random cards from the Hero Deck face up',
-      };
+      });
       rule.heroDeck.numHeroes++;
       return rule;
     },
@@ -45,12 +45,12 @@ export const TURN_THE_SOUL_OF_ADAM_WARLOCK = new SchemeDefinition({
   meta: {
     numTwists: 14,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Adam Warlock stack',
         deck: {
           numHeroes: 1,
         },
-      };
+      });
       return rule;
     },
     overrideScheme: {

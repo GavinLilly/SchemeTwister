@@ -1,20 +1,24 @@
-<div class="card" *ngIf="gameSetup() as gameSetup">
-  <div class="card-header">{{ gameSetup.name || 'Additional Deck' }}</div>
+<div class="card" *ngFor="let additionalDeck of additionalDecks()">
+  <div class="card-header">
+    {{ additionalDeck.name || 'Additional Deck' }}
+  </div>
   <div class="card-body p-0">
-    <p *ngIf="gameSetup.instructions">{{ gameSetup.instructions }}</p>
-    <p *ngIf="gameSetup.deck.numTwists">
-      <b>Twists: </b>{{ gameSetup.deck.numTwists }}
+    <p *ngIf="additionalDeck.instructions">
+      {{ additionalDeck.instructions }}
     </p>
-    <p *ngIf="gameSetup.deck.numBystanders">
-      <b>Bystanders: </b>{{ gameSetup.deck.numBystanders }}
+    <p *ngIf="additionalDeck.deck.numTwists">
+      <b>Twists: </b>{{ additionalDeck.deck.numTwists }}
     </p>
-    <p *ngIf="gameSetup.deck.numWounds">
-      <b>Wounds: </b>{{ gameSetup.deck.numWounds }}
+    <p *ngIf="additionalDeck.deck.numBystanders">
+      <b>Bystanders: </b>{{ additionalDeck.deck.numBystanders }}
+    </p>
+    <p *ngIf="additionalDeck.deck.numWounds">
+      <b>Wounds: </b>{{ additionalDeck.deck.numWounds }}
     </p>
 
     <ngb-accordion [closeOthers]="true">
       <ngb-panel
-        *ngFor="let henchmen of gameSetup.deck.henchmen"
+        *ngFor="let henchmen of additionalDeck.deck.henchmen"
         id="additionaldeck-panel-{{ henchmen.id }}"
         cardClass="henchmen"
         title="{{ henchmen.name }}"
@@ -26,7 +30,7 @@
         </ng-template>
       </ngb-panel>
       <ngb-panel
-        *ngFor="let villainGroup of gameSetup.deck.villains"
+        *ngFor="let villainGroup of additionalDeck.deck.villains"
         id="additionaldeck-panel-{{ villainGroup.id }}"
         cardClass="villainGroup"
         title="{{ villainGroup.name }}"
@@ -38,7 +42,7 @@
         </ng-template>
       </ngb-panel>
       <ngb-panel
-        *ngFor="let hero of gameSetup.deck.heroes"
+        *ngFor="let hero of additionalDeck.deck.heroes"
         id="additionaldeck-panel-{{ hero.id }}"
         cardClass="hero"
       >
@@ -63,7 +67,7 @@
         </ng-template>
       </ngb-panel>
       <ngb-panel
-        *ngFor="let mastermind of gameSetup.deck.masterminds"
+        *ngFor="let mastermind of additionalDeck.deck.masterminds"
         id="additionaldeck-panel-{{ mastermind.id }}"
         cardClass="mastermind"
         title="{{ mastermind.name }}"

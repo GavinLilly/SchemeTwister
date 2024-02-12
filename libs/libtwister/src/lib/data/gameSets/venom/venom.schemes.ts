@@ -66,12 +66,12 @@ Twist 11: Evil Wins!`,
   meta: {
     numTwists: 11,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'Drained Mastermind',
         deck: {
           numMasterminds: 1,
         },
-      };
+      });
       return rule;
     },
   },

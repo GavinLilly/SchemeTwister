@@ -11,10 +11,10 @@ export const BUILD_AN_ARMY_OF_ANNIHILATION = new SchemeDefinition({
   meta: {
     numTwists: 9,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         name: 'KO pile',
         deck: { numHenchmenGroups: 1 },
-      };
+      });
       return rule;
     },
   },
@@ -70,12 +70,12 @@ Twist 7: Evil Wins!`,
   meta: {
     numTwists: 8,
     rules: (rule) => {
-      rule.additionalDeck = {
+      rule.additionalDeck.push({
         deck: {
           numMasterminds: 1,
         },
         name: 'Second Mastermind',
-      };
+      });
       return rule;
     },
   },
@@ -94,11 +94,13 @@ export const FRAGMENTED_REALITIES = new SchemeDefinition({
     'The normal city does not exist. Instead, each player has a different dimension in front of them with one city space. Villains and Bystanders from your Villain Deck enter your dimension. You can fight Villains in any dimension.',
   meta: {
     numTwists: {
+      /* eslint-disable @typescript-eslint/naming-convention */
       '1': 2,
       '2': 4,
       '3': 6,
       '4': 8,
       '5': 10,
+      /* eslint-enable @typescript-eslint/naming-convention */
     },
     rules: (rule) => {
       rule.villainDeck.numVillainGroups++;

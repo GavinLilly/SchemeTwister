@@ -247,6 +247,35 @@ export class Scheme implements IPlayableObject {
     return new Set(returnCards);
   }
 
+  private static _buildAdditionalDecks(
+    additionalRules: IAdditionalDeckRules[],
+    store: StoreOfStores,
+    partialAdditionalDeck?: AdditionalDeckDeckMinimal
+  ): IAdditionalDeck[] {
+    const additionalDecks: IAdditionalDeck[] = [];
+
+    if (additionalRules.length > 0) {
+      const firstAdditionalDeck = Scheme._buildAdditionalDeck(
+        additionalRules[0],
+        store,
+        partialAdditionalDeck
+      );
+      additionalDecks.push(firstAdditionalDeck);
+    }
+
+    if (additionalRules.length >= 1) {
+      for (let i = 1; i < additionalRules.length; i++) {
+        const otherAdditionalDeck = Scheme._buildAdditionalDeck(
+          additionalRules[i],
+          store
+        );
+        additionalDecks.push(otherAdditionalDeck);
+      }
+    }
+
+    return additionalDecks;
+  }
+
   /**
    * Builds the additional deck based on the provided rules
    * @param additionalRules the rules to build to
@@ -474,18 +503,17 @@ export class Scheme implements IPlayableObject {
         numMasterStrikes: advancedSolo ? 5 : villainRules.numMasterStrikes,
         ...config.partialVillainDeck,
       },
+      additionalDecks: [],
       numShieldOfficers: playerRules.numShieldOfficers,
       numWounds: playerRules.numWounds,
     });
 
     // Build the additional deck first if required
-    if (additionalRules !== undefined) {
-      fullDeck.additionalDeck = Scheme._buildAdditionalDeck(
-        additionalRules,
-        config.store,
-        config.partialAdditionalDeck
-      );
-    }
+    fullDeck.additionalDecks = Scheme._buildAdditionalDecks(
+      additionalRules,
+      config.store,
+      config.partialAdditionalDeck
+    );
 
     // Build hero deck
     fullDeck.heroDeck = Scheme._buildHeroDeck(
