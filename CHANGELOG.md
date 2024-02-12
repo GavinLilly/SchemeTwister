@@ -1,3 +1,10 @@
+## [3.12.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.11.5...v3.12.0) (2024-02-12)
+
+
+### Features
+
+* **libtwister:** add MCU Ant Man ([3650081](https://github.com/GavinLilly/SchemeTwister/commit/3650081d65da6fc4e42064859da65eedb10d7e18))
+
 ## [3.11.5](https://github.com/GavinLilly/SchemeTwister/compare/v3.11.4...v3.11.5) (2024-02-04)
 
 
