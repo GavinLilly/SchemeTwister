@@ -16,7 +16,7 @@ export class GameSetsEffects {
     this._actions$.pipe(
       ofType(gameSetSelectionActions.setGameSets),
       map((action) => action.gameSetIds),
-      map((gameSetIds) => this._mapIdsToResult(gameSetIds))
+      map((gameSetIds) => GameSetsEffects._mapIdsToResult(gameSetIds))
     )
   );
 
@@ -25,7 +25,7 @@ export class GameSetsEffects {
       ofType(gameSetSelectionActions.addGameSet),
       withLatestFrom(this._store.select((state) => state.gameSets.gameSetIds)),
       map(([action, gameSetIds]) => gameSetIds.concat(action.gameSetId)),
-      map((gameSetIds) => this._mapIdsToResult(gameSetIds))
+      map((gameSetIds) => GameSetsEffects._mapIdsToResult(gameSetIds))
     )
   );
 
@@ -33,24 +33,12 @@ export class GameSetsEffects {
     this._actions$.pipe(
       ofType(gameSetSelectionActions.removeGameSet),
       withLatestFrom(this._store.select((state) => state.gameSets.gameSetIds)),
-      map(([action, gameSets]) => {
-        const deleteIdx = gameSets.indexOf(action.gameSetId);
-
-        const firstSection = gameSets.slice(0, deleteIdx);
-        const secondSection = gameSets.slice(deleteIdx + 1);
-
-        return [...firstSection, ...secondSection];
-      }),
-      map((gameSetIds) => this._mapIdsToResult(gameSetIds))
+      map(([action, gameSetIds]) =>
+        GameSetsEffects._removeGameSet(gameSetIds, action.gameSetId)
+      ),
+      map((gameSetIds) => GameSetsEffects._mapIdsToResult(gameSetIds))
     )
   );
-
-  private readonly _mapIdsToResult = (gameSetIds: string[]) =>
-    LibTwister.validateGameSetIds(gameSetIds)
-      ? gameSetCheckerActions.setGameSetsSuccess({
-          gameSetIds,
-        })
-      : gameSetCheckerActions.setGameSetsFailure();
 
   constructor(
     private _actions$: Actions,
@@ -58,4 +46,23 @@ export class GameSetsEffects {
       gameSets: IGameSetsState;
     }>
   ) {}
+
+  private static _removeGameSet(
+    gameSetIds: string[],
+    gameSetIdToRemove: string
+  ): string[] {
+    const deleteIdx = gameSetIds.indexOf(gameSetIdToRemove);
+
+    const firstSection = gameSetIds.slice(0, deleteIdx);
+    const secondSection = gameSetIds.slice(deleteIdx + 1);
+
+    return [...firstSection, ...secondSection];
+  }
+
+  private static readonly _mapIdsToResult = (gameSetIds: string[]) =>
+    LibTwister.validateGameSetIds(gameSetIds)
+      ? gameSetCheckerActions.setGameSetsSuccess({
+          gameSetIds,
+        })
+      : gameSetCheckerActions.setGameSetsFailure();
 }

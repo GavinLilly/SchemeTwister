@@ -92,24 +92,27 @@ export class GameSetupEffects {
       ofType(gameSetupGeneratorActions.success),
       debounceTime(GameSetupEffects._storeSendWaitSeconds * 1000),
       map((action) => action.gameSetup),
-      mergeMap((setup) => {
-        const uid = LiteGameSetup.of(setup).calculateUid();
-        return this._storedSetupsService
+      map((gameSetup) => ({
+        setup: gameSetup,
+        uid: LiteGameSetup.of(gameSetup).calculateUid(),
+      })),
+      mergeMap(({ setup, uid }) =>
+        this._storedSetupsService
           .getSetupDocument(uid)
-          .pipe(map((queryResult) => ({ queryResult, setup })));
-      }),
-      map(({ queryResult, setup }) => {
+          .pipe(map((queryResult) => ({ queryResult, setup })))
+      ),
+      mergeMap(({ queryResult, setup }) => {
         if (queryResult.exists) {
           return from(queryResult.ref.update(TWIST_COUNT_NAME, increment(1)));
         } else {
-          const newSetup = {
+          const newSetup: IStoredGameSetup = {
             ...LiteGameSetup.of(setup),
             twistCount: 1,
             created: Timestamp.now(),
             updated: Timestamp.now(),
             playCount: 0,
             winCount: 0,
-          } as IStoredGameSetup;
+          };
 
           return from(queryResult.ref.set(newSetup));
         }
