@@ -1,3 +1,10 @@
+## [3.12.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.0...v3.12.1) (2024-02-18)
+
+
+### Bug Fixes
+
+* **libtwister:** ensure the same mastermind can not be chosen twice ([fea3264](https://github.com/GavinLilly/SchemeTwister/commit/fea3264e37a43fc337f16c28a3a204bf1da92ff7)), closes [#139](https://github.com/GavinLilly/SchemeTwister/issues/139)
+
 ## [3.12.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.11.5...v3.12.0) (2024-02-12)
 
 
