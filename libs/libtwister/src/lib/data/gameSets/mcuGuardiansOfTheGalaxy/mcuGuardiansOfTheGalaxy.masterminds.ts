@@ -47,7 +47,7 @@ export const EGO_THE_LIVING_PLANET = ego.buildNormal({
     'Create an extra city space on the left side of the city. If there are at least 3 Villains in the city, each player gains a Wound. Play another card from the Villain Deck.',
 });
 
-export const EPIC_EGO_THE_LIVING_PLANET = ego.buildNormal({
+export const EPIC_EGO_THE_LIVING_PLANET = ego.buildEpic({
   id: '7474eef1-38f4-4127-8ce8-e38296fadcc1',
   attackPoints: '1+',
   ruleOverride: (rule) => {

@@ -163,6 +163,8 @@ export class LibTwister {
 
     const createdScheme = instantiateScheme(scheme);
 
+    this._stores.mastermindStore.removeCard(mastermind);
+
     const setup = createdScheme.getSetup({
       numPlayers,
       selectedMastermind: mastermind,

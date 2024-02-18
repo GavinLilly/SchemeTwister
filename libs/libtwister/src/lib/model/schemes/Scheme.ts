@@ -487,9 +487,7 @@ export class Scheme implements IPlayableObject {
     const fullDeck = new GameSetup({
       numPlayers: config.numPlayers,
       mastermind:
-        config.selectedMastermind !== undefined
-          ? config.selectedMastermind
-          : config.store.mastermindStore.getRandom(),
+        config.selectedMastermind ?? config.store.mastermindStore.pickRandom(),
       scheme: this,
       heroDeck: {
         ...config.partialHeroDeck,
