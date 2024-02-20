@@ -159,21 +159,20 @@ export class CardFactory<TCard extends IPlayableObject> {
   public get(idOrIds: string | string[]): TCard | TCard[] {
     const ids = idOrIds instanceof Array ? idOrIds : [idOrIds];
 
-    const cards: TCard[] = [];
-    ids.forEach((id) => {
+    const cards = ids.map((id) => {
       if (!isUUID(id)) {
         throw new Error(`The provided card ID (${id}) is not a valid UUID`);
       }
 
       const card = this.availableCardsMap.get(id);
 
-      if (card === undefined) {
-        throw new Error(
-          `Provided card ID (${id}) is not in the list of available cards.`
-        );
+      if (card !== undefined) {
+        return card;
       }
 
-      cards.push(card);
+      throw new Error(
+        `Provided card ID (${id}) is not in the list of available cards.`
+      );
     });
 
     if (cards.length === 1) {

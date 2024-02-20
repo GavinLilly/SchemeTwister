@@ -15,7 +15,6 @@ import { GAME_SET as WHAT_IF } from '../../data/gameSets/whatIf';
 import { ULTRON_SENTRIES } from '../../data/gameSets/whatIf/whatIf.henchmen';
 import { KILLMONGER_SPEC_OPS } from '../../data/gameSets/whatIf/whatIf.heroes';
 import {
-  EPIC_KILLMONGER_THE_BETRAYER,
   KILLMONGER_THE_BETRAYER,
   ULTRON_INFINITY,
 } from '../../data/gameSets/whatIf/whatIf.masterminds';
@@ -312,7 +311,7 @@ describe('Scheme', () => {
       }
     );
 
-    it.each([KILLMONGER_THE_BETRAYER, EPIC_KILLMONGER_THE_BETRAYER])(
+    it.each([KILLMONGER_THE_BETRAYER, KILLMONGER_THE_BETRAYER.epic])(
       'should always put Killmonger Spec Ops in the hero deck',
       (killmonger) => {
         const killmongerStore = new StoreBuilder()
