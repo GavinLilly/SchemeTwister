@@ -78,14 +78,13 @@ export class SchemeMastermindSelectComponent implements OnInit {
       () => {
         if (this.itemType === CARD_TYPE.scheme) {
           this.availableItems = this._libTwister().schemeFactory.availableCards;
-          this.availableItems.sort((a, b) => a.name.localeCompare(b.name));
         } else if (this.itemType === CARD_TYPE.mastermind) {
           const allMasterminds =
             this._libTwister().stores.mastermindStore.availableCards;
-          allMasterminds.sort((a, b) => a.name.localeCompare(b.name));
           this.availableItems =
             SchemeMastermindSelectComponent._iterateMasterminds(allMasterminds);
         }
+        this.availableItems.sort((a, b) => a.name.localeCompare(b.name));
       },
       { injector: this._injector }
     );
