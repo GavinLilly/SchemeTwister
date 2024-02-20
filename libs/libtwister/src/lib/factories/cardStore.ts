@@ -75,16 +75,16 @@ export class CardStore<
       return card;
     }
 
-    console.log('Requested card already picked. Returning requested card');
     const alreadyPicked = this.allCardsMap.get(cardId);
 
-    if (alreadyPicked === undefined) {
-      throw new Error(
-        'Picked card is not in list of all cards. Unable to continue'
-      );
+    if (alreadyPicked !== undefined) {
+      console.log('Requested card already picked. Returning requested card');
+      return alreadyPicked;
     }
 
-    return alreadyPicked;
+    throw new Error(
+      'Picked card is not in list of all cards. Unable to continue'
+    );
   }
 
   /**

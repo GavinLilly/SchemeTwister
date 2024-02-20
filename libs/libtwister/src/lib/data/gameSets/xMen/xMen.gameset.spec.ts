@@ -3,7 +3,7 @@ import { gameSetTest } from '../gameSetTests';
 
 import { GAME_SET } from './xMen.gameset';
 
-gameSetTest(GAME_SET, 10, 15, 7, 5, 12, 8);
+gameSetTest(GAME_SET, 10, 15, 7, 5, 6, 8);
 
 describe('X-Men game set', () => {
   it('should contain only X-Men heroes', () =>

@@ -1,7 +1,6 @@
 import isUUID from 'validator/lib/isUUID';
 
 import {
-  Mastermind,
   VillainGroup,
   Henchmen,
   Hero,
@@ -10,21 +9,22 @@ import {
 } from '../model';
 
 import { CardStore } from './cardStore';
+import { MastermindStore, MastermindType } from './mastermindStore';
 
 export class StoreOfStores {
-  private _mastermindStore!: CardStore<Mastermind>;
+  private _mastermindStore!: CardStore<MastermindType>;
   private _heroStore!: CardStore<Hero>;
   private _villainStore!: CardStore<VillainGroup>;
   private _henchmenStore!: CardStore<Henchmen>;
 
   constructor(
     heroes: Hero[],
-    masterminds: Mastermind[],
+    masterminds: MastermindType[],
     villains: VillainGroup[],
     henchmen: Henchmen[]
   ) {
     this._heroStore = new CardStore(heroes);
-    this._mastermindStore = new CardStore(masterminds);
+    this._mastermindStore = new MastermindStore(masterminds);
     this._villainStore = new CardStore(villains);
     this._henchmenStore = new CardStore(henchmen);
   }

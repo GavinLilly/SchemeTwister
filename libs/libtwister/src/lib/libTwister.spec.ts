@@ -6,10 +6,7 @@ import { GAME_SET as INTO_THE_COSMOS } from './data/gameSets/intoTheCosmos';
 import { GAME_SET as LEGENDARY } from './data/gameSets/legendary';
 import { GAME_SET as MARVEL_STUDIOS } from './data/gameSets/marvelStudios';
 import { GAME_SET as MCU_GUARDIANS_OF_THE_GALAXY } from './data/gameSets/mcuGuardiansOfTheGalaxy';
-import {
-  EGO_THE_LIVING_PLANET,
-  EPIC_EGO_THE_LIVING_PLANET,
-} from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.masterminds';
+import { EGO_THE_LIVING_PLANET } from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.masterminds';
 import { UNLEASH_THE_ABILISK_SPACE_MONSTER } from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.schemes';
 import { GAME_SET as XMEN } from './data/gameSets/xMen';
 import { LibTwister } from './libTwister';
@@ -301,7 +298,7 @@ describe('LibTwister', () => {
           const setup = twister.getSetup(
             2,
             UNLEASH_THE_ABILISK_SPACE_MONSTER,
-            EPIC_EGO_THE_LIVING_PLANET
+            EGO_THE_LIVING_PLANET.epic
           );
 
           expect(Array.from(setup.villainDeck.villains)).toHaveLength(4);

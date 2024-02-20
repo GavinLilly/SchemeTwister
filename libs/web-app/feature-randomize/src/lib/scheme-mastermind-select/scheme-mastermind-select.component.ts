@@ -16,7 +16,8 @@ import {
   NumPlayers,
   SoloBannedScheme,
   CardType,
-  TransformingMastermind,
+  MastermindWithEpic,
+  MastermindType,
 } from '@schemetwister/libtwister';
 
 import { randomizePageActions } from '../+state/actions/game-setup.actions';
@@ -36,16 +37,15 @@ import {
 })
 export class SchemeMastermindSelectComponent implements OnInit {
   @Input() itemType!: CardType;
-  availableItems!: (SchemeMinusRules | Mastermind)[];
+  availableItems!: (SchemeMinusRules | MastermindType)[];
   selectedItem = '**Random**';
 
   private _libTwister: Signal<LibTwister> =
     this._store.selectSignal(selectLibTwister);
   private _definedScheme: Signal<SchemeMinusRules | undefined> =
     this._store.selectSignal(selectDefinedScheme);
-  private _definedMastermind: Signal<
-    Mastermind | TransformingMastermind | undefined
-  > = this._store.selectSignal(selectDefinedMastermind);
+  private _definedMastermind: Signal<MastermindType | undefined> =
+    this._store.selectSignal(selectDefinedMastermind);
   private _numPlayers: Signal<NumPlayers> = this._store.selectSignal(
     (state) => state.numPlayers.numPlayers
   );
@@ -72,14 +72,20 @@ export class SchemeMastermindSelectComponent implements OnInit {
       { injector: this._injector }
     );
 
+    // TODO this should definitively ensure that epic cards come after their
+    // none epic versions
     effect(
       () => {
-        this.availableItems =
-          this.itemType === CARD_TYPE.scheme
-            ? this._libTwister().schemeFactory.availableCards
-            : this._libTwister().stores.mastermindStore.availableCards;
-
-        this.availableItems.sort((a, b) => a.name.localeCompare(b.name));
+        if (this.itemType === CARD_TYPE.scheme) {
+          this.availableItems = this._libTwister().schemeFactory.availableCards;
+          this.availableItems.sort((a, b) => a.name.localeCompare(b.name));
+        } else if (this.itemType === CARD_TYPE.mastermind) {
+          const allMasterminds =
+            this._libTwister().stores.mastermindStore.availableCards;
+          allMasterminds.sort((a, b) => a.name.localeCompare(b.name));
+          this.availableItems =
+            SchemeMastermindSelectComponent._iterateMasterminds(allMasterminds);
+        }
       },
       { injector: this._injector }
     );
@@ -107,6 +113,16 @@ export class SchemeMastermindSelectComponent implements OnInit {
       { injector: this._injector }
     );
   }
+
+  private static _iterateMasterminds = (masterminds: MastermindType[]) =>
+    masterminds
+      .map((mastermind) => {
+        if (mastermind instanceof MastermindWithEpic) {
+          return [mastermind, mastermind.epic];
+        }
+        return [mastermind];
+      })
+      .reduce((prev, curr) => prev.concat(curr), []);
 
   setItem(value: string) {
     const item = this.availableItems.find((card) => card.id === value);

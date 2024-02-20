@@ -2,7 +2,7 @@ import merge from 'ts-deepmerge';
 import { PartialDeep } from 'type-fest';
 import * as uuid from 'uuid';
 
-import { CardStore, StoreOfStores } from '../../factories';
+import { CardStore, StoreOfStores, MastermindType } from '../../factories';
 import { GameSet } from '../GameSet';
 import { GameSetup } from '../GameSetup';
 import { Henchmen, Hero, Mastermind, VillainGroup } from '../cards';
@@ -216,7 +216,7 @@ export class Scheme implements IPlayableObject {
   }
 
   private static _buildCards<
-    T extends Hero | Henchmen | VillainGroup | Mastermind
+    T extends Hero | Henchmen | VillainGroup | MastermindType
   >(
     store: CardStore<T>,
     existingCards: Set<T> | undefined,
@@ -229,7 +229,7 @@ export class Scheme implements IPlayableObject {
     const existingLength = existingCards !== undefined ? existingCards.size : 0;
     const numRequired = deckNumRequired - existingLength;
 
-    const returnCards: T[] =
+    const returnCards: T[] | Mastermind[] =
       existingCards !== undefined ? Array.from(existingCards) : [];
 
     if (numRequired > 0) {
