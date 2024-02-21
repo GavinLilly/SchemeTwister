@@ -1,5 +1,5 @@
-import { Mastermind, TransformingMastermind } from '../cards';
-import { Scheme } from '../schemes';
+import { Mastermind, TransformingMastermind } from '../cards/mastermind';
+import { Scheme } from '../schemes/Scheme';
 
 import { IAdditionalDeck, IHeroDeck, IVillainDeck } from './deck.interface';
 

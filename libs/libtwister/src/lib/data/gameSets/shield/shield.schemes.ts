@@ -5,7 +5,7 @@ import {
   RequireVillainGroup,
   SchemeDefinition,
 } from '../../../model';
-import { HeroClass } from '../../enums';
+import { HeroClass } from '../../enums/heroClass.enum';
 
 import { HYDRA_LEVEL, UNDERCOVER } from './shield.keywords';
 import { META } from './shield.meta';

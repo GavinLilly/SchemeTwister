@@ -1,5 +1,5 @@
 import { Henchmen } from '../../../model';
-import { HeroClass } from '../../enums';
+import { HeroClass } from '../../enums/heroClass.enum';
 
 import { BRIBE } from './darkCity.keywords';
 import { META } from './darkCity.meta';

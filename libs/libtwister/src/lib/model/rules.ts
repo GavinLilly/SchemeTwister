@@ -1,4 +1,4 @@
-import { INumPlayerRules } from './interfaces';
+import { INumPlayerRules } from './interfaces/rules.interface';
 import { numPlayers, NumPlayers } from './types';
 
 export type RulesType = Record<NumPlayers, INumPlayerRules>;

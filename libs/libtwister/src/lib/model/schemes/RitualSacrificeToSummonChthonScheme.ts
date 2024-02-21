@@ -1,5 +1,5 @@
-import { VillainGroup } from '../cards';
-import { IGameSetup } from '../interfaces';
+import { VillainGroup } from '../cards/villainGroup';
+import { IGameSetup } from '../interfaces/gameSetup.interface';
 import {
   DECK_TYPE,
   SchemeMinusRules,

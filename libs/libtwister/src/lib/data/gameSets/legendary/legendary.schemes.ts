@@ -6,7 +6,7 @@ import {
   RequireVillainGroup,
   DECK_TYPE,
 } from '../../../model';
-import { HeroClass } from '../../enums';
+import { HeroClass } from '../../enums/heroClass.enum';
 
 import { META } from './legendary.meta';
 import { SKRULLS } from './legendary.villains';

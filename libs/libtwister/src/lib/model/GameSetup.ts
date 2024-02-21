@@ -8,7 +8,7 @@ import {
   IVillainDeck,
   IGameSetup,
 } from './interfaces';
-import { Scheme } from './schemes';
+import { Scheme } from './schemes/Scheme';
 
 type VillainAdditionalDeckCards = Henchmen | VillainGroup | Mastermind | Hero;
 

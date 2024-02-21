@@ -1,11 +1,11 @@
-import { GAME_SET as DARK_CITY } from '../../data/gameSets/darkCity';
+import { GAME_SET as DARK_CITY } from '../../data/gameSets/darkCity/darkCity.gameset';
 import { JEAN_GREY } from '../../data/gameSets/darkCity/darkCity.heroes';
-import { GAME_SET as XMEN } from '../../data/gameSets/xMen';
+import { GAME_SET as XMEN } from '../../data/gameSets/xMen/xMen.gameset';
 import { PHOENIX } from '../../data/gameSets/xMen/xMen.heroes';
 import { THE_DARK_PHOENIX_SAGA } from '../../data/gameSets/xMen/xMen.schemes';
 import { HELLFIRE_CLUB } from '../../data/gameSets/xMen/xMen.villains';
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { IGameSetup } from '../interfaces';
+import { IGameSetup } from '../interfaces/gameSetup.interface';
 
 import { Scheme } from './Scheme';
 import { TheDarkPhoenixSagaScheme } from './TheDarkPhoenixSagaScheme';

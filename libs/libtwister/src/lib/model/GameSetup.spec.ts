@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { GAME_SET as DARK_CITY } from '../data/gameSets/darkCity';
+import { GAME_SET as DARK_CITY } from '../data/gameSets/darkCity/darkCity.gameset';
 import { DOMINO } from '../data/gameSets/darkCity/darkCity.heroes';
 import { VERSATILE } from '../data/gameSets/darkCity/darkCity.keywords';
 import { CONTEST_OF_CHAMPIONS } from '../data/gameSets/intoTheCosmos/intoTheCosmos.keywords';
 import { THE_CONTEST_OF_CHAMPIONS } from '../data/gameSets/intoTheCosmos/intoTheCosmos.schemes';
-import { GAME_SET as LEGENDARY } from '../data/gameSets/legendary';
+import { GAME_SET as LEGENDARY } from '../data/gameSets/legendary/legendary.gameset';
 import {
   CAPTAIN_AMERICA,
   CYCLOPS,
@@ -15,7 +15,7 @@ import {
   MIDTOWN_BANK_ROBBERY,
   REPLACE_EARTHS_LEADERS_WITH_KILLBOTS,
 } from '../data/gameSets/legendary/legendary.schemes';
-import { GAME_SET as PAINT_THE_TOWN_RED } from '../data/gameSets/paintTheTownRed';
+import { GAME_SET as PAINT_THE_TOWN_RED } from '../data/gameSets/paintTheTownRed/paintTheTownRed.gameset';
 import { CARNAGE } from '../data/gameSets/paintTheTownRed/paintTheTownRed.masterminds';
 import { SPLICE_HUMANS_WITH_SPIDER_DNA } from '../data/gameSets/paintTheTownRed/paintTheTownRed.schemes';
 import {

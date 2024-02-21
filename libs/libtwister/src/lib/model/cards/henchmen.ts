@@ -1,6 +1,6 @@
-import { IFightable } from '../interfaces';
+import { IFightable } from '../interfaces/fightable.interface';
 import { IVictoryPileCard } from '../interfaces/victoryPileCard.interface';
-import { CARD_TYPE } from '../types';
+import { CARD_TYPE } from '../types/cardType.type';
 
 import { AbstractFightableCardGroup } from './abstractFightableCardGroup';
 

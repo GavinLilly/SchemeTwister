@@ -1,8 +1,8 @@
-import { GAME_SET as LEGENDARY } from '../../data/gameSets/legendary';
+import { GAME_SET as LEGENDARY } from '../../data/gameSets/legendary/legendary.gameset';
 import { NEGATIVE_ZONE_PRISON_BREAKOUT } from '../../data/gameSets/legendary/legendary.schemes';
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { SinglePlayerError } from '../errors';
-import { NumPlayers } from '../types';
+import { SinglePlayerError } from '../errors/SinglePlayerError';
+import { NumPlayers } from '../types/numPlayers.type';
 
 import { SoloBannedScheme } from './SoloBannedScheme';
 

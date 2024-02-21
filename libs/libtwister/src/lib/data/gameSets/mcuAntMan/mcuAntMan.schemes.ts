@@ -7,7 +7,7 @@ import {
   RequireVillainGroup,
   SchemeDefinition,
 } from '../../../model';
-import { KeywordName } from '../../enums';
+import { KeywordName } from '../../enums/keywordName.enum';
 
 import { META } from './mcuAntMan.meta';
 import { QUANTUM_REALM } from './mcuAntMan.villains';

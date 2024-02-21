@@ -1,5 +1,5 @@
 import { IKeyword } from '../../../model';
-import { KeywordName } from '../../enums';
+import { KeywordName } from '../../enums/keywordName.enum';
 
 export const TRIGGERED_ARTIFACTS: IKeyword = {
   name: KeywordName.TRIGGERED_ARTIFACTS,

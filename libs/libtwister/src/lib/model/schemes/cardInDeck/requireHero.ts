@@ -1,12 +1,12 @@
 import { CardStore, StoreOfStores } from '../../../factories';
-import { Hero } from '../../cards';
+import { Hero } from '../../cards/hero';
 import {
   HeroDeckMinimal,
   VillainDeckMinimal,
   AdditionalDeckDeckMinimal,
   INumPlayerRules,
 } from '../../interfaces';
-import { DeckType } from '../../types';
+import { DeckType } from '../../types/deckType.type';
 import { Scheme } from '../Scheme';
 
 import { IRequireCardTypeBehaviour } from './requireCardTypeBehaviour.interface';

@@ -1,5 +1,5 @@
 import { MultiMastermind } from '../../../model';
-import { HeroClass } from '../../enums';
+import { HeroClass } from '../../enums/heroClass.enum';
 
 import { ADAPT, HYDRA_LEVEL } from './shield.keywords';
 import { META } from './shield.meta';

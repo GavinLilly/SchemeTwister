@@ -4,21 +4,21 @@ import {
   COLUSSUS,
   JEAN_GREY,
 } from '../../data/gameSets/darkCity/darkCity.heroes';
-import { GAME_SET as LEGENDARY } from '../../data/gameSets/legendary';
+import { GAME_SET as LEGENDARY } from '../../data/gameSets/legendary/legendary.gameset';
 import { DOOMBOT_LEGION } from '../../data/gameSets/legendary/legendary.henchmen';
 import {
   DEADPOOL,
   WOLVERINE,
 } from '../../data/gameSets/legendary/legendary.heroes';
 import { DR_DOOM } from '../../data/gameSets/legendary/legendary.masterminds';
-import { GAME_SET as WHAT_IF } from '../../data/gameSets/whatIf';
+import { GAME_SET as WHAT_IF } from '../../data/gameSets/whatIf/whatIf.gameset';
 import { ULTRON_SENTRIES } from '../../data/gameSets/whatIf/whatIf.henchmen';
 import { KILLMONGER_SPEC_OPS } from '../../data/gameSets/whatIf/whatIf.heroes';
 import {
   KILLMONGER_THE_BETRAYER,
   ULTRON_INFINITY,
 } from '../../data/gameSets/whatIf/whatIf.masterminds';
-import { GAME_SET as XMEN } from '../../data/gameSets/xMen';
+import { GAME_SET as XMEN } from '../../data/gameSets/xMen/xMen.gameset';
 import { ARCADE } from '../../data/gameSets/xMen/xMen.masterminds';
 import {
   HELLFIRE_CLUB,

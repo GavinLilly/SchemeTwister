@@ -6,7 +6,7 @@ import {
   AdditionalDeckDeckMinimal,
   INumPlayerRules,
 } from '../../interfaces';
-import { DeckType } from '../../types';
+import { DeckType } from '../../types/deckType.type';
 
 export interface IRequireCardTypeBehaviour<TCard extends AbstractCardGroup> {
   createDeck(

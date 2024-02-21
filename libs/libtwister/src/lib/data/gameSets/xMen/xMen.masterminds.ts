@@ -1,6 +1,6 @@
 import { MastermindWithEpic } from '../../../model';
 import { randomize } from '../../../utils/randomize';
-import { HeroClass } from '../../enums';
+import { HeroClass } from '../../enums/heroClass.enum';
 
 import { SHIAR_DEATH_COMMANDOS, SHIAR_PATROL_CRAFT } from './xMen.henchmen';
 import { DOMINATE, HUMAN_SHIELDS, TOKEN_CARDS, TRAPS } from './xMen.keywords';

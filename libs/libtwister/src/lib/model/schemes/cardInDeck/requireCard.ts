@@ -1,4 +1,4 @@
-import { CardStore } from '../../../factories';
+import { CardStore } from '../../../factories/cardStore';
 import { randomize } from '../../../utils/randomize';
 import { AbstractCardGroup } from '../../cards/abstractCardGroup';
 

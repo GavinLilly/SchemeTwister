@@ -1,6 +1,6 @@
 import { MastermindWithEpic } from '../../../model';
 import { randomize } from '../../../utils/randomize';
-import { HeroClass } from '../../enums';
+import { HeroClass } from '../../enums/heroClass.enum';
 import { SENTINELS } from '../legendary/legendary.henchmen';
 
 import { SENTINEL_SQUAD_ONE } from './messiahComplex.henchmen';

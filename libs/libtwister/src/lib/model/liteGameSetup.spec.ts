@@ -1,4 +1,4 @@
-import { GAME_SET as LEGENDARY } from '../data/gameSets/legendary';
+import { GAME_SET as LEGENDARY } from '../data/gameSets/legendary/legendary.gameset';
 import { MIDTOWN_BANK_ROBBERY } from '../data/gameSets/legendary/legendary.schemes';
 import { StoreOfStores, StoreBuilder } from '../factories';
 import instantiateScheme from '../utils/instantiateScheme';

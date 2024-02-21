@@ -3,7 +3,7 @@ import * as uuid from 'uuid';
 import { nameSorter } from '../utils/nameSorter';
 
 import { Bystander, Henchmen, Hero, Mastermind, VillainGroup } from './cards';
-import { IGameSetMeta } from './interfaces';
+import { IGameSetMeta } from './interfaces/gameSet.interface';
 import {
   AllCardTypes,
   CardType,

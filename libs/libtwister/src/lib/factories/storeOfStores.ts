@@ -1,12 +1,7 @@
 import isUUID from 'validator/lib/isUUID';
 
-import {
-  VillainGroup,
-  Henchmen,
-  Hero,
-  ICardType,
-  IPlayableObject,
-} from '../model';
+import { Henchmen, Hero, VillainGroup } from '../model/cards';
+import { ICardType, IPlayableObject } from '../model/interfaces';
 
 import { CardStore } from './cardStore';
 import { MastermindStore, MastermindType } from './mastermindStore';

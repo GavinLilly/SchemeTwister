@@ -1,12 +1,12 @@
 import { CardStore, StoreOfStores } from '../../../factories';
-import { Henchmen } from '../../cards';
+import { Henchmen } from '../../cards/henchmen';
 import {
   HeroDeckMinimal,
   VillainDeckMinimal,
   AdditionalDeckDeckMinimal,
   INumPlayerRules,
 } from '../../interfaces';
-import { DeckType } from '../../types';
+import { DeckType } from '../../types/deckType.type';
 import { Scheme } from '../Scheme';
 
 import { IRequireCardTypeBehaviour } from './requireCardTypeBehaviour.interface';

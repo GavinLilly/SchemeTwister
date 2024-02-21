@@ -1,4 +1,4 @@
-import { KeywordName } from '../../data/enums';
+import { KeywordName } from '../../data/enums/keywordName.enum';
 
 export interface IKeyword {
   name: KeywordName;
