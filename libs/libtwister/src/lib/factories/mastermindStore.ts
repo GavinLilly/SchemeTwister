@@ -1,10 +1,10 @@
 import {
+  EpicMastermind,
   Mastermind,
-  TransformingMastermind,
-  MultiMastermind,
   MastermindWithEpic,
-} from '../model';
-import { EpicMastermind } from '../model/cards/mastermind';
+  MultiMastermind,
+  TransformingMastermind,
+} from '../model/cards/mastermind';
 import { randomize } from '../utils/randomize';
 
 import { CardFactory } from './cardFactory';

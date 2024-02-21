@@ -2,7 +2,7 @@ import * as uuid from 'uuid';
 
 import { GameSet } from '../GameSet';
 import { ICardType, IPlayableObject, ITeam } from '../interfaces';
-import { CardType } from '../types';
+import { CardType } from '../types/cardType.type';
 
 import { AbstractCardGroup } from './abstractCardGroup';
 

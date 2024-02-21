@@ -1,5 +1,5 @@
 import { Mastermind } from '../../../model';
-import { HeroClass } from '../../enums';
+import { HeroClass } from '../../enums/heroClass.enum';
 
 import { DOOMBOT_LEGION } from './legendary.henchmen';
 import { META } from './legendary.meta';

@@ -5,7 +5,7 @@ import {
   RequireHenchmen,
   SchemeDefinition,
 } from '../../../model';
-import { HeroClass } from '../../enums';
+import { HeroClass } from '../../enums/heroClass.enum';
 
 import { KHONSHU_GUARDIANS } from './sw2.henchmen';
 import {

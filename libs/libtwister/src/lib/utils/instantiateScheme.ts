@@ -1,4 +1,5 @@
-import { Scheme, SchemeMinusRules } from '../model';
+import { Scheme } from '../model/schemes/Scheme';
+import { SchemeMinusRules } from '../model/types/schemeMinusRules.type';
 
 /**
  * Instantiates a scheme based on the definition passed to the function. If

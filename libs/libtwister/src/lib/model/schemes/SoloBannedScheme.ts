@@ -1,5 +1,5 @@
-import { SinglePlayerError } from '../errors';
-import { IGameSetup } from '../interfaces';
+import { SinglePlayerError } from '../errors/SinglePlayerError';
+import { IGameSetup } from '../interfaces/gameSetup.interface';
 
 import { IGetSetupConfig, Scheme } from './Scheme';
 

@@ -1,4 +1,4 @@
-import { ITeam } from '../../model';
+import { ITeam } from '../model/interfaces';
 
 export const AVENGERS: ITeam = {
   name: 'Avengers',

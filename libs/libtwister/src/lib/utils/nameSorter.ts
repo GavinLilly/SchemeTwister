@@ -1,4 +1,4 @@
-import { INamedObject } from '../model';
+import { INamedObject } from '../model/interfaces/namedObject.interface';
 
 /**
  * A function for sorting cards by name

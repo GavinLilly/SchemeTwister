@@ -1,6 +1,6 @@
-import { GAME_SET as DARK_CITY } from '../../data/gameSets/darkCity';
+import { GAME_SET as DARK_CITY } from '../../data/gameSets/darkCity/darkCity.gameset';
 import { KINGPIN } from '../../data/gameSets/darkCity/darkCity.masterminds';
-import { GAME_SET as MIDNIGHT_SONS } from '../../data/gameSets/midnightSons';
+import { GAME_SET as MIDNIGHT_SONS } from '../../data/gameSets/midnightSons/midnightSons.gameset';
 import { LILITH } from '../../data/gameSets/midnightSons/midnightSons.masterminds';
 import { RITUAL_SACRIFICE_TO_SUMMON_CHTHON } from '../../data/gameSets/midnightSons/midnightSons.schemes';
 import { LILIN } from '../../data/gameSets/midnightSons/midnightSons.villains';

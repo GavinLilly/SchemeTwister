@@ -1,4 +1,4 @@
-import { IFightable } from '../interfaces';
+import { IFightable } from '../interfaces/fightable.interface';
 
 import { AbstractCardGroup } from './abstractCardGroup';
 

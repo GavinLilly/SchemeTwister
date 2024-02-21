@@ -1,5 +1,5 @@
 import { MastermindWithEpic } from '../../../model';
-import { KeywordName } from '../../enums';
+import { KeywordName } from '../../enums/keywordName.enum';
 
 import { ENDGAME } from './mcuInfinitySaga.keywords';
 import { META } from './mcuInfinitySaga.meta';

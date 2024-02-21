@@ -1,7 +1,7 @@
-import { CardStore } from '../../../factories';
+import { CardStore } from '../../../factories/cardStore';
 import { randomize } from '../../../utils/randomize';
-import { Hero } from '../../cards';
-import { ITeam } from '../../interfaces';
+import { Hero } from '../../cards/hero';
+import { ITeam } from '../../interfaces/team.interface';
 
 import { IRequireCardBehaviour } from './requireCardBehaviour.interface';
 

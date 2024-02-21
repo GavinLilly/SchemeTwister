@@ -1,5 +1,5 @@
-import { Hero } from '../cards';
-import { IGameSetup } from '../interfaces';
+import { Hero } from '../cards/hero';
+import { IGameSetup } from '../interfaces/gameSetup.interface';
 
 import { IGetSetupConfig, Scheme } from './Scheme';
 

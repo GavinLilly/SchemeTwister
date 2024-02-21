@@ -1,5 +1,5 @@
 import { AbstractCardGroup } from '../../cards/abstractCardGroup';
-import { IGameSetup } from '../../interfaces';
+import { IGameSetup } from '../../interfaces/gameSetup.interface';
 import { DeckType, SchemeMinusRules } from '../../types';
 import { IGetSetupConfig, Scheme } from '../Scheme';
 

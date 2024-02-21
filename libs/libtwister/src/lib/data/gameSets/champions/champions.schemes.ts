@@ -5,7 +5,7 @@ import {
   RequireVillainGroup,
   SchemeDefinition,
 } from '../../../model';
-import { HeroClass } from '../../enums';
+import { HeroClass } from '../../enums/heroClass.enum';
 
 import { META } from './champions.meta';
 import { MONSTERS_UNLEASHED } from './champions.villains';

@@ -1,6 +1,6 @@
 import { X_MEN } from '../../data/teams';
-import { Hero } from '../cards';
-import { IGameSetup } from '../interfaces';
+import { Hero } from '../cards/hero';
+import { IGameSetup } from '../interfaces/gameSetup.interface';
 import { DECK_TYPE, SchemeMinusRules } from '../types';
 
 import { IGetSetupConfig, Scheme } from './Scheme';

@@ -1,8 +1,8 @@
-import { Teams } from '../../data';
-import { GAME_SET as DARK_CITY } from '../../data/gameSets/darkCity';
-import { GAME_SET as REVELATIONS } from '../../data/gameSets/revelations';
+import { GAME_SET as DARK_CITY } from '../../data/gameSets/darkCity/darkCity.gameset';
+import { GAME_SET as REVELATIONS } from '../../data/gameSets/revelations/revelations.gameset';
 import { SCARLET_WITCH } from '../../data/gameSets/revelations/revelations.heroes';
 import { HOUSE_OF_M } from '../../data/gameSets/revelations/revelations.schemes';
+import { X_MEN } from '../../data/teams';
 import { StoreBuilder, StoreOfStores } from '../../factories';
 import { IGameSetup } from '../interfaces';
 
@@ -32,15 +32,11 @@ describe('House of M Scheme', () => {
 
   it('should include 4 X-Men heroes in the hero deck', () =>
     expect(
-      Array.from(setup.heroDeck.heroes).filter(
-        (hero) => hero.team === Teams.X_MEN
-      )
+      Array.from(setup.heroDeck.heroes).filter((hero) => hero.team === X_MEN)
     ).toHaveLength(4));
 
   it('should include 2 non-X-Men heroes in the hero deck', () =>
     expect(
-      Array.from(setup.heroDeck.heroes).filter(
-        (hero) => hero.team !== Teams.X_MEN
-      )
+      Array.from(setup.heroDeck.heroes).filter((hero) => hero.team !== X_MEN)
     ).toHaveLength(2));
 });

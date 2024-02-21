@@ -1,5 +1,5 @@
 import { IKeyword, IScheme, IGameSetMeta, ISchemeMeta } from '../interfaces';
-import { CARD_TYPE } from '../types';
+import { CARD_TYPE } from '../types/cardType.type';
 
 export class SchemeDefinition implements IScheme {
   private readonly _id: string;

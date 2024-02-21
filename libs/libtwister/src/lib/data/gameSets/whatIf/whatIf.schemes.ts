@@ -9,7 +9,8 @@ import {
   RequireVillainGroup,
   SchemeDefinition,
 } from '../../../model';
-import { HeroClass, KeywordName } from '../../enums';
+import { HeroClass } from '../../enums/heroClass.enum';
+import { KeywordName } from '../../enums/keywordName.enum';
 import { RISE_OF_THE_LIVING_DEAD } from '../secretWarsVolume1/sw1.keywords';
 
 import { PARTY_THOR } from './whatIf.heroes';

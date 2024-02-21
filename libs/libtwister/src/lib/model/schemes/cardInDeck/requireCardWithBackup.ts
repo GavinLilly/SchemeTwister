@@ -1,4 +1,4 @@
-import { CardStore } from '../../../factories';
+import { CardStore } from '../../../factories/cardStore';
 import { AbstractCardGroup } from '../../cards/abstractCardGroup';
 
 import { IRequireCardBehaviour } from './requireCardBehaviour.interface';

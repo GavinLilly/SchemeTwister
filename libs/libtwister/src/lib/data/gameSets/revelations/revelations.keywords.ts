@@ -1,5 +1,6 @@
 import { IKeyword } from '../../../model';
-import { HeroClass, KeywordName } from '../../enums';
+import { HeroClass } from '../../enums/heroClass.enum';
+import { KeywordName } from '../../enums/keywordName.enum';
 
 export const HYPERSPEED: IKeyword = {
   name: KeywordName.HYPERSPEED,

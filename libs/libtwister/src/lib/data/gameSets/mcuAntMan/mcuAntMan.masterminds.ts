@@ -1,5 +1,5 @@
 import { TransformingMastermind } from '../../../model';
-import { HeroClass } from '../../enums';
+import { HeroClass } from '../../enums/heroClass.enum';
 import { MICROSCOPIC_SIZE_CHANGING } from '../antMan/antMan.keywords';
 import { CONQUEROR } from '../marvelStudios/marvelStudios.keywords';
 

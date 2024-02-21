@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import isUUID from 'validator/lib/isUUID';
 
-import { GAME_SET as DARK_CITY } from './data/gameSets/darkCity';
-import { GAME_SET as INTO_THE_COSMOS } from './data/gameSets/intoTheCosmos';
-import { GAME_SET as LEGENDARY } from './data/gameSets/legendary';
-import { GAME_SET as MARVEL_STUDIOS } from './data/gameSets/marvelStudios';
-import { GAME_SET as MCU_GUARDIANS_OF_THE_GALAXY } from './data/gameSets/mcuGuardiansOfTheGalaxy';
+import { GAME_SET as DARK_CITY } from './data/gameSets/darkCity/darkCity.gameset';
+import { GAME_SET as INTO_THE_COSMOS } from './data/gameSets/intoTheCosmos/intoTheCosmos.gameset';
+import { GAME_SET as LEGENDARY } from './data/gameSets/legendary/legendary.gameset';
+import { GAME_SET as MARVEL_STUDIOS } from './data/gameSets/marvelStudios/marvelStudios.gameset';
+import { GAME_SET as MCU_GUARDIANS_OF_THE_GALAXY } from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.gameset';
 import { EGO_THE_LIVING_PLANET } from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.masterminds';
 import { UNLEASH_THE_ABILISK_SPACE_MONSTER } from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.schemes';
-import { GAME_SET as XMEN } from './data/gameSets/xMen';
+import { GAME_SET as XMEN } from './data/gameSets/xMen/xMen.gameset';
 import { LibTwister } from './libTwister';
 import { GAME_SET_SIZE, NumPlayers } from './model';
 

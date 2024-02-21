@@ -1,5 +1,5 @@
 import { MastermindWithEpic } from '../../../model';
-import { HeroClass } from '../../enums';
+import { HeroClass } from '../../enums/heroClass.enum';
 
 import { CHIVALROUS_DUEL, EMPOWERED } from './antMan.keywords';
 import { META } from './antMan.meta';

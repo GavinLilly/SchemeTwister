@@ -1,6 +1,7 @@
-export * from './PlayerPicksAHeroScheme';
-export * from './Scheme';
-export * from './SoloBannedScheme';
-export * from './TheDarkPhoenixSagaScheme';
-export * from './RitualSacrificeToSummonChthonScheme';
 export * from './cardInDeck';
+
+export { PlayerPicksAHeroScheme } from './PlayerPicksAHeroScheme';
+export { IGetSetupConfig, Scheme } from './Scheme';
+export { SoloBannedScheme } from './SoloBannedScheme';
+export { TheDarkPhoenixSagaScheme } from './TheDarkPhoenixSagaScheme';
+export { RitualSacrificeToSummonChthonScheme } from './RitualSacrificeToSummonChthonScheme';
