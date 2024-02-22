@@ -1,5 +1,5 @@
 import { IKeyword } from '../../../model';
-import { KeywordName } from '../../enums/keywordName.enum';
+import { KeywordName } from '../../keywordName.enum';
 
 export const MAN_OUT_OF_TIME: IKeyword = {
   name: KeywordName.MAN_OUT_OF_TIME,

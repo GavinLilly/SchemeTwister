@@ -1,5 +1,5 @@
 import { Henchmen } from '../../../model';
-import { KeywordName } from '../../enums/keywordName.enum';
+import { KeywordName } from '../../keywordName.enum';
 import { EMPOWERED } from '../antMan/antMan.keywords';
 
 import { LIBERATE } from './whatIf.keywords';

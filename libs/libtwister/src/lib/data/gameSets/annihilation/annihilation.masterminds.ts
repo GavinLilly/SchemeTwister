@@ -1,5 +1,5 @@
 import { MastermindWithEpic } from '../../../model/cards/mastermind';
-import { KeywordName } from '../../enums/keywordName.enum';
+import { KeywordName } from '../../keywordName.enum';
 
 import { MASS_MOMENTUM } from './annihilation.keywords';
 import { META } from './annihilation.meta';

@@ -1,5 +1,6 @@
 import { SchemeDefinition } from '../../../model';
 import { HouseOfMScheme } from '../../../model/schemes/HouseOfMScheme';
+import { X_MEN } from '../../teams';
 
 import { SCARLET_WITCH } from './revelations.heroes';
 import { DOUBLE_SIDED_TRANSFORMING_SCHEMES } from './revelations.keywords';
@@ -45,7 +46,7 @@ export const HOUSE_OF_M = new SchemeDefinition({
     },
     overrideScheme: {
       schemeType: HouseOfMScheme,
-      params: [SCARLET_WITCH],
+      params: [SCARLET_WITCH, X_MEN],
     },
   },
   gameSet: META,
@@ -64,11 +65,13 @@ export const SECRET_HYDRA_CORRUPTION = new SchemeDefinition({
   keywords: [DOUBLE_SIDED_TRANSFORMING_SCHEMES],
   meta: {
     numTwists: {
+      /* eslint-disable @typescript-eslint/naming-convention */
       '1': 7,
       '2': 9,
       '3': 9,
       '4': 11,
       '5': 11,
+      /* eslint-enable @typescript-eslint/naming-convention */
     },
     rules: (rule) => {
       rule.numShieldOfficers = 30;

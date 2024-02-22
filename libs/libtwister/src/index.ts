@@ -1,6 +1,6 @@
 export { LibTwister } from './lib/libTwister';
 
-export { GameSets, KeywordName, Teams } from './lib/data';
+export { GameSets, Teams } from './lib/data';
 export * from './lib/model';
 export * from './lib/factories';
 

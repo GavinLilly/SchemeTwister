@@ -1,5 +1,5 @@
 import { IKeyword } from '../../../model';
-import { KeywordName } from '../../enums/keywordName.enum';
+import { KeywordName } from '../../keywordName.enum';
 
 export const DEMOLISH: IKeyword = {
   name: KeywordName.DEMOLISH,

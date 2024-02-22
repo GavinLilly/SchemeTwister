@@ -1,3 +1,4 @@
+import { HeroClass } from '../../../heroClass.enum';
 import {
   DECK_TYPE,
   RequireCard,
@@ -5,7 +6,6 @@ import {
   RequireHenchmen,
   SchemeDefinition,
 } from '../../../model';
-import { HeroClass } from '../../enums/heroClass.enum';
 
 import { KHONSHU_GUARDIANS } from './sw2.henchmen';
 import {

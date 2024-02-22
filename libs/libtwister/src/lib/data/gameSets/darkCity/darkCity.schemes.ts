@@ -1,3 +1,4 @@
+import { HeroClass } from '../../../heroClass.enum';
 import {
   DECK_TYPE,
   RequireCard,
@@ -6,7 +7,6 @@ import {
   RequireHero,
   SchemeDefinition,
 } from '../../../model';
-import { HeroClass } from '../../enums/heroClass.enum';
 
 import { MAGGIA_GOONS } from './darkCity.henchmen';
 import { JEAN_GREY } from './darkCity.heroes';

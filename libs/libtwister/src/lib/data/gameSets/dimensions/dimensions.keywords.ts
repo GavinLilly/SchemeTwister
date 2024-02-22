@@ -1,5 +1,5 @@
 import { IKeyword } from '../../../model';
-import { KeywordName } from '../../enums/keywordName.enum';
+import { KeywordName } from '../../keywordName.enum';
 import { INVESTIGATE as NoirInvestigate } from '../noir/noir.keywords';
 
 export const SWITCHEROO: IKeyword = {

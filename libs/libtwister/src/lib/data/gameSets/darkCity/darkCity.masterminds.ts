@@ -1,5 +1,5 @@
+import { HeroClass } from '../../../heroClass.enum';
 import { Mastermind } from '../../../model';
-import { HeroClass } from '../../enums/heroClass.enum';
 
 import { BRIBE } from './darkCity.keywords';
 import { META } from './darkCity.meta';

@@ -1,5 +1,5 @@
 import { MastermindWithEpic } from '../../../model';
-import { KeywordName } from '../../enums/keywordName.enum';
+import { KeywordName } from '../../keywordName.enum';
 
 import { ABOMINATION, THRONES_FAVOR } from './realmOfKings.keywords';
 import { META } from './realmOfKings.meta';

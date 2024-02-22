@@ -1,6 +1,6 @@
+import { HeroClass } from '../../../heroClass.enum';
 import { IKeyword } from '../../../model';
-import { HeroClass } from '../../enums/heroClass.enum';
-import { KeywordName } from '../../enums/keywordName.enum';
+import { KeywordName } from '../../keywordName.enum';
 import { SIZE_CHANGING as CivilWarSizeChanging } from '../civilWar/civilWar.keywords';
 
 export const CHEERING_CROWDS: IKeyword = {

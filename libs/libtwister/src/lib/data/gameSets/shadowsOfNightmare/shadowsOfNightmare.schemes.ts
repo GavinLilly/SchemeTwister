@@ -1,5 +1,5 @@
+import { HeroClass } from '../../../heroClass.enum';
 import { SchemeDefinition } from '../../../model';
-import { HeroClass } from '../../enums/heroClass.enum';
 
 import {
   ASTRAL_PLANE,

@@ -1,5 +1,5 @@
+import { HeroClass } from '../../../heroClass.enum';
 import { Mastermind } from '../../../model';
-import { HeroClass } from '../../enums/heroClass.enum';
 
 import { CONQUEROR } from './marvelStudios.keywords';
 import { META } from './marvelStudios.meta';

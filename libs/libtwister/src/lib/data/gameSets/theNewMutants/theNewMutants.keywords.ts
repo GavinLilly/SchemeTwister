@@ -1,5 +1,5 @@
 import { IKeyword } from '../../../model';
-import { KeywordName } from '../../enums/keywordName.enum';
+import { KeywordName } from '../../keywordName.enum';
 
 export const MOONLIGHT_AND_SUNLIGHT: IKeyword = {
   name: KeywordName.MOONLIGHT_AND_SUNLIGHT,

@@ -1,5 +1,5 @@
+import { HeroClass } from '../../../heroClass.enum';
 import { Henchmen } from '../../../model';
-import { HeroClass } from '../../enums/heroClass.enum';
 
 import { RISE_OF_THE_LIVING_DEAD } from './sw1.keywords';
 import { META } from './sw1.meta';

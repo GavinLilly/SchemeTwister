@@ -1,5 +1,5 @@
 import { IKeyword } from '../../../model';
-import { KeywordName } from '../../enums/keywordName.enum';
+import { KeywordName } from '../../keywordName.enum';
 
 export const RISE_OF_THE_LIVING_DEAD: IKeyword = {
   name: KeywordName.RISE_OF_THE_LIVING_DEAD,

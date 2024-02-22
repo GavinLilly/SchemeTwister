@@ -7,7 +7,8 @@ import {
   RequireVillainGroup,
   SchemeDefinition,
 } from '../../../model';
-import { KeywordName } from '../../enums/keywordName.enum';
+import { KeywordName } from '../../keywordName.enum';
+import { SIZE_CHANGING } from '../antMan/antMan.keywords';
 
 import { META } from './mcuAntMan.meta';
 import { QUANTUM_REALM } from './mcuAntMan.villains';
@@ -25,7 +26,7 @@ export const AUCTION_SHRINK_TECH_TO_HIGHEST_BIDDER = new SchemeDefinition({
     overrideScheme: {
       schemeType: RequireCardInDeckScheme,
       params: [
-        new RequireKeyword(KeywordName.SIZE_CHANGING),
+        new RequireKeyword(SIZE_CHANGING),
         new RequireHero(),
         DECK_TYPE.additional,
       ],

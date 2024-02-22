@@ -1,5 +1,5 @@
 import { IKeyword } from '../../../model';
-import { KeywordName } from '../../enums/keywordName.enum';
+import { KeywordName } from '../../keywordName.enum';
 import { DARK_MEMORIES as REV_DARK_MEMORIES } from '../revelations/revelations.keywords';
 import { WAKING_NIGHTMARE as NEW_MUTANTS_WAKING_NIGHTNMARE } from '../theNewMutants/theNewMutants.keywords';
 

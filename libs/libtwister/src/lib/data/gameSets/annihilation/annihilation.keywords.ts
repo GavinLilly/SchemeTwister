@@ -1,5 +1,5 @@
 import { IKeyword } from '../../../model';
-import { KeywordName } from '../../enums/keywordName.enum';
+import { KeywordName } from '../../keywordName.enum';
 import { MAN_OUT_OF_TIME as ManOutOfTimeOriginal } from '../captainAmerica/captainAmerica.keywords';
 
 export const MOMENTUM: IKeyword = {

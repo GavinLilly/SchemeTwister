@@ -1,5 +1,5 @@
 import { Mastermind } from '../../../model';
-import { KeywordName } from '../../enums/keywordName.enum';
+import { KeywordName } from '../../keywordName.enum';
 import { BRIBE } from '../darkCity/darkCity.keywords';
 
 import { FORTIFY, SHIELD_CLEARANCE } from './civilWar.keywords';

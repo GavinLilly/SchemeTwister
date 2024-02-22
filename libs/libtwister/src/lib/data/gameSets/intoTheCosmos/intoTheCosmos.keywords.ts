@@ -1,6 +1,6 @@
+import { HeroClass } from '../../../heroClass.enum';
 import { IKeyword } from '../../../model';
-import { HeroClass } from '../../enums/heroClass.enum';
-import { KeywordName } from '../../enums/keywordName.enum';
+import { KeywordName } from '../../keywordName.enum';
 import { COSMIC_THREAT as FFCosmicThreat } from '../fantasticFour/fantasticFour.keywords';
 import { SHARDS as GOTGShards } from '../guardiansOfTheGalaxy/guardiansOfTheGalaxy.keywords';
 

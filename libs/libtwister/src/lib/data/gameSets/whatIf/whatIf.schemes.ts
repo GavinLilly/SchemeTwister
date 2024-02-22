@@ -1,3 +1,4 @@
+import { HeroClass } from '../../../heroClass.enum';
 import {
   DECK_TYPE,
   IRequireCardsInDeckSchemeConfig,
@@ -9,8 +10,6 @@ import {
   RequireVillainGroup,
   SchemeDefinition,
 } from '../../../model';
-import { HeroClass } from '../../enums/heroClass.enum';
-import { KeywordName } from '../../enums/keywordName.enum';
 import { RISE_OF_THE_LIVING_DEAD } from '../secretWarsVolume1/sw1.keywords';
 
 import { PARTY_THOR } from './whatIf.heroes';
@@ -75,7 +74,7 @@ export const MARVEL_ZOMBIES = new SchemeDefinition({
     overrideScheme: {
       schemeType: RequireCardInDeckScheme,
       params: [
-        new RequireKeyword(KeywordName.RISE_OF_THE_LIVING_DEAD),
+        new RequireKeyword(RISE_OF_THE_LIVING_DEAD),
         new RequireVillainGroup(),
         DECK_TYPE.villain,
       ],

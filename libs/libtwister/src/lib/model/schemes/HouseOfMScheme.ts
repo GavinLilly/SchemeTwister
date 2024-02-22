@@ -1,5 +1,5 @@
-import { X_MEN } from '../../data/teams';
 import { Hero } from '../cards/hero';
+import { ITeam } from '../interfaces';
 import { IGameSetup } from '../interfaces/gameSetup.interface';
 import { DECK_TYPE, SchemeMinusRules } from '../types';
 
@@ -11,10 +11,14 @@ import {
 } from './cardInDeck';
 
 export class HouseOfMScheme extends RequireCardInDeckScheme<Hero> {
-  constructor(scheme: SchemeMinusRules, private _required: Hero) {
+  constructor(
+    scheme: SchemeMinusRules,
+    private _requiredHero: Hero,
+    private _requiredTeam: ITeam
+  ) {
     super(
       scheme,
-      new RequireCard(_required),
+      new RequireCard(_requiredHero),
       new RequireHero(),
       DECK_TYPE.villain
     );
@@ -23,11 +27,11 @@ export class HouseOfMScheme extends RequireCardInDeckScheme<Hero> {
   public override getSetup(config: IGetSetupConfig): IGameSetup {
     const xMenHeroes = config.store.heroStore.pickRandom(
       4,
-      (hero) => hero.team === X_MEN
+      (hero) => hero.team === this._requiredTeam
     ) as Hero[];
     const otherHeroes = config.store.heroStore.pickRandom(
       2,
-      (hero) => hero.team !== X_MEN && hero !== this._required
+      (hero) => hero.team !== this._requiredTeam && hero !== this._requiredHero
     ) as Hero[];
 
     return super.getSetup({

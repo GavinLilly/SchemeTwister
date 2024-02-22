@@ -1,3 +1,4 @@
+import { HeroClass } from '../../../heroClass.enum';
 import {
   SoloBannedScheme,
   SchemeDefinition,
@@ -6,7 +7,6 @@ import {
   RequireVillainGroup,
   DECK_TYPE,
 } from '../../../model';
-import { HeroClass } from '../../enums/heroClass.enum';
 
 import { META } from './marvelStudios.meta';
 import { CHITAURI } from './marvelStudios.villains';

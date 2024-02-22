@@ -1,5 +1,5 @@
 import { MastermindWithEpic } from '../../../model';
-import { KeywordName } from '../../enums/keywordName.enum';
+import { KeywordName } from '../../keywordName.enum';
 
 import { HAUNT, HUNT_FOR_VICTIMS } from './midnightSons.keywords';
 import { META } from './midnightSons.meta';

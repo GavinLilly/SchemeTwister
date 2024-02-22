@@ -1,3 +1,4 @@
+import { HeroClass } from '../../../heroClass.enum';
 import {
   DECK_TYPE,
   RequireCard,
@@ -5,7 +6,6 @@ import {
   RequireVillainGroup,
   SchemeDefinition,
 } from '../../../model';
-import { HeroClass } from '../../enums/heroClass.enum';
 
 import { META } from './champions.meta';
 import { MONSTERS_UNLEASHED } from './champions.villains';
