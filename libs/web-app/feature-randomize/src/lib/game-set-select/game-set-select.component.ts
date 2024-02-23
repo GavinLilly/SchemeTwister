@@ -1,7 +1,8 @@
-import { Component, Signal } from '@angular/core';
+import { Component, Inject, Signal } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { GameSet, GAME_SET_SIZE, LibTwister } from '@schemetwister/libtwister';
+import { LIBTWISTER_TOKEN } from '@schemetwister/web-app/shared';
 
 import { gameSetSelectionActions as fromGameSetDialog } from '../+state/actions/game-sets.actions';
 import { IGameSetsState } from '../+state/reducers/game-sets.reducer';
@@ -20,7 +21,7 @@ export class GameSetSelectComponent {
     (state) => state.gameSets.error
   );
 
-  private _allGameSets: GameSet[] = LibTwister.allGameSets
+  private _allGameSets: GameSet[] = this._libTwister.allGameSets
     .asArray()
     .sort((a, b) => GameSet.sorter(a, b));
 
@@ -42,7 +43,8 @@ export class GameSetSelectComponent {
 
   constructor(
     public activeModal: NgbActiveModal,
-    private _store: Store<{ gameSets: IGameSetsState }>
+    private _store: Store<{ gameSets: IGameSetsState }>,
+    @Inject(LIBTWISTER_TOKEN) private _libTwister: LibTwister
   ) {}
 
   onSelectedUpdate(selected: GameSet[]) {

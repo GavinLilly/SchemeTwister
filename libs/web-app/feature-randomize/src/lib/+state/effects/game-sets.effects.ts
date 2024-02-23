@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { LibTwister } from '@schemetwister/libtwister';
+import { marvelSeries } from '@schemetwister/schemetwister-series-marvel';
 import { map, withLatestFrom } from 'rxjs/operators';
 
 import {
@@ -59,10 +60,12 @@ export class GameSetsEffects {
     return [...firstSection, ...secondSection];
   }
 
-  private static readonly _mapIdsToResult = (gameSetIds: string[]) =>
-    LibTwister.validateGameSetIds(gameSetIds)
+  private static readonly _mapIdsToResult = (gameSetIds: string[]) => {
+    const libTwister = new LibTwister([marvelSeries]);
+    return libTwister.validateGameSetIds(gameSetIds)
       ? gameSetCheckerActions.setGameSetsSuccess({
           gameSetIds,
         })
       : gameSetCheckerActions.setGameSetsFailure();
+  };
 }

@@ -3,6 +3,7 @@ import { increment, Timestamp } from '@angular/fire/firestore';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { LibTwister, LiteGameSetup } from '@schemetwister/libtwister';
+import { marvelSeries } from '@schemetwister/schemetwister-series-marvel';
 import {
   IStoredGameSetup,
   StoredSetupsService,
@@ -70,13 +71,17 @@ export class GameSetupEffects {
           definedScheme,
           definedMastermind,
           isAdvancedSolo,
-        ]) =>
-          LibTwister.of(...gameSetIds).getSetup(
+        ]) => {
+          const libTwister = new LibTwister([marvelSeries]);
+          libTwister.selectedGameSets =
+            libTwister.gameSetIdsToGameSets(gameSetIds);
+          return libTwister.getSetup(
             numPlayers,
             definedScheme,
             definedMastermind,
             isAdvancedSolo
-          )
+          );
+        }
       ),
       map((setup) => gameSetupGeneratorActions.success({ gameSetup: setup })),
       catchError((error) => {

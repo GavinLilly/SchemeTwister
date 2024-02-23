@@ -8,10 +8,7 @@
     "lint": {
       "executor": "@nx/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/libtwister/src/**/*.ts",
-          "libs/libtwister/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/libtwister/src/**/*.ts"]
       },
       "outputs": ["{options.outputFile}"]
     },

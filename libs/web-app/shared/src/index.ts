@@ -5,3 +5,4 @@ export {
   EMPTY_STORED_SETUP,
 } from './lib/storedGameSetup.interface';
 export { StoredSetupsService } from './lib/storedSetups.service';
+export { LIBTWISTER_TOKEN } from './lib/libtwister.token';

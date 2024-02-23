@@ -20,6 +20,18 @@
     "esModuleInterop": true,
     "paths": {
       "@schemetwister/libtwister": ["libs/libtwister/src/index.ts"],
+      "@schemetwister/schemetwister-series-marvel": [
+        "libs/schemetwister-series-marvel/src/index.ts"
+      ],
+      "@schemetwister/schemetwister-series-marvel-common": [
+        "libs/schemetwister-series-marvel-common/src/index.ts"
+      ],
+      "@schemetwister/schemetwister-series-marvelstudios": [
+        "libs/schemetwister-series-marvelstudios/src/index.ts"
+      ],
+      "@schemetwister/schemetwister-series-marvelvillains": [
+        "libs/schemetwister-series-marvelvillains/src/index.ts"
+      ],
       "@schemetwister/web-app-feature-view": [
         "libs/web-app/feature-view/src/index.ts"
       ],
