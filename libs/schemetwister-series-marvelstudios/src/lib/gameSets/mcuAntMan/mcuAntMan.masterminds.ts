@@ -1,7 +1,8 @@
 import { TransformingMastermind, HeroClass } from '@schemetwister/libtwister';
-import { MICROSCOPIC_SIZE_CHANGING } from '@schemetwister/schemetwister-series-marvel-common';
-
-import { CONQUEROR } from '../../../../../schemetwister-series-marvel-common/src/lib/keywords/conqueror.keyword';
+import {
+  CONQUEROR,
+  MICROSCOPIC_SIZE_CHANGING,
+} from '@schemetwister/schemetwister-series-marvel-common';
 
 import { DOUBLE_CROSS } from './mcuAntMan.keywords';
 import { META } from './mcuAntMan.meta';

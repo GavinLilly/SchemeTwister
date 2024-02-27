@@ -1,12 +1,11 @@
 import { Hero } from '@schemetwister/libtwister';
 import {
   AVENGERS,
+  CONQUEROR,
   CRIME_SYNDICATE,
   MICROSCOPIC_SIZE_CHANGING,
   SIZE_CHANGING,
 } from '@schemetwister/schemetwister-series-marvel-common';
-
-import { CONQUEROR } from '../../../../../schemetwister-series-marvel-common/src/lib/keywords/conqueror.keyword';
 
 import { ANTICS, EXPLORE, HEIST } from './mcuAntMan.keywords';
 import { META } from './mcuAntMan.meta';
