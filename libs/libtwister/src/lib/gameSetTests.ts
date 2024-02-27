@@ -1,7 +1,5 @@
-/* eslint-disable no-undef */
-/* eslint-disable max-nested-callbacks */
-
-import { AllCardTypes, CARD_TYPE, GameSet } from '@schemetwister/libtwister';
+import { GameSet } from './model/GameSet';
+import { AllCardTypes, CARD_TYPE } from './model/types';
 
 export function gameSetTest(
   gameSet: GameSet,

@@ -11,6 +11,7 @@
     "**/*.spec.js",
     "**/*.test.js",
     "**/*.d.ts",
-    "jest.config.ts"
+    "jest.config.ts",
+    "gameSetTests.ts"
   ]
 }

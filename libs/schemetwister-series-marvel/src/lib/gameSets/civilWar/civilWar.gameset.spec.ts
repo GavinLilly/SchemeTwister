@@ -1,4 +1,4 @@
-import { gameSetTest } from '../gameSetTests';
+import { gameSetTest } from '@schemetwister/libtwister';
 
 import { GAME_SET } from './civilWar.gameset';
 

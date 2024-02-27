@@ -1,5 +1,5 @@
 import { X_MEN } from '../../teams';
-import { gameSetTest } from '../gameSetTests';
+import { gameSetTest } from '@schemetwister/libtwister';
 
 import { GAME_SET } from './xMen.gameset';
 
