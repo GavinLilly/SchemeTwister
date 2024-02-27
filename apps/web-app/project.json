@@ -25,7 +25,22 @@
           "apps/web-app/src/manifest.webmanifest",
           {
             "glob": "*",
-            "input": "libs/libtwister/src/assets/icons/teams",
+            "input": "libs/schemetwister-series-marvel/src/assets/icons/teams",
+            "output": "./assets/icons/teams"
+          },
+          {
+            "glob": "*",
+            "input": "libs/schemetwister-series-marvel-common/src/assets/icons/teams",
+            "output": "./assets/icons/teams"
+          },
+          {
+            "glob": "*",
+            "input": "libs/schemetwister-series-marvelstudios/src/assets/icons/teams",
+            "output": "./assets/icons/teams"
+          },
+          {
+            "glob": "*",
+            "input": "libs/schemetwister-series-marvelvillains/src/assets/icons/teams",
             "output": "./assets/icons/teams"
           }
         ],

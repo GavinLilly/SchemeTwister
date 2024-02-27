@@ -1,7 +1,8 @@
 import { CARD_TYPE, Hero } from '@schemetwister/libtwister';
-
-import { AVENGERS } from '../../teams';
-import { DIVIDED } from '../civilWar/civilWar.keywords';
+import {
+  AVENGERS,
+  DIVIDED,
+} from '@schemetwister/schemetwister-series-marvel-common';
 
 import { ENDGAME, PHASING, SACRIFICE } from './mcuInfinitySaga.keywords';
 import { META } from './mcuInfinitySaga.meta';

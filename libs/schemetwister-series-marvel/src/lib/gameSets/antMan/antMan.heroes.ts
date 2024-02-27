@@ -1,12 +1,11 @@
 import { Hero } from '@schemetwister/libtwister';
-
-import { AVENGERS } from '../../teams';
-
 import {
+  AVENGERS,
   EMPOWERED,
   MICROSCOPIC_SIZE_CHANGING,
   SIZE_CHANGING,
-} from './antMan.keywords';
+} from '@schemetwister/schemetwister-series-marvel-common';
+
 import { META } from './antMan.meta';
 
 export const ANT_MAN = new Hero({

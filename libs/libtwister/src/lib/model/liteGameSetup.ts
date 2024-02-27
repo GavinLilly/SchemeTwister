@@ -124,32 +124,30 @@ export class LiteGameSetup {
     });
   }
 
-  public toGameSetup(): GameSetup {
-    const twister = LibTwister.of();
-
-    const mastermind = twister.stores.getCardById(
+  public toGameSetup(libTwister: LibTwister): GameSetup {
+    const mastermind = libTwister.stores.getCardById(
       this.mastermindId
     ) as Mastermind;
 
-    const scheme = twister.schemeFactory.get(this.schemeId);
+    const scheme = libTwister.schemeFactory.get(this.schemeId);
 
     const instantiatedScheme = instantiateScheme(scheme);
 
     const rules = instantiatedScheme.rules[this.numPlayers as NumPlayers];
 
     return new GameSetup({
-      heroDeck: this._buildHeroDeck(twister),
+      heroDeck: this._buildHeroDeck(libTwister),
       villainDeck: {
         ...LiteGameSetup._builAdditionalOrVillainDeck(
           this.villainDeck,
-          twister
+          libTwister
         ),
         numMasterStrikes: 5,
         numTwists: rules.villainDeck.numTwists,
       },
       additionalDecks: this._buildFullAdditionalDeck(
         rules.additionalDeck,
-        twister
+        libTwister
       ),
       mastermind,
       numPlayers: this.numPlayers,

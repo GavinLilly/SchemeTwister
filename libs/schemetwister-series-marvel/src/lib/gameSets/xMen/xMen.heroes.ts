@@ -1,7 +1,7 @@
 import { Hero } from '@schemetwister/libtwister';
+import { DIVIDED } from '@schemetwister/schemetwister-series-marvel-common';
 
 import { X_MEN } from '../../teams';
-import { DIVIDED } from '../civilWar/civilWar.keywords';
 
 import {
   BERSERK,

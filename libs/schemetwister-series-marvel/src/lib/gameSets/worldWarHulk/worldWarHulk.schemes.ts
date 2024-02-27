@@ -8,9 +8,9 @@ import {
   RequireCard,
   RequireHenchmen,
 } from '@schemetwister/libtwister';
+import { CROSS_DIMENSIONAL_RAMPAGE } from '@schemetwister/schemetwister-series-marvel-common';
 
 import { CYTOPLASM_SPIKES } from './worldWarHulk.henchmen';
-import { CROSS_DIMENSIONAL_RAMPAGE } from './worldWarHulk.keywords';
 import { META } from './worldWarHulk.meta';
 
 const requireHulkScheme: IOverrideScheme = {

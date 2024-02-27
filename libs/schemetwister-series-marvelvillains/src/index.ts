@@ -3,4 +3,4 @@ export * as Villains from './lib/gameSets/villains';
 
 export * from './lib/teams';
 
-export { marvelVillainsSeries } from './lib/villains.series';
+export { marvelVillainsSeries } from './lib/marvelVillains.series';

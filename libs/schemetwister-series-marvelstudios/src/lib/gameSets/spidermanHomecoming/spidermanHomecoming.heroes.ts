@@ -1,15 +1,12 @@
 import { Hero } from '@schemetwister/libtwister';
 import {
   AVENGERS,
+  DANGER_SENSE,
   SPIDER_FRIENDS,
   WALL_CRAWL,
 } from '@schemetwister/schemetwister-series-marvel-common';
 
-import {
-  COORDINATE,
-  DANGER_SENSE,
-  STRIKER,
-} from './spidermanHomecoming.keywords';
+import { COORDINATE, STRIKER } from './spidermanHomecoming.keywords';
 import { META } from './spidermanHomecoming.meta';
 
 export const HAPPY_HOGAN = new Hero({

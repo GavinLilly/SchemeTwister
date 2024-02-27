@@ -1,6 +1,5 @@
 import { Mastermind } from '@schemetwister/libtwister';
-
-import { DEMOLISH } from '../villains/villains.keywords';
+import { DEMOLISH } from '@schemetwister/schemetwister-series-marvel-common';
 
 import { META } from './fearItself.meta';
 import { THE_MIGHTY } from './fearItself.villains';

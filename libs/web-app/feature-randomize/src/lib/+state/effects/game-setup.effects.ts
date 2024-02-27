@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { increment, Timestamp } from '@angular/fire/firestore';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { LibTwister, LiteGameSetup } from '@schemetwister/libtwister';
-import { marvelSeries } from '@schemetwister/schemetwister-series-marvel';
+import { ISeries, LiteGameSetup } from '@schemetwister/libtwister';
 import {
   IStoredGameSetup,
+  SERIES_REGISTER_TOKEN,
   StoredSetupsService,
   TWIST_COUNT_NAME,
 } from '@schemetwister/web-app/shared';
@@ -28,7 +28,10 @@ import { numPlayersActions } from '../actions/num-players.actions';
 import { IGameSetsState } from '../reducers/game-sets.reducer';
 import { IGameSetupState } from '../reducers/game-setup.reducer';
 import { INumPlayersState } from '../reducers/num-players.reducer';
-import { selectGameSetIds } from '../selectors/game-sets.selectors';
+import {
+  selectGameSetIds,
+  selectLibTwister,
+} from '../selectors/game-sets.selectors';
 import {
   selectDefinedMastermind,
   selectDefinedScheme,
@@ -62,6 +65,7 @@ export class GameSetupEffects {
         this._store.select(selectDefinedScheme),
         this._store.select(selectDefinedMastermind),
         this._store.select(selectIsAdvancedSolo),
+        this._store.select(selectLibTwister(this._seriesRegister)),
       ]),
       map(
         ([
@@ -71,8 +75,8 @@ export class GameSetupEffects {
           definedScheme,
           definedMastermind,
           isAdvancedSolo,
+          libTwister,
         ]) => {
-          const libTwister = new LibTwister([marvelSeries]);
           libTwister.selectedGameSets =
             libTwister.gameSetIdsToGameSets(gameSetIds);
           return libTwister.getSetup(
@@ -137,6 +141,7 @@ export class GameSetupEffects {
       numPlayers: INumPlayersState;
       gameSetup: IGameSetupState;
     }>,
-    private _storedSetupsService: StoredSetupsService
+    private _storedSetupsService: StoredSetupsService,
+    @Inject(SERIES_REGISTER_TOKEN) private _seriesRegister: ISeries[]
   ) {}
 }

@@ -15,7 +15,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let setup of setups(); index as i">
-      <ng-container *ngIf="setup | storedSetupToGameSetup as gameSetup">
+      <ng-container
+        *ngIf="setup | storedSetupToGameSetup: libTwister as gameSetup"
+      >
         <td>{{ setup.updated.toDate() | date: 'yyyy-MMM-dd HH:mm' }}</td>
         <td>{{ setup.twistCount }}</td>
         <td>{{ gameSetup.scheme }}</td>

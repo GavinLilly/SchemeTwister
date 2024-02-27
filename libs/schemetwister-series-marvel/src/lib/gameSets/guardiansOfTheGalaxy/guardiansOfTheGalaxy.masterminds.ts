@@ -1,6 +1,7 @@
 import { Mastermind } from '@schemetwister/libtwister';
+import { ARTIFACT } from '@schemetwister/schemetwister-series-marvel-common';
 
-import { ARTIFACT, SHARDS } from './guardiansOfTheGalaxy.keywords';
+import { SHARDS } from './guardiansOfTheGalaxy.keywords';
 import { META } from './guardiansOfTheGalaxy.meta';
 import { INFINITY_GEMS, KREE_STARFORCE } from './guardiansOfTheGalaxy.villains';
 

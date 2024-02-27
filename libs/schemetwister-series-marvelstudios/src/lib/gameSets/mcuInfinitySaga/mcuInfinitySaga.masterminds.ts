@@ -1,7 +1,5 @@
 import { MastermindWithEpic } from '@schemetwister/libtwister';
 
-import { KeywordName } from '../../keywordName.enum';
-
 import { ENDGAME } from './mcuInfinitySaga.keywords';
 import { META } from './mcuInfinitySaga.meta';
 import {
@@ -37,7 +35,7 @@ export const EBONY_MAW = new MastermindWithEpic(
   {
     id: '4199309b-1816-4747-994b-4145426e5b4e',
     attackPoints: '8+',
-    specialRules: `${KeywordName.ENDGAME}: +4 Attack`,
+    specialRules: `${ENDGAME.name}: +4 Attack`,
     masterStrike:
       'It is the Endgame this turn. Each player reveals their hand and discards their highest-cost Hero. If it was already the Endgame, KO those Heroes.',
     name: 'Ebony Maw',
@@ -49,7 +47,7 @@ export const EBONY_MAW = new MastermindWithEpic(
   {
     id: 'cf25bc47-fb0a-4c04-b767-98f578a891c3',
     attackPoints: '10+',
-    specialRules: `${KeywordName.ENDGAME}: +5 Attack`,
+    specialRules: `${ENDGAME.name}: +5 Attack`,
     masterStrike:
       'It is the Endgame this turn. Each player reveals their hand and KOs their highest-cost Hero. If it was already the Endgame, play another card from the Villain Deck.',
   }

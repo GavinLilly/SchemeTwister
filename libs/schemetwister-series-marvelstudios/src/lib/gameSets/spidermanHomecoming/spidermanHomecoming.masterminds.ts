@@ -1,6 +1,7 @@
 import { MastermindWithEpic } from '@schemetwister/libtwister';
+import { DANGER_SENSE } from '@schemetwister/schemetwister-series-marvel-common';
 
-import { DANGER_SENSE, STRIKER } from './spidermanHomecoming.keywords';
+import { STRIKER } from './spidermanHomecoming.keywords';
 import { META } from './spidermanHomecoming.meta';
 import { SALVAGERS, VULTURE_TECH } from './spidermanHomecoming.villains';
 

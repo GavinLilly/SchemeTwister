@@ -1,8 +1,8 @@
 import { Hero } from '@schemetwister/libtwister';
+import { DEMOLISH } from '@schemetwister/schemetwister-series-marvel-common';
 
 import { CHAMPIONS } from '../../teams';
 import { VERSATILE } from '../darkCity/darkCity.keywords';
-import { DEMOLISH } from '../villains/villains.keywords';
 
 import { CHEERING_CROWDS, SIZE_CHANGING } from './champions.keywords';
 import { META } from './champions.meta';

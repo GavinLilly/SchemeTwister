@@ -4,11 +4,11 @@ import {
   Mastermind,
   Henchmen,
   Hero,
-  LibTwister,
   SchemeMinusRules,
   VillainGroup,
+  ISeries,
 } from '@schemetwister/libtwister';
-import { LIBTWISTER_TOKEN } from '@schemetwister/web-app/shared';
+import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
 @Component({
   selector: 'schemetwister-home-page',
@@ -16,7 +16,7 @@ import { LIBTWISTER_TOKEN } from '@schemetwister/web-app/shared';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent {
-  numGameSets: number = this._libTwister.allGameSets.size;
+  numGameSets: number;
   numHenchmen: number;
   numHeroes: number;
   numMasterminds: number;
@@ -25,9 +25,11 @@ export class HomePageComponent {
 
   constructor(
     meta: Meta,
-    @Inject(LIBTWISTER_TOKEN) private _libTwister: LibTwister
+    @Inject(SERIES_REGISTER_TOKEN) seriesRegister: ISeries[]
   ) {
-    const allGameSets = this._libTwister.allGameSets.asArray();
+    const allGameSets = seriesRegister.flatMap((series) => series.gameSets);
+
+    this.numGameSets = allGameSets.length;
     this.numHenchmen = allGameSets
       .map((gameSet) => gameSet.henchmen)
       .filter((henchmen): henchmen is Henchmen[] => !!henchmen)

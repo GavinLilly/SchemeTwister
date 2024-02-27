@@ -1,6 +1,10 @@
 import { SchemeDefinition } from '@schemetwister/libtwister';
+import {
+  EMPOWERED,
+  SIZE_CHANGING,
+} from '@schemetwister/schemetwister-series-marvel-common';
 
-import { CHIVALROUS_DUEL, EMPOWERED, SIZE_CHANGING } from './antMan.keywords';
+import { CHIVALROUS_DUEL } from './antMan.keywords';
 import { META } from './antMan.meta';
 
 export const AGE_OF_ULTRON = new SchemeDefinition({
@@ -46,11 +50,13 @@ export const TRANSFORM_COMMUTERS_INTO_GIANT_ANTS = new SchemeDefinition({
   evilWins: 'When there are 10 Giant Ants next to the Mastermind.',
   meta: {
     numTwists: {
+      /* eslint-disable @typescript-eslint/naming-convention */
       '1': 7,
       '2': 8,
       '3': 9,
       '4': 10,
       '5': 11,
+      /* eslint-enable @typescript-eslint/naming-convention */
     },
   },
   gameSet: META,

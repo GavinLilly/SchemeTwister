@@ -1,10 +1,11 @@
 import { MastermindWithEpic } from '@schemetwister/libtwister';
+import {
+  ARTIFACT,
+  THROWN_ARTIFACT,
+  VILLAINOUS_WEAPONS,
+  CONQUEROR,
+} from '@schemetwister/schemetwister-series-marvel-common';
 
-import { THROWN_ARTIFACT } from '../fearItself/fearItself.keywords';
-import { ARTIFACT } from '../guardiansOfTheGalaxy/guardiansOfTheGalaxy.keywords';
-import { CONQUEROR } from '../marvelStudios/marvelStudios.keywords';
-
-import { VILLAINOUS_WEAPONS } from './heroesOfAsgard.keywords';
 import { META } from './heroesOfAsgard.meta';
 import { DARK_COUNCIL, OMENS_OF_RAGNAROK } from './heroesOfAsgard.villains';
 

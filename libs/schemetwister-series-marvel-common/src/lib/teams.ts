@@ -15,6 +15,11 @@ export const GUARDIANS_OF_THE_GALAXY: ITeam = {
   icon: 'guardians-galaxy.png',
 };
 
+export const HYDRA: ITeam = {
+  name: 'Hydra',
+  icon: 'hydra.png',
+};
+
 export const SHIELD: ITeam = {
   name: 'S.H.I.E.L.D.',
   icon: 'shield.png',

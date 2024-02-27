@@ -1,5 +1,6 @@
 import {
   Component,
+  Inject,
   Injector,
   Input,
   OnInit,
@@ -12,13 +13,14 @@ import {
   Mastermind,
   SchemeMinusRules,
   CARD_TYPE,
-  LibTwister,
   NumPlayers,
   SoloBannedScheme,
   CardType,
   MastermindWithEpic,
   MastermindType,
+  ISeries,
 } from '@schemetwister/libtwister';
+import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
 import { randomizePageActions } from '../+state/actions/game-setup.actions';
 import { IGameSetsState } from '../+state/reducers/game-sets.reducer';
@@ -40,14 +42,15 @@ export class SchemeMastermindSelectComponent implements OnInit {
   availableItems!: (SchemeMinusRules | MastermindType)[];
   selectedItem = '**Random**';
 
-  private _libTwister: Signal<LibTwister> =
-    this._store.selectSignal(selectLibTwister);
   private _definedScheme: Signal<SchemeMinusRules | undefined> =
     this._store.selectSignal(selectDefinedScheme);
   private _definedMastermind: Signal<MastermindType | undefined> =
     this._store.selectSignal(selectDefinedMastermind);
   private _numPlayers: Signal<NumPlayers> = this._store.selectSignal(
     (state) => state.numPlayers.numPlayers
+  );
+  private _libTwister = this._store.selectSignal(
+    selectLibTwister(this._seriesRegister)
   );
 
   constructor(
@@ -57,7 +60,8 @@ export class SchemeMastermindSelectComponent implements OnInit {
       setupState: IGameSetupState;
       gameSets: IGameSetsState;
     }>,
-    private _injector: Injector
+    private _injector: Injector,
+    @Inject(SERIES_REGISTER_TOKEN) private _seriesRegister: ISeries[]
   ) {}
 
   ngOnInit(): void {

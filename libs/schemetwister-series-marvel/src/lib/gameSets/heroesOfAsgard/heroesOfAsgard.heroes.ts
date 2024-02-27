@@ -1,9 +1,11 @@
 import { Hero } from '@schemetwister/libtwister';
-import { FearItself } from '@schemetwister/schemetwister-series-marvelvillains';
+import {
+  ARTIFACT,
+  CONQUEROR,
+  THROWN_ARTIFACT,
+} from '@schemetwister/schemetwister-series-marvel-common';
 
-import { HEROES_OF_ASGARD } from '../../../teams';
-import { CONQUEROR } from '../../../../../../schemetwister-series-marvelstudios/src/lib/gameSets/marvelStudios/marvelStudios.keywords';
-import { ARTIFACT } from '../guardiansOfTheGalaxy/guardiansOfTheGalaxy.keywords';
+import { HEROES_OF_ASGARD } from '../../teams';
 
 import { WORTHY } from './heroesOfAsgard.keywords';
 import { META } from './heroesOfAsgard.meta';
@@ -13,7 +15,7 @@ export const THOR = new Hero({
   name: 'Thor',
   team: HEROES_OF_ASGARD,
   gameSet: META,
-  keywords: [FearItself.Keywords.THROWN_ARTIFACT, WORTHY],
+  keywords: [THROWN_ARTIFACT, WORTHY],
 });
 
 export const BETA_RAY_BILL = new Hero({
@@ -21,7 +23,7 @@ export const BETA_RAY_BILL = new Hero({
   name: 'Beta Ray Bill',
   team: HEROES_OF_ASGARD,
   gameSet: META,
-  keywords: [FearItself.Keywords.THROWN_ARTIFACT, WORTHY],
+  keywords: [THROWN_ARTIFACT, WORTHY],
 });
 
 export const VALKYRIE = new Hero({
@@ -29,7 +31,7 @@ export const VALKYRIE = new Hero({
   name: 'Valkyrie',
   team: HEROES_OF_ASGARD,
   gameSet: META,
-  keywords: [FearItself.Keywords.THROWN_ARTIFACT, CONQUEROR],
+  keywords: [THROWN_ARTIFACT, CONQUEROR],
 });
 
 export const LADY_SIF = new Hero({
@@ -37,7 +39,7 @@ export const LADY_SIF = new Hero({
   name: 'Lady Sif',
   team: HEROES_OF_ASGARD,
   gameSet: META,
-  keywords: [ARTIFACT, FearItself.Keywords.THROWN_ARTIFACT],
+  keywords: [ARTIFACT, THROWN_ARTIFACT],
 });
 
 export const THE_WARRIORS_THREE = new Hero({

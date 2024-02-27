@@ -1,6 +1,11 @@
 import { Hero } from '@schemetwister/libtwister';
+import {
+  AVENGERS,
+  SHIELD,
+  SPIDER_FRIENDS,
+} from '@schemetwister/schemetwister-series-marvel-common';
 
-import { AVENGERS, X_MEN, SHIELD, SPIDER_FRIENDS } from '../../teams';
+import { X_MEN } from '../../teams';
 
 import { META } from './legendary.meta';
 

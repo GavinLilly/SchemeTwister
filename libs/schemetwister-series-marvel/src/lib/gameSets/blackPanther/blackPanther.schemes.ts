@@ -27,11 +27,13 @@ export const POISON_LAKES_WITH_NANITE_MICROBOTS = new SchemeDefinition({
   evilWins: 'When the Wound Stack or Villain Deck runs out.',
   meta: {
     numTwists: {
+      /* eslint-disable @typescript-eslint/naming-convention */
       '1': 6,
       '2': 7,
       '3': 8,
       '4': 9,
       '5': 10,
+      /* eslint-enable @typescript-eslint/naming-convention */
     },
     rules: (rule) => {
       rule.numWounds = 30;

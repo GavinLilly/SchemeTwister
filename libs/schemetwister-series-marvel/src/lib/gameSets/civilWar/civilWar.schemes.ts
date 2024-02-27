@@ -1,6 +1,10 @@
 import { SchemeDefinition } from '@schemetwister/libtwister';
+import {
+  AVENGERS,
+  SPIDER_FRIENDS,
+} from '@schemetwister/schemetwister-series-marvel-common';
 
-import { AVENGERS, X_MEN, SPIDER_FRIENDS, MARVEL_KNIGHTS } from '../../teams';
+import { X_MEN, MARVEL_KNIGHTS } from '../../teams';
 
 import { FORTIFY, SHIELD_CLEARANCE } from './civilWar.keywords';
 import { META } from './civilWar.meta';

@@ -1,6 +1,6 @@
 import { VillainGroup } from '@schemetwister/libtwister';
 
-import { CONQUEROR } from './marvelStudios.keywords';
+import { CONQUEROR } from '../../../../../schemetwister-series-marvel-common/src/lib/keywords/conqueror.keyword';
 import { META } from './marvelStudios.meta';
 
 export const CHITAURI = new VillainGroup({

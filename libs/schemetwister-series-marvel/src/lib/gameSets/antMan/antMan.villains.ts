@@ -1,11 +1,11 @@
 import { VillainGroup } from '@schemetwister/libtwister';
-
 import {
-  CHIVALROUS_DUEL,
   EMPOWERED,
   MICROSCOPIC_SIZE_CHANGING,
   SIZE_CHANGING,
-} from './antMan.keywords';
+} from '@schemetwister/schemetwister-series-marvel-common';
+
+import { CHIVALROUS_DUEL } from './antMan.keywords';
 import { META } from './antMan.meta';
 
 export const ULTRONS_LEGACY = new VillainGroup({

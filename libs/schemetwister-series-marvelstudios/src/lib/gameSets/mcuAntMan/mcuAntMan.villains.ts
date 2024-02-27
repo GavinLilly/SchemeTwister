@@ -4,7 +4,7 @@ import {
   SIZE_CHANGING,
 } from '@schemetwister/schemetwister-series-marvel-common';
 
-import { CONQUEROR } from '../marvelStudios/marvelStudios.keywords';
+import { CONQUEROR } from '../../../../../schemetwister-series-marvel-common/src/lib/keywords/conqueror.keyword';
 
 import { DOUBLE_CROSS, EXPLORE, HEIST } from './mcuAntMan.keywords';
 import { META } from './mcuAntMan.meta';

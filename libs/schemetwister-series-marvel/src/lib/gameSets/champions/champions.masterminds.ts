@@ -1,7 +1,7 @@
 import { MastermindWithEpic } from '@schemetwister/libtwister';
+import { DEMOLISH } from '@schemetwister/schemetwister-series-marvel-common';
 
 import { VERSATILE } from '../darkCity/darkCity.keywords';
-import { DEMOLISH } from '../villains/villains.keywords';
 
 import { SIZE_CHANGING } from './champions.keywords';
 import { META } from './champions.meta';

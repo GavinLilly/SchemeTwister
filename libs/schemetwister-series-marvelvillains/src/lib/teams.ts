@@ -10,11 +10,6 @@ export const FOES_OF_ASGARD: ITeam = {
   icon: 'foes-of-asgard.png',
 };
 
-export const HYDRA: ITeam = {
-  name: 'Hydra',
-  icon: 'hydra.png',
-};
-
 export const SINISTER_SIX: ITeam = {
   name: 'Sinister Six',
   icon: 'sinister-six.png',

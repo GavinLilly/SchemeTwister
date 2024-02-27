@@ -1,13 +1,9 @@
 import { TransformingMastermind } from '@schemetwister/libtwister';
+import { CROSS_DIMENSIONAL_RAMPAGE } from '@schemetwister/schemetwister-series-marvel-common';
 
 import { FEAST } from '../paintTheTownRed/paintTheTownRed.keywords';
 
-import {
-  CROSS_DIMENSIONAL_RAMPAGE,
-  OUTWIT,
-  TRANSFORM,
-  WOUNDED_FURY,
-} from './worldWarHulk.keywords';
+import { OUTWIT, TRANSFORM, WOUNDED_FURY } from './worldWarHulk.keywords';
 import { META } from './worldWarHulk.meta';
 import {
   ASPECTS_OF_THE_VOID,

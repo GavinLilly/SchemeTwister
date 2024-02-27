@@ -1,7 +1,8 @@
 import { Mastermind } from '@schemetwister/libtwister';
+import { DEMOLISH } from '@schemetwister/schemetwister-series-marvel-common';
 
 import { ASGARDIAN_WARRIORS } from './villains.henchmen';
-import { DEMOLISH, X_TREME_ATTACK } from './villains.keywords';
+import { X_TREME_ATTACK } from './villains.keywords';
 import { META } from './villains.meta';
 import { AVENGERS, DEFENDERS, XMEN_FIRST_CLASS } from './villains.villains';
 

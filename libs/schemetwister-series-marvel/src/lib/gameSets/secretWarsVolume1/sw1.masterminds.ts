@@ -1,11 +1,9 @@
 import { Mastermind, HeroClass } from '@schemetwister/libtwister';
+import { RISE_OF_THE_LIVING_DEAD } from '@schemetwister/schemetwister-series-marvel-common';
 
 import { TELEPORT } from '../darkCity/darkCity.keywords';
 
-import {
-  CROSS_DIMENSIONAL_RAMPAGE,
-  RISE_OF_THE_LIVING_DEAD,
-} from './sw1.keywords';
+import { CROSS_DIMENSIONAL_RAMPAGE } from './sw1.keywords';
 import { META } from './sw1.meta';
 import {
   LIMBO,

@@ -1,7 +1,10 @@
 import { VillainGroup } from '@schemetwister/libtwister';
-import { WALL_CRAWL } from '@schemetwister/schemetwister-series-marvel-common';
+import {
+  DANGER_SENSE,
+  WALL_CRAWL,
+} from '@schemetwister/schemetwister-series-marvel-common';
 
-import { DANGER_SENSE, STRIKER } from './spidermanHomecoming.keywords';
+import { STRIKER } from './spidermanHomecoming.keywords';
 import { META } from './spidermanHomecoming.meta';
 
 export const SALVAGERS = new VillainGroup({

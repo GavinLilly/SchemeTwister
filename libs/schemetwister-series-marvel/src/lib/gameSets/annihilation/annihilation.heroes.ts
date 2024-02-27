@@ -1,8 +1,8 @@
 import { Hero } from '@schemetwister/libtwister';
+import { CONQUEROR } from '@schemetwister/schemetwister-series-marvel-common';
 
-import { FANTASTIC_FOUR } from '../../../teams';
+import { FANTASTIC_FOUR } from '../../teams';
 import { FOCUS } from '../fantasticFour/fantasticFour.keywords';
-import { CONQUEROR } from '../marvelStudios/marvelStudios.keywords';
 
 import { MAN_OUT_OF_TIME } from './annihilation.keywords';
 import { META } from './annihilation.meta';

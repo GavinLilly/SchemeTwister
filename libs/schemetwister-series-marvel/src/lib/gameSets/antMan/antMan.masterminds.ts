@@ -1,6 +1,7 @@
 import { HeroClass, MastermindWithEpic } from '@schemetwister/libtwister';
+import { EMPOWERED } from '@schemetwister/schemetwister-series-marvel-common';
 
-import { CHIVALROUS_DUEL, EMPOWERED } from './antMan.keywords';
+import { CHIVALROUS_DUEL } from './antMan.keywords';
 import { META } from './antMan.meta';
 import { QUEENS_VENGEANCE, ULTRONS_LEGACY } from './antMan.villains';
 

@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { SchemeDefinition } from '@schemetwister/libtwister';
+import { DODGE } from '@schemetwister/schemetwister-series-marvel-common';
 
 import { DARK_MEMORIES } from '../revelations/revelations.keywords';
 import { UNDERCOVER } from '../shield/shield.keywords';
-import { DODGE } from '../villains/villains.keywords';
 
 import { UNLEASH } from './blackWidow.keywords';
 import { META } from './blackWidow.meta';

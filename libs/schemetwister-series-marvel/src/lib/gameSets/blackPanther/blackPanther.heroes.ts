@@ -1,7 +1,7 @@
 import { Hero } from '@schemetwister/libtwister';
+import { EMPOWERED } from '@schemetwister/schemetwister-series-marvel-common';
 
 import { HEROES_OF_WAKANDA } from '../../teams';
-import { EMPOWERED } from '../antMan/antMan.keywords';
 import { THRONES_FAVOR } from '../realmOfKings/realmOfKings.keywords';
 
 import { AMBUSH_ON_HEROES } from './blackPanther.keywords';

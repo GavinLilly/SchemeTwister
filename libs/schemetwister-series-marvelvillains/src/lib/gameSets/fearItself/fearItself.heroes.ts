@@ -1,10 +1,13 @@
 import { Hero } from '@schemetwister/libtwister';
-import { mainline } from '@schemetwister/schemetwister-series-marvel';
+import {
+  ARTIFACT,
+  DEMOLISH,
+  HYDRA,
+  THROWN_ARTIFACT,
+} from '@schemetwister/schemetwister-series-marvel-common';
 
-import { FOES_OF_ASGARD, HYDRA } from '../../teams';
-import { DEMOLISH } from '../villains/villains.keywords';
+import { FOES_OF_ASGARD } from '../../teams';
 
-import { THROWN_ARTIFACT } from './fearItself.keywords';
 import { META } from './fearItself.meta';
 
 export const GREITHOTH_BREAKER_OF_WILLS = new Hero({
@@ -12,10 +15,7 @@ export const GREITHOTH_BREAKER_OF_WILLS = new Hero({
   name: 'Greithoth, Breaker of Wills',
   team: FOES_OF_ASGARD,
   gameSet: META,
-  keywords: [
-    mainline.GUARDIANS_OF_THE_GALAXY.Keywords.ARTIFACT,
-    THROWN_ARTIFACT,
-  ],
+  keywords: [ARTIFACT, THROWN_ARTIFACT],
 });
 
 export const KUURTH_BREAKER_OF_STONE = new Hero({

@@ -1,6 +1,5 @@
 import { Henchmen } from '@schemetwister/libtwister';
-
-import { WALL_CRAWL } from '../paintTheTownRed/paintTheTownRed.keywords';
+import { WALL_CRAWL } from '@schemetwister/schemetwister-series-marvel-common';
 
 import { FATEFUL_RESURRECTION } from './sw2.keywords';
 import { META } from './sw2.meta';
@@ -10,7 +9,6 @@ export const KHONSHU_GUARDIANS = new Henchmen({
   name: 'Khonshu Guardians',
   attackPoints: '3',
   victoryPoints: 1,
-
   gameSet: META,
   fight: 'KO one of your Heroes.',
 });
@@ -20,7 +18,6 @@ export const MAGMA_MEN = new Henchmen({
   name: 'Magma Men',
   attackPoints: '3',
   victoryPoints: 1,
-
   gameSet: META,
   fight: 'KO one of your Heroes.',
   keywords: [FATEFUL_RESURRECTION],
@@ -31,7 +28,6 @@ export const SPIDERINFECTED = new Henchmen({
   name: 'Spider-Infected',
   attackPoints: '3',
   victoryPoints: 1,
-
   gameSet: META,
   fight: 'The next Hero you gain this turn has Wall-Crawl',
   keywords: [WALL_CRAWL],

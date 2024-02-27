@@ -1,6 +1,6 @@
 import { Henchmen, HeroClass } from '@schemetwister/libtwister';
+import { RISE_OF_THE_LIVING_DEAD } from '@schemetwister/schemetwister-series-marvel-common';
 
-import { RISE_OF_THE_LIVING_DEAD } from './sw1.keywords';
 import { META } from './sw1.meta';
 
 export const GHOST_RACERS = new Henchmen({
@@ -8,7 +8,6 @@ export const GHOST_RACERS = new Henchmen({
   name: 'Ghost Racers',
   attackPoints: '3',
   victoryPoints: 1,
-
   gameSet: META,
   fight: `Reveal a ${HeroClass.COVERT} Hero or KO one of your Heroes with an Attack icon`,
   keywords: [RISE_OF_THE_LIVING_DEAD],
@@ -19,7 +18,6 @@ export const MODOKS = new Henchmen({
   name: 'M.O.D.O.K.s',
   attackPoints: '3',
   victoryPoints: 1,
-
   gameSet: META,
   fight:
     'KO a Hero from your discard pile or the HQ. If that Hero has a Recruit icon, you get +1 Recruit',
@@ -30,7 +28,6 @@ export const THOR_CORPS = new Henchmen({
   name: 'Thor Corps',
   attackPoints: '3',
   victoryPoints: 1,
-
   gameSet: META,
   fight: 'Gain this as a Hero.',
 });
