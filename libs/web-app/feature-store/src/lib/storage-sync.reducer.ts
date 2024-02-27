@@ -9,7 +9,7 @@ export function localStorageSyncReducer(
   return localStorageSync({
     keys: [
       { numPlayers: ['numPlayers', 'isAdvancedSolo'] },
-      { gameSets: ['gameSetIds'] },
+      { gameSets: ['gameSetIds', 'seriesIds'] },
     ],
     rehydrate: true,
   })(reducer);

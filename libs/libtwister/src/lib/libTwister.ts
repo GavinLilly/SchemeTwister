@@ -143,7 +143,6 @@ export class LibTwister {
     mastermind = this.stores.mastermindStore.getRandom(),
     advancedSolo = false
   ): GameSetup {
-    console.log(this.selectedGameSets);
     this._stores.reset();
 
     const createdScheme = instantiateScheme(scheme);

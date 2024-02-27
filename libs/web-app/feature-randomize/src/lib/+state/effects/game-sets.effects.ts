@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
+import { Actions, OnInitEffects, createEffect, ofType } from '@ngrx/effects';
+import { Action, Store } from '@ngrx/store';
 import { ISeries, LibTwister } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import { map, withLatestFrom } from 'rxjs/operators';
@@ -8,12 +8,13 @@ import { map, withLatestFrom } from 'rxjs/operators';
 import {
   gameSetSelectionActions,
   gameSetCheckerActions,
+  seriesSelectionActions,
 } from '../actions/game-sets.actions';
 import { IGameSetsState } from '../reducers/game-sets.reducer';
 import { selectLibTwister } from '../selectors/game-sets.selectors';
 
 @Injectable()
-export class GameSetsEffects {
+export class GameSetsEffects implements OnInitEffects {
   readonly validateSetGameSets$ = createEffect(() =>
     this._actions$.pipe(
       ofType(gameSetSelectionActions.setGameSets),
@@ -57,6 +58,22 @@ export class GameSetsEffects {
     )
   );
 
+  readonly setAllGameSets$ = createEffect(() =>
+    this._actions$.pipe(
+      ofType(seriesSelectionActions.setSeries),
+      map((action) =>
+        this._seriesRegister.filter((series) =>
+          action.seriesIds.includes(series.id)
+        )
+      ),
+      map((serie) => serie.flatMap((series) => series.gameSets)),
+      map((gameSets) => gameSets.map((gameSet) => gameSet.id)),
+      map((gameSetIds) =>
+        gameSetCheckerActions.setGameSetsSuccess({ gameSetIds })
+      )
+    )
+  );
+
   constructor(
     private _actions$: Actions,
     private _store: Store<{
@@ -64,6 +81,11 @@ export class GameSetsEffects {
     }>,
     @Inject(SERIES_REGISTER_TOKEN) private _seriesRegister: ISeries[]
   ) {}
+
+  ngrxOnInitEffects(): Action {
+    const seriesIds = this._seriesRegister.map((series) => series.id);
+    return seriesSelectionActions.setSeries({ seriesIds });
+  }
 
   private static _removeGameSet(
     gameSetIds: string[],
