@@ -27,12 +27,9 @@ export class LibTwister {
    * Create a new LibTwister instance with the given Series and optionally the
    * game sets
    * @param series the series to enable in this instance of LibTwister
-   * @param selectedGameSets An array of Game Set items to create the LibTwister instance with
    */
-  constructor(series: ISeries[], selectedGameSets?: GameSet[]) {
-    this._allGameSets = series.flatMap((series) => series.gameSets);
-
-    this._selectedGameSets = selectedGameSets ?? this._allGameSets;
+  constructor(...series: ISeries[]) {
+    this._selectedGameSets = series.flatMap((series) => series.gameSets);
     this._selectedGameSets.sort(GameSet.sorter);
     this._onGameSetsChange();
   }

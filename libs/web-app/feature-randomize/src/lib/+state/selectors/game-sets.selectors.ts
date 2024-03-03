@@ -21,4 +21,7 @@ export const selectSeriesIds = createSelector(
 
 export const selectLibTwister = (seriesRegister: ISeries[]) =>
   // For now we should use all series
-  createSelector(selectGameSetsFeature, () => new LibTwister(seriesRegister));
+  createSelector(
+    selectGameSetsFeature,
+    () => new LibTwister(...seriesRegister)
+  );

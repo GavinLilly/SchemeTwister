@@ -1,6 +1,5 @@
 import {
   SchemeDefinition,
-  RitualSacrificeToSummonChthonScheme,
   RequireCard,
   RequireCardInDeckScheme,
   RequireCardName,
@@ -10,6 +9,7 @@ import {
 
 import { MOONLIGHT_AND_SUNLIGHT } from '../theNewMutants/theNewMutants.keywords';
 
+import { RitualSacrificeToSummonChthonScheme } from './RitualSacrificeToSummonChthonScheme';
 import { BLOOD_FRENZY, HUNT_FOR_VICTIMS } from './midnightSons.keywords';
 import { META } from './midnightSons.meta';
 import { LILIN } from './midnightSons.villains';

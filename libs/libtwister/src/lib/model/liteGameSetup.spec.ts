@@ -1,6 +1,8 @@
-import { GAME_SET as LEGENDARY } from '../data/gameSets/legendary/legendary.gameset';
-import { MIDTOWN_BANK_ROBBERY } from '../data/gameSets/legendary/legendary.schemes';
 import { StoreOfStores, StoreBuilder } from '../factories';
+import { LibTwister } from '../libTwister';
+import { TEST_GAME_SET_1 } from '../testData/gameSets';
+import { TEST_NORMAL_SCHEME } from '../testData/schemes';
+import { TEST_SERIES_1 } from '../testData/series';
 import instantiateScheme from '../utils/instantiateScheme';
 
 import { GameSetup } from './GameSetup';
@@ -10,10 +12,10 @@ let store: StoreOfStores;
 
 beforeAll(() => {
   store = new StoreBuilder()
-    .withHeroGamesets(LEGENDARY)
-    .withMastermindGamesets(LEGENDARY)
-    .withVillainGamesets(LEGENDARY)
-    .withHenchmenGamesets(LEGENDARY)
+    .withHeroGamesets(TEST_GAME_SET_1)
+    .withMastermindGamesets(TEST_GAME_SET_1)
+    .withVillainGamesets(TEST_GAME_SET_1)
+    .withHenchmenGamesets(TEST_GAME_SET_1)
     .build();
 });
 
@@ -23,7 +25,7 @@ describe('LiteGameSetup', () => {
   let liteSetup: LiteGameSetup;
 
   beforeAll(() => {
-    const scheme = instantiateScheme(MIDTOWN_BANK_ROBBERY);
+    const scheme = instantiateScheme(TEST_NORMAL_SCHEME);
     const setup = scheme.getSetup({ numPlayers: 2, store }) as GameSetup;
 
     liteSetup = LiteGameSetup.of(setup);
@@ -49,9 +51,10 @@ describe('LiteGameSetup', () => {
 
   describe('toGameSetup', () => {
     let gameSetup: GameSetup;
+    const libTwister = new LibTwister(TEST_SERIES_1);
 
     beforeAll(() => {
-      gameSetup = liteSetup.toGameSetup();
+      gameSetup = liteSetup.toGameSetup(libTwister);
     });
 
     it('should fail with an unknown scheme ID', () =>
@@ -62,7 +65,7 @@ describe('LiteGameSetup', () => {
           heroDeck: [],
           mastermindId: 'BAR',
           villainDeck: [],
-        }).toGameSetup()
+        }).toGameSetup(libTwister)
       ).toThrow());
 
     it('should have 8 twists', () =>

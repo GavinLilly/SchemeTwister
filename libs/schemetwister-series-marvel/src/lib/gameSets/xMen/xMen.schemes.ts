@@ -4,7 +4,7 @@ import {
   RequireCard,
   RequireHenchmen,
   DECK_TYPE,
-  TheDarkPhoenixSagaScheme,
+  RequireVillainAndHeroWithBackupInVillainDeckScheme,
 } from '@schemetwister/libtwister';
 
 import { JEAN_GREY } from '../darkCity/darkCity.heroes';
@@ -80,7 +80,7 @@ export const THE_DARK_PHOENIX_SAGA = new SchemeDefinition({
       return rule;
     },
     overrideScheme: {
-      schemeType: TheDarkPhoenixSagaScheme,
+      schemeType: RequireVillainAndHeroWithBackupInVillainDeckScheme,
       params: [HELLFIRE_CLUB, JEAN_GREY, PHOENIX],
     },
   },

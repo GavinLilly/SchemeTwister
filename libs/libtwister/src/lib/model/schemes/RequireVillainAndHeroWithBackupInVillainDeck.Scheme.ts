@@ -10,7 +10,7 @@ import {
   RequireVillainGroup,
 } from './cardInDeck';
 
-export class TheDarkPhoenixSagaScheme extends RequireCardInDeckScheme<VillainGroup> {
+export class RequireVillainAndHeroWithBackupInVillainDeckScheme extends RequireCardInDeckScheme<VillainGroup> {
   constructor(
     scheme: SchemeMinusRules,
     requiredVillain: RequireCard<VillainGroup>,

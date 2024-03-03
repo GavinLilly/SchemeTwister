@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { LEGENDARY } from '../data/gameSets';
+import { TEST_GAME_SET_1 } from '../testData/gameSets';
 
 import { GameSet } from './GameSet';
 import { Bystander } from './cards';
@@ -60,26 +59,22 @@ describe('GameSet', () => {
 
   describe('getCards', () => {
     it('should return all cards', () => {
-      const cards = LEGENDARY.GAME_SET.getCards();
+      const cards = TEST_GAME_SET_1.getCards();
 
       expect(cards).toBeDefined();
       expect(cards).toBeInstanceOf(Array);
       expect(cards).toEqual(
-        expect.arrayContaining(LEGENDARY.GAME_SET.bystanders as Bystander[])
+        expect.arrayContaining(TEST_GAME_SET_1.bystanders as Bystander[])
       );
+      /* eslint-disable @typescript-eslint/no-non-null-assertion */
+      expect(cards).toEqual(expect.arrayContaining(TEST_GAME_SET_1.schemes!));
+      expect(cards).toEqual(expect.arrayContaining(TEST_GAME_SET_1.henchmen!));
+      expect(cards).toEqual(expect.arrayContaining(TEST_GAME_SET_1.heroes));
       expect(cards).toEqual(
-        expect.arrayContaining(LEGENDARY.GAME_SET.schemes!)
+        expect.arrayContaining(TEST_GAME_SET_1.masterminds!)
       );
-      expect(cards).toEqual(
-        expect.arrayContaining(LEGENDARY.GAME_SET.henchmen!)
-      );
-      expect(cards).toEqual(expect.arrayContaining(LEGENDARY.GAME_SET.heroes));
-      expect(cards).toEqual(
-        expect.arrayContaining(LEGENDARY.GAME_SET.masterminds!)
-      );
-      expect(cards).toEqual(
-        expect.arrayContaining(LEGENDARY.GAME_SET.villains!)
-      );
+      expect(cards).toEqual(expect.arrayContaining(TEST_GAME_SET_1.villains!));
+      /* eslint-enable @typescript-eslint/no-non-null-assertion */
     });
   });
 });

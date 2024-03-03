@@ -1,4 +1,7 @@
-import { SchemeDefinition, HouseOfMScheme } from '@schemetwister/libtwister';
+import {
+  SchemeDefinition,
+  RequireHeroAndTeamScheme,
+} from '@schemetwister/libtwister';
 
 import { X_MEN } from '../../teams';
 
@@ -45,7 +48,7 @@ export const HOUSE_OF_M = new SchemeDefinition({
       return rule;
     },
     overrideScheme: {
-      schemeType: HouseOfMScheme,
+      schemeType: RequireHeroAndTeamScheme,
       params: [SCARLET_WITCH, X_MEN],
     },
   },

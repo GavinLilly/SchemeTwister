@@ -10,11 +10,13 @@ import {
   RequireHero,
 } from './cardInDeck';
 
-export class HouseOfMScheme extends RequireCardInDeckScheme<Hero> {
+export class RequireHeroAndTeamScheme extends RequireCardInDeckScheme<Hero> {
   constructor(
     scheme: SchemeMinusRules,
     private _requiredHero: Hero,
-    private _requiredTeam: ITeam
+    private _requiredTeam: ITeam,
+    private _numFromRequiredTeam: number,
+    private _numNotFromRequiredTeam: number
   ) {
     super(
       scheme,
@@ -25,12 +27,12 @@ export class HouseOfMScheme extends RequireCardInDeckScheme<Hero> {
   }
 
   public override getSetup(config: IGetSetupConfig): IGameSetup {
-    const xMenHeroes = config.store.heroStore.pickRandom(
-      4,
+    const requiredTeamHeroes = config.store.heroStore.pickRandom(
+      this._numFromRequiredTeam,
       (hero) => hero.team === this._requiredTeam
     ) as Hero[];
     const otherHeroes = config.store.heroStore.pickRandom(
-      2,
+      this._numNotFromRequiredTeam,
       (hero) => hero.team !== this._requiredTeam && hero !== this._requiredHero
     ) as Hero[];
 
@@ -42,7 +44,7 @@ export class HouseOfMScheme extends RequireCardInDeckScheme<Hero> {
           otherHeroes[0],
           this.rules[config.numPlayers].heroDeck.numHeroes,
           otherHeroes[1],
-          ...xMenHeroes
+          ...requiredTeamHeroes
         ),
       },
     });

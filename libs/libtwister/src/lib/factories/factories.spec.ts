@@ -1,5 +1,8 @@
-import { DARK_CITY, LEGENDARY } from '../data/gameSets';
 import { CARD_TYPE, CardType, IPlayableObject } from '../model';
+import {
+  TEST_GAME_SET_META_1,
+  TEST_GAME_SET_META_2,
+} from '../testData/gameSets';
 
 import { CardFactory } from './cardFactory';
 import { CardStore } from './cardStore';
@@ -7,7 +10,7 @@ import { CardStore } from './cardStore';
 const cardType = CARD_TYPE.hero;
 
 class LegCard implements IPlayableObject {
-  gameSet = LEGENDARY.GAME_SET;
+  gameSet = TEST_GAME_SET_META_1;
   constructor(
     public name: string,
     public id: string,
@@ -16,7 +19,7 @@ class LegCard implements IPlayableObject {
 }
 
 class DcCard implements IPlayableObject {
-  gameSet = DARK_CITY.GAME_SET;
+  gameSet = TEST_GAME_SET_META_2;
   constructor(
     public name: string,
     public id: string,
@@ -114,10 +117,10 @@ describe('Card Factory', () => {
     });
 
     it('should only give random Legendary cards', () => {
-      expect(instance.getRandom().gameSet.id).toEqual(LEGENDARY.GAME_SET.id);
+      expect(instance.getRandom().gameSet.id).toEqual(TEST_GAME_SET_META_1.id);
       expect(
         (instance.getRandom(3) as IPlayableObject[]).every(
-          (item) => item.gameSet === LEGENDARY.GAME_SET
+          (item) => item.gameSet === TEST_GAME_SET_META_1
         )
       ).toBeTruthy();
     });

@@ -1,27 +1,27 @@
-import {
-  SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS,
-  SUPER_HERO_CIVIL_WAR,
-  THE_LEGACY_VIRUS,
-} from '../data/gameSets/legendary/legendary.schemes';
 import { RequireCardInDeckScheme, Scheme, SoloBannedScheme } from '../model';
+import {
+  TEST_NORMAL_SCHEME,
+  TEST_REQUIRE_CARD_IN_DECK_SCHEME,
+  TEST_SOLO_BANNED_SCHEME,
+} from '../testData/schemes';
 
 import instantiateScheme from './instantiateScheme';
 
 describe('instantiateScheme', () => {
   describe('with no overridden scheme', () => {
     it("should create a default 'Scheme' instance", () => {
-      expect(instantiateScheme(THE_LEGACY_VIRUS)).toBeInstanceOf(Scheme);
+      expect(instantiateScheme(TEST_NORMAL_SCHEME)).toBeInstanceOf(Scheme);
     });
   });
 
   describe('with parameters in the overridden scheme', () => {
-    expect(
-      instantiateScheme(SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS)
-    ).toBeInstanceOf(RequireCardInDeckScheme);
+    expect(instantiateScheme(TEST_REQUIRE_CARD_IN_DECK_SCHEME)).toBeInstanceOf(
+      RequireCardInDeckScheme
+    );
   });
 
   describe('with no parameters in the overridden scheme', () => {
-    expect(instantiateScheme(SUPER_HERO_CIVIL_WAR)).toBeInstanceOf(
+    expect(instantiateScheme(TEST_SOLO_BANNED_SCHEME)).toBeInstanceOf(
       SoloBannedScheme
     );
   });

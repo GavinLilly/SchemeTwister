@@ -1,102 +1,55 @@
-import { GAME_SET as legendary } from '../../../data/gameSets/legendary';
-import { VillainGroup } from '../villainGroup';
+import { TEST_HENCHMEN_1 } from '../../../testData/henchmen';
+import {
+  TEST_MASTERMIND_1,
+  TEST_MASTERMIND_2,
+} from '../../../testData/masterminds';
+import { TEST_VILLAIN_1, TEST_VILLAIN_5 } from '../../../testData/villains';
 
 import { Mastermind } from './mastermind';
 
 const epicRegex = new RegExp(`^Epic?`);
 
-const testVillain1 = new VillainGroup({
-  gameSet: legendary,
-  id: 'fb5a07cf-eddd-449d-abf5-06acd070fbdb',
-  name: 'Test villain 1',
-});
-
-const testVillain2 = new VillainGroup({
-  gameSet: legendary,
-  id: 'fb5a07cf-eddd-449d-abf5-06acd070fbdb',
-  name: 'Test villain 2',
-});
-
-const BASE_MASTERMIND = {
-  attackPoints: 5,
-  victoryPoints: 4,
-  alwaysLeads: [testVillain1],
-  gameSet: legendary,
-};
-
 describe('Mastermind', () => {
   describe('with 1 villain as always leads', () => {
     describe('that is not epic', () => {
-      let mastermind: Mastermind;
-
-      beforeAll(() => {
-        mastermind = new Mastermind({
-          ...BASE_MASTERMIND,
-          id: '31b9bf7f-c139-4566-8ca7-eac1b666b4cc',
-          name: 'Test Mastermind',
-          masterStrike: 'Test master strike',
-        });
-      });
-
-      it('should create', () => expect(mastermind).toBeTruthy());
+      it('should create', () => expect(TEST_MASTERMIND_1).toBeTruthy());
 
       it('should not have "Epic" in the name', () =>
-        expect(mastermind.name).not.toMatch(epicRegex));
+        expect(TEST_MASTERMIND_1.name).not.toMatch(epicRegex));
 
       it('should have 1 Test Villain in the always leads', () => {
-        expect(mastermind.alwaysLeads).toHaveLength(1);
-        expect(mastermind.alwaysLeads).toContain(testVillain1);
+        expect(TEST_MASTERMIND_1.alwaysLeads).toHaveLength(1);
+        expect(TEST_MASTERMIND_1.alwaysLeads).toContain(TEST_VILLAIN_1);
       });
 
-      it('should not be epic', () => expect(mastermind.isEpic).toBe(false));
+      it('should not be epic', () =>
+        expect(TEST_MASTERMIND_1.isEpic).toBe(false));
 
       it('should have 5 attack points', () =>
-        expect(mastermind.attackPoints).toBe(5));
+        expect(TEST_MASTERMIND_1.attackPoints).toBe(6));
 
       it('should have 4 victory points', () =>
-        expect(mastermind.victoryPoints).toBe(4));
+        expect(TEST_MASTERMIND_1.victoryPoints).toBe(6));
     });
 
     describe('that is epic', () => {
-      let mastermind: Mastermind;
-
-      beforeAll(() => {
-        mastermind = new Mastermind({
-          ...BASE_MASTERMIND,
-          id: '2e9b13a8-e954-48f4-b1a1-7f7d7aae8db7',
-          name: 'Epic Test Mastermind',
-          masterStrike: 'Test master strike',
-        });
-      });
-
-      it('should create', () => expect(mastermind).toBeTruthy());
+      it('should create', () => expect(TEST_MASTERMIND_2.epic).toBeTruthy());
 
       it('should have "Epic" in the name', () =>
-        expect(mastermind.name).toMatch(epicRegex));
+        expect(TEST_MASTERMIND_2.epic.name).toMatch(epicRegex));
 
-      it('should be epic', () => expect(mastermind.isEpic).toBe(true));
+      it('should be epic', () =>
+        expect(TEST_MASTERMIND_2.epic.isEpic).toBe(true));
     });
   });
 
   describe('with 2 villains in the always leads', () => {
-    let mastermind: Mastermind;
-
-    beforeAll(() => {
-      mastermind = new Mastermind({
-        ...BASE_MASTERMIND,
-        id: '31b9bf7f-c139-4566-8ca7-eac1b666b4cc',
-        name: 'Multi villain mastermind',
-        alwaysLeads: [testVillain1, testVillain2],
-        masterStrike: 'Test master strike',
-      });
-    });
-
-    it('should create', () => expect(mastermind).toBeTruthy());
+    it('should create', () => expect(TEST_MASTERMIND_2).toBeTruthy());
 
     it('should have 2 Test Villains in the always leads', () => {
-      expect(mastermind.alwaysLeads).toHaveLength(2);
-      expect(mastermind.alwaysLeads).toContain(testVillain1);
-      expect(mastermind.alwaysLeads).toContain(testVillain2);
+      expect(TEST_MASTERMIND_2.alwaysLeads).toHaveLength(2);
+      expect(TEST_MASTERMIND_2.alwaysLeads).toContain(TEST_HENCHMEN_1);
+      expect(TEST_MASTERMIND_2.alwaysLeads).toContain(TEST_VILLAIN_5);
     });
   });
 

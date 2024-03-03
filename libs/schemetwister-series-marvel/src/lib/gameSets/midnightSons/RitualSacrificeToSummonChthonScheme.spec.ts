@@ -1,15 +1,19 @@
-import { GAME_SET as DARK_CITY } from '../../data/gameSets/darkCity/darkCity.gameset';
-import { KINGPIN } from '../../data/gameSets/darkCity/darkCity.masterminds';
-import { GAME_SET as MIDNIGHT_SONS } from '../../data/gameSets/midnightSons/midnightSons.gameset';
-import { LILITH } from '../../data/gameSets/midnightSons/midnightSons.masterminds';
-import { RITUAL_SACRIFICE_TO_SUMMON_CHTHON } from '../../data/gameSets/midnightSons/midnightSons.schemes';
-import { LILIN } from '../../data/gameSets/midnightSons/midnightSons.villains';
-import { StoreBuilder, StoreOfStores } from '../../factories';
-import { GameSetup } from '../GameSetup';
+import {
+  StoreOfStores,
+  Scheme,
+  StoreBuilder,
+  RequireCard,
+  GameSetup,
+} from '@schemetwister/libtwister';
+
+import { GAME_SET as DARK_CITY } from '../darkCity/darkCity.gameset';
+import { KINGPIN } from '../darkCity/darkCity.masterminds';
 
 import { RitualSacrificeToSummonChthonScheme } from './RitualSacrificeToSummonChthonScheme';
-import { Scheme } from './Scheme';
-import { RequireCard } from './cardInDeck';
+import { GAME_SET as MIDNIGHT_SONS } from './midnightSons.gameset';
+import { LILITH } from './midnightSons.masterminds';
+import { RITUAL_SACRIFICE_TO_SUMMON_CHTHON } from './midnightSons.schemes';
+import { LILIN } from './midnightSons.villains';
 
 describe('RitualSacrificeToSummonChthonScheme', () => {
   let store: StoreOfStores;

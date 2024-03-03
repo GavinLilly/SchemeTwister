@@ -1,13 +1,15 @@
 import { LibTwister } from '../libTwister';
+import { TEST_SERIES_1 } from '../testData/series';
 
 import { GameSetMap } from './gameSetMap';
 import { GAME_SET_SIZE, SERIES } from './types';
 
 describe('GameSetMap', () => {
   let map: GameSetMap;
+  const libTwister = new LibTwister(TEST_SERIES_1);
 
   beforeAll(() => {
-    map = LibTwister.allGameSets;
+    map = libTwister.allGameSets;
   });
 
   describe('asArray', () => {

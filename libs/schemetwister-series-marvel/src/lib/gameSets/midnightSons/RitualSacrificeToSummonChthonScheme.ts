@@ -1,17 +1,14 @@
-import { VillainGroup } from '../cards/villainGroup';
-import { IGameSetup } from '../interfaces/gameSetup.interface';
 import {
-  DECK_TYPE,
-  SchemeMinusRules,
-  numPlayers as numPlayersCount,
-} from '../types';
-
-import { IGetSetupConfig } from './Scheme';
-import {
-  RequireCard,
   RequireCardInDeckScheme,
+  VillainGroup,
+  SchemeMinusRules,
+  RequireCard,
   RequireVillainGroup,
-} from './cardInDeck';
+  DECK_TYPE,
+  IGetSetupConfig,
+  IGameSetup,
+  numPlayers as numPlayersCount,
+} from '@schemetwister/libtwister';
 
 /**
  * This scheme class checks if Lilith is the mastermind and if so it sets the number of twists to 1.
