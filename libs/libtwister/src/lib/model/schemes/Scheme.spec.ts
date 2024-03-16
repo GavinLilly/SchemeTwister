@@ -1,4 +1,5 @@
 import { StoreBuilder, StoreOfStores } from '../../factories';
+import { createMockGameSet } from '../../testData/createMockGameSet';
 import { TEST_GAME_SET_1, TEST_GAME_SET_2 } from '../../testData/gameSets';
 import { TEST_HENCHMEN_1 } from '../../testData/henchmen';
 import {
@@ -21,7 +22,7 @@ import {
 import { GameSetup } from '../GameSetup';
 import { IGameSetup } from '../interfaces/gameSetup.interface';
 import { Rules } from '../rules';
-import { CARD_TYPE, SchemeMinusRules } from '../types';
+import { CARD_TYPE, GAME_SET_SIZE, SchemeMinusRules } from '../types';
 import { NumPlayers, numPlayers } from '../types/numPlayers.type';
 
 import { Scheme } from './Scheme';
@@ -164,11 +165,11 @@ describe('Scheme', () => {
     it('should be an instance of GameSetup', () =>
       expect(setup).toBeInstanceOf(GameSetup));
 
-    it('should include Aracade as the mastermind', () =>
+    it('should include TEST_MASTERMIND_1 as the mastermind', () =>
       expect(setup.mastermind).toBe(TEST_MASTERMIND_1));
 
     it('should include Murderworld in the villain deck', () =>
-      expect(setup.villainDeck.villains).toContain(TEST_VILLAIN_5));
+      expect(setup.villainDeck.villains).toContain(TEST_VILLAIN_1));
 
     it('should put 1 hero in an additional deck', () => {
       const heroAdditional = new Scheme({
@@ -216,6 +217,10 @@ describe('Scheme', () => {
     });
 
     it('should put 1 mastermind in the villain deck', () => {
+      const dynamicStore = new StoreBuilder()
+        .withAllFromGamesets(createMockGameSet(GAME_SET_SIZE.core))
+        .build();
+
       const mastermindVillain = new Scheme({
         ...baseSchemeDesc,
         meta: {
@@ -231,7 +236,7 @@ describe('Scheme', () => {
 
       const mastermindVillainSetup = mastermindVillain.getSetup({
         numPlayers: 3,
-        store,
+        store: dynamicStore,
       });
 
       expect(mastermindVillainSetup.villainDeck.masterminds).toBeTruthy();

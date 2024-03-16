@@ -29,7 +29,9 @@ export class LibTwister {
    * @param series the series to enable in this instance of LibTwister
    */
   constructor(...series: ISeries[]) {
-    this._selectedGameSets = series.flatMap((series) => series.gameSets);
+    this._allGameSets = series.flatMap((series) => series.gameSets);
+
+    this._selectedGameSets = this._allGameSets;
     this._selectedGameSets.sort(GameSet.sorter);
     this._onGameSetsChange();
   }

@@ -14,7 +14,7 @@ describe('GameSetMap', () => {
 
   describe('asArray', () => {
     it('should have all game sets', () =>
-      expect(map.asArray()).toHaveLength(38));
+      expect(map.asArray()).toHaveLength(1));
 
     it('should only have core game sets', () => {
       const sizes = new Set(
@@ -23,9 +23,11 @@ describe('GameSetMap', () => {
       expect(sizes.size).toEqual(1);
     });
 
-    it('should only have MCU game sets', () => {
+    it('should only have Mainline game sets', () => {
       const sizes = new Set(
-        map.asArray({ series: SERIES.mcu }).map((gameset) => gameset.series)
+        map
+          .asArray({ series: SERIES.mainline })
+          .map((gameset) => gameset.series)
       );
       expect(sizes.size).toEqual(1);
     });

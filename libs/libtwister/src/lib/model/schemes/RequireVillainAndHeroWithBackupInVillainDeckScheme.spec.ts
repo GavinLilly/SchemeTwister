@@ -1,50 +1,54 @@
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { TEST_GAME_SET_1, TEST_GAME_SET_2 } from '../../testData/gameSets';
-import { TEST_HERO_1, TEST_HERO_2 } from '../../testData/heroes';
+import { createMockGameSet } from '../../testData/createMockGameSet';
 import { TEST_REQUIRE_VILLAIN_AND_HERO_SCHEME } from '../../testData/schemes';
-import { TEST_VILLAIN_1, TEST_VILLAIN_5 } from '../../testData/villains';
 import { IGameSetup } from '../interfaces/gameSetup.interface';
+import { GAME_SET_SIZE } from '../types';
 
 import { RequireVillainAndHeroWithBackupInVillainDeckScheme } from './RequireVillainAndHeroWithBackupInVillainDeck.Scheme';
 import { Scheme } from './Scheme';
 import { RequireCard, RequireCardWithBackup } from './cardInDeck';
 
-describe('The Dark Phoenix Saga Scheme', () => {
+describe('RequireVillainAndHeroWithBackupInVillainDeckScheme', () => {
   let store: StoreOfStores;
   let scheme: Scheme;
 
   beforeAll(() => {
-    store = new StoreBuilder().withAllFromGamesets(TEST_GAME_SET_2).build();
     scheme = new RequireVillainAndHeroWithBackupInVillainDeckScheme(
       TEST_REQUIRE_VILLAIN_AND_HERO_SCHEME,
-      new RequireCard(TEST_VILLAIN_5),
-      new RequireCardWithBackup(TEST_HERO_2, TEST_HERO_1)
+      new RequireCard(gameSet1.villains![0]),
+      new RequireCardWithBackup(gameSet1.heroes[0], gameSet2.heroes[0])
     );
   });
 
+  const gameSet1 = createMockGameSet(GAME_SET_SIZE.core);
+  const gameSet2 = createMockGameSet(GAME_SET_SIZE.large);
+
   beforeEach(() => store.reset());
 
-  describe('with X-Men expansion', () => {
+  describe('with both test game sets', () => {
     let setup: IGameSetup;
     beforeAll(() => {
+      store = new StoreBuilder()
+        .withAllFromGamesets(gameSet1, gameSet2)
+        .build();
       setup = scheme.getSetup({ numPlayers: 2, store });
     });
 
-    it('should include TEST_HERO_2 in the villain deck', () =>
-      expect(setup.villainDeck.heroes).toContain(TEST_HERO_2));
+    it('should include gameSet1.heroes[0] in the villain deck', () =>
+      expect(setup.villainDeck.heroes).toContain(gameSet1.heroes[0]));
 
-    it('should include TEST_VILLAIN_1 in the villain deck', () =>
-      expect(setup.villainDeck.villains).toContain(TEST_VILLAIN_1));
+    it('should include gameSet1.villains[0] in the villain deck', () =>
+      expect(setup.villainDeck.villains).toContain(gameSet1.villains![0]));
   });
 
-  describe('with the Dark City expansion', () => {
+  describe('with only test game set 1 for heroes and villains', () => {
     let setup: IGameSetup;
     beforeAll(() => {
       const dcHeroStore = new StoreBuilder()
-        .withHeroGamesets(TEST_GAME_SET_1)
-        .withMastermindGamesets(TEST_GAME_SET_2)
-        .withVillainGamesets(TEST_GAME_SET_2)
-        .withHenchmenGamesets(TEST_GAME_SET_2)
+        .withHeroGamesets(gameSet2)
+        .withMastermindGamesets(gameSet1, gameSet2)
+        .withVillainGamesets(gameSet1, gameSet2)
+        .withHenchmenGamesets(gameSet1, gameSet2)
         .build();
       setup = scheme.getSetup({
         numPlayers: 2,
@@ -53,10 +57,10 @@ describe('The Dark Phoenix Saga Scheme', () => {
       });
     });
 
-    it('should include TEST_HERO_1 in the villain deck', () =>
-      expect(setup.villainDeck.heroes).toContain(TEST_HERO_1));
+    it('should include gameSet2.heroes[0] in the villain deck', () =>
+      expect(setup.villainDeck.heroes).toContain(gameSet2.heroes[0]));
 
-    it('should include TEST_VILLAIN_1 in the villain deck', () =>
-      expect(setup.villainDeck.villains).toContain(TEST_VILLAIN_1));
+    it('should include gameSet1.villains[0] in the villain deck', () =>
+      expect(setup.villainDeck.villains).toContain(gameSet1.villains![0]));
   });
 });

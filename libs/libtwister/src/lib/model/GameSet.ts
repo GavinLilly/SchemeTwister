@@ -39,7 +39,7 @@ export class GameSet implements IGameSetMeta {
     readonly schemes?: SchemeMinusRules[],
     readonly villains?: VillainGroup[],
     readonly henchmen?: Henchmen[],
-    readonly bystanders?: Hero[] | Bystander[]
+    readonly bystanders?: (Hero | Bystander)[]
   ) {
     ({
       id: this.id,

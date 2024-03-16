@@ -29,5 +29,5 @@ export const TEST_VILLAIN_4 = new VillainGroup({
 export const TEST_VILLAIN_5 = new VillainGroup({
   id: '49399466-3ec2-44d6-81c2-0b5427bff163',
   gameSet: TEST_GAME_SET_META_2,
-  name: 'Test villain 2',
+  name: 'Test villain 5',
 });

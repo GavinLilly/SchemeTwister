@@ -82,46 +82,49 @@ describe('GameSetup', () => {
   describe('TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME', () => {
     const scheme = instantiateScheme(TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME);
     const store = new StoreBuilder()
-      .withHeroGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
-      .withMastermindGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
-      .withVillainGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
-      .withHenchmenGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
+      .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
       .build();
 
     const setup = scheme.getSetup({ numPlayers: 2, store }) as GameSetup;
 
-    const { additionalDeck } = JSON.parse(setup.toString());
+    const doesContainExpectedHeroName = Array.from(
+      setup.additionalDecks[0].deck.heroes!
+    )
+      .map((hero) => hero.name)
+      .some((heroName) => heroName.includes('Foo'));
 
-    expect(additionalDeck).toEqual(expect.arrayContaining(['Name']));
+    expect(doesContainExpectedHeroName).toEqual(true);
   });
 
   describe('get keywords', () => {
-    let legendaryStore: StoreOfStores;
+    let testStore: StoreOfStores;
 
     beforeAll(() => {
-      legendaryStore = new StoreBuilder()
-        .withAllFromGamesets(TEST_GAME_SET_1)
+      testStore = new StoreBuilder()
+        .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
         .build();
     });
+
+    afterEach(() => testStore.reset());
 
     it('should have no keywords', () => {
       const scheme = new Scheme(TEST_NORMAL_SCHEME);
       const setup = scheme.getSetup({
         numPlayers: 2,
-        selectedMastermind: legendaryStore.mastermindStore.getRandom(),
-        store: legendaryStore,
+        selectedMastermind: testStore.mastermindStore.getRandom(),
+        store: testStore,
       }) as GameSetup;
 
       expect(setup.keywords.size).toBe(0);
     });
 
-    it('should have only the "Contest of Champions" keyword', () => {
+    it('should have only the "TEST_KEYWORD_1" keyword', () => {
       const scheme = new Scheme(TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME);
 
       const setup = scheme.getSetup({
         numPlayers: 2,
-        selectedMastermind: legendaryStore.mastermindStore.getRandom(),
-        store: legendaryStore,
+        selectedMastermind: testStore.mastermindStore.getRandom(),
+        store: testStore,
       }) as GameSetup;
 
       expect(setup.keywords.size).toBe(1);
