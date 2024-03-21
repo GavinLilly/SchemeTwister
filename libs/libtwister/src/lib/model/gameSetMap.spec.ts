@@ -9,7 +9,7 @@ describe('GameSetMap', () => {
   const libTwister = new LibTwister(TEST_SERIES_1);
 
   beforeAll(() => {
-    map = libTwister.allGameSets;
+    map = libTwister.allGameSetsMap;
   });
 
   describe('asArray', () => {

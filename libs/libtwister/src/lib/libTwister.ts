@@ -21,7 +21,7 @@ export class LibTwister {
   private _schemeFactory!: CardFactory<SchemeMinusRules>;
   private _stores!: StoreOfStores;
   private _selectedGameSets: GameSet[] = [];
-  private readonly _allGameSets: GameSet[] = [];
+  private readonly _series: ISeries[];
 
   /**
    * Create a new LibTwister instance with the given Series and optionally the
@@ -29,9 +29,9 @@ export class LibTwister {
    * @param series the series to enable in this instance of LibTwister
    */
   constructor(...series: ISeries[]) {
-    this._allGameSets = series.flatMap((series) => series.gameSets);
+    this._series = series;
 
-    this._selectedGameSets = this._allGameSets;
+    this._selectedGameSets = this.allGameSets;
     this._selectedGameSets.sort(GameSet.sorter);
     this._onGameSetsChange();
   }
@@ -61,18 +61,28 @@ export class LibTwister {
   }
 
   public set selectedGameSets(gameSets: GameSet[]) {
+    if (gameSets.length === 0) {
+      throw new Error('No game set(s) selected');
+    }
+    if (!gameSets.every((gameSet) => this.allGameSets.includes(gameSet))) {
+      throw new Error('Selected game set(s) not part of the select serie');
+    }
     this._selectedGameSets = gameSets;
     this._onGameSetsChange();
+  }
+
+  public get allGameSets(): GameSet[] {
+    return this._series.flatMap((series) => series.gameSets);
   }
 
   /**
    * Get all the game sets available in this app
    * @returns a map of Game Set IDs to GameSet objects
    */
-  public get allGameSets(): GameSetMap {
+  public get allGameSetsMap(): GameSetMap {
     const gamesetMap = new GameSetMap();
 
-    this._allGameSets.forEach((gameset) => gamesetMap.set(gameset.id, gameset));
+    this.allGameSets.forEach((gameset) => gamesetMap.set(gameset.id, gameset));
 
     return gamesetMap;
   }
@@ -93,12 +103,12 @@ export class LibTwister {
     gameSetIdOrIds: string | string[]
   ): GameSet | GameSet[] | undefined {
     if (gameSetIdOrIds instanceof Array) {
-      return this.allGameSets
+      return this.allGameSetsMap
         .asArray()
         .filter((gameSet) => gameSetIdOrIds.includes(gameSet.id));
     }
 
-    return this.allGameSets.get(gameSetIdOrIds);
+    return this.allGameSetsMap.get(gameSetIdOrIds);
   }
 
   /**

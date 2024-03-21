@@ -51,6 +51,26 @@ export const TEST_HERO_IN_VILLAIN_DECK_SCHEME = new SchemeDefinition({
   gameSet: TEST_GAME_SET_META_1,
 });
 
+export const TEST_HERO_IN_VILLAIN_DECK_AND_REQUIRE_TEAMS_SCHEME =
+  new SchemeDefinition({
+    id: '4e9071cd-865a-446c-9fa0-13789292f3af',
+    name: 'Hero in villain deck scheme',
+    setup: '8 Twists. 12 total Bystanders in the Villain Deck.',
+    specialRules: 'Each Villain gets +1 Attack for each Bystander it has.',
+    twist:
+      'Any Villain in the Bank captures 2 Bystanders. Then play the top card of the Villain Deck.',
+    evilWins: 'When 8 Bystanders are carried away by escaping Villains.',
+    meta: {
+      numTwists: 8,
+      rules: (rule) => {
+        rule.villainDeck.numHeroes = 1;
+        rule.heroDeck.numHeroes = 6;
+        return rule;
+      },
+    },
+    gameSet: TEST_GAME_SET_META_1,
+  });
+
 export const TEST_PLAYER_PICKS_A_HERO_SCHEME = new SchemeDefinition({
   id: '468198e3-a55b-4b7c-900e-c83f4b3eb65b',
   name: 'Test player picks a hero scheme',

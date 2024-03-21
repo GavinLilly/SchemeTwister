@@ -1,5 +1,5 @@
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { createMockGameSet } from '../../testData/createMockGameSet';
+import { GameSetMock } from '../../testData/gameSetMock';
 import { TEST_REQUIRE_VILLAIN_AND_HERO_SCHEME } from '../../testData/schemes';
 import { IGameSetup } from '../interfaces/gameSetup.interface';
 import { GAME_SET_SIZE } from '../types';
@@ -20,8 +20,8 @@ describe('RequireVillainAndHeroWithBackupInVillainDeckScheme', () => {
     );
   });
 
-  const gameSet1 = createMockGameSet(GAME_SET_SIZE.core);
-  const gameSet2 = createMockGameSet(GAME_SET_SIZE.large);
+  const gameSet1 = new GameSetMock(GAME_SET_SIZE.core).getGameSet();
+  const gameSet2 = new GameSetMock(GAME_SET_SIZE.large).getGameSet();
 
   beforeEach(() => store.reset());
 

@@ -1,5 +1,5 @@
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { createMockGameSet } from '../../testData/createMockGameSet';
+import { GameSetMock } from '../../testData/gameSetMock';
 import { TEST_GAME_SET_1, TEST_GAME_SET_2 } from '../../testData/gameSets';
 import { TEST_HENCHMEN_1 } from '../../testData/henchmen';
 import {
@@ -14,11 +14,7 @@ import {
   TEST_MASTERMIND_1,
   TEST_MASTERMIND_2,
 } from '../../testData/masterminds';
-import {
-  TEST_VILLAIN_1,
-  TEST_VILLAIN_2,
-  TEST_VILLAIN_5,
-} from '../../testData/villains';
+import { TEST_VILLAIN_1, TEST_VILLAIN_2 } from '../../testData/villains';
 import { GameSetup } from '../GameSetup';
 import { IGameSetup } from '../interfaces/gameSetup.interface';
 import { Rules } from '../rules';
@@ -218,7 +214,7 @@ describe('Scheme', () => {
 
     it('should put 1 mastermind in the villain deck', () => {
       const dynamicStore = new StoreBuilder()
-        .withAllFromGamesets(createMockGameSet(GAME_SET_SIZE.core))
+        .withAllFromGamesets(new GameSetMock(GAME_SET_SIZE.core).getGameSet())
         .build();
 
       const mastermindVillain = new Scheme({
