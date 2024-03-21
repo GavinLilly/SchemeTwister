@@ -20,20 +20,23 @@ export const gameSetTest = (
       ['schemes', numSchemes, CARD_TYPE.scheme],
     ])('%s deck', (_, numCards, cardType) => {
       let cards: AllCardTypes[];
+      let allCardsAreType = false;
 
       beforeAll(() => {
         cards = gameSet.getCards(cardType) || [];
+        allCardsAreType = cards.every(
+          (card: AllCardTypes) => card.cardType === cardType
+        );
       });
 
       it(`should have ${numCards} cards`, () =>
         expect(cards).toHaveLength(numCards));
 
       it(`should have all cards be of type ${cardType}`, () =>
-        expect(
-          cards.every((card: AllCardTypes) => card.cardType === cardType)
-        ).toBeTruthy());
+        expect(allCardsAreType).toBeTruthy());
     });
   });
 
 describe('Common tests for Game Sets', () =>
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   test('should be used for implementation', () => {}));

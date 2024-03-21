@@ -31,7 +31,7 @@ export class LibTwister {
   constructor(...series: ISeries[]) {
     this._series = series;
 
-    this._selectedGameSets = this.allGameSets;
+    this._selectedGameSets = this._allGameSets;
     this._selectedGameSets.sort(GameSet.sorter);
     this._onGameSetsChange();
   }
@@ -64,25 +64,21 @@ export class LibTwister {
     if (gameSets.length === 0) {
       throw new Error('No game set(s) selected');
     }
-    if (!gameSets.every((gameSet) => this.allGameSets.includes(gameSet))) {
+    if (!gameSets.every((gameSet) => this._allGameSets.includes(gameSet))) {
       throw new Error('Selected game set(s) not part of the select serie');
     }
     this._selectedGameSets = gameSets;
     this._onGameSetsChange();
   }
 
-  public get allGameSets(): GameSet[] {
-    return this._series.flatMap((series) => series.gameSets);
-  }
-
   /**
    * Get all the game sets available in this app
    * @returns a map of Game Set IDs to GameSet objects
    */
-  public get allGameSetsMap(): GameSetMap {
+  public get allGameSets(): GameSetMap {
     const gamesetMap = new GameSetMap();
 
-    this.allGameSets.forEach((gameset) => gamesetMap.set(gameset.id, gameset));
+    this._allGameSets.forEach((gameset) => gamesetMap.set(gameset.id, gameset));
 
     return gamesetMap;
   }
@@ -103,12 +99,12 @@ export class LibTwister {
     gameSetIdOrIds: string | string[]
   ): GameSet | GameSet[] | undefined {
     if (gameSetIdOrIds instanceof Array) {
-      return this.allGameSetsMap
+      return this.allGameSets
         .asArray()
         .filter((gameSet) => gameSetIdOrIds.includes(gameSet.id));
     }
 
-    return this.allGameSetsMap.get(gameSetIdOrIds);
+    return this.allGameSets.get(gameSetIdOrIds);
   }
 
   /**
@@ -201,5 +197,9 @@ export class LibTwister {
     this._stores = new StoreOfStores(heroes, masterminds, villains, henchmen);
 
     this._schemeFactory = new CardFactory(schemes);
+  }
+
+  private get _allGameSets(): GameSet[] {
+    return this._series.flatMap((series) => series.gameSets);
   }
 }

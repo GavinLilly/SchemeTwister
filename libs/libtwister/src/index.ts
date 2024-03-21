@@ -6,4 +6,4 @@ export { LibTwister } from './lib/libTwister';
 export { default as instantiateScheme } from './lib/utils/instantiateScheme';
 export { randomize } from './lib/utils/randomize';
 
-export { gameSetTest } from './lib/gameSet.test';
+export { gameSetTest } from './lib/gameSet.spec';
