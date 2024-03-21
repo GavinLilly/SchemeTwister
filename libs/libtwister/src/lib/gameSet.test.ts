@@ -1,7 +1,7 @@
 import { GameSet } from './model/GameSet';
 import { AllCardTypes, CARD_TYPE } from './model/types';
 
-export function gameSetTest(
+export const gameSetTest = (
   gameSet: GameSet,
   numBystanders: number,
   numHeroes: number,
@@ -9,7 +9,7 @@ export function gameSetTest(
   numHenchmen: number,
   numMasterminds: number,
   numSchemes: number
-) {
+) =>
   describe(`${gameSet.name} game set`, () => {
     describe.each([
       ['bystanders', numBystanders, CARD_TYPE.bystander],
@@ -34,4 +34,6 @@ export function gameSetTest(
         ).toBeTruthy());
     });
   });
-}
+
+describe('Common tests for Game Sets', () =>
+  test('should be used for implementation', () => {}));
