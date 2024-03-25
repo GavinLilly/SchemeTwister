@@ -1,4 +1,5 @@
-import { LibTwister, gameSetTest } from '@schemetwister/libtwister';
+import { LibTwister } from '@schemetwister/libtwister';
+import { gameSetTest } from '@schemetwister/libtwister/testing';
 
 import { marvelStudiosSeries } from '../../marvelStudios.series';
 import { GAME_SET as MARVEL_STUDIOS } from '../marvelStudios/marvelStudios.gameset';

@@ -1,26 +1,27 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { marvelSeries } from '@schemetwister/schemetwister-series-marvel';
+import {
+  SERIES_REGISTER_TOKEN,
+  StoredSetupsService,
+  WebAppSharedModule,
+} from '@schemetwister/web-app/shared';
+import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
+
+import { WebAppFeatureHomeModule } from '../web-app-feature-home.module';
 
 import { HomePageComponent } from './home-page.component';
 
 describe('HomePageComponent', () => {
-  let component: HomePageComponent;
-  let fixture: ComponentFixture<HomePageComponent>;
-
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [HomePageComponent],
-      }).compileComponents();
-    })
+  beforeEach(() =>
+    MockBuilder(HomePageComponent, [
+      WebAppFeatureHomeModule,
+      WebAppSharedModule,
+    ])
+      .mock(StoredSetupsService)
+      .provide(MockProvider(SERIES_REGISTER_TOKEN, [marvelSeries]))
   );
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HomePageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const fixture = MockRender(HomePageComponent);
+    expect(fixture.point.componentInstance).toBeTruthy();
   });
 });

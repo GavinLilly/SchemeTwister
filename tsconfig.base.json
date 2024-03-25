@@ -20,6 +20,9 @@
     "esModuleInterop": true,
     "paths": {
       "@schemetwister/libtwister": ["libs/libtwister/src/index.ts"],
+      "@schemetwister/libtwister/testing": [
+        "libs/libtwister-testing/src/index.ts"
+      ],
       "@schemetwister/schemetwister-series-marvel": [
         "libs/schemetwister-series-marvel/src/index.ts"
       ],

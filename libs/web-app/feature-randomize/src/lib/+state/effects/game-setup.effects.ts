@@ -1,5 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
-import { increment, Timestamp } from '@angular/fire/firestore';
+import {
+  increment,
+  setDoc,
+  Timestamp,
+  updateDoc,
+} from '@angular/fire/firestore';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { ISeries, LiteGameSetup } from '@schemetwister/libtwister';
@@ -7,7 +12,6 @@ import {
   IStoredGameSetup,
   SERIES_REGISTER_TOKEN,
   StoredSetupsService,
-  TWIST_COUNT_NAME,
 } from '@schemetwister/web-app/shared';
 import { of, from } from 'rxjs';
 import {
@@ -108,11 +112,12 @@ export class GameSetupEffects {
       mergeMap(({ setup, uid }) =>
         this._storedSetupsService
           .getSetupDocument(uid)
+          .get()
           .pipe(map((queryResult) => ({ queryResult, setup })))
       ),
       mergeMap(({ queryResult, setup }) => {
         if (queryResult.exists) {
-          return from(queryResult.ref.update(TWIST_COUNT_NAME, increment(1)));
+          return from(updateDoc(queryResult.ref, { twistCount: increment(1) }));
         } else {
           const newSetup: IStoredGameSetup = {
             ...LiteGameSetup.of(setup),
@@ -123,7 +128,7 @@ export class GameSetupEffects {
             winCount: 0,
           };
 
-          return from(queryResult.ref.set(newSetup));
+          return from(setDoc(queryResult.ref, newSetup));
         }
       }),
       map(() => saveGameSetupActions.success()),

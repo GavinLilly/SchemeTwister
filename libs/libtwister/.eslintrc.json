@@ -31,11 +31,6 @@
       "files": ["*.html"],
       "extends": ["plugin:@nx/angular-template"],
       "rules": {}
-    },
-    {
-      "files": ["gameSetTests.ts"],
-      "env": { "jest": true },
-      "rules": { "max-nested-callbacks": "off" }
     }
   ]
 }

@@ -1,4 +1,4 @@
-import { gameSetTest } from '@schemetwister/libtwister';
+import { gameSetTest } from '@schemetwister/libtwister/testing';
 
 import { GAME_SET } from './shadowsOfNightmare.gameset';
 

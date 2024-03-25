@@ -1,4 +1,4 @@
-import { gameSetTest } from '@schemetwister/libtwister';
+import { gameSetTest } from '@schemetwister/libtwister/testing';
 
 import { X_MEN } from '../../teams';
 

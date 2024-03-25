@@ -1,5 +1,8 @@
-import { GameSet } from './model/GameSet';
-import { AllCardTypes, CARD_TYPE } from './model/types';
+import {
+  type AllCardTypes,
+  type GameSet,
+  CARD_TYPE,
+} from '@schemetwister/libtwister';
 
 export const gameSetTest = (
   gameSet: GameSet,
