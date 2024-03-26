@@ -7,8 +7,5 @@
     "types": ["node", "jest"]
   },
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
-  "include": [
-    "src/**/*.ts",
-    "../schemetwister-series-marvelstudios/src/lib/gameSets/index.ts"
-  ]
+  "include": ["src/**/*.ts"]
 }

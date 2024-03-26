@@ -1,5 +1,6 @@
 import { GameSet } from './GameSet';
-import { GameSetSize, Series } from './types';
+import { ISeriesMeta } from './interfaces';
+import { GameSetSize } from './types';
 
 /**
  * An extension of a Map specifically for Game Sets.
@@ -13,7 +14,10 @@ export class GameSetMap extends Map<string, GameSet> {
    * @param limitBy.series Limit the game sets to only those from the chosen series
    * @returns An array of GameSets
    */
-  public asArray(limitBy?: { size?: GameSetSize; series?: Series }): GameSet[] {
+  public asArray(limitBy?: {
+    size?: GameSetSize;
+    series?: ISeriesMeta;
+  }): GameSet[] {
     const thisAsArray = Array.from(this.values());
 
     if (limitBy?.series) {

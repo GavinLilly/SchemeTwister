@@ -1,8 +1,9 @@
 import { LibTwister } from '../libTwister';
 import { TEST_SERIES_1 } from '../testData/series';
+import { TEST_SERIES_META_1 } from '../testData/seriesMeta';
 
 import { GameSetMap } from './gameSetMap';
-import { GAME_SET_SIZE, SERIES } from './types';
+import { GAME_SET_SIZE } from './types';
 
 describe('GameSetMap', () => {
   let map: GameSetMap;
@@ -26,7 +27,7 @@ describe('GameSetMap', () => {
     it('should only have Mainline game sets', () => {
       const sizes = new Set(
         map
-          .asArray({ series: SERIES.mainline })
+          .asArray({ series: TEST_SERIES_META_1 })
           .map((gameset) => gameset.series)
       );
       expect(sizes.size).toEqual(1);

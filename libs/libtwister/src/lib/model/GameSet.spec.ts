@@ -1,18 +1,26 @@
+import * as uuid from 'uuid';
+
 import { TEST_GAME_SET_1 } from '../testData/gameSets';
 
 import { GameSet } from './GameSet';
 import { Bystander } from './cards';
+import { ISeriesMeta } from './interfaces';
 import { GAME_SET_SIZE } from './types/gameSetSize.type';
-import { SERIES } from './types/series.type';
 
 describe('GameSet', () => {
   describe('sorter', () => {
+    const series: ISeriesMeta = {
+      id: uuid.v4(),
+      seriesName: 'Test Series',
+      description: 'Test Series',
+    };
+
     const coreBox = new GameSet(
       {
-        id: 'core',
+        id: uuid.v4(),
         name: 'core',
         releaseYear: 1970,
-        series: SERIES.mainline,
+        series: series,
         size: GAME_SET_SIZE.core,
       },
       []
@@ -20,10 +28,10 @@ describe('GameSet', () => {
 
     const largeBox = new GameSet(
       {
-        id: 'large',
+        id: uuid.v4(),
         name: 'large',
         releaseYear: 1970,
-        series: SERIES.mainline,
+        series: series,
         size: GAME_SET_SIZE.large,
       },
       []
@@ -31,16 +39,16 @@ describe('GameSet', () => {
 
     const firstBox = new GameSet(
       {
-        id: 'First',
+        id: uuid.v4(),
         name: 'First',
         releaseYear: 1970,
-        series: SERIES.mainline,
+        series: series,
         size: GAME_SET_SIZE.large,
       },
       []
     );
 
-    it('should sort sort core boxes before big boxes', () => {
+    it('should sort core boxes before big boxes', () => {
       expect(GameSet.sorter(coreBox, largeBox)).toBe(-1);
       expect(GameSet.sorter(largeBox, coreBox)).toBe(1);
     });

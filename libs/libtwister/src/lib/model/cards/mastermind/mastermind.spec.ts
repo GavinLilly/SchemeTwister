@@ -1,7 +1,8 @@
 import * as uuid from 'uuid';
 
+import { TEST_SERIES_META_1 } from '../../../testData/seriesMeta';
 import { IGameSetMeta } from '../../interfaces';
-import { GAME_SET_SIZE, SERIES } from '../../types';
+import { GAME_SET_SIZE } from '../../types';
 import { Henchmen } from '../henchmen';
 import { VillainGroup } from '../villainGroup';
 
@@ -19,7 +20,7 @@ describe('Mastermind', () => {
       id: uuid.v4(),
       name: 'Test GameSet',
       releaseYear: 2024,
-      series: SERIES.mainline,
+      series: TEST_SERIES_META_1,
       size: GAME_SET_SIZE.core,
     };
 

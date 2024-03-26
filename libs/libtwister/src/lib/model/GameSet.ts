@@ -3,6 +3,7 @@ import * as uuid from 'uuid';
 import { nameSorter } from '../utils/nameSorter';
 
 import { Bystander, Henchmen, Hero, Mastermind, VillainGroup } from './cards';
+import { ISeriesMeta } from './interfaces';
 import { IGameSetMeta } from './interfaces/gameSet.interface';
 import {
   AllCardTypes,
@@ -10,8 +11,6 @@ import {
   GAME_SET_SIZE,
   GameSetSize,
   SchemeMinusRules,
-  Series,
-  SERIES,
 } from './types';
 
 export class GameSet implements IGameSetMeta {
@@ -19,7 +18,7 @@ export class GameSet implements IGameSetMeta {
   readonly name: string;
   readonly size: GameSetSize;
   readonly releaseYear: number;
-  readonly series: Series;
+  readonly series: ISeriesMeta;
 
   private get _allCards(): AllCardTypes[] | undefined {
     return [
@@ -69,7 +68,11 @@ export class GameSet implements IGameSetMeta {
         id: uuid.v4(),
         name: 'EMPTY GAME SET',
         releaseYear: 1970,
-        series: SERIES.mainline,
+        series: {
+          id: uuid.v4(),
+          seriesName: 'EMPTY SERIES',
+          description: 'EMPTY DESCRIPTION',
+        },
         size: GAME_SET_SIZE.promo,
       },
       []

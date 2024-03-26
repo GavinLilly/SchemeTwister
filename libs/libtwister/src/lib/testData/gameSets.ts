@@ -1,4 +1,4 @@
-import { IGameSetMeta, SERIES, GAME_SET_SIZE, GameSet } from '../model';
+import { IGameSetMeta, GAME_SET_SIZE, GameSet } from '../model';
 
 import { TEST_BYSTANDER_1, TEST_BYSTANDER_AS_HERO } from './bystanders';
 import { TEST_HENCHMEN_1, TEST_HENCHMEN_2, TEST_HENCHMEN_3 } from './henchmen';
@@ -15,6 +15,7 @@ import {
 } from './heroes';
 import { TEST_MASTERMIND_1 } from './masterminds';
 import { TEST_NORMAL_SCHEME, TEST_PLAYER_PICKS_A_HERO_SCHEME } from './schemes';
+import { TEST_SERIES_META_1, TEST_SERIES_META_2 } from './seriesMeta';
 import {
   TEST_VILLAIN_1,
   TEST_VILLAIN_2,
@@ -27,7 +28,7 @@ export const TEST_GAME_SET_META_1: IGameSetMeta = {
   id: 'e4ca1e36-921f-408f-87d9-5658726f58b8',
   name: 'Game set 1',
   releaseYear: 1970,
-  series: SERIES.mainline,
+  series: TEST_SERIES_META_1,
   size: GAME_SET_SIZE.core,
 };
 
@@ -52,7 +53,7 @@ export const TEST_GAME_SET_META_2: IGameSetMeta = {
   id: '98c77a37-d9e0-4386-bfec-1f8bf6aed680',
   name: 'Game set 2',
   releaseYear: 1970,
-  series: SERIES.mcu,
+  series: TEST_SERIES_META_2,
   size: GAME_SET_SIZE.large,
 };
 
