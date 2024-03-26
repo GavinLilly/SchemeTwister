@@ -5,6 +5,6 @@ import { GAME_SET as Villains } from './gameSets/villains';
 import { marvelVillainsSeriesMeta } from './marvelVillainsSeriesMeta';
 
 export const marvelVillainsSeries: ISeries = {
-  ...marvelVillainsSeriesMeta,
+  seriesMeta: marvelVillainsSeriesMeta,
   gameSets: [Villains, FearItself],
 };

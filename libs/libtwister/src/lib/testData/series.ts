@@ -4,6 +4,6 @@ import { TEST_GAME_SET_1 } from './gameSets';
 import { TEST_SERIES_META_1 } from './seriesMeta';
 
 export const TEST_SERIES_1: ISeries = {
-  ...TEST_SERIES_META_1,
+  seriesMeta: TEST_SERIES_META_1,
   gameSets: [TEST_GAME_SET_1],
 };

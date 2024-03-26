@@ -11,7 +11,7 @@ import {
 import { marvelStudiosSeriesMeta } from './marvelStudiosSeriesMeta';
 
 export const marvelStudiosSeries: ISeries = {
-  ...marvelStudiosSeriesMeta,
+  seriesMeta: marvelStudiosSeriesMeta,
   gameSets: [
     MarvelStudiosPhaseOne,
     MarvelStudiosAntMan,

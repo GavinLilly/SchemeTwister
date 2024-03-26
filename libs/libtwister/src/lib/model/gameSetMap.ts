@@ -1,5 +1,5 @@
 import { GameSet } from './GameSet';
-import { ISeriesMeta } from './interfaces';
+import { SeriesMeta } from './seriesMeta';
 import { GameSetSize } from './types';
 
 /**
@@ -16,7 +16,7 @@ export class GameSetMap extends Map<string, GameSet> {
    */
   public asArray(limitBy?: {
     size?: GameSetSize;
-    series?: ISeriesMeta;
+    series?: SeriesMeta;
   }): GameSet[] {
     const thisAsArray = Array.from(this.values());
 

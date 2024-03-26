@@ -1,11 +1,7 @@
 import { GameSet } from '../GameSet';
+import { SeriesMeta } from '../seriesMeta';
 
-export interface ISeriesMeta {
-  id: string;
-  seriesName: string;
-  description: string;
-}
-
-export interface ISeries extends ISeriesMeta {
+export interface ISeries {
+  seriesMeta: SeriesMeta;
   gameSets: GameSet[];
 }

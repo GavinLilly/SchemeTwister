@@ -10,4 +10,5 @@ export { INamedObject } from './namedObject.interface';
 export { IPlayableObject } from './playableObject.interface';
 export { ICardType } from './cardType.interface';
 export { ISpecialRules } from './specialRules.interface';
-export { ISeries, ISeriesMeta } from './series.interface';
+export { ISeries } from './series.interface';
+export { INomenclature } from './nomenclature.interface';

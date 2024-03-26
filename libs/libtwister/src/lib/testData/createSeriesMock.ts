@@ -1,7 +1,13 @@
 import { nanoid } from 'nanoid';
 import * as uuid from 'uuid';
 
-import { GAME_SET_SIZE, GameSet, GameSetSize, ISeries } from '../model';
+import {
+  GAME_SET_SIZE,
+  GameSet,
+  GameSetSize,
+  ISeries,
+  SeriesMeta,
+} from '../model';
 
 import { GameSetMock } from './gameSetMock';
 
@@ -23,10 +29,8 @@ export function createSeriesMock(config: ISeriesConfig): ISeries {
   ].flatMap(([size, count]) => generateGameSets(size, count));
 
   return {
-    id: uuid.v4(),
-    seriesName: `Test series ${nanoid(4)}`,
+    seriesMeta: new SeriesMeta(uuid.v4(), `Test series ${nanoid(4)}`, ''),
     gameSets,
-    description: '',
   };
 }
 

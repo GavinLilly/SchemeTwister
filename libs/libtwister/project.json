@@ -30,8 +30,7 @@
         "main": "libs/libtwister/src/index.ts",
         "assets": ["libs/libtwister/*.md"],
         "srcRootForCompilationRoot": "libs\\libtwister\\src",
-        "sourceMap": true,
-        "updateBuildableProjectDepsInPackageJson": true
+        "sourceMap": true
       },
       "outputs": ["{options.outputPath}"]
     }

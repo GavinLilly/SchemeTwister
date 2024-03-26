@@ -12,6 +12,7 @@ import {
   ITeam,
   Mastermind,
   SchemeDefinition,
+  SeriesMeta,
   VillainGroup,
 } from '../model';
 
@@ -51,11 +52,11 @@ export class GameSetMock {
       id: uuid.v4(),
       name: `Test Game Set ${this._gameSetShortId}`,
       releaseYear: Math.floor(Math.random() * 2024) + 1970,
-      series: {
-        id: uuid.v4(),
-        seriesName: `Test Series ${this._gameSetShortId}`,
-        description: 'Test Series',
-      },
+      series: new SeriesMeta(
+        uuid.v4(),
+        `Test Series ${this._gameSetShortId}`,
+        'Test Series'
+      ),
       size,
     };
 

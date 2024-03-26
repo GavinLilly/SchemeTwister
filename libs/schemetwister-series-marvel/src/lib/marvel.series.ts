@@ -4,6 +4,6 @@ import * as mainline from './gameSets';
 import { marvelSeriesMeta } from './marvelSeriesMeta';
 
 export const marvelSeries: ISeries = {
-  ...marvelSeriesMeta,
+  seriesMeta: marvelSeriesMeta,
   gameSets: Object.values(mainline).map((gameset) => gameset.GAME_SET),
 };

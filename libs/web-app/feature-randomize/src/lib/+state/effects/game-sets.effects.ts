@@ -63,7 +63,7 @@ export class GameSetsEffects implements OnInitEffects {
       ofType(seriesSelectionActions.setSeries),
       map((action) =>
         this._seriesRegister.filter((series) =>
-          action.seriesIds.includes(series.id)
+          action.seriesIds.includes(series.seriesMeta.id)
         )
       ),
       map((serie) => serie.flatMap((series) => series.gameSets)),
@@ -83,7 +83,9 @@ export class GameSetsEffects implements OnInitEffects {
   ) {}
 
   ngrxOnInitEffects(): Action {
-    const seriesIds = this._seriesRegister.map((series) => series.id);
+    const seriesIds = this._seriesRegister.map(
+      (series) => series.seriesMeta.id
+    );
     return seriesSelectionActions.setSeries({ seriesIds });
   }
 
