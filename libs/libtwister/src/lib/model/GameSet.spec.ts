@@ -4,16 +4,12 @@ import { TEST_GAME_SET_1 } from '../testData/gameSets';
 
 import { GameSet } from './GameSet';
 import { Bystander } from './cards';
-import { ISeriesMeta } from './interfaces';
+import { SeriesMeta } from './seriesMeta';
 import { GAME_SET_SIZE } from './types/gameSetSize.type';
 
 describe('GameSet', () => {
   describe('sorter', () => {
-    const series: ISeriesMeta = {
-      id: uuid.v4(),
-      seriesName: 'Test Series',
-      description: 'Test Series',
-    };
+    const series = new SeriesMeta(uuid.v4(), 'Test Series', 'Test Series');
 
     const coreBox = new GameSet(
       {

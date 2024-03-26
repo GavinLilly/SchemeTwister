@@ -9,7 +9,7 @@ import { selectGameSetIds } from './game-sets.selectors';
 
 describe('GameSets Selectors', () => {
   const initialState: IGameSetsState = {
-    seriesIds: [marvelSeries.id],
+    seriesIds: [marvelSeries.seriesMeta.id],
     gameSetIds: [
       mainline.LEGENDARY.GAME_SET.id,
       mainline.DARK_CITY.GAME_SET.id,

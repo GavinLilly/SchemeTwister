@@ -1,7 +1,7 @@
 import * as uuid from 'uuid';
 
 import { LibTwister } from './libTwister';
-import { GAME_SET_SIZE, ISeries, NumPlayers } from './model';
+import { GAME_SET_SIZE, ISeries, NumPlayers, SeriesMeta } from './model';
 import { createSeriesMock } from './testData/createSeriesMock';
 import { GameSetMock } from './testData/gameSetMock';
 
@@ -188,9 +188,7 @@ describe('LibTwister', () => {
     const testSmallSet = new GameSetMock(GAME_SET_SIZE.small).getGameSet();
 
     const series: ISeries = {
-      id: uuid.v4(),
-      seriesName: 'Test Series',
-      description: '',
+      seriesMeta: new SeriesMeta(uuid.v4(), 'Test Series', ''),
       gameSets: [testLargeSet, testMediumSet, testSmallSet],
     };
 
