@@ -1,6 +1,7 @@
 import { StoreBuilder, StoreOfStores } from '../../factories';
 import { GameSetMock } from '../../testData/gameSetMock';
 import { TEST_REQUIRE_VILLAIN_AND_HERO_SCHEME } from '../../testData/schemes';
+import { GameSet } from '../GameSet';
 import { IGameSetup } from '../interfaces/gameSetup.interface';
 import { GAME_SET_SIZE } from '../types';
 
@@ -11,17 +12,19 @@ import { RequireCard, RequireCardWithBackup } from './cardInDeck';
 describe('RequireVillainAndHeroWithBackupInVillainDeckScheme', () => {
   let store: StoreOfStores;
   let scheme: Scheme;
+  let gameSet1: GameSet;
+  let gameSet2: GameSet;
 
   beforeAll(() => {
+    gameSet1 = new GameSetMock(GAME_SET_SIZE.core).getGameSet();
+    gameSet2 = new GameSetMock(GAME_SET_SIZE.large).getGameSet();
+
     scheme = new RequireVillainAndHeroWithBackupInVillainDeckScheme(
       TEST_REQUIRE_VILLAIN_AND_HERO_SCHEME,
       new RequireCard(gameSet1.villains![0]),
       new RequireCardWithBackup(gameSet1.heroes[0], gameSet2.heroes[0])
     );
   });
-
-  const gameSet1 = new GameSetMock(GAME_SET_SIZE.core).getGameSet();
-  const gameSet2 = new GameSetMock(GAME_SET_SIZE.large).getGameSet();
 
   beforeEach(() => store.reset());
 
