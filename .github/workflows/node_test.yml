@@ -3,9 +3,7 @@
 
 name: Node.js Test
 
-on:
-  pull_request:
-    branches: [main]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -34,3 +32,8 @@ jobs:
       - run: npm run build-version
       - run: npm run affected:build -- --base=origin/main
       - run: npm run affected:test -- --base=origin/main
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: GavinLilly/SchemeTwister

@@ -8,7 +8,7 @@ module.exports = {
   },
   resolver: '@nx/jest/plugins/resolver',
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageReporters: ['html'],
+  coverageReporters: ['text', 'cobertura', 'html'],
   /* TODO: Update to latest Jest snapshotFormat
    * By default Nx has kept the older style of Jest Snapshot formats
    * to prevent breaking of any existing tests with snapshots.
