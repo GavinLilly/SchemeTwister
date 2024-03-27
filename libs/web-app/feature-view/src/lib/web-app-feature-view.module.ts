@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { FirestoreModule } from '@angular/fire/firestore';
+// import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WebAppSharedModule } from '@schemetwister/web-app/shared';
 
@@ -17,7 +18,7 @@ import { WebAppFeatureViewRoutingModule } from './web-app-feature-view-routing.m
     NgbModule,
 
     // Firebase
-    AngularFirestoreModule,
+    FirestoreModule,
 
     // Schemetwister
     WebAppFeatureViewRoutingModule,

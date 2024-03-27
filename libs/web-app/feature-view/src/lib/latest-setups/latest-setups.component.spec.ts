@@ -1,9 +1,11 @@
+import { marvelSeries } from '@schemetwister/schemetwister-series-marvel';
 import {
   EMPTY_STORED_SETUP,
+  SERIES_REGISTER_TOKEN,
   StoredSetupsService,
   WebAppSharedModule,
 } from '@schemetwister/web-app/shared';
-import { MockBuilder, MockRender } from 'ng-mocks';
+import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
 import { of } from 'rxjs';
 
 import { WebAppFeatureViewModule } from '../web-app-feature-view.module';
@@ -15,9 +17,11 @@ describe('LatestSetupsComponent', () => {
     MockBuilder(LatestSetupsComponent, [
       WebAppFeatureViewModule,
       WebAppSharedModule,
-    ]).mock(StoredSetupsService, {
-      getLatestSetups: () => of([EMPTY_STORED_SETUP]),
-    })
+    ])
+      .mock(StoredSetupsService, {
+        getLatestSetups: () => of([EMPTY_STORED_SETUP]),
+      })
+      .provide(MockProvider(SERIES_REGISTER_TOKEN, [marvelSeries]))
   );
 
   it('should create', () => {

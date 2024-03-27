@@ -1,19 +1,16 @@
 import isUUID from 'validator/lib/isUUID';
 
-import * as GameSets from './data/gameSets';
 import { CardFactory, StoreOfStores } from './factories';
 import {
   GameSet,
   GAME_SET_SIZE,
   GameSetup,
-  Hero,
-  Henchmen,
-  Mastermind,
   NumPlayers,
-  VillainGroup,
   SchemeMinusRules,
   GameSetMap,
 } from './model';
+import { Hero, Henchmen, Mastermind, VillainGroup } from './model/cards';
+import { ISeries } from './model/interfaces/series.interface';
 import instantiateScheme from './utils/instantiateScheme';
 
 /**
@@ -23,14 +20,18 @@ import instantiateScheme from './utils/instantiateScheme';
 export class LibTwister {
   private _schemeFactory!: CardFactory<SchemeMinusRules>;
   private _stores!: StoreOfStores;
-  private readonly _selectedGameSets: GameSet[] = [];
+  private _selectedGameSets: GameSet[] = [];
+  private readonly _series: ISeries[];
 
   /**
-   * Create a new LibTwister instance with the given GameSets
-   * @param selectedGameSets An array of Game Set items to create the LibTwister instance with
+   * Create a new LibTwister instance with the given Series and optionally the
+   * game sets
+   * @param series the series to enable in this instance of LibTwister
    */
-  constructor(selectedGameSets: GameSet[]) {
-    this._selectedGameSets = selectedGameSets;
+  constructor(...series: ISeries[]) {
+    this._series = series;
+
+    this._selectedGameSets = this._allGameSets;
     this._selectedGameSets.sort(GameSet.sorter);
     this._onGameSetsChange();
   }
@@ -59,39 +60,27 @@ export class LibTwister {
     return this._selectedGameSets;
   }
 
+  public set selectedGameSets(gameSets: GameSet[]) {
+    if (gameSets.length === 0) {
+      throw new Error('No game set(s) selected');
+    }
+    if (!gameSets.every((gameSet) => this._allGameSets.includes(gameSet))) {
+      throw new Error('Selected game set(s) not part of the select serie');
+    }
+    this._selectedGameSets = gameSets;
+    this._onGameSetsChange();
+  }
+
   /**
    * Get all the game sets available in this app
    * @returns a map of Game Set IDs to GameSet objects
    */
-  public static get allGameSets(): GameSetMap {
+  public get allGameSets(): GameSetMap {
     const gamesetMap = new GameSetMap();
 
-    Object.values(GameSets).forEach((gameset) =>
-      gamesetMap.set(gameset.GAME_SET.id, gameset.GAME_SET)
-    );
+    this._allGameSets.forEach((gameset) => gamesetMap.set(gameset.id, gameset));
 
     return gamesetMap;
-  }
-
-  /**
-   * Create a LibTwiser instance with all Game Sets
-   * @returns A LibTwister instance
-   */
-  public static of(): LibTwister;
-  /**
-   * Create a LibTwister instance with the given Game Set IDs
-   * @param gameSetIds an array of Game Set IDs
-   * @returns a LibTwister instance
-   */
-  public static of(...gameSetIds: string[]): LibTwister;
-  public static of(...gameSetIds: string[]): LibTwister {
-    if (gameSetIds.length === 0) {
-      return new LibTwister(LibTwister.allGameSets.asArray());
-    }
-
-    const gameSets: GameSet[] = LibTwister.gameSetIdsToGameSets(gameSetIds);
-
-    return new LibTwister(gameSets);
   }
 
   /**
@@ -99,14 +88,14 @@ export class LibTwister {
    * @param gameSetId The ID of the Game Set to get
    * @returns A GameSet instance
    */
-  public static gameSetIdsToGameSets(gameSetId: string): GameSet;
+  public gameSetIdsToGameSets(gameSetId: string): GameSet;
   /**
    * Transforms the provided Game Set ID array into a GameSet array
    * @param gameSetIds the array of Game Set IDs to get
    * @returns an array of Game Sets
    */
-  public static gameSetIdsToGameSets(gameSetIds: string[]): GameSet[];
-  public static gameSetIdsToGameSets(
+  public gameSetIdsToGameSets(gameSetIds: string[]): GameSet[];
+  public gameSetIdsToGameSets(
     gameSetIdOrIds: string | string[]
   ): GameSet | GameSet[] | undefined {
     if (gameSetIdOrIds instanceof Array) {
@@ -125,7 +114,7 @@ export class LibTwister {
    * @param gameSetIds an array of game set IDs to check
    * @returns true if the array of game set IDs is valid
    */
-  public static validateGameSetIds(gameSetIds: string[]): boolean {
+  public validateGameSetIds(gameSetIds: string[]): boolean {
     const invalidIds = gameSetIds.filter((id) => !isUUID(id));
 
     if (invalidIds.length > 0) {
@@ -134,7 +123,7 @@ export class LibTwister {
       );
     }
 
-    const gameSets = LibTwister.gameSetIdsToGameSets(gameSetIds);
+    const gameSets = this.gameSetIdsToGameSets(gameSetIds);
 
     if (gameSets.length !== gameSetIds.length) {
       return false;
@@ -208,5 +197,9 @@ export class LibTwister {
     this._stores = new StoreOfStores(heroes, masterminds, villains, henchmen);
 
     this._schemeFactory = new CardFactory(schemes);
+  }
+
+  private get _allGameSets(): GameSet[] {
+    return this._series.flatMap((series) => series.gameSets);
   }
 }

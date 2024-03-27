@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { GameSets } from '@schemetwister/libtwister';
+import { mainline } from '@schemetwister/schemetwister-series-marvel';
 
 import { BadguyCardContentComponent } from '../badguy-card-content/badguy-card-content.component';
 import { BaseCardContentComponent } from '../base-card-content/base-card-content.component';
@@ -10,22 +10,20 @@ describe('MastermindCardContentComponent', () => {
   let component: MastermindCardContentComponent;
   let fixture: ComponentFixture<MastermindCardContentComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [
-          MastermindCardContentComponent,
-          BaseCardContentComponent,
-          BadguyCardContentComponent,
-        ],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        MastermindCardContentComponent,
+        BaseCardContentComponent,
+        BadguyCardContentComponent,
+      ],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MastermindCardContentComponent);
     component = fixture.componentInstance;
-    component.mastermind = GameSets.LEGENDARY.Masterminds.DR_DOOM;
+    component.mastermind = mainline.LEGENDARY.Masterminds.DR_DOOM;
     fixture.detectChanges();
   });
 

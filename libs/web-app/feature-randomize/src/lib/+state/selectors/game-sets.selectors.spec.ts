@@ -1,14 +1,18 @@
-import { GameSets } from '@schemetwister/libtwister';
+import {
+  mainline,
+  marvelSeries,
+} from '@schemetwister/schemetwister-series-marvel';
 
 import { IGameSetsState } from '../reducers/game-sets.reducer';
 
-import { selectGameSetIds, selectGameSets } from './game-sets.selectors';
+import { selectGameSetIds } from './game-sets.selectors';
 
 describe('GameSets Selectors', () => {
   const initialState: IGameSetsState = {
+    seriesIds: [marvelSeries.seriesMeta.id],
     gameSetIds: [
-      GameSets.LEGENDARY.GAME_SET.id,
-      GameSets.DARK_CITY.GAME_SET.id,
+      mainline.LEGENDARY.GAME_SET.id,
+      mainline.DARK_CITY.GAME_SET.id,
     ],
     loading: false,
     error: '',
@@ -17,12 +21,6 @@ describe('GameSets Selectors', () => {
   it('should select the IDs', () => {
     const result = selectGameSetIds.projector(initialState);
     expect(result).toHaveLength(2);
-    expect(result).toContain(GameSets.LEGENDARY.GAME_SET.id);
-  });
-
-  it('should select the GameSets', () => {
-    const result = selectGameSets.projector(initialState);
-    expect(result).toHaveLength(2);
-    expect(result).toContain(GameSets.LEGENDARY.GAME_SET);
+    expect(result).toContain(mainline.LEGENDARY.GAME_SET.id);
   });
 });

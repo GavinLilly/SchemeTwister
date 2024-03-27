@@ -1,21 +1,23 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { LibTwister } from '@schemetwister/libtwister';
 
 import {
   gameSetSelectionActions as fromGameSetDialog,
   gameSetCheckerActions as fromGameSetChecker,
+  seriesSelectionActions,
 } from '../actions/game-sets.actions';
 
 export const gameSetsFeatureKey = 'gameSets';
 
 export interface IGameSetsState {
+  seriesIds: string[];
   gameSetIds: string[];
   loading: boolean;
   error: string;
 }
 
 export const initialState: IGameSetsState = {
-  gameSetIds: LibTwister.allGameSets.asArray().map((gameSet) => gameSet.id),
+  seriesIds: [],
+  gameSetIds: [],
   loading: false,
   error: '',
 };
@@ -41,6 +43,18 @@ export const _gameSetsReducer = createReducer(
   on(fromGameSetChecker.setGameSetsFailure, (state, { payload }) => ({
     ...state,
     error: payload.error,
+  })),
+  on(seriesSelectionActions.addSeries, (state, { seriesId }) => ({
+    ...state,
+    seriesIds: [...state.seriesIds, seriesId],
+  })),
+  on(seriesSelectionActions.removeSeries, (state, { seriesId }) => ({
+    ...state,
+    seriesIds: state.seriesIds.filter((value) => value !== seriesId),
+  })),
+  on(seriesSelectionActions.setSeries, (state, { seriesIds }) => ({
+    ...state,
+    seriesIds,
   }))
 );
 

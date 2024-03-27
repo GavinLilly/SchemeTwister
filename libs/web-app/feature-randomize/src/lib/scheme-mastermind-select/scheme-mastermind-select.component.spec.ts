@@ -6,7 +6,12 @@ import {
   NgbModalModule,
 } from '@ng-bootstrap/ng-bootstrap';
 import { provideMockStore } from '@ngrx/store/testing';
-import { CARD_TYPE, GameSetup, LibTwister } from '@schemetwister/libtwister';
+import { CARD_TYPE, GameSetup } from '@schemetwister/libtwister';
+import {
+  mainline,
+  marvelSeries,
+} from '@schemetwister/schemetwister-series-marvel';
+import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
 import { SchemeMastermindSelectComponent } from './scheme-mastermind-select.component';
 
@@ -27,12 +32,16 @@ describe('SchemeMastermindSelectComponent', () => {
             },
             numPlayers: 2,
             gameSets: {
-              gameSetIds: LibTwister.allGameSets
-                .asArray()
-                .map((gameSet) => gameSet.id),
+              gameSetIds: Object.values(mainline).map(
+                (gameset) => gameset.GAME_SET.id
+              ),
             },
           },
         }),
+        {
+          provide: SERIES_REGISTER_TOKEN,
+          useValue: [marvelSeries],
+        },
       ],
     }).compileComponents();
   });

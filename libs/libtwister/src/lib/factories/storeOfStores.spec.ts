@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { GAME_SET as LEGENDARY } from '../data/gameSets/legendary';
-import { DOOMBOT_LEGION } from '../data/gameSets/legendary/legendary.henchmen';
-import { HAWKEYE } from '../data/gameSets/legendary/legendary.heroes';
-import { LOKI } from '../data/gameSets/legendary/legendary.masterminds';
-import { BROTHERHOOD } from '../data/gameSets/legendary/legendary.villains';
+import { TEST_HENCHMEN_1 } from '../testData/henchmen';
+import { TEST_HERO_1 } from '../testData/heroes';
+import { TEST_MASTERMIND_1 } from '../testData/masterminds';
+import { TEST_VILLAIN_1 } from '../testData/villains';
 
 import { StoreOfStores } from './storeOfStores';
 
@@ -13,10 +11,10 @@ describe('StoreOfStores', () => {
 
     beforeAll(() => {
       store = new StoreOfStores(
-        LEGENDARY.heroes,
-        LEGENDARY.masterminds!,
-        LEGENDARY.villains!,
-        LEGENDARY.henchmen!
+        [TEST_HERO_1],
+        [TEST_MASTERMIND_1],
+        [TEST_VILLAIN_1],
+        [TEST_HENCHMEN_1]
       );
     });
 
@@ -33,16 +31,16 @@ describe('StoreOfStores', () => {
       expect(store.henchmenStore.allCards.length).toBeGreaterThan(0));
 
     it('should return Loki', () =>
-      expect(store.getCardById(LOKI.id)).toBe(LOKI));
+      expect(store.getCardById(TEST_MASTERMIND_1.id)).toBe(TEST_MASTERMIND_1));
 
     it('should return Doombot legion', () =>
-      expect(store.getCardById(DOOMBOT_LEGION.id)).toBe(DOOMBOT_LEGION));
+      expect(store.getCardById(TEST_HENCHMEN_1.id)).toBe(TEST_HENCHMEN_1));
 
     it('should return Hawkeye', () =>
-      expect(store.getCardById(HAWKEYE.id)).toBe(HAWKEYE));
+      expect(store.getCardById(TEST_HERO_1.id)).toBe(TEST_HERO_1));
 
     it('should return Brotherhood', () =>
-      expect(store.getCardById(BROTHERHOOD.id)).toBe(BROTHERHOOD));
+      expect(store.getCardById(TEST_VILLAIN_1.id)).toBe(TEST_VILLAIN_1));
 
     it('should throw for an empty ID', () =>
       expect(() => store.getCardById('')).toThrow());

@@ -8,10 +8,7 @@
     "lint": {
       "executor": "@nx/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/libtwister/src/**/*.ts",
-          "libs/libtwister/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/libtwister/src/**/*.ts"]
       },
       "outputs": ["{options.outputFile}"]
     },
@@ -33,8 +30,7 @@
         "main": "libs/libtwister/src/index.ts",
         "assets": ["libs/libtwister/*.md"],
         "srcRootForCompilationRoot": "libs\\libtwister\\src",
-        "sourceMap": true,
-        "updateBuildableProjectDepsInPackageJson": true
+        "sourceMap": true
       },
       "outputs": ["{options.outputPath}"]
     }

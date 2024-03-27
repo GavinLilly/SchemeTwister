@@ -1,366 +1,220 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import isUUID from 'validator/lib/isUUID';
+import * as uuid from 'uuid';
 
-import { GAME_SET as DARK_CITY } from './data/gameSets/darkCity/darkCity.gameset';
-import { GAME_SET as INTO_THE_COSMOS } from './data/gameSets/intoTheCosmos/intoTheCosmos.gameset';
-import { GAME_SET as LEGENDARY } from './data/gameSets/legendary/legendary.gameset';
-import { GAME_SET as MARVEL_STUDIOS } from './data/gameSets/marvelStudios/marvelStudios.gameset';
-import { GAME_SET as MCU_GUARDIANS_OF_THE_GALAXY } from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.gameset';
-import { EGO_THE_LIVING_PLANET } from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.masterminds';
-import { UNLEASH_THE_ABILISK_SPACE_MONSTER } from './data/gameSets/mcuGuardiansOfTheGalaxy/mcuGuardiansOfTheGalaxy.schemes';
-import { GAME_SET as XMEN } from './data/gameSets/xMen/xMen.gameset';
 import { LibTwister } from './libTwister';
-import { GAME_SET_SIZE, NumPlayers } from './model';
-
-expect.extend({
-  toBeUUID(received) {
-    if (isUUID(received)) {
-      return {
-        message: () => `ID (${received}) should NOT be a UUID`,
-        pass: true,
-      };
-    }
-
-    return {
-      message: () => `ID (${received}) should be a UUID`,
-      pass: false,
-    };
-  },
-});
-
-interface CustomMatchers<R = unknown> {
-  toBeUUID(): R;
-}
-
-declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace jest {
-    // eslint-disable-next-line @typescript-eslint/no-empty-interface
-    interface Expect extends CustomMatchers {}
-    // eslint-disable-next-line @typescript-eslint/no-empty-interface
-    interface Matchers<R> extends CustomMatchers<R> {}
-    // eslint-disable-next-line @typescript-eslint/no-empty-interface
-    interface InverseAsymmetricMatchers extends CustomMatchers {}
-  }
-}
-
-const BIG_BOX_COUNT = 6;
-const SMALL_BOX_COUNT = 23;
-const MEDIUM_BOX_COUNT = 4;
-const CORE_SET_COUNT = 4;
-const PROMO_SET_COUNT = 1;
-const GAME_SET_COUNT =
-  BIG_BOX_COUNT +
-  SMALL_BOX_COUNT +
-  MEDIUM_BOX_COUNT +
-  CORE_SET_COUNT +
-  PROMO_SET_COUNT;
+import { GAME_SET_SIZE, ISeries, NumPlayers, SeriesMeta } from './model';
+import { createSeriesMock } from './testData/createSeriesMock';
+import { GameSetMock } from './testData/gameSetMock';
 
 describe('LibTwister', () => {
-  describe('All game sets', () => {
-    it(`should have ${GAME_SET_COUNT} sets`, () =>
-      expect(LibTwister.allGameSets.size).toBe(GAME_SET_COUNT));
+  describe('Setups', () => {
+    describe('with 1 game set', () => {
+      const series = createSeriesMock({
+        numCore: 1,
+        numLarge: 0,
+        numMedium: 0,
+        numSmall: 0,
+      });
+      const twister = new LibTwister(series);
+      const gameSet = series.gameSets[0];
 
-    it(`should have ${BIG_BOX_COUNT} big boxes`, () =>
-      expect(
-        Array.from(LibTwister.allGameSets.values()).filter(
-          (item) => item.size === GAME_SET_SIZE.large
-        )
-      ).toHaveLength(BIG_BOX_COUNT));
+      beforeAll(() => {
+        twister.selectedGameSets = [gameSet];
+      });
 
-    it(`should have ${SMALL_BOX_COUNT} small boxes`, () =>
-      expect(
-        Array.from(LibTwister.allGameSets.values()).filter(
-          (item) => item.size === GAME_SET_SIZE.small
-        )
-      ).toHaveLength(SMALL_BOX_COUNT));
+      it('should create', () => expect(twister).toBeTruthy());
 
-    it(`should have ${MEDIUM_BOX_COUNT} medium boxes`, () =>
-      expect(
-        Array.from(LibTwister.allGameSets.values()).filter(
-          (item) => item.size === GAME_SET_SIZE.medium
-        )
-      ).toHaveLength(MEDIUM_BOX_COUNT));
+      it('should fail with no game sets selected', () =>
+        expect(() => (twister.selectedGameSets = [])).toThrow());
 
-    it(`should have ${CORE_SET_COUNT} core sets`, () =>
-      expect(
-        Array.from(LibTwister.allGameSets.values()).filter(
-          (item) => item.size === GAME_SET_SIZE.core
-        )
-      ).toHaveLength(CORE_SET_COUNT));
+      it('should only contain the mocked game set', () => {
+        expect(twister.selectedGameSets).toContain(gameSet);
+        expect(twister.selectedGameSets).toHaveLength(1);
+      });
 
-    it(`should have ${PROMO_SET_COUNT} promo sets`, () =>
-      expect(
-        Array.from(LibTwister.allGameSets.values()).filter(
-          (item) => item.size === GAME_SET_SIZE.promo
-        )
-      ).toHaveLength(PROMO_SET_COUNT));
-
-    describe('all cards', () => {
-      const allCards = Array.from(LibTwister.allGameSets.values()).flatMap(
-        (gameSet) => gameSet.getCards()
+      it.each([
+        ['heroes', 'hero', twister.stores.heroStore, gameSet.heroes],
+        [
+          'masterminds',
+          'mastermind',
+          twister.stores.mastermindStore,
+          gameSet.masterminds,
+        ],
+        ['schemes', 'scheme', twister.schemeFactory, gameSet.schemes],
+        ['villains', 'villain', twister.stores.villainStore, gameSet.villains],
+        [
+          'henchmen',
+          'henchmen',
+          twister.stores.henchmenStore,
+          gameSet.henchmen,
+        ],
+      ])(
+        'should contain all of the Test %s in the %s store',
+        (_cardTypePlural, _cardType, store, cards) =>
+          expect(store.allCards).toEqual(cards)
       );
 
-      it('should not have any duplicate card IDs', () => {
-        const findDupes = (arr: string[]) => {
-          const sortedArr = arr.slice().sort();
-          const results = [];
-          for (let i = 0; i < sortedArr.length - 1; i++) {
-            if (sortedArr[i + 1] === sortedArr[i]) results.push(sortedArr[i]);
-          }
-          return results;
-        };
+      it.each([2, 3, 4, 5] as NumPlayers[])(
+        'should generate a setup with %p players, only using Test gameset cards',
+        (numPlayers) => {
+          const setup = twister.getSetup(numPlayers);
 
-        expect(allCards.length).toBeGreaterThan(0);
+          expect(setup.scheme.gameSet.id).toBe(gameSet.id);
+          expect(setup.mastermind.gameSet.id).toBe(gameSet.id);
+          expect(
+            Array.from(setup.heroDeck.heroes).every(
+              (hero) => hero.gameSet.id === gameSet.id
+            )
+          ).toBeTruthy();
+          expect(
+            Array.from(setup.villainDeck.henchmen).every(
+              (henchmen) => henchmen.gameSet.id === gameSet.id
+            )
+          ).toBeTruthy();
+          expect(
+            Array.from(setup.villainDeck.villains).every(
+              (villain) => villain.gameSet.id === gameSet.id
+            )
+          ).toBeTruthy();
+        }
+      );
+    });
 
-        const dupes = findDupes(allCards.map((card) => card.id));
-        expect(dupes).toHaveLength(0);
+    describe('with 2 game sets', () => {
+      const series = createSeriesMock({
+        numCore: 1,
+        numLarge: 1,
+        numMedium: 0,
+        numSmall: 0,
       });
+      const twister = new LibTwister(series);
+      beforeAll(() => (twister.selectedGameSets = series.gameSets));
 
-      it('should have valid IDs', () =>
-        allCards.forEach((card) => expect(card.id).toBeUUID));
-    });
-  });
+      it('should create', () => expect(twister).toBeTruthy());
 
-  describe('with 1 game set', () => {
-    let twister: LibTwister = new LibTwister([LEGENDARY]);
+      describe('selectedGameSets', () => {
+        it('should only contain the test game sets', () => {
+          expect(twister.selectedGameSets).toHaveLength(2);
+          expect(twister.selectedGameSets).toContain(series.gameSets[0]);
+          expect(twister.selectedGameSets).toContain(series.gameSets[1]);
+        });
 
-    beforeEach(() => {
-      twister = new LibTwister([LEGENDARY]);
-    });
-
-    it('should create', () => expect(twister).toBeTruthy());
-
-    it('should fail with no game sets selected', () =>
-      expect(() => new LibTwister([])).toThrow());
-
-    it('should only contain the Legendary game set', () => {
-      expect(twister.selectedGameSets).toContain(LEGENDARY);
-      expect(twister.selectedGameSets).toHaveLength(1);
-    });
-
-    it('should only contain the Legendary game set ID', () => {
-      expect(twister.selectedGameSets).toContain(LEGENDARY);
-      expect(twister.selectedGameSets).toHaveLength(1);
-    });
-
-    it.each([
-      ['heroes', 'hero', twister.stores.heroStore, LEGENDARY.heroes],
-      [
-        'masterminds',
-        'mastermind',
-        twister.stores.mastermindStore,
-        LEGENDARY.masterminds,
-      ],
-      ['schemes', 'scheme', twister.schemeFactory, LEGENDARY.schemes],
-      ['villains', 'villain', twister.stores.villainStore, LEGENDARY.villains],
-      [
-        'henchmen',
-        'henchmen',
-        twister.stores.henchmenStore,
-        LEGENDARY.henchmen,
-      ],
-    ])(
-      'should contain all of the Legendary %s in the %s store',
-      (_cardTypePlural, _cardType, store, cards) =>
-        expect(store.allCards).toEqual(cards)
-    );
-
-    it.each([2, 3, 4, 5] as NumPlayers[])(
-      'should generate a setup with %p players, only using Legendary cards',
-      (numPlayers) => {
-        const setup = twister.getSetup(numPlayers);
-
-        expect(setup.scheme.gameSet.id).toBe(LEGENDARY.id);
-        expect(setup.mastermind.gameSet.id).toBe(LEGENDARY.id);
-        expect(
-          Array.from(setup.heroDeck.heroes).every(
-            (hero) => hero.gameSet.id === LEGENDARY.id
-          )
-        ).toBeTruthy();
-        expect(
-          Array.from(setup.villainDeck.henchmen).every(
-            (henchmen) => henchmen.gameSet.id === LEGENDARY.id
-          )
-        ).toBeTruthy();
-        expect(
-          Array.from(setup.villainDeck.villains).every(
-            (villain) => villain.gameSet.id === LEGENDARY.id
-          )
-        ).toBeTruthy();
-      }
-    );
-  });
-
-  describe('with 2 game sets', () => {
-    const twister: LibTwister = new LibTwister([LEGENDARY, DARK_CITY]);
-
-    it('should create', () => expect(twister).toBeTruthy());
-
-    describe('selectedGameSets', () => {
-      it('should only contain the Legendary and Dark City game sets', () => {
-        expect(twister.selectedGameSets).toContain(LEGENDARY);
-        expect(twister.selectedGameSets).toContain(DARK_CITY);
-        expect(twister.selectedGameSets).toHaveLength(2);
-      });
-
-      it('should be sorted by size', () => {
-        expect(twister.selectedGameSets[0]).toBe(LEGENDARY);
-        expect(twister.selectedGameSets[1]).toBe(DARK_CITY);
-      });
-    });
-
-    it('should only contain the Legendary and Dark City game set IDs', () => {
-      expect(twister.selectedGameSets).toContain(LEGENDARY);
-      expect(twister.selectedGameSets).toContain(DARK_CITY);
-      expect(twister.selectedGameSets).toHaveLength(2);
-    });
-
-    it.each([
-      [
-        'heroes',
-        'hero',
-        twister.stores.heroStore,
-        LEGENDARY.heroes,
-        DARK_CITY.heroes,
-      ],
-      [
-        'masterminds',
-        'mastermind',
-        twister.stores.mastermindStore,
-        LEGENDARY.masterminds,
-        DARK_CITY.masterminds,
-      ],
-      [
-        'schemes',
-        'scheme',
-        twister.schemeFactory,
-        LEGENDARY.schemes,
-        DARK_CITY.schemes,
-      ],
-      [
-        'villains',
-        'villain',
-        twister.stores.villainStore,
-        LEGENDARY.villains,
-        DARK_CITY.villains,
-      ],
-      [
-        'henchmen',
-        'henchmen',
-        twister.stores.henchmenStore,
-        LEGENDARY.henchmen,
-        DARK_CITY.henchmen,
-      ],
-    ])(
-      'should contain all of the Legendary & Dark City %s in the %s store',
-      (_cardTypePlural, _cardType, store, legCards, dcCards) => {
-        const ids = store.allCards.map((card) => card.id);
-        expect(ids).toEqual(
-          expect.arrayContaining(dcCards!.map((card) => card.id))
-        );
-        expect(ids).toEqual(
-          expect.arrayContaining(legCards!.map((card) => card.id))
-        );
-        expect(
-          store.allCards
-            .map((card) => card.gameSet.id)
-            .filter((value, index, array) => array.indexOf(value) === index)
-        ).toHaveLength(2);
-      }
-    );
-  });
-
-  describe('with MCU Guardians of the Galaxy', () => {
-    let twister: LibTwister;
-
-    beforeEach(() => {
-      twister = new LibTwister([MARVEL_STUDIOS, MCU_GUARDIANS_OF_THE_GALAXY]);
-    });
-
-    it('should create', () => expect(twister).toBeTruthy());
-
-    describe('getSetup()', () => {
-      describe('with Ego as mastermind', () => {
-        it('should have an additional villain group', () => {
-          const setup = twister.getSetup(
-            2,
-            UNLEASH_THE_ABILISK_SPACE_MONSTER,
-            EGO_THE_LIVING_PLANET
-          );
-
-          expect(Array.from(setup.villainDeck.villains)).toHaveLength(3);
+        it('should be sorted by size', () => {
+          expect(twister.selectedGameSets[0]).toBe(series.gameSets[0]);
+          expect(twister.selectedGameSets[1]).toBe(series.gameSets[1]);
         });
       });
 
-      describe('with Epic Ego as mastermind', () => {
-        it('should have 2 additional villain groups', () => {
-          const setup = twister.getSetup(
-            2,
-            UNLEASH_THE_ABILISK_SPACE_MONSTER,
-            EGO_THE_LIVING_PLANET.epic
+      it.each([
+        [
+          'heroes',
+          'hero',
+          twister.stores.heroStore,
+          series.gameSets[0].heroes,
+          series.gameSets[1].heroes,
+        ],
+        [
+          'masterminds',
+          'mastermind',
+          twister.stores.mastermindStore,
+          series.gameSets[0].masterminds,
+          series.gameSets[1].masterminds,
+        ],
+        [
+          'schemes',
+          'scheme',
+          twister.schemeFactory,
+          series.gameSets[0].schemes,
+          series.gameSets[1].schemes,
+        ],
+        [
+          'villains',
+          'villain',
+          twister.stores.villainStore,
+          series.gameSets[0].villains,
+          series.gameSets[1].villains,
+        ],
+        [
+          'henchmen',
+          'henchmen',
+          twister.stores.henchmenStore,
+          series.gameSets[0].henchmen,
+          series.gameSets[1].henchmen,
+        ],
+      ])(
+        'should contain all of the test gameset %s in the %s store',
+        (_cardTypePlural, _cardType, store, gs1Cards, gs2Cards) => {
+          const ids = store.allCards.map((card) => card.id);
+          expect(ids).toEqual(
+            expect.arrayContaining(gs2Cards!.map((card) => card.id))
           );
-
-          expect(Array.from(setup.villainDeck.villains)).toHaveLength(4);
-        });
-      });
-
-      it('should have Marvel Studios and MCU Guardians of the Galaxy game sets', () => {
-        const guardiansId = MCU_GUARDIANS_OF_THE_GALAXY.id;
-        const marvelStudiosId = MARVEL_STUDIOS.id;
-
-        const instance = LibTwister.of(guardiansId, marvelStudiosId);
-        const ids = instance.selectedGameSets.map((gameSet) => gameSet.id);
-
-        expect(instance.selectedGameSets).toHaveLength(2);
-        expect(ids).toContain(guardiansId);
-        expect(ids).toContain(marvelStudiosId);
-      });
-    });
-  });
-
-  describe('with no game set IDs', () => {
-    it('should create a LibTwister instance with all Game Sets', () =>
-      expect(LibTwister.of().selectedGameSets).toHaveLength(GAME_SET_COUNT));
-  });
-
-  describe('gameSetIdToGameSet', () => {
-    it('should return the Marvel Studios game set', () => {
-      const gameSet = LibTwister.gameSetIdsToGameSets(MARVEL_STUDIOS.id);
-      expect(gameSet).toBeDefined();
-      expect(gameSet?.name).toBe(MARVEL_STUDIOS.name);
+          expect(ids).toEqual(
+            expect.arrayContaining(gs1Cards!.map((card) => card.id))
+          );
+          expect(
+            store.allCards
+              .map((card) => card.gameSet.id)
+              .filter((value, index, array) => array.indexOf(value) === index)
+          ).toHaveLength(2);
+        }
+      );
     });
 
-    it('should return undefined', () => {
-      expect(LibTwister.gameSetIdsToGameSets('')).toBeUndefined();
-      expect(LibTwister.gameSetIdsToGameSets('FOOBAR')).toBeUndefined();
+    describe('gameSetIdToGameSet', () => {
+      const series = createSeriesMock({
+        numCore: 1,
+        numLarge: 0,
+        numMedium: 0,
+        numSmall: 0,
+      });
+      const twister = new LibTwister(series);
+      it('should return the first game set in the series', () => {
+        const gameSet = twister.gameSetIdsToGameSets(series.gameSets[0].id);
+        expect(gameSet).toBeDefined();
+        expect(gameSet?.name).toBe(series.gameSets[0].name);
+      });
+
+      it('should return undefined', () => {
+        expect(twister.gameSetIdsToGameSets('')).toBeUndefined();
+        expect(twister.gameSetIdsToGameSets('FOOBAR')).toBeUndefined();
+      });
     });
   });
 
   describe('validateGameSetIds', () => {
+    const testLargeSet = new GameSetMock(GAME_SET_SIZE.large).getGameSet();
+
+    const testMediumSet = new GameSetMock(GAME_SET_SIZE.medium).getGameSet();
+
+    const testSmallSet = new GameSetMock(GAME_SET_SIZE.small).getGameSet();
+
+    const series: ISeries = {
+      seriesMeta: new SeriesMeta(uuid.v4(), 'Test Series', ''),
+      gameSets: [testLargeSet, testMediumSet, testSmallSet],
+    };
+
+    const twister = new LibTwister(series);
+
     it('should return true for a core and medium size game set IDs', () =>
       expect(
-        LibTwister.validateGameSetIds([LEGENDARY.id, INTO_THE_COSMOS.id])
+        twister.validateGameSetIds([testLargeSet.id, testMediumSet.id])
       ).toBe(true));
 
     it('should return true for a single large set', () =>
-      expect(LibTwister.validateGameSetIds([XMEN.id])).toBe(true));
+      expect(twister.validateGameSetIds([testLargeSet.id])).toBe(true));
 
     it('should return false for a single medium set', () =>
-      expect(LibTwister.validateGameSetIds([INTO_THE_COSMOS.id])).toBe(false));
+      expect(twister.validateGameSetIds([testMediumSet.id])).toBe(false));
 
     it('should return false for a single small set', () =>
-      expect(
-        LibTwister.validateGameSetIds([MCU_GUARDIANS_OF_THE_GALAXY.id])
-      ).toBe(false));
+      expect(twister.validateGameSetIds([testSmallSet.id])).toBe(false));
 
     it('should return false for a non-valid game set id', () =>
-      expect(() => LibTwister.validateGameSetIds(['FOOBAR'])).toThrow());
+      expect(() => twister.validateGameSetIds(['FOOBAR'])).toThrow());
 
     it('should return false for an empty string game set id', () =>
-      expect(() => LibTwister.validateGameSetIds([''])).toThrow());
+      expect(() => twister.validateGameSetIds([''])).toThrow());
 
     it('should return false for an empty game set ID array', () =>
-      expect(LibTwister.validateGameSetIds([])).toBe(false));
+      expect(twister.validateGameSetIds([])).toBe(false));
   });
 });

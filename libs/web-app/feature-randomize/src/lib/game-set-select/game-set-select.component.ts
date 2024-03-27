@@ -1,11 +1,15 @@
-import { Component, Signal } from '@angular/core';
+import { Component, Inject, Signal, computed } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import { GameSet, GAME_SET_SIZE, LibTwister } from '@schemetwister/libtwister';
+import { GameSet, GAME_SET_SIZE, ISeries } from '@schemetwister/libtwister';
+import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
 import { gameSetSelectionActions as fromGameSetDialog } from '../+state/actions/game-sets.actions';
 import { IGameSetsState } from '../+state/reducers/game-sets.reducer';
-import { selectGameSets } from '../+state/selectors/game-sets.selectors';
+import {
+  selectGameSetIds,
+  selectLibTwister,
+} from '../+state/selectors/game-sets.selectors';
 
 @Component({
   selector: 'schemetwister-game-set-select',
@@ -13,16 +17,20 @@ import { selectGameSets } from '../+state/selectors/game-sets.selectors';
   styleUrls: ['./game-set-select.component.scss'],
 })
 export class GameSetSelectComponent {
-  selectedGameSets: Signal<GameSet[]> =
-    this._store.selectSignal(selectGameSets);
+  private _libTwister = this._store.selectSignal(
+    selectLibTwister(this._seriesRegister)
+  );
+  private _selectedGameSetIds = this._store.selectSignal(selectGameSetIds);
+  private _allGameSets: GameSet[] = this._libTwister()
+    .allGameSets.asArray()
+    .sort((a, b) => GameSet.sorter(a, b));
 
+  selectedGameSets = computed(() =>
+    this._libTwister().gameSetIdsToGameSets(this._selectedGameSetIds())
+  );
   gameSelectError: Signal<string> = this._store.selectSignal(
     (state) => state.gameSets.error
   );
-
-  private _allGameSets: GameSet[] = LibTwister.allGameSets
-    .asArray()
-    .sort((a, b) => GameSet.sorter(a, b));
 
   coreSets = this._allGameSets.filter(
     (item) => item.size === GAME_SET_SIZE.core
@@ -42,7 +50,8 @@ export class GameSetSelectComponent {
 
   constructor(
     public activeModal: NgbActiveModal,
-    private _store: Store<{ gameSets: IGameSetsState }>
+    private _store: Store<{ gameSets: IGameSetsState }>,
+    @Inject(SERIES_REGISTER_TOKEN) private _seriesRegister: ISeries[]
   ) {}
 
   onSelectedUpdate(selected: GameSet[]) {
