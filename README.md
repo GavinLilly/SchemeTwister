@@ -2,7 +2,7 @@
 
 A tool for generating setups for the Legendary: Marvel board game
 
-![Release](https://github.com/GavinLilly/schemetwister/workflows/Release/badge.svg) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![Docker Pulls](https://img.shields.io/docker/pulls/gavtherav/schemetwister)
+![Release](https://github.com/GavinLilly/schemetwister/workflows/Release/badge.svg) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![Docker Pulls](https://img.shields.io/docker/pulls/gavtherav/schemetwister) [![codecov](https://codecov.io/gh/GavinLilly/SchemeTwister/graph/badge.svg?token=93WISY4VPN)](https://codecov.io/gh/GavinLilly/SchemeTwister)
 
 ---
 
