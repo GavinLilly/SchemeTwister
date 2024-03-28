@@ -46,7 +46,7 @@ export class GameSetMock {
   private readonly _schemes: SchemeDefinition[];
 
   constructor(size: GameSetSize, config?: IMockGameSetConfig) {
-    this._config = config !== undefined ? config : this._getConfigSizes(size);
+    this._config = config ?? this._getConfigSizes(size);
 
     this._meta = {
       id: uuid.v4(),

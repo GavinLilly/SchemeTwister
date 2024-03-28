@@ -19,6 +19,7 @@ import {
   MastermindWithEpic,
   MastermindType,
   ISeries,
+  EpicMastermind,
 } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
@@ -35,7 +36,6 @@ import {
 @Component({
   selector: 'schemetwister-scheme-select',
   templateUrl: './scheme-mastermind-select.component.html',
-  styleUrls: ['./scheme-mastermind-select.component.scss'],
 })
 export class SchemeMastermindSelectComponent implements OnInit {
   @Input() itemType!: CardType;
@@ -80,6 +80,11 @@ export class SchemeMastermindSelectComponent implements OnInit {
     // none epic versions
     effect(
       () => {
+        let comparer = (
+          a: SchemeMinusRules | MastermindType,
+          b: SchemeMinusRules | MastermindType
+        ) => a.name.localeCompare(b.name);
+
         if (this.itemType === CARD_TYPE.scheme) {
           this.availableItems = this._libTwister().schemeFactory.availableCards;
         } else if (this.itemType === CARD_TYPE.mastermind) {
@@ -87,8 +92,24 @@ export class SchemeMastermindSelectComponent implements OnInit {
             this._libTwister().stores.mastermindStore.availableCards;
           this.availableItems =
             SchemeMastermindSelectComponent._iterateMasterminds(allMasterminds);
+
+          comparer = (
+            a: SchemeMinusRules | MastermindType,
+            b: SchemeMinusRules | MastermindType
+          ) => {
+            if (!(a instanceof EpicMastermind) && b instanceof EpicMastermind) {
+              return -1;
+            } else if (
+              a instanceof EpicMastermind &&
+              !(b instanceof EpicMastermind)
+            ) {
+              return 1;
+            }
+
+            return a.name.localeCompare(b.name);
+          };
         }
-        this.availableItems.sort((a, b) => a.name.localeCompare(b.name));
+        this.availableItems.sort(comparer);
       },
       { injector: this._injector }
     );
@@ -118,14 +139,12 @@ export class SchemeMastermindSelectComponent implements OnInit {
   }
 
   private static _iterateMasterminds = (masterminds: MastermindType[]) =>
-    masterminds
-      .map((mastermind) => {
-        if (mastermind instanceof MastermindWithEpic) {
-          return [mastermind, mastermind.epic];
-        }
-        return [mastermind];
-      })
-      .reduce((prev, curr) => prev.concat(curr), []);
+    masterminds.flatMap((mastermind) => {
+      if (mastermind instanceof MastermindWithEpic) {
+        return [mastermind, mastermind.epic];
+      }
+      return [mastermind];
+    });
 
   setItem(value: string) {
     const item = this.availableItems.find((card) => card.id === value);

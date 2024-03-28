@@ -8,7 +8,7 @@ export class SchemeDefinition implements IScheme {
   private readonly _setup: string;
   private readonly _twist: string;
   private readonly _evilWins: string;
-  private readonly _specialRules?: string | undefined;
+  private readonly _specialRules?: string;
   private readonly _meta: ISchemeMeta;
   private readonly _keywords: IKeyword[];
 

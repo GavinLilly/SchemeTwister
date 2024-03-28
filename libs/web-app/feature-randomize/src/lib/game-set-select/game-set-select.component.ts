@@ -14,7 +14,6 @@ import {
 @Component({
   selector: 'schemetwister-game-set-select',
   templateUrl: './game-set-select.component.html',
-  styleUrls: ['./game-set-select.component.scss'],
 })
 export class GameSetSelectComponent {
   private _libTwister = this._store.selectSignal(
