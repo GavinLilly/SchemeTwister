@@ -27,35 +27,11 @@ jobs:
           node-version: 18
       - run: npm ci
       - run: npm run build-version
-      - run: npm run affected:build -- --base=origin/main
-      - run: npm run affected:test -- --base=origin/main
-      - name: Upload app reports to Codecov
+      - run: npx nx run-many --target=build --all --parallel
+      - run: npm run test:ci
+      - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.0.1
         with:
-          files: ./coverage/apps/web-app
+          files: ./coverage/lcov.info
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: web-app
-      - name: Upload libtwister reports to Codecov
-        uses: codecov/codecov-action@v4.0.1
-        with:
-          files: ./coverage/libs/libtwister
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: libtwister
-      - name: Upload marvel series reports to Codecov
-        uses: codecov/codecov-action@v4.0.1
-        with:
-          files: ./coverage/libs/schemetwister-series-marvel
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: series-marvel
-      - name: Upload marvel studios series reports to Codecov
-        uses: codecov/codecov-action@v4.0.1
-        with:
-          files: ./coverage/libs/schemetwister-series-marvelstudios
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: series-marvelstudios
-      - name: Upload marvel villains reports to Codecov
-        uses: codecov/codecov-action@v4.0.1
-        with:
-          files: ./coverage/libs/schemetwister-series-marvelvillains
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: series-marvelvillains
