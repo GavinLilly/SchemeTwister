@@ -135,8 +135,6 @@ export enum KeywordName {
 
   PATROL = 'Patrol',
 
-  PHASING = 'Phasing',
-
   PIERCING_ENERGY = 'Piercing Energy',
 
   POISON_VILLAINS = 'Poison Villains',

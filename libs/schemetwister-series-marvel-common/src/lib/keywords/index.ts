@@ -8,6 +8,7 @@ export { DODGE } from './dodge.keyword';
 export { EMPOWERED } from './empowered.keyword';
 export { EXCESSIVE_VIOLENCE } from './excessiveViolence.keyword';
 export { MICROSCOPIC_SIZE_CHANGING } from './microscopicSizeChanging.keyword';
+export { PHASING } from './phasing.keyword';
 export { RISE_OF_THE_LIVING_DEAD } from './riseOfTheLivingDead.keyword';
 export { SIZE_CHANGING } from './sizeChanging.keyword';
 export { THROWN_ARTIFACT } from './thrownArtifact.keyword';

@@ -2,9 +2,10 @@ import { CARD_TYPE, Hero } from '@schemetwister/libtwister';
 import {
   AVENGERS,
   DIVIDED,
+  PHASING,
 } from '@schemetwister/schemetwister-series-marvel-common';
 
-import { ENDGAME, PHASING, SACRIFICE } from './mcuInfinitySaga.keywords';
+import { ENDGAME, SACRIFICE } from './mcuInfinitySaga.keywords';
 import { META } from './mcuInfinitySaga.meta';
 
 export const BLACK_PANTHER = new Hero({

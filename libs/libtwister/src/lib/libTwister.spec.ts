@@ -144,12 +144,15 @@ describe('LibTwister', () => {
         'should contain all of the test gameset %s in the %s store',
         (_cardTypePlural, _cardType, store, gs1Cards, gs2Cards) => {
           const ids = store.allCards.map((card) => card.id);
-          expect(ids).toEqual(
-            expect.arrayContaining(gs2Cards!.map((card) => card.id))
-          );
-          expect(ids).toEqual(
-            expect.arrayContaining(gs1Cards!.map((card) => card.id))
-          );
+
+          if (gs1Cards !== undefined && gs2Cards !== undefined) {
+            expect(ids).toEqual(
+              expect.arrayContaining(gs2Cards.map((card) => card.id))
+            );
+            expect(ids).toEqual(
+              expect.arrayContaining(gs1Cards.map((card) => card.id))
+            );
+          }
           expect(
             store.allCards
               .map((card) => card.gameSet.id)

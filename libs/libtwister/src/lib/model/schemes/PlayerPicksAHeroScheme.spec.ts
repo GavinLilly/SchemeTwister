@@ -20,7 +20,7 @@ describe('Player Picks a Hero Scheme', () => {
 
       expect(
         Array.from(setup.heroDeck.heroes).filter((hero) =>
-          hero.name.match('Player \\d picks a hero')
+          /Player \d picks a hero/.exec(hero.name)
         )
       ).toHaveLength(3);
     });

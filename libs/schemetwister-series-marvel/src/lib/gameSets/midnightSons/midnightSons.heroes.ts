@@ -2,9 +2,8 @@ import { Hero, CARD_TYPE } from '@schemetwister/libtwister';
 
 import { MARVEL_KNIGHTS } from '../../teams';
 import { PATROL } from '../secretWarsVolume2/sw2.keywords';
-import { MOONLIGHT_AND_SUNLIGHT } from '../theNewMutants/theNewMutants.keywords';
 
-import { BLOOD_FRENZY } from './midnightSons.keywords';
+import { BLOOD_FRENZY, MOONLIGHT_AND_SUNLIGHT } from './midnightSons.keywords';
 import { META } from './midnightSons.meta';
 
 export const BLADE_DAYWALKER = new Hero({

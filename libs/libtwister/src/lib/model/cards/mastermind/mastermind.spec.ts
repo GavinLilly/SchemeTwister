@@ -9,7 +9,7 @@ import { VillainGroup } from '../villainGroup';
 import { MastermindWithEpic } from './epicMastermind';
 import { Mastermind } from './mastermind';
 
-const epicRegex = new RegExp(`^Epic?`);
+const epicRegex = /^Epic?/;
 
 describe('Mastermind', () => {
   let villain: VillainGroup;

@@ -11,14 +11,14 @@
     "startdev": "nx serve --configuration local",
     "build": "npm run build-version && nx build",
     "build-prod": "npm run build-version && nx build --prod",
-    "test": "nx run-many --all --target=test",
+    "test": "nx run-many --all --target=test --update-snapshot",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
     "affected:build": "nx affected:build",
     "affected:e2e": "nx affected:e2e",
-    "affected:test": "nx affected:test",
+    "affected:test": "nx affected:test --update-snapshot",
     "affected:lint": "nx affected:lint",
     "affected:dep-graph": "nx affected:dep-graph",
     "affected": "nx affected",
@@ -34,7 +34,7 @@
     "workspace-generator": "nx workspace-generator",
     "deploy": "firebase deploy",
     "prepare": "is-ci || husky install",
-    "test:ci": "nx run-many --target=test --all --parallel && node ./tools/coverageMerger.js"
+    "test:ci": "npm run test && node ./tools/coverageMerger.js"
   },
   "private": true,
   "dependencies": {

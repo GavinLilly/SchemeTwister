@@ -76,8 +76,6 @@ export class SchemeMastermindSelectComponent implements OnInit {
       { injector: this._injector }
     );
 
-    // TODO this should definitively ensure that epic cards come after their
-    // none epic versions
     effect(
       () => {
         let comparer = (
@@ -90,24 +88,14 @@ export class SchemeMastermindSelectComponent implements OnInit {
         } else if (this.itemType === CARD_TYPE.mastermind) {
           const allMasterminds =
             this._libTwister().stores.mastermindStore.availableCards;
-          this.availableItems =
-            SchemeMastermindSelectComponent._iterateMasterminds(allMasterminds);
-
-          comparer = (
-            a: SchemeMinusRules | MastermindType,
-            b: SchemeMinusRules | MastermindType
-          ) => {
-            if (!(a instanceof EpicMastermind) && b instanceof EpicMastermind) {
-              return -1;
-            } else if (
-              a instanceof EpicMastermind &&
-              !(b instanceof EpicMastermind)
-            ) {
-              return 1;
+          this.availableItems = allMasterminds.flatMap((mastermind) => {
+            if (mastermind instanceof MastermindWithEpic) {
+              return [mastermind, mastermind.epic];
             }
+            return [mastermind];
+          });
 
-            return a.name.localeCompare(b.name);
-          };
+          comparer = SchemeMastermindSelectComponent._mastermindComparer;
         }
         this.availableItems.sort(comparer);
       },
@@ -138,14 +126,6 @@ export class SchemeMastermindSelectComponent implements OnInit {
     );
   }
 
-  private static _iterateMasterminds = (masterminds: MastermindType[]) =>
-    masterminds.flatMap((mastermind) => {
-      if (mastermind instanceof MastermindWithEpic) {
-        return [mastermind, mastermind.epic];
-      }
-      return [mastermind];
-    });
-
   setItem(value: string) {
     const item = this.availableItems.find((card) => card.id === value);
     if (this.itemType === CARD_TYPE.scheme) {
@@ -169,5 +149,18 @@ export class SchemeMastermindSelectComponent implements OnInit {
         this._store.dispatch(randomizePageActions.resetDefinedMastermind());
       }
     }
+  }
+
+  private static _mastermindComparer(
+    a: SchemeMinusRules | MastermindType,
+    b: SchemeMinusRules | MastermindType
+  ) {
+    if (!(a instanceof EpicMastermind) && b instanceof EpicMastermind) {
+      return -1;
+    } else if (a instanceof EpicMastermind && !(b instanceof EpicMastermind)) {
+      return 1;
+    }
+
+    return a.name.localeCompare(b.name);
   }
 }

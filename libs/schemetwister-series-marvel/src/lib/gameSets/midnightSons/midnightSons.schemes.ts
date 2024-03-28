@@ -7,9 +7,11 @@ import {
   DECK_TYPE,
 } from '@schemetwister/libtwister';
 
-import { MOONLIGHT_AND_SUNLIGHT } from '../theNewMutants/theNewMutants.keywords';
-
-import { BLOOD_FRENZY, HUNT_FOR_VICTIMS } from './midnightSons.keywords';
+import {
+  BLOOD_FRENZY,
+  HUNT_FOR_VICTIMS,
+  MOONLIGHT_AND_SUNLIGHT,
+} from './midnightSons.keywords';
 import { META } from './midnightSons.meta';
 import { LILIN } from './midnightSons.villains';
 import { RitualSacrificeToSummonChthonScheme } from './ritualSacrificeToSummonChthonScheme';

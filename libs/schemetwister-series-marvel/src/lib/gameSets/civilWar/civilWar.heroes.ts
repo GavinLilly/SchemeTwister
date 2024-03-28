@@ -2,11 +2,12 @@ import { Hero } from '@schemetwister/libtwister';
 import {
   AVENGERS,
   DIVIDED,
+  PHASING,
 } from '@schemetwister/schemetwister-series-marvel-common';
 
 import { NEW_WARRIORS, X_MEN } from '../../teams';
 
-import { FORTIFY, PHASING, SIZE_CHANGING } from './civilWar.keywords';
+import { FORTIFY, SIZE_CHANGING } from './civilWar.keywords';
 import { META } from './civilWar.meta';
 
 export const CAPTAIN_AMERICA_SECRET_AVENGER = new Hero({
