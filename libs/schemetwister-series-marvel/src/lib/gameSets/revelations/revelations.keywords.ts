@@ -50,8 +50,8 @@ export const LOCATIONS: IKeyword = {
   description: `The Revelations set adds a completely new card type to Marvel Legendary" Locations. These cards represent infamous strongholds in the Marvel Universe. Every Villain Group in the set contains at least one Location.
 <ul>
   <li>When a Location is played from the Villain Deck, place it above the nearest city space that does not have a Location. Leave enough room that Villains can move through the city as normal.</li>
-  <li>Once placed, Locations don’t move. Villains don’t push Locations forward. You can have a Villain in a city space that has a Location above it.</li>
-  <li>Most Locations specify special abilities that happen when you fight Villains in that space. Some Locations become stronger when there’s a Villain in that space. Some Villains and Masterminds say they become stronger based on Locations.</li>
+  <li>Once placed, Locations don't move. Villains don't push Locations forward. You can have a Villain in a city space that has a Location above it.</li>
+  <li>Most Locations specify special abilities that happen when you fight Villains in that space. Some Locations become stronger when there's a Villain in that space. Some Villains and Masterminds say they become stronger based on Locations.</li>
   <li>You can fight a Location by spending the listed amount of Attack, putting it into your Victory Pile, and doing any Fight ability the Location may have.</li>
   <li>If a new Location is played, and every city space already has a Location, then KO the Location with the lowest Attack to make room. (If tied, the current player chooses.) This might KO the newly played Location or one of the previous Locations.</li>
   <li>In 1-player solo mode, when a Location tells "each other player" to do something, do it yourself.</li>

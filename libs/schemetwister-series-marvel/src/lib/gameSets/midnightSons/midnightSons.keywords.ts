@@ -23,7 +23,7 @@ export const HAUNT: IKeyword = {
 - A Hero can't be Haunted by two Villains at once. Haunt abilities all say to Haunt an "unhaunted Hero."
 - Zarathos's Master Strikes and Mastermind Tactics can cause him to Haunt Heroes in the same way.
 Exorcizing that Hero drives Zarathos back to the Mastermind space.
-- A “Haunted Hero” is still a Hero, so it can still be affected by things that affect Heroes in the HQ. A Villain escaping the city that KOs a Hero from the HQ (that costs 6 or less) can KO a Haunted Hero. Card effects that let you "gain a Hero from the HQ" or "Put a Hero from the HQ on the bottom of the Hero Deck" still work on Haunted Heroes. However, card effects that say "recruit a Hero from the HQ for free" don’t work on Haunted Heroes, since you can't recruit them.
+- A “Haunted Hero” is still a Hero, so it can still be affected by things that affect Heroes in the HQ. A Villain escaping the city that KOs a Hero from the HQ (that costs 6 or less) can KO a Haunted Hero. Card effects that let you "gain a Hero from the HQ" or "Put a Hero from the HQ on the bottom of the Hero Deck" still work on Haunted Heroes. However, card effects that say "recruit a Hero from the HQ for free" don't work on Haunted Heroes, since you can't recruit them.
 - If something causes a Haunted Hero to leave the HQ, then the Haunting Villain stays in that HQ space and Haunts the new Hero that arrives to refill that HQ space.
 - If an HQ space is "destroyed," KO any Haunted Hero there and the Haunting Villain there enters the city, ignoring any Ambush effects.`,
 };

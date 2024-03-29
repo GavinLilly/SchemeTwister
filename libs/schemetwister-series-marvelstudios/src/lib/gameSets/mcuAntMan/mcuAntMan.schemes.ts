@@ -9,7 +9,7 @@ import {
 } from '@schemetwister/libtwister';
 import { SIZE_CHANGING } from '@schemetwister/schemetwister-series-marvel-common';
 
-import { HEIST } from './mcuAntMan.keywords';
+import { AMBUSH_SCHEMES, HEIST } from './mcuAntMan.keywords';
 import { META } from './mcuAntMan.meta';
 import { QUANTUM_REALM } from './mcuAntMan.villains';
 
@@ -98,4 +98,5 @@ export const SIPHON_ENERGY_FROM_THE_QUANTUM_REALM = new SchemeDefinition({
     },
   },
   gameSet: META,
+  keywords: [AMBUSH_SCHEMES],
 });
