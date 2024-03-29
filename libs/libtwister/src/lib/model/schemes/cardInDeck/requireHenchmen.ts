@@ -13,10 +13,10 @@ import { IRequireCardTypeBehaviour } from './requireCardTypeBehaviour.interface'
 
 export class RequireHenchmen implements IRequireCardTypeBehaviour<Henchmen> {
   createDeck(
-    deck: HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal = {},
     cards: Henchmen[],
     rules: INumPlayerRules,
-    deckType: DeckType
+    deckType: DeckType,
+    deck: HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal = {}
   ): HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal {
     let numHenchmen: number | undefined;
 
