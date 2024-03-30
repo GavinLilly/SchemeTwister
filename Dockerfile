@@ -16,7 +16,7 @@ RUN npm run build-version
 RUN npm run build web-app
 
 
-FROM nginx:alpine as runtime
+FROM nginx:alpine AS runtime
 
 RUN addgroup -S nonroot \
   && adduser -S nonroot -G nonroot
