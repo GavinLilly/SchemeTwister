@@ -15,6 +15,8 @@ import {
   SeriesMeta,
   VillainGroup,
 } from '../model';
+import { AbstractFightableCardGroup } from '../model/cards/abstractFightableCardGroup';
+import { randomInteger } from '../utils/randomInteger';
 
 interface IHeroTeamConfig {
   num: number;
@@ -51,7 +53,7 @@ export class GameSetMock {
     this._meta = {
       id: uuid.v4(),
       name: `Test Game Set ${this._gameSetShortId}`,
-      releaseYear: Math.floor(Math.random() * 2024) + 1970,
+      releaseYear: randomInteger(1970, 2024),
       series: new SeriesMeta(
         uuid.v4(),
         `Test Series ${this._gameSetShortId}`,
@@ -145,9 +147,8 @@ export class GameSetMock {
       const villain = this._villains[villainNum];
       const mastermind = new Mastermind({
         ...this._buildPartialCard('Mastermind', i),
+        ...this._buildFightable(),
         alwaysLeads: [villain],
-        attackPoints: Math.random() * 10,
-        victoryPoints: Math.random() * 10,
         masterStrike: '',
       });
       if (
@@ -167,8 +168,7 @@ export class GameSetMock {
     for (let i = 0; i < this._config.numHenchmen; i++) {
       const henchmen = new Henchmen({
         ...this._buildPartialCard('Henchmen', i),
-        attackPoints: Math.random() * 10,
-        victoryPoints: Math.random() * 10,
+        ...this._buildFightable(),
         fight: '',
       });
       henchmens.push(henchmen);
@@ -201,6 +201,11 @@ export class GameSetMock {
     name: `Test ${cardType} - ${this._gameSetShortId} - ${num + 1}`,
     gameSet: this._meta,
   });
+
+  private _buildFightable = <T extends AbstractFightableCardGroup>(): Pick<
+    T,
+    'attackPoints' | 'victoryPoints'
+  > => ({ attackPoints: randomInteger(10), victoryPoints: randomInteger(10) });
 
   private _getConfigSizes(gameSetSize: GameSetSize): IMockGameSetConfig {
     switch (gameSetSize) {

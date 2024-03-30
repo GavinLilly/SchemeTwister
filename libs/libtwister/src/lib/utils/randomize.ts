@@ -1,12 +1,15 @@
 /* eslint-disable no-redeclare */
+
+import { randomInteger } from './randomInteger';
+
 /**
- * This method will return one random card from a list of available cards
+ * Return one random card from a list of available cards
  * @param originalArray The array to randomize from
  * @returns One randomized card
  */
 export function randomize<T>(originalArray: T[]): T;
 /**
- * This method will return one or an array of random cards from a list of
+ * Return one card or an array of random cards from a list of
  * available cards
  * @param originalArray The array to randomize from
  * @param count The number of cards to return
@@ -14,7 +17,7 @@ export function randomize<T>(originalArray: T[]): T;
  */
 export function randomize<T>(originalArray: T[], count: number): T | T[];
 /**
- * This method will return one or an array of random cards from a list of
+ * Return one card or an array of random cards from a list of
  * available cards
  * @param originalArray The array to randomize from
  * @param count The number of cards to return
@@ -46,7 +49,9 @@ export function randomize<T>(originalArray: T[], count = 1): T | T[] {
       return elements;
     }
 
-    elements.push(arr.splice(Math.floor(Math.random() * arr.length), 1)[0]);
+    const randomIdx = randomInteger(arr.length - 1);
+
+    elements.push(arr.splice(randomIdx, 1)[0]);
     return getRandomElement(arr);
   };
 
