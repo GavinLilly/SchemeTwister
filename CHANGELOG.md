@@ -1,3 +1,10 @@
+## [3.12.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.1...v3.12.2) (2024-03-29)
+
+
+### Bug Fixes
+
+* **gamesets:** add missing keyword text ([fd31cd2](https://github.com/GavinLilly/SchemeTwister/commit/fd31cd2c03dd12097175f6ec5797dc2169ee3d67))
+
 ## [3.12.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.0...v3.12.1) (2024-02-18)
 
 
