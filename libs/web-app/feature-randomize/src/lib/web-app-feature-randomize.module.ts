@@ -4,7 +4,11 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgbModule, NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbModule,
+  NgbAccordionModule,
+  NgbCollapseModule,
+} from '@ng-bootstrap/ng-bootstrap';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { WebAppSharedModule } from '@schemetwister/web-app/shared';
@@ -46,6 +50,7 @@ import { VillainDeckComponent } from './villain-deck/villain-deck.component';
     // Bootstrap
     NgbModule,
     NgbAccordionModule,
+    NgbCollapseModule,
 
     // Icons
     FontAwesomeModule,

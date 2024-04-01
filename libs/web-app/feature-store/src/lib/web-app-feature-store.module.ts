@@ -30,7 +30,7 @@ const metaReducers: Array<MetaReducer<IRootState, Action>> = [
     StoreModule.forRoot(reducers, {
       metaReducers,
     }),
-    StoreDevtoolsModule.instrument({ maxAge: 30, serialize: true }),
+    StoreDevtoolsModule.instrument({ maxAge: 30, serialize: true , connectInZone: true}),
   ],
   exports: [StoreModule],
 })

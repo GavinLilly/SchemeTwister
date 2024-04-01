@@ -16,39 +16,54 @@
       <b>Wounds: </b>{{ additionalDeck.deck.numWounds }}
     </p>
 
-    <ngb-accordion [closeOthers]="true">
-      <ngb-panel
-        *ngFor="let henchmen of additionalDeck.deck.henchmen"
+    <div ngbAccordion [closeOthers]="true">
+      @for (henchmen of additionalDeck.deck.henchmen; track $index) {
+      <div
+        ngbAccordionItem
         id="additionaldeck-panel-{{ henchmen.id }}"
-        cardClass="henchmen"
-        title="{{ henchmen.name }}"
+        class="henchmen"
       >
-        <ng-template ngbPanelContent>
-          <schemetwister-henchmen-card-content
-            [henchmen]="henchmen"
-          ></schemetwister-henchmen-card-content>
-        </ng-template>
-      </ngb-panel>
-      <ngb-panel
-        *ngFor="let villainGroup of additionalDeck.deck.villains"
+        <h2 ngbAccordionHeader>
+          <button ngbAccordionButton>{{ henchmen.name }}</button>
+        </h2>
+        <div ngbAccordionCollapse>
+          <div ngbAccordionBody>
+            <ng-template ngbPanelContent>
+              <schemetwister-henchmen-card-content
+                [henchmen]="henchmen"
+              ></schemetwister-henchmen-card-content>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      } @for (villainGroup of additionalDeck.deck.villains; track $index) {
+      <div
+        ngbAccordionItem
         id="additionaldeck-panel-{{ villainGroup.id }}"
-        cardClass="villainGroup"
-        title="{{ villainGroup.name }}"
+        class="villainGroup"
       >
-        <ng-template ngbPanelContent>
-          <schemetwister-villaingroup-card-content
-            [villaingroup]="villainGroup"
-          ></schemetwister-villaingroup-card-content>
-        </ng-template>
-      </ngb-panel>
-      <ngb-panel
-        *ngFor="let hero of additionalDeck.deck.heroes"
+        <h2 ngbAccordionHeader>
+          <button ngbAccordionButton>{{ villainGroup.name }}</button>
+        </h2>
+        <div ngbAccordionCollapse>
+          <div ngbAccordionBody>
+            <ng-template ngbPanelContent>
+              <schemetwister-villaingroup-card-content
+                [villaingroup]="villainGroup"
+              ></schemetwister-villaingroup-card-content>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      } @for (hero of additionalDeck.deck.heroes; track $index) {
+      <div
+        ngbAccordionItem
         id="additionaldeck-panel-{{ hero.id }}"
-        cardClass="hero"
+        class="hero"
       >
-        <ng-template ngbPanelHeader>
+        <h2 ngbAccordionHeader>
           <div class="d-flex align-items-center justify-content-between">
-            <button ngbPanelToggle class="accordion-button">
+            <button ngbAccordionButton>
               <span>{{ hero.name }}</span>
               <img
                 *ngIf="hero.team"
@@ -59,24 +74,36 @@
               />
             </button>
           </div>
-        </ng-template>
-        <ng-template ngbPanelContent>
-          <schemetwister-hero-card-content
-            [hero]="hero"
-          ></schemetwister-hero-card-content>
-        </ng-template>
-      </ngb-panel>
-      <ngb-panel
-        *ngFor="let mastermind of additionalDeck.deck.masterminds"
+        </h2>
+        <div ngbAccordionCollapse>
+          <div ngbAccordionBody>
+            <ng-template ngbPanelContent>
+              <schemetwister-hero-card-content
+                [hero]="hero"
+              ></schemetwister-hero-card-content>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      } @for (mastermind of additionalDeck.deck.masterminds; track $index) {
+      <div
+        ngbAccordionItem
         id="additionaldeck-panel-{{ mastermind.id }}"
-        cardClass="mastermind"
-        title="{{ mastermind.name }}"
+        class="mastermind"
       >
-        <ng-template ngbPanelContent>
-          <schemetwister-mastermind-card-content [mastermind]="mastermind">
-          </schemetwister-mastermind-card-content>
-        </ng-template>
-      </ngb-panel>
-    </ngb-accordion>
+        <h2 ngbAccordionHeader>
+          <button ngbAccordionButton>{{ mastermind.name }}</button>
+        </h2>
+        <div ngbAccordionCollapse>
+          <div ngbAccordionBody>
+            <ng-template ngbPanelContent>
+              <schemetwister-mastermind-card-content [mastermind]="mastermind">
+              </schemetwister-mastermind-card-content>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
   </div>
 </div>
