@@ -7,7 +7,7 @@ import { GAME_SET_SIZE } from './types';
 
 describe('GameSetMap', () => {
   let map: GameSetMap;
-  const libTwister = new LibTwister(TEST_SERIES_1);
+  const libTwister = new LibTwister([TEST_SERIES_1]);
 
   beforeAll(() => {
     map = libTwister.allGameSets;
