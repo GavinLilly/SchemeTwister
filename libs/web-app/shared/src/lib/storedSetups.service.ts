@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { IStoredGameSetup } from './storedGameSetup.interface';
 
-const FIRESTORE_COLLECTION_TOKEN = 'FireStoreCollection';
+export const FIRESTORE_COLLECTION_TOKEN = 'FireStoreCollection';
 
 @Injectable()
 export class StoredSetupsService {

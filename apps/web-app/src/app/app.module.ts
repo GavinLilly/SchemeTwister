@@ -10,9 +10,11 @@ import { marvelSeries } from '@schemetwister/schemetwister-series-marvel';
 import { marvelStudiosSeries } from '@schemetwister/schemetwister-series-marvelstudios';
 import { marvelVillainsSeries } from '@schemetwister/schemetwister-series-marvelvillains';
 import { WebAppFeatureStoreModule } from '@schemetwister/web-app/feature-store';
-import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
+import {
+  FIRESTORE_COLLECTION_TOKEN,
+  SERIES_REGISTER_TOKEN,
+} from '@schemetwister/web-app/shared';
 import { WebAppUiModule } from '@schemetwister/web-app/ui';
-import { FIRESTORE_COLLECTION_TOKEN } from '@schemetwister/web-app-feature-view';
 
 import { environment } from '../environments/environment';
 
