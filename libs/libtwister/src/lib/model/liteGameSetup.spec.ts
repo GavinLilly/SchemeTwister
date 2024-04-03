@@ -51,7 +51,7 @@ describe('LiteGameSetup', () => {
 
   describe('toGameSetup', () => {
     let gameSetup: GameSetup;
-    const libTwister = new LibTwister(TEST_SERIES_1);
+    const libTwister = new LibTwister([TEST_SERIES_1]);
 
     beforeAll(() => {
       gameSetup = liteSetup.toGameSetup(libTwister);

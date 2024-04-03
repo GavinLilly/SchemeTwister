@@ -11,7 +11,10 @@ import {
   seriesSelectionActions,
 } from '../actions/game-sets.actions';
 import { IGameSetsState } from '../reducers/game-sets.reducer';
-import { selectLibTwister } from '../selectors/game-sets.selectors';
+import {
+  selectGameSetIds,
+  selectLibTwister,
+} from '../selectors/game-sets.selectors';
 
 @Injectable()
 export class GameSetsEffects implements OnInitEffects {
@@ -61,12 +64,16 @@ export class GameSetsEffects implements OnInitEffects {
   readonly setAllGameSets$ = createEffect(() =>
     this._actions$.pipe(
       ofType(seriesSelectionActions.setSeries),
-      map((action) =>
-        this._seriesRegister.filter((series) =>
-          action.seriesIds.includes(series.seriesMeta.id)
-        )
-      ),
-      map((serie) => serie.flatMap((series) => series.gameSets)),
+      withLatestFrom(this._store.select(selectGameSetIds)),
+      map(([action, gameSetIds]) => {
+        const allGameSets = this._seriesRegister
+          .filter((series) => action.seriesIds.includes(series.seriesMeta.id))
+          .flatMap((series) => series.gameSets);
+
+        return gameSetIds.length !== 0
+          ? allGameSets.filter((gameSet) => gameSetIds.includes(gameSet.id))
+          : allGameSets;
+      }),
       map((gameSets) => gameSets.map((gameSet) => gameSet.id)),
       map((gameSetIds) =>
         gameSetCheckerActions.setGameSetsSuccess({ gameSetIds })

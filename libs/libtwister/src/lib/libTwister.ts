@@ -23,17 +23,24 @@ export class LibTwister {
   private _selectedGameSets: GameSet[] = [];
   private readonly _series: ISeries[];
 
+  constructor(series: ISeries[]);
+  constructor(series: ISeries[], gameSets: GameSet[]);
   /**
    * Create a new LibTwister instance with the given Series and optionally the
    * game sets
    * @param series the series to enable in this instance of LibTwister
+   * @param gameSets an optional array of gamesets to select
    */
-  constructor(...series: ISeries[]) {
+  constructor(series: ISeries[], gameSets?: GameSet[]) {
     this._series = series;
 
-    this._selectedGameSets = this._allGameSets;
+    if (gameSets !== undefined && gameSets.length > 0) {
+      this.selectedGameSets = gameSets;
+    } else {
+      this.selectedGameSets = this._allGameSets;
+    }
+
     this._selectedGameSets.sort(GameSet.sorter);
-    this._onGameSetsChange();
   }
 
   /**

@@ -20,8 +20,11 @@ export const selectSeriesIds = createSelector(
 );
 
 export const selectLibTwister = (seriesRegister: ISeries[]) =>
-  // For now we should use all series
-  createSelector(
-    selectGameSetsFeature,
-    () => new LibTwister(...seriesRegister)
-  );
+  createSelector(selectSeriesIds, selectGameSetIds, (seriesIds, gameSetIds) => {
+    const gameSets = seriesRegister
+      .filter((series) => seriesIds.includes(series.seriesMeta.id))
+      .flatMap((series) => series.gameSets)
+      .filter((gameSet) => gameSetIds.includes(gameSet.id));
+
+    return new LibTwister(seriesRegister, gameSets);
+  });

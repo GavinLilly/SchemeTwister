@@ -26,6 +26,7 @@ describe('GameSetSelectComponent', () => {
               gameSetIds: Object.values(mainline).map(
                 (gameset) => gameset.GAME_SET.id
               ),
+              seriesIds: [marvelSeries.seriesMeta.id],
             },
             numPlayers: 2,
           },

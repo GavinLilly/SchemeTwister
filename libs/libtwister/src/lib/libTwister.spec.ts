@@ -14,7 +14,7 @@ describe('LibTwister', () => {
         numMedium: 0,
         numSmall: 0,
       });
-      const twister = new LibTwister(series);
+      const twister = new LibTwister([series]);
       const gameSet = series.gameSets[0];
 
       beforeAll(() => {
@@ -86,7 +86,7 @@ describe('LibTwister', () => {
         numMedium: 0,
         numSmall: 0,
       });
-      const twister = new LibTwister(series);
+      const twister = new LibTwister([series]);
       beforeAll(() => (twister.selectedGameSets = series.gameSets));
 
       it('should create', () => expect(twister).toBeTruthy());
@@ -169,7 +169,7 @@ describe('LibTwister', () => {
         numMedium: 0,
         numSmall: 0,
       });
-      const twister = new LibTwister(series);
+      const twister = new LibTwister([series]);
       it('should return the first game set in the series', () => {
         const gameSet = twister.gameSetIdsToGameSets(series.gameSets[0].id);
         expect(gameSet).toBeDefined();
@@ -195,7 +195,7 @@ describe('LibTwister', () => {
       gameSets: [testLargeSet, testMediumSet, testSmallSet],
     };
 
-    const twister = new LibTwister(series);
+    const twister = new LibTwister([series]);
 
     it('should return true for a core and medium size game set IDs', () =>
       expect(

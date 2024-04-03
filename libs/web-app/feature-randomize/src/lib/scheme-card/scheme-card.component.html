@@ -11,17 +11,24 @@
     </a>
   </div>
   <div class="card-body p-0" *ngIf="scheme() as scheme">
-    <ngb-accordion>
-      <ngb-panel title="{{ scheme.name }}">
-        <ng-template ngbPanelContent>
-          <p class="card-text"><b>Setup: </b>{{ scheme.setup }}</p>
-          <p class="card-text"><b>Twist: </b>{{ scheme.twist }}</p>
-          <p class="card-text"><b>Evil Wins: </b>{{ scheme.evilWins }}</p>
-          <schemetwister-base-card-content
-            [card]="scheme"
-          ></schemetwister-base-card-content>
-        </ng-template>
-      </ngb-panel>
-    </ngb-accordion>
+    <div ngbAccordion>
+      <div ngbAccordionItem>
+        <h2 ngbAccordionHeader>
+          <button ngbAccordionButton>{{ scheme.name }}</button>
+        </h2>
+        <div ngbAccordionCollapse>
+          <div ngbAccordionBody>
+            <ng-template ngbPanelContent>
+              <p class="card-text"><b>Setup: </b>{{ scheme.setup }}</p>
+              <p class="card-text"><b>Twist: </b>{{ scheme.twist }}</p>
+              <p class="card-text"><b>Evil Wins: </b>{{ scheme.evilWins }}</p>
+              <schemetwister-base-card-content
+                [card]="scheme"
+              ></schemetwister-base-card-content>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

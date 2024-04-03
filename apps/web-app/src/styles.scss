@@ -14,32 +14,34 @@ $container-max-widths: (
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 
 .accordion {
-  .hero {
-    .accordion-header button {
-      background-color: rgb(204, 250, 204);
+  .accordion-item {
+    &.hero {
+      .accordion-header button {
+        background-color: rgb(204, 250, 204);
+      }
     }
-  }
 
-  .henchmen {
-    .accordion-header button {
-      background-color: rgb(255, 254, 197);
+    &.henchmen {
+      .accordion-header button {
+        background-color: rgb(255, 254, 197);
+      }
     }
-  }
 
-  .mastermind {
-    .accordion-header button {
-      background-color: rgb(255, 227, 227);
+    &.mastermind {
+      .accordion-header button {
+        background-color: rgb(255, 227, 227);
+      }
     }
-  }
 
-  .villainGroup {
-    .accordion-header button {
-      background-color: rgb(255, 236, 199);
+    &.villainGroup {
+      .accordion-header button {
+        background-color: rgb(255, 236, 199);
+      }
     }
   }
 }
 
-.accordion-header button {
+.accordion-header .accordion-button {
   color: rgb(0, 123, 255);
 }
 
@@ -48,7 +50,7 @@ $container-max-widths: (
 }
 
 .accordion-header,
-button.accordion-button,
+.accordion-button,
 .card-header {
   font-family: Bangers, sans-serif;
   font-size: 1.05rem;

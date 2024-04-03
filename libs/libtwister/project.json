@@ -6,17 +6,13 @@
   "generators": {},
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "options": {
-        "lintFilePatterns": ["libs/libtwister/src/**/*.ts"]
-      },
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nx/jest:jest",
       "options": {
         "jestConfig": "libs/libtwister/jest.config.ts",
-        "passWithNoTests": true,
         "codeCoverage": true
       },
       "outputs": ["{workspaceRoot}/coverage/libs/libtwister"]

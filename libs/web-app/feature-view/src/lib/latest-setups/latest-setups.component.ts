@@ -20,6 +20,6 @@ export class LatestSetupsComponent {
     private readonly _store: LatestSetupsStore,
     @Inject(SERIES_REGISTER_TOKEN) seriesRegister: ISeries[]
   ) {
-    this.libTwister = new LibTwister(...seriesRegister);
+    this.libTwister = new LibTwister(seriesRegister);
   }
 }

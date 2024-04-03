@@ -35,6 +35,7 @@ describe('SchemeMastermindSelectComponent', () => {
               gameSetIds: Object.values(mainline).map(
                 (gameset) => gameset.GAME_SET.id
               ),
+              seriesIds: [marvelSeries.seriesMeta.id],
             },
           },
         }),

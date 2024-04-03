@@ -52,7 +52,7 @@ export function seriesTest(
   return describe('Marvel mainline series', () => {
     let libTwister: LibTwister;
     beforeAll(() => {
-      libTwister = new LibTwister(series);
+      libTwister = new LibTwister([series]);
     });
 
     it(`should have ${totalGameSetCount} sets`, () =>
