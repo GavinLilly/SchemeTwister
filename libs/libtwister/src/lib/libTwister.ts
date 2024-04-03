@@ -23,6 +23,8 @@ export class LibTwister {
   private _selectedGameSets: GameSet[] = [];
   private readonly _series: ISeries[];
 
+  constructor(series: ISeries[]);
+  constructor(series: ISeries[], gameSets: GameSet[]);
   /**
    * Create a new LibTwister instance with the given Series and optionally the
    * game sets
@@ -32,7 +34,12 @@ export class LibTwister {
   constructor(series: ISeries[], gameSets?: GameSet[]) {
     this._series = series;
 
-    this.selectedGameSets = gameSets ?? this._allGameSets;
+    if (gameSets !== undefined && gameSets.length > 0) {
+      this.selectedGameSets = gameSets;
+    } else {
+      this.selectedGameSets = this._allGameSets;
+    }
+
     this._selectedGameSets.sort(GameSet.sorter);
   }
 
