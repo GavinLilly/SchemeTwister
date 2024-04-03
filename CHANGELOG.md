@@ -1,3 +1,10 @@
+## [3.12.3](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.2...v3.12.3) (2024-04-03)
+
+
+### Bug Fixes
+
+* gameset fix and Angular 17 update ([027b191](https://github.com/GavinLilly/SchemeTwister/commit/027b19196672450d79c3619c05d930c52274fb3f))
+
 ## [3.12.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.1...v3.12.2) (2024-03-29)
 
 
