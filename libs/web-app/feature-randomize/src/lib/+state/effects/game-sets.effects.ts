@@ -65,13 +65,16 @@ export class GameSetsEffects implements OnInitEffects {
     this._actions$.pipe(
       ofType(seriesSelectionActions.setSeries),
       withLatestFrom(this._store.select(selectGameSetIds)),
-      map(([action, gameSetIds]) =>
-        this._seriesRegister
+      map(([action, gameSetIds]) => {
+        const allGameSets = this._seriesRegister
           .filter((series) => action.seriesIds.includes(series.seriesMeta.id))
-          .flatMap((series) => series.gameSets)
-          .filter((gameSet) => gameSetIds.includes(gameSet.id))
-          .map((gameSet) => gameSet.id)
-      ),
+          .flatMap((series) => series.gameSets);
+
+        return gameSetIds.length !== 0
+          ? allGameSets.filter((gameSet) => gameSetIds.includes(gameSet.id))
+          : allGameSets;
+      }),
+      map((gameSets) => gameSets.map((gameSet) => gameSet.id)),
       map((gameSetIds) =>
         gameSetCheckerActions.setGameSetsSuccess({ gameSetIds })
       )
