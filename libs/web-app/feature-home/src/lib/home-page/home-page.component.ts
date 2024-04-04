@@ -7,6 +7,7 @@ import {
   SchemeMinusRules,
   VillainGroup,
   ISeries,
+  INamedObject,
 } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
@@ -30,30 +31,35 @@ export class HomePageComponent {
     const allGameSets = seriesRegister.flatMap((series) => series.gameSets);
 
     this.numGameSets = allGameSets.length;
-    this.numHenchmen = allGameSets
-      .map((gameSet) => gameSet.henchmen)
-      .filter((henchmen): henchmen is Henchmen[] => !!henchmen)
-      .reduce((prev, next) => prev?.concat(next)).length;
+    this.numHenchmen = HomePageComponent._mapReduce(
+      allGameSets
+        .map((gameSet) => gameSet.henchmen)
+        .filter((henchmen): henchmen is Henchmen[] => !!henchmen)
+    );
 
-    this.numHeroes = allGameSets
-      .map((gameSet) => gameSet.heroes)
-      .filter((heroes): heroes is Hero[] => !!heroes)
-      .reduce((prev, next) => prev?.concat(next)).length;
+    this.numHeroes = HomePageComponent._mapReduce(
+      allGameSets
+        .map((gameSet) => gameSet.heroes)
+        .filter((heroes): heroes is Hero[] => !!heroes)
+    );
 
-    this.numMasterminds = allGameSets
-      .map((gameSet) => gameSet.masterminds)
-      .filter((masterminds): masterminds is Mastermind[] => !!masterminds)
-      .reduce((prev, next) => prev?.concat(next)).length;
+    this.numMasterminds = HomePageComponent._mapReduce(
+      allGameSets
+        .map((gameSet) => gameSet.masterminds)
+        .filter((masterminds): masterminds is Mastermind[] => !!masterminds)
+    );
 
-    this.numVillains = allGameSets
-      .map((gameSet) => gameSet.villains)
-      .filter((villains): villains is VillainGroup[] => !!villains)
-      .reduce((prev, next) => prev?.concat(next)).length;
+    this.numVillains = HomePageComponent._mapReduce(
+      allGameSets
+        .map((gameSet) => gameSet.villains)
+        .filter((villains): villains is VillainGroup[] => !!villains)
+    );
 
-    this.numSchemes = allGameSets
-      .map((gameSet) => gameSet.schemes)
-      .filter((schemes): schemes is SchemeMinusRules[] => !!schemes)
-      .reduce((prev, next) => prev?.concat(next)).length;
+    this.numSchemes = HomePageComponent._mapReduce(
+      allGameSets
+        .map((gameSet) => gameSet.schemes)
+        .filter((schemes): schemes is SchemeMinusRules[] => !!schemes)
+    );
 
     meta.updateTag({
       name: 'description',
@@ -61,4 +67,11 @@ export class HomePageComponent {
         'Schemetwister is an app for generating random Legendary: Marvel setups',
     });
   }
+
+  private static readonly _mapReduce = <T extends INamedObject>(
+    gameSetCards: T[][]
+  ) =>
+    gameSetCards
+      .map((cards) => cards.length)
+      .reduce((prev, curr) => prev + curr, 0);
 }

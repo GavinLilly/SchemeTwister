@@ -32,7 +32,7 @@ export class RequireVillainGroup
         .filter(
           (numVillainGroups): numVillainGroups is number => !!numVillainGroups
         )
-        .reduce((prev, curr) => prev + curr);
+        .reduce((prev, curr) => prev + curr, 0);
     } else {
       numVillainGroups = rules.villainDeck.numVillainGroups;
     }

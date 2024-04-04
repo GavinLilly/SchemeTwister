@@ -30,7 +30,7 @@ export class RequireHenchmen implements IRequireCardTypeBehaviour<Henchmen> {
       numHenchmen = rules.additionalDeck
         .map((deck) => deck.deck?.numHenchmenGroups)
         .filter((numHenchmen): numHenchmen is number => !!numHenchmen)
-        .reduce((prev, curr) => prev + curr);
+        .reduce((prev, curr) => prev + curr, 0);
     } else {
       numHenchmen = rules.villainDeck.numHenchmenGroups;
     }
