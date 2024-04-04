@@ -1,3 +1,10 @@
+## [3.12.5](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.4...v3.12.5) (2024-04-04)
+
+
+### Dependencies
+
+* **deps:** bump webpack-dev-middleware from 5.3.3 to 5.3.4 ([804525b](https://github.com/GavinLilly/SchemeTwister/commit/804525b0c5b20ebffc1134e7610e591b38344cc7))
+
 ## [3.12.4](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.3...v3.12.4) (2024-04-04)
 
 
