@@ -32,30 +32,30 @@ export class RequireCardInDeckScheme<
         return super.getSetup({
           ...config,
           partialHeroDeck: this._requireCardType.createDeck(
-            config.partialHeroDeck,
             picked,
             rules,
-            this._deck
+            this._deck,
+            config.partialHeroDeck
           ),
         });
       case 'VILLAIN':
         return super.getSetup({
           ...config,
           partialVillainDeck: this._requireCardType.createDeck(
-            config.partialVillainDeck,
             picked,
             rules,
-            this._deck
+            this._deck,
+            config.partialVillainDeck
           ),
         });
       case 'ADDITIONAL':
         return super.getSetup({
           ...config,
           partialAdditionalDeck: this._requireCardType.createDeck(
-            config.partialAdditionalDeck,
             picked,
             rules,
-            this._deck
+            this._deck,
+            config.partialAdditionalDeck
           ),
         });
     }

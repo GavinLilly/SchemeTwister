@@ -25,7 +25,22 @@
           "apps/web-app/src/manifest.webmanifest",
           {
             "glob": "*",
-            "input": "libs/libtwister/src/assets/icons/teams",
+            "input": "libs/schemetwister-series-marvel/src/assets/icons/teams",
+            "output": "./assets/icons/teams"
+          },
+          {
+            "glob": "*",
+            "input": "libs/schemetwister-series-marvel-common/src/assets/icons/teams",
+            "output": "./assets/icons/teams"
+          },
+          {
+            "glob": "*",
+            "input": "libs/schemetwister-series-marvelstudios/src/assets/icons/teams",
+            "output": "./assets/icons/teams"
+          },
+          {
+            "glob": "*",
+            "input": "libs/schemetwister-series-marvelvillains/src/assets/icons/teams",
             "output": "./assets/icons/teams"
           }
         ],
@@ -79,39 +94,32 @@
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
       "options": {
-        "browserTarget": "web-app:build",
-        "proxyConfig": "apps/web-app/proxy.conf.json"
+        "proxyConfig": "apps/web-app/proxy.conf.json",
+        "buildTarget": "web-app:build"
       },
       "configurations": {
         "production": {
-          "browserTarget": "web-app:build:production"
+          "buildTarget": "web-app:build:production"
         },
         "local": {
-          "browserTarget": "web-app:build:local"
+          "buildTarget": "web-app:build:local"
         }
       }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "web-app:build"
+        "buildTarget": "web-app:build"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "options": {
-        "lintFilePatterns": [
-          "apps/web-app/src/**/*.ts",
-          "apps/web-app/src/**/*.html"
-        ]
-      },
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nx/jest:jest",
       "options": {
         "jestConfig": "apps/web-app/jest.config.ts",
-        "passWithNoTests": true,
         "codeCoverage": true
       },
       "outputs": ["{workspaceRoot}/coverage/apps/web-app"]

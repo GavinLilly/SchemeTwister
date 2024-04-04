@@ -15,10 +15,10 @@ export class RequireVillainGroup
   implements IRequireCardTypeBehaviour<VillainGroup>
 {
   createDeck(
-    deck: VillainDeckMinimal | AdditionalDeckDeckMinimal = {},
     cards: VillainGroup[],
     rules: INumPlayerRules,
-    deckType: DeckType
+    deckType: DeckType,
+    deck: VillainDeckMinimal | AdditionalDeckDeckMinimal = {}
   ): HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal {
     let numVillainGroups: number | undefined;
 
@@ -32,7 +32,7 @@ export class RequireVillainGroup
         .filter(
           (numVillainGroups): numVillainGroups is number => !!numVillainGroups
         )
-        .reduce((prev, curr) => prev + curr);
+        .reduce((prev, curr) => prev + curr, 0);
     } else {
       numVillainGroups = rules.villainDeck.numVillainGroups;
     }

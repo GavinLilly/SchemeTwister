@@ -4,16 +4,12 @@
     <div class="setup-cards card-body" *ngIf="heroDeck.numBystanders">
       <p><b>Bystanders: </b>{{ heroDeck.numBystanders }}</p>
     </div>
-
-    <ngb-accordion [closeOthers]="true">
-      <ngb-panel
-        *ngFor="let hero of heroDeck.heroes"
-        id="herodeck-panel-{{ hero.id }}"
-        cardClass="hero"
-      >
-        <ng-template ngbPanelHeader>
+    <div ngbAccordion [closeOthers]="true">
+      @for (hero of heroDeck.heroes; track $index) {
+      <div ngbAccordionItem id="herodeck-panel-{{ hero.id }}" class="hero">
+        <h2 ngbAccordionHeader>
           <div class="d-flex align-items-center justify-content-between">
-            <button ngbPanelToggle class="accordion-button">
+            <button ngbAccordionButton>
               <span>{{ hero.name }}</span>
               <img
                 *ngIf="hero.team"
@@ -24,25 +20,37 @@
               />
             </button>
           </div>
-        </ng-template>
-        <ng-template ngbPanelContent>
-          <schemetwister-hero-card-content
-            [hero]="hero"
-          ></schemetwister-hero-card-content>
-        </ng-template>
-      </ngb-panel>
-      <ngb-panel
-        *ngFor="let henchmen of heroDeck.henchmen"
+        </h2>
+        <div ngbAccordionCollapse>
+          <div ngbAccordionBody>
+            <ng-template ngbPanelContent>
+              <schemetwister-hero-card-content
+                [hero]="hero"
+              ></schemetwister-hero-card-content>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      } @for (henchmen of heroDeck.henchmen; track $index) {
+      <div
+        ngbAccordionItem
         id="herodeck-panel-{{ henchmen.id }}"
-        cardClass="henchmen"
-        title="{{ henchmen.name }}"
+        class="henchmen"
       >
-        <ng-template ngbPanelContent>
-          <schemetwister-henchmen-card-content
-            [henchmen]="henchmen"
-          ></schemetwister-henchmen-card-content>
-        </ng-template>
-      </ngb-panel>
-    </ngb-accordion>
+        <h2 ngbAccordionHeader>
+          <button ngbAccordionButton>{{ henchmen.name }}</button>
+        </h2>
+        <div ngbAccordionCollapse>
+          <div ngbAccordionBody>
+            <ng-template ngbPanelContent>
+              <schemetwister-henchmen-card-content
+                [henchmen]="henchmen"
+              ></schemetwister-henchmen-card-content>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
   </div>
 </div>

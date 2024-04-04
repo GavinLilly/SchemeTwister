@@ -3,16 +3,11 @@
 
 name: Node.js Test
 
-on:
-  pull_request:
-    branches: [main]
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [16, 18, 20]
 
     steps:
       - uses: actions/checkout@v3
@@ -26,11 +21,17 @@ jobs:
           tokenPattern: ${TOKEN}
           secretsJson: ${{ toJSON(secrets) }}
 
-      - name: Setup Node.js ${{ matrix.node }}
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 18
       - run: npm ci
       - run: npm run build-version
-      - run: npm run affected:build -- --base=origin/main
-      - run: npm run affected:test -- --base=origin/main
+      - run: npx nx run-many --target=build --all --parallel
+      - run: npm run test:ci
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          files: ./coverage/lcov.info
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: web-app

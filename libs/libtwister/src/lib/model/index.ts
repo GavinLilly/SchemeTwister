@@ -8,3 +8,4 @@ export { GameSetup } from './GameSetup';
 export { GameSet } from './GameSet';
 export { GameSetMap } from './gameSetMap';
 export { LiteGameSetup } from './liteGameSetup';
+export { SeriesMeta } from './seriesMeta';

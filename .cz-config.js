@@ -38,12 +38,13 @@ module.exports = {
     },
   ],
   scopes: [
-    { name: 'docs' },
     { name: 'app' },
-    { name: 'misc' },
     { name: 'libtwister' },
+    { name: 'gamesets' },
     { name: 'deps' },
     { name: 'deps-dev' },
+    { name: 'misc' },
+    { name: 'docs' },
     { name: '*' },
   ],
 };

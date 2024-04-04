@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { LibTwister } from '@schemetwister/libtwister';
+import { ISeries, LibTwister } from '@schemetwister/libtwister';
 
 import {
   gameSetsFeatureKey,
@@ -11,18 +11,20 @@ const selectGameSetsFeature =
 
 export const selectGameSetIds = createSelector(
   selectGameSetsFeature,
-  (state: IGameSetsState) => state.gameSetIds
+  (state) => state.gameSetIds
 );
 
-export const selectGameSets = createSelector(
+export const selectSeriesIds = createSelector(
   selectGameSetsFeature,
-  (state: IGameSetsState) => LibTwister.gameSetIdsToGameSets(state.gameSetIds)
+  (state) => state.seriesIds
 );
 
-export const selectLibTwister = createSelector(
-  selectGameSetsFeature,
-  (state: IGameSetsState) => {
-    const gameSets = LibTwister.gameSetIdsToGameSets(state.gameSetIds);
-    return new LibTwister(gameSets);
-  }
-);
+export const selectLibTwister = (seriesRegister: ISeries[]) =>
+  createSelector(selectSeriesIds, selectGameSetIds, (seriesIds, gameSetIds) => {
+    const gameSets = seriesRegister
+      .filter((series) => seriesIds.includes(series.seriesMeta.id))
+      .flatMap((series) => series.gameSets)
+      .filter((gameSet) => gameSetIds.includes(gameSet.id));
+
+    return new LibTwister(seriesRegister, gameSets);
+  });

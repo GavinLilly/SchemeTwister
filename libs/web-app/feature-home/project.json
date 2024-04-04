@@ -6,20 +6,13 @@
   "prefix": "schemetwister",
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/web-app/feature-home/src/**/*.ts",
-          "libs/web-app/feature-home/src/**/*.html"
-        ]
-      },
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nx/jest:jest",
       "options": {
         "jestConfig": "libs/web-app/feature-home/jest.config.ts",
-        "passWithNoTests": true,
         "codeCoverage": true
       },
       "outputs": ["{workspaceRoot}/coverage/libs/web-app/feature-home"]

@@ -10,14 +10,10 @@ import { DeckType } from '../../types/deckType.type';
 
 export interface IRequireCardTypeBehaviour<TCard extends AbstractCardGroup> {
   createDeck(
-    deck:
-      | HeroDeckMinimal
-      | VillainDeckMinimal
-      | AdditionalDeckDeckMinimal
-      | undefined,
     cards: TCard[],
     rules: INumPlayerRules,
-    deckType: DeckType
+    deckType: DeckType,
+    deck?: HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal
   ): HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal;
 
   getStore(storeOfStores: StoreOfStores): CardStore<TCard>;

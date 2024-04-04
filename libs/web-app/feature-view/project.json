@@ -9,18 +9,11 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/web-app/feature-view"],
       "options": {
-        "jestConfig": "libs/web-app/feature-view/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/web-app/feature-view/jest.config.ts"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/web-app/feature-view/src/**/*.ts",
-          "libs/web-app/feature-view/src/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     }
   },
   "tags": []

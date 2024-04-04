@@ -1,43 +1,22 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { GAME_SET as CHAMPIONS } from '../../../data/gameSets/champions';
-import { CLASH_OF_THE_MONSTERS_UNLEASHED } from '../../../data/gameSets/champions/champions.schemes';
-import { MONSTERS_UNLEASHED } from '../../../data/gameSets/champions/champions.villains';
-import { GAME_SET as DARK_CITY } from '../../../data/gameSets/darkCity';
-import { MAGGIA_GOONS } from '../../../data/gameSets/darkCity/darkCity.henchmen';
-import { JEAN_GREY } from '../../../data/gameSets/darkCity/darkCity.heroes';
-import {
-  ORGANIZED_CRIME_WAVE,
-  TRANSFORM_CITIZENS_INTO_DEMONS,
-} from '../../../data/gameSets/darkCity/darkCity.schemes';
-import { GAME_SET as DEADPOOL } from '../../../data/gameSets/deadpool';
-import {
-  DEADPOOL_KILLS_THE_MARVEL_UNIVERSE,
-  EVERYBODY_HATES_DEADPOOL,
-} from '../../../data/gameSets/deadpool/deadpool.schemes';
-import { GAME_SET as GUARDIANS } from '../../../data/gameSets/guardiansOfTheGalaxy';
-import { THE_KREE_SKRULL_WAR } from '../../../data/gameSets/guardiansOfTheGalaxy/guardiansOfTheGalaxy.schemes';
-import { KREE_STARFORCE } from '../../../data/gameSets/guardiansOfTheGalaxy/guardiansOfTheGalaxy.villains';
-import { GAME_SET as INTO_THE_COSMOS } from '../../../data/gameSets/intoTheCosmos';
-import { ADAM_WARLOCK } from '../../../data/gameSets/intoTheCosmos/intoTheCosmos.heroes';
-import { TURN_THE_SOUL_OF_ADAM_WARLOCK } from '../../../data/gameSets/intoTheCosmos/intoTheCosmos.schemes';
-import { GAME_SET as LEGENDARY } from '../../../data/gameSets/legendary';
-import { SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS } from '../../../data/gameSets/legendary/legendary.schemes';
-import { SKRULLS } from '../../../data/gameSets/legendary/legendary.villains';
-import { GAME_SET as MIDNIGHT_SONS } from '../../../data/gameSets/midnightSons';
-import { MIDNIGHT_MASSACRE } from '../../../data/gameSets/midnightSons/midnightSons.schemes';
-import { GAME_SET as SHIELD } from '../../../data/gameSets/shield';
-import { SHIELD_VS_HYDRA_WAR } from '../../../data/gameSets/shield/shield.schemes';
-import {
-  AIM_HYDRA_OFFSHOOT,
-  HYDRA_ELITE,
-} from '../../../data/gameSets/shield/shield.villains';
-import { GAME_SET as VILLAINS } from '../../../data/gameSets/villains';
-import { COPS } from '../../../data/gameSets/villains/villains.henchmen';
-import { CAGE_VILLAINS_IN_POWERSUPPRESSING_CELLS } from '../../../data/gameSets/villains/villains.schemes';
-import { GAME_SET as WWHULK } from '../../../data/gameSets/worldWarHulk';
-import { MUTATING_GAMMA_RAYS } from '../../../data/gameSets/worldWarHulk/worldWarHulk.schemes';
-import { MERCS_FOR_MONEY } from '../../../data/teams';
 import { StoreBuilder, StoreOfStores } from '../../../factories';
+import { TEST_GAME_SET_1, TEST_GAME_SET_2 } from '../../../testData/gameSets';
+import { TEST_HENCHMEN_1 } from '../../../testData/henchmen';
+import { TEST_HERO_1 } from '../../../testData/heroes';
+import {
+  TEST_HERO_IN_VILLAIN_DECK_SCHEME,
+  TEST_NORMAL_SCHEME,
+  TEST_REQUIRE_CARD_IN_DECK_SCHEME,
+  TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
+  TEST_REQUIRE_HENCHMEN_IN_ADDITIONAL_DECK,
+  TEST_REQUIRE_VILLAINS_IN_ADDITIONAL_DECK,
+} from '../../../testData/schemes';
+import { TEST_TEAM_1 } from '../../../testData/teams';
+import {
+  TEST_VILLAIN_1,
+  TEST_VILLAIN_2,
+  TEST_VILLAIN_3,
+  TEST_VILLAIN_4,
+} from '../../../testData/villains';
 import { Hero, VillainGroup } from '../../cards';
 import { IGameSetup } from '../../interfaces';
 import { DECK_TYPE } from '../../types';
@@ -56,13 +35,15 @@ describe('Require Henchmen', () => {
     let store: StoreOfStores;
 
     beforeAll(() => {
-      store = new StoreBuilder().withSingleGameset(DARK_CITY).build();
+      store = new StoreBuilder()
+        .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
+        .build();
     });
 
-    it('should include Maggia Goons in the villain deck', () => {
+    it('should include TEST_HENCHMEN_1 in the villain deck', () => {
       const scheme = new RequireCardInDeckScheme(
-        ORGANIZED_CRIME_WAVE,
-        new RequireCard(MAGGIA_GOONS),
+        TEST_REQUIRE_CARD_IN_DECK_SCHEME,
+        new RequireCard(TEST_HENCHMEN_1),
         new RequireHenchmen(),
         DECK_TYPE.villain
       );
@@ -72,7 +53,7 @@ describe('Require Henchmen', () => {
         store,
       });
 
-      expect(setup.villainDeck.henchmen).toContain(MAGGIA_GOONS);
+      expect(Array.from(setup.villainDeck.henchmen)).toContain(TEST_HENCHMEN_1);
     });
   });
 
@@ -80,19 +61,25 @@ describe('Require Henchmen', () => {
     let store: StoreOfStores;
 
     beforeAll(() => {
-      store = new StoreBuilder().withSingleGameset(VILLAINS).build();
+      store = new StoreBuilder()
+        .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
+        .build();
     });
 
-    it('should include Cops in the additional deck', () => {
+    it('should include TEST_HENCHMEN_1 in the additional deck', () => {
       const scheme = new RequireCardInDeckScheme(
-        CAGE_VILLAINS_IN_POWERSUPPRESSING_CELLS,
-        new RequireCard(COPS),
+        TEST_REQUIRE_HENCHMEN_IN_ADDITIONAL_DECK,
+        new RequireCard(TEST_HENCHMEN_1),
         new RequireHenchmen(),
         DECK_TYPE.additional
       );
       const setup = scheme.getSetup({ numPlayers: 2, store });
 
-      expect(setup.additionalDecks[0].deck.henchmen).toContain(COPS);
+      expect(setup.additionalDecks[0].deck.henchmen).toBeDefined();
+
+      expect(Array.from(setup.additionalDecks[0].deck.henchmen!)).toContain(
+        TEST_HENCHMEN_1
+      );
     });
   });
 });
@@ -103,23 +90,25 @@ describe('Require Hero', () => {
 
     beforeAll(() => {
       store = new StoreBuilder()
-        .withHeroGamesets(DARK_CITY, INTO_THE_COSMOS)
-        .withMastermindGamesets(DARK_CITY)
-        .withVillainGamesets(DARK_CITY, INTO_THE_COSMOS)
-        .withHenchmenGamesets(DARK_CITY)
+        .withHeroGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
+        .withMastermindGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
+        .withVillainGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
+        .withHenchmenGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
         .build();
     });
 
-    it('should include Adam Warlock in the additional deck', () => {
+    it('should include a Hero with "Foo" in their name in the additional deck', () => {
       const scheme = new RequireCardInDeckScheme(
-        TURN_THE_SOUL_OF_ADAM_WARLOCK,
-        new RequireCard(ADAM_WARLOCK),
+        TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
+        new RequireCardName('Foo'),
         new RequireHero(),
         DECK_TYPE.additional
       );
       const setup = scheme.getSetup({ numPlayers: 2, store });
 
-      expect(setup.additionalDecks[0].deck.heroes).toContain(ADAM_WARLOCK);
+      const heroes = Array.from(setup.additionalDecks[0].deck.heroes!);
+
+      expect(heroes.some((hero) => hero.name.includes('Foo'))).toBe(true);
     });
   });
 
@@ -127,19 +116,21 @@ describe('Require Hero', () => {
     let store: StoreOfStores;
 
     beforeAll(() => {
-      store = new StoreBuilder().withSingleGameset(DARK_CITY).build();
+      store = new StoreBuilder()
+        .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
+        .build();
     });
 
-    it('should include Jean Grey in the villain deck', () => {
+    it('should include TEST_HERO_1 in the villain deck', () => {
       const scheme = new RequireCardInDeckScheme(
-        TRANSFORM_CITIZENS_INTO_DEMONS,
-        new RequireCard(JEAN_GREY),
+        TEST_HERO_IN_VILLAIN_DECK_SCHEME,
+        new RequireCard(TEST_HERO_1),
         new RequireHero(),
         DECK_TYPE.villain
       );
       const setup = scheme.getSetup({ numPlayers: 2, store });
 
-      expect(setup.villainDeck.heroes).toContain(JEAN_GREY);
+      expect(Array.from(setup.villainDeck.heroes!)).toContain(TEST_HERO_1);
     });
   });
 });
@@ -150,14 +141,16 @@ describe('Require Hero Name', () => {
     let scheme: Scheme;
     let setup: IGameSetup;
 
-    const isHulk = (hero: Hero) => hero.name.toLowerCase().includes('hulk');
+    const isName = (hero: Hero) => hero.name.includes('Foo');
 
     beforeAll(() => {
-      store = new StoreBuilder().withSingleGameset(WWHULK).build();
+      store = new StoreBuilder()
+        .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
+        .build();
 
       scheme = new RequireCardInDeckScheme(
-        MUTATING_GAMMA_RAYS,
-        new RequireCardName('hulk'),
+        TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
+        new RequireCardName('Foo'),
         new RequireHero(),
         DECK_TYPE.additional
       );
@@ -165,23 +158,18 @@ describe('Require Hero Name', () => {
       setup = scheme.getSetup({ numPlayers: 2, store });
     });
 
-    it('should include 1 "Hulk" hero in the additional deck', () => {
+    it('should include 1 "Foo" hero in the additional deck', () => {
       expect(setup.additionalDecks).toHaveLength(1);
       expect(setup.additionalDecks[0].deck.heroes).toBeDefined();
       const hulkHeroes = Array.from(
         setup.additionalDecks[0].deck.heroes!
-      ).filter(isHulk);
+      ).filter(isName);
 
       expect(hulkHeroes).toHaveLength(1);
     });
 
-    it('should throw an error when no Hulks are available', () => {
-      store = new StoreBuilder()
-        .withHeroGamesets(DARK_CITY)
-        .withMastermindGamesets(WWHULK)
-        .withVillainGamesets(WWHULK)
-        .withHenchmenGamesets(WWHULK)
-        .build();
+    it('should throw an error when no "Foo" cards are available', () => {
+      store = new StoreBuilder().withAllFromGamesets(TEST_GAME_SET_1).build();
 
       expect(() => scheme.getSetup({ numPlayers: 3, store })).toThrow();
     });
@@ -192,20 +180,16 @@ describe('Require Hero Name', () => {
     let scheme: Scheme;
     let setup: IGameSetup;
 
-    const isDeadpool = (hero: Hero) =>
-      hero.name.toLowerCase().includes('deadpool');
+    const isName = (hero: Hero) => hero.name.includes('Bar');
 
     beforeAll(() => {
       store = new StoreBuilder()
-        .withHeroGamesets(DEADPOOL, LEGENDARY)
-        .withMastermindGamesets(DEADPOOL)
-        .withVillainGamesets(DEADPOOL)
-        .withHenchmenGamesets(LEGENDARY)
+        .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
         .build();
 
       scheme = new RequireCardInDeckScheme(
-        DEADPOOL_KILLS_THE_MARVEL_UNIVERSE,
-        new RequireCardName('deadpool', 1, true),
+        TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
+        new RequireCardName('Bar', 1, true),
         new RequireHero(),
         DECK_TYPE.hero
       );
@@ -213,69 +197,60 @@ describe('Require Hero Name', () => {
       setup = scheme.getSetup({ numPlayers: 2, store });
     });
 
-    it('should only include 1 Deadpool hero', () => {
-      const deadpoolHeroes = Array.from(setup.heroDeck.heroes).filter(
-        isDeadpool
-      );
+    it('should only include 1 "Bar" hero', () => {
+      const nameHeroes = Array.from(setup.heroDeck.heroes).filter(isName);
 
-      expect(deadpoolHeroes).toHaveLength(1);
+      expect(nameHeroes).toHaveLength(1);
     });
 
-    it('should not have any Deadpool heroes available in the store', () => {
-      const deadpoolHeroes = store.heroStore.availableCards.filter(isDeadpool);
+    it('should not have any "Bar" heroes available in the store', () => {
+      const nameHeroes = store.heroStore.availableCards.filter(isName);
 
-      expect(deadpoolHeroes).toHaveLength(0);
+      expect(nameHeroes).toHaveLength(0);
     });
 
-    it('should throw an error when no Deadpools are available', () => {
+    it('should throw an error when no cards are available with "Bar" in their name', () => {
       store = new StoreBuilder()
-        .withHeroGamesets(DARK_CITY)
-        .withMastermindGamesets(DEADPOOL)
-        .withVillainGamesets(DEADPOOL)
-        .withHenchmenGamesets(LEGENDARY)
+        .withHeroGamesets(TEST_GAME_SET_1)
+        .withMastermindGamesets(TEST_GAME_SET_1)
+        .withVillainGamesets(TEST_GAME_SET_1)
+        .withHenchmenGamesets(TEST_GAME_SET_1)
         .build();
 
       expect(() => scheme.getSetup({ numPlayers: 3, store })).toThrow();
     });
   });
 
-  describe('in Villain Deck Scheme', () => {
-    let store: StoreOfStores;
+  describe('in Villain Deck', () => {
     let scheme: Scheme;
-    let setup: IGameSetup;
 
-    const isBlade = (hero: Hero) => hero.name.toLowerCase().includes('blade');
+    const isName = (hero: Hero) => hero.name.includes('Foo');
 
     beforeAll(() => {
-      store = new StoreBuilder()
-        .withHeroGamesets(MIDNIGHT_SONS, DARK_CITY)
-        .withMastermindGamesets(DARK_CITY)
-        .withVillainGamesets(DARK_CITY)
-        .withHenchmenGamesets(DARK_CITY)
-        .build();
-
       scheme = new RequireCardInDeckScheme(
-        MIDNIGHT_MASSACRE,
-        new RequireCardName('blade'),
+        TEST_HERO_IN_VILLAIN_DECK_SCHEME,
+        new RequireCardName('Foo'),
         new RequireHero(),
         DECK_TYPE.villain
       );
-
-      setup = scheme.getSetup({ numPlayers: 2, store });
     });
 
-    it('should only include 1 Blade hero', () => {
+    it('should only include 1 "Foo" hero', () => {
+      const store = new StoreBuilder()
+        .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
+        .build();
+      const setup = scheme.getSetup({ numPlayers: 2, store });
       expect(setup.villainDeck.heroes).toBeDefined();
-      const blade = Array.from(setup.villainDeck.heroes!).filter(isBlade);
-      expect(blade).toHaveLength(1);
+      const name = Array.from(setup.villainDeck.heroes!).filter(isName);
+      expect(name).toHaveLength(1);
     });
 
-    it('should throw an error when no Blades are available', () => {
-      store = new StoreBuilder()
-        .withHeroGamesets(LEGENDARY)
-        .withMastermindGamesets(LEGENDARY)
-        .withVillainGamesets(LEGENDARY)
-        .withHenchmenGamesets(LEGENDARY)
+    it('should throw an error when no "Foo" heroes are available', () => {
+      const store = new StoreBuilder()
+        .withHeroGamesets(TEST_GAME_SET_1)
+        .withMastermindGamesets(TEST_GAME_SET_1)
+        .withVillainGamesets(TEST_GAME_SET_1)
+        .withHenchmenGamesets(TEST_GAME_SET_1)
         .build();
 
       expect(() => scheme.getSetup({ numPlayers: 3, store })).toThrow();
@@ -289,24 +264,21 @@ describe('Require Team', () => {
 
     beforeAll(() => {
       store = new StoreBuilder()
-        .withHeroGamesets(DEADPOOL, DARK_CITY)
-        .withMastermindGamesets(DARK_CITY)
-        .withVillainGamesets(DARK_CITY)
-        .withHenchmenGamesets(DARK_CITY)
+        .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
         .build();
     });
 
     it('should have at least 1 Merc for Money hero', () => {
       const scheme = new RequireCardInDeckScheme(
-        EVERYBODY_HATES_DEADPOOL,
-        new RequireTeam(MERCS_FOR_MONEY),
+        TEST_NORMAL_SCHEME,
+        new RequireTeam(TEST_TEAM_1),
         new RequireHero(),
         DECK_TYPE.hero
       );
       const setup = scheme.getSetup({ numPlayers: 2, store });
 
       const merc = Array.from(setup.heroDeck.heroes).filter(
-        (hero) => hero.team === MERCS_FOR_MONEY
+        (hero) => hero.team === TEST_TEAM_1
       );
       expect(merc.length).toBeGreaterThanOrEqual(1);
     });
@@ -319,25 +291,21 @@ describe('Require Villain Group', () => {
 
     beforeAll(() => {
       store = new StoreBuilder()
-        .withHeroGamesets(CHAMPIONS)
-        .withMastermindGamesets(CHAMPIONS)
-        .withVillainGamesets(LEGENDARY, CHAMPIONS)
-        .withHenchmenGamesets(LEGENDARY)
+        .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
         .build();
     });
 
-    it('should include Monsters Unleashed in the additional deck', () => {
+    it('should include TEST_VILLAIN_1 in the additional deck', () => {
       const scheme = new RequireCardInDeckScheme(
-        CLASH_OF_THE_MONSTERS_UNLEASHED,
-        new RequireCard(MONSTERS_UNLEASHED),
+        TEST_REQUIRE_VILLAINS_IN_ADDITIONAL_DECK,
+        new RequireCard(TEST_VILLAIN_1),
         new RequireVillainGroup(),
         DECK_TYPE.additional
       );
       const setup = scheme.getSetup({ numPlayers: 2, store });
 
-      expect(setup.additionalDecks[0].deck.villains).toContain(
-        MONSTERS_UNLEASHED
-      );
+      expect(setup.additionalDecks.length).toBeGreaterThan(0);
+      expect(setup.additionalDecks[0].deck.villains).toContain(TEST_VILLAIN_1);
     });
   });
 });
@@ -348,10 +316,7 @@ describe('Require Villains Groups', () => {
 
     beforeAll(() => {
       store = new StoreBuilder()
-        .withHeroGamesets(LEGENDARY)
-        .withMastermindGamesets(LEGENDARY)
-        .withVillainGamesets(LEGENDARY, GUARDIANS, SHIELD)
-        .withHenchmenGamesets(LEGENDARY)
+        .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
         .build();
     });
 
@@ -362,14 +327,14 @@ describe('Require Villains Groups', () => {
     describe('Secret invastion of the Skurll shapeshifters', () => {
       it('should include Skrulls in the villain deck', () => {
         const scheme = new RequireCardInDeckScheme(
-          SECRET_INVASION_OF_THE_SKRULL_SHAPESHIFTERS,
-          new RequireCard(SKRULLS),
+          TEST_NORMAL_SCHEME,
+          new RequireCard(TEST_VILLAIN_2),
           new RequireVillainGroup(),
           DECK_TYPE.villain
         );
         const setup = scheme.getSetup({ numPlayers: 2, store });
 
-        expect(setup.villainDeck.villains).toContain(SKRULLS);
+        expect(setup.villainDeck.villains).toContain(TEST_VILLAIN_2);
       });
     });
 
@@ -379,8 +344,8 @@ describe('Require Villains Groups', () => {
 
       beforeEach(() => {
         scheme = new RequireCardInDeckScheme(
-          THE_KREE_SKRULL_WAR,
-          new RequireCard(SKRULLS, 2, false, KREE_STARFORCE),
+          TEST_NORMAL_SCHEME,
+          new RequireCard(TEST_VILLAIN_1, 2, false, TEST_VILLAIN_2),
           new RequireVillainGroup(),
           DECK_TYPE.villain
         );
@@ -388,10 +353,10 @@ describe('Require Villains Groups', () => {
       });
 
       it('should include Skrulls in the villain deck', () =>
-        expect(setup.villainDeck.villains).toContain(SKRULLS));
+        expect(setup.villainDeck.villains).toContain(TEST_VILLAIN_1));
 
       it('should include Kree Starforce in the villain deck', () =>
-        expect(setup.villainDeck.villains).toContain(KREE_STARFORCE));
+        expect(setup.villainDeck.villains).toContain(TEST_VILLAIN_2));
     });
 
     describe('S.H.I.E.L.D. vs. HYDRA War', () => {
@@ -399,12 +364,12 @@ describe('Require Villains Groups', () => {
       let setup: IGameSetup;
 
       const shieldVillainPredicate = (item: VillainGroup) =>
-        [AIM_HYDRA_OFFSHOOT, HYDRA_ELITE].includes(item);
+        [TEST_VILLAIN_3, TEST_VILLAIN_4].includes(item);
 
       beforeEach(() => {
         scheme = new RequireCardInDeckScheme(
-          SHIELD_VS_HYDRA_WAR,
-          new RequireCard(HYDRA_ELITE, 1, true, AIM_HYDRA_OFFSHOOT),
+          TEST_NORMAL_SCHEME,
+          new RequireCard(TEST_VILLAIN_3, 1, true, TEST_VILLAIN_4),
           new RequireVillainGroup(),
           DECK_TYPE.villain
         );

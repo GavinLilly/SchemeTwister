@@ -1,0 +1,20 @@
+{
+  "name": "schemetwister-series-marvel-common",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/schemetwister-series-marvel-common/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/schemetwister-series-marvel-common/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

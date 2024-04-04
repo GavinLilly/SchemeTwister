@@ -1,3 +1,24 @@
+## [3.12.4](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.3...v3.12.4) (2024-04-04)
+
+
+### Bug Fixes
+
+* **app:** ensure footer text is visible ([e669fd2](https://github.com/GavinLilly/SchemeTwister/commit/e669fd264ede7d6a3682cf1bee2e4c249677f756))
+
+## [3.12.3](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.2...v3.12.3) (2024-04-03)
+
+
+### Bug Fixes
+
+* gameset fix and Angular 17 update ([027b191](https://github.com/GavinLilly/SchemeTwister/commit/027b19196672450d79c3619c05d930c52274fb3f))
+
+## [3.12.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.1...v3.12.2) (2024-03-29)
+
+
+### Bug Fixes
+
+* **gamesets:** add missing keyword text ([fd31cd2](https://github.com/GavinLilly/SchemeTwister/commit/fd31cd2c03dd12097175f6ec5797dc2169ee3d67))
+
 ## [3.12.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.0...v3.12.1) (2024-02-18)
 
 

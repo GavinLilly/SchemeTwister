@@ -76,10 +76,10 @@ export class RequireCardsInDeckScheme extends Scheme {
     const rules = this.rules[config.numPlayers];
 
     return requirements.requireCardType.createDeck(
-      deck,
       picked,
       rules,
-      deckType
+      deckType,
+      deck
     );
   }
 }
