@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { GameSets } from '@schemetwister/libtwister';
+import { mainline } from '@schemetwister/schemetwister-series-marvel';
 
 import { BadguyCardContentComponent } from '../badguy-card-content/badguy-card-content.component';
 import { BaseCardContentComponent } from '../base-card-content/base-card-content.component';
@@ -23,7 +23,7 @@ describe('HenchmenCardContentComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HenchmenCardContentComponent);
     component = fixture.componentInstance;
-    component.henchmen = GameSets.LEGENDARY.Henchmen.DOOMBOT_LEGION;
+    component.henchmen = mainline.LEGENDARY.Henchmen.DOOMBOT_LEGION;
     fixture.detectChanges();
   });
 

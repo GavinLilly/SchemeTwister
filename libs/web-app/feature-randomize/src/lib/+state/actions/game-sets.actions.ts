@@ -23,3 +23,12 @@ export const gameSetCheckerActions = createActionGroup({
     }),
   },
 });
+
+export const seriesSelectionActions = createActionGroup({
+  source: 'Series Set Selection',
+  events: {
+    'Add Series': props<{ seriesId: string }>(),
+    'Remove Series': props<{ seriesId: string }>(),
+    'Set Series': props<{ seriesIds: string[] }>(),
+  },
+});

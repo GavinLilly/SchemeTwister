@@ -1,19 +1,22 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { LEGENDARY } from '../data/gameSets';
+import * as uuid from 'uuid';
+
+import { TEST_GAME_SET_1 } from '../testData/gameSets';
 
 import { GameSet } from './GameSet';
 import { Bystander } from './cards';
+import { SeriesMeta } from './seriesMeta';
 import { GAME_SET_SIZE } from './types/gameSetSize.type';
-import { SERIES } from './types/series.type';
 
 describe('GameSet', () => {
   describe('sorter', () => {
+    const series = new SeriesMeta(uuid.v4(), 'Test Series', 'Test Series');
+
     const coreBox = new GameSet(
       {
-        id: 'core',
+        id: uuid.v4(),
         name: 'core',
         releaseYear: 1970,
-        series: SERIES.mainline,
+        series: series,
         size: GAME_SET_SIZE.core,
       },
       []
@@ -21,10 +24,10 @@ describe('GameSet', () => {
 
     const largeBox = new GameSet(
       {
-        id: 'large',
+        id: uuid.v4(),
         name: 'large',
         releaseYear: 1970,
-        series: SERIES.mainline,
+        series: series,
         size: GAME_SET_SIZE.large,
       },
       []
@@ -32,16 +35,16 @@ describe('GameSet', () => {
 
     const firstBox = new GameSet(
       {
-        id: 'First',
+        id: uuid.v4(),
         name: 'First',
         releaseYear: 1970,
-        series: SERIES.mainline,
+        series: series,
         size: GAME_SET_SIZE.large,
       },
       []
     );
 
-    it('should sort sort core boxes before big boxes', () => {
+    it('should sort core boxes before big boxes', () => {
       expect(GameSet.sorter(coreBox, largeBox)).toBe(-1);
       expect(GameSet.sorter(largeBox, coreBox)).toBe(1);
     });
@@ -60,26 +63,22 @@ describe('GameSet', () => {
 
   describe('getCards', () => {
     it('should return all cards', () => {
-      const cards = LEGENDARY.GAME_SET.getCards();
+      const cards = TEST_GAME_SET_1.getCards();
 
       expect(cards).toBeDefined();
       expect(cards).toBeInstanceOf(Array);
       expect(cards).toEqual(
-        expect.arrayContaining(LEGENDARY.GAME_SET.bystanders as Bystander[])
+        expect.arrayContaining(TEST_GAME_SET_1.bystanders as Bystander[])
       );
+      /* eslint-disable @typescript-eslint/no-non-null-assertion */
+      expect(cards).toEqual(expect.arrayContaining(TEST_GAME_SET_1.schemes!));
+      expect(cards).toEqual(expect.arrayContaining(TEST_GAME_SET_1.henchmen!));
+      expect(cards).toEqual(expect.arrayContaining(TEST_GAME_SET_1.heroes));
       expect(cards).toEqual(
-        expect.arrayContaining(LEGENDARY.GAME_SET.schemes!)
+        expect.arrayContaining(TEST_GAME_SET_1.masterminds!)
       );
-      expect(cards).toEqual(
-        expect.arrayContaining(LEGENDARY.GAME_SET.henchmen!)
-      );
-      expect(cards).toEqual(expect.arrayContaining(LEGENDARY.GAME_SET.heroes));
-      expect(cards).toEqual(
-        expect.arrayContaining(LEGENDARY.GAME_SET.masterminds!)
-      );
-      expect(cards).toEqual(
-        expect.arrayContaining(LEGENDARY.GAME_SET.villains!)
-      );
+      expect(cards).toEqual(expect.arrayContaining(TEST_GAME_SET_1.villains!));
+      /* eslint-enable @typescript-eslint/no-non-null-assertion */
     });
   });
 });

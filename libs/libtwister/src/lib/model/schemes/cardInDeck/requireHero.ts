@@ -13,10 +13,10 @@ import { IRequireCardTypeBehaviour } from './requireCardTypeBehaviour.interface'
 
 export class RequireHero implements IRequireCardTypeBehaviour<Hero> {
   createDeck(
-    deck: HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal = {},
     cards: Hero[],
     rules: INumPlayerRules,
-    deckType: DeckType
+    deckType: DeckType,
+    deck: HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal = {}
   ): HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal {
     let numHeroes: number | undefined;
 
@@ -30,7 +30,7 @@ export class RequireHero implements IRequireCardTypeBehaviour<Hero> {
       numHeroes = rules.additionalDeck
         .map((deck) => deck.deck?.numHeroes)
         .filter((numHeroes): numHeroes is number => !!numHeroes)
-        .reduce((prev, curr) => prev + curr);
+        .reduce((prev, curr) => prev + curr, 0);
     } else {
       numHeroes = rules.heroDeck.numHeroes;
     }

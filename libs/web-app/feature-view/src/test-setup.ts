@@ -9,6 +9,7 @@ import {
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 Object.assign(global, { TextDecoder, TextEncoder });
+
 getTestBed().resetTestEnvironment();
 getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,

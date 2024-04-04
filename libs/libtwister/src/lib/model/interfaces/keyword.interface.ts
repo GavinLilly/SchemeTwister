@@ -1,7 +1,5 @@
-import { KeywordName } from '../../data/enums/keywordName.enum';
-
 export interface IKeyword {
-  name: KeywordName;
+  name: string;
   description: string;
   id: string;
 }

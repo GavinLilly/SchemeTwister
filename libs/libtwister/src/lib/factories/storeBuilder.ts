@@ -56,13 +56,14 @@ export class StoreBuilder implements StepA, StepB, StepC, StepD, Build {
     return this;
   }
 
-  withSingleGameset(gameset: GameSet): Build {
-    this._heroGamesets.push(gameset);
-    this._villainGamesets.push(gameset);
-    this._mastermindGamesets.push(gameset);
-    this._henchmenGamesets.push(gameset);
-    return this;
-  }
+  withAllFromGamesets = (
+    gameset: GameSet,
+    ...otherGamesets: GameSet[]
+  ): Build =>
+    this.withHeroGamesets(gameset, ...otherGamesets)
+      .withMastermindGamesets(gameset, ...otherGamesets)
+      .withVillainGamesets(gameset, ...otherGamesets)
+      .withHenchmenGamesets(gameset, ...otherGamesets);
 
   build(): StoreOfStores {
     const heroes: Hero[] = this._heroGamesets.flatMap(

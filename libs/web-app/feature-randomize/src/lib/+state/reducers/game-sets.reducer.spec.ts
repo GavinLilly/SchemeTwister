@@ -1,4 +1,4 @@
-import { GameSets } from '@schemetwister/libtwister';
+import { mainline } from '@schemetwister/schemetwister-series-marvel';
 
 import { gameSetSelectionActions } from '../actions/game-sets.actions';
 
@@ -10,7 +10,7 @@ describe('GameSets Reducer', () => {
       const result = gameSetsReducer(
         undefined,
         gameSetSelectionActions.setGameSets({
-          gameSetIds: [GameSets.LEGENDARY.GAME_SET.id],
+          gameSetIds: [mainline.LEGENDARY.GAME_SET.id],
         })
       );
 

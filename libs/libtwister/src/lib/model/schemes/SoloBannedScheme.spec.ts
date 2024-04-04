@@ -1,6 +1,6 @@
-import { GAME_SET as LEGENDARY } from '../../data/gameSets/legendary/legendary.gameset';
-import { NEGATIVE_ZONE_PRISON_BREAKOUT } from '../../data/gameSets/legendary/legendary.schemes';
 import { StoreBuilder, StoreOfStores } from '../../factories';
+import { TEST_GAME_SET_1 } from '../../testData/gameSets';
+import { TEST_SOLO_BANNED_SCHEME } from '../../testData/schemes';
 import { SinglePlayerError } from '../errors/SinglePlayerError';
 import { NumPlayers } from '../types/numPlayers.type';
 
@@ -10,7 +10,7 @@ describe('Solo Banned Scheme', () => {
   let store: StoreOfStores;
 
   beforeAll(() => {
-    store = new StoreBuilder().withSingleGameset(LEGENDARY).build();
+    store = new StoreBuilder().withAllFromGamesets(TEST_GAME_SET_1).build();
   });
 
   beforeEach(() => store.reset());
@@ -19,7 +19,7 @@ describe('Solo Banned Scheme', () => {
     it('should throw an error for 1 player', () => {
       expect.assertions(1);
 
-      const scheme = new SoloBannedScheme(NEGATIVE_ZONE_PRISON_BREAKOUT);
+      const scheme = new SoloBannedScheme(TEST_SOLO_BANNED_SCHEME);
       try {
         scheme.getSetup({ numPlayers: 1, store });
       } catch (e) {
@@ -28,7 +28,7 @@ describe('Solo Banned Scheme', () => {
     });
 
     it.each([2, 3, 4, 5])('should generate a setup for %p players', (arg) => {
-      const scheme2 = new SoloBannedScheme(NEGATIVE_ZONE_PRISON_BREAKOUT);
+      const scheme2 = new SoloBannedScheme(TEST_SOLO_BANNED_SCHEME);
       expect(
         scheme2.getSetup({ numPlayers: arg as NumPlayers, store })
       ).toBeTruthy();

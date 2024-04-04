@@ -11,13 +11,20 @@
     </a>
   </div>
   <div class="card-body p-0" *ngIf="mastermind() as mastermind">
-    <ngb-accordion>
-      <ngb-panel cardClass="mastermind" title="{{ mastermind.name }}">
-        <ng-template ngbPanelContent>
-          <schemetwister-mastermind-card-content [mastermind]="mastermind">
-          </schemetwister-mastermind-card-content>
-        </ng-template>
-      </ngb-panel>
-    </ngb-accordion>
+    <div ngbAccordion>
+      <div ngbAccordionItem class="mastermind">
+        <h2 ngbAccordionHeader>
+          <button ngbAccordionButton>{{ mastermind.name }}</button>
+        </h2>
+        <div ngbAccordionCollapse>
+          <div ngbAccordionBody>
+            <ng-template ngbPanelContent>
+              <schemetwister-mastermind-card-content [mastermind]="mastermind">
+              </schemetwister-mastermind-card-content>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

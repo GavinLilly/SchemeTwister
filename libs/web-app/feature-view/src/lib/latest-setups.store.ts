@@ -16,8 +16,6 @@ const initialState: LatestSetupsStoreState = {
   numSetupsToGet: 10,
 };
 
-export const FIRESTORE_COLLECTION_TOKEN = 'FireStoreCollection';
-
 @Injectable()
 export class LatestSetupsStore extends ComponentStore<LatestSetupsStoreState> {
   constructor(private _storedSetupsService: StoredSetupsService) {

@@ -6,7 +6,16 @@ const configuration: UserConfig = {
     'scope-enum': [
       RuleConfigSeverity.Error,
       'always',
-      ['docs', 'app', 'misc', 'libtwister', 'deps', 'deps-dev', '*'],
+      [
+        'app',
+        'libtwister',
+        'gamesets',
+        'deps',
+        'deps-dev',
+        'misc',
+        'docs',
+        '*',
+      ],
     ],
     'type-enum': [
       RuleConfigSeverity.Error,
@@ -28,7 +37,10 @@ const configuration: UserConfig = {
       ],
     ],
   },
-  ignores: [(commit) => commit.includes('skip-ci')],
+  ignores: [
+    (commit) => commit.includes('skip-ci'),
+    (commit) => /^Bumps \[.+]\(.+\) from .+ to .+\.$/m.test(commit),
+  ],
 };
 
 module.exports = configuration;

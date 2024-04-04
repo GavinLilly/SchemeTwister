@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { GameSets } from '@schemetwister/libtwister';
+import { mainline } from '@schemetwister/schemetwister-series-marvel';
 
 import { BaseCardContentComponent } from '../base-card-content/base-card-content.component';
 
@@ -21,7 +21,7 @@ describe('VillaingroupCardContentComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(VillaingroupCardContentComponent);
     component = fixture.componentInstance;
-    component.villaingroup = GameSets.LEGENDARY.Villains.BROTHERHOOD;
+    component.villaingroup = mainline.LEGENDARY.Villains.BROTHERHOOD;
     fixture.detectChanges();
   });
 

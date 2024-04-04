@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { IStoredGameSetup } from './storedGameSetup.interface';
 
-const FIRESTORE_COLLECTION_TOKEN = 'FireStoreCollection';
+export const FIRESTORE_COLLECTION_TOKEN = 'FireStoreCollection';
 
 @Injectable()
 export class StoredSetupsService {
@@ -14,11 +14,8 @@ export class StoredSetupsService {
     @Inject(FIRESTORE_COLLECTION_TOKEN) private _collectionName: string
   ) {}
 
-  public getSetupDocument(uid: string) {
-    return this._firestore
-      .doc<IStoredGameSetup>(`${this._collectionName}/${uid}`)
-      .get();
-  }
+  public getSetupDocument = (uid: string) =>
+    this._firestore.doc<IStoredGameSetup>(`${this._collectionName}/${uid}`);
 
   public getLatestSetups(count = 10): Observable<IStoredGameSetup[]> {
     return this._firestore
