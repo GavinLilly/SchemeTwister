@@ -45,6 +45,7 @@ module.exports = {
     { name: 'deps-dev' },
     { name: 'misc' },
     { name: 'docs' },
+    { name: 'release' },
     { name: '*' },
   ],
 };
