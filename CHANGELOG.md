@@ -1,3 +1,10 @@
+## [3.12.6](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.5...v3.12.6) (2024-04-04)
+
+
+### Dependencies
+
+* **deps:** bump express from 4.18.2 to 4.19.2 ([07501a6](https://github.com/GavinLilly/SchemeTwister/commit/07501a6d215c5c200d0e2be9e2451d374001a068))
+
 ## [3.12.5](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.4...v3.12.5) (2024-04-04)
 
 
