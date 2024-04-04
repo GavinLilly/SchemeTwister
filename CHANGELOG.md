@@ -1,3 +1,10 @@
+## [3.12.4](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.3...v3.12.4) (2024-04-04)
+
+
+### Bug Fixes
+
+* **app:** ensure footer text is visible ([e669fd2](https://github.com/GavinLilly/SchemeTwister/commit/e669fd264ede7d6a3682cf1bee2e4c249677f756))
+
 ## [3.12.3](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.2...v3.12.3) (2024-04-03)
 
 
