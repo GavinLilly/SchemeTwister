@@ -1,23 +1,43 @@
 import { Injectable } from '@angular/core';
-import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
-import { filter, tap } from 'rxjs/operators';
+import { SwUpdate } from '@angular/service-worker';
 
 @Injectable()
 export class UpdateService {
-  constructor(private _updates: SwUpdate) {
-    if (this._updates.isEnabled) {
+  private static readonly _reloadTimeout = 5;
+
+  constructor(_updates: SwUpdate) {
+    if (_updates.isEnabled) {
       console.log(
-        'Updates enabled. Will reload when an a new SchemeTwister version is available'
-      );
-      _updates.versionUpdates.pipe(
-        filter((evt): evt is VersionReadyEvent => evt.type === 'VERSION_READY'),
-        tap(() => this._promptUser())
+        'Updates enabled. Will reload when a new SchemeTwister version is available'
       );
     }
-  }
 
-  private _promptUser(): void {
-    console.log('Updating to new version');
-    this._updates.activateUpdate().then(() => document.location.reload());
+    _updates.versionUpdates.subscribe((evt) => {
+      switch (evt.type) {
+        case 'VERSION_DETECTED':
+          console.log(`Downloading new app version: ${evt.version.hash}`);
+          break;
+        case 'VERSION_READY':
+          console.log(`Current app version: ${evt.currentVersion.hash}`);
+          console.log(
+            `New app version ready for use: ${evt.latestVersion.hash}`
+          );
+          console.log(`Reloading in ${UpdateService._reloadTimeout} seconds`);
+          setTimeout(
+            () => window.location.reload(),
+            UpdateService._reloadTimeout * 1000
+          );
+          break;
+        case 'VERSION_INSTALLATION_FAILED':
+          console.log(
+            `Failed to install app version '${evt.version.hash}': ${evt.error}`
+          );
+          break;
+        case 'NO_NEW_VERSION_DETECTED':
+          console.log(
+            `No new version detected. Will remain on the current version: ${evt.version.hash}`
+          );
+      }
+    });
   }
 }
