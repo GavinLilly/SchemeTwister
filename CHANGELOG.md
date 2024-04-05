@@ -1,3 +1,10 @@
+## [3.12.7](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.6...v3.12.7) (2024-04-05)
+
+
+### Bug Fixes
+
+* **app:** log update information to console ([1c6b26e](https://github.com/GavinLilly/SchemeTwister/commit/1c6b26ed91a9b387f702a6213371e6ab6aba9959))
+
 ## [3.12.6](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.5...v3.12.6) (2024-04-04)
 
 
