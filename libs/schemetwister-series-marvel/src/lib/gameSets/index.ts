@@ -1,3 +1,4 @@
+export * as TWENTY_NINETY_NINE from './2099';
 export * as ANNIHILATION from './annihilation';
 export * as ANT_MAN from './antMan';
 export * as BLACK_PANTHER from './blackPanther';

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import {
   Mastermind,
-  MultiMastermind,
+  AdaptingMastermind,
   TransformingMastermind,
 } from '@schemetwister/libtwister';
 
@@ -11,10 +11,13 @@ import {
   styleUrls: ['./mastermind-card-content.component.scss'],
 })
 export class MastermindCardContentComponent {
-  @Input() mastermind!: Mastermind | TransformingMastermind | MultiMastermind;
+  @Input() mastermind!:
+    | Mastermind
+    | TransformingMastermind
+    | AdaptingMastermind;
 
-  isMulti(t: Mastermind): t is MultiMastermind {
-    return t instanceof MultiMastermind;
+  isAdapting(t: Mastermind): t is AdaptingMastermind {
+    return t instanceof AdaptingMastermind;
   }
 
   isTransforming(t: Mastermind): t is TransformingMastermind {

@@ -2,4 +2,4 @@ import { seriesTest } from '@schemetwister/libtwister/testing';
 
 import { marvelSeries } from './marvel.series';
 
-seriesTest(marvelSeries, 1, 6, 3, 19, 1);
+seriesTest(marvelSeries, 1, 6, 3, 20, 1);

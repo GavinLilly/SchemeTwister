@@ -1,15 +1,15 @@
 import { IMastermind, Mastermind } from './mastermind';
 import { MultiMastermindConfig } from './multiMastermindConfig.type';
 
-type MultiMastermindWithFight = MultiMastermindConfig & { fight: string };
+type AdaptingMastermindWithFight = MultiMastermindConfig & { fight: string };
 
-export class MultiMastermind extends Mastermind {
+export class AdaptingMastermind extends Mastermind {
   constructor(
     masterConfig: Omit<IMastermind, 'masterStrike'>,
-    private readonly _mastermind1Config: MultiMastermindWithFight,
-    private readonly _mastermind2Config: MultiMastermindWithFight,
-    private readonly _mastermind3Config: MultiMastermindWithFight,
-    private readonly _mastermind4Config: MultiMastermindWithFight
+    private readonly _mastermind1Config: AdaptingMastermindWithFight,
+    private readonly _mastermind2Config: AdaptingMastermindWithFight,
+    private readonly _mastermind3Config: AdaptingMastermindWithFight,
+    private readonly _mastermind4Config: AdaptingMastermindWithFight
   ) {
     super({ ...masterConfig, masterStrike: '' });
   }

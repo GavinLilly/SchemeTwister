@@ -38,6 +38,8 @@ export class SeriesMeta {
       twist: 'Twist',
       villain: 'Villain',
       wound: 'Wound',
+      purchase: 'Purchase',
+      attack: 'Attack',
       ...nomenclature,
     };
   }

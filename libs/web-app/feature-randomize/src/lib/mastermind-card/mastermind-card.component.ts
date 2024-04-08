@@ -6,7 +6,7 @@ import {
   Mastermind,
   CARD_TYPE,
   TransformingMastermind,
-  MultiMastermind,
+  AdaptingMastermind,
 } from '@schemetwister/libtwister';
 
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
@@ -16,7 +16,7 @@ import {
 } from '../+state/selectors/game-setup-scheme.selectors';
 import { SchemeMastermindSelectComponent } from '../scheme-mastermind-select/scheme-mastermind-select.component';
 
-type MastermindType = Mastermind | TransformingMastermind | MultiMastermind;
+type MastermindType = Mastermind | TransformingMastermind | AdaptingMastermind;
 @Component({
   selector: 'schemetwister-mastermind-card',
   templateUrl: './mastermind-card.component.html',
