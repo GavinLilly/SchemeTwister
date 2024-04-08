@@ -1,3 +1,10 @@
+## [3.13.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.13.0...v3.13.1) (2024-04-08)
+
+
+### Bug Fixes
+
+* **app:** don't wait to reload on new app version ([73effdb](https://github.com/GavinLilly/SchemeTwister/commit/73effdb345fa74f802a2253ca644f9d578d246f7))
+
 ## [3.13.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.7...v3.13.0) (2024-04-08)
 
 
