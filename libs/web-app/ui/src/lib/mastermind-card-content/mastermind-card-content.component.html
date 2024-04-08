@@ -6,25 +6,25 @@
   <ul *ngFor="let item of mastermind.alwaysLeads">
     <li>{{ item.name }}</li>
   </ul>
-  <div *ngIf="isMulti(mastermind); else elseBlock">
+  <div *ngIf="isAdapting(mastermind); else elseBlock">
     <p><b>Victory Points: </b>{{ mastermind.victoryPoints }}</p>
-    <div *ngFor="let multiMastermind of mastermind.masterminds">
+    <div *ngFor="let adaptingMastermind of mastermind.masterminds">
       <hr />
-      <h5>{{ multiMastermind.name }}</h5>
-      <p *ngIf="multiMastermind.startOfGame">
-        <b>Start of game: </b>{{ multiMastermind.startOfGame }}
+      <h5>{{ adaptingMastermind.name }}</h5>
+      <p *ngIf="adaptingMastermind.startOfGame">
+        <b>Start of game: </b>{{ adaptingMastermind.startOfGame }}
       </p>
-      <p><b>Master Strike: </b>{{ multiMastermind.masterStrike }}</p>
-      <p *ngIf="multiMastermind.mastermindWins">
-        <b>Mastermind wins: </b>{{ multiMastermind.mastermindWins }}
+      <p><b>Master Strike: </b>{{ adaptingMastermind.masterStrike }}</p>
+      <p *ngIf="adaptingMastermind.mastermindWins">
+        <b>Mastermind wins: </b>{{ adaptingMastermind.mastermindWins }}
       </p>
-      <p *ngIf="multiMastermind.escape">
-        <b>Escape: </b>{{ multiMastermind.escape }}
+      <p *ngIf="adaptingMastermind.escape">
+        <b>Escape: </b>{{ adaptingMastermind.escape }}
       </p>
-      <p *ngIf="multiMastermind.finishThePrey">
-        <b>Finish the Prey: </b>{{ multiMastermind.finishThePrey }}
+      <p *ngIf="adaptingMastermind.finishThePrey">
+        <b>Finish the Prey: </b>{{ adaptingMastermind.finishThePrey }}
       </p>
-      <p><b>Attack Points: </b>{{ multiMastermind.attackPoints }}</p>
+      <p><b>Attack Points: </b>{{ adaptingMastermind.attackPoints }}</p>
     </div>
   </div>
 

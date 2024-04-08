@@ -2,7 +2,7 @@ import {
   EpicMastermind,
   Mastermind,
   MastermindWithEpic,
-  MultiMastermind,
+  AdaptingMastermind,
   TransformingMastermind,
 } from '../model/cards/mastermind';
 import { randomize } from '../utils/randomize';
@@ -13,7 +13,7 @@ import { CardStore } from './cardStore';
 export type MastermindType =
   | Mastermind
   | TransformingMastermind
-  | MultiMastermind
+  | AdaptingMastermind
   | MastermindWithEpic;
 
 /**

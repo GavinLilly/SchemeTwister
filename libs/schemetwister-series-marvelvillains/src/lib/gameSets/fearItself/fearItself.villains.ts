@@ -1,6 +1,6 @@
 import { VillainGroup } from '@schemetwister/libtwister';
+import { URU_ENCHANTED_WEAPONS } from '@schemetwister/schemetwister-series-marvel-common';
 
-import { URU_ENCHANTED_WEAPONS } from './fearItself.keywords';
 import { META } from './fearItself.meta';
 
 export const THE_MIGHTY = new VillainGroup({

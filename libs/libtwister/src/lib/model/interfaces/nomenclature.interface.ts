@@ -13,4 +13,6 @@ export interface INomenclature {
   twist: string;
   villain: string | IPlural;
   wound: string;
+  purchase: string;
+  attack: string;
 }

@@ -1,10 +1,10 @@
-import { MultiMastermind, HeroClass } from '@schemetwister/libtwister';
+import { AdaptingMastermind, HeroClass } from '@schemetwister/libtwister';
 
 import { ADAPT, HYDRA_LEVEL } from './shield.keywords';
 import { META } from './shield.meta';
 import { AIM_HYDRA_OFFSHOOT, HYDRA_ELITE } from './shield.villains';
 
-export const HYDRA_HIGH_COUNCIL = new MultiMastermind(
+export const HYDRA_HIGH_COUNCIL = new AdaptingMastermind(
   {
     id: '93764f78-07cf-42ff-8458-2b4832985107',
     name: 'Hydra High Council',
@@ -50,7 +50,7 @@ export const HYDRA_HIGH_COUNCIL = new MultiMastermind(
   }
 );
 
-export const HYDRA_SUPER_ADAPTOID = new MultiMastermind(
+export const HYDRA_SUPER_ADAPTOID = new AdaptingMastermind(
   {
     id: 'ae671cab-2112-47e9-8349-1704dc4052d7',
     name: 'Hydra Super-Adaptoid',

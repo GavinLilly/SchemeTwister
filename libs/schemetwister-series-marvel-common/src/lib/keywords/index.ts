@@ -12,5 +12,6 @@ export { PHASING } from './phasing.keyword';
 export { RISE_OF_THE_LIVING_DEAD } from './riseOfTheLivingDead.keyword';
 export { SIZE_CHANGING } from './sizeChanging.keyword';
 export { THROWN_ARTIFACT } from './thrownArtifact.keyword';
+export { URU_ENCHANTED_WEAPONS } from './uruEnchantedWeapons.keywords';
 export { VILLAINOUS_WEAPONS } from './villainousWeapons.keyword';
 export { WALL_CRAWL } from './wallCrawl.keyword';
