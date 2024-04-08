@@ -1,3 +1,15 @@
+## [3.13.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.7...v3.13.0) (2024-04-08)
+
+
+### Features
+
+* add 2099 game set ([087f026](https://github.com/GavinLilly/SchemeTwister/commit/087f026fff6c247fe976d27396ce9a99d5dfa820))
+
+
+### Bug Fixes
+
+* **app:** remove duplicate keyword line ([2b433c0](https://github.com/GavinLilly/SchemeTwister/commit/2b433c079bafcca8042ca4e915cf6f51e87a3113))
+
 ## [3.12.7](https://github.com/GavinLilly/SchemeTwister/compare/v3.12.6...v3.12.7) (2024-04-05)
 
 
