@@ -5,13 +5,33 @@ import {
   GameSet,
   GAME_SET_SIZE,
   GameSetup,
-  NumPlayers,
   SchemeMinusRules,
   GameSetMap,
+  NumPlayers,
+  HeroDeckMinimal,
+  VillainDeckMinimal,
+  AdditionalDeckDeckMinimal,
 } from './model';
 import { Hero, Henchmen, Mastermind, VillainGroup } from './model/cards';
 import { ISeries } from './model/interfaces/series.interface';
 import instantiateScheme from './utils/instantiateScheme';
+
+export interface ISetupConfig {
+  /** The number of players to build the setup for */
+  numPlayers: NumPlayers;
+  /** The scheme to setup with */
+  scheme?: SchemeMinusRules;
+  /** The mastermind to inject into this setup */
+  mastermind?: Mastermind;
+  /** If the number of players is 1, whether to enable the advance solo mode (harder gameplay) */
+  advancedSolo?: boolean;
+  /** A hero deck to start the setup from */
+  partialHeroDeck?: HeroDeckMinimal;
+  /** A villain deck to start the setup from */
+  partialVillainDeck?: VillainDeckMinimal;
+  /** An additional deck to start the setup from */
+  partialAdditionalDeck?: AdditionalDeckDeckMinimal;
+}
 
 /**
  * A class to store which game sets are available and have been selected along
@@ -143,29 +163,19 @@ export class LibTwister {
 
   /**
    * Sets up a game with the given parameters
-   * @param numPlayers the number of players to set up for. Must be between 1 and 5
-   * @param scheme the scheme to set up for. If not provided then a random one will be used
-   * @param mastermind the mastermind to set up for. If not provided then a random one will be used
-   * @param advancedSolo if it is being set up for 1 player mode then this will enable "Advanced Solo"
+   * @param config the configuration to use to create a setup
    * @returns a promise of a GameSetup
    */
-  public getSetup(
-    numPlayers: NumPlayers,
-    scheme = this.schemeFactory.getRandom(),
-    mastermind = this.stores.mastermindStore.getRandom(),
-    advancedSolo = false
-  ): GameSetup {
+  public getSetup(config: ISetupConfig): GameSetup {
     this._stores.reset();
 
-    const createdScheme = instantiateScheme(scheme);
-
-    this._stores.mastermindStore.removeCard(mastermind);
+    const createdScheme = instantiateScheme(
+      config.scheme ?? this.schemeFactory.getRandom()
+    );
 
     const setup = createdScheme.getSetup({
-      numPlayers,
-      selectedMastermind: mastermind,
+      ...config,
       store: this.stores,
-      advancedSolo,
     });
 
     return new GameSetup(setup);

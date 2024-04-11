@@ -1,12 +1,16 @@
+import { StoreOfStores } from '../../../factories';
 import { AbstractCardGroup } from '../../cards/abstractCardGroup';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
-  IGameSetup,
+  IAdditionalDeckDeck,
+  IHeroDeck,
+  INumPlayerRules,
+  IVillainDeck,
   VillainDeckMinimal,
 } from '../../interfaces';
 import { DECK_TYPE, DeckType, SchemeMinusRules } from '../../types';
-import { IGetSetupConfig, Scheme } from '../Scheme';
+import { Scheme } from '../Scheme';
 
 import { IRequireCardBehaviour } from './requireCardBehaviour.interface';
 import { IRequireCardTypeBehaviour } from './requireCardTypeBehaviour.interface';
@@ -30,50 +34,72 @@ export class RequireCardsInDeckScheme extends Scheme {
     super(scheme);
   }
 
-  public override getSetup(config: IGetSetupConfig): IGameSetup {
+  protected override initialiseHeroDeck(
+    rules: Readonly<INumPlayerRules>,
+    store: Readonly<StoreOfStores>,
+    numPlayers: number
+  ): IHeroDeck {
     if (this._config.heroDeckRequirements !== undefined) {
-      config.partialHeroDeck = this._setDeckRequirement(
+      return this._setDeckRequirement(
         this._config.heroDeckRequirements,
-        config,
-        DECK_TYPE.hero,
-        config.partialHeroDeck
-      );
+        store,
+        rules,
+        DECK_TYPE.hero
+      ) as IHeroDeck;
     }
+
+    return super.initialiseHeroDeck(rules, store, numPlayers);
+  }
+
+  protected override initialiseVillainDeck(
+    rules: Readonly<INumPlayerRules>,
+    store: Readonly<StoreOfStores>
+  ): IVillainDeck {
+    const emptyDeck = super.initialiseVillainDeck(rules, store);
 
     if (this._config.villainDeckRequirements !== undefined) {
-      config.partialVillainDeck = this._setDeckRequirement(
-        this._config.villainDeckRequirements,
-        config,
-        DECK_TYPE.villain,
-        config.partialVillainDeck
-      );
+      return {
+        ...emptyDeck,
+        ...this._setDeckRequirement(
+          this._config.villainDeckRequirements,
+          store,
+          rules,
+          DECK_TYPE.villain
+        ),
+      };
     }
 
+    return emptyDeck;
+  }
+
+  protected initialiseAdditionalDecks(
+    rules: Readonly<INumPlayerRules>,
+    store: Readonly<StoreOfStores>
+  ): IAdditionalDeckDeck | undefined {
     if (this._config.additionalDeckRequirements !== undefined) {
-      config.partialAdditionalDeck = this._setDeckRequirement(
+      return this._setDeckRequirement(
         this._config.additionalDeckRequirements,
-        config,
-        DECK_TYPE.additional,
-        config.partialAdditionalDeck
+        store,
+        rules,
+        DECK_TYPE.additional
       );
     }
 
-    return super.getSetup(config);
+    return super.initialiseAdditionalDecks(rules, store);
   }
 
   private _setDeckRequirement(
     requirements: IDeckRequirements<AbstractCardGroup>,
-    config: IGetSetupConfig,
+    store: Readonly<StoreOfStores>,
+    rules: Readonly<INumPlayerRules>,
     deckType: DeckType,
     deck?: HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal
   ) {
-    const applicableStore = requirements.requireCardType.getStore(config.store);
+    const applicableStore = requirements.requireCardType.getStore(store);
     const cards = requirements.requireCard.getRequiredCard(applicableStore);
 
     const cardsAsArray = cards instanceof Array ? cards : [cards];
     const picked = cardsAsArray.map((card) => applicableStore.pickOne(card));
-
-    const rules = this.rules[config.numPlayers];
 
     return requirements.requireCardType.createDeck(
       picked,

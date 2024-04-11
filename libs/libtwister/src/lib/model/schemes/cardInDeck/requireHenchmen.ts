@@ -38,7 +38,7 @@ export class RequireHenchmen implements IRequireCardTypeBehaviour<Henchmen> {
     const extra = cards.length > 1 ? cards.slice(1) : [];
 
     deck.henchmen = Scheme.addToDeck(
-      deck.henchmen ?? new Set(),
+      deck.henchmen ?? [],
       cards[0],
       numHenchmen,
       ...extra

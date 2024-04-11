@@ -46,7 +46,8 @@ $container-max-widths: (
 }
 
 #hero-team {
-  height: 32px;
+  height: 24px;
+  width: 24px;
 }
 
 .accordion-header,
@@ -54,4 +55,24 @@ $container-max-widths: (
 .card-header {
   font-family: Bangers, sans-serif;
   font-size: 1.05rem;
+}
+
+.lock-icon {
+  z-index: 1000;
+  position: absolute;
+  right: 3.5rem;
+}
+
+.locked {
+  color: black;
+  padding-right: 4.2px;
+}
+
+.unlocked {
+  color: lightslategray;
+}
+
+.lock-block {
+  cursor: pointer;
+  display: contents;
 }

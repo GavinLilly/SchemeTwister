@@ -5,9 +5,9 @@ import {
   RequireCard,
   RequireVillainGroup,
   DECK_TYPE,
-  IGetSetupConfig,
   IGameSetup,
   numPlayers as numPlayersCount,
+  ISetupConfigWithStore,
 } from '@schemetwister/libtwister';
 
 /**
@@ -26,8 +26,8 @@ export class RitualSacrificeToSummonChthonScheme extends RequireCardInDeckScheme
     );
   }
 
-  public override getSetup(config: IGetSetupConfig): IGameSetup {
-    if (config.selectedMastermind?.name.includes('Lilith')) {
+  public override getSetup(config: ISetupConfigWithStore): IGameSetup {
+    if (config.mastermind?.name.includes('Lilith')) {
       numPlayersCount.forEach(
         (num) => (this.rules[num].villainDeck.numTwists = 1)
       );

@@ -12,8 +12,7 @@ describe('MastermindCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FontAwesomeModule, NgbAccordionModule],
-      declarations: [MastermindCardComponent],
+      imports: [FontAwesomeModule, NgbAccordionModule, MastermindCardComponent],
       providers: [
         provideMockStore({
           initialState: {

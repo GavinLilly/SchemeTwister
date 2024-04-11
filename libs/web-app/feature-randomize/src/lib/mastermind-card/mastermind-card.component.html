@@ -1,11 +1,7 @@
 <div class="card">
   <div class="card-header d-flex align-items-center justify-content-between">
     Mastermind
-    <fa-icon
-      *ngIf="mastermindLocked()"
-      [icon]="faLock"
-      class="ml-auto lock-item"
-    ></fa-icon>
+
     <a (click)="pickMastermind()" href="javascript:void(0)" class="text-black">
       <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
     </a>
@@ -14,7 +10,32 @@
     <div ngbAccordion>
       <div ngbAccordionItem class="mastermind">
         <h2 ngbAccordionHeader>
-          <button ngbAccordionButton>{{ mastermind.name }}</button>
+          <div class="d-flex align-items-center">
+            <button ngbAccordionButton>
+              {{ mastermind.name }}
+            </button>
+            @if(mastermindLocked()) {
+            <span
+              (click)="dispatchReset()"
+              (keydown)="dispatchReset()"
+              class="lock-block"
+              ><fa-icon
+                [icon]="faLock"
+                class="ml-auto lock-icon locked"
+              ></fa-icon
+            ></span>
+            } @else {
+            <span
+              (click)="dispatchLocked(mastermind)"
+              (keydown)="dispatchLocked(mastermind)"
+              class="lock-block"
+              ><fa-icon
+                [icon]="faLockOpen"
+                class="ml-auto lock-icon unlocked"
+              ></fa-icon
+            ></span>
+            }
+          </div>
         </h2>
         <div ngbAccordionCollapse>
           <div ngbAccordionBody>

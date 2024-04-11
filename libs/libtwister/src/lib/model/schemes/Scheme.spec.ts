@@ -151,7 +151,7 @@ describe('Scheme', () => {
       store = new StoreBuilder().withAllFromGamesets(TEST_GAME_SET_1).build();
       setup = scheme.getSetup({
         numPlayers: 2,
-        selectedMastermind: TEST_MASTERMIND_1,
+        mastermind: TEST_MASTERMIND_1,
         store,
       });
     });
@@ -159,7 +159,7 @@ describe('Scheme', () => {
     beforeEach(() => store.reset());
 
     it('should be an instance of GameSetup', () =>
-      expect(setup).toBeInstanceOf(GameSetup));
+      expect(new GameSetup(setup)).toBeInstanceOf(GameSetup));
 
     it('should include TEST_MASTERMIND_1 as the mastermind', () =>
       expect(setup.mastermind).toBe(TEST_MASTERMIND_1));
@@ -268,7 +268,7 @@ describe('Scheme', () => {
         .build();
       const doomSetup = scheme.getSetup({
         numPlayers: 4,
-        selectedMastermind: TEST_MASTERMIND_2,
+        mastermind: TEST_MASTERMIND_2,
         store: doomHenchmenStore,
       });
 
@@ -341,7 +341,7 @@ describe('Scheme', () => {
         numPlayers: 2,
         store,
         partialVillainDeck: {
-          villains: new Set(villains),
+          villains,
         },
       });
 
@@ -384,7 +384,7 @@ describe('Scheme', () => {
   });
 
   describe('addToDeck', () => {
-    const origDeck = new Set([TEST_HERO_1, TEST_HERO_2, TEST_HERO_3]);
+    const origDeck = [TEST_HERO_1, TEST_HERO_2, TEST_HERO_3];
 
     it('should add Wolverine to the original deck', () => {
       const newDeck = Array.from(Scheme.addToDeck(origDeck, TEST_HERO_4));

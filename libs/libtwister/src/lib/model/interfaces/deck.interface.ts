@@ -1,26 +1,26 @@
 import { Hero, Henchmen, VillainGroup, Mastermind } from '../cards';
 
 interface IDeck {
-  heroes?: Set<Hero>;
-  henchmen?: Set<Henchmen>;
+  heroes?: Hero[];
+  henchmen?: Henchmen[];
   numBystanders?: number;
 }
 
 interface INonHeroDeck extends IDeck {
-  villains?: Set<VillainGroup>;
+  villains?: VillainGroup[];
   numTwists?: number;
-  masterminds?: Set<Mastermind>;
+  masterminds?: Mastermind[];
 }
 
 export interface IHeroDeck extends IDeck {
-  heroes: Set<Hero>;
+  heroes: Hero[];
 }
 
 export type HeroDeckMinimal = Partial<Pick<IHeroDeck, 'heroes' | 'henchmen'>>;
 
 export interface IVillainDeck extends INonHeroDeck {
-  villains: Set<VillainGroup>;
-  henchmen: Set<Henchmen>;
+  villains: VillainGroup[];
+  henchmen: Henchmen[];
   numTwists: number;
   numMasterStrikes: number;
   numSidekicks?: number;

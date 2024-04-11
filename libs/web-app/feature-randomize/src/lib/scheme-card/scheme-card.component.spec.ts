@@ -12,8 +12,7 @@ describe('SchemeCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FontAwesomeModule, NgbAccordionModule],
-      declarations: [SchemeCardComponent],
+      imports: [FontAwesomeModule, NgbAccordionModule, SchemeCardComponent],
       providers: [
         provideMockStore({
           initialState: {

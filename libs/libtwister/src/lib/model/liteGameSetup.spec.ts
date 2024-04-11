@@ -26,9 +26,10 @@ describe('LiteGameSetup', () => {
 
   beforeAll(() => {
     const scheme = instantiateScheme(TEST_NORMAL_SCHEME);
-    const setup = scheme.getSetup({ numPlayers: 2, store }) as GameSetup;
+    const setup = scheme.getSetup({ numPlayers: 2, store });
+    const gameSetup = new GameSetup(setup);
 
-    liteSetup = LiteGameSetup.of(setup);
+    liteSetup = LiteGameSetup.of(gameSetup);
   });
 
   it('should create', () => expect(liteSetup).toBeTruthy());

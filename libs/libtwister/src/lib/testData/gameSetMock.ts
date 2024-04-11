@@ -151,12 +151,6 @@ export class GameSetMock {
         alwaysLeads: [villain],
         masterStrike: '',
       });
-      if (
-        mastermind.alwaysLeads === undefined ||
-        mastermind.alwaysLeads.length === 0
-      ) {
-        console.log('FOO');
-      }
       masterminds.push(mastermind);
     }
 

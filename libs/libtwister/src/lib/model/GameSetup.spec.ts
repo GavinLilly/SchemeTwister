@@ -25,24 +25,25 @@ afterEach(() => store.reset());
 
 describe('GameSetup', () => {
   describe('with TEST_NORMAL_SCHEME', () => {
-    let setup: GameSetup;
+    let gameSetup: GameSetup;
 
     beforeAll(() => {
       const scheme = new Scheme(TEST_NORMAL_SCHEME);
-      setup = scheme.getSetup({ numPlayers: 2, store }) as GameSetup;
+      const setup = scheme.getSetup({ numPlayers: 2, store });
+      gameSetup = new GameSetup(setup);
     });
 
     it('should have 5 heroes', () =>
-      expect(Array.from(setup.getSelectedHeroes())).toHaveLength(5));
+      expect(Array.from(gameSetup.getSelectedHeroes())).toHaveLength(5));
 
     it('should have 1 henchmen group', () =>
-      expect(Array.from(setup.getSelectedHenchmen())).toHaveLength(1));
+      expect(Array.from(gameSetup.getSelectedHenchmen())).toHaveLength(1));
 
     it('should have 2 villain groups', () =>
-      expect(Array.from(setup.getSelectedVillains())).toHaveLength(2));
+      expect(Array.from(gameSetup.getSelectedVillains())).toHaveLength(2));
 
     it('should have 1 mastermind', () =>
-      expect(Array.from(setup.getSelectedMasterminds())).toHaveLength(1));
+      expect(Array.from(gameSetup.getSelectedMasterminds())).toHaveLength(1));
 
     it('toString', () => {
       const {
@@ -52,25 +53,25 @@ describe('GameSetup', () => {
         heroDeck,
         villainDeck,
         additionalDeck,
-      } = JSON.parse(setup.toString());
+      } = JSON.parse(gameSetup.toString());
       expect(numPlayers).toBe(2);
       expect(scheme).toBe(TEST_NORMAL_SCHEME.name);
-      expect(mastermind).toBe(setup.mastermind.name);
+      expect(mastermind).toBe(gameSetup.mastermind.name);
       expect(heroDeck).toEqual(
         expect.arrayContaining(
-          Array.from(setup.heroDeck.heroes).map((hero) => hero.name)
+          Array.from(gameSetup.heroDeck.heroes).map((hero) => hero.name)
         )
       );
       expect(villainDeck).toEqual(
         expect.arrayContaining(
-          Array.from(setup.villainDeck.henchmen).map(
+          Array.from(gameSetup.villainDeck.henchmen).map(
             (henchmen) => henchmen.name
           )
         )
       );
       expect(villainDeck).toEqual(
         expect.arrayContaining(
-          Array.from(setup.villainDeck.villains).map(
+          Array.from(gameSetup.villainDeck.villains).map(
             (villains) => villains.name
           )
         )
@@ -85,12 +86,12 @@ describe('GameSetup', () => {
       .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
       .build();
 
-    const setup = scheme.getSetup({ numPlayers: 2, store }) as GameSetup;
+    const setup = scheme.getSetup({ numPlayers: 2, store });
 
-    const doesContainExpectedHeroName = Array.from(
-      setup.additionalDecks[0].deck.heroes!
-    )
-      .map((hero) => hero.name)
+    const gameSetup = new GameSetup(setup);
+
+    const doesContainExpectedHeroName = gameSetup.additionalDecks[0].deck
+      .heroes!.map((hero) => hero.name)
       .some((heroName) => heroName.includes('Foo'));
 
     expect(doesContainExpectedHeroName).toEqual(true);
@@ -111,11 +112,12 @@ describe('GameSetup', () => {
       const scheme = new Scheme(TEST_NORMAL_SCHEME);
       const setup = scheme.getSetup({
         numPlayers: 2,
-        selectedMastermind: testStore.mastermindStore.getRandom(),
+        mastermind: testStore.mastermindStore.getRandom(),
         store: testStore,
-      }) as GameSetup;
+      });
+      const gameSetup = new GameSetup(setup);
 
-      expect(setup.keywords.size).toBe(0);
+      expect(gameSetup.keywords.size).toBe(0);
     });
 
     it('should have only the "TEST_KEYWORD_1" keyword', () => {
@@ -123,12 +125,13 @@ describe('GameSetup', () => {
 
       const setup = scheme.getSetup({
         numPlayers: 2,
-        selectedMastermind: testStore.mastermindStore.getRandom(),
+        mastermind: testStore.mastermindStore.getRandom(),
         store: testStore,
-      }) as GameSetup;
+      });
+      const gameSetup = new GameSetup(setup);
 
-      expect(setup.keywords.size).toBe(1);
-      expect(setup.keywords.has(TEST_KEYWORD_1)).toBeTruthy();
+      expect(gameSetup.keywords.size).toBe(1);
+      expect(gameSetup.keywords.has(TEST_KEYWORD_1)).toBeTruthy();
     });
   });
 

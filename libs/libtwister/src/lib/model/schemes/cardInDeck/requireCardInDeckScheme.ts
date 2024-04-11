@@ -1,7 +1,13 @@
+import { StoreOfStores } from '../../../factories';
 import { AbstractCardGroup } from '../../cards/abstractCardGroup';
-import { IGameSetup } from '../../interfaces/gameSetup.interface';
+import {
+  IAdditionalDeckDeck,
+  IHeroDeck,
+  INumPlayerRules,
+  IVillainDeck,
+} from '../../interfaces';
 import { DeckType, SchemeMinusRules } from '../../types';
-import { IGetSetupConfig, Scheme } from '../Scheme';
+import { Scheme } from '../Scheme';
 
 import { IRequireCardBehaviour } from './requireCardBehaviour.interface';
 import { IRequireCardTypeBehaviour } from './requireCardTypeBehaviour.interface';
@@ -18,46 +24,60 @@ export class RequireCardInDeckScheme<
     super(scheme);
   }
 
-  public override getSetup(config: IGetSetupConfig): IGameSetup {
-    const applicableStore = this._requireCardType.getStore(config.store);
+  protected override initialiseHeroDeck(
+    rules: Readonly<INumPlayerRules>,
+    store: Readonly<StoreOfStores>,
+    numPlayers: number
+  ): IHeroDeck {
+    if (this._deck !== 'HERO') {
+      return super.initialiseHeroDeck(rules, store, numPlayers);
+    }
+
+    const picked = this._getPickedCard(store);
+
+    return this._requireCardType.createDeck(
+      picked,
+      rules,
+      this._deck
+    ) as IHeroDeck;
+  }
+
+  protected override initialiseVillainDeck(
+    rules: Readonly<INumPlayerRules>,
+    store: Readonly<StoreOfStores>
+  ): IVillainDeck {
+    const emptyDeck = super.initialiseVillainDeck(rules, store);
+
+    if (this._deck !== 'VILLAIN') {
+      return emptyDeck;
+    }
+
+    const picked = this._getPickedCard(store);
+
+    return {
+      ...emptyDeck,
+      ...this._requireCardType.createDeck(picked, rules, this._deck),
+    };
+  }
+
+  protected override initialiseAdditionalDecks(
+    rules: Readonly<INumPlayerRules>,
+    store: Readonly<StoreOfStores>
+  ): IAdditionalDeckDeck | undefined {
+    if (this._deck !== 'ADDITIONAL') {
+      return super.initialiseAdditionalDecks(rules, store);
+    }
+
+    const picked = this._getPickedCard(store);
+
+    return this._requireCardType.createDeck(picked, rules, this._deck);
+  }
+
+  private _getPickedCard(store: Readonly<StoreOfStores>): TCard[] {
+    const applicableStore = this._requireCardType.getStore(store);
     const cards = this._requireCard.getRequiredCard(applicableStore);
 
     const cardsAsArray = cards instanceof Array ? cards : [cards];
-    const picked = cardsAsArray.map((card) => applicableStore.pickOne(card));
-
-    const rules = this.rules[config.numPlayers];
-
-    switch (this._deck) {
-      case 'HERO':
-        return super.getSetup({
-          ...config,
-          partialHeroDeck: this._requireCardType.createDeck(
-            picked,
-            rules,
-            this._deck,
-            config.partialHeroDeck
-          ),
-        });
-      case 'VILLAIN':
-        return super.getSetup({
-          ...config,
-          partialVillainDeck: this._requireCardType.createDeck(
-            picked,
-            rules,
-            this._deck,
-            config.partialVillainDeck
-          ),
-        });
-      case 'ADDITIONAL':
-        return super.getSetup({
-          ...config,
-          partialAdditionalDeck: this._requireCardType.createDeck(
-            picked,
-            rules,
-            this._deck,
-            config.partialAdditionalDeck
-          ),
-        });
-    }
+    return cardsAsArray.map((card) => applicableStore.pickOne(card));
   }
 }

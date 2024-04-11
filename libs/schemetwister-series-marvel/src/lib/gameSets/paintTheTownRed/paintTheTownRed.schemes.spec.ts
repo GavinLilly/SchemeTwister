@@ -18,7 +18,7 @@ import { SINISTER_SIX, MAXIMUM_CARNAGE } from './paintTheTownRed.villains';
 
 describe('with Splice Humans with Spider DNA + Carnage', () => {
   let store: StoreOfStores;
-  let setup: GameSetup;
+  let gameSetup: GameSetup;
 
   beforeAll(() => {
     store = new StoreBuilder()
@@ -33,36 +33,37 @@ describe('with Splice Humans with Spider DNA + Carnage', () => {
       new RequireVillainGroup(),
       DECK_TYPE.villain
     );
-    setup = scheme.getSetup({
+    const setup = scheme.getSetup({
       numPlayers: 2,
-      selectedMastermind: store.mastermindStore.pickOne(CARNAGE),
+      mastermind: store.mastermindStore.pickOne(CARNAGE),
       store,
-    }) as GameSetup;
+    });
+    gameSetup = new GameSetup(setup);
   });
 
   describe('getSelectedHeroes()', () => {
     it('should have 5 heroes', () =>
-      expect(Array.from(setup.getSelectedHeroes())).toHaveLength(5));
+      expect(Array.from(gameSetup.getSelectedHeroes())).toHaveLength(5));
 
     it('should have 1 henchmen group', () =>
-      expect(Array.from(setup.getSelectedHenchmen())).toHaveLength(1));
+      expect(Array.from(gameSetup.getSelectedHenchmen())).toHaveLength(1));
 
     it('should have 2 villain groups', () =>
-      expect(Array.from(setup.getSelectedVillains())).toHaveLength(2));
+      expect(Array.from(gameSetup.getSelectedVillains())).toHaveLength(2));
 
     it('should have 1 mastermind', () =>
-      expect(Array.from(setup.getSelectedMasterminds())).toHaveLength(1));
+      expect(Array.from(gameSetup.getSelectedMasterminds())).toHaveLength(1));
   });
 
   it('should have the Sinister Six as a villain group', () =>
-    expect(setup.getSelectedVillains()).toContain(SINISTER_SIX));
+    expect(gameSetup.getSelectedVillains()).toContain(SINISTER_SIX));
 
   it('should have Maximum Carnage as a villain group', () =>
-    expect(setup.getSelectedVillains()).toContain(MAXIMUM_CARNAGE));
+    expect(gameSetup.getSelectedVillains()).toContain(MAXIMUM_CARNAGE));
 
   it('should have the same UUID each time', async () => {
-    const uuid1 = LiteGameSetup.of(setup).calculateUid();
-    const uuid2 = LiteGameSetup.of(setup).calculateUid();
+    const uuid1 = LiteGameSetup.of(gameSetup).calculateUid();
+    const uuid2 = LiteGameSetup.of(gameSetup).calculateUid();
 
     expect(uuid1).toBe(uuid2);
   });

@@ -11,50 +11,73 @@ const selectGameSetupFeature =
 
 export const selectGameSetup = createSelector(
   selectGameSetupFeature,
-  (state: IGameSetupState): GameSetup => new GameSetup(state.gameSetup)
+  (state): GameSetup => new GameSetup(state.gameSetup)
 );
 
 export const selectGameSetupScheme = createSelector(
   selectGameSetupFeature,
-  (state: IGameSetupState) => state.gameSetup.scheme
+  (state) => state.gameSetup.scheme
 );
 
 export const selectHeroDeck = createSelector(
   selectGameSetupFeature,
-  (state: IGameSetupState) => state.gameSetup.heroDeck
+  (state) => state.gameSetup.heroDeck
 );
 
 export const selectVillainDeck = createSelector(
   selectGameSetupFeature,
-  (state: IGameSetupState) => state.gameSetup.villainDeck
+  (state) => state.gameSetup.villainDeck
 );
 
 export const selectAdditionalDecks = createSelector(
   selectGameSetupFeature,
-  (state: IGameSetupState) => state.gameSetup.additionalDecks
+  (state) => state.gameSetup.additionalDecks
 );
 
 export const selectMastermind = createSelector(
   selectGameSetupFeature,
-  (state: IGameSetupState) => state.gameSetup.mastermind
+  (state) => state.gameSetup.mastermind
 );
 
 export const selectDefinedScheme = createSelector(
   selectGameSetupFeature,
-  (state: IGameSetupState) => state.definedScheme
+  (state) => state.definedScheme
 );
 
 export const selectIsDefinedScheme = createSelector(
   selectGameSetupFeature,
-  (state: IGameSetupState) => state.definedScheme !== undefined
+  (state) => state.definedScheme !== undefined
 );
 
 export const selectDefinedMastermind = createSelector(
   selectGameSetupFeature,
-  (state: IGameSetupState) => state.definedMastermind
+  (state) => state.definedMastermind
 );
 
 export const selectIsDefinedMastermind = createSelector(
   selectGameSetupFeature,
-  (state: IGameSetupState) => state.definedMastermind !== undefined
+  (state) => state.definedMastermind !== undefined
+);
+
+export const selectLockedHeroDeckCards = createSelector(
+  selectGameSetupFeature,
+  (state) => ({ ...state.lockedHeroDeck })
+);
+
+export const selectLockedAdditionalDeckCards = createSelector(
+  selectGameSetupFeature,
+  (state) => ({ ...state.lockedAdditionalDeck })
+);
+
+export const selectLockedVillainDeckCards = createSelector(
+  selectGameSetupFeature,
+  (state) => ({ ...state.lockedVillainDeck })
+);
+
+export const selectIsVillainDeckLocked = createSelector(
+  selectLockedVillainDeckCards,
+  (state) =>
+    [state.henchmen, state.heroes, state.masterminds, state.villains].some(
+      (stateItem) => stateItem !== undefined && stateItem.length > 0
+    )
 );

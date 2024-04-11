@@ -23,11 +23,11 @@ describe('GameSetupScheme Selectors', () => {
       .build();
   });
 
-  beforeEach(async () => {
+  beforeEach(() => {
     scheme = instantiateScheme(mainline.LEGENDARY.Schemes.MIDTOWN_BANK_ROBBERY);
-    const setup = await scheme.getSetup({
+    const setup = scheme.getSetup({
       numPlayers: 2,
-      selectedMastermind,
+      mastermind: selectedMastermind,
       store,
     });
 

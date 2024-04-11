@@ -61,35 +61,33 @@ export class LiteGameSetup {
   private static _getById = <T extends AbstractCardGroup>(
     ids: string[],
     twister: LibTwister
-  ): Set<T> =>
-    new Set(
-      ids
-        .map((id) => twister.stores.getCardById(id))
-        .filter((card): card is T => !!card)
-    );
+  ): T[] =>
+    ids
+      .map((id) => twister.stores.getCardById(id))
+      .filter((card): card is T => !!card);
 
   private static _builAdditionalOrVillainDeck(
     deck: string[],
     twister: LibTwister
   ) {
-    const henchmen = new Set<Henchmen>();
-    const heroes = new Set<Hero>();
-    const masterminds = new Set<Mastermind>();
-    const villains = new Set<VillainGroup>();
+    const henchmen: Henchmen[] = [];
+    const heroes: Hero[] = [];
+    const masterminds: Mastermind[] = [];
+    const villains: VillainGroup[] = [];
 
     LiteGameSetup._getById(deck, twister).forEach((card) => {
       switch (card.cardType) {
         case 'Henchmen':
-          henchmen.add(card as Henchmen);
+          henchmen.push(card as Henchmen);
           break;
         case 'Hero':
-          heroes.add(card as Hero);
+          heroes.push(card as Hero);
           break;
         case 'Mastermind':
-          masterminds.add(card as Mastermind);
+          masterminds.push(card as Mastermind);
           break;
         case 'Villain Group':
-          villains.add(card as VillainGroup);
+          villains.push(card as VillainGroup);
           break;
         default:
           throw new Error('Unsupported card type in deck');
@@ -185,16 +183,16 @@ export class LiteGameSetup {
   }
 
   private _buildHeroDeck(twister: LibTwister): IHeroDeck {
-    const henchmen = new Set<Henchmen>();
-    const heroes = new Set<Hero>();
+    const henchmen: Henchmen[] = [];
+    const heroes: Hero[] = [];
 
     LiteGameSetup._getById(this.heroDeck, twister).forEach((card) => {
       switch (card.cardType) {
         case 'Henchmen':
-          henchmen.add(card as Henchmen);
+          henchmen.push(card as Henchmen);
           break;
         case 'Hero':
-          heroes.add(card as Hero);
+          heroes.push(card as Hero);
           break;
         default:
           throw new Error('Unsupported card type in the hero deck');

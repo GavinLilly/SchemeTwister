@@ -39,6 +39,9 @@ import {
 import {
   selectDefinedMastermind,
   selectDefinedScheme,
+  selectLockedAdditionalDeckCards,
+  selectLockedHeroDeckCards,
+  selectLockedVillainDeckCards,
 } from '../selectors/game-setup-scheme.selectors';
 import {
   selectNumPlayers,
@@ -70,6 +73,9 @@ export class GameSetupEffects {
         this._store.select(selectDefinedMastermind),
         this._store.select(selectIsAdvancedSolo),
         this._store.select(selectLibTwister(this._seriesRegister)),
+        this._store.select(selectLockedHeroDeckCards),
+        this._store.select(selectLockedVillainDeckCards),
+        this._store.select(selectLockedAdditionalDeckCards),
       ]),
       map(
         ([
@@ -80,15 +86,21 @@ export class GameSetupEffects {
           definedMastermind,
           isAdvancedSolo,
           libTwister,
+          lockedHeroDeckCards,
+          lockedVillainDeckCards,
+          lockedAdditionalDeckCards,
         ]) => {
           libTwister.selectedGameSets =
             libTwister.gameSetIdsToGameSets(gameSetIds);
-          return libTwister.getSetup(
+          return libTwister.getSetup({
             numPlayers,
-            definedScheme,
-            definedMastermind,
-            isAdvancedSolo
-          );
+            scheme: definedScheme,
+            mastermind: definedMastermind,
+            advancedSolo: isAdvancedSolo,
+            partialHeroDeck: lockedHeroDeckCards,
+            partialVillainDeck: lockedVillainDeckCards,
+            partialAdditionalDeck: lockedAdditionalDeckCards,
+          });
         }
       ),
       map((setup) => gameSetupGeneratorActions.success({ gameSetup: setup })),

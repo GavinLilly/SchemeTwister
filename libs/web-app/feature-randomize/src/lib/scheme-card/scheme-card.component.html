@@ -1,11 +1,7 @@
 <div class="card">
   <div class="card-header d-flex align-items-center justify-content-between">
     Scheme
-    <fa-icon
-      *ngIf="schemeLocked()"
-      [icon]="faLock"
-      class="ml-auto lock-item"
-    ></fa-icon>
+
     <a (click)="pickScheme()" href="javascript:void(0)" class="text-black">
       <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
     </a>
@@ -14,7 +10,32 @@
     <div ngbAccordion>
       <div ngbAccordionItem>
         <h2 ngbAccordionHeader>
-          <button ngbAccordionButton>{{ scheme.name }}</button>
+          <div class="d-flex align-items-center">
+            <button ngbAccordionButton>
+              {{ scheme.name }}
+            </button>
+            @if(schemeLocked()) {
+            <span
+              (click)="dispatchReset()"
+              (keydown)="dispatchReset()"
+              class="lock-block"
+              ><fa-icon
+                [icon]="faLock"
+                class="ml-auto lock-icon locked"
+              ></fa-icon
+            ></span>
+            } @else {
+            <span
+              (click)="dispatchLocked(scheme)"
+              (keydown)="dispatchLocked(scheme)"
+              class="lock-block"
+              ><fa-icon
+                [icon]="faLockOpen"
+                class="ml-auto lock-icon unlocked"
+              ></fa-icon
+            ></span>
+            }
+          </div>
         </h2>
         <div ngbAccordionCollapse>
           <div ngbAccordionBody>
@@ -22,6 +43,8 @@
               <p class="card-text"><b>Setup: </b>{{ scheme.setup }}</p>
               <p class="card-text"><b>Twist: </b>{{ scheme.twist }}</p>
               <p class="card-text"><b>Evil Wins: </b>{{ scheme.evilWins }}</p>
+
+              <hr />
               <schemetwister-base-card-content
                 [card]="scheme"
               ></schemetwister-base-card-content>

@@ -101,8 +101,10 @@ export class CardStore<
    * @param cards the card that are requested
    * @returns the requested items
    */
-  public pickMany(cards: TCard[]): TCard[];
-  public pickMany(idsOrCards: string[] | TCard[]): TCard[] {
+  public pickMany(cards: TCard[] | ReadonlyArray<TCard>): TCard[];
+  public pickMany(
+    idsOrCards: string[] | TCard[] | ReadonlyArray<TCard>
+  ): TCard[] {
     return idsOrCards.map((idOrCard) => {
       const cardId = CardFactory.getCardId(idOrCard);
       return this.pickOne(cardId);

@@ -13,7 +13,9 @@
       "linter": "eslint",
       "unitTestRunner": "jest"
     },
-    "@nx/angular:component": {}
+    "@nx/angular:component": {
+      "style": "scss"
+    }
   },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {

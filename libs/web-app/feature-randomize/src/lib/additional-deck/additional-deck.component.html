@@ -64,14 +64,22 @@
         <h2 ngbAccordionHeader>
           <div class="d-flex align-items-center justify-content-between">
             <button ngbAccordionButton>
-              <span>{{ hero.name }}</span>
+              @if(hero.team) {
               <img
-                *ngIf="hero.team"
                 src="/assets/icons/teams/{{ hero.team.icon }}"
-                alt="{{ hero.team!.name }}"
+                alt="{{ hero.team.name }}"
                 class="img-fluid"
                 id="hero-team"
               />
+              } @else {
+              <img
+                src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D"
+                alt="No team"
+                class="img-fluid"
+                id="hero-team"
+              />
+              }
+              <span>{{ hero.name }}</span>
             </button>
           </div>
         </h2>

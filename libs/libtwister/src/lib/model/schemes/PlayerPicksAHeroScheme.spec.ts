@@ -19,7 +19,7 @@ describe('Player Picks a Hero Scheme', () => {
       const setup = scheme.getSetup({ numPlayers: 3, store });
 
       expect(
-        Array.from(setup.heroDeck.heroes).filter((hero) =>
+        setup.heroDeck.heroes.filter((hero) =>
           /Player \d picks a hero/.exec(hero.name)
         )
       ).toHaveLength(3);

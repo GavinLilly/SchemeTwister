@@ -23,11 +23,11 @@ describe('with MCU Guardians of the Galaxy', () => {
   describe('getSetup()', () => {
     describe('with Ego as mastermind', () => {
       it('should have an additional villain group', () => {
-        const setup = twister.getSetup(
-          2,
-          UNLEASH_THE_ABILISK_SPACE_MONSTER,
-          EGO_THE_LIVING_PLANET
-        );
+        const setup = twister.getSetup({
+          numPlayers: 2,
+          scheme: UNLEASH_THE_ABILISK_SPACE_MONSTER,
+          mastermind: EGO_THE_LIVING_PLANET,
+        });
 
         expect(Array.from(setup.villainDeck.villains)).toHaveLength(3);
       });
@@ -35,11 +35,11 @@ describe('with MCU Guardians of the Galaxy', () => {
 
     describe('with Epic Ego as mastermind', () => {
       it('should have 2 additional villain groups', () => {
-        const setup = twister.getSetup(
-          2,
-          UNLEASH_THE_ABILISK_SPACE_MONSTER,
-          EGO_THE_LIVING_PLANET.epic
-        );
+        const setup = twister.getSetup({
+          numPlayers: 2,
+          scheme: UNLEASH_THE_ABILISK_SPACE_MONSTER,
+          mastermind: EGO_THE_LIVING_PLANET.epic,
+        });
 
         expect(Array.from(setup.villainDeck.villains)).toHaveLength(4);
       });

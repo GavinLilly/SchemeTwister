@@ -40,7 +40,7 @@ export class RequireVillainGroup
     const extra = cards.length > 1 ? cards.slice(1) : [];
 
     deck.villains = Scheme.addToDeck(
-      deck.villains ?? new Set(),
+      deck.villains ?? [],
       cards[0],
       numVillainGroups,
       ...extra

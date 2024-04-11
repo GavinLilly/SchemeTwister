@@ -16,5 +16,5 @@ export interface IRequireCardTypeBehaviour<TCard extends AbstractCardGroup> {
     deck?: HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal
   ): HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal;
 
-  getStore(storeOfStores: StoreOfStores): CardStore<TCard>;
+  getStore(storeOfStores: Readonly<StoreOfStores>): CardStore<TCard>;
 }

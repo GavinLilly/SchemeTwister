@@ -64,28 +64,28 @@ export class GameSetup implements IGameSetup {
   private get _additionalDeckHeroes() {
     return this.additionalDecks
       .map((deck) => deck.deck.heroes)
-      .filter((heroes): heroes is Set<Hero> => !!heroes)
+      .filter((heroes): heroes is Hero[] => !!heroes)
       .flatMap((heroes) => Array.from(heroes));
   }
 
   private get _additionalDeckHenchmen() {
     return this.additionalDecks
       .map((deck) => deck.deck.henchmen)
-      .filter((henchmen): henchmen is Set<Henchmen> => !!henchmen)
+      .filter((henchmen): henchmen is Henchmen[] => !!henchmen)
       .flatMap((henchmen) => Array.from(henchmen));
   }
 
   private get _additionalDeckVillains() {
     return this.additionalDecks
       .map((deck) => deck.deck.villains)
-      .filter((villains): villains is Set<VillainGroup> => !!villains)
+      .filter((villains): villains is VillainGroup[] => !!villains)
       .flatMap((villains) => Array.from(villains));
   }
 
   private get _additionalDeckMasterminds() {
     return this.additionalDecks
       .map((deck) => deck.deck.masterminds)
-      .filter((masterminds): masterminds is Set<Mastermind> => !!masterminds)
+      .filter((masterminds): masterminds is Mastermind[] => !!masterminds)
       .flatMap((masterminds) => Array.from(masterminds));
   }
 
@@ -98,10 +98,10 @@ export class GameSetup implements IGameSetup {
       numPlayers: 2,
       scheme: Scheme.empty(),
       mastermind: Mastermind.empty(),
-      heroDeck: { heroes: new Set() },
+      heroDeck: { heroes: [] },
       villainDeck: {
-        villains: new Set(),
-        henchmen: new Set(),
+        villains: [],
+        henchmen: [],
         numTwists: 0,
         numMasterStrikes: 0,
       },

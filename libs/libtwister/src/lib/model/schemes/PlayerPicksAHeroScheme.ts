@@ -1,12 +1,17 @@
+import { StoreOfStores } from '../../factories';
 import { Hero } from '../cards/hero';
-import { IGameSetup } from '../interfaces/gameSetup.interface';
+import { INumPlayerRules, IHeroDeck } from '../interfaces';
 
-import { IGetSetupConfig, Scheme } from './Scheme';
+import { Scheme } from './Scheme';
 
 export class PlayerPicksAHeroScheme extends Scheme {
-  public override getSetup(config: IGetSetupConfig): IGameSetup {
+  protected override initialiseHeroDeck(
+    rules: Readonly<INumPlayerRules>,
+    store: Readonly<StoreOfStores>,
+    numPlayers: number
+  ): IHeroDeck {
     const nonPickedHeroes: Hero[] = [];
-    for (let i = 1; i <= config.numPlayers; i++) {
+    for (let i = 1; i <= numPlayers; i++) {
       nonPickedHeroes.push(
         new Hero({
           gameSet: this.gameSet,
@@ -16,16 +21,13 @@ export class PlayerPicksAHeroScheme extends Scheme {
       );
     }
 
-    return super.getSetup({
-      ...config,
-      partialHeroDeck: {
-        heroes: Scheme.addToDeck(
-          config.partialHeroDeck?.heroes ?? new Set(),
-          nonPickedHeroes[0],
-          this.rules[config.numPlayers].villainDeck.numVillainGroups,
-          ...nonPickedHeroes.slice(1)
-        ),
-      },
-    });
+    return {
+      heroes: Scheme.addToDeck(
+        [],
+        nonPickedHeroes[0],
+        rules.villainDeck.numVillainGroups,
+        ...nonPickedHeroes.slice(1)
+      ),
+    };
   }
 }
