@@ -133,7 +133,7 @@
     "nx": "17.3.2",
     "open": "^7.0.3",
     "prettier": "2.6.2",
-    "semantic-release": "^19.0.3",
+    "semantic-release": "^23.0.8",
     "ts-jest": "29.1.1",
     "ts-node": "10.9.1",
     "ts-prune": "^0.10.3",
