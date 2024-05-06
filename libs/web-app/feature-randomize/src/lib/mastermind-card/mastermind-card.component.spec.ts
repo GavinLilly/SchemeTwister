@@ -1,19 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideMockStore } from '@ngrx/store/testing';
 import { GameSetup } from '@schemetwister/libtwister';
+import { marvelSeries } from '@schemetwister/schemetwister-series-marvel';
+import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
+import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
 
 import { MastermindCardComponent } from './mastermind-card.component';
 
 describe('MastermindCardComponent', () => {
-  let component: MastermindCardComponent;
-  let fixture: ComponentFixture<MastermindCardComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [FontAwesomeModule, NgbAccordionModule, MastermindCardComponent],
-      providers: [
+  beforeEach(() =>
+    MockBuilder(MastermindCardComponent)
+      .provide(
         provideMockStore({
           initialState: {
             gameSetup: {
@@ -21,18 +17,13 @@ describe('MastermindCardComponent', () => {
             },
             numPlayers: 2,
           },
-        }),
-      ],
-    }).compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(MastermindCardComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        })
+      )
+      .provide(MockProvider(SERIES_REGISTER_TOKEN, [marvelSeries]))
+  );
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const fixture = MockRender(MastermindCardComponent);
+    expect(fixture.point.componentInstance).toBeTruthy();
   });
 });
