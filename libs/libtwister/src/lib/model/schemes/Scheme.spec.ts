@@ -338,14 +338,14 @@ describe('Scheme', () => {
     it('should not need to fill in any more slots in the villain deck', () => {
       const villains = [TEST_VILLAIN_1, TEST_VILLAIN_2];
       const filledSetup = scheme.getSetup({
-        numPlayers: 2,
+        numPlayers: 3,
         store,
         partialVillainDeck: {
           villains,
         },
       });
 
-      expect(Array.from(filledSetup.villainDeck.villains)).toEqual(
+      expect(filledSetup.villainDeck.villains).toEqual(
         expect.arrayContaining(villains)
       );
     });
