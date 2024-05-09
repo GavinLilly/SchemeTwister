@@ -64,20 +64,25 @@
         class="henchmen"
       >
         <h2 ngbAccordionHeader>
-          <button ngbAccordionButton>{{ henchmen.name }}</button>
-          <span
-            (click)="toggleLocked(henchmen)"
-            (keydown)="toggleLocked(henchmen)"
-            class="lock-block"
-          >
-            @if(isCardLocked(henchmen)) {
-            <fa-icon [icon]="faLock" class="ml-auto lock-icon locked"></fa-icon>
-            } @else {<fa-icon
-              [icon]="faLockOpen"
-              class="ml-auto lock-icon unlocked"
-            ></fa-icon>
-            }
-          </span>
+          <div class="d-flex align-items-center justify-content-between">
+            <button ngbAccordionButton>{{ henchmen.name }}</button>
+            <span
+              (click)="toggleLocked(henchmen)"
+              (keydown)="toggleLocked(henchmen)"
+              class="lock-block"
+            >
+              @if(isCardLocked(henchmen)) {
+              <fa-icon
+                [icon]="faLock"
+                class="ml-auto lock-icon locked"
+              ></fa-icon>
+              } @else {<fa-icon
+                [icon]="faLockOpen"
+                class="ml-auto lock-icon unlocked"
+              ></fa-icon>
+              }
+            </span>
+          </div>
         </h2>
         <div ngbAccordionCollapse>
           <div ngbAccordionBody>
