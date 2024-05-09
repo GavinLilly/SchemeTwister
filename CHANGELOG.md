@@ -1,3 +1,10 @@
+## [3.14.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.13.1...v3.14.0) (2024-05-09)
+
+
+### Features
+
+* allow for cards to be locked down ([471feb4](https://github.com/GavinLilly/SchemeTwister/commit/471feb4d6c627e0d9cb04783a0cb92be605da7b3))
+
 ## [3.13.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.13.0...v3.13.1) (2024-04-08)
 
 
