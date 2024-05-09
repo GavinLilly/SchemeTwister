@@ -174,46 +174,55 @@ describe('Require Hero Name', () => {
   });
 
   describe('in Hero Deck', () => {
-    let store: StoreOfStores;
-    let scheme: Scheme;
-    let setup: IGameSetup;
-
     const isName = (hero: Hero) => hero.name.includes('Bar');
 
-    beforeAll(() => {
-      store = new StoreBuilder()
-        .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
-        .build();
+    describe('with 2 game sets', () => {
+      let store: StoreOfStores;
+      let scheme: Scheme;
+      let setup: IGameSetup;
 
-      scheme = new RequireCardInDeckScheme(
-        TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
-        new RequireCardName('Bar', 1, true),
-        new RequireHero(),
-        DECK_TYPE.hero
-      );
+      beforeAll(() => {
+        store = new StoreBuilder()
+          .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
+          .build();
 
-      setup = scheme.getSetup({ numPlayers: 2, store });
-    });
+        scheme = new RequireCardInDeckScheme(
+          TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
+          new RequireCardName('Bar', 1, true),
+          new RequireHero(),
+          DECK_TYPE.hero
+        );
 
-    it('should only include 1 "Bar" hero', () => {
-      const nameHeroes = setup.heroDeck.heroes.filter(isName);
+        setup = scheme.getSetup({ numPlayers: 2, store });
+      });
 
-      expect(nameHeroes).toHaveLength(1);
-    });
+      it('should only include 1 "Bar" hero', () => {
+        const nameHeroes = setup.heroDeck.heroes.filter(isName);
 
-    it('should not have any "Bar" heroes available in the store', () => {
-      const nameHeroes = store.heroStore.availableCards.filter(isName);
+        expect(nameHeroes).toHaveLength(1);
+      });
 
-      expect(nameHeroes).toHaveLength(0);
+      it('should not have any "Bar" heroes available in the store', () => {
+        const nameHeroes = store.heroStore.availableCards.filter(isName);
+
+        expect(nameHeroes).toHaveLength(0);
+      });
     });
 
     it('should throw an error when no cards are available with "Bar" in their name', () => {
-      store = new StoreBuilder()
+      const store = new StoreBuilder()
         .withHeroGamesets(TEST_GAME_SET_1)
         .withMastermindGamesets(TEST_GAME_SET_1)
         .withVillainGamesets(TEST_GAME_SET_1)
         .withHenchmenGamesets(TEST_GAME_SET_1)
         .build();
+
+      const scheme = new RequireCardInDeckScheme(
+        TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
+        new RequireCardName('Bar', 1, true),
+        new RequireHero(),
+        DECK_TYPE.hero
+      );
 
       expect(() => scheme.getSetup({ numPlayers: 3, store })).toThrow();
     });
