@@ -55,7 +55,7 @@ describe('RequireVillainAndHeroWithBackupInVillainDeckScheme', () => {
         .build();
       setup = scheme.getSetup({
         numPlayers: 2,
-        selectedMastermind: dcHeroStore.mastermindStore.getRandom(),
+        mastermind: dcHeroStore.mastermindStore.getRandom(),
         store: dcHeroStore,
       });
     });

@@ -34,39 +34,41 @@ describe('RitualSacrificeToSummonChthonScheme', () => {
   });
 
   describe('with Lilith as the Mastermind', () => {
-    let setup: GameSetup;
+    let gameSetup: GameSetup;
 
     beforeEach(() => {
       store.reset();
-      setup = scheme.getSetup({
+      const setup = scheme.getSetup({
         numPlayers: 2,
-        selectedMastermind: store.mastermindStore.pickOne(LILITH.id),
+        mastermind: store.mastermindStore.pickOne(LILITH.id),
         store,
-      }) as GameSetup;
+      });
+      gameSetup = new GameSetup(setup);
     });
     it('should set number of twists to 1', () =>
-      expect(setup.villainDeck.numTwists).toBe(1));
+      expect(gameSetup.villainDeck.numTwists).toBe(1));
 
     it('should contain Lilin in the villain deck', () =>
-      expect(setup.villainDeck.villains).toContain(LILIN));
+      expect(gameSetup.villainDeck.villains).toContain(LILIN));
   });
 
   describe('without Lilith as the Mastermind', () => {
-    let setup: GameSetup;
+    let gameSetup: GameSetup;
 
     beforeEach(() => {
       store.reset();
-      setup = scheme.getSetup({
+      const setup = scheme.getSetup({
         numPlayers: 2,
-        selectedMastermind: store.mastermindStore.pickOne(KINGPIN.id),
+        mastermind: store.mastermindStore.pickOne(KINGPIN.id),
         store,
-      }) as GameSetup;
+      });
+      gameSetup = new GameSetup(setup);
     });
 
     it('should set number of twists to 8', () =>
-      expect(setup.villainDeck.numTwists).toBe(8));
+      expect(gameSetup.villainDeck.numTwists).toBe(8));
 
     it('should contain Lilin in the villain deck', () =>
-      expect(setup.villainDeck.villains).toContain(LILIN));
+      expect(gameSetup.villainDeck.villains).toContain(LILIN));
   });
 });

@@ -1,9 +1,9 @@
+import { StoreOfStores } from '../../factories';
 import { Hero } from '../cards/hero';
-import { ITeam } from '../interfaces';
-import { IGameSetup } from '../interfaces/gameSetup.interface';
+import { IHeroDeck, INumPlayerRules, ITeam } from '../interfaces';
 import { DECK_TYPE, SchemeMinusRules } from '../types';
 
-import { IGetSetupConfig, Scheme } from './Scheme';
+import { Scheme } from './Scheme';
 import {
   RequireCard,
   RequireCardInDeckScheme,
@@ -26,27 +26,31 @@ export class RequireHeroAndTeamScheme extends RequireCardInDeckScheme<Hero> {
     );
   }
 
-  public override getSetup(config: IGetSetupConfig): IGameSetup {
-    const requiredTeamHeroes = config.store.heroStore.pickRandom(
+  protected override initialiseHeroDeck(
+    rules: Readonly<INumPlayerRules>,
+    store: Readonly<StoreOfStores>,
+    numPlayers: number
+  ): IHeroDeck {
+    const requiredTeamHeroes = store.heroStore.pickRandom(
       this._numFromRequiredTeam,
       (hero) => hero.team === this._requiredTeam
     ) as Hero[];
-    const otherHeroes = config.store.heroStore.pickRandom(
+    const otherHeroes = store.heroStore.pickRandom(
       this._numNotFromRequiredTeam,
       (hero) => hero.team !== this._requiredTeam && hero !== this._requiredHero
     ) as Hero[];
 
-    return super.getSetup({
-      ...config,
-      partialHeroDeck: {
-        heroes: Scheme.addToDeck(
-          config.partialHeroDeck?.heroes ?? new Set(),
-          otherHeroes[0],
-          this.rules[config.numPlayers].heroDeck.numHeroes,
-          otherHeroes[1],
-          ...requiredTeamHeroes
-        ),
-      },
-    });
+    const superDeck = super.initialiseHeroDeck(rules, store, numPlayers);
+
+    return {
+      ...superDeck,
+      heroes: Scheme.addToDeck(
+        superDeck.heroes ?? [],
+        otherHeroes[0],
+        rules.heroDeck.numHeroes,
+        otherHeroes[1],
+        ...requiredTeamHeroes
+      ),
+    };
   }
 }

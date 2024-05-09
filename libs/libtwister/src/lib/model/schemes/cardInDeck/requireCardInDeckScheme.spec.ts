@@ -49,11 +49,11 @@ describe('Require Henchmen', () => {
       );
       const setup = scheme.getSetup({
         numPlayers: 2,
-        selectedMastermind: store.mastermindStore.getRandom(),
+        mastermind: store.mastermindStore.getRandom(),
         store,
       });
 
-      expect(Array.from(setup.villainDeck.henchmen)).toContain(TEST_HENCHMEN_1);
+      expect(setup.villainDeck.henchmen).toContain(TEST_HENCHMEN_1);
     });
   });
 
@@ -77,7 +77,7 @@ describe('Require Henchmen', () => {
 
       expect(setup.additionalDecks[0].deck.henchmen).toBeDefined();
 
-      expect(Array.from(setup.additionalDecks[0].deck.henchmen!)).toContain(
+      expect(setup.additionalDecks[0].deck.henchmen!).toContain(
         TEST_HENCHMEN_1
       );
     });
@@ -106,7 +106,7 @@ describe('Require Hero', () => {
       );
       const setup = scheme.getSetup({ numPlayers: 2, store });
 
-      const heroes = Array.from(setup.additionalDecks[0].deck.heroes!);
+      const heroes = setup.additionalDecks[0].deck.heroes!;
 
       expect(heroes.some((hero) => hero.name.includes('Foo'))).toBe(true);
     });
@@ -130,7 +130,7 @@ describe('Require Hero', () => {
       );
       const setup = scheme.getSetup({ numPlayers: 2, store });
 
-      expect(Array.from(setup.villainDeck.heroes!)).toContain(TEST_HERO_1);
+      expect(setup.villainDeck.heroes!).toContain(TEST_HERO_1);
     });
   });
 });
@@ -161,9 +161,7 @@ describe('Require Hero Name', () => {
     it('should include 1 "Foo" hero in the additional deck', () => {
       expect(setup.additionalDecks).toHaveLength(1);
       expect(setup.additionalDecks[0].deck.heroes).toBeDefined();
-      const hulkHeroes = Array.from(
-        setup.additionalDecks[0].deck.heroes!
-      ).filter(isName);
+      const hulkHeroes = setup.additionalDecks[0].deck.heroes!.filter(isName);
 
       expect(hulkHeroes).toHaveLength(1);
     });
@@ -176,46 +174,55 @@ describe('Require Hero Name', () => {
   });
 
   describe('in Hero Deck', () => {
-    let store: StoreOfStores;
-    let scheme: Scheme;
-    let setup: IGameSetup;
-
     const isName = (hero: Hero) => hero.name.includes('Bar');
 
-    beforeAll(() => {
-      store = new StoreBuilder()
-        .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
-        .build();
+    describe('with 2 game sets', () => {
+      let store: StoreOfStores;
+      let scheme: Scheme;
+      let setup: IGameSetup;
 
-      scheme = new RequireCardInDeckScheme(
-        TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
-        new RequireCardName('Bar', 1, true),
-        new RequireHero(),
-        DECK_TYPE.hero
-      );
+      beforeAll(() => {
+        store = new StoreBuilder()
+          .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
+          .build();
 
-      setup = scheme.getSetup({ numPlayers: 2, store });
-    });
+        scheme = new RequireCardInDeckScheme(
+          TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
+          new RequireCardName('Bar', 1, true),
+          new RequireHero(),
+          DECK_TYPE.hero
+        );
 
-    it('should only include 1 "Bar" hero', () => {
-      const nameHeroes = Array.from(setup.heroDeck.heroes).filter(isName);
+        setup = scheme.getSetup({ numPlayers: 2, store });
+      });
 
-      expect(nameHeroes).toHaveLength(1);
-    });
+      it('should only include 1 "Bar" hero', () => {
+        const nameHeroes = setup.heroDeck.heroes.filter(isName);
 
-    it('should not have any "Bar" heroes available in the store', () => {
-      const nameHeroes = store.heroStore.availableCards.filter(isName);
+        expect(nameHeroes).toHaveLength(1);
+      });
 
-      expect(nameHeroes).toHaveLength(0);
+      it('should not have any "Bar" heroes available in the store', () => {
+        const nameHeroes = store.heroStore.availableCards.filter(isName);
+
+        expect(nameHeroes).toHaveLength(0);
+      });
     });
 
     it('should throw an error when no cards are available with "Bar" in their name', () => {
-      store = new StoreBuilder()
+      const store = new StoreBuilder()
         .withHeroGamesets(TEST_GAME_SET_1)
         .withMastermindGamesets(TEST_GAME_SET_1)
         .withVillainGamesets(TEST_GAME_SET_1)
         .withHenchmenGamesets(TEST_GAME_SET_1)
         .build();
+
+      const scheme = new RequireCardInDeckScheme(
+        TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
+        new RequireCardName('Bar', 1, true),
+        new RequireHero(),
+        DECK_TYPE.hero
+      );
 
       expect(() => scheme.getSetup({ numPlayers: 3, store })).toThrow();
     });
@@ -241,7 +248,7 @@ describe('Require Hero Name', () => {
         .build();
       const setup = scheme.getSetup({ numPlayers: 2, store });
       expect(setup.villainDeck.heroes).toBeDefined();
-      const name = Array.from(setup.villainDeck.heroes!).filter(isName);
+      const name = setup.villainDeck.heroes!.filter(isName);
       expect(name).toHaveLength(1);
     });
 
@@ -277,7 +284,7 @@ describe('Require Team', () => {
       );
       const setup = scheme.getSetup({ numPlayers: 2, store });
 
-      const merc = Array.from(setup.heroDeck.heroes).filter(
+      const merc = setup.heroDeck.heroes.filter(
         (hero) => hero.team === TEST_TEAM_1
       );
       expect(merc.length).toBeGreaterThanOrEqual(1);
@@ -377,7 +384,7 @@ describe('Require Villains Groups', () => {
       });
 
       it('should include 1 S.H.I.E.L.D. villain group in the villain deck', () => {
-        const shieldVillains = Array.from(setup.villainDeck.villains).filter(
+        const shieldVillains = setup.villainDeck.villains.filter(
           shieldVillainPredicate
         );
         expect(shieldVillains).toHaveLength(1);

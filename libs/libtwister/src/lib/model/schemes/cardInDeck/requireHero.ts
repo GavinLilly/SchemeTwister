@@ -38,7 +38,7 @@ export class RequireHero implements IRequireCardTypeBehaviour<Hero> {
     const extra = cards.length > 1 ? cards.slice(1) : [];
 
     deck.heroes = Scheme.addToDeck(
-      deck.heroes ?? new Set(),
+      deck.heroes ?? [],
       cards[0],
       numHeroes,
       ...extra

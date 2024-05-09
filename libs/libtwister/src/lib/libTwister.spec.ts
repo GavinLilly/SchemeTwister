@@ -56,7 +56,7 @@ describe('LibTwister', () => {
       it.each([2, 3, 4, 5] as NumPlayers[])(
         'should generate a setup with %p players, only using Test gameset cards',
         (numPlayers) => {
-          const setup = twister.getSetup(numPlayers);
+          const setup = twister.getSetup({ numPlayers });
 
           expect(setup.scheme.gameSet.id).toBe(gameSet.id);
           expect(setup.mastermind.gameSet.id).toBe(gameSet.id);

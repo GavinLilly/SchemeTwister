@@ -2,44 +2,34 @@ import merge from 'ts-deepmerge';
 import { PartialDeep } from 'type-fest';
 import * as uuid from 'uuid';
 
-import { CardStore, StoreOfStores, MastermindType } from '../../factories';
+import { CardStore, StoreOfStores } from '../../factories';
+import { ISetupConfig } from '../../libTwister';
 import { GameSet } from '../GameSet';
-import { GameSetup } from '../GameSetup';
-import { Henchmen, Hero, Mastermind, VillainGroup } from '../cards';
+import {
+  AbstractCardGroup,
+  Henchmen,
+  Mastermind,
+  VillainGroup,
+} from '../cards';
 import {
   AdditionalDeckDeckMinimal,
-  HeroDeckMinimal,
   IAdditionalDeck,
   IAdditionalDeckRules,
   IPlayableObject,
   IGameSetMeta,
   IGameSetup,
   IHeroDeck,
-  IHeroDeckRequirements,
   IKeyword,
   INumPlayerRules,
   IVillainDeck,
-  IVillainDeckRequirements,
-  VillainDeckMinimal,
+  IAdditionalDeckDeck,
 } from '../interfaces';
 import { Rules, RulesType } from '../rules';
-import { CARD_TYPE, NumPlayers, SchemeMinusRules, numPlayers } from '../types';
+import { CARD_TYPE, SchemeMinusRules, numPlayers } from '../types';
 
-export interface IGetSetupConfig {
-  /** The number of players to build the setup for */
-  numPlayers: NumPlayers;
-  /** The mastermind to inject into this setup */
-  selectedMastermind?: Mastermind;
+export interface ISetupConfigWithStore extends Omit<ISetupConfig, 'scheme'> {
   /** A collection of stores to select cards from */
   store: StoreOfStores;
-  /** If the number of players is 1, whether to enable the advance solo mode (harder gameplay) */
-  advancedSolo?: boolean;
-  /** A hero deck to start the setup from */
-  partialHeroDeck?: HeroDeckMinimal;
-  /** A villain deck to start the setup from */
-  partialVillainDeck?: VillainDeckMinimal;
-  /** An additional deck to start the setup from */
-  partialAdditionalDeck?: AdditionalDeckDeckMinimal;
 }
 
 /**
@@ -161,10 +151,10 @@ export class Scheme implements IPlayableObject {
    * @param maxLength the maximum size of the deck
    */
   public static addToDeck<T extends IPlayableObject>(
-    deck: Set<T>,
+    deck: T[],
     card: T,
     maxDeckLength?: number
-  ): Set<T>;
+  ): T[];
   /**
    * Adds the provided cards to the provided deck, checking to make sure the new
    * deck size does not exceed the configured maximum.
@@ -174,22 +164,22 @@ export class Scheme implements IPlayableObject {
    * @param extraCards an array of additional cards to add to the deck
    */
   public static addToDeck<T extends IPlayableObject>(
-    deck: Set<T>,
+    deck: T[],
     card: T,
     maxDeckLength?: number,
     ...extraCards: T[]
-  ): Set<T>;
+  ): T[];
   public static addToDeck<T extends IPlayableObject>(
-    deck: Set<T>,
+    deck: T[],
     card: T,
     maxDeckLength?: number,
     ...extraCards: T[]
-  ): Set<T> {
+  ): T[] {
     const cardsToAdd = [card, ...extraCards];
     let newDeck = new Set([...deck, ...cardsToAdd]);
 
     if (maxDeckLength === undefined) {
-      return newDeck;
+      return Array.from(newDeck);
     }
 
     if (cardsToAdd.length > maxDeckLength) {
@@ -198,7 +188,7 @@ export class Scheme implements IPlayableObject {
       );
     }
 
-    const remainingSpace = maxDeckLength - deck.size;
+    const remainingSpace = maxDeckLength - deck.length;
     if (cardsToAdd.length > remainingSpace) {
       throw new Error(
         `The number of cards to add (${cardsToAdd.length}) can't be more than the amount of space in the array (${remainingSpace})`
@@ -212,61 +202,94 @@ export class Scheme implements IPlayableObject {
       newDeck = new Set(newDeckArray);
     }
 
-    return newDeck;
+    return Array.from(newDeck);
   }
 
-  private static _buildCards<
-    T extends Hero | Henchmen | VillainGroup | MastermindType
-  >(
-    store: CardStore<T>,
-    existingCards: Set<T> | undefined,
-    deckNumRequired = 0
-  ): Set<T> {
+  private static _buildCards<T extends AbstractCardGroup>(
+    store: Readonly<CardStore<T>>,
+    existingCards: ReadonlyArray<T> = [],
+    deckNumRequired = 0,
+    seedCards?: ReadonlyArray<T>
+  ): T[] {
     if (deckNumRequired === 0) {
-      return new Set();
+      return [];
     }
 
-    const existingLength = existingCards !== undefined ? existingCards.size : 0;
-    const numRequired = deckNumRequired - existingLength;
+    existingCards.forEach((card) => store.removeCard(card));
 
-    const returnCards: T[] | Mastermind[] =
-      existingCards !== undefined ? Array.from(existingCards) : [];
+    const returnCards = new Set(existingCards);
 
-    if (numRequired > 0) {
-      const newCards = store.pickRandom(numRequired);
+    const numRequired = () => deckNumRequired - returnCards.size;
 
-      if (newCards instanceof Array) {
-        returnCards.push(...newCards);
-      } else {
-        returnCards.push(newCards);
-      }
+    if (seedCards !== undefined) {
+      const seeds = this._buildFromSeeds(numRequired(), seedCards);
+      store.pickMany(seeds).forEach((seed) => returnCards.add(seed));
     }
 
-    returnCards.sort((a, b) => a.name.localeCompare(b.name));
+    this._buildFromRandomCards(numRequired(), store).forEach((card) =>
+      returnCards.add(card)
+    );
 
-    return new Set(returnCards);
+    const returnArray = Array.from(returnCards);
+
+    returnArray.sort((a, b) => a.name.localeCompare(b.name));
+
+    return returnArray;
   }
 
-  private static _buildAdditionalDecks(
-    additionalRules: IAdditionalDeckRules[],
-    store: StoreOfStores,
-    partialAdditionalDeck?: AdditionalDeckDeckMinimal
-  ): IAdditionalDeck[] {
-    const additionalDecks: IAdditionalDeck[] = [];
+  private static _buildFromSeeds<T extends AbstractCardGroup>(
+    numRequiredCards: number,
+    seedCards: ReadonlyArray<T>
+  ): ReadonlyArray<T> {
+    if (numRequiredCards === 0 || seedCards.length === 0) {
+      return [];
+    }
 
-    if (additionalRules.length > 0) {
+    const numFromSeed = Math.min(seedCards.length, numRequiredCards);
+
+    return seedCards.slice(0, numFromSeed);
+  }
+
+  private static _buildFromRandomCards<T extends AbstractCardGroup>(
+    numRequiredCards: number,
+    store: Readonly<CardStore<T>>
+  ): ReadonlyArray<T> {
+    if (numRequiredCards === 0) {
+      return [];
+    }
+
+    const randomCards = store.pickRandom(numRequiredCards);
+
+    if (randomCards instanceof Array) {
+      return randomCards;
+    } else {
+      return [randomCards];
+    }
+  }
+
+  private _buildAdditionalDecks(
+    rules: Readonly<INumPlayerRules>,
+    store: Readonly<StoreOfStores>,
+    // TODO Disabled while trying to figure out the best way to lock additional decks
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+    partialAdditionalDeck?: Readonly<AdditionalDeckDeckMinimal>
+  ): IAdditionalDeck[] {
+    const additionalDecks = [];
+    const requiredAdditionalDeck = this.initialiseAdditionalDecks(rules, store);
+
+    if (rules.additionalDeck.length > 0) {
       const firstAdditionalDeck = Scheme._buildAdditionalDeck(
-        additionalRules[0],
+        rules.additionalDeck[0],
         store,
-        partialAdditionalDeck
+        requiredAdditionalDeck
       );
       additionalDecks.push(firstAdditionalDeck);
     }
 
-    if (additionalRules.length >= 1) {
-      for (let i = 1; i < additionalRules.length; i++) {
+    if (rules.additionalDeck.length >= 1) {
+      for (let i = 1; i < rules.additionalDeck.length; i++) {
         const otherAdditionalDeck = Scheme._buildAdditionalDeck(
-          additionalRules[i],
+          rules.additionalDeck[i],
           store
         );
         additionalDecks.push(otherAdditionalDeck);
@@ -284,9 +307,9 @@ export class Scheme implements IPlayableObject {
    * @returns an instantiation of an additional deck
    */
   private static _buildAdditionalDeck(
-    additionalRules: IAdditionalDeckRules,
-    store: StoreOfStores,
-    partialAdditionalDeck?: AdditionalDeckDeckMinimal
+    additionalRules: Readonly<IAdditionalDeckRules>,
+    store: Readonly<StoreOfStores>,
+    partialAdditionalDeck?: Readonly<AdditionalDeckDeckMinimal>
   ): IAdditionalDeck {
     const addDeck: IAdditionalDeck = {
       name: additionalRules.name,
@@ -328,47 +351,56 @@ export class Scheme implements IPlayableObject {
 
   /**
    * Builds the hero deck according to the provided rules
-   * @param heroRules the rules to follow for generating the hero deck
+   * @param rules the rules to follow for generating the hero deck
+   * @param numPlayers the number pf players to build the hero deck for
    * @param store a store of stores for selecting cards for the setup
    * @param partialHeroDeck a baseline of the deck to build from
    * @returns an instantiation of the hero deck
    */
-  private static _buildHeroDeck(
-    heroRules: IHeroDeckRequirements,
-    store: StoreOfStores,
-    partialHeroDeck: IHeroDeck
+  private _buildHeroDeck(
+    rules: Readonly<INumPlayerRules>,
+    numPlayers: number,
+    store: Readonly<StoreOfStores>,
+    partialHeroDeck: Readonly<IHeroDeck>
   ): IHeroDeck {
-    partialHeroDeck.heroes = this._buildCards(
-      store.heroStore,
-      partialHeroDeck.heroes,
-      heroRules.numHeroes
-    );
+    const heroDeck = this.initialiseHeroDeck(rules, store, numPlayers);
 
-    partialHeroDeck.henchmen = this._buildCards(
-      store.henchmenStore,
-      partialHeroDeck.henchmen,
-      heroRules.numHenchmenGroups
-    );
+    if (heroDeck.heroes.length < rules.heroDeck.numHeroes) {
+      heroDeck.heroes = Scheme._buildCards(
+        store.heroStore,
+        heroDeck.heroes,
+        rules.heroDeck.numHeroes,
+        partialHeroDeck.heroes
+      );
+    }
 
-    return partialHeroDeck;
+    if (
+      (heroDeck.henchmen?.length ?? 0) < (rules.heroDeck.numHenchmenGroups ?? 0)
+    ) {
+      heroDeck.henchmen = Scheme._buildCards(
+        store.henchmenStore,
+        heroDeck.henchmen,
+        rules.heroDeck.numHenchmenGroups,
+        partialHeroDeck.henchmen
+      );
+    }
+
+    heroDeck.numBystanders = rules.heroDeck.numBystanders;
+
+    return heroDeck;
   }
 
-  private static _buildVillainDeck(
-    villainRules: IVillainDeckRequirements,
+  private static _buildHenchmenForVillainDeck(
+    initiatedHenchmen: Henchmen[],
+    rules: Readonly<INumPlayerRules>,
     store: StoreOfStores,
-    partialDeck: IVillainDeck,
+    partialDeck: ReadonlyArray<Henchmen>,
     selectedMastermind: Mastermind
-  ): IVillainDeck {
-    // Start by adding any heroes
-    partialDeck.heroes = this._buildCards(
-      store.heroStore,
-      partialDeck.heroes,
-      villainRules.numHeroes
-    );
+  ): Henchmen[] {
+    const henchmen = new Set(initiatedHenchmen);
 
-    // Next add henchmen
     const numRemVillDeckHenchmen =
-      villainRules.numHenchmenGroups - partialDeck.henchmen.size;
+      rules.villainDeck.numHenchmenGroups - henchmen.size;
 
     // Check to see if any more henchmen are needed and if so,
     // whether the mastermind demands any
@@ -380,19 +412,29 @@ export class Scheme implements IPlayableObject {
         store.henchmenStore.pickOne(henchmen)
       );
 
-      mastermindHenchmen.forEach((card) => partialDeck.henchmen.add(card));
+      mastermindHenchmen.forEach((card) => henchmen.add(card));
     }
 
     // Check again in case the mastermind did not fill all the slots
-    partialDeck.henchmen = this._buildCards(
+    return Scheme._buildCards(
       store.henchmenStore,
-      partialDeck.henchmen,
-      villainRules.numHenchmenGroups
+      Array.from(henchmen),
+      rules.villainDeck.numHenchmenGroups,
+      partialDeck
     );
+  }
 
-    // Next add villains
+  private static _buildVillainsForVillainDeck(
+    initiatedVillains: VillainGroup[],
+    rules: Readonly<INumPlayerRules>,
+    store: StoreOfStores,
+    partialDeck: ReadonlyArray<VillainGroup>,
+    selectedMastermind: Mastermind
+  ): VillainGroup[] {
+    const villains = new Set(initiatedVillains);
+
     const numRemVillDeckVillains =
-      villainRules.numVillainGroups - partialDeck.villains.size;
+      rules.villainDeck.numVillainGroups - villains.size;
 
     // Check to see if any more villains are needed and if so,
     // whether the mastermind demands any
@@ -404,30 +446,71 @@ export class Scheme implements IPlayableObject {
         store.villainStore.pickOne(villains)
       );
 
-      mastermindVillains.forEach((card) => partialDeck.villains.add(card));
+      mastermindVillains.forEach((card) => villains.add(card));
     }
 
     // Check again in case the mastermind did not fill all the slots
-    partialDeck.villains = this._buildCards(
+    return Scheme._buildCards(
       store.villainStore,
+      Array.from(villains),
+      rules.villainDeck.numVillainGroups,
+      partialDeck
+    );
+  }
+
+  private _buildVillainDeck(
+    rules: Readonly<INumPlayerRules>,
+    store: StoreOfStores,
+    partialDeck: Readonly<
+      Pick<IVillainDeck, 'heroes' | 'henchmen' | 'villains' | 'masterminds'>
+    >,
+    selectedMastermind: Mastermind
+  ): IVillainDeck {
+    // Initiate deck with cards required by scheme
+    const returnDeck = this.initialiseVillainDeck(rules, store);
+
+    // Check to see if all heroes have been addded
+    if ((returnDeck.heroes?.length ?? 0) < (rules.villainDeck.numHeroes ?? 0)) {
+      // Add heroes until full
+      returnDeck.heroes = Scheme._buildCards(
+        store.heroStore,
+        returnDeck.heroes,
+        rules.villainDeck.numHeroes,
+        partialDeck.heroes
+      );
+    }
+
+    returnDeck.henchmen = Scheme._buildHenchmenForVillainDeck(
+      returnDeck.henchmen,
+      rules,
+      store,
+      partialDeck.henchmen,
+      selectedMastermind
+    );
+
+    returnDeck.villains = Scheme._buildVillainsForVillainDeck(
+      returnDeck.villains,
+      rules,
+      store,
       partialDeck.villains,
-      villainRules.numVillainGroups
+      selectedMastermind
     );
 
     // Next add masterminds
-    partialDeck.masterminds = this._buildCards(
+    returnDeck.masterminds = Scheme._buildCards(
       store.mastermindStore,
-      partialDeck.masterminds,
-      villainRules.numMasterminds
+      returnDeck.masterminds,
+      rules.villainDeck.numMasterminds,
+      partialDeck.masterminds
     );
 
     // Finally add remaining deck elements
-    partialDeck.numAmbitions = villainRules.numAmbitions;
-    partialDeck.numBystanders = villainRules.numBystanders;
-    partialDeck.numSidekicks = villainRules.numSidekicks;
-    partialDeck.numTwists = villainRules.numTwists;
+    returnDeck.numAmbitions = rules.villainDeck.numAmbitions;
+    returnDeck.numBystanders = rules.villainDeck.numBystanders;
+    returnDeck.numSidekicks = rules.villainDeck.numSidekicks;
+    returnDeck.numTwists = rules.villainDeck.numTwists;
 
-    return partialDeck;
+    return returnDeck;
   }
 
   /**
@@ -461,77 +544,107 @@ export class Scheme implements IPlayableObject {
    * @param config the config to use to create a game setup
    * @returns a fully populated setup for a game
    */
-  public getSetup(config: IGetSetupConfig): IGameSetup {
-    const advancedSolo = config.advancedSolo ?? false;
+  public getSetup(config: Readonly<ISetupConfigWithStore>): IGameSetup {
+    const isAdvancedSolo = config.advancedSolo ?? false;
     // Get player rules
     const ruleSet =
-      config.selectedMastermind?.ruleOverride !== undefined
-        ? this.overrideEachRule(config.selectedMastermind.ruleOverride).rules
+      config.mastermind?.ruleOverride !== undefined
+        ? this.overrideEachRule(config.mastermind.ruleOverride).rules
         : this.rules;
     const playerRules = ruleSet[config.numPlayers];
-    const {
-      heroDeck: heroRules,
-      villainDeck: villainRules,
-      additionalDeck: additionalRules,
-    } = ruleSet[config.numPlayers];
+    const { heroDeck: heroRules, villainDeck: villainRules } = playerRules;
 
-    const heroDeckSeed = config.partialHeroDeck?.heroes ?? new Set();
+    const heroDeckSeed = config.partialHeroDeck?.heroes ?? [];
 
-    if (config.selectedMastermind?.alwaysInclude !== undefined) {
+    if (config.mastermind?.alwaysInclude !== undefined) {
       config.store.heroStore
-        .pickMany(config.selectedMastermind.alwaysInclude)
-        .forEach((hero) => heroDeckSeed.add(hero));
+        .pickMany(config.mastermind.alwaysInclude)
+        .forEach((hero) => heroDeckSeed.push(hero));
     }
 
-    // Create skeleton decks
-    const fullDeck = new GameSetup({
-      numPlayers: config.numPlayers,
-      mastermind:
-        config.selectedMastermind ?? config.store.mastermindStore.pickRandom(),
-      scheme: this,
-      heroDeck: {
-        ...config.partialHeroDeck,
-        heroes: heroDeckSeed,
-        numBystanders: heroRules.numBystanders ?? undefined,
-      },
-      villainDeck: {
-        villains: new Set(),
-        henchmen: new Set(),
-        numTwists: villainRules.numTwists,
-        numMasterStrikes: advancedSolo ? 5 : villainRules.numMasterStrikes,
-        ...config.partialVillainDeck,
-      },
-      additionalDecks: [],
-      numShieldOfficers: playerRules.numShieldOfficers,
-      numWounds: playerRules.numWounds,
-    });
+    const mastermind =
+      config.mastermind ?? config.store.mastermindStore.pickRandom();
 
     // Build the additional deck first if required
-    fullDeck.additionalDecks = Scheme._buildAdditionalDecks(
-      additionalRules,
+    const additionalDecks = this._buildAdditionalDecks(
+      playerRules,
       config.store,
       config.partialAdditionalDeck
     );
 
-    // Build hero deck
-    fullDeck.heroDeck = Scheme._buildHeroDeck(
-      heroRules,
-      config.store,
-      fullDeck.heroDeck
-    );
-
     // Build villain deck
-    fullDeck.villainDeck = Scheme._buildVillainDeck(
-      villainRules,
+    const villainDeck = {
+      ...this._buildVillainDeck(
+        playerRules,
+        config.store,
+        { villains: [], henchmen: [], ...config.partialVillainDeck },
+        mastermind
+      ),
+    };
+
+    // Build hero deck
+    const heroDeck = this._buildHeroDeck(
+      playerRules,
+      config.numPlayers,
       config.store,
-      fullDeck.villainDeck,
-      fullDeck.mastermind
+      {
+        ...config.partialHeroDeck,
+        heroes: heroDeckSeed,
+        numBystanders: heroRules.numBystanders ?? undefined,
+      }
     );
 
-    return fullDeck;
+    return {
+      numPlayers: config.numPlayers,
+      mastermind,
+      scheme: this,
+      heroDeck,
+      villainDeck: {
+        ...villainDeck,
+        numMasterStrikes: isAdvancedSolo ? 5 : villainRules.numMasterStrikes,
+      },
+      additionalDecks,
+      numShieldOfficers: playerRules.numShieldOfficers,
+      numWounds: playerRules.numWounds,
+    };
   }
 
   public toString(): string {
     return this.name;
+  }
+
+  protected initialiseHeroDeck(
+    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+    rules: Readonly<INumPlayerRules>,
+    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+    store: Readonly<StoreOfStores>,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+    numPlayers: number
+  ): IHeroDeck {
+    return {
+      heroes: [],
+    };
+  }
+
+  protected initialiseVillainDeck(
+    rules: Readonly<INumPlayerRules>,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+    store: Readonly<StoreOfStores>
+  ): IVillainDeck {
+    return {
+      henchmen: [],
+      villains: [],
+      numMasterStrikes: rules.villainDeck.numMasterStrikes,
+      numTwists: rules.villainDeck.numTwists,
+    };
+  }
+
+  protected initialiseAdditionalDecks(
+    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+    rules: Readonly<INumPlayerRules>,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+    store: Readonly<StoreOfStores>
+  ): IAdditionalDeckDeck | undefined {
+    return undefined;
   }
 }

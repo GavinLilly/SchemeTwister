@@ -58,15 +58,11 @@ describe('RequireHeroAndTeamScheme', () => {
 
   it('should include 4 X-Men heroes in the hero deck', () =>
     expect(
-      Array.from(setup.heroDeck.heroes).filter(
-        (hero) => hero.team === selectedTeam
-      )
+      setup.heroDeck.heroes.filter((hero) => hero.team === selectedTeam)
     ).toHaveLength(4));
 
   it('should include 2 non-X-Men heroes in the hero deck', () =>
     expect(
-      Array.from(setup.heroDeck.heroes).filter(
-        (hero) => hero.team !== selectedTeam
-      )
+      setup.heroDeck.heroes.filter((hero) => hero.team !== selectedTeam)
     ).toHaveLength(2));
 });

@@ -35,7 +35,6 @@ import { MastermindCardComponent } from './mastermind-card/mastermind-card.compo
 import { RandomizeComponent } from './randomize/randomize.component';
 import { ReplacePipe } from './replace.pipe';
 import { SchemeCardComponent } from './scheme-card/scheme-card.component';
-import { SchemeMastermindSelectComponent } from './scheme-mastermind-select/scheme-mastermind-select.component';
 import { VillainDeckComponent } from './villain-deck/villain-deck.component';
 
 @NgModule({
@@ -67,17 +66,18 @@ import { VillainDeckComponent } from './villain-deck/villain-deck.component';
     // Schemetwister
     WebAppUiModule,
     WebAppSharedModule,
+
+    // Standalone components
+    MastermindCardComponent,
+    SchemeCardComponent,
   ],
   declarations: [
     RandomizeComponent,
     GameSetSelectComponent,
-    SchemeMastermindSelectComponent,
     ReplacePipe,
     HeroDeckComponent,
     VillainDeckComponent,
     AdditionalDeckComponent,
-    SchemeCardComponent,
-    MastermindCardComponent,
   ],
 })
 export class WebAppFeatureRandomizeModule {}

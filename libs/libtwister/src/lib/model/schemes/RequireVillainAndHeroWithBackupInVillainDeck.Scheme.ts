@@ -1,8 +1,9 @@
+import { StoreOfStores } from '../../factories';
 import { VillainGroup, Hero } from '../cards';
-import { IGameSetup } from '../interfaces/gameSetup.interface';
+import { INumPlayerRules, IVillainDeck } from '../interfaces';
 import { DECK_TYPE, SchemeMinusRules } from '../types';
 
-import { IGetSetupConfig, Scheme } from './Scheme';
+import { Scheme } from './Scheme';
 import {
   RequireCard,
   RequireCardInDeckScheme,
@@ -24,20 +25,23 @@ export class RequireVillainAndHeroWithBackupInVillainDeckScheme extends RequireC
     );
   }
 
-  public override getSetup(config: IGetSetupConfig): IGameSetup {
-    const hero = this._requiredHero.getRequiredCard(config.store.heroStore);
+  protected override initialiseVillainDeck(
+    rules: Readonly<INumPlayerRules>,
+    store: Readonly<StoreOfStores>
+  ): IVillainDeck {
+    const hero = this._requiredHero.getRequiredCard(store.heroStore);
 
-    const pickedHero = config.store.heroStore.pickOne(hero);
+    const pickedHero = store.heroStore.pickOne(hero);
 
-    return super.getSetup({
-      ...config,
-      partialVillainDeck: {
-        heroes: Scheme.addToDeck(
-          config.partialVillainDeck?.heroes ?? new Set(),
-          pickedHero,
-          this.rules[config.numPlayers].villainDeck.numHeroes
-        ),
-      },
-    });
+    const superDeck = super.initialiseVillainDeck(rules, store);
+
+    return {
+      ...superDeck,
+      heroes: Scheme.addToDeck(
+        superDeck.heroes ?? [],
+        pickedHero,
+        rules.villainDeck.numHeroes
+      ),
+    };
   }
 }

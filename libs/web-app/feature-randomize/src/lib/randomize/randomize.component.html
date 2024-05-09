@@ -41,6 +41,7 @@
                 [ngModel]="isAdvancedSolo()"
                 [ngModelOptions]="{ standalone: true }"
                 (click)="setAdvancedSolo(advancedSoloInput.checked)"
+                (keydown)="setAdvancedSolo(advancedSoloInput.checked)"
                 id="advancedSoloCheck"
               />
               <label class="form-check-label" for="advancedSoloCheck"
@@ -63,6 +64,12 @@
               >
             </div>
           </form>
+          @if (isVillainDeckLocked | async) {
+          <p id="lock-warning">
+            Locked cards in the Villain Deck may be overridden by Scheme and/or
+            Mastermind requirements
+          </p>
+          }
         </div>
       </div>
     </div>

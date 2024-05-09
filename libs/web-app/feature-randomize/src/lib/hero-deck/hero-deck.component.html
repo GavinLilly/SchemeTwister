@@ -1,4 +1,5 @@
-<div class="card" *ngIf="heroDeck() as heroDeck">
+@if(heroDeck(); as heroDeck) {
+<div class="card">
   <div class="card-header">Hero deck</div>
   <div class="card-body p-0">
     <div class="setup-cards card-body" *ngIf="heroDeck.numBystanders">
@@ -10,15 +11,40 @@
         <h2 ngbAccordionHeader>
           <div class="d-flex align-items-center justify-content-between">
             <button ngbAccordionButton>
-              <span>{{ hero.name }}</span>
+              @if(hero.team) {
               <img
-                *ngIf="hero.team"
                 src="/assets/icons/teams/{{ hero.team.icon }}"
                 alt="{{ hero.team.name }}"
                 class="img-fluid"
                 id="hero-team"
               />
+              } @else {
+              <img
+                src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D"
+                alt="No team"
+                class="img-fluid"
+                id="hero-team"
+              />
+              }
+              <span>{{ hero.name }}</span>
             </button>
+            <span
+              (click)="toggleLocked(hero)"
+              (keydown)="toggleLocked(hero)"
+              class="lock-block"
+            >
+              @if(isCardLocked(hero)) {
+              <fa-icon
+                [icon]="faLock"
+                class="ml-auto lock-icon locked"
+              ></fa-icon>
+              } @else {
+              <fa-icon
+                [icon]="faLockOpen"
+                class="ml-auto lock-icon unlocked"
+              ></fa-icon>
+              }
+            </span>
           </div>
         </h2>
         <div ngbAccordionCollapse>
@@ -38,7 +64,25 @@
         class="henchmen"
       >
         <h2 ngbAccordionHeader>
-          <button ngbAccordionButton>{{ henchmen.name }}</button>
+          <div class="d-flex align-items-center justify-content-between">
+            <button ngbAccordionButton>{{ henchmen.name }}</button>
+            <span
+              (click)="toggleLocked(henchmen)"
+              (keydown)="toggleLocked(henchmen)"
+              class="lock-block"
+            >
+              @if(isCardLocked(henchmen)) {
+              <fa-icon
+                [icon]="faLock"
+                class="ml-auto lock-icon locked"
+              ></fa-icon>
+              } @else {<fa-icon
+                [icon]="faLockOpen"
+                class="ml-auto lock-icon unlocked"
+              ></fa-icon>
+              }
+            </span>
+          </div>
         </h2>
         <div ngbAccordionCollapse>
           <div ngbAccordionBody>
@@ -54,3 +98,4 @@
     </div>
   </div>
 </div>
+}
