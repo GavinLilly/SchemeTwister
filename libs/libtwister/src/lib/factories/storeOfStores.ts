@@ -1,5 +1,3 @@
-import isUUID from 'validator/lib/isUUID';
-
 import { Henchmen, Hero, VillainGroup } from '../model/cards';
 import { ICardType, IPlayableObject } from '../model/interfaces';
 
@@ -76,17 +74,10 @@ export class StoreOfStores {
   }
 
   public getCardById(id: string): (IPlayableObject & ICardType) | undefined {
-    if (!isUUID(id)) {
-      throw new Error(`The provided card ID (${id}) is not a valid UUID`);
-    }
-
     for (const store of this._allStores) {
-      try {
-        return store.get(id);
-      } catch (e) {
-        console.log(
-          `Error caught while looking for card ID (${id}) in ${store.getStoreType()} store. This is expected so continuing to the next store...`
-        );
+      const card = store.get(id);
+      if (card !== undefined) {
+        return card;
       }
     }
 

@@ -39,7 +39,11 @@ export class MastermindStore extends CardStore<MastermindType> {
     return picked;
   }
 
-  public override pickOne(idOrCard: string | MastermindType): MastermindType {
+  public override pickOne(id: string): MastermindType | undefined;
+  public override pickOne(card: MastermindType): MastermindType;
+  public override pickOne(
+    idOrCard: string | MastermindType
+  ): MastermindType | undefined {
     const cardId = CardFactory.getCardId(idOrCard);
 
     try {
@@ -75,11 +79,13 @@ export class MastermindStore extends CardStore<MastermindType> {
     }
   }
 
-  public override get(id: string): MastermindType;
-  public override get(ids: string[]): MastermindType[];
+  public override get(id: string): MastermindType | undefined;
+  public override get(
+    ids: string[]
+  ): (MastermindType | undefined)[] | undefined;
   public override get(
     idOrIds: string | string[]
-  ): MastermindType | MastermindType[] {
+  ): MastermindType | (MastermindType | undefined)[] | undefined {
     const ids = idOrIds instanceof Array ? idOrIds : [idOrIds];
 
     const cards = ids.map((id) => {

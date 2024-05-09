@@ -148,38 +148,37 @@ export class CardFactory<TCard extends IPlayableObject> {
    * @param id the ID of the item that is requested
    * @returns the requested item or undefined if it's not found
    */
-  public get(id: string): TCard;
+  public get(id: string): TCard | undefined;
   /**
    * For each ID passed to the function, get the full item associated with it.
    * Note: IDs that are not matched are skipped.
    * @param ids An array of ID strings
    * @returns An array of cards
    */
-  public get(ids: string[]): TCard[];
-  public get(idOrIds: string | string[]): TCard | TCard[] {
+  public get(ids: string[]): (TCard | undefined)[] | undefined;
+  public get(
+    idOrIds: string | string[]
+  ): TCard | (TCard | undefined)[] | undefined {
     const ids = idOrIds instanceof Array ? idOrIds : [idOrIds];
 
-    const cards = ids.map((id) => {
-      if (!isUUID(id)) {
-        throw new Error(`The provided card ID (${id}) is not a valid UUID`);
-      }
+    const cards = ids
+      .map((id) => {
+        if (!isUUID(id)) {
+          throw new Error(`The provided card ID (${id}) is not a valid UUID`);
+        }
 
-      const card = this.availableCardsMap.get(id);
+        return this.availableCardsMap.get(id);
+      })
+      .filter((card): card is TCard => !!card);
 
-      if (card !== undefined) {
-        return card;
-      }
-
-      throw new Error(
-        `Provided card ID (${id}) is not in the list of available cards.`
-      );
-    });
-
-    if (cards.length === 1) {
-      return cards[0];
+    switch (cards.length) {
+      case 0:
+        return undefined;
+      case 1:
+        return cards[0];
+      default:
+        return cards;
     }
-
-    return cards;
   }
 
   /**

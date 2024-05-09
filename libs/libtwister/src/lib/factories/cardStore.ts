@@ -53,7 +53,7 @@ export class CardStore<
    * @param id the ID of the item that is requested
    * @returns the requested item or undefined if it's not found
    */
-  public pickOne(id: string): TCard;
+  public pickOne(id: string): TCard | undefined;
   /**
    * Get's the full item associated with the given card and removes it from
    * the store
@@ -61,7 +61,7 @@ export class CardStore<
    * @returns the requested card if it's in the list of available cards
    */
   public pickOne(card: TCard): TCard;
-  public pickOne(idOrCard: string | TCard): TCard {
+  public pickOne(idOrCard: string | TCard): TCard | undefined {
     const cardId = CardFactory.getCardId(idOrCard);
 
     if (!isUUID(cardId)) {
@@ -94,7 +94,7 @@ export class CardStore<
    * @param ids the card IDs that are requested
    * @returns the requested items
    */
-  public pickMany(ids: string[]): TCard[];
+  public pickMany(ids: string[]): (TCard | undefined)[];
   /**
    * For each card passed to the function, remove it from the store and return it.
    * Note: IDs that are not matched are skipped.
@@ -104,7 +104,7 @@ export class CardStore<
   public pickMany(cards: TCard[] | ReadonlyArray<TCard>): TCard[];
   public pickMany(
     idsOrCards: string[] | TCard[] | ReadonlyArray<TCard>
-  ): TCard[] {
+  ): (TCard | undefined)[] {
     return idsOrCards.map((idOrCard) => {
       const cardId = CardFactory.getCardId(idOrCard);
       return this.pickOne(cardId);
