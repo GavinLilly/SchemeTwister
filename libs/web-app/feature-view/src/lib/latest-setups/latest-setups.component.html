@@ -16,47 +16,49 @@
   <tbody>
     @for(setup of setups(); track $index) { @if(setup | storedSetupToGameSetup:
     libTwister; as gameSetup) {
-    <td>{{ setup.updated.toDate() | date: 'yyyy-MMM-dd HH:mm' }}</td>
-    <td>{{ setup.twistCount }}</td>
-    <td>{{ gameSetup.scheme }}</td>
-    <td>{{ gameSetup.mastermind }}</td>
-    @if(gameSetup.heroDeck; as heroDeck) {
-    <td>
-      @for(hero of heroDeck.heroes; track $index) {
-      <p>{{ hero.name }}</p>
-      } @for(henchmen of heroDeck.henchmen; track $index) {
-      <p>{{ henchmen.name }}</p>
-      }
-    </td>
-    } @if(gameSetup.villainDeck; as villainDeck) {
-    <td>
-      @for(villain of villainDeck.villains; track $index) {
-      <p>{{ villain.name }}</p>
-      } @for(henchmen of villainDeck.henchmen; track $index) {
-      <p>{{ henchmen.name }}</p>
-      } @for(hero of villainDeck.heroes; track $index) {
-      <p>{{ hero.name }}</p>
-      } @for(masterminds of villainDeck.masterminds; track $index) {
-      <p>{{ masterminds.name }}</p>
-      }
-    </td>
-    }
-    <td>
-      @for(additionalDeck of gameSetup.additionalDecks; track $index) {
-      @if(additionalDeck.deck; as addDeck) {
-      <div>
-        @for(villain of addDeck.villains; track $index) {
-        <p>{{ villain.name }}</p>
-        } @for(henchmen of addDeck.henchmen; track $index) {
-        <p>{{ henchmen.name }}</p>
-        } @for(hero of addDeck.heroes; track $index) {
+    <tr>
+      <td>{{ setup.updated.toDate() | date: 'yyyy-MMM-dd HH:mm' }}</td>
+      <td>{{ setup.twistCount }}</td>
+      <td>{{ gameSetup.scheme }}</td>
+      <td>{{ gameSetup.mastermind }}</td>
+      @if(gameSetup.heroDeck; as heroDeck) {
+      <td>
+        @for(hero of heroDeck.heroes; track $index) {
         <p>{{ hero.name }}</p>
-        } @for(masterminds of addDeck.masterminds; track $index) {
+        } @for(henchmen of heroDeck.henchmen; track $index) {
+        <p>{{ henchmen.name }}</p>
+        }
+      </td>
+      } @if(gameSetup.villainDeck; as villainDeck) {
+      <td>
+        @for(villain of villainDeck.villains; track $index) {
+        <p>{{ villain.name }}</p>
+        } @for(henchmen of villainDeck.henchmen; track $index) {
+        <p>{{ henchmen.name }}</p>
+        } @for(hero of villainDeck.heroes; track $index) {
+        <p>{{ hero.name }}</p>
+        } @for(masterminds of villainDeck.masterminds; track $index) {
         <p>{{ masterminds.name }}</p>
         }
-      </div>
-      } }
-    </td>
+      </td>
+      }
+      <td>
+        @for(additionalDeck of gameSetup.additionalDecks; track $index) {
+        @if(additionalDeck.deck; as addDeck) {
+        <div>
+          @for(villain of addDeck.villains; track $index) {
+          <p>{{ villain.name }}</p>
+          } @for(henchmen of addDeck.henchmen; track $index) {
+          <p>{{ henchmen.name }}</p>
+          } @for(hero of addDeck.heroes; track $index) {
+          <p>{{ hero.name }}</p>
+          } @for(masterminds of addDeck.masterminds; track $index) {
+          <p>{{ masterminds.name }}</p>
+          }
+        </div>
+        } }
+      </td>
+    </tr>
     } }
   </tbody>
 </table>
