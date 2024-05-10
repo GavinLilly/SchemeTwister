@@ -8,6 +8,7 @@ import {
   StoreOfStores,
   StoreBuilder,
 } from '@schemetwister/libtwister';
+import { describe, beforeAll, it, expect } from 'vitest';
 
 import { GAME_SET as LEGENDARY } from '../legendary';
 

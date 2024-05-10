@@ -5,38 +5,18 @@ import {
   LibTwister,
 } from '@schemetwister/libtwister';
 import isUUID from 'validator/lib/isUUID';
+import { beforeAll, describe, expect, it, test } from 'vitest';
 
 expect.extend({
   toBeUUID(received) {
-    if (isUUID(received)) {
-      return {
-        message: () => `ID (${received}) should NOT be a UUID`,
-        pass: true,
-      };
-    }
+    const { isNot } = this;
 
     return {
-      message: () => `ID (${received}) should be a UUID`,
-      pass: false,
+      pass: isUUID(received),
+      message: () => `${received} is${isNot ? ' not' : ''} a UUID`,
     };
   },
 });
-
-interface CustomMatchers<R = unknown> {
-  toBeUUID(): R;
-}
-
-declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace jest {
-    // eslint-disable-next-line @typescript-eslint/no-empty-interface
-    interface Expect extends CustomMatchers {}
-    // eslint-disable-next-line @typescript-eslint/no-empty-interface
-    interface Matchers<R> extends CustomMatchers<R> {}
-    // eslint-disable-next-line @typescript-eslint/no-empty-interface
-    interface InverseAsymmetricMatchers extends CustomMatchers {}
-  }
-}
 
 export function seriesTest(
   series: ISeries,

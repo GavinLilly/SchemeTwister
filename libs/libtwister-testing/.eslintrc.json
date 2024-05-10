@@ -4,7 +4,7 @@
   "overrides": [
     {
       "files": ["gameSet.test.ts", "series.test.ts"],
-      "env": { "jest": true },
+      "env": { "jest": false },
       "rules": { "max-nested-callbacks": "off" }
     }
   ]

@@ -3,6 +3,7 @@ import {
   type GameSet,
   CARD_TYPE,
 } from '@schemetwister/libtwister';
+import { describe, beforeAll, it, expect, test } from 'vitest';
 
 export const gameSetTest = (
   gameSet: GameSet,
