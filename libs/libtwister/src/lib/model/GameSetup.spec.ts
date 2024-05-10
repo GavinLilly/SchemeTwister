@@ -1,3 +1,5 @@
+import { afterEach, beforeAll, describe, expect, it } from 'vitest';
+
 import { StoreBuilder, StoreOfStores } from '../factories';
 import { TEST_GAME_SET_1, TEST_GAME_SET_2 } from '../testData/gameSets';
 import { TEST_KEYWORD_1 } from '../testData/keywords';
@@ -94,7 +96,8 @@ describe('GameSetup', () => {
       .heroes!.map((hero) => hero.name)
       .some((heroName) => heroName.includes('Foo'));
 
-    expect(doesContainExpectedHeroName).toEqual(true);
+    it('should contain the expected hero name', () =>
+      expect(doesContainExpectedHeroName).toBeTruthy());
   });
 
   describe('get keywords', () => {

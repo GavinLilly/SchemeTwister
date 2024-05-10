@@ -10,9 +10,8 @@
       "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "executor": "@nx/jest:jest",
+      "executor": "@nx/vite:test",
       "options": {
-        "jestConfig": "libs/libtwister/jest.config.ts",
         "codeCoverage": true
       },
       "outputs": ["{workspaceRoot}/coverage/libs/libtwister"]
