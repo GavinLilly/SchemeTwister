@@ -5,6 +5,7 @@ import {
   RequireCard,
   GameSetup,
 } from '@schemetwister/libtwister';
+import { describe, beforeEach, it, expect } from 'vitest';
 
 import { GAME_SET as DARK_CITY } from '../darkCity/darkCity.gameset';
 import { KINGPIN } from '../darkCity/darkCity.masterminds';

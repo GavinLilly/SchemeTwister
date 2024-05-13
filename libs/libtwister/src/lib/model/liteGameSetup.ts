@@ -129,6 +129,12 @@ export class LiteGameSetup {
 
     const scheme = libTwister.schemeFactory.get(this.schemeId);
 
+    if (scheme === undefined) {
+      throw new Error(
+        `The provided scheme ID ${this.schemeId} does not match a valid scheme`
+      );
+    }
+
     const instantiatedScheme = instantiateScheme(scheme);
 
     const rules = instantiatedScheme.rules[this.numPlayers as NumPlayers];

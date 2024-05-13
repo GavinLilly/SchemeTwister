@@ -48,10 +48,6 @@ const dcData = [
   dcExcludeCard,
 ];
 
-beforeEach(() => {
-  jest.resetModules();
-});
-
 describe('Card Factory', () => {
   describe('with all cards', () => {
     let instance: CardFactory<IPlayableObject>;

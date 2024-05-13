@@ -1,5 +1,6 @@
 import { LibTwister } from '@schemetwister/libtwister';
 import { gameSetTest } from '@schemetwister/libtwister/testing';
+import { describe, beforeEach, it, expect } from 'vitest';
 
 import { marvelStudiosSeries } from '../../marvelStudios.series';
 import { GAME_SET as MARVEL_STUDIOS } from '../marvelStudios/marvelStudios.gameset';
