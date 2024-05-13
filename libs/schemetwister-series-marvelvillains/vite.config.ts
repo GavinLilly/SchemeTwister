@@ -8,23 +8,17 @@ export default defineConfig({
 
   plugins: [nxViteTsPaths()],
 
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [ nxViteTsPaths() ],
-  // },
-
   test: {
-    cache: {
-      dir: '../../node_modules/.vitest',
-    },
     environment: 'node',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
 
     reporters: ['default'],
     coverage: {
+      enabled: true,
       reportsDirectory:
         '../../coverage/libs/schemetwister-series-marvelvillains',
       provider: 'v8',
+      reporter: ['lcov'],
     },
   },
 });
