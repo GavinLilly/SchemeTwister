@@ -1,3 +1,10 @@
+## [3.14.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.14.0...v3.14.1) (2024-05-16)
+
+
+### Bug Fixes
+
+* **libtwister:** fix reimplementation in MastermindStore ([a2d7cd4](https://github.com/GavinLilly/SchemeTwister/commit/a2d7cd48dfd367610546c5aa56b48f3b7d3d218b))
+
 ## [3.14.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.13.1...v3.14.0) (2024-05-09)
 
 
