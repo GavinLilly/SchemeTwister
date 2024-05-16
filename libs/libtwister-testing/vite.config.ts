@@ -1,24 +1,16 @@
 /// <reference types='vitest' />
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
-import { defineConfig } from 'vite';
+import { mergeConfig } from 'vite';
 
-export default defineConfig({
+import { sharedConfig } from '../../vitest.shared';
+
+export default mergeConfig(sharedConfig, {
   root: __dirname,
   cacheDir: '../../node_modules/.vite/libs/libtwister-testing',
 
-  plugins: [nxViteTsPaths()],
-
   test: {
-    environment: 'node',
-    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-
-    reporters: ['default'],
-    coverage: {
-      enabled: true,
-      reportsDirectory: '../../coverage/libs/libtwister-testing',
-      provider: 'v8',
-      reporter: ['lcov'],
-    },
     setupFiles: ['vitest.d.ts'],
+    coverage: {
+      reportsDirectory: '../../coverage/libs/libtwister-testing',
+    },
   },
 });
