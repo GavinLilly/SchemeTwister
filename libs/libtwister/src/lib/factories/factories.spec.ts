@@ -1,3 +1,5 @@
+import { describe, beforeAll, it, expect, afterEach } from 'vitest';
+
 import { CARD_TYPE, CardType, IPlayableObject } from '../model';
 import {
   TEST_GAME_SET_META_1,
@@ -90,6 +92,11 @@ describe('Card Factory', () => {
 
     it('should get the DC1 card', () =>
       expect(instance.get(dcData[0].id)).toBeDefined());
+
+    it('should get an array of cards', () =>
+      expect(instance.get([dcData[0].id, dcData[1].id])).toEqual(
+        expect.arrayContaining([dcData[0], dcData[1]])
+      ));
 
     it("should return 'LegCard'", () =>
       expect(instance.getStoreType()).toEqual('LegCard'));
@@ -208,6 +215,11 @@ describe('Card Store', () => {
 
     it("should fail if the specific card ID doesn't exist", () => {
       expect(() => store.get('foo')).toThrow();
+    });
+
+    it('should fail if the ID passed is not a UUID', () => {
+      expect(() => store.pickOne('FOOBAR')).toThrow();
+      expect(() => store.removeCard('FOOBAR')).toThrow();
     });
   });
 });

@@ -53,7 +53,7 @@ export class CardStore<
    * @param id the ID of the item that is requested
    * @returns the requested item or undefined if it's not found
    */
-  public pickOne(id: string): TCard | undefined;
+  public pickOne(id: string): TCard;
   /**
    * Get's the full item associated with the given card and removes it from
    * the store
@@ -61,7 +61,7 @@ export class CardStore<
    * @returns the requested card if it's in the list of available cards
    */
   public pickOne(card: TCard): TCard;
-  public pickOne(idOrCard: string | TCard): TCard | undefined {
+  public pickOne(idOrCard: string | TCard): TCard {
     const cardId = CardFactory.getCardId(idOrCard);
 
     if (!isUUID(cardId)) {
@@ -70,9 +70,12 @@ export class CardStore<
 
     if (!this._pickedCards.has(cardId)) {
       const card = this.get(cardId);
-      this._pickedCards.add(cardId);
 
-      return card;
+      if (card !== undefined) {
+        this._pickedCards.add(cardId);
+
+        return card;
+      }
     }
 
     const alreadyPicked = this.allCardsMap.get(cardId);

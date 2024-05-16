@@ -1,5 +1,4 @@
 import {
-  EpicMastermind,
   Mastermind,
   MastermindWithEpic,
   AdaptingMastermind,
@@ -39,28 +38,6 @@ export class MastermindStore extends CardStore<MastermindType> {
     return picked;
   }
 
-  public override pickOne(id: string): MastermindType | undefined;
-  public override pickOne(card: MastermindType): MastermindType;
-  public override pickOne(
-    idOrCard: string | MastermindType
-  ): MastermindType | undefined {
-    const cardId = CardFactory.getCardId(idOrCard);
-
-    try {
-      return super.pickOne(cardId);
-    } catch (err) {
-      // Card could not be found. Check for epic cards
-      const foundEpicCard = this._getStandardCardFromEpicId(cardId);
-
-      if (foundEpicCard !== undefined) {
-        super.pickOne(foundEpicCard.reverse);
-        return foundEpicCard;
-      }
-
-      throw err;
-    }
-  }
-
   public override removeCard(idOrCard: string | MastermindType): void {
     const cardId = CardFactory.getCardId(idOrCard);
 
@@ -75,7 +52,7 @@ export class MastermindStore extends CardStore<MastermindType> {
     const foundEpicCard = this._getStandardCardFromEpicId(cardId);
 
     if (foundEpicCard !== undefined) {
-      return super.removeCard(foundEpicCard.reverse.id);
+      return super.removeCard(foundEpicCard.id);
     }
   }
 
@@ -88,26 +65,32 @@ export class MastermindStore extends CardStore<MastermindType> {
   ): MastermindType | (MastermindType | undefined)[] | undefined {
     const ids = idOrIds instanceof Array ? idOrIds : [idOrIds];
 
-    const cards = ids.map((id) => {
-      try {
-        return super.get(id);
-      } catch (err) {
+    const cards = ids
+      .map((id) => {
+        const normalCard = super.get(id);
+
+        if (normalCard !== undefined) {
+          return normalCard;
+        }
         // Card could not be found. Check for epic cards
         const foundEpicCard = this._getStandardCardFromEpicId(id);
 
         if (foundEpicCard !== undefined) {
-          return super.get(foundEpicCard.reverse.id);
-        } else {
-          throw err;
+          return super.get(foundEpicCard.id);
         }
-      }
-    });
 
-    if (cards.length === 1) {
-      return cards[0];
+        return undefined;
+      })
+      .filter((card): card is MastermindType => !!card);
+
+    switch (cards.length) {
+      case 0:
+        return undefined;
+      case 1:
+        return cards[0];
+      default:
+        return cards;
     }
-
-    return cards;
   }
 
   /**
@@ -117,6 +100,7 @@ export class MastermindStore extends CardStore<MastermindType> {
    */
   private _getStandardCardFromEpicId = (cardId: string) =>
     this.allCards
-      .filter((mastermind): mastermind is EpicMastermind => mastermind.isEpic)
-      .find((mastermind) => mastermind.id === cardId);
+      .filter((mastermind) => mastermind instanceof MastermindWithEpic)
+      .filter((mastermind): mastermind is MastermindWithEpic => !!mastermind)
+      .find((mastermind) => mastermind.epic.id === cardId);
 }

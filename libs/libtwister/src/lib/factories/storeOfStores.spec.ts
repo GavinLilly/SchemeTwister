@@ -1,3 +1,5 @@
+import { describe, beforeAll, it, expect } from 'vitest';
+
 import { TEST_HENCHMEN_1 } from '../testData/henchmen';
 import { TEST_HERO_1 } from '../testData/heroes';
 import { TEST_MASTERMIND_1 } from '../testData/masterminds';
@@ -47,5 +49,10 @@ describe('StoreOfStores', () => {
 
     it('should throw for an invalid ID', () =>
       expect(() => store.getCardById('FOOBAR')).toThrow());
+
+    it('should return undefined for an invalid UUID', () =>
+      expect(
+        store.getCardById('5e982c7e-6926-4d79-8435-82b5667057b6')
+      ).toBeUndefined());
   });
 });
