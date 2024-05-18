@@ -11,7 +11,6 @@ export class SortByNamePipe implements PipeTransform {
       return undefined;
     }
 
-    value.sort((a, b) => a.name.localeCompare(b.name));
-    return value;
+    return value.toSorted((a, b) => a.name.localeCompare(b.name));
   }
 }

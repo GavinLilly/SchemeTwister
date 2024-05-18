@@ -1,37 +1,25 @@
 import * as uuid from 'uuid';
+import { describe, it, expect, beforeAll } from 'vitest';
 
-import { TEST_GAME_SET_1 } from '../testData/gameSets';
+import { GameSetMock } from '../testData/gameSetMock';
 
 import { GameSet } from './GameSet';
 import { Bystander } from './cards';
 import { SeriesMeta } from './seriesMeta';
+import { CARD_TYPE } from './types';
 import { GAME_SET_SIZE } from './types/gameSetSize.type';
 
 describe('GameSet', () => {
+  let coreBox: GameSet;
+
+  beforeAll(() => {
+    coreBox = new GameSetMock(GAME_SET_SIZE.core).getGameSet();
+  });
+
   describe('sorter', () => {
     const series = new SeriesMeta(uuid.v4(), 'Test Series', 'Test Series');
 
-    const coreBox = new GameSet(
-      {
-        id: uuid.v4(),
-        name: 'core',
-        releaseYear: 1970,
-        series: series,
-        size: GAME_SET_SIZE.core,
-      },
-      []
-    );
-
-    const largeBox = new GameSet(
-      {
-        id: uuid.v4(),
-        name: 'large',
-        releaseYear: 1970,
-        series: series,
-        size: GAME_SET_SIZE.large,
-      },
-      []
-    );
+    const largeBox = new GameSetMock(GAME_SET_SIZE.large).getGameSet();
 
     const firstBox = new GameSet(
       {
@@ -63,22 +51,24 @@ describe('GameSet', () => {
 
   describe('getCards', () => {
     it('should return all cards', () => {
-      const cards = TEST_GAME_SET_1.getCards();
+      const cards = coreBox.getCards();
 
       expect(cards).toBeDefined();
       expect(cards).toBeInstanceOf(Array);
-      expect(cards).toEqual(
-        expect.arrayContaining(TEST_GAME_SET_1.bystanders as Bystander[])
-      );
+      expect(cards).toEqual(expect.arrayContaining(coreBox.bystanders!));
       /* eslint-disable @typescript-eslint/no-non-null-assertion */
-      expect(cards).toEqual(expect.arrayContaining(TEST_GAME_SET_1.schemes!));
-      expect(cards).toEqual(expect.arrayContaining(TEST_GAME_SET_1.henchmen!));
-      expect(cards).toEqual(expect.arrayContaining(TEST_GAME_SET_1.heroes));
-      expect(cards).toEqual(
-        expect.arrayContaining(TEST_GAME_SET_1.masterminds!)
-      );
-      expect(cards).toEqual(expect.arrayContaining(TEST_GAME_SET_1.villains!));
+      expect(cards).toEqual(expect.arrayContaining(coreBox.schemes!));
+      expect(cards).toEqual(expect.arrayContaining(coreBox.henchmen!));
+      expect(cards).toEqual(expect.arrayContaining(coreBox.heroes));
+      expect(cards).toEqual(expect.arrayContaining(coreBox.masterminds!));
+      expect(cards).toEqual(expect.arrayContaining(coreBox.villains!));
       /* eslint-enable @typescript-eslint/no-non-null-assertion */
+    });
+
+    it('should only return bystanders', () => {
+      coreBox
+        .getCards(CARD_TYPE.bystander)
+        ?.forEach((card) => expect(card).toBeInstanceOf(Bystander));
     });
   });
 });

@@ -26,7 +26,11 @@ export class RequireCardName<TCard extends AbstractCardGroup>
 
     if (matchingCards.length === 0) {
       throw new Error(
-        `No card with ${this._cardName} in it's name is available to be selected`
+        `No card with ${
+          this._cardName
+        } in it's name is available to be selected. The available cards are ${store.availableCards.map(
+          (card) => card.name
+        )}`
       );
     }
 

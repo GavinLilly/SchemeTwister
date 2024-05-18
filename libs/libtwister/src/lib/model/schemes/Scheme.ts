@@ -230,11 +230,9 @@ export class Scheme implements IPlayableObject {
       returnCards.add(card)
     );
 
-    const returnArray = Array.from(returnCards);
-
-    returnArray.sort((a, b) => a.name.localeCompare(b.name));
-
-    return returnArray;
+    return Array.from(returnCards).toSorted((a, b) =>
+      a.name.localeCompare(b.name)
+    );
   }
 
   private static _buildFromSeeds<T extends AbstractCardGroup>(

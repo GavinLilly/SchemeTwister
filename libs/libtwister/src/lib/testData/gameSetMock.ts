@@ -3,6 +3,7 @@ import * as uuid from 'uuid';
 
 import {
   AbstractCardGroup,
+  Bystander,
   GAME_SET_SIZE,
   GameSet,
   GameSetSize,
@@ -46,6 +47,7 @@ export class GameSetMock {
   private readonly _masterminds: Mastermind[];
   private readonly _henchmen: Henchmen[];
   private readonly _schemes: SchemeDefinition[];
+  private readonly _bystanders: Bystander[];
 
   constructor(size: GameSetSize, config?: IMockGameSetConfig) {
     this._config = config ?? this._getConfigSizes(size);
@@ -67,6 +69,7 @@ export class GameSetMock {
     this._masterminds = this._buildMasterminds();
     this._henchmen = this._buildHenchmen();
     this._schemes = this._buildSchemes();
+    this._bystanders = this._buildBystanders();
   }
 
   public getGameSet = () =>
@@ -76,7 +79,8 @@ export class GameSetMock {
       this._masterminds.length > 0 ? this._masterminds : undefined,
       this._schemes.length > 0 ? this._schemes : undefined,
       this._villains.length > 0 ? this._villains : undefined,
-      this._henchmen.length > 0 ? this._henchmen : undefined
+      this._henchmen.length > 0 ? this._henchmen : undefined,
+      this._bystanders.length > 0 ? this._bystanders : undefined
     );
 
   private _buildHeroes(): Hero[] {
@@ -138,6 +142,19 @@ export class GameSetMock {
     }
 
     return villains;
+  }
+
+  private _buildBystanders(): Bystander[] {
+    const bystanders: Bystander[] = [];
+    for (let i = 0; i < this._config.numBystanders; i++) {
+      const bystander = new Bystander({
+        ...this._buildPartialCard('Bystander', i),
+        copies: 1,
+      });
+      bystanders.push(bystander);
+    }
+
+    return bystanders;
   }
 
   private _buildMasterminds(): Mastermind[] {

@@ -22,7 +22,7 @@ export class GameSetSelectComponent {
   private _selectedGameSetIds = this._store.selectSignal(selectGameSetIds);
   private _allGameSets: GameSet[] = this._libTwister()
     .allGameSets.asArray()
-    .sort((a, b) => GameSet.sorter(a, b));
+    .toSorted((a, b) => GameSet.sorter(a, b));
 
   selectedGameSets = computed(() =>
     this._libTwister().gameSetIdsToGameSets(this._selectedGameSetIds())

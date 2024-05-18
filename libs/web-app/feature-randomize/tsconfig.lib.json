@@ -5,7 +5,7 @@
     "declaration": true,
     "inlineSources": true,
     "types": ["node", "jest"],
-    "lib": ["dom", "es2018"]
+    "lib": ["dom", "ES2018", "ES2023.Array"]
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,

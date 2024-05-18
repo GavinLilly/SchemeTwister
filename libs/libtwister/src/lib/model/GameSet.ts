@@ -20,7 +20,7 @@ export class GameSet implements IGameSetMeta {
   readonly releaseYear: number;
   readonly series: SeriesMeta;
 
-  private get _allCards(): AllCardTypes[] | undefined {
+  private get _allCards(): AllCardTypes[] {
     return [
       ...(this.bystanders ?? []),
       ...(this.schemes ?? []),

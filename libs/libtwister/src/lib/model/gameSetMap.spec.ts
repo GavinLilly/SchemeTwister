@@ -1,3 +1,5 @@
+import { describe, beforeAll, it, expect } from 'vitest';
+
 import { LibTwister } from '../libTwister';
 import { TEST_SERIES_1 } from '../testData/series';
 import { TEST_SERIES_META_1 } from '../testData/seriesMeta';

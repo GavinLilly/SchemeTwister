@@ -1,15 +1,13 @@
 import * as uuid from 'uuid';
+import { describe, beforeAll, it, expect } from 'vitest';
 
 import { TEST_SERIES_META_1 } from '../../../testData/seriesMeta';
 import { IGameSetMeta } from '../../interfaces';
-import { GAME_SET_SIZE } from '../../types';
+import { CARD_TYPE, GAME_SET_SIZE } from '../../types';
 import { Henchmen } from '../henchmen';
 import { VillainGroup } from '../villainGroup';
 
-import { MastermindWithEpic } from './epicMastermind';
 import { Mastermind } from './mastermind';
-
-const epicRegex = /^Epic?/;
 
 describe('Mastermind', () => {
   let villain: VillainGroup;
@@ -32,53 +30,52 @@ describe('Mastermind', () => {
   });
 
   describe('with 1 villain as always leads', () => {
-    let mastermind: MastermindWithEpic;
+    let mastermind: Mastermind;
 
     beforeAll(() => {
-      mastermind = new MastermindWithEpic(
-        {
-          alwaysLeads: [villain],
-          attackPoints: 10,
-          gameSet: gameSet,
-          id: uuid.v4(),
-          masterStrike: '',
-          name: 'Test Mastermind',
-          victoryPoints: 5,
-        },
-        {
-          id: uuid.v4(),
-        }
-      );
-    });
-
-    describe('that is not epic', () => {
-      it('should create', () => expect(mastermind).toBeTruthy());
-
-      it('should not have "Epic" in the name', () =>
-        expect(mastermind.name).not.toMatch(epicRegex));
-
-      it('should have 1 Test Villain in the always leads', () => {
-        expect(mastermind.alwaysLeads).toHaveLength(1);
-        expect(mastermind.alwaysLeads).toContain(villain);
+      mastermind = new Mastermind({
+        alwaysLeads: [villain],
+        attackPoints: 10,
+        gameSet: gameSet,
+        id: uuid.v4(),
+        masterStrike: 'Master-strike',
+        name: 'Test Mastermind',
+        victoryPoints: 5,
+        specialRules: 'Special rules',
+        startOfGame: 'Start of game',
+        escape: 'Escape',
+        finishThePrey: 'Finish him',
+        mastermindWins: 'They win',
       });
-
-      it('should not be epic', () => expect(mastermind.isEpic).toBe(false));
-
-      it('should have 5 attack points', () =>
-        expect(mastermind.attackPoints).toBe(10));
-
-      it('should have 4 victory points', () =>
-        expect(mastermind.victoryPoints).toBe(5));
     });
 
-    describe('that is epic', () => {
-      it('should create', () => expect(mastermind.epic).toBeTruthy());
+    it('should create', () => expect(mastermind).toBeTruthy());
 
-      it('should have "Epic" in the name', () =>
-        expect(mastermind.epic.name).toMatch(epicRegex));
-
-      it('should be epic', () => expect(mastermind.epic.isEpic).toBe(true));
+    it('should have 1 Test Villain in the always leads', () => {
+      expect(mastermind.alwaysLeads).toHaveLength(1);
+      expect(mastermind.alwaysLeads).toContain(villain);
     });
+
+    it('should return the master strike', () =>
+      expect(mastermind.masterStrike).toBe('Master-strike'));
+
+    it('should return the special rules', () =>
+      expect(mastermind.specialRules).toBe('Special rules'));
+
+    it('should return the Mastermind card type', () =>
+      expect(mastermind.cardType).toBe(CARD_TYPE.mastermind));
+
+    it('should return the start of game text', () =>
+      expect(mastermind.startOfGame).toBe('Start of game'));
+
+    it('should return the escape text', () =>
+      expect(mastermind.escape).toBe('Escape'));
+
+    it('should return the "Finish the prey" text', () =>
+      expect(mastermind.finishThePrey).toBe('Finish him'));
+
+    it('should return the "Mastermind wins" text', () =>
+      expect(mastermind.mastermindWins).toBe('They win'));
   });
 
   describe('with 2 villains in the always leads', () => {
