@@ -10,6 +10,7 @@ import {
 import instantiateScheme from '../utils/instantiateScheme';
 
 import { GameSetup } from './GameSetup';
+import { Mastermind } from './cards';
 import { Scheme } from './schemes';
 
 let store: StoreOfStores;
@@ -80,6 +81,20 @@ describe('GameSetup', () => {
       );
       expect(additionalDeck).toHaveLength(0);
     });
+
+    describe('villainDeckAsArray', () =>
+      it('should not have any masterminds', () => {
+        gameSetup
+          .villainDeckAsArray()
+          .forEach((card) => expect(card).not.toBeInstanceOf(Mastermind));
+      }));
+
+    describe('additionalDeckAsArray', () =>
+      it('should return an empty Set', () => {
+        const additionalDeck = gameSetup.additionalDecksAsArray();
+        expect(additionalDeck).toBeInstanceOf(Set);
+        expect(additionalDeck.size).toBe(0);
+      }));
   });
 
   describe('TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME', () => {
@@ -98,6 +113,11 @@ describe('GameSetup', () => {
 
     it('should contain the expected hero name', () =>
       expect(doesContainExpectedHeroName).toBeTruthy());
+
+    it('should return a set of the additional deck cards', () => {
+      expect(gameSetup.additionalDecksAsArray()).toBeInstanceOf(Set);
+      expect(gameSetup.additionalDecksAsArray().size).toBe(1);
+    });
   });
 
   describe('get keywords', () => {

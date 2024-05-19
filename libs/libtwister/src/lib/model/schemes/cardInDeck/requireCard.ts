@@ -10,6 +10,7 @@ export class RequireCard<TCard extends AbstractCardGroup>
   private _availableCards: TCard[];
 
   constructor(required: TCard);
+  constructor(firstCard: TCard, numberRequired: number);
   constructor(
     firstCard: TCard,
     numberRequired: number,

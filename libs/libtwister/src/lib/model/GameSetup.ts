@@ -160,7 +160,7 @@ export class GameSetup implements IGameSetup {
    */
   public heroDeckAsArray(): Set<Hero | Henchmen> {
     return new Set([
-      ...(this.heroDeck.heroes ?? []),
+      ...this.heroDeck.heroes,
       ...(this.heroDeck.henchmen ?? []),
     ]);
   }
@@ -183,7 +183,7 @@ export class GameSetup implements IGameSetup {
    * @returns an array of Heroes, Henchmen, Villain groups and Masterminds
    */
   public additionalDecksAsArray(): Set<VillainAdditionalDeckCards> {
-    if (this.additionalDecks === undefined) {
+    if (this.additionalDecks.length === 0) {
       return new Set();
     }
 

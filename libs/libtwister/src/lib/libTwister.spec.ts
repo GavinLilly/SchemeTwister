@@ -1,4 +1,5 @@
 import * as uuid from 'uuid';
+import { describe, beforeAll, it, expect } from 'vitest';
 
 import { LibTwister } from './libTwister';
 import { GAME_SET_SIZE, ISeries, NumPlayers, SeriesMeta } from './model';
@@ -87,7 +88,9 @@ describe('LibTwister', () => {
         numSmall: 0,
       });
       const twister = new LibTwister([series]);
-      beforeAll(() => (twister.selectedGameSets = series.gameSets));
+      beforeAll(() => {
+        twister.selectedGameSets = series.gameSets;
+      });
 
       it('should create', () => expect(twister).toBeTruthy());
 

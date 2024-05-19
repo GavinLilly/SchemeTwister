@@ -4,7 +4,14 @@ import { describe, it, expect, beforeAll } from 'vitest';
 import { GameSetMock } from '../testData/gameSetMock';
 
 import { GameSet } from './GameSet';
-import { Bystander } from './cards';
+import {
+  Bystander,
+  Henchmen,
+  Hero,
+  Mastermind,
+  SchemeDefinition,
+  VillainGroup,
+} from './cards';
 import { SeriesMeta } from './seriesMeta';
 import { CARD_TYPE } from './types';
 import { GAME_SET_SIZE } from './types/gameSetSize.type';
@@ -55,8 +62,8 @@ describe('GameSet', () => {
 
       expect(cards).toBeDefined();
       expect(cards).toBeInstanceOf(Array);
-      expect(cards).toEqual(expect.arrayContaining(coreBox.bystanders!));
       /* eslint-disable @typescript-eslint/no-non-null-assertion */
+      expect(cards).toEqual(expect.arrayContaining(coreBox.bystanders!));
       expect(cards).toEqual(expect.arrayContaining(coreBox.schemes!));
       expect(cards).toEqual(expect.arrayContaining(coreBox.henchmen!));
       expect(cards).toEqual(expect.arrayContaining(coreBox.heroes));
@@ -65,10 +72,34 @@ describe('GameSet', () => {
       /* eslint-enable @typescript-eslint/no-non-null-assertion */
     });
 
-    it('should only return bystanders', () => {
+    it.each([
+      [CARD_TYPE.bystander, Bystander],
+      [CARD_TYPE.scheme, SchemeDefinition],
+      [CARD_TYPE.henchmen, Henchmen],
+      [CARD_TYPE.hero, Hero],
+      [CARD_TYPE.mastermind, Mastermind],
+      [CARD_TYPE.villainGroup, VillainGroup],
+    ])('should only return %s', (cardType, cardClass) =>
       coreBox
-        .getCards(CARD_TYPE.bystander)
-        ?.forEach((card) => expect(card).toBeInstanceOf(Bystander));
-    });
+        .getCards(cardType)
+        ?.forEach((card) => expect(card).toBeInstanceOf(cardClass))
+    );
+
+    it('should return undefined', () =>
+      expect(coreBox.getCards(CARD_TYPE.wound)).toBeUndefined());
+
+    describe('with only heroes', () =>
+      it('should only return the heroes', () => {
+        const gameSet = new GameSetMock(GAME_SET_SIZE.core, {
+          heroes: { num: 5 },
+          numBystanders: 0,
+          numHenchmen: 0,
+          numMasterminds: 0,
+          numSchemes: 0,
+          numVillains: 0,
+        }).getGameSet();
+
+        gameSet.getCards().forEach((card) => expect(card).toBeInstanceOf(Hero));
+      }));
   });
 });
