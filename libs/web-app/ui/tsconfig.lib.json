@@ -5,7 +5,8 @@
     "declaration": true,
     "inlineSources": true,
     "types": [],
-    "lib": ["dom", "ES2023"]
+    "lib": ["dom", "ES2023"],
+    "target": "ES2021"
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,

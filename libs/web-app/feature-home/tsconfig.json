@@ -1,6 +1,7 @@
 {
   "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
+    "target": "ES2021",
     "types": ["node"]
   },
   "include": [],
