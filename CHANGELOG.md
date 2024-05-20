@@ -1,3 +1,12 @@
+## [3.14.4](https://github.com/GavinLilly/SchemeTwister/compare/v3.14.3...v3.14.4) (2024-05-20)
+
+
+### Dependencies
+
+* **deps:** update Angular to latest v17 ([e73652b](https://github.com/GavinLilly/SchemeTwister/commit/e73652bf532c19ed8ae96d3053ad8e7c1c9d156b))
+* **deps:** update eslint ([0652cfc](https://github.com/GavinLilly/SchemeTwister/commit/0652cfca50dcb54472de3947bb889b64d837446b))
+* **deps:** update to NX 18.2 ([eb7c30f](https://github.com/GavinLilly/SchemeTwister/commit/eb7c30fade0a50248e03685211241409e1cf1869))
+
 ## [3.14.3](https://github.com/GavinLilly/SchemeTwister/compare/v3.14.2...v3.14.3) (2024-05-20)
 
 
