@@ -1,3 +1,10 @@
+## [3.14.3](https://github.com/GavinLilly/SchemeTwister/compare/v3.14.2...v3.14.3) (2024-05-20)
+
+
+### Dependencies
+
+* **deps:** update Firebase tools to latest ([fda4705](https://github.com/GavinLilly/SchemeTwister/commit/fda47059cb491a41ca789a548d5ff6f8001ff01c))
+
 ## [3.14.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.14.1...v3.14.2) (2024-05-20)
 
 
