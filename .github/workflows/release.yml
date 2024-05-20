@@ -37,4 +37,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SCHEMETWISTER }}'
           projectId: schemetwister
           channelId: live
-          firebaseToolsVersion: v12.7.0
+          firebaseToolsVersion: v13.6.0
