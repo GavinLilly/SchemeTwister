@@ -176,11 +176,10 @@ describe('Require Hero Name', () => {
   });
 
   describe('in Hero Deck', () => {
-    const isName = (hero: Hero) => hero.name.includes('Bar');
-
     describe('with 2 game sets', () => {
+      const isName = (hero: Hero) => hero.name.includes('Bar');
+
       let store: StoreOfStores;
-      let scheme: Scheme;
       let setup: IGameSetup;
 
       beforeAll(() => {
@@ -188,7 +187,7 @@ describe('Require Hero Name', () => {
           .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
           .build();
 
-        scheme = new RequireCardInDeckScheme(
+        const scheme = new RequireCardInDeckScheme(
           TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
           new RequireCardName('Bar', 1, true),
           new RequireHero(),
