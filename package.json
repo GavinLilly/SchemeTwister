@@ -60,7 +60,7 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "~5.3.2",
     "class-transformer": "^0.5.1",
-    "firebase": "^10.7.0",
+    "firebase": "^10.12.1",
     "genversion": "^3.1.1",
     "glob": "^10.3.10",
     "nanoid": "^3.3.6",
