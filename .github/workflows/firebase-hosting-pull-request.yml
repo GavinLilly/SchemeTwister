@@ -29,4 +29,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SCHEMETWISTER }}'
           projectId: schemetwister
-          firebaseToolsVersion: v13.6.0
+          firebaseToolsVersion: v13.9.0
