@@ -1,3 +1,10 @@
+## [3.14.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.14.1...v3.14.2) (2024-05-20)
+
+
+### Dependencies
+
+* **deps:** bump ejs from 3.1.9 to 3.1.10 ([07812dd](https://github.com/GavinLilly/SchemeTwister/commit/07812dd16c8829eba7a8d5c78fe3d65e8d78b8a2))
+
 ## [3.14.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.14.0...v3.14.1) (2024-05-16)
 
 
