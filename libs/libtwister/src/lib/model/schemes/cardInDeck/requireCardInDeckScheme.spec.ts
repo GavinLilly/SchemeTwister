@@ -9,6 +9,7 @@ import {
   TEST_NORMAL_SCHEME,
   TEST_REQUIRE_CARD_IN_DECK_SCHEME,
   TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
+  TEST_REQUIRE_CARD_NAME_IN_HERO_DECK_SCHEME,
   TEST_REQUIRE_HENCHMEN_IN_ADDITIONAL_DECK,
   TEST_REQUIRE_VILLAINS_IN_ADDITIONAL_DECK,
 } from '../../../testData/schemes';
@@ -178,38 +179,29 @@ describe('Require Hero Name', () => {
   describe('in Hero Deck', () => {
     describe('with 2 game sets', () => {
       const isName = (hero: Hero) => hero.name.includes('Bar');
-
       let store: StoreOfStores;
       let setup: IGameSetup;
-
       beforeAll(() => {
         store = new StoreBuilder()
           .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
           .build();
-
         const scheme = new RequireCardInDeckScheme(
-          TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
+          TEST_REQUIRE_CARD_NAME_IN_HERO_DECK_SCHEME,
           new RequireCardName('Bar', 1, true),
           new RequireHero(),
           DECK_TYPE.hero
         );
-
         setup = scheme.getSetup({ numPlayers: 2, store });
       });
-
       it('should only include 1 "Bar" hero', () => {
         const nameHeroes = setup.heroDeck.heroes.filter(isName);
-
         expect(nameHeroes).toHaveLength(1);
       });
-
       it('should not have any "Bar" heroes available in the store', () => {
         const nameHeroes = store.heroStore.availableCards.filter(isName);
-
         expect(nameHeroes).toHaveLength(0);
       });
     });
-
     it('should throw an error when no cards are available with "Bar" in their name', () => {
       const store = new StoreBuilder()
         .withHeroGamesets(TEST_GAME_SET_1)
@@ -217,14 +209,12 @@ describe('Require Hero Name', () => {
         .withVillainGamesets(TEST_GAME_SET_1)
         .withHenchmenGamesets(TEST_GAME_SET_1)
         .build();
-
       const scheme = new RequireCardInDeckScheme(
         TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
         new RequireCardName('Bar', 1, true),
         new RequireHero(),
         DECK_TYPE.hero
       );
-
       expect(() => scheme.getSetup({ numPlayers: 3, store })).toThrow();
     });
   });

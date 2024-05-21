@@ -158,6 +158,31 @@ export const TEST_REQUIRE_CARD_IN_DECK_SCHEME = new SchemeDefinition({
   gameSet: TEST_GAME_SET_META_2,
 });
 
+export const TEST_REQUIRE_CARD_NAME_IN_HERO_DECK_SCHEME = new SchemeDefinition({
+  id: '3a64b756-7ed7-4dd9-a930-e76acda748fb',
+  name: 'Test require card name in deck scheme',
+  setup:
+    '8 Twists. 6 Heroes. Skrull Villain Group required. Shuffle 12 random Heroes from the Hero Deck into the Villain Deck.',
+  specialRules:
+    "Heroes in the Villain Deck count as Skrull Villains with Attack equal to the Hero's Cost +2. If you defeat that Hero, you gain it.",
+  twist:
+    'The highest-cost Hero from the HQ moves into the Sewers as a Skrull Villain, as above.',
+  evilWins: 'If 6 Heroes get into the Escaped Villains pile.',
+  meta: {
+    numTwists: 8,
+    rules: (rule) => {
+      rule.heroDeck.numHeroes = 4;
+      return rule;
+    },
+    overrideScheme: {
+      schemeType: RequireCardInDeckScheme,
+      params: [new RequireCardName('Bar'), new RequireHero(), DECK_TYPE.hero],
+    },
+  },
+  gameSet: TEST_GAME_SET_META_2,
+  keywords: [TEST_KEYWORD_1],
+});
+
 export const TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME = new SchemeDefinition({
   id: '062ad1c0-abe4-4cf8-b4a8-f9fb68f1d210',
   name: 'Test require card name in deck scheme',
