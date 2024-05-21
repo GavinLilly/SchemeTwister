@@ -1,3 +1,10 @@
+## [3.14.5](https://github.com/GavinLilly/SchemeTwister/compare/v3.14.4...v3.14.5) (2024-05-21)
+
+
+### Dependencies
+
+* **deps:** update undici and firebase ([b4f3ef8](https://github.com/GavinLilly/SchemeTwister/commit/b4f3ef864d9081c3e27831d87128ef708101d0d5))
+
 ## [3.14.4](https://github.com/GavinLilly/SchemeTwister/compare/v3.14.3...v3.14.4) (2024-05-20)
 
 
