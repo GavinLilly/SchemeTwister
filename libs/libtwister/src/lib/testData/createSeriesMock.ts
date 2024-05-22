@@ -21,24 +21,30 @@ interface ISeriesConfig {
 export function createSeriesMock(config: ISeriesConfig): ISeries {
   const numCore = config.numCore > 0 ? config.numCore : 1;
 
+  const series = new SeriesMeta(uuid.v4(), `Test series ${nanoid(4)}`, '');
+
   const gameSets = [
     [GAME_SET_SIZE.core, numCore],
     [GAME_SET_SIZE.large, config.numLarge],
     [GAME_SET_SIZE.medium, config.numMedium],
     [GAME_SET_SIZE.small, config.numSmall],
-  ].flatMap(([size, count]) => generateGameSets(size, count));
+  ].flatMap(([size, count]) => generateGameSets(size, count, series));
 
   return {
-    seriesMeta: new SeriesMeta(uuid.v4(), `Test series ${nanoid(4)}`, ''),
+    seriesMeta: series,
     gameSets,
   };
 }
 
-function generateGameSets(size: GameSetSize, count: number): GameSet[] {
+function generateGameSets(
+  size: GameSetSize,
+  count: number,
+  series?: SeriesMeta
+): GameSet[] {
   const gameSets: GameSet[] = [];
 
   for (let i = 0; i < count; i++) {
-    const core = new GameSetMock(GAME_SET_SIZE.core).getGameSet();
+    const core = new GameSetMock(size, undefined, series).getGameSet();
     gameSets.push(core);
   }
 
