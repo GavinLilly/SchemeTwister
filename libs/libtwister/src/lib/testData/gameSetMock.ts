@@ -49,18 +49,26 @@ export class GameSetMock {
   private readonly _schemes: SchemeDefinition[];
   private readonly _bystanders: Bystander[];
 
-  constructor(size: GameSetSize, config?: IMockGameSetConfig) {
+  constructor(
+    size: GameSetSize,
+    config?: IMockGameSetConfig,
+    seriesMeta?: SeriesMeta
+  ) {
     this._config = config ?? this._getConfigSizes(size);
+
+    const series =
+      seriesMeta ??
+      new SeriesMeta(
+        uuid.v4(),
+        `Test Series ${this._gameSetShortId}`,
+        'Test Series'
+      );
 
     this._meta = {
       id: uuid.v4(),
       name: `Test Game Set ${this._gameSetShortId}`,
       releaseYear: randomInteger(1970, 2024),
-      series: new SeriesMeta(
-        uuid.v4(),
-        `Test Series ${this._gameSetShortId}`,
-        'Test Series'
-      ),
+      series,
       size,
     };
 

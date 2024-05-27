@@ -9,11 +9,7 @@ export function teamsTest(teams: ITeam[]) {
       expect(teamNames).toHaveLength(teamNameSet.size);
     });
     it('should have icons in the asset directory', () => {
-      expect(
-        Object.values(teams).every(
-          (item) => item.icon.substring(0, 19) === '/assets/icons/teams/'
-        )
-      );
+      teams.forEach((team) => expect(team.icon).not.toHaveLength(0));
     });
   });
 }

@@ -42,6 +42,11 @@
             "glob": "*",
             "input": "libs/schemetwister-series-marvelvillains/src/assets/icons/teams",
             "output": "./assets/icons/teams"
+          },
+          {
+            "glob": "*",
+            "input": "libs/schemetwister-series-buffy/src/assets/icons/teams",
+            "output": "./assets/icons/teams"
           }
         ],
         "styles": ["apps/web-app/src/styles.scss"],

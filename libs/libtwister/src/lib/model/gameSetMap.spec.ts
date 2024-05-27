@@ -1,23 +1,36 @@
 import { describe, beforeAll, it, expect } from 'vitest';
 
 import { LibTwister } from '../libTwister';
-import { TEST_SERIES_1 } from '../testData/series';
-import { TEST_SERIES_META_1 } from '../testData/seriesMeta';
+import { createSeriesMock } from '../testData/createSeriesMock';
 
 import { GameSetMap } from './gameSetMap';
+import { ISeries } from './interfaces';
 import { GAME_SET_SIZE } from './types';
 
 describe('GameSetMap', () => {
   let map: GameSetMap;
-  const libTwister = new LibTwister([TEST_SERIES_1]);
+  let series: ISeries;
 
   beforeAll(() => {
+    series = createSeriesMock({
+      numCore: 1,
+      numLarge: 3,
+      numMedium: 0,
+      numSmall: 0,
+    });
+    const otherSeries = createSeriesMock({
+      numCore: 1,
+      numLarge: 0,
+      numMedium: 1,
+      numSmall: 5,
+    });
+    const libTwister = new LibTwister([series, otherSeries]);
     map = libTwister.allGameSets;
   });
 
   describe('asArray', () => {
     it('should have all game sets', () =>
-      expect(map.asArray()).toHaveLength(1));
+      expect(map.asArray()).toHaveLength(11));
 
     it('should only have core game sets', () => {
       const sizes = new Set(
@@ -26,10 +39,10 @@ describe('GameSetMap', () => {
       expect(sizes.size).toEqual(1);
     });
 
-    it('should only have Mainline game sets', () => {
+    it('should only have game sets from one series', () => {
       const sizes = new Set(
         map
-          .asArray({ series: TEST_SERIES_META_1 })
+          .asArray({ series: series.seriesMeta })
           .map((gameset) => gameset.series)
       );
       expect(sizes.size).toEqual(1);

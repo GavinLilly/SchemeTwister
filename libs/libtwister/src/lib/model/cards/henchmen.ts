@@ -5,13 +5,13 @@ import { CARD_TYPE } from '../types/cardType.type';
 import { AbstractFightableCardGroup } from './abstractFightableCardGroup';
 
 interface IHenchmen extends IFightable {
-  fight: string;
+  fight?: string;
   ambush?: string;
   ability?: string;
 }
 
 export class Henchmen extends AbstractFightableCardGroup implements IHenchmen {
-  private readonly _fight: string;
+  private readonly _fight?: string;
   private readonly _ambush?: string;
   private readonly _ability?: string;
 
