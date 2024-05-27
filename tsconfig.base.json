@@ -49,7 +49,7 @@
       ],
       "@schemetwister/web-app/shared": ["libs/web-app/shared/src/index.ts"],
       "@schemetwister/web-app/ui": ["libs/web-app/ui/src/index.ts"],
-      "schemetwister-series-buffy": [
+      "@schemetwister/schemetwister-series-buffy": [
         "libs/schemetwister-series-buffy/src/index.ts"
       ]
     }
