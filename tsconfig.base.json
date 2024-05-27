@@ -48,7 +48,10 @@
         "libs/web-app/feature-store/src/index.ts"
       ],
       "@schemetwister/web-app/shared": ["libs/web-app/shared/src/index.ts"],
-      "@schemetwister/web-app/ui": ["libs/web-app/ui/src/index.ts"]
+      "@schemetwister/web-app/ui": ["libs/web-app/ui/src/index.ts"],
+      "@schemetwister/schemetwister-series-buffy": [
+        "libs/schemetwister-series-buffy/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"],

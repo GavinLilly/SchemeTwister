@@ -7,7 +7,7 @@ import { ICardType } from './cardType.interface';
 import { ISpecialRules } from './specialRules.interface';
 
 /* eslint-disable @typescript-eslint/naming-convention */
-interface IEachPlayerTwists {
+interface IEachPlayerNumber {
   1: number;
   2: number;
   3: number;
@@ -22,9 +22,10 @@ export interface IOverrideScheme {
 }
 
 export interface ISchemeMeta {
-  numTwists: number | IEachPlayerTwists;
+  numTwists: number | IEachPlayerNumber;
   rules?: RulesModifierFunction;
   overrideScheme?: IOverrideScheme;
+  numCourageTokens?: number | IEachPlayerNumber;
 }
 
 export interface IScheme extends ISpecialRules, ICardType {

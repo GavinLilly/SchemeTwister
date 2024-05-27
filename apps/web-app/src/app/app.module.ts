@@ -6,6 +6,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EffectsModule } from '@ngrx/effects';
+import { buffySeries } from '@schemetwister/schemetwister-series-buffy';
 import { marvelSeries } from '@schemetwister/schemetwister-series-marvel';
 import { marvelStudiosSeries } from '@schemetwister/schemetwister-series-marvelstudios';
 import { marvelVillainsSeries } from '@schemetwister/schemetwister-series-marvelvillains';
@@ -26,6 +27,7 @@ const seriesRegister = [
   marvelSeries,
   marvelStudiosSeries,
   marvelVillainsSeries,
+  buffySeries,
 ];
 
 @NgModule({

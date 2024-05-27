@@ -40,6 +40,11 @@ export class SeriesMeta {
       wound: 'Wound',
       purchase: 'Purchase',
       attack: 'Attack',
+      agents: 'S.H.I.E.L.D. Agents',
+      troopers: 'S.H.I.E.L.D. Troopers',
+      officers: 'S.H.I.E.L.D. Officers',
+      city: 'City',
+      hq: 'HQ',
       ...nomenclature,
     };
   }

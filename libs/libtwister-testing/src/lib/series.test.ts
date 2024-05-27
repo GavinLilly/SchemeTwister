@@ -29,7 +29,7 @@ export function seriesTest(
   const totalGameSetCount =
     coreBoxCount + bigBoxCount + mediumBoxCount + smallBoxCount + promoSetCount;
 
-  return describe('Marvel mainline series', () => {
+  return describe(`${series.seriesMeta.seriesName} Series`, () => {
     let libTwister: LibTwister;
     beforeAll(() => {
       libTwister = new LibTwister([series]);
