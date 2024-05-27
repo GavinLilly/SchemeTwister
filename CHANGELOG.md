@@ -1,3 +1,10 @@
+## [3.15.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.14.5...v3.15.0) (2024-05-27)
+
+
+### Features
+
+* **gamesets:** add Buffy the Vampire Slayer ([931955c](https://github.com/GavinLilly/SchemeTwister/commit/931955c085ec46fbcb4e8242228f73f4bd38399f))
+
 ## [3.14.5](https://github.com/GavinLilly/SchemeTwister/compare/v3.14.4...v3.14.5) (2024-05-21)
 
 
