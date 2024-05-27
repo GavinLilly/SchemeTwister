@@ -26,6 +26,7 @@ export interface IMastermind extends IFightable, ISpecialRules {
   readonly startOfGame?: string;
   readonly mastermindWins?: string;
   readonly alwaysInclude?: Hero[];
+  readonly dark?: string;
 }
 
 export class Mastermind
@@ -41,6 +42,7 @@ export class Mastermind
   private readonly _finishThePrey?: string;
   private readonly _mastermindWins?: string;
   private readonly _alwaysInclude: Hero[];
+  private readonly _dark?: string;
 
   constructor(mastermindConfig: IMastermind) {
     super(mastermindConfig);
@@ -54,6 +56,7 @@ export class Mastermind
       specialRules: this._specialRules,
       startOfGame: this._startOfGame,
       mastermindWins: this._mastermindWins,
+      dark: this._dark,
     } = mastermindConfig);
 
     this._alwaysInclude = mastermindConfig.alwaysInclude ?? [];
@@ -101,6 +104,10 @@ export class Mastermind
 
   get alwaysInclude() {
     return this._alwaysInclude;
+  }
+
+  get dark() {
+    return this._dark;
   }
 
   /**

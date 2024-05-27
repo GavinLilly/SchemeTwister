@@ -15,4 +15,9 @@ export interface INomenclature {
   wound: string;
   purchase: string;
   attack: string;
+  agents: string;
+  troopers: string;
+  officers: string;
+  city: string;
+  hq: string;
 }
