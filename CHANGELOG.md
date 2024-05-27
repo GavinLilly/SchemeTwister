@@ -1,3 +1,10 @@
+## [3.15.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.15.0...v3.15.1) (2024-05-27)
+
+
+### Dependencies
+
+* **deps:** update to NX 18.3.5 ([7f2bc09](https://github.com/GavinLilly/SchemeTwister/commit/7f2bc098ebbb04d0286e5338880d7d99664e3681))
+
 ## [3.15.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.14.5...v3.15.0) (2024-05-27)
 
 
