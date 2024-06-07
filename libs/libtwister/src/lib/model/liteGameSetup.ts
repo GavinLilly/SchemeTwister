@@ -7,7 +7,12 @@ import instantiateScheme from '../utils/instantiateScheme';
 import { GameSetup } from './GameSetup';
 import { Henchmen, Hero, Mastermind, VillainGroup } from './cards';
 import { AbstractCardGroup } from './cards/abstractCardGroup';
-import { IAdditionalDeck, IAdditionalDeckRules, IHeroDeck } from './interfaces';
+import {
+  IAdditionalDeck,
+  IAdditionalDeckRules,
+  IHeroDeck,
+  INamedObject,
+} from './interfaces';
 import { NumPlayers } from './types';
 
 interface LiteGameSetupConfig {
@@ -108,17 +113,15 @@ export class LiteGameSetup {
    * @returns A LiteGameSetup instance
    */
   public static of(setup: GameSetup): LiteGameSetup {
+    const mapToId = <TVal extends INamedObject>(value: TVal) => value.id;
+
     return new LiteGameSetup({
       numPlayers: setup.numPlayers,
       schemeId: setup.scheme.id,
       mastermindId: setup.mastermind.id,
-      heroDeck: Array.from(setup.heroDeckAsArray()).map((card) => card.id),
-      villainDeck: Array.from(setup.villainDeckAsArray()).map(
-        (card) => card.id
-      ),
-      additionalDeck: Array.from(setup.additionalDecksAsArray()).map(
-        (card) => card.id
-      ),
+      heroDeck: Array.from(setup.heroDeckAsArray()).map(mapToId),
+      villainDeck: Array.from(setup.villainDeckAsArray()).map(mapToId),
+      additionalDeck: Array.from(setup.additionalDecksAsArray()).map(mapToId),
     });
   }
 

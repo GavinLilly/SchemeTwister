@@ -14,10 +14,10 @@ export default function instantiateScheme(scheme: SchemeMinusRules): Scheme {
   }
 
   if (scheme.meta.overrideScheme.params) {
-    return new scheme.meta.overrideScheme.schemeType(
-      scheme,
-      ...scheme.meta.overrideScheme.params
-    );
+    const schemeType = scheme.meta.overrideScheme.schemeType;
+    const parameters = scheme.meta.overrideScheme.params;
+
+    return new schemeType(scheme, ...parameters);
   }
 
   return new scheme.meta.overrideScheme.schemeType(scheme);

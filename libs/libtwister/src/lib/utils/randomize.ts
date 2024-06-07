@@ -50,8 +50,9 @@ export function randomize<T>(originalArray: T[], count = 1): T | T[] {
     }
 
     const randomIdx = randomInteger(arr.length - 1);
+    const randomItem = arr.splice(randomIdx, 1)[0];
 
-    elements.push(arr.splice(randomIdx, 1)[0]);
+    elements.push(randomItem);
     return getRandomElement(arr);
   };
 
