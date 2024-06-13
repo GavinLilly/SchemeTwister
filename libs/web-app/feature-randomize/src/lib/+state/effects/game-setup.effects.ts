@@ -5,7 +5,8 @@ import {
   Timestamp,
   updateDoc,
 } from '@angular/fire/firestore';
-import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { concatLatestFrom } from '@ngrx/operators';
 import { Store } from '@ngrx/store';
 import { ISeries, LiteGameSetup } from '@schemetwister/libtwister';
 import {

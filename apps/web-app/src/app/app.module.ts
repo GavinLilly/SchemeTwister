@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { AngularFireModule } from '@angular/fire/compat';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { BrowserModule } from '@angular/platform-browser';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -47,7 +47,7 @@ const seriesRegister = [
     EffectsModule.forRoot(),
 
     // Firebase
-    AngularFireModule.initializeApp(environment.firebase),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
 
     // Schemetwister
     AppRoutingModule,

@@ -1,7 +1,13 @@
 import { Inject, Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {
+  Firestore,
+  collection,
+  doc,
+  getDocs,
+  limit,
+  orderBy,
+  query,
+} from '@angular/fire/firestore';
 
 import { IStoredGameSetup } from './storedGameSetup.interface';
 
@@ -10,19 +16,25 @@ export const FIRESTORE_COLLECTION_TOKEN = 'FireStoreCollection';
 @Injectable()
 export class StoredSetupsService {
   constructor(
-    private _firestore: AngularFirestore,
+    private _firestore: Firestore,
     @Inject(FIRESTORE_COLLECTION_TOKEN) private _collectionName: string
   ) {}
 
   public getSetupDocument = (uid: string) =>
-    this._firestore.doc<IStoredGameSetup>(`${this._collectionName}/${uid}`);
+    doc(this._firestore, `${this._collectionName}/${uid}`);
 
-  public getLatestSetups(count = 10): Observable<IStoredGameSetup[]> {
-    return this._firestore
-      .collection<IStoredGameSetup>(this._collectionName, (ref) =>
-        ref.orderBy('updated', 'desc').limit(count)
-      )
-      .snapshotChanges()
-      .pipe(map((val) => val.map((foo) => foo.payload.doc.data())));
+  public async getLatestSetups(count = 10): Promise<IStoredGameSetup[]> {
+    const setupsCollection = collection(this._firestore, this._collectionName);
+    const latestSetupsQuery = query(
+      setupsCollection,
+      orderBy('updated'),
+      limit(count)
+    );
+
+    const setups: IStoredGameSetup[] = [];
+    const snapshot = await getDocs(latestSetupsQuery);
+    snapshot.forEach((doc) => setups.push(doc.data() as IStoredGameSetup));
+
+    return setups;
   }
 }
