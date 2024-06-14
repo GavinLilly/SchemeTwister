@@ -123,13 +123,12 @@ export class GameSetupEffects {
         uid: LiteGameSetup.of(gameSetup).calculateUid(),
       })),
       mergeMap(({ setup, uid }) =>
-        this._storedSetupsService
-          .getSetupDocument(uid)
-          .get()
-          .pipe(map((queryResult) => ({ queryResult, setup })))
+        from(this._storedSetupsService.getSetupDocument(uid)).pipe(
+          map((queryResult) => ({ queryResult, setup }))
+        )
       ),
       mergeMap(({ queryResult, setup }) => {
-        if (queryResult.exists) {
+        if (queryResult.exists()) {
           return from(updateDoc(queryResult.ref, { twistCount: increment(1) }));
         } else {
           const newSetup: IStoredGameSetup = {

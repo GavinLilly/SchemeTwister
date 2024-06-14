@@ -1,8 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
 import {
+  CollectionReference,
   Firestore,
   collection,
   doc,
+  getDoc,
   getDocs,
   limit,
   orderBy,
@@ -15,26 +17,27 @@ export const FIRESTORE_COLLECTION_TOKEN = 'FireStoreCollection';
 
 @Injectable()
 export class StoredSetupsService {
+  setupsCollection: CollectionReference;
   constructor(
-    private _firestore: Firestore,
-    @Inject(FIRESTORE_COLLECTION_TOKEN) private _collectionName: string
-  ) {}
+    _firestore: Firestore,
+    @Inject(FIRESTORE_COLLECTION_TOKEN) _collectionName: string
+  ) {
+    this.setupsCollection = collection(_firestore, _collectionName);
+  }
 
-  public getSetupDocument = (uid: string) =>
-    doc(this._firestore, `${this._collectionName}/${uid}`);
+  public async getSetupDocument(uid: string) {
+    const docRef = doc(this.setupsCollection, uid);
+    return getDoc(docRef);
+  }
 
   public async getLatestSetups(count = 10): Promise<IStoredGameSetup[]> {
-    const setupsCollection = collection(this._firestore, this._collectionName);
     const latestSetupsQuery = query(
-      setupsCollection,
+      this.setupsCollection,
       orderBy('updated'),
       limit(count)
     );
 
-    const setups: IStoredGameSetup[] = [];
     const snapshot = await getDocs(latestSetupsQuery);
-    snapshot.forEach((doc) => setups.push(doc.data() as IStoredGameSetup));
-
-    return setups;
+    return snapshot.docs.map((doc) => doc.data() as IStoredGameSetup);
   }
 }
