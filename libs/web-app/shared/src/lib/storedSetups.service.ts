@@ -19,8 +19,8 @@ export const FIRESTORE_COLLECTION_TOKEN = 'FireStoreCollection';
 export class StoredSetupsService {
   setupsCollection: CollectionReference;
   constructor(
-    firestore: Firestore = inject(Firestore),
-    @Inject(FIRESTORE_COLLECTION_TOKEN) collectionName: string
+    @Inject(FIRESTORE_COLLECTION_TOKEN) collectionName: string,
+    firestore: Firestore = inject(Firestore)
   ) {
     this.setupsCollection = collection(firestore, collectionName);
   }
