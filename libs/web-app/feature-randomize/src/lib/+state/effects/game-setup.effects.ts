@@ -5,7 +5,8 @@ import {
   Timestamp,
   updateDoc,
 } from '@angular/fire/firestore';
-import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { concatLatestFrom } from '@ngrx/operators';
 import { Store } from '@ngrx/store';
 import { ISeries, LiteGameSetup } from '@schemetwister/libtwister';
 import {
@@ -122,13 +123,12 @@ export class GameSetupEffects {
         uid: LiteGameSetup.of(gameSetup).calculateUid(),
       })),
       mergeMap(({ setup, uid }) =>
-        this._storedSetupsService
-          .getSetupDocument(uid)
-          .get()
-          .pipe(map((queryResult) => ({ queryResult, setup })))
+        from(this._storedSetupsService.getSetupDocument(uid)).pipe(
+          map((queryResult) => ({ queryResult, setup }))
+        )
       ),
       mergeMap(({ queryResult, setup }) => {
-        if (queryResult.exists) {
+        if (queryResult.exists()) {
           return from(updateDoc(queryResult.ref, { twistCount: increment(1) }));
         } else {
           const newSetup: IStoredGameSetup = {

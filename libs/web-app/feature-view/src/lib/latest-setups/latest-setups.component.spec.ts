@@ -6,7 +6,6 @@ import {
   WebAppSharedModule,
 } from '@schemetwister/web-app/shared';
 import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
-import { of } from 'rxjs';
 
 import { WebAppFeatureViewModule } from '../web-app-feature-view.module';
 
@@ -19,7 +18,7 @@ describe('LatestSetupsComponent', () => {
       WebAppSharedModule,
     ])
       .mock(StoredSetupsService, {
-        getLatestSetups: () => of([EMPTY_STORED_SETUP]),
+        getLatestSetups: () => Promise.resolve([EMPTY_STORED_SETUP]),
       })
       .provide(MockProvider(SERIES_REGISTER_TOKEN, [marvelSeries]))
   );

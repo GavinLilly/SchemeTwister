@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -59,9 +58,6 @@ import { VillainDeckComponent } from './villain-deck/villain-deck.component';
     StoreModule.forFeature(gameSetsFeatureKey, gameSetsReducer),
     StoreModule.forFeature(gameSetupFeatureKey, gameSetupReducer),
     EffectsModule.forFeature([GameSetupEffects, GameSetsEffects]),
-
-    // Firebase
-    AngularFirestoreModule,
 
     // Schemetwister
     WebAppUiModule,

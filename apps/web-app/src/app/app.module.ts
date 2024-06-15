@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { AngularFireModule } from '@angular/fire/compat';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideFirestore } from '@angular/fire/firestore';
 import { BrowserModule } from '@angular/platform-browser';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -16,6 +17,7 @@ import {
   SERIES_REGISTER_TOKEN,
 } from '@schemetwister/web-app/shared';
 import { WebAppUiModule } from '@schemetwister/web-app/ui';
+import { getFirestore } from 'firebase/firestore';
 
 import { environment } from '../environments/environment';
 
@@ -47,7 +49,8 @@ const seriesRegister = [
     EffectsModule.forRoot(),
 
     // Firebase
-    AngularFireModule.initializeApp(environment.firebase),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
 
     // Schemetwister
     AppRoutingModule,

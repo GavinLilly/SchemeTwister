@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ComponentStore, tapResponse } from '@ngrx/component-store';
+import { ComponentStore } from '@ngrx/component-store';
+import { tapResponse } from '@ngrx/operators';
 import {
   IStoredGameSetup,
   StoredSetupsService,
 } from '@schemetwister/web-app/shared';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 
 export interface LatestSetupsStoreState {
   setups: IStoredGameSetup[];
@@ -23,7 +24,7 @@ export class LatestSetupsStore extends ComponentStore<LatestSetupsStoreState> {
   }
 
   readonly getLatestSetups = this.effect(() =>
-    this._storedSetupsService.getLatestSetups().pipe(
+    from(this._storedSetupsService.getLatestSetups()).pipe(
       tapResponse(
         (setups) =>
           this.patchState(() => ({
