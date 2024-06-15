@@ -1,3 +1,10 @@
+## [3.15.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.15.1...v3.15.2) (2024-06-15)
+
+
+### Dependencies
+
+* **deps:** bump @grpc/grpc-js ([#166](https://github.com/GavinLilly/SchemeTwister/issues/166)) ([6126aa5](https://github.com/GavinLilly/SchemeTwister/commit/6126aa5c973cffe317ad9db71b63e3af89ef8e94))
+
 ## [3.15.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.15.0...v3.15.1) (2024-05-27)
 
 
