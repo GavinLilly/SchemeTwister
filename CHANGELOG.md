@@ -1,3 +1,10 @@
+## [3.16.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.16.0...v3.16.1) (2024-06-16)
+
+
+### Dependencies
+
+* **deps:** bump braces from 3.0.2 to 3.0.3 ([5444767](https://github.com/GavinLilly/SchemeTwister/commit/5444767a3719818a535cda57394c24b02dbf889c))
+
 ## [3.16.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.15.2...v3.16.0) (2024-06-16)
 
 
