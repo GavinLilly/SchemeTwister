@@ -1,3 +1,10 @@
+## [3.16.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.15.2...v3.16.0) (2024-06-16)
+
+
+### Features
+
+* **app:** add option to keep the screen on ([833eff3](https://github.com/GavinLilly/SchemeTwister/commit/833eff382da072bde986075feeddaa0a392d0c83))
+
 ## [3.15.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.15.1...v3.15.2) (2024-06-15)
 
 
