@@ -137,6 +137,7 @@
     "jest-environment-jsdom": "^29.5.0",
     "jest-environment-node": "^29.4.1",
     "jest-preset-angular": "14.0.4",
+    "jest-wake-lock-mock": "^1.1.0",
     "jsonc-parser": "^3.0.0",
     "ng-mocks": "^14.12.1",
     "nx": "18.3.5",

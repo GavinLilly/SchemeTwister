@@ -4,7 +4,7 @@
     "outDir": "../../../dist/out-tsc",
     "declaration": true,
     "inlineSources": true,
-    "types": ["node", "jest", "dom-screen-wake-lock"],
+    "types": ["node", "dom-screen-wake-lock"],
     "lib": ["dom", "ES2018", "ES2023.Array"]
   },
   "angularCompilerOptions": {
