@@ -48,4 +48,21 @@ describe('RandomizeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it("should show that the screen wake lock isn't on by default", () =>
+    expect(component.isScreenLocked()).toEqual(false));
+
+  it('should toggle the screen wake lock', async () => {
+    await component.toggleScreenLock();
+    expect(component.screenLockSentinel).toBeDefined();
+    expect(component.screenLockSentinel?.type).toEqual('screen');
+    expect(component.screenLockSentinel?.released).toBe(false);
+    expect(component.isScreenLocked()).toEqual(true);
+
+    await component.toggleScreenLock();
+    expect(component.screenLockSentinel).toBeDefined();
+    expect(component.screenLockSentinel?.type).toEqual('screen');
+    expect(component.screenLockSentinel?.released).toBe(true);
+    expect(component.isScreenLocked()).toEqual(false);
+  });
 });
