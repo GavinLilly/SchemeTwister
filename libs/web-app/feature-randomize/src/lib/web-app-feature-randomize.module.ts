@@ -7,6 +7,7 @@ import {
   NgbModule,
   NgbAccordionModule,
   NgbCollapseModule,
+  NgbDropdownModule,
 } from '@ng-bootstrap/ng-bootstrap';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -49,6 +50,7 @@ import { VillainDeckComponent } from './villain-deck/villain-deck.component';
     NgbModule,
     NgbAccordionModule,
     NgbCollapseModule,
+    NgbDropdownModule,
 
     // Icons
     FontAwesomeModule,

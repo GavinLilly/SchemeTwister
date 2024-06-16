@@ -1,6 +1,6 @@
 import { Component, OnInit, Signal, effect } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
-import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import {
@@ -40,7 +40,18 @@ export class RandomizeComponent implements OnInit {
 
   gameSetup: Signal<GameSetup> = this._store.selectSignal(selectGameSetup);
 
+  // eslint-disable-next-line no-undef
+  screenLockSentinel?: WakeLockSentinel = undefined;
+  isScreenLocked(): boolean {
+    if (this.screenLockSentinel === undefined) {
+      return false;
+    }
+
+    return !this.screenLockSentinel.released;
+  }
+
   faCog = faCog;
+  faCheck = faCheck;
 
   numPlayerOptions = numPlayers;
 
@@ -100,5 +111,19 @@ export class RandomizeComponent implements OnInit {
 
   reset() {
     this._store.dispatch(randomizePageActions.resetAll());
+  }
+
+  async toggleScreenLock() {
+    if (this.screenLockSentinel === undefined) {
+      try {
+        this.screenLockSentinel = await navigator.wakeLock.request('screen');
+      } catch (err: unknown) {
+        const errMsg =
+          err instanceof Error ? `${err.name}, ${err.message}` : err;
+        console.log(errMsg);
+      }
+    } else {
+      await this.screenLockSentinel.release();
+    }
   }
 }

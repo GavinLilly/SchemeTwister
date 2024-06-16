@@ -6,13 +6,30 @@
         <div class="card-header">
           <div class="d-flex align-items-center">
             <p class="mx-auto w-100 mb-1">Setup</p>
-            <a
-              (click)="pickGameSets()"
-              href="javascript:void(0)"
-              class="text-black"
-            >
-              <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
-            </a>
+            <div ngbDropdown class="d-inline-block">
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                id="dropdownBasic1"
+                ngbDropdownToggle
+              >
+                <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
+              </button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem (click)="pickGameSets()">
+                  Pick Game Sets
+                </button>
+                <button ngbDropdownItem (click)="toggleScreenLock()">
+                  Keep screen on @if (isScreenLocked()) { &nbsp;&nbsp;
+                  <fa-icon
+                    [icon]="faCheck"
+                    class="ml-auto"
+                    id="screen-on-check"
+                  ></fa-icon>
+                  }
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="card-body">
