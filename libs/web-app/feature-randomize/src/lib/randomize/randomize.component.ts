@@ -42,7 +42,7 @@ export class RandomizeComponent implements OnInit {
 
   gameSetup: Signal<GameSetup> = this._store.selectSignal(selectGameSetup);
 
-  isLocked$ = this._screenLockStore.select((state) => state.isLocked);
+  isLocked$ = this._screenOnLockStore.select((state) => state.isLocked);
 
   faCog = faCog;
   faCheck = faCheck;
@@ -56,7 +56,7 @@ export class RandomizeComponent implements OnInit {
       gameSetup: IGameSetupState;
     }>,
     meta: Meta,
-    private _screenLockStore: ScreenOnLockStore
+    private _screenOnLockStore: ScreenOnLockStore
   ) {
     const deckAsNameString = (cards: Set<AbstractCardGroup>) =>
       Array.from(cards)
@@ -84,7 +84,7 @@ export class RandomizeComponent implements OnInit {
   generateDecks = () =>
     this._store.dispatch(randomizePageActions.generateGameSetup());
 
-  setPlayers(value: string) {
+  setNumberOfPlayers(value: string) {
     const realValue = parseInt(value);
     this._store.dispatch(
       numPlayersActions.setNumberOfPlayers({
@@ -102,5 +102,5 @@ export class RandomizeComponent implements OnInit {
 
   reset = () => this._store.dispatch(randomizePageActions.resetAll());
 
-  toggleScreenLock = () => this._screenLockStore.toggleLocked();
+  toggleScreenOnLock = () => this._screenOnLockStore.toggleLock();
 }

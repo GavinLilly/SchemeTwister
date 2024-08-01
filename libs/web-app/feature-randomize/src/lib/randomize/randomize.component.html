@@ -19,7 +19,7 @@
                 <button ngbDropdownItem (click)="pickGameSets()">
                   Pick Game Sets
                 </button>
-                <button ngbDropdownItem (click)="toggleScreenLock()">
+                <button ngbDropdownItem (click)="toggleScreenOnLock()">
                   Keep screen on @if (isLocked$ | async) { &nbsp;&nbsp;
                   <fa-icon
                     [icon]="faCheck"
@@ -41,7 +41,7 @@
                 #numPlayersSelect
                 [ngModel]="numberOfPlayers()"
                 [ngModelOptions]="{ standalone: true }"
-                (change)="setPlayers(numPlayersSelect.value)"
+                (change)="setNumberOfPlayers(numPlayersSelect.value)"
                 id="numPlayersSelect"
               >
                 <option *ngFor="let num of numPlayerOptions" value="{{ num }}">

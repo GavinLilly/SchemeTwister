@@ -14,6 +14,9 @@ const initialState: ScreenOnLockState = {
   isLocked: false,
 };
 
+/**
+ * A store which controls the screen-on lock state.
+ */
 @Injectable()
 export class ScreenOnLockStore
   extends ComponentStore<ScreenOnLockState>
@@ -22,40 +25,63 @@ export class ScreenOnLockStore
   // eslint-disable-next-line no-undef
   private _screenLockSentinel?: WakeLockSentinel = undefined;
 
-  private _storeStateSub: Subscription;
+  private _localStorageUpdateSub: Subscription;
 
-  constructor(private _localStorageService: LocalStorageService<boolean>) {
+  constructor(private _screenOnStorageService: LocalStorageService<boolean>) {
     super(initialState);
 
-    const isLocked = _localStorageService.get(IS_LOCKED_KEY);
+    const isLocked = _screenOnStorageService.get(IS_LOCKED_KEY);
 
     if (isLocked !== null) {
-      this.setLocked(isLocked);
+      this.setLock(isLocked);
     }
 
-    this._storeStateSub = this.select((store) => store.isLocked).subscribe(
-      (isLocked) => this._localStorageService.set(IS_LOCKED_KEY, isLocked)
+    this._localStorageUpdateSub = this.select(
+      (store) => store.isLocked
+    ).subscribe((isLocked) =>
+      this._screenOnStorageService.set(IS_LOCKED_KEY, isLocked)
     );
   }
 
   ngOnDestroy(): void {
-    this._storeStateSub.unsubscribe();
+    this._localStorageUpdateSub.unsubscribe();
   }
 
+  /**
+   * The screen will only be locked if the sentinel is active and not released.
+   *  @returns true if screen is locked, false if not
+   */
   private get _isScreenLocked() {
     return this._screenLockSentinel?.released === false;
   }
 
-  readonly toggleLocked = this.effect(($) =>
-    $.pipe(switchMap(async () => this._performLock(!this._isScreenLocked)))
+  /**
+   * Toggles the lock on/off
+   */
+  readonly toggleLock = this.effect(($) =>
+    $.pipe(
+      switchMap(async () =>
+        this._isScreenLocked ? this._unlockScreen() : this._lockScreen()
+      )
+    )
   );
 
-  readonly setLocked = this.effect((lock$: Observable<boolean>) =>
-    lock$.pipe(switchMap(async (lock) => this._performLock(lock)))
+  /**
+   * Explicitly sets the screen on lock to on or off based on the provided value
+   */
+  readonly setLock = this.effect((lock$: Observable<boolean>) =>
+    lock$.pipe(
+      switchMap(async (lock) =>
+        lock ? this._lockScreen() : this._unlockScreen()
+      )
+    )
   );
 
-  private async _performLock(lock: boolean) {
-    if (lock) {
+  /**
+   * Locks the screen if it's not already locked
+   */
+  private async _lockScreen() {
+    if (!this._isScreenLocked) {
       try {
         this._screenLockSentinel = await navigator.wakeLock.request('screen');
         this.setState({ isLocked: true });
@@ -65,11 +91,16 @@ export class ScreenOnLockStore
         console.log(errMsg);
         this.setState({ isLocked: false });
       }
-    } else {
-      if (this._screenLockSentinel !== undefined) {
-        await this._screenLockSentinel.release();
-        this.setState({ isLocked: false });
-      }
+    }
+  }
+
+  /**
+   * Unlocks the screen if it's currently locked
+   */
+  private async _unlockScreen() {
+    if (this._screenLockSentinel !== undefined && this._isScreenLocked) {
+      await this._screenLockSentinel.release();
+      this.setState({ isLocked: false });
     }
   }
 }
