@@ -23,11 +23,13 @@ import {
   selectNumPlayers,
 } from '../+state/selectors/num-players.selectors';
 import { GameSetSelectComponent } from '../game-set-select/game-set-select.component';
+import { ScreenOnLockStore } from '../screen-on-lock.store';
 
 @Component({
   selector: 'schemetwister-randomize',
   templateUrl: './randomize.component.html',
   styleUrls: ['./randomize.component.scss'],
+  providers: [ScreenOnLockStore],
 })
 export class RandomizeComponent implements OnInit {
   numberOfPlayers: Signal<NumPlayers> =
@@ -36,19 +38,11 @@ export class RandomizeComponent implements OnInit {
   isAdvancedSolo: Signal<boolean> =
     this._store.selectSignal(selectIsAdvancedSolo);
 
-  isVillainDeckLocked = this._store.select(selectIsVillainDeckLocked);
+  isVillainDeckLocked$ = this._store.select(selectIsVillainDeckLocked);
 
   gameSetup: Signal<GameSetup> = this._store.selectSignal(selectGameSetup);
 
-  // eslint-disable-next-line no-undef
-  screenLockSentinel?: WakeLockSentinel = undefined;
-  isScreenLocked(): boolean {
-    if (this.screenLockSentinel === undefined) {
-      return false;
-    }
-
-    return !this.screenLockSentinel.released;
-  }
+  isLocked$ = this._screenLockStore.select((state) => state.isLocked);
 
   faCog = faCog;
   faCheck = faCheck;
@@ -61,7 +55,8 @@ export class RandomizeComponent implements OnInit {
       numPlayers: INumPlayersState;
       gameSetup: IGameSetupState;
     }>,
-    meta: Meta
+    meta: Meta,
+    private _screenLockStore: ScreenOnLockStore
   ) {
     const deckAsNameString = (cards: Set<AbstractCardGroup>) =>
       Array.from(cards)
@@ -86,9 +81,8 @@ export class RandomizeComponent implements OnInit {
     this.generateDecks();
   }
 
-  generateDecks() {
+  generateDecks = () =>
     this._store.dispatch(randomizePageActions.generateGameSetup());
-  }
 
   setPlayers(value: string) {
     const realValue = parseInt(value);
@@ -99,31 +93,14 @@ export class RandomizeComponent implements OnInit {
     );
   }
 
-  setAdvancedSolo(isEnabled: boolean) {
+  setAdvancedSolo = (isEnabled: boolean) =>
     this._store.dispatch(
       numPlayersActions.setAdvancedSolo({ isAdvancedSolo: isEnabled })
     );
-  }
 
-  pickGameSets() {
-    this._modalService.open(GameSetSelectComponent);
-  }
+  pickGameSets = () => this._modalService.open(GameSetSelectComponent);
 
-  reset() {
-    this._store.dispatch(randomizePageActions.resetAll());
-  }
+  reset = () => this._store.dispatch(randomizePageActions.resetAll());
 
-  async toggleScreenLock() {
-    if (this.screenLockSentinel === undefined) {
-      try {
-        this.screenLockSentinel = await navigator.wakeLock.request('screen');
-      } catch (err: unknown) {
-        const errMsg =
-          err instanceof Error ? `${err.name}, ${err.message}` : err;
-        console.log(errMsg);
-      }
-    } else {
-      await this.screenLockSentinel.release();
-    }
-  }
+  toggleScreenLock = () => this._screenLockStore.toggleLocked();
 }
