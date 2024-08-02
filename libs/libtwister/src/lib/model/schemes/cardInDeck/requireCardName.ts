@@ -31,11 +31,10 @@ export class RequireCardName<TCard extends AbstractCardGroup>
     }
 
     const random = randomize(matchingCards, this._numberRequired);
-    const randomAsArray = random instanceof Array ? random : [random];
 
     if (this._shouldRemoveOthers) {
       matchingCards
-        .filter((card) => !randomAsArray.includes(card))
+        .filter((card) => !random.includes(card))
         .forEach((card) => store.removeCard(card));
     }
 

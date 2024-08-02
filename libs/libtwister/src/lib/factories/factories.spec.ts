@@ -66,15 +66,26 @@ describe('Card Factory', () => {
     it('should give 1 random card', () =>
       expect(instance.getRandom()).toBeTruthy());
 
-    it("should give 1 random card, provided it's a DC card", () => {
-      const selected = instance.getRandom({
-        count: 1,
-        filter: (card) => card.name.startsWith('DC'),
-      });
-      expect(selected).toBeInstanceOf(Array);
+    describe('card count explicitly stated', () =>
+      it("should give 1 random card, provided it's a DC card", () => {
+        const selected = instance.getRandom({
+          count: 1,
+          filter: (card) => card.name.startsWith('DC'),
+        });
+        expect(selected).toBeInstanceOf(Array);
 
-      expect(selected[0].name).toContain('DC');
-    });
+        expect(selected[0].name).toContain('DC');
+      }));
+
+    describe('card count implicitly stated', () =>
+      it("should give 1 random card, provided it's a DC card", () => {
+        const selected = instance.getRandom({
+          filter: (card) => card.name.startsWith('DC'),
+        });
+        expect(selected).toBeInstanceOf(Array);
+
+        expect(selected[0].name).toContain('DC');
+      }));
 
     it('should have 3 random cards', () =>
       expect(instance.getRandom({ count: 3 })).toHaveLength(3));
