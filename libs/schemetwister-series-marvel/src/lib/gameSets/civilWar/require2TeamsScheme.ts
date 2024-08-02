@@ -18,7 +18,7 @@ export class Require2TeamsScheme extends Scheme {
       .map((hero) => hero.team)
       .filter((team): team is ITeam => team !== undefined)
       .reduce(
-        (acc, curr) => acc.set(curr, (acc.get(curr) || 0) + 1),
+        (acc, curr) => acc.set(curr, (acc.get(curr) ?? 0) + 1),
         new Map<ITeam, number>()
       );
 
