@@ -19,8 +19,8 @@
                 <button ngbDropdownItem (click)="pickGameSets()">
                   Pick Game Sets
                 </button>
-                <button ngbDropdownItem (click)="toggleScreenLock()">
-                  Keep screen on @if (isScreenLocked()) { &nbsp;&nbsp;
+                <button ngbDropdownItem (click)="toggleScreenOnLock()">
+                  Keep screen on @if (isLocked$ | async) { &nbsp;&nbsp;
                   <fa-icon
                     [icon]="faCheck"
                     class="ml-auto"
@@ -41,7 +41,7 @@
                 #numPlayersSelect
                 [ngModel]="numberOfPlayers()"
                 [ngModelOptions]="{ standalone: true }"
-                (change)="setPlayers(numPlayersSelect.value)"
+                (change)="setNumberOfPlayers(numPlayersSelect.value)"
                 id="numPlayersSelect"
               >
                 <option *ngFor="let num of numPlayerOptions" value="{{ num }}">
@@ -81,7 +81,7 @@
               >
             </div>
           </form>
-          @if (isVillainDeckLocked | async) {
+          @if (isVillainDeckLocked$ | async) {
           <p id="lock-warning">
             Locked cards in the Villain Deck may be overridden by Scheme and/or
             Mastermind requirements
