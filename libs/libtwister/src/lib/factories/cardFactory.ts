@@ -3,6 +3,11 @@ import isUUID from 'validator/lib/isUUID';
 import { IPlayableObject } from '../model/interfaces/playableObject.interface';
 import { randomize } from '../utils/randomize';
 
+export type GetRandomOptions<TCard extends IPlayableObject> = {
+  count?: number;
+  filter?: (card: TCard) => boolean;
+};
+
 /**
  * A factory for selecting cards from a large set.
  */
@@ -119,25 +124,26 @@ export class CardFactory<TCard extends IPlayableObject> {
   public getRandom(): TCard;
   /**
    * Gets a number of random cards from the list of filtered cards
-   * @param count The number of cards to get. Defaults to 1
-   * @param func An optional function for filtering the cards to randomize from
+   * @param options The configuration to set the number of cards returned and/or
+   * the function to filter the cards to choose from
    * @returns An array of cards
    */
-  public getRandom(count: number, func?: (card: TCard) => boolean): TCard[];
-  public getRandom(
-    count = 1,
-    func?: (card: TCard) => boolean
-  ): TCard | TCard[] {
+  public getRandom(options: GetRandomOptions<TCard>): TCard[];
+  public getRandom(options?: GetRandomOptions<TCard>): TCard | TCard[] {
     const applicableCards =
-      func !== undefined
-        ? this.availableCards.filter(func)
+      options?.filter !== undefined
+        ? this.availableCards.filter(options.filter)
         : this.availableCards;
 
-    if (count === 1) {
+    if (options === undefined) {
       return randomize(applicableCards);
     }
 
-    return randomize(applicableCards, count);
+    if (options.count !== undefined) {
+      return randomize(applicableCards, options.count);
+    }
+
+    return [randomize(applicableCards)];
   }
 
   /**

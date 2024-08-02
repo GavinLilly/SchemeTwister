@@ -6,7 +6,7 @@ import {
 } from '../model/cards/mastermind';
 import { randomize } from '../utils/randomize';
 
-import { CardFactory } from './cardFactory';
+import { CardFactory, GetRandomOptions } from './cardFactory';
 import { CardStore } from './cardStore';
 
 export type MastermindType =
@@ -22,20 +22,23 @@ export type MastermindType =
 export class MastermindStore extends CardStore<MastermindType> {
   public override getRandom(): MastermindType;
   public override getRandom(
-    count: number,
-    func?: ((card: MastermindType) => boolean) | undefined
+    options: GetRandomOptions<MastermindType>
   ): MastermindType[];
   public override getRandom(
-    count = 1,
-    func?: ((card: MastermindType) => boolean) | undefined
+    options?: GetRandomOptions<MastermindType>
   ): MastermindType | MastermindType[] {
-    const picked = super.getRandom(count, func);
+    const pickNormalOrEpic = (mastermind: MastermindType) =>
+      mastermind instanceof MastermindWithEpic
+        ? randomize([mastermind, mastermind.epic])
+        : mastermind;
 
-    if (picked instanceof MastermindWithEpic) {
-      return randomize([picked, picked.epic]);
+    if (options === undefined) {
+      const picked = super.getRandom();
+
+      return pickNormalOrEpic(picked);
     }
 
-    return picked;
+    return super.getRandom(options).map(pickNormalOrEpic);
   }
 
   public override removeCard(idOrCard: string | MastermindType): void {

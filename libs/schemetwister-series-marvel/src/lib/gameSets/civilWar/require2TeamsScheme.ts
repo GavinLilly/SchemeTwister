@@ -31,7 +31,10 @@ export class Require2TeamsScheme extends Scheme {
     return {
       heroes: chosenTeams
         .flatMap((team) =>
-          store.heroStore.pickRandom(3, (hero) => hero.team === team)
+          store.heroStore.pickRandom({
+            count: 3,
+            filter: (hero) => hero.team === team,
+          })
         )
         .toSorted((a, b) => a.name.localeCompare(b.name)),
     };

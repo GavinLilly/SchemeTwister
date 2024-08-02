@@ -23,12 +23,13 @@ export function randomize<T>(originalArray: T[], count: number): T[];
  * @param count The number of cards to return
  * @returns One card or an array of cards
  */
-export function randomize<T>(originalArray: T[], count = 1): T | T[] {
-  if (count < 1) {
+export function randomize<T>(originalArray: T[], count?: number): T | T[] {
+  const realCount = count ?? 1;
+  if (realCount < 1) {
     throw new RangeError(`Count must be 1 or higher`);
   }
 
-  if (count > originalArray.length) {
+  if (realCount > originalArray.length) {
     throw new RangeError(
       `Count (${count}) must be lower than the total deck size of ${originalArray.length}`
     );
@@ -45,7 +46,7 @@ export function randomize<T>(originalArray: T[], count = 1): T | T[] {
    * @returns An array of selected items
    */
   const getRandomElement = (arr: T[]): T[] => {
-    if (elements.length === count) {
+    if (elements.length === realCount) {
       return elements;
     }
 
@@ -58,5 +59,5 @@ export function randomize<T>(originalArray: T[], count = 1): T | T[] {
 
   const chosenRandoms = getRandomElement(pickFrom);
 
-  return chosenRandoms.length === 1 ? chosenRandoms[0] : chosenRandoms;
+  return count === undefined ? chosenRandoms[0] : chosenRandoms;
 }
