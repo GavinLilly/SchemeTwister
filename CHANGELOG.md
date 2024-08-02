@@ -1,3 +1,10 @@
+## [3.17.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.17.0...v3.17.1) (2024-08-02)
+
+
+### Bug Fixes
+
+* **libtwister:** use correct rules for Avengers vs X-Men ([1b80fd7](https://github.com/GavinLilly/SchemeTwister/commit/1b80fd7fa3a59c0b0464288e4cacfccd52cafdd0)), closes [#170](https://github.com/GavinLilly/SchemeTwister/issues/170)
+
 ## [3.17.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.16.1...v3.17.0) (2024-08-02)
 
 
