@@ -27,24 +27,22 @@ export class CardStore<
    * @param func An optional function for filtering the cards to randomize from
    * @returns An array of cards
    */
-  public pickRandom(
-    count?: number,
-    func?: (card: TCard) => boolean
-  ): TCard | TCard[];
+  public pickRandom(count: number, func?: (card: TCard) => boolean): TCard[];
   public pickRandom(
     count = 1,
     func?: (card: TCard) => boolean
   ): TCard | TCard[] {
-    const randoms = this.getRandom(count, func);
-
-    const randomsAsArray = randoms instanceof Array ? randoms : [randoms];
-    randomsAsArray.forEach((card) => this._pickedCards.add(card.id));
-
     if (count === 1) {
-      return randoms as TCard;
+      const random = this.getRandom();
+      this._pickedCards.add(random.id);
+      return random;
     }
 
-    return randoms as TCard[];
+    const randoms = this.getRandom(count, func);
+
+    randoms.forEach((card) => this._pickedCards.add(card.id));
+
+    return randoms;
   }
 
   /**

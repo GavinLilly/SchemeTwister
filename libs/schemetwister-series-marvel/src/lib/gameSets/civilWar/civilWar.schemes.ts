@@ -8,15 +8,25 @@ import { X_MEN, MARVEL_KNIGHTS } from '../../teams';
 
 import { FORTIFY, SHIELD_CLEARANCE } from './civilWar.keywords';
 import { META } from './civilWar.meta';
+import { Require2TeamsScheme } from './require2TeamsScheme';
 
 export const AVENGERS_VS_XMEN = new SchemeDefinition({
   id: 'ed12b424-cdf5-4b78-ad31-a014c646891e',
   name: 'Avengers vs. X-Men',
-  setup: `9 Twists. Hero Deck has 3 Heroes of one Team and 3 Heroes of another Team. (${AVENGERS}, ${X_MEN}, ${SPIDER_FRIENDS}, ${MARVEL_KNIGHTS} etc.)`,
+  setup: `9 Twists. Hero Deck has 3 Heroes of one Team and 3 Heroes of another Team. (${AVENGERS.name}, ${X_MEN.name}, ${SPIDER_FRIENDS.name}, ${MARVEL_KNIGHTS.name} etc.)`,
   twist: `Twist 1-7: Each player reveals their hand. Each player that has cards of both those teams gains a Wound.
   Twist 8: Evil wins!`,
   evilWins: 'When 8 twists revealed',
-  meta: { numTwists: 9 },
+  meta: {
+    numTwists: 9,
+    rules: (rule) => {
+      rule.heroDeck.numHeroes = 6;
+      return rule;
+    },
+    overrideScheme: {
+      schemeType: Require2TeamsScheme,
+    },
+  },
   gameSet: META,
 });
 
@@ -35,7 +45,7 @@ export const EPIC_SUPER_HERO_CIVIL_WAR = new SchemeDefinition({
   id: '2f8a37d6-071d-48fb-b40a-cbee5d54584c',
   name: 'Epic Super Hero Civil War',
   setup:
-    '1 player 4 Heroes in Hero Deck. 1-3 players 9 Twists. 4-5 players 6 Twists.',
+    '1 player: 4 Heroes in Hero Deck. 1-3 players: 9 Twists. 4-5 players: 6 Twists.',
   twist: `Stack this Twist next to the Scheme. Then, for each Twist in that stack, KO a Hero from the HQ and immediately refill that HQ space.`,
   evilWins: 'When the Hero Deck runs out.',
   meta: {

@@ -67,12 +67,12 @@ describe('Card Factory', () => {
       expect(instance.getRandom()).toBeTruthy());
 
     it("should give 1 random card, provided it's a DC card", () => {
-      const selected = instance.getRandom(undefined, (card) =>
+      const selected = instance.getRandom(1, (card) =>
         card.name.startsWith('DC')
       );
       expect(selected).not.toBeInstanceOf(Array);
 
-      expect((selected as IPlayableObject).name).toContain('DC');
+      expect(selected[0].name).toContain('DC');
     });
 
     it('should have 3 random cards', () =>
@@ -122,9 +122,9 @@ describe('Card Factory', () => {
     it('should only give random Legendary cards', () => {
       expect(instance.getRandom().gameSet.id).toEqual(TEST_GAME_SET_META_1.id);
       expect(
-        (instance.getRandom(3) as IPlayableObject[]).every(
-          (item) => item.gameSet === TEST_GAME_SET_META_1
-        )
+        instance
+          .getRandom(3)
+          .every((item) => item.gameSet === TEST_GAME_SET_META_1)
       ).toBeTruthy();
     });
 
@@ -188,7 +188,7 @@ describe('Card Store', () => {
     });
 
     it('should select 3 random cards', () => {
-      const selectedCards = store.pickRandom(3) as IPlayableObject[];
+      const selectedCards = store.pickRandom(3);
 
       expect(
         store.availableCards.every((item) => !selectedCards.includes(item))

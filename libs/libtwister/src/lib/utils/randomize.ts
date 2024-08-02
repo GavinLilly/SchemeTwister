@@ -15,7 +15,7 @@ export function randomize<T>(originalArray: T[]): T;
  * @param count The number of cards to return
  * @returns One card or an array of cards
  */
-export function randomize<T>(originalArray: T[], count: number): T | T[];
+export function randomize<T>(originalArray: T[], count: number): T[];
 /**
  * Return one card or an array of random cards from a list of
  * available cards

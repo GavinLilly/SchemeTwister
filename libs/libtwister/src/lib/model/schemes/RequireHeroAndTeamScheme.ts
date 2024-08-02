@@ -34,11 +34,11 @@ export class RequireHeroAndTeamScheme extends RequireCardInDeckScheme<Hero> {
     const requiredTeamHeroes = store.heroStore.pickRandom(
       this._numFromRequiredTeam,
       (hero) => hero.team === this._requiredTeam
-    ) as Hero[];
+    );
     const otherHeroes = store.heroStore.pickRandom(
       this._numNotFromRequiredTeam,
       (hero) => hero.team !== this._requiredTeam && hero !== this._requiredHero
-    ) as Hero[];
+    );
 
     const superDeck = super.initialiseHeroDeck(rules, store, numPlayers);
 

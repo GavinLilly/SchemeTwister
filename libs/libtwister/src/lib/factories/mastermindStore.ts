@@ -22,11 +22,11 @@ export type MastermindType =
 export class MastermindStore extends CardStore<MastermindType> {
   public override getRandom(): MastermindType;
   public override getRandom(
-    count?: number | undefined,
+    count: number,
     func?: ((card: MastermindType) => boolean) | undefined
-  ): MastermindType | MastermindType[];
+  ): MastermindType[];
   public override getRandom(
-    count?: number,
+    count = 1,
     func?: ((card: MastermindType) => boolean) | undefined
   ): MastermindType | MastermindType[] {
     const picked = super.getRandom(count, func);
@@ -63,34 +63,21 @@ export class MastermindStore extends CardStore<MastermindType> {
   public override get(
     idOrIds: string | string[]
   ): MastermindType | (MastermindType | undefined)[] | undefined {
-    const ids = idOrIds instanceof Array ? idOrIds : [idOrIds];
+    return this.getCardOrCards(idOrIds, (id) => {
+      const normalCard = super.get(id);
 
-    const cards = ids
-      .map((id) => {
-        const normalCard = super.get(id);
+      if (normalCard !== undefined) {
+        return normalCard;
+      }
+      // Card could not be found. Check for epic cards
+      const foundEpicCard = this._getStandardCardFromEpicId(id);
 
-        if (normalCard !== undefined) {
-          return normalCard;
-        }
-        // Card could not be found. Check for epic cards
-        const foundEpicCard = this._getStandardCardFromEpicId(id);
+      if (foundEpicCard !== undefined) {
+        return super.get(foundEpicCard.id);
+      }
 
-        if (foundEpicCard !== undefined) {
-          return super.get(foundEpicCard.id);
-        }
-
-        return undefined;
-      })
-      .filter((card): card is MastermindType => !!card);
-
-    switch (cards.length) {
-      case 0:
-        return undefined;
-      case 1:
-        return cards[0];
-      default:
-        return cards;
-    }
+      return undefined;
+    });
   }
 
   /**
