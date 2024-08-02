@@ -2,7 +2,7 @@ import isUUID from 'validator/lib/isUUID';
 
 import { IPlayableObject } from '../model/interfaces/playableObject.interface';
 
-import { CardFactory } from './cardFactory';
+import { CardFactory, GetRandomOptions } from './cardFactory';
 
 /**
  * A CardFactory with memory!
@@ -23,28 +23,23 @@ export class CardStore<
    * Gets a number of random cards from the list of filtered cards while also
    * removing those cards from the record so they can't be selected later.
    * Optionally filters the cards before random selection too.
-   * @param count The number of cards to get. Defaults to 1
-   * @param func An optional function for filtering the cards to randomize from
+   * @param options The configuration to set the number of cards returned and/or
+   * the function to filter the cards to choose from
    * @returns An array of cards
    */
-  public pickRandom(
-    count?: number,
-    func?: (card: TCard) => boolean
-  ): TCard | TCard[];
-  public pickRandom(
-    count = 1,
-    func?: (card: TCard) => boolean
-  ): TCard | TCard[] {
-    const randoms = this.getRandom(count, func);
-
-    const randomsAsArray = randoms instanceof Array ? randoms : [randoms];
-    randomsAsArray.forEach((card) => this._pickedCards.add(card.id));
-
-    if (count === 1) {
-      return randoms as TCard;
+  public pickRandom(options: GetRandomOptions<TCard>): TCard[];
+  public pickRandom(options?: GetRandomOptions<TCard>): TCard | TCard[] {
+    if (options === undefined) {
+      const random = this.getRandom();
+      this._pickedCards.add(random.id);
+      return random;
     }
 
-    return randoms as TCard[];
+    const randoms = this.getRandom(options);
+
+    randoms.forEach((card) => this._pickedCards.add(card.id));
+
+    return randoms;
   }
 
   /**

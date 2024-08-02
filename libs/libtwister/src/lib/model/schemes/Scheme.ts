@@ -256,13 +256,7 @@ export class Scheme implements IPlayableObject {
       return [];
     }
 
-    const randomCards = store.pickRandom(numRequiredCards);
-
-    if (randomCards instanceof Array) {
-      return randomCards;
-    } else {
-      return [randomCards];
-    }
+    return store.pickRandom({ count: numRequiredCards });
   }
 
   private _buildAdditionalDecks(

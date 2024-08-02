@@ -3,6 +3,11 @@ import isUUID from 'validator/lib/isUUID';
 import { IPlayableObject } from '../model/interfaces/playableObject.interface';
 import { randomize } from '../utils/randomize';
 
+export type GetRandomOptions<TCard extends IPlayableObject> = {
+  count?: number;
+  filter?: (card: TCard) => boolean;
+};
+
 /**
  * A factory for selecting cards from a large set.
  */
@@ -119,28 +124,26 @@ export class CardFactory<TCard extends IPlayableObject> {
   public getRandom(): TCard;
   /**
    * Gets a number of random cards from the list of filtered cards
-   * @param count The number of cards to get. Defaults to 1
-   * @param func An optional function for filtering the cards to randomize from
+   * @param options The configuration to set the number of cards returned and/or
+   * the function to filter the cards to choose from
    * @returns An array of cards
    */
-  public getRandom(
-    count?: number,
-    func?: (card: TCard) => boolean
-  ): TCard | TCard[];
-  public getRandom(
-    count = 1,
-    func?: (card: TCard) => boolean
-  ): TCard | TCard[] {
+  public getRandom(options: GetRandomOptions<TCard>): TCard[];
+  public getRandom(options?: GetRandomOptions<TCard>): TCard | TCard[] {
     const applicableCards =
-      func !== undefined
-        ? this.availableCards.filter(func)
+      options?.filter !== undefined
+        ? this.availableCards.filter(options.filter)
         : this.availableCards;
 
-    if (count === 1) {
+    if (options === undefined) {
       return randomize(applicableCards);
     }
 
-    return randomize(applicableCards, count) as TCard[];
+    if (options.count !== undefined) {
+      return randomize(applicableCards, options.count);
+    }
+
+    return [randomize(applicableCards)];
   }
 
   /**
@@ -159,26 +162,13 @@ export class CardFactory<TCard extends IPlayableObject> {
   public get(
     idOrIds: string | string[]
   ): TCard | (TCard | undefined)[] | undefined {
-    const ids = idOrIds instanceof Array ? idOrIds : [idOrIds];
+    return this.getCardOrCards(idOrIds, (id) => {
+      if (!isUUID(id)) {
+        throw new Error(`The provided card ID (${id}) is not a valid UUID`);
+      }
 
-    const cards = ids
-      .map((id) => {
-        if (!isUUID(id)) {
-          throw new Error(`The provided card ID (${id}) is not a valid UUID`);
-        }
-
-        return this.availableCardsMap.get(id);
-      })
-      .filter((card): card is TCard => !!card);
-
-    switch (cards.length) {
-      case 0:
-        return undefined;
-      case 1:
-        return cards[0];
-      default:
-        return cards;
-    }
+      return this.availableCardsMap.get(id);
+    });
   }
 
   /**
@@ -214,5 +204,27 @@ export class CardFactory<TCard extends IPlayableObject> {
    */
   public getStoreType(): string {
     return this.availableCards[0].constructor.name;
+  }
+
+  protected getCardOrCards<CardType>(
+    idOrIds: string | string[],
+    mapFunc: (
+      value: string,
+      index: number,
+      array: string[]
+    ) => CardType | undefined
+  ): CardType | (CardType | undefined)[] | undefined {
+    const ids = idOrIds instanceof Array ? idOrIds : [idOrIds];
+
+    const cards = ids.map(mapFunc).filter((card): card is CardType => !!card);
+
+    switch (cards.length) {
+      case 0:
+        return undefined;
+      case 1:
+        return cards[0];
+      default:
+        return cards;
+    }
   }
 }
