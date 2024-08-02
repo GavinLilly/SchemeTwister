@@ -1,3 +1,10 @@
+## [3.17.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.16.1...v3.17.0) (2024-08-02)
+
+
+### Features
+
+* **app:** store screen wake lock in LocalStorage ([ca3e55f](https://github.com/GavinLilly/SchemeTwister/commit/ca3e55f5e79558538c1cc098178519b97c8fdabf))
+
 ## [3.16.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.16.0...v3.16.1) (2024-06-16)
 
 
