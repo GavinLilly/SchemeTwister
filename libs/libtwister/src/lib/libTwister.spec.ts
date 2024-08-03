@@ -15,8 +15,11 @@ describe('LibTwister', () => {
         numMedium: 0,
         numSmall: 0,
       });
-      const twister = new LibTwister([series]);
       const gameSet = series.gameSets[0];
+      const twister = new LibTwister({
+        series: [series],
+        blacklist: { heroes: [gameSet.heroes[1]] },
+      });
 
       beforeAll(() => {
         twister.selectedGameSets = [gameSet];
@@ -54,6 +57,17 @@ describe('LibTwister', () => {
           expect(store.allCards).toEqual(cards)
       );
 
+      it('should exclude blacklisted cards', () => {
+        twister.getSetup({
+          numPlayers: 2,
+          blacklist: { heroes: [gameSet.heroes[0]] },
+        });
+
+        expect(twister.stores.heroStore.excludedCards).toContain(
+          gameSet.heroes[0]
+        );
+      });
+
       it.each([2, 3, 4, 5] as NumPlayers[])(
         'should generate a setup with %p players, only using Test gameset cards',
         (numPlayers) => {
@@ -76,6 +90,9 @@ describe('LibTwister', () => {
               (villain) => villain.gameSet.id === gameSet.id
             )
           ).toBeTruthy();
+          expect(twister.stores.heroStore.excludedCards).toContain(
+            gameSet.heroes[1]
+          );
         }
       );
     });
@@ -87,7 +104,7 @@ describe('LibTwister', () => {
         numMedium: 0,
         numSmall: 0,
       });
-      const twister = new LibTwister([series]);
+      const twister = new LibTwister({ series: [series] });
       beforeAll(() => {
         twister.selectedGameSets = series.gameSets;
       });
@@ -172,7 +189,7 @@ describe('LibTwister', () => {
         numMedium: 0,
         numSmall: 0,
       });
-      const twister = new LibTwister([series]);
+      const twister = new LibTwister({ series: [series] });
       it('should return the first game set in the series', () => {
         const gameSet = twister.gameSetIdsToGameSets(series.gameSets[0].id);
         expect(gameSet).toBeDefined();
@@ -198,7 +215,7 @@ describe('LibTwister', () => {
       gameSets: [testLargeSet, testMediumSet, testSmallSet],
     };
 
-    const twister = new LibTwister([series]);
+    const twister = new LibTwister({ series: [series] });
 
     it('should return true for a core and medium size game set IDs', () =>
       expect(

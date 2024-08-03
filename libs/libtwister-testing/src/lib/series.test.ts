@@ -32,7 +32,7 @@ export function seriesTest(
   return describe(`${series.seriesMeta.seriesName} Series`, () => {
     let libTwister: LibTwister;
     beforeAll(() => {
-      libTwister = new LibTwister([series]);
+      libTwister = new LibTwister({ series: [series] });
     });
 
     it(`should have ${totalGameSetCount} sets`, () =>

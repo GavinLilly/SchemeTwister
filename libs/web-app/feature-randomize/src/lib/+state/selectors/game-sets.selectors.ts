@@ -26,5 +26,5 @@ export const selectLibTwister = (seriesRegister: ISeries[]) =>
       .flatMap((series) => series.gameSets)
       .filter((gameSet) => gameSetIds.includes(gameSet.id));
 
-    return new LibTwister(seriesRegister, gameSets);
+    return new LibTwister({ series: seriesRegister, gameSets });
   });

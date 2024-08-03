@@ -16,6 +16,10 @@ import { Hero, Henchmen, Mastermind, VillainGroup } from './model/cards';
 import { ISeries } from './model/interfaces/series.interface';
 import instantiateScheme from './utils/instantiateScheme';
 
+export interface IBlacklist {
+  heroes: Hero[];
+}
+
 export interface ISetupConfig {
   /** The number of players to build the setup for */
   numPlayers: NumPlayers;
@@ -31,6 +35,14 @@ export interface ISetupConfig {
   partialVillainDeck?: VillainDeckMinimal;
   /** An additional deck to start the setup from */
   partialAdditionalDeck?: AdditionalDeckDeckMinimal;
+  /** Any cards to blacklist */
+  blacklist?: IBlacklist;
+}
+
+export interface ILibTwisterConfig {
+  series: ISeries[];
+  gameSets?: GameSet[];
+  blacklist?: IBlacklist;
 }
 
 /**
@@ -42,23 +54,23 @@ export class LibTwister {
   private _stores!: StoreOfStores;
   private _selectedGameSets: GameSet[] = [];
   private readonly _series: ISeries[];
+  private readonly _blacklist?: IBlacklist;
 
-  constructor(series: ISeries[]);
-  constructor(series: ISeries[], gameSets: GameSet[]);
   /**
    * Create a new LibTwister instance with the given Series and optionally the
    * game sets
-   * @param series the series to enable in this instance of LibTwister
-   * @param gameSets an optional array of gamesets to select
+   * @param config configuration options for this setup of LibTwister
    */
-  constructor(series: ISeries[], gameSets?: GameSet[]) {
-    this._series = series;
+  constructor(config: Readonly<ILibTwisterConfig>) {
+    this._series = config.series;
 
-    if (gameSets !== undefined && gameSets.length > 0) {
-      this.selectedGameSets = gameSets;
+    if (config.gameSets !== undefined && config.gameSets.length > 0) {
+      this.selectedGameSets = config.gameSets;
     } else {
       this.selectedGameSets = this._allGameSets;
     }
+
+    this._blacklist = config.blacklist;
 
     this._selectedGameSets.sort(GameSet.sorter);
   }
@@ -166,8 +178,15 @@ export class LibTwister {
    * @param config the configuration to use to create a setup
    * @returns a promise of a GameSetup
    */
-  public getSetup(config: ISetupConfig): GameSetup {
+  public getSetup(config: Readonly<ISetupConfig>): GameSetup {
     this._stores.reset();
+
+    const blackListedHeroes = [
+      ...(this._blacklist?.heroes ?? []),
+      ...(config.blacklist?.heroes ?? []),
+    ];
+
+    blackListedHeroes.forEach((hero) => this.stores.heroStore.removeCard(hero));
 
     const createdScheme = instantiateScheme(
       config.scheme ?? this.schemeFactory.getRandom()

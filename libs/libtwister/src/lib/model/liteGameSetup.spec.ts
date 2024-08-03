@@ -1,3 +1,5 @@
+import { beforeAll, afterEach, describe, it, expect } from 'vitest';
+
 import { StoreOfStores, StoreBuilder } from '../factories';
 import { LibTwister } from '../libTwister';
 import { TEST_GAME_SET_1 } from '../testData/gameSets';
@@ -52,7 +54,7 @@ describe('LiteGameSetup', () => {
 
   describe('toGameSetup', () => {
     let gameSetup: GameSetup;
-    const libTwister = new LibTwister([TEST_SERIES_1]);
+    const libTwister = new LibTwister({ series: [TEST_SERIES_1] });
 
     beforeAll(() => {
       gameSetup = liteSetup.toGameSetup(libTwister);
