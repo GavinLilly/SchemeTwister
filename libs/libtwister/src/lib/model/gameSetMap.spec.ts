@@ -24,7 +24,7 @@ describe('GameSetMap', () => {
       numMedium: 1,
       numSmall: 5,
     });
-    const libTwister = new LibTwister([series, otherSeries]);
+    const libTwister = new LibTwister({ series: [series, otherSeries] });
     map = libTwister.allGameSets;
   });
 
