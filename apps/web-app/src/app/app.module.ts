@@ -17,9 +17,10 @@ import {
   SERIES_REGISTER_TOKEN,
 } from '@schemetwister/web-app/shared';
 import { WebAppUiModule } from '@schemetwister/web-app/ui';
-import { getFirestore } from 'firebase/firestore';
+import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
 
 import { environment } from '../environments/environment';
+import { EnvironmentType } from '../environments/environmentType';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -50,7 +51,17 @@ const seriesRegister = [
 
     // Firebase
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
+    provideFirestore(() => {
+      const firestore = getFirestore();
+
+      console.log(environment);
+
+      if (environment.environmentType === EnvironmentType.DEV) {
+        connectFirestoreEmulator(firestore, 'localhost', 8080);
+      }
+
+      return firestore;
+    }),
 
     // Schemetwister
     AppRoutingModule,
@@ -58,7 +69,9 @@ const seriesRegister = [
     WebAppFeatureStoreModule,
 
     ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
+      enabled: [EnvironmentType.PROD, EnvironmentType.TEST].includes(
+        environment.environmentType
+      ),
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000',

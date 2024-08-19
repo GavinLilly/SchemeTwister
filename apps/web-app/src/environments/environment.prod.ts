@@ -1,7 +1,9 @@
 import { FirebaseOptions } from '@angular/fire/app';
 
+import { EnvironmentType } from './environmentType';
+
 export const environment = {
-  production: true,
+  environmentType: EnvironmentType.PROD,
   firebase: {
     apiKey: '${FIREBASE_API_KEY}',
     authDomain: '${FIREBASE_AUTH_DOMAIN}',

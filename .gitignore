@@ -55,3 +55,6 @@ Thumbs.db
 /.nx/cache
 
 /apps/web-app/src/environments/environment.local.ts
+
+# Ignore Firebase logs
+/*.log
