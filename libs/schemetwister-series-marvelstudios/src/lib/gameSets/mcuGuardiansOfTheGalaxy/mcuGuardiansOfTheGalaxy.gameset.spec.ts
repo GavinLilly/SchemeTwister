@@ -15,7 +15,7 @@ describe('with MCU Guardians of the Galaxy', () => {
   let twister: LibTwister;
 
   beforeEach(() => {
-    twister = new LibTwister([marvelStudiosSeries]);
+    twister = new LibTwister({ series: [marvelStudiosSeries] });
     twister.selectedGameSets = [MARVEL_STUDIOS, GAME_SET];
   });
 
