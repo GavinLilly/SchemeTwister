@@ -1,3 +1,10 @@
+## [3.18.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.18.0...v3.18.1) (2024-08-21)
+
+
+### Dependencies
+
+* **deps:** bump axios from 1.7.2 to 1.7.4 ([6d9ab16](https://github.com/GavinLilly/SchemeTwister/commit/6d9ab161bc67900059ec9bb263ea3793710caa1c))
+
 ## [3.18.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.17.1...v3.18.0) (2024-08-21)
 
 
