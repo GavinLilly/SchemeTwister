@@ -1,6 +1,8 @@
 {
   "name": "@schemetwister/libtwister",
   "version": "0.0.1",
-  "dependencies": {},
+  "dependencies": {
+    "@swc/helpers": "~0.5.2"
+  },
   "devDependencies": {}
 }
