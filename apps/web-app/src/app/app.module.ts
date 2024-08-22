@@ -49,20 +49,6 @@ const seriesRegister = [
     // NGRX
     EffectsModule.forRoot(),
 
-    // Firebase
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => {
-      const firestore = getFirestore();
-
-      console.log(environment);
-
-      if (environment.environmentType === EnvironmentType.DEV) {
-        connectFirestoreEmulator(firestore, 'localhost', 8080);
-      }
-
-      return firestore;
-    }),
-
     // Schemetwister
     AppRoutingModule,
     WebAppUiModule,
@@ -78,6 +64,17 @@ const seriesRegister = [
     }),
   ],
   providers: [
+    // Firebase
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => {
+      const firestore = getFirestore();
+
+      if (environment.environmentType === EnvironmentType.DEV) {
+        connectFirestoreEmulator(firestore, 'localhost', 8080);
+      }
+
+      return firestore;
+    }),
     UpdateService,
     {
       provide: FIRESTORE_COLLECTION_TOKEN,
