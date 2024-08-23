@@ -1,3 +1,10 @@
+## [3.18.3](https://github.com/GavinLilly/SchemeTwister/compare/v3.18.2...v3.18.3) (2024-08-23)
+
+
+### Bug Fixes
+
+* **app:** use function definition for reload ([25d808a](https://github.com/GavinLilly/SchemeTwister/commit/25d808a33e6b47b89f964854a1b43e4fa6a777d7))
+
 ## [3.18.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.18.1...v3.18.2) (2024-08-23)
 
 
