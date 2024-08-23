@@ -1,3 +1,10 @@
+## [3.18.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.18.1...v3.18.2) (2024-08-23)
+
+
+### Bug Fixes
+
+* **app:** add missing pause for new version reload ([3a1435e](https://github.com/GavinLilly/SchemeTwister/commit/3a1435eb8c5f9bf223bbbdb3b25a5710727b890b))
+
 ## [3.18.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.18.0...v3.18.1) (2024-08-21)
 
 
