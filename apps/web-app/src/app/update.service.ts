@@ -22,10 +22,9 @@ export class UpdateService {
               `New app version ready for use: ${evt.latestVersion.hash}`
             );
             console.log(`Reloading in ${UpdateService._reloadTimeout} seconds`);
-            setTimeout(
-              () => window.location.reload(),
-              UpdateService._reloadTimeout * 1000
-            );
+            setTimeout(() => {
+              window.location.reload();
+            }, UpdateService._reloadTimeout * 1000);
             break;
           case 'VERSION_INSTALLATION_FAILED':
             console.log(
