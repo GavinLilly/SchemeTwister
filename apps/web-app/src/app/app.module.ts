@@ -33,6 +33,8 @@ const seriesRegister = [
   buffySeries,
 ];
 
+const serviceWorkerRegistrationTime = 30 * 1000;
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -59,8 +61,8 @@ const seriesRegister = [
         environment.environmentType
       ),
       // Register the ServiceWorker as soon as the app is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000',
+      // or after the timeout (whichever comes first).
+      registrationStrategy: `registerWhenStable:${serviceWorkerRegistrationTime}`,
     }),
   ],
   providers: [

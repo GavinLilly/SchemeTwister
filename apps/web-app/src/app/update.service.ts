@@ -22,17 +22,16 @@ export class UpdateService {
               `New app version ready for use: ${evt.latestVersion.hash}`
             );
             console.log(`Reloading in ${UpdateService._reloadTimeout} seconds`);
-            window.location.reload();
+            setTimeout(
+              () => window.location.reload(),
+              UpdateService._reloadTimeout * 1000
+            );
             break;
           case 'VERSION_INSTALLATION_FAILED':
             console.log(
               `Failed to install app version '${evt.version.hash}': ${evt.error}`
             );
             break;
-          case 'NO_NEW_VERSION_DETECTED':
-            console.log(
-              `No new version detected. Will remain on the current version: ${evt.version.hash}`
-            );
         }
       });
     }
