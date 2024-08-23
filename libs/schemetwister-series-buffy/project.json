@@ -14,6 +14,34 @@
       "options": {
         "codeCoverage": true
       }
+    },
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "main": "libs/schemetwister-series-buffy/src/index.ts",
+        "outputPath": "dist/libs/schemetwister-series-buffy",
+        "outputFileName": "main.js",
+        "tsConfig": "libs/schemetwister-series-buffy/tsconfig.lib.json",
+        "assets": [
+          "libs/schemetwister-series-buffy/README.md",
+          {
+            "input": "libs/schemetwister-series-buffy/src/assets/icons/teams",
+            "glob": "*",
+            "output": "assets/icons/teams"
+          }
+        ],
+        "platform": "neutral"
+      },
+      "configurations": {
+        "development": {
+          "minify": false
+        },
+        "production": {
+          "minify": true
+        }
+      }
     }
   }
 }

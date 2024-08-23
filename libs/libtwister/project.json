@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/libtwister/src",
   "projectType": "library",
+  "tags": [],
   "generators": {},
   "targets": {
     "lint": {
@@ -17,18 +18,14 @@
       "outputs": ["{workspaceRoot}/coverage/libs/libtwister"]
     },
     "build": {
-      "executor": "@nx/js:tsc",
+      "executor": "@nx/js:swc",
       "options": {
         "outputPath": "dist/libs/libtwister",
         "tsConfig": "libs/libtwister/tsconfig.lib.json",
         "packageJson": "libs/libtwister/package.json",
-        "main": "libs/libtwister/src/index.ts",
-        "assets": ["libs/libtwister/*.md"],
-        "srcRootForCompilationRoot": "libs\\libtwister\\src",
-        "sourceMap": true
+        "main": "libs/libtwister/src/index.ts"
       },
       "outputs": ["{options.outputPath}"]
     }
-  },
-  "tags": []
+  }
 }
