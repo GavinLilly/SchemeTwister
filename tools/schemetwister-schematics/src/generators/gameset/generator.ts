@@ -35,9 +35,11 @@ export async function gamesetGenerator(
   tree: Tree,
   options: GamesetGeneratorSchema
 ) {
-  const { camelCase, constantCase } = await (Function(
-    'return import("change-case")'
-  )() as Promise<typeof import('change-case')>);
+  const camelCase = (
+    await (Function('return import("camelCase")')() as Promise<
+      typeof import('camelCase')
+    >)
+  ).default;
 
   const project = readProjectConfiguration(tree, options.series);
   const root = project.sourceRoot ?? project.root;
@@ -96,7 +98,7 @@ export async function gamesetGenerator(
   const gameSetIndexPath = joinPathFragments(gameSetsPath, 'index.ts');
   const gameSetIndexContents = tree.read(gameSetIndexPath)?.toString();
 
-  const constName = constantCase(options.name);
+  const constName = options.name.toUpperCase().replaceAll(' ', '_');
 
   const newGameSetIndexContents =
     gameSetIndexContents + `export * as ${constName} from './${camelName}'`;
