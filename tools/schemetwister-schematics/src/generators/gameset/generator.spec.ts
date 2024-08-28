@@ -1,6 +1,6 @@
 // Disabled due due to more work required to create test series
 
-import test, { describe } from 'node:test';
+import { describe } from 'node:test';
 
 // import { Tree, readProjectConfiguration } from '@nx/devkit';
 // import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
@@ -28,6 +28,5 @@ import test, { describe } from 'node:test';
 //   });
 // });
 
-describe('Empty test', () =>
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  test('should automatically pass', () => {}));
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+describe('Empty test', () => {});

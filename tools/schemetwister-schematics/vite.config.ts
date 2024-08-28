@@ -12,5 +12,6 @@ export default mergeConfig(sharedConfig, {
     coverage: {
       reportsDirectory: '../../coverage/libs/schemetwister-schematics',
     },
+    passWithNoTests: true,
   },
 });
