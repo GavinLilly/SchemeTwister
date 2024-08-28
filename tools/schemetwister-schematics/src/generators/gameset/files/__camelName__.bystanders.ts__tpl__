@@ -1,0 +1,12 @@
+import { Bystander } from '@schemetwister/libtwister';
+
+import { META } from './<%= camelName %>.meta';
+
+<% for(var i = 0; i < numBystanders; i++) { %>
+export const BYSTANDER_<%= i %> = new Bystander({
+  id: '<%= generateUuid() %>',
+  name: 'Bystander <%= i %>',
+  copies: 1,
+  gameSet: META,
+});
+<% } %>

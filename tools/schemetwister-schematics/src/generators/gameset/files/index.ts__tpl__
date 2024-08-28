@@ -1,0 +1,7 @@
+<% if(numBystanders > 0) { %>export * as Bystanders from './<%= camelName %>.bystanders';<% } _%>
+<% if(numHenchmen > 0) { %>export * as Henchmen from './<%= camelName %>.henchmen';<% } _%>
+export * as Heroes from './<%= camelName %>.heroes';
+export * as Masterminds from './<%= camelName %>.masterminds';
+export * as Schemes from './<%= camelName %>.schemes';
+export * as Villains from './<%= camelName %>.villains';
+export { GAME_SET } from './<%= camelName %>.gameset';

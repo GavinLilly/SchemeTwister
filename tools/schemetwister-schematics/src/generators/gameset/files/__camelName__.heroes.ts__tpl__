@@ -1,0 +1,12 @@
+import { Hero } from '@schemetwister/libtwister';
+
+import { META } from './<%= camelName %>.meta';
+
+<% for(var i = 0; i < numHeroes; i++) { %>
+export const HERO_<%= i %> = new Hero({
+  id: '<%= generateUuid() %>',
+  name: 'Hero <%= i %>',
+  keywords: [],
+  gameSet: META,
+});
+<% } %>

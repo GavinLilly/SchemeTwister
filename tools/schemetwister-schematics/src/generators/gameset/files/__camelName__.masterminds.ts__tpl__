@@ -1,0 +1,16 @@
+import { Mastermind } from '@schemetwister/libtwister';
+
+import { META } from './<%= camelName %>.meta';
+
+<% for(var i = 0; i < numMasterminds; i++) { %>
+export const MASTERMIND_<%= i %> = new Mastermind({
+  id: '<%= generateUuid() %>',
+  name: 'Mastermind <%= i %>',
+  attackPoints: 1,
+  victoryPoints: 1,
+  alwaysLeads: [],
+  mastermindWins: '',
+  masterStrike: '',
+  gameSet: META
+});
+<% } %>

@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "gameset": {
+      "factory": "./src/generators/gameset/generator",
+      "schema": "./src/generators/gameset/schema.json",
+      "description": "gameset generator"
+    }
+  }
+}

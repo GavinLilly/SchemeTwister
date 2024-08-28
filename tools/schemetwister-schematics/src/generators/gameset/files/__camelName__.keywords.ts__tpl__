@@ -1,0 +1,11 @@
+import { IKeyword } from '@schemetwister/libtwister';
+
+import { KeywordName } from '../../keywordName.enum';
+
+// Keywords go here, like this:
+
+// export const TELEPORT: IKeyword = {
+//   name: KeywordName.TELEPORT,
+//   id: 'd35e1a3f-0c7a-45ee-957b-282531c2309f',
+//   description: `Instead of playing, you may set aside a card with the keyword "Teleport". If you do, add it to your new hand at the end of your turn as an extra card.`,
+// };

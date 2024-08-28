@@ -1,0 +1,19 @@
+import { GameSet } from '@schemetwister/libtwister';
+
+<% if(numBystanders > 0) { %>import * as bystanders from './<%= camelName %>.bystanders';<% } _%>
+<% if(numHenchmen > 0) { %>import * as henchmen from './<%= camelName %>.henchmen';<% } _%>
+import * as heroes from './<%= camelName %>.heroes';
+import * as masterminds from './<%= camelName %>.masterminds';
+import { META } from './<%= camelName %>.meta';
+import * as schemes from './<%= camelName %>.schemes';
+import * as villains from './<%= camelName %>.villains';
+
+export const GAME_SET = new GameSet(
+  META,
+  Object.values(heroes),
+  Object.values(masterminds),
+  Object.values(schemes),
+  Object.values(villains),
+  <% if(numHenchmen > 0) { %>Object.values(henchmen)<% } else { %>undefined<% } %>,
+  <% if(numBystanders > 0) { %>Object.values(bystanders)<% } _%>
+);

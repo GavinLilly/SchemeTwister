@@ -1,0 +1,16 @@
+import { SchemeDefinition } from '@schemetwister/libtwister';
+
+import { META } from './<%= camelName %>.meta';
+
+<% for(var i = 0; i < numSchemes; i++) { %>
+export const SCHEME_<%= i %> = new SchemeDefinition({
+  id: '<%= generateUuid() %>',
+  name: 'Scheme <%= i %>',
+  setup: '',
+  twist: '',
+  specialRules: '',
+  evilWins: '',
+  meta: { numTwists: 8 },
+  gameSet: META,
+});
+<% } %>

@@ -1,0 +1,11 @@
+import { IGameSetMeta, GAME_SET_SIZE } from '@schemetwister/libtwister';
+
+import { <%= seriesMetaClass %> } from '../../<%= seriesMetaClass %>';
+
+export const META: IGameSetMeta = {
+  id: '<%= generateUuid() %>',
+  name: '<%= name %>',
+  size: GAME_SET_SIZE.<%= size %>,
+  releaseYear: 2024,
+  series: <%= seriesMetaClass %>,
+};

@@ -4,7 +4,6 @@ import * as uuid from 'uuid';
 import {
   AbstractCardGroup,
   Bystander,
-  GAME_SET_SIZE,
   GameSet,
   GameSetSize,
   Henchmen,
@@ -17,6 +16,10 @@ import {
   VillainGroup,
 } from '../model';
 import { AbstractFightableCardGroup } from '../model/cards/abstractFightableCardGroup';
+import {
+  getGamesetSize,
+  IGameSetSizeWithoutHeroes,
+} from '../utils/getGameSetSize';
 import { randomInteger } from '../utils/randomInteger';
 
 interface IHeroTeamConfig {
@@ -27,13 +30,8 @@ interface IHeroTeamConfig {
   };
 }
 
-interface IMockGameSetConfig {
+interface IMockGameSetConfig extends IGameSetSizeWithoutHeroes {
   heroes: IHeroTeamConfig;
-  numMasterminds: number;
-  numVillains: number;
-  numHenchmen: number;
-  numBystanders: number;
-  numSchemes: number;
 }
 
 export class GameSetMock {
@@ -54,7 +52,18 @@ export class GameSetMock {
     config?: IMockGameSetConfig,
     seriesMeta?: SeriesMeta
   ) {
-    this._config = config ?? this._getConfigSizes(size);
+    if (config !== undefined) {
+      this._config = config;
+    } else {
+      const gameSetSize = getGamesetSize(size);
+
+      this._config = {
+        ...gameSetSize,
+        heroes: {
+          num: gameSetSize.numHeroes,
+        },
+      };
+    }
 
     const series =
       seriesMeta ??
@@ -225,54 +234,4 @@ export class GameSetMock {
     T,
     'attackPoints' | 'victoryPoints'
   > => ({ attackPoints: randomInteger(10), victoryPoints: randomInteger(10) });
-
-  private _getConfigSizes(gameSetSize: GameSetSize): IMockGameSetConfig {
-    switch (gameSetSize) {
-      case GAME_SET_SIZE.core:
-      case GAME_SET_SIZE.large:
-        return {
-          heroes: {
-            num: 15,
-          },
-          numMasterminds: 5,
-          numVillains: 6,
-          numHenchmen: 2,
-          numBystanders: 1,
-          numSchemes: 4,
-        };
-      case GAME_SET_SIZE.medium:
-        return {
-          heroes: {
-            num: 9,
-          },
-          numMasterminds: 3,
-          numVillains: 4,
-          numHenchmen: 2,
-          numBystanders: 3,
-          numSchemes: 4,
-        };
-      case GAME_SET_SIZE.small:
-        return {
-          heroes: {
-            num: 5,
-          },
-          numMasterminds: 2,
-          numVillains: 2,
-          numHenchmen: 0,
-          numBystanders: 0,
-          numSchemes: 4,
-        };
-      default:
-        return {
-          heroes: {
-            num: 5,
-          },
-          numMasterminds: 1,
-          numVillains: 1,
-          numHenchmen: 0,
-          numBystanders: 1,
-          numSchemes: 1,
-        };
-    }
-  }
 }

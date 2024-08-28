@@ -1,0 +1,12 @@
+import { VillainGroup } from '@schemetwister/libtwister';
+
+import { META } from './<%= camelName %>.meta';
+
+<% for(var i = 0; i < numVillains; i++) { %>
+export const VILLAIN_<%= i %> = new VillainGroup({
+  id: '<%= generateUuid() %>',
+  name: 'Villain <%= i %>',
+  keywords: [],
+  gameSet: META,
+});
+<% } %>

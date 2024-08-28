@@ -1,0 +1,15 @@
+import { Henchmen } from '@schemetwister/libtwister';
+
+import { META } from './<%= camelName %>.meta';
+
+<% for(var i = 0; i < numHenchmen; i++) { %>
+export const HENCHMEN_<%= i %> = new Henchmen({
+  id: '<%= generateUuid() %>',
+  name: 'Henchmen <%= i %>',
+  keywords: [],
+  fight: '',
+  attackPoints: 1,
+  victoryPoints: 1,
+  gameSet: META,
+});
+<% } %>

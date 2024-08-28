@@ -1,0 +1,51 @@
+{
+  "name": "schemetwister-schematics",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/schemetwister-schematics/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/tools/schemetwister-schematics",
+        "main": "tools/schemetwister-schematics/src/index.ts",
+        "tsConfig": "tools/schemetwister-schematics/tsconfig.lib.json",
+        "assets": [
+          "tools/schemetwister-schematics/*.md",
+          {
+            "input": "./tools/schemetwister-schematics/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./tools/schemetwister-schematics/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./tools/schemetwister-schematics",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./tools/schemetwister-schematics",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "tools/schemetwister-schematics/jest.config.ts"
+      }
+    }
+  }
+}
