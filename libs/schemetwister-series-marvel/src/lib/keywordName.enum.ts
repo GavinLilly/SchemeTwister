@@ -207,6 +207,8 @@ export enum KeywordName {
 
   WALL_CRAWL = 'Wall Crawl',
 
+  WEAPON_X_SEQUENCE = 'Weapon X Sequence',
+
   WHAT_IF = 'What If...?',
 
   WHEN_RECRUITED_ABILITIES = '"When Recruited" Abilities',

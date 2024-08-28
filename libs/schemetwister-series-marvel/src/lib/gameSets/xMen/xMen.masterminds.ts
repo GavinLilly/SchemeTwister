@@ -30,7 +30,6 @@ export const ARCADE = new MastermindWithEpic(
   },
   {
     id: '23cc52ee-2d3f-448f-8d67-5b19b29b30da',
-    name: 'Epic Arcade',
     attackPoints: '4*',
     victoryPoints: 6,
     startOfGame: 'Arcade captures 8 Human Shields. Play a random Horror.',
