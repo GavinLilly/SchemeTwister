@@ -1,4 +1,4 @@
-// Disabled due  to incompatible dynamic import
+// Disabled due due to more work required to create test series
 
 // import { Tree, readProjectConfiguration } from '@nx/devkit';
 // import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
