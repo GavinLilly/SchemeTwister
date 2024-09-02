@@ -9,6 +9,7 @@ import {
   Tree,
 } from '@nx/devkit';
 import { GAME_SET_SIZE, getGamesetSize } from '@schemetwister/libtwister';
+import camelCase from 'camelcase';
 import * as uuid from 'uuid';
 
 import { GamesetGeneratorSchema } from './schema';
@@ -35,10 +36,6 @@ export async function gamesetGenerator(
   tree: Tree,
   options: GamesetGeneratorSchema
 ) {
-  const { camelCase, constantCase } = await (Function(
-    'return import("change-case")'
-  )() as Promise<typeof import('change-case')>);
-
   const project = readProjectConfiguration(tree, options.series);
   const root = project.sourceRoot ?? project.root;
   const libPath = joinPathFragments(root, 'lib');
@@ -96,7 +93,7 @@ export async function gamesetGenerator(
   const gameSetIndexPath = joinPathFragments(gameSetsPath, 'index.ts');
   const gameSetIndexContents = tree.read(gameSetIndexPath)?.toString();
 
-  const constName = constantCase(options.name);
+  const constName = options.name.toUpperCase().replaceAll(' ', '_');
 
   const newGameSetIndexContents =
     gameSetIndexContents + `export * as ${constName} from './${camelName}'`;
