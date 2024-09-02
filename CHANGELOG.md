@@ -1,3 +1,10 @@
+## [3.18.4](https://github.com/GavinLilly/SchemeTwister/compare/v3.18.3...v3.18.4) (2024-09-02)
+
+
+### Dependencies
+
+* **deps:** bump micromatch from 4.0.7 to 4.0.8 ([#177](https://github.com/GavinLilly/SchemeTwister/issues/177)) ([1a0b51f](https://github.com/GavinLilly/SchemeTwister/commit/1a0b51fe2f9ae49906dd3c8fba100d845be22b1d))
+
 ## [3.18.3](https://github.com/GavinLilly/SchemeTwister/compare/v3.18.2...v3.18.3) (2024-08-23)
 
 
