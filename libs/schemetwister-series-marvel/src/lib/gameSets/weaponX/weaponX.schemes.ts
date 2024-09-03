@@ -1,15 +1,35 @@
-import { SchemeDefinition } from '@schemetwister/libtwister';
+import {
+  DECK_TYPE,
+  HeroClass,
+  RequireCardInDeckScheme,
+  RequireCardName,
+  RequireHero,
+  SchemeDefinition,
+} from '@schemetwister/libtwister';
 
 import { META } from './weaponX.meta';
 
 export const SCHEME_0 = new SchemeDefinition({
   id: '91af9931-4f2d-4fb0-a9ca-233794cdc570',
-  name: 'Scheme 0',
-  setup: '',
-  twist: '',
-  specialRules: '',
-  evilWins: '',
-  meta: { numTwists: 8 },
+  name: 'Condiion Logan into Weapon X',
+  setup:
+    "8 Twists. Include exactly 1 Hero with Wolverine or Logan in it's name",
+  twist: `Twist 1, 3, 5: "Induce Violent Rage": If you don't defeat an Enemy worth 2 Attack or more this turn, then after you draw a new hand at the end of this turn, each player discards down to four cards.
+Twist 2, 4, 6: "Test the Subject's Healing Factor": Each player discards a ${HeroClass.STRENGTH} or ${HeroClass.INSTINCT} Hero or gains a Wound.
+Twist 7: "Unleash Weapon X": For each Wolverine and/or Logan Hero in the HQ, each player gains a Wound.
+Twist 8: Evil Wins!`,
+  evilWins: 'After 8 twists',
+  meta: {
+    numTwists: 8,
+    overrideScheme: {
+      schemeType: RequireCardInDeckScheme,
+      params: [
+        new RequireCardName(['Wolverine', 'Logan']),
+        new RequireHero(),
+        DECK_TYPE.hero,
+      ],
+    },
+  },
   gameSet: META,
 });
 
