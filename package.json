@@ -1,6 +1,6 @@
 {
   "name": "schemetwister",
-  "version": "3.18.4",
+  "version": "3.18.5",
   "license": "GPL-3.0-or-later",
   "scripts": {
     "ng": "nx",
