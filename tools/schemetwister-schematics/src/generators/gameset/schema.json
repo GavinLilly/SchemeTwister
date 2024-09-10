@@ -17,7 +17,7 @@
     },
     "series": {
       "type": "string",
-      "pattern": "^schemetwister-series-\\w+$",
+      "pattern": "^schemetwister-series(-\\w+)+$",
       "description": "Series to add the game set target to.",
       "$default": {
         "$source": "argv",

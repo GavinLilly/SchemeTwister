@@ -1,0 +1,50 @@
+{
+  "name": "schemetwister-series-marvel-studios",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/series/marvel-studios/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {}
+    },
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "main": "libs/series/marvel-studios/src/index.ts",
+        "outputPath": "dist/libs/series/marvel-studios",
+        "outputFileName": "main.js",
+        "tsConfig": "libs/series/marvel-studios/tsconfig.lib.json",
+        "assets": [
+          {
+            "glob": "README.md",
+            "input": "libs/series/marvel-studios",
+            "output": "."
+          },
+          {
+            "glob": "*",
+            "input": "libs/series/marvel-studios/src/assets/icons/teams",
+            "output": "assets/icons/teams"
+          }
+        ],
+        "platform": "neutral"
+      },
+      "configurations": {
+        "development": {
+          "minify": false
+        },
+        "production": {
+          "minify": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "schemetwister-series-marvel-common",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/series/marvel-common/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "main": "libs/series/marvel-common/src/index.ts",
+        "outputPath": "dist/libs/series/marvel-common",
+        "outputFileName": "main.js",
+        "tsConfig": "libs/series/marvel-common/tsconfig.lib.json",
+        "assets": [
+          {
+            "glob": "README.md",
+            "input": "libs/series/marvel-common",
+            "output": "."
+          },
+          {
+            "glob": "*",
+            "input": "libs/series/marvel-common/src/assets/icons/teams",
+            "output": "assets/icons/teams"
+          }
+        ],
+        "platform": "neutral"
+      },
+      "configurations": {
+        "development": {
+          "minify": false
+        },
+        "production": {
+          "minify": true
+        }
+      }
+    }
+  }
+}

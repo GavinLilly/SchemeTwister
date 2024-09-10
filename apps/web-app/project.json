@@ -25,27 +25,27 @@
           "apps/web-app/src/manifest.webmanifest",
           {
             "glob": "*",
-            "input": "libs/schemetwister-series-marvel/src/assets/icons/teams",
+            "input": "libs/series/marvel/src/assets/icons/teams",
             "output": "./assets/icons/teams"
           },
           {
             "glob": "*",
-            "input": "libs/schemetwister-series-marvel-common/src/assets/icons/teams",
+            "input": "libs/series/marvel-common/src/assets/icons/teams",
             "output": "./assets/icons/teams"
           },
           {
             "glob": "*",
-            "input": "libs/schemetwister-series-marvelstudios/src/assets/icons/teams",
+            "input": "libs/series/marvel-studios/src/assets/icons/teams",
             "output": "./assets/icons/teams"
           },
           {
             "glob": "*",
-            "input": "libs/schemetwister-series-marvelvillains/src/assets/icons/teams",
+            "input": "libs/series/marvel-villains/src/assets/icons/teams",
             "output": "./assets/icons/teams"
           },
           {
             "glob": "*",
-            "input": "libs/schemetwister-series-buffy/src/assets/icons/teams",
+            "input": "libs/series/buffy/src/assets/icons/teams",
             "output": "./assets/icons/teams"
           }
         ],

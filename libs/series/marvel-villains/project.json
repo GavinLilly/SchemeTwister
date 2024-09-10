@@ -1,0 +1,50 @@
+{
+  "name": "schemetwister-series-marvel-villains",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/series/marvel-villains/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {}
+    },
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "main": "libs/series/marvel-villains/src/index.ts",
+        "outputPath": "dist/libs/series/marvel-villains",
+        "outputFileName": "main.js",
+        "tsConfig": "libs/series/marvel-villains/tsconfig.lib.json",
+        "assets": [
+          {
+            "glob": "README.md",
+            "input": "libs/series/marvel-villains",
+            "output": "."
+          },
+          {
+            "glob": "*",
+            "input": "libs/series/marvel-villains/src/assets/icons/teams",
+            "output": "assets/icons/teams"
+          }
+        ],
+        "platform": "neutral"
+      },
+      "configurations": {
+        "development": {
+          "minify": false
+        },
+        "production": {
+          "minify": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "schemetwister-series-buffy",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/series/buffy/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "codeCoverage": true
+      }
+    },
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "main": "libs/series/buffy/src/index.ts",
+        "outputPath": "dist/libs/series/buffy",
+        "outputFileName": "main.js",
+        "tsConfig": "libs/series/buffy/tsconfig.lib.json",
+        "assets": [
+          "libs/series/buffy/README.md",
+          {
+            "input": "libs/series/buffy/src/assets/icons/teams",
+            "glob": "*",
+            "output": "assets/icons/teams"
+          }
+        ],
+        "platform": "neutral"
+      },
+      "configurations": {
+        "development": {
+          "minify": false
+        },
+        "production": {
+          "minify": true
+        }
+      }
+    }
+  }
+}
