@@ -80,7 +80,7 @@
   },
   "devDependencies": {
     "@angular-devkit/architect": "0.1703.7",
-    "@angular-devkit/build-angular": "17.3.9",
+    "@angular-devkit/build-angular": "18.2.4",
     "@angular-devkit/core": "17.3.7",
     "@angular-devkit/schematics": "17.3.7",
     "@angular-eslint/eslint-plugin": "17.3.0",
@@ -155,7 +155,7 @@
     "ts-prune": "^0.10.3",
     "type-fest": "^4.6.0",
     "typescript": "5.4.5",
-    "vite": "^5.0.0",
+    "vite": "^5.4.6",
     "vitest": "1.5.3"
   },
   "config": {
