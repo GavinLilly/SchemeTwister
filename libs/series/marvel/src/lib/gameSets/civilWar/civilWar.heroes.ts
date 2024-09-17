@@ -3,7 +3,7 @@ import {
   AVENGERS,
   DIVIDED,
   PHASING,
-} from '@schemetwister/schemetwister-series-marvel-common';
+} from '@schemetwister/series-marvel-common';
 
 import { NEW_WARRIORS, X_MEN } from '../../teams';
 

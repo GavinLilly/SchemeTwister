@@ -7,7 +7,7 @@ import {
   RequireCard,
   RequireVillainGroup,
 } from '@schemetwister/libtwister';
-import { SIZE_CHANGING } from '@schemetwister/schemetwister-series-marvel-common';
+import { SIZE_CHANGING } from '@schemetwister/series-marvel-common';
 
 import { AMBUSH_SCHEMES, HEIST } from './mcuAntMan.keywords';
 import { META } from './mcuAntMan.meta';

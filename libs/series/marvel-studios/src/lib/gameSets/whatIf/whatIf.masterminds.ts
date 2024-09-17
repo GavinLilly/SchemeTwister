@@ -2,7 +2,7 @@ import { MastermindWithEpic } from '@schemetwister/libtwister';
 import {
   CROSS_DIMENSIONAL_RAMPAGE,
   RISE_OF_THE_LIVING_DEAD,
-} from '@schemetwister/schemetwister-series-marvel-common';
+} from '@schemetwister/series-marvel-common';
 
 import { ULTRON_SENTRIES, VIBRANIUM_LIBERATOR_DRONES } from './whatIf.henchmen';
 import { KILLMONGER_SPEC_OPS } from './whatIf.heroes';

@@ -1,8 +1,5 @@
 import { SchemeDefinition } from '@schemetwister/libtwister';
-import {
-  EMPOWERED,
-  SIZE_CHANGING,
-} from '@schemetwister/schemetwister-series-marvel-common';
+import { EMPOWERED, SIZE_CHANGING } from '@schemetwister/series-marvel-common';
 
 import { CHIVALROUS_DUEL } from './antMan.keywords';
 import { META } from './antMan.meta';

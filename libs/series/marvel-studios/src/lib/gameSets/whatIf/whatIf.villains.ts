@@ -3,7 +3,7 @@ import {
   CROSS_DIMENSIONAL_RAMPAGE,
   EMPOWERED,
   RISE_OF_THE_LIVING_DEAD,
-} from '@schemetwister/schemetwister-series-marvel-common';
+} from '@schemetwister/series-marvel-common';
 
 import { SOULBIND } from './whatIf.keywords';
 import { META } from './whatIf.meta';

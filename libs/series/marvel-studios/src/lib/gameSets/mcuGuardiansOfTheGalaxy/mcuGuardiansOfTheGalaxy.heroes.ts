@@ -3,7 +3,7 @@ import {
   DIVIDED,
   EXCESSIVE_VIOLENCE,
   GUARDIANS_OF_THE_GALAXY,
-} from '@schemetwister/schemetwister-series-marvel-common';
+} from '@schemetwister/series-marvel-common';
 
 import {
   EXCESSIVE_KINDNESS,

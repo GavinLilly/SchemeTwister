@@ -1,5 +1,5 @@
 import { VillainGroup } from '@schemetwister/libtwister';
-import { URU_ENCHANTED_WEAPONS } from '@schemetwister/schemetwister-series-marvel-common';
+import { URU_ENCHANTED_WEAPONS } from '@schemetwister/series-marvel-common';
 
 import { META } from './fearItself.meta';
 

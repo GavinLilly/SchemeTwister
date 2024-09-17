@@ -1,5 +1,5 @@
 {
-  "name": "schemetwister-series-marvel-studios",
+  "name": "@schemetwister/series-marvel-studios",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/series/marvel-studios/src",
   "projectType": "library",

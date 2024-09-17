@@ -7,10 +7,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EffectsModule } from '@ngrx/effects';
-import { buffySeries } from '@schemetwister/schemetwister-series-buffy';
-import { marvelSeries } from '@schemetwister/schemetwister-series-marvel';
-import { marvelStudiosSeries } from 'schemetwister-series-marvel-studios';
-import { marvelVillainsSeries } from 'schemetwister-series-marvel-villains';
+import { buffySeries } from '@schemetwister/series-buffy';
+import { marvelSeries } from '@schemetwister/series-marvel';
+import { marvelStudiosSeries } from '@schemetwister/series-marvel-studios';
+import { marvelVillainsSeries } from '@schemetwister/series-marvel-villains';
 import { WebAppFeatureStoreModule } from '@schemetwister/web-app/feature-store';
 import {
   FIRESTORE_COLLECTION_TOKEN,

@@ -4,7 +4,7 @@ import {
   DANGER_SENSE,
   SPIDER_FRIENDS,
   WALL_CRAWL,
-} from '@schemetwister/schemetwister-series-marvel-common';
+} from '@schemetwister/series-marvel-common';
 
 import { COORDINATE, STRIKER } from './spidermanHomecoming.keywords';
 import { META } from './spidermanHomecoming.meta';

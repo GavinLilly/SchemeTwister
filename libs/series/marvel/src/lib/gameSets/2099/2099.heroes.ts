@@ -1,5 +1,5 @@
 import { Hero } from '@schemetwister/libtwister';
-import { SPIDER_FRIENDS } from '@schemetwister/schemetwister-series-marvel-common';
+import { SPIDER_FRIENDS } from '@schemetwister/series-marvel-common';
 
 import { MARVEL_KNIGHTS } from '../../teams';
 import { UNDERCOVER } from '../shield/shield.keywords';

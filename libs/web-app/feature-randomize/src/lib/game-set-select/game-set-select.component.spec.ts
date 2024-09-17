@@ -2,10 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { NgbActiveModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideMockStore } from '@ngrx/store/testing';
-import {
-  mainline,
-  marvelSeries,
-} from '@schemetwister/schemetwister-series-marvel';
+import { mainline, marvelSeries } from '@schemetwister/series-marvel';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
 import { GameSetSelectComponent } from './game-set-select.component';

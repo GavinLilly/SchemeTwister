@@ -5,7 +5,7 @@ import {
   RequireHero,
   DECK_TYPE,
 } from '@schemetwister/libtwister';
-import { SPIDER_FRIENDS } from '@schemetwister/schemetwister-series-marvel-common';
+import { SPIDER_FRIENDS } from '@schemetwister/series-marvel-common';
 
 import { STRIKER } from './spidermanHomecoming.keywords';
 import { META } from './spidermanHomecoming.meta';

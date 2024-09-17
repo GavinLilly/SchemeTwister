@@ -3,7 +3,7 @@ import {
   CONQUEROR,
   MICROSCOPIC_SIZE_CHANGING,
   SIZE_CHANGING,
-} from '@schemetwister/schemetwister-series-marvel-common';
+} from '@schemetwister/series-marvel-common';
 
 import { DOUBLE_CROSS, EXPLORE, HEIST } from './mcuAntMan.keywords';
 import { META } from './mcuAntMan.meta';

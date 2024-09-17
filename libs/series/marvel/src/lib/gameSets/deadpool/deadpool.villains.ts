@@ -1,5 +1,5 @@
 import { VillainGroup } from '@schemetwister/libtwister';
-import { EXCESSIVE_VIOLENCE } from '@schemetwister/schemetwister-series-marvel-common';
+import { EXCESSIVE_VIOLENCE } from '@schemetwister/series-marvel-common';
 
 import { META } from './deadpool.meta';
 

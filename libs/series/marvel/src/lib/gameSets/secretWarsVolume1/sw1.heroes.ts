@@ -1,8 +1,5 @@
 import { Hero } from '@schemetwister/libtwister';
-import {
-  AVENGERS,
-  SPIDER_FRIENDS,
-} from '@schemetwister/schemetwister-series-marvel-common';
+import { AVENGERS, SPIDER_FRIENDS } from '@schemetwister/series-marvel-common';
 
 import { CABAL, ILLUMINATI, X_MEN } from '../../teams';
 import { TELEPORT } from '../darkCity/darkCity.keywords';

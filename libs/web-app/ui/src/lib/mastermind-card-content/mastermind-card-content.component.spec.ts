@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { mainline } from '@schemetwister/schemetwister-series-marvel';
+import { mainline } from '@schemetwister/series-marvel';
 
 import { BadguyCardContentComponent } from '../badguy-card-content/badguy-card-content.component';
 import { BaseCardContentComponent } from '../base-card-content/base-card-content.component';

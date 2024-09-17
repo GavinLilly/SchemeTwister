@@ -1,5 +1,5 @@
 import { HeroClass, MastermindWithEpic } from '@schemetwister/libtwister';
-import { EMPOWERED } from '@schemetwister/schemetwister-series-marvel-common';
+import { EMPOWERED } from '@schemetwister/series-marvel-common';
 
 import { CHIVALROUS_DUEL } from './antMan.keywords';
 import { META } from './antMan.meta';

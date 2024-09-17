@@ -4,7 +4,7 @@ import {
   THROWN_ARTIFACT,
   VILLAINOUS_WEAPONS,
   CONQUEROR,
-} from '@schemetwister/schemetwister-series-marvel-common';
+} from '@schemetwister/series-marvel-common';
 
 import { WORTHY } from './heroesOfAsgard.keywords';
 import { META } from './heroesOfAsgard.meta';

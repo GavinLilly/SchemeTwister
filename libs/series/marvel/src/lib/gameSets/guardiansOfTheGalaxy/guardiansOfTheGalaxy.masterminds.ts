@@ -1,5 +1,5 @@
 import { Mastermind } from '@schemetwister/libtwister';
-import { ARTIFACT } from '@schemetwister/schemetwister-series-marvel-common';
+import { ARTIFACT } from '@schemetwister/series-marvel-common';
 
 import { SHARDS } from './guardiansOfTheGalaxy.keywords';
 import { META } from './guardiansOfTheGalaxy.meta';

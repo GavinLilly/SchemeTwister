@@ -1,5 +1,5 @@
 import { Hero } from '@schemetwister/libtwister';
-import { EXCESSIVE_VIOLENCE } from '@schemetwister/schemetwister-series-marvel-common';
+import { EXCESSIVE_VIOLENCE } from '@schemetwister/series-marvel-common';
 
 import { VENOMVERSE } from '../../teams';
 import { FEAST } from '../paintTheTownRed/paintTheTownRed.keywords';

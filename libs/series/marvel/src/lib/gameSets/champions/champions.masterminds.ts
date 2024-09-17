@@ -1,5 +1,5 @@
 import { MastermindWithEpic } from '@schemetwister/libtwister';
-import { DEMOLISH } from '@schemetwister/schemetwister-series-marvel-common';
+import { DEMOLISH } from '@schemetwister/series-marvel-common';
 
 import { VERSATILE } from '../darkCity/darkCity.keywords';
 

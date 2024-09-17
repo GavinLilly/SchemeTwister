@@ -1,5 +1,5 @@
 import { Hero } from '@schemetwister/libtwister';
-import { DIVIDED } from '@schemetwister/schemetwister-series-marvel-common';
+import { DIVIDED } from '@schemetwister/series-marvel-common';
 
 import { X_MEN } from '../../teams';
 

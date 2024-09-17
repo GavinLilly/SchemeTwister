@@ -1,5 +1,5 @@
 import { MastermindWithEpic } from '@schemetwister/libtwister';
-import { VILLAINOUS_WEAPONS } from '@schemetwister/schemetwister-series-marvel-common';
+import { VILLAINOUS_WEAPONS } from '@schemetwister/series-marvel-common';
 
 import { TRIGGERED_ARTIFACTS } from './mcuGuardiansOfTheGalaxy.keywords';
 import { META } from './mcuGuardiansOfTheGalaxy.meta';

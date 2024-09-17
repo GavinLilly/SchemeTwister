@@ -5,7 +5,7 @@ import {
   RequireVillainGroup,
   DECK_TYPE,
 } from '@schemetwister/libtwister';
-import { ARTIFACT } from '@schemetwister/schemetwister-series-marvel-common';
+import { ARTIFACT } from '@schemetwister/series-marvel-common';
 
 import { SKRULLS } from '../legendary/legendary.villains';
 

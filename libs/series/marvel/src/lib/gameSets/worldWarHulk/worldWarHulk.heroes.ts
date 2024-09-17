@@ -4,7 +4,7 @@ import {
   CRIME_SYNDICATE,
   CROSS_DIMENSIONAL_RAMPAGE,
   SHIELD,
-} from '@schemetwister/schemetwister-series-marvel-common';
+} from '@schemetwister/series-marvel-common';
 
 import { CHAMPIONS, WARBOUND } from '../../teams';
 import { FEAST } from '../paintTheTownRed/paintTheTownRed.keywords';

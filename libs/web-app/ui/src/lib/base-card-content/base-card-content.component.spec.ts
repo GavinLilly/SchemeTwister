@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Hero } from '@schemetwister/libtwister';
-import { mainline } from '@schemetwister/schemetwister-series-marvel';
+import { mainline } from '@schemetwister/series-marvel';
 
 import { BaseCardContentComponent } from './base-card-content.component';
 

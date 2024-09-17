@@ -1,5 +1,5 @@
 import { Mastermind, HeroClass } from '@schemetwister/libtwister';
-import { CONQUEROR } from '@schemetwister/schemetwister-series-marvel-common';
+import { CONQUEROR } from '@schemetwister/series-marvel-common';
 
 import { META } from './marvelStudios.meta';
 import { ENEMIES_OF_ASGARD, HYDRA, IRON_FOES } from './marvelStudios.villains';

@@ -5,7 +5,7 @@ import {
   CRIME_SYNDICATE,
   MICROSCOPIC_SIZE_CHANGING,
   SIZE_CHANGING,
-} from '@schemetwister/schemetwister-series-marvel-common';
+} from '@schemetwister/series-marvel-common';
 
 import { ANTICS, EXPLORE, HEIST } from './mcuAntMan.keywords';
 import { META } from './mcuAntMan.meta';

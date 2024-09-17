@@ -1,5 +1,5 @@
 import { VillainGroup } from '@schemetwister/libtwister';
-import { CONQUEROR } from '@schemetwister/schemetwister-series-marvel-common';
+import { CONQUEROR } from '@schemetwister/series-marvel-common';
 
 import { MAN_OUT_OF_TIME, MOMENTUM } from './annihilation.keywords';
 import { META } from './annihilation.meta';
