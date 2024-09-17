@@ -6,7 +6,8 @@
       <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
     </a>
   </div>
-  <div class="card-body p-0" *ngIf="scheme() as scheme">
+  @if (scheme(); as scheme) {
+  <div class="card-body p-0">
     <div ngbAccordion>
       <div ngbAccordionItem>
         <h2 ngbAccordionHeader>
@@ -54,4 +55,5 @@
       </div>
     </div>
   </div>
+  }
 </div>

@@ -2,9 +2,11 @@
 <div class="card">
   <div class="card-header">Hero deck</div>
   <div class="card-body p-0">
-    <div class="setup-cards card-body" *ngIf="heroDeck.numBystanders">
+    @if (heroDeck.numBystanders) {
+    <div class="setup-cards card-body">
       <p><b>Bystanders: </b>{{ heroDeck.numBystanders }}</p>
     </div>
+    }
     <div ngbAccordion [closeOthers]="true">
       @for (hero of heroDeck.heroes; track $index) {
       <div ngbAccordionItem id="herodeck-panel-{{ hero.id }}" class="hero">

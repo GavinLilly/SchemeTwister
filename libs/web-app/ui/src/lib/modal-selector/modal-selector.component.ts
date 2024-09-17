@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbActiveModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
@@ -9,7 +8,7 @@ import { SortByNamePipe } from '../SortByName.pipe';
 @Component({
   selector: 'schemetwister-modal-selector',
   standalone: true,
-  imports: [CommonModule, FormsModule, NgbModalModule, SortByNamePipe],
+  imports: [FormsModule, NgbModalModule, SortByNamePipe],
   templateUrl: './modal-selector.component.html',
 })
 export class ModalSelectorComponent {

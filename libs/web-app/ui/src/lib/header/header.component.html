@@ -32,11 +32,13 @@
     id="navbarContent"
   >
     <ul ngbNav>
-      <li ngbNavItem *ngFor="let link of links">
+      @for (link of links; track link) {
+      <li ngbNavItem>
         <a ngbNavLink [routerLink]="link.link" (click)="isMenuCollapsed = true">
           {{ link.name }}
         </a>
       </li>
+      }
     </ul>
   </div>
 </header>

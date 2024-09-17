@@ -1,4 +1,6 @@
-<p *ngIf="hero.team"><b>Team: </b>{{ hero.team!.name }}</p>
+@if (hero.team) {
+<p><b>Team: </b>{{ hero.team!.name }}</p>
+}
 <hr />
 <schemetwister-base-card-content
   [card]="hero"

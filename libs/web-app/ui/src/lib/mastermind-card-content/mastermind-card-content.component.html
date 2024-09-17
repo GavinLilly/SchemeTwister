@@ -1,60 +1,68 @@
 <div class="card-text">
-  <p *ngIf="mastermind.specialRules">
+  @if (mastermind.specialRules) {
+  <p>
     {{ mastermind.specialRules }}
   </p>
+  }
   <b>Always leads: </b>
-  <ul *ngFor="let item of mastermind.alwaysLeads">
+  @for (item of mastermind.alwaysLeads; track item) {
+  <ul>
     <li>{{ item.name }}</li>
   </ul>
-  <div *ngIf="isAdapting(mastermind); else elseBlock">
+  } @if (isAdapting(mastermind)) {
+  <div>
     <p><b>Victory Points: </b>{{ mastermind.victoryPoints }}</p>
-    <div *ngFor="let adaptingMastermind of mastermind.masterminds">
+    @for (adaptingMastermind of mastermind.masterminds; track
+    adaptingMastermind) {
+    <div>
       <hr />
       <h5>{{ adaptingMastermind.name }}</h5>
-      <p *ngIf="adaptingMastermind.startOfGame">
-        <b>Start of game: </b>{{ adaptingMastermind.startOfGame }}
-      </p>
+      @if (adaptingMastermind.startOfGame) {
+      <p><b>Start of game: </b>{{ adaptingMastermind.startOfGame }}</p>
+      }
       <p><b>Master Strike: </b>{{ adaptingMastermind.masterStrike }}</p>
-      <p *ngIf="adaptingMastermind.mastermindWins">
-        <b>Mastermind wins: </b>{{ adaptingMastermind.mastermindWins }}
-      </p>
-      <p *ngIf="adaptingMastermind.escape">
-        <b>Escape: </b>{{ adaptingMastermind.escape }}
-      </p>
-      <p *ngIf="adaptingMastermind.finishThePrey">
-        <b>Finish the Prey: </b>{{ adaptingMastermind.finishThePrey }}
-      </p>
+      @if (adaptingMastermind.mastermindWins) {
+      <p><b>Mastermind wins: </b>{{ adaptingMastermind.mastermindWins }}</p>
+      } @if (adaptingMastermind.escape) {
+      <p><b>Escape: </b>{{ adaptingMastermind.escape }}</p>
+      } @if (adaptingMastermind.finishThePrey) {
+      <p><b>Finish the Prey: </b>{{ adaptingMastermind.finishThePrey }}</p>
+      }
       <p><b>Attack Points: </b>{{ adaptingMastermind.attackPoints }}</p>
     </div>
+    }
   </div>
-
-  <ng-template #elseBlock>
-    <p *ngIf="mastermind.startOfGame">
-      <b>Start of game: </b>{{ mastermind.startOfGame }}
-    </p>
-    <p><b>Master Strike: </b>{{ mastermind.masterStrike }}</p>
-    <p *ngIf="mastermind.mastermindWins">
-      <b>Mastermind wins: </b>{{ mastermind.mastermindWins }}
-    </p>
-    <p *ngIf="mastermind.escape"><b>Escape: </b>{{ mastermind.escape }}</p>
-    <p *ngIf="mastermind.finishThePrey">
-      <b>Finish the Prey: </b>{{ mastermind.finishThePrey }}
-    </p>
-    <schemetwister-badguy-card-content
-      [card]="mastermind"
-    ></schemetwister-badguy-card-content>
-    <div *ngIf="isTransforming(mastermind)">
-      <hr />
-      <div *ngIf="mastermind.transformed as transformed">
-        <h5>{{ transformed.name }} (Transformed)</h5>
-        <p *ngIf="transformed.specialRules">
-          {{ transformed.specialRules }}
-        </p>
-        <p><b>Master Strike: </b>{{ transformed.masterStrike }}</p>
-        <p><b>Attack Points: </b>{{ transformed.attackPoints }}</p>
-      </div>
+  } @else { @if (mastermind.startOfGame) {
+  <p><b>Start of game: </b>{{ mastermind.startOfGame }}</p>
+  }
+  <p><b>Master Strike: </b>{{ mastermind.masterStrike }}</p>
+  @if (mastermind.mastermindWins) {
+  <p><b>Mastermind wins: </b>{{ mastermind.mastermindWins }}</p>
+  } @if (mastermind.escape) {
+  <p><b>Escape: </b>{{ mastermind.escape }}</p>
+  } @if (mastermind.finishThePrey) {
+  <p><b>Finish the Prey: </b>{{ mastermind.finishThePrey }}</p>
+  }
+  <schemetwister-badguy-card-content
+    [card]="mastermind"
+  ></schemetwister-badguy-card-content>
+  @if (isTransforming(mastermind)) {
+  <div>
+    <hr />
+    @if (mastermind.transformed; as transformed) {
+    <div>
+      <h5>{{ transformed.name }} (Transformed)</h5>
+      @if (transformed.specialRules) {
+      <p>
+        {{ transformed.specialRules }}
+      </p>
+      }
+      <p><b>Master Strike: </b>{{ transformed.masterStrike }}</p>
+      <p><b>Attack Points: </b>{{ transformed.attackPoints }}</p>
     </div>
-  </ng-template>
+    }
+  </div>
+  } }
 
   <hr />
   <schemetwister-base-card-content

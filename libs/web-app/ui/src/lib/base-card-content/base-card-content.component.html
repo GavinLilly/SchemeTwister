@@ -1,7 +1,10 @@
-<ng-container *ngIf="card.keywords && card.keywords.length > 0">
-  <p *ngIf="card.keywords"><b>Keywords</b></p>
-  <ul *ngIf="card.keywords">
-    <li *ngFor="let keyword of card.keywords">{{ keyword.name }}</li>
-  </ul>
-</ng-container>
+@if (card.keywords && card.keywords.length > 0) { @if (card.keywords) {
+<p><b>Keywords</b></p>
+} @if (card.keywords) {
+<ul>
+  @for (keyword of card.keywords; track keyword) {
+  <li>{{ keyword.name }}</li>
+  }
+</ul>
+} }
 <p><b>GameSet: </b>{{ card.gameSet.name }}</p>

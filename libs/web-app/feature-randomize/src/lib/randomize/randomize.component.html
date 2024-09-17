@@ -1,4 +1,5 @@
-<div class="container" *ngIf="gameSetup() as gameSetup">
+@if (gameSetup(); as gameSetup) {
+<div class="container">
   <div class="row">
     <div class="col-12 col-md-6 mx-auto">
       <!--Picker-->
@@ -44,13 +45,16 @@
                 (change)="setNumberOfPlayers(numPlayersSelect.value)"
                 id="numPlayersSelect"
               >
-                <option *ngFor="let num of numPlayerOptions" value="{{ num }}">
+                @for (num of numPlayerOptions; track num) {
+                <option value="{{ num }}">
                   {{ num }}
                 </option>
+                }
               </select>
             </div>
 
-            <div class="form-group" *ngIf="numberOfPlayers() === 1">
+            @if (numberOfPlayers() === 1) {
+            <div class="form-group">
               <input
                 #advancedSoloInput
                 class="form-check-input"
@@ -65,6 +69,7 @@
                 >Advanced solo mode?</label
               >
             </div>
+            }
 
             <div class="form-group">
               <a
@@ -109,32 +114,28 @@
       <schemetwister-hero-deck></schemetwister-hero-deck>
     </div>
   </div>
-  <div
-    *ngIf="
-      (gameSetup.keywords && gameSetup.keywords.size > 0) ||
-      gameSetup.additionalDecks.length > 0
-    "
-    class="row"
-    id="bottom-row"
-  >
+  @if ( (gameSetup.keywords && gameSetup.keywords.size > 0) ||
+  gameSetup.additionalDecks.length > 0 ) {
+  <div class="row" id="bottom-row">
     <!--Additional deck-->
+    @if (gameSetup.additionalDecks.length > 0) {
     <div
       [ngClass]="
         gameSetup.keywords && gameSetup.keywords.size > 0
           ? 'col-12 col-lg-4'
           : 'col-12'
       "
-      *ngIf="gameSetup.additionalDecks.length > 0"
       id="additional-deck-container"
     >
       <schemetwister-additional-deck></schemetwister-additional-deck>
     </div>
+    }
     <!--Keywords-->
+    @if (gameSetup.keywords && gameSetup.keywords.size > 0) {
     <div
       [ngClass]="
         gameSetup.additionalDecks.length > 0 ? 'col-12 col-lg-8' : 'col-12'
       "
-      *ngIf="gameSetup.keywords && gameSetup.keywords.size > 0"
     >
       <div class="card" id="keywords">
         <div class="card-header">Keywords in play</div>
@@ -158,5 +159,8 @@
         </div>
       </div>
     </div>
+    }
   </div>
+  }
 </div>
+}

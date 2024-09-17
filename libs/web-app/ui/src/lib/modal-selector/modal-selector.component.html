@@ -16,9 +16,11 @@
     (ngModelChange)="chosenItem.emit(itemSelect.value)"
   >
     <option>**Random**</option>
-    <option *ngFor="let item of availableItems | sortByName" [value]="item.id">
+    @for (item of availableItems | sortByName; track item) {
+    <option [value]="item.id">
       {{ item.name }}
     </option>
+    }
   </select>
 </div>
 <div class="modal-footer">

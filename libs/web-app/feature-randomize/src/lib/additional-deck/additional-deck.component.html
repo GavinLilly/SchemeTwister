@@ -1,20 +1,20 @@
-<div class="card" *ngFor="let additionalDeck of additionalDecks()">
+@for (additionalDeck of additionalDecks(); track additionalDeck) {
+<div class="card">
   <div class="card-header">
     {{ additionalDeck.name || 'Additional Deck' }}
   </div>
   <div class="card-body p-0">
-    <p *ngIf="additionalDeck.instructions">
+    @if (additionalDeck.instructions) {
+    <p>
       {{ additionalDeck.instructions }}
     </p>
-    <p *ngIf="additionalDeck.deck.numTwists">
-      <b>Twists: </b>{{ additionalDeck.deck.numTwists }}
-    </p>
-    <p *ngIf="additionalDeck.deck.numBystanders">
-      <b>Bystanders: </b>{{ additionalDeck.deck.numBystanders }}
-    </p>
-    <p *ngIf="additionalDeck.deck.numWounds">
-      <b>Wounds: </b>{{ additionalDeck.deck.numWounds }}
-    </p>
+    } @if (additionalDeck.deck.numTwists) {
+    <p><b>Twists: </b>{{ additionalDeck.deck.numTwists }}</p>
+    } @if (additionalDeck.deck.numBystanders) {
+    <p><b>Bystanders: </b>{{ additionalDeck.deck.numBystanders }}</p>
+    } @if (additionalDeck.deck.numWounds) {
+    <p><b>Wounds: </b>{{ additionalDeck.deck.numWounds }}</p>
+    }
 
     <div ngbAccordion [closeOthers]="true">
       @for (henchmen of additionalDeck.deck.henchmen; track $index) {
@@ -115,3 +115,4 @@
     </div>
   </div>
 </div>
+}

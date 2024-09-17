@@ -6,7 +6,8 @@
       <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
     </a>
   </div>
-  <div class="card-body p-0" *ngIf="mastermind() as mastermind">
+  @if (mastermind(); as mastermind) {
+  <div class="card-body p-0">
     <div ngbAccordion>
       <div ngbAccordionItem class="mastermind">
         <h2 ngbAccordionHeader>
@@ -48,4 +49,5 @@
       </div>
     </div>
   </div>
+  }
 </div>

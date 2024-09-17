@@ -16,27 +16,35 @@
     size="20"
   >
     <option disabled>&#x2500;&#x2500; Core sets &#x2500;&#x2500;</option>
-    <option *ngFor="let gameSet of coreSets" [value]="gameSet">
+    @for (gameSet of coreSets; track gameSet) {
+    <option [value]="gameSet">
       {{ gameSet.name }}
     </option>
+    }
     <option disabled>&#x2500;&#x2500; Large sets &#x2500;&#x2500;</option>
-    <option *ngFor="let gameSet of lrgSets" [value]="gameSet">
+    @for (gameSet of lrgSets; track gameSet) {
+    <option [value]="gameSet">
       {{ gameSet.name }}
     </option>
-    <option disabled *ngIf="medSets.length">
-      &#x2500;&#x2500; Medium sets &#x2500;&#x2500;
-    </option>
-    <option *ngFor="let gameSet of medSets" [value]="gameSet">
+    } @if (medSets.length) {
+    <option disabled>&#x2500;&#x2500; Medium sets &#x2500;&#x2500;</option>
+    } @for (gameSet of medSets; track gameSet) {
+    <option [value]="gameSet">
       {{ gameSet.name }}
     </option>
+    }
     <option disabled>&#x2500;&#x2500; Small sets &#x2500;&#x2500;</option>
-    <option *ngFor="let gameSet of smlSets" [value]="gameSet">
+    @for (gameSet of smlSets; track gameSet) {
+    <option [value]="gameSet">
       {{ gameSet.name }}
     </option>
+    }
     <option disabled>&#x2500;&#x2500; Promo sets &#x2500;&#x2500;</option>
-    <option *ngFor="let gameSet of promoSets" [value]="gameSet">
+    @for (gameSet of promoSets; track gameSet) {
+    <option [value]="gameSet">
       {{ gameSet.name }}
     </option>
+    }
   </select>
 </div>
 <div class="modal-footer">
@@ -49,10 +57,11 @@
     Close
   </button>
 </div>
+@if (gameSelectError(); as gameSelectError) {
 <ngb-alert
   #selfClosingAlert
-  *ngIf="gameSelectError() as gameSelectError"
   type="danger"
   (closed)="(gameSelectError === '')"
   >{{ gameSelectError }}</ngb-alert
 >
+}

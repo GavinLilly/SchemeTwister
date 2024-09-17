@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, Inject, Signal, computed } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCog, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
@@ -30,12 +29,7 @@ type MastermindType = Mastermind | TransformingMastermind | AdaptingMastermind;
 @Component({
   selector: 'schemetwister-mastermind-card',
   standalone: true,
-  imports: [
-    CommonModule,
-    WebAppUiModule,
-    FontAwesomeModule,
-    NgbAccordionModule,
-  ],
+  imports: [WebAppUiModule, FontAwesomeModule, NgbAccordionModule],
   templateUrl: './mastermind-card.component.html',
   styleUrls: ['./mastermind-card.component.scss'],
 })

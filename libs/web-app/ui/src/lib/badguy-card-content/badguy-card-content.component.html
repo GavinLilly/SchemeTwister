@@ -1,4 +1,5 @@
-<p *ngIf="card.attackPoints"><b>Attack Points: </b>{{ card.attackPoints }}</p>
-<p *ngIf="card.victoryPoints">
-  <b>Victory Points: </b>{{ card.victoryPoints }}
-</p>
+@if (card.attackPoints) {
+<p><b>Attack Points: </b>{{ card.attackPoints }}</p>
+} @if (card.victoryPoints) {
+<p><b>Victory Points: </b>{{ card.victoryPoints }}</p>
+}
