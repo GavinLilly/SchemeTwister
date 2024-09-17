@@ -1,3 +1,10 @@
+## [3.18.6](https://github.com/GavinLilly/SchemeTwister/compare/v3.18.5...v3.18.6) (2024-09-17)
+
+
+### Dependencies
+
+* **deps:** bump serve-static and express ([#181](https://github.com/GavinLilly/SchemeTwister/issues/181)) ([1926c45](https://github.com/GavinLilly/SchemeTwister/commit/1926c45331c392acbae265fac4d74d8ec55b8745))
+
 ## [3.18.5](https://github.com/GavinLilly/SchemeTwister/compare/v3.18.4...v3.18.5) (2024-09-07)
 
 
