@@ -1,8 +1,5 @@
 import { Hero } from '@schemetwister/libtwister';
-import {
-  EXCESSIVE_VIOLENCE,
-  HYDRA,
-} from '@schemetwister/schemetwister-series-marvel-common';
+import { EXCESSIVE_VIOLENCE, HYDRA } from '@schemetwister/series-marvel-common';
 
 import { MERCS_FOR_MONEY } from '../../teams';
 

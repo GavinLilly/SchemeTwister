@@ -1,8 +1,5 @@
 import { Hero } from '@schemetwister/libtwister';
-import {
-  CRIME_SYNDICATE,
-  DODGE,
-} from '@schemetwister/schemetwister-series-marvel-common';
+import { CRIME_SYNDICATE, DODGE } from '@schemetwister/series-marvel-common';
 
 import { SINISTER_SIX, FOES_OF_ASGARD, BROTHERHOOD } from '../../teams';
 

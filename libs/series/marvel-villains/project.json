@@ -1,5 +1,5 @@
 {
-  "name": "schemetwister-series-marvel-villains",
+  "name": "@schemetwister/series-marvel-villains",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/series/marvel-villains/src",
   "projectType": "library",

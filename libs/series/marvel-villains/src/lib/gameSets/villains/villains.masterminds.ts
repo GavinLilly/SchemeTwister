@@ -1,5 +1,5 @@
 import { Mastermind } from '@schemetwister/libtwister';
-import { DEMOLISH } from '@schemetwister/schemetwister-series-marvel-common';
+import { DEMOLISH } from '@schemetwister/series-marvel-common';
 
 import { ASGARDIAN_WARRIORS } from './villains.henchmen';
 import { X_TREME_ATTACK } from './villains.keywords';

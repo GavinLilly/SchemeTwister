@@ -2,7 +2,7 @@ import { Hero } from '@schemetwister/libtwister';
 import {
   CROSS_DIMENSIONAL_RAMPAGE,
   EMPOWERED,
-} from '@schemetwister/schemetwister-series-marvel-common';
+} from '@schemetwister/series-marvel-common';
 
 import { GUARDIANS_OF_THE_MULTIVERSE } from '../../teams';
 

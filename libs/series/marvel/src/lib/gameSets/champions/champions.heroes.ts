@@ -1,5 +1,5 @@
 import { Hero } from '@schemetwister/libtwister';
-import { DEMOLISH } from '@schemetwister/schemetwister-series-marvel-common';
+import { DEMOLISH } from '@schemetwister/series-marvel-common';
 
 import { CHAMPIONS } from '../../teams';
 import { VERSATILE } from '../darkCity/darkCity.keywords';

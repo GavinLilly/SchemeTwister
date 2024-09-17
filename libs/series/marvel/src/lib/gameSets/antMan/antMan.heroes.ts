@@ -4,7 +4,7 @@ import {
   EMPOWERED,
   MICROSCOPIC_SIZE_CHANGING,
   SIZE_CHANGING,
-} from '@schemetwister/schemetwister-series-marvel-common';
+} from '@schemetwister/series-marvel-common';
 
 import { META } from './antMan.meta';
 

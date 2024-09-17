@@ -4,7 +4,7 @@ import {
   SHIELD,
   SPIDER_FRIENDS,
   WALL_CRAWL,
-} from '@schemetwister/schemetwister-series-marvel-common';
+} from '@schemetwister/series-marvel-common';
 
 import { ILLUMINATI, CABAL, MARVEL_KNIGHTS, X_MEN } from '../../teams';
 import { TELEPORT, VERSATILE } from '../darkCity/darkCity.keywords';

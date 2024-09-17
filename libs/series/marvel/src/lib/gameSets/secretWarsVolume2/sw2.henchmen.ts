@@ -1,5 +1,5 @@
 import { Henchmen } from '@schemetwister/libtwister';
-import { WALL_CRAWL } from '@schemetwister/schemetwister-series-marvel-common';
+import { WALL_CRAWL } from '@schemetwister/series-marvel-common';
 
 import { FATEFUL_RESURRECTION } from './sw2.keywords';
 import { META } from './sw2.meta';

@@ -1,8 +1,5 @@
 import { Hero } from '@schemetwister/libtwister';
-import {
-  AVENGERS,
-  SHIELD,
-} from '@schemetwister/schemetwister-series-marvel-common';
+import { AVENGERS, SHIELD } from '@schemetwister/series-marvel-common';
 
 import { MAN_OUT_OF_TIME, SAVIOR } from './captainAmerica.keywords';
 import { META } from './captainAmerica.meta';

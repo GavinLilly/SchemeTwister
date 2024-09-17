@@ -1,5 +1,5 @@
 import { Hero } from '@schemetwister/libtwister';
-import { EMPOWERED } from '@schemetwister/schemetwister-series-marvel-common';
+import { EMPOWERED } from '@schemetwister/series-marvel-common';
 
 import { HEROES_OF_WAKANDA } from '../../teams';
 import { THRONES_FAVOR } from '../realmOfKings/realmOfKings.keywords';

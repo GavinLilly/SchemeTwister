@@ -10,7 +10,7 @@ import {
   RequireHero,
   IRequireCardsInDeckSchemeConfig,
 } from '@schemetwister/libtwister';
-import { RISE_OF_THE_LIVING_DEAD } from '@schemetwister/schemetwister-series-marvel-common';
+import { RISE_OF_THE_LIVING_DEAD } from '@schemetwister/series-marvel-common';
 
 import { PARTY_THOR } from './whatIf.heroes';
 import { META } from './whatIf.meta';

@@ -2,7 +2,7 @@ import { Hero } from '@schemetwister/libtwister';
 import {
   SPIDER_FRIENDS,
   WALL_CRAWL,
-} from '@schemetwister/schemetwister-series-marvel-common';
+} from '@schemetwister/series-marvel-common';
 
 import { MARVEL_KNIGHTS } from '../../teams';
 

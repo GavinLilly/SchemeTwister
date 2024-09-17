@@ -3,7 +3,7 @@ import {
   AVENGERS,
   DANGER_SENSE,
   GUARDIANS_OF_THE_GALAXY,
-} from '@schemetwister/schemetwister-series-marvel-common';
+} from '@schemetwister/series-marvel-common';
 
 import {
   BURNING_SHARDS,

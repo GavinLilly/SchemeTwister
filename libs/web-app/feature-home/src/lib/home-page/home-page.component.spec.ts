@@ -1,4 +1,4 @@
-import { marvelSeries } from '@schemetwister/schemetwister-series-marvel';
+import { marvelSeries } from '@schemetwister/series-marvel';
 import {
   SERIES_REGISTER_TOKEN,
   StoredSetupsService,

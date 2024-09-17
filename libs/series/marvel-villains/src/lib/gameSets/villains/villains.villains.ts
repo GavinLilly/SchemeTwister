@@ -1,5 +1,5 @@
 import { VillainGroup } from '@schemetwister/libtwister';
-import { DEMOLISH } from '@schemetwister/schemetwister-series-marvel-common';
+import { DEMOLISH } from '@schemetwister/series-marvel-common';
 
 import { ELUSIVE, X_TREME_ATTACK } from './villains.keywords';
 import { META } from './villains.meta';

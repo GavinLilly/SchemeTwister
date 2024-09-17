@@ -1,8 +1,5 @@
 import { Hero } from '@schemetwister/libtwister';
-import {
-  AVENGERS,
-  SHIELD,
-} from '@schemetwister/schemetwister-series-marvel-common';
+import { AVENGERS, SHIELD } from '@schemetwister/series-marvel-common';
 
 import { META } from './marvelStudios.meta';
 

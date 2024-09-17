@@ -5,7 +5,7 @@ import {
   StoreBuilder,
   StoreOfStores,
 } from '@schemetwister/libtwister';
-import { mainline } from '@schemetwister/schemetwister-series-marvel';
+import { mainline } from '@schemetwister/series-marvel';
 
 import { IGameSetupState } from '../reducers/game-setup.reducer';
 

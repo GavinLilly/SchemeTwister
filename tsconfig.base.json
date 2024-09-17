@@ -26,14 +26,16 @@
       "@schemetwister/schematics": [
         "tools/schemetwister-schematics/src/index.ts"
       ],
-      "@schemetwister/schemetwister-series-buffy": [
-        "libs/series/buffy/src/index.ts"
-      ],
-      "@schemetwister/schemetwister-series-marvel": [
-        "libs/series/marvel/src/index.ts"
-      ],
-      "@schemetwister/schemetwister-series-marvel-common": [
+      "@schemetwister/series-buffy": ["libs/series/buffy/src/index.ts"],
+      "@schemetwister/series-marvel": ["libs/series/marvel/src/index.ts"],
+      "@schemetwister/series-marvel-common": [
         "libs/series/marvel-common/src/index.ts"
+      ],
+      "@schemetwister/series-marvel-studios": [
+        "libs/series/marvel-studios/src/index.ts"
+      ],
+      "@schemetwister/series-marvel-villains": [
+        "libs/series/marvel-villains/src/index.ts"
       ],
       "@schemetwister/web-app-feature-view": [
         "libs/web-app/feature-view/src/index.ts"
@@ -48,13 +50,7 @@
         "libs/web-app/feature-store/src/index.ts"
       ],
       "@schemetwister/web-app/shared": ["libs/web-app/shared/src/index.ts"],
-      "@schemetwister/web-app/ui": ["libs/web-app/ui/src/index.ts"],
-      "schemetwister-series-marvel-studios": [
-        "libs/series/marvel-studios/src/index.ts"
-      ],
-      "schemetwister-series-marvel-villains": [
-        "libs/series/marvel-villains/src/index.ts"
-      ]
+      "@schemetwister/web-app/ui": ["libs/web-app/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"],

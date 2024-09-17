@@ -1,5 +1,5 @@
 import { VillainGroup } from '@schemetwister/libtwister';
-import { RISE_OF_THE_LIVING_DEAD } from '@schemetwister/schemetwister-series-marvel-common';
+import { RISE_OF_THE_LIVING_DEAD } from '@schemetwister/series-marvel-common';
 
 import { BRIBE, TELEPORT } from '../darkCity/darkCity.keywords';
 

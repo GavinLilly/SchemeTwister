@@ -1,5 +1,5 @@
 import { MastermindWithEpic } from '@schemetwister/libtwister';
-import { EMPOWERED } from '@schemetwister/schemetwister-series-marvel-common';
+import { EMPOWERED } from '@schemetwister/series-marvel-common';
 
 import { META } from './blackPanther.meta';
 import {

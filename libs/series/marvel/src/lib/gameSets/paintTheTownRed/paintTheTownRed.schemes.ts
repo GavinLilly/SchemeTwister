@@ -5,7 +5,7 @@ import {
   RequireVillainGroup,
   DECK_TYPE,
 } from '@schemetwister/libtwister';
-import { WALL_CRAWL } from '@schemetwister/schemetwister-series-marvel-common';
+import { WALL_CRAWL } from '@schemetwister/series-marvel-common';
 
 import { META } from './paintTheTownRed.meta';
 import { SINISTER_SIX } from './paintTheTownRed.villains';

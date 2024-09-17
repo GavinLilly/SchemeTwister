@@ -3,7 +3,7 @@ import {
   AVENGERS,
   SHIELD,
   SPIDER_FRIENDS,
-} from '@schemetwister/schemetwister-series-marvel-common';
+} from '@schemetwister/series-marvel-common';
 
 import { X_MEN } from '../../teams';
 

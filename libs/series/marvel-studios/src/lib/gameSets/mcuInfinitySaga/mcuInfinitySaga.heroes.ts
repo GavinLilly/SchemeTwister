@@ -3,7 +3,7 @@ import {
   AVENGERS,
   DIVIDED,
   PHASING,
-} from '@schemetwister/schemetwister-series-marvel-common';
+} from '@schemetwister/series-marvel-common';
 
 import { ENDGAME, SACRIFICE } from './mcuInfinitySaga.keywords';
 import { META } from './mcuInfinitySaga.meta';

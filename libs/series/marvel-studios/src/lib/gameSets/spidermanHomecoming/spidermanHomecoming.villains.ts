@@ -1,8 +1,5 @@
 import { VillainGroup } from '@schemetwister/libtwister';
-import {
-  DANGER_SENSE,
-  WALL_CRAWL,
-} from '@schemetwister/schemetwister-series-marvel-common';
+import { DANGER_SENSE, WALL_CRAWL } from '@schemetwister/series-marvel-common';
 
 import { STRIKER } from './spidermanHomecoming.keywords';
 import { META } from './spidermanHomecoming.meta';

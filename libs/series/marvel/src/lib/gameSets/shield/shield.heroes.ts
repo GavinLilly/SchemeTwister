@@ -1,5 +1,5 @@
 import { Hero } from '@schemetwister/libtwister';
-import { SHIELD } from '@schemetwister/schemetwister-series-marvel-common';
+import { SHIELD } from '@schemetwister/series-marvel-common';
 
 import { SHIELD_LEVEL, UNDERCOVER } from './shield.keywords';
 import { META } from './shield.meta';

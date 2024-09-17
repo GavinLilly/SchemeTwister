@@ -1,5 +1,5 @@
 import { VillainGroup } from '@schemetwister/libtwister';
-import { DEMOLISH } from '@schemetwister/schemetwister-series-marvel-common';
+import { DEMOLISH } from '@schemetwister/series-marvel-common';
 
 import { SIZE_CHANGING } from './champions.keywords';
 import { META } from './champions.meta';

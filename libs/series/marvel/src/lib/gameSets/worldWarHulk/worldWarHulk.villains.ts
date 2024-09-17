@@ -1,5 +1,5 @@
 import { VillainGroup } from '@schemetwister/libtwister';
-import { CROSS_DIMENSIONAL_RAMPAGE } from '@schemetwister/schemetwister-series-marvel-common';
+import { CROSS_DIMENSIONAL_RAMPAGE } from '@schemetwister/series-marvel-common';
 
 import { FEAST } from '../paintTheTownRed/paintTheTownRed.keywords';
 

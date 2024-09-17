@@ -1,4 +1,4 @@
-import { mainline } from '@schemetwister/schemetwister-series-marvel';
+import { mainline } from '@schemetwister/series-marvel';
 
 import { gameSetSelectionActions } from '../actions/game-sets.actions';
 

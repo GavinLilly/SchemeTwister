@@ -1,5 +1,5 @@
 import { Hero } from '@schemetwister/libtwister';
-import { CONQUEROR } from '@schemetwister/schemetwister-series-marvel-common';
+import { CONQUEROR } from '@schemetwister/series-marvel-common';
 
 import { FANTASTIC_FOUR } from '../../teams';
 import { FOCUS } from '../fantasticFour/fantasticFour.keywords';

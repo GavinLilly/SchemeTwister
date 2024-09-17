@@ -5,7 +5,7 @@ import {
   RequireHero,
   DECK_TYPE,
 } from '@schemetwister/libtwister';
-import { GUARDIANS_OF_THE_GALAXY } from '@schemetwister/schemetwister-series-marvel-common';
+import { GUARDIANS_OF_THE_GALAXY } from '@schemetwister/series-marvel-common';
 
 import { META } from './mcuGuardiansOfTheGalaxy.meta';
 

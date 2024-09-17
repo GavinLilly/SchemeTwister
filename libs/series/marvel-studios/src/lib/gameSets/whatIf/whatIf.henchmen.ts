@@ -1,5 +1,5 @@
 import { Henchmen } from '@schemetwister/libtwister';
-import { EMPOWERED } from '@schemetwister/schemetwister-series-marvel-common';
+import { EMPOWERED } from '@schemetwister/series-marvel-common';
 
 import { LIBERATE } from './whatIf.keywords';
 import { META } from './whatIf.meta';

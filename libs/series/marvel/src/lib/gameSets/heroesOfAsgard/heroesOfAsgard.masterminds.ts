@@ -4,7 +4,7 @@ import {
   THROWN_ARTIFACT,
   VILLAINOUS_WEAPONS,
   CONQUEROR,
-} from '@schemetwister/schemetwister-series-marvel-common';
+} from '@schemetwister/series-marvel-common';
 
 import { META } from './heroesOfAsgard.meta';
 import { DARK_COUNCIL, OMENS_OF_RAGNAROK } from './heroesOfAsgard.villains';

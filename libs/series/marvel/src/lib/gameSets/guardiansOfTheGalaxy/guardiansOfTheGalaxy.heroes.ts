@@ -2,7 +2,7 @@ import { Hero } from '@schemetwister/libtwister';
 import {
   ARTIFACT,
   GUARDIANS_OF_THE_GALAXY,
-} from '@schemetwister/schemetwister-series-marvel-common';
+} from '@schemetwister/series-marvel-common';
 
 import { SHARDS } from './guardiansOfTheGalaxy.keywords';
 import { META } from './guardiansOfTheGalaxy.meta';

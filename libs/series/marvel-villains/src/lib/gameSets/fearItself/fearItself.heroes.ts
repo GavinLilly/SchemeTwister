@@ -4,7 +4,7 @@ import {
   DEMOLISH,
   HYDRA,
   THROWN_ARTIFACT,
-} from '@schemetwister/schemetwister-series-marvel-common';
+} from '@schemetwister/series-marvel-common';
 
 import { FOES_OF_ASGARD } from '../../teams';
 

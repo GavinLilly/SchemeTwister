@@ -1,7 +1,4 @@
-import {
-  mainline,
-  marvelSeries,
-} from '@schemetwister/schemetwister-series-marvel';
+import { mainline, marvelSeries } from '@schemetwister/series-marvel';
 
 import { IGameSetsState } from '../reducers/game-sets.reducer';
 

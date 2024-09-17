@@ -1,5 +1,5 @@
 import { MastermindWithEpic } from '@schemetwister/libtwister';
-import { DANGER_SENSE } from '@schemetwister/schemetwister-series-marvel-common';
+import { DANGER_SENSE } from '@schemetwister/series-marvel-common';
 
 import { STRIKER } from './spidermanHomecoming.keywords';
 import { META } from './spidermanHomecoming.meta';

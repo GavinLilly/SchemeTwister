@@ -1,9 +1,5 @@
 import { Hero } from '@schemetwister/libtwister';
-import {
-  AVENGERS,
-  DODGE,
-  SHIELD,
-} from '@schemetwister/schemetwister-series-marvel-common';
+import { AVENGERS, DODGE, SHIELD } from '@schemetwister/series-marvel-common';
 
 import { MARVEL_KNIGHTS } from '../../teams';
 import { WHEN_RECRUITED } from '../realmOfKings/realmOfKings.keywords';
