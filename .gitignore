@@ -53,6 +53,7 @@ Thumbs.db
 # Angular/NX cache
 /.angular/cache
 /.nx/cache
+.nx/workspace-data
 
 /apps/web-app/src/environments/environment.local.ts
 

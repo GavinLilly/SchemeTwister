@@ -33,7 +33,10 @@
         "eslint:recommended",
         "plugin:import/recommended"
       ],
-      "rules": {}
+      "rules": {
+        "@typescript-eslint/no-extra-semi": "error",
+        "no-extra-semi": "off"
+      }
     },
     {
       "files": ["*.ts", "*.tsx"],
@@ -108,7 +111,9 @@
             "max": 2
           }
         ],
-        "eqeqeq": ["error", "smart"]
+        "eqeqeq": ["error", "smart"],
+        "@typescript-eslint/no-extra-semi": "error",
+        "no-extra-semi": "off"
       }
     },
     {

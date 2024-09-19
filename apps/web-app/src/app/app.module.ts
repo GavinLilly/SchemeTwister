@@ -1,4 +1,7 @@
-import { HttpClientModule } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore } from '@angular/fire/firestore';
@@ -37,25 +40,20 @@ const serviceWorkerRegistrationTime = 30 * 1000;
 
 @NgModule({
   declarations: [AppComponent],
+  bootstrap: [AppComponent],
   imports: [
     // Angular
     BrowserModule,
-    HttpClientModule,
-
     // Bootstrap
     NgbModule,
-
     // Icons
     FontAwesomeModule,
-
     // NGRX
     EffectsModule.forRoot(),
-
     // Schemetwister
     AppRoutingModule,
     WebAppUiModule,
     WebAppFeatureStoreModule,
-
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: [EnvironmentType.PROD, EnvironmentType.TEST].includes(
         environment.environmentType
@@ -70,11 +68,9 @@ const serviceWorkerRegistrationTime = 30 * 1000;
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => {
       const firestore = getFirestore();
-
       if (environment.environmentType === EnvironmentType.DEV) {
         connectFirestoreEmulator(firestore, 'localhost', 8080);
       }
-
       return firestore;
     }),
     UpdateService,
@@ -86,7 +82,7 @@ const serviceWorkerRegistrationTime = 30 * 1000;
       provide: SERIES_REGISTER_TOKEN,
       useValue: seriesRegister,
     },
+    provideHttpClient(withInterceptorsFromDi()),
   ],
-  bootstrap: [AppComponent],
 })
 export class AppModule {}
