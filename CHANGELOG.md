@@ -1,3 +1,10 @@
+## [3.18.7](https://github.com/GavinLilly/SchemeTwister/compare/v3.18.6...v3.18.7) (2024-09-19)
+
+
+### Dependencies
+
+* **deps:** update to Angular 18 ([f065fb3](https://github.com/GavinLilly/SchemeTwister/commit/f065fb3d2c83cde6034f16f5656b38a08510b86b))
+
 ## [3.18.6](https://github.com/GavinLilly/SchemeTwister/compare/v3.18.5...v3.18.6) (2024-09-17)
 
 
