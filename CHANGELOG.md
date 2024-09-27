@@ -1,3 +1,15 @@
+## [3.19.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.19.0...v3.19.1) (2024-09-27)
+
+### Dependencies
+
+* **deps:** bump rollup and @angular-devkit/build-angular ([#186](https://github.com/GavinLilly/SchemeTwister/issues/186)) ([abde91e](https://github.com/GavinLilly/SchemeTwister/commit/abde91ebb1a6b76be01b558cea9816b2fba1a829))
+
+## [3.19.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.18.7...v3.19.0) (2024-09-27)
+
+### Features
+
+* **app:** don't randomize on locking scheme or mastermind ([d2bd971](https://github.com/GavinLilly/SchemeTwister/commit/d2bd971cc7e9750ddc76d5c7e5a37800a8b8294f))
+
 ## [3.18.7](https://github.com/GavinLilly/SchemeTwister/compare/v3.18.6...v3.18.7) (2024-09-19)
 
 
