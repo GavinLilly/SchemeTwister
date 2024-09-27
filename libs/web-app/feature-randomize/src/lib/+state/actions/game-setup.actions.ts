@@ -14,8 +14,10 @@ export const randomizePageActions = createActionGroup({
   events: {
     'Generate GameSetup': emptyProps(),
     'Set Defined Scheme': props<{ scheme: SchemeMinusRules }>(),
+    'Lock Scheme': props<{ scheme: SchemeMinusRules }>(),
     'Reset Defined Scheme': emptyProps(),
     'Set Defined Mastermind': props<{ mastermind: Mastermind }>(),
+    'Lock Mastermind': emptyProps(),
     'Reset Defined Mastermind': emptyProps(),
     'Reset all': emptyProps(),
   },

@@ -59,8 +59,6 @@ export class GameSetupEffects {
         randomizePageActions.generateGameSetup,
         randomizePageActions.setDefinedScheme,
         randomizePageActions.setDefinedMastermind,
-        randomizePageActions.resetDefinedScheme,
-        randomizePageActions.resetDefinedMastermind,
         numPlayersActions.setNumberOfPlayers,
         numPlayersActions.incrementNumberOfPlayers,
         numPlayersActions.decrementNumberOfPlayers,

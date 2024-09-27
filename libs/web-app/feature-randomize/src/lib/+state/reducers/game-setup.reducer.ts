@@ -72,6 +72,14 @@ const _gameSetupReducer = createReducer(
     ...state,
     definedMastermind: mastermind,
   })),
+  on(randomizePageActions.lockMastermind, (state) => ({
+    ...state,
+    definedMastermind: state.gameSetup.mastermind,
+  })),
+  on(randomizePageActions.lockScheme, (state, { scheme }) => ({
+    ...state,
+    definedScheme: scheme,
+  })),
   on(randomizePageActions.resetDefinedScheme, (state) => ({
     ...state,
     definedScheme: undefined,

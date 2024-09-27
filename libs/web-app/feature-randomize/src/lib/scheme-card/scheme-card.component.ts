@@ -83,11 +83,15 @@ export class SchemeCardComponent {
   }
 
   dispatchLocked(lockedScheme: Scheme) {
-    const item = this._availableCards().find(
+    const scheme = this._availableCards().find(
       (card) => card.id === lockedScheme.id
     );
 
-    this._dispatch(item);
+    if (scheme !== undefined) {
+      this._store.dispatch(randomizePageActions.lockScheme({ scheme }));
+    } else {
+      this.dispatchReset();
+    }
   }
 
   dispatchReset = () =>
@@ -106,18 +110,12 @@ export class SchemeCardComponent {
   }
 
   private _handleChosenItem(receivedScheme: string | undefined) {
-    const item = this._availableCards().find(
+    const scheme = this._availableCards().find(
       (card) => card.id === receivedScheme
     );
 
-    this._dispatch(item);
-  }
-
-  private _dispatch(scheme?: SchemeMinusRules) {
     if (scheme !== undefined) {
-      this._store.dispatch(
-        randomizePageActions.setDefinedScheme({ scheme: scheme })
-      );
+      this._store.dispatch(randomizePageActions.setDefinedScheme({ scheme }));
     } else {
       this.dispatchReset();
     }

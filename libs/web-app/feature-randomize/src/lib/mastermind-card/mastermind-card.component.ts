@@ -89,13 +89,8 @@ export class MastermindCardComponent {
     );
   }
 
-  dispatchLocked(lockedScheme: MastermindType) {
-    const item = this._availableCards().find(
-      (card) => card.id === lockedScheme.id
-    );
-
-    this._dispatch(item);
-  }
+  dispatchLocked = () =>
+    this._store.dispatch(randomizePageActions.lockMastermind());
 
   dispatchReset = () =>
     this._store.dispatch(randomizePageActions.resetDefinedMastermind());
@@ -105,13 +100,9 @@ export class MastermindCardComponent {
       (card) => card.id === receivedMastermind
     );
 
-    this._dispatch(item);
-  }
-
-  private _dispatch(mastermind?: MastermindType) {
-    if (mastermind !== undefined) {
+    if (item !== undefined) {
       this._store.dispatch(
-        randomizePageActions.setDefinedMastermind({ mastermind: mastermind })
+        randomizePageActions.setDefinedMastermind({ mastermind: item })
       );
     } else {
       this.dispatchReset();
