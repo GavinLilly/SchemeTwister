@@ -15,7 +15,7 @@ export class RequireVillainAndHeroWithBackupInVillainDeckScheme extends RequireC
   constructor(
     scheme: SchemeMinusRules,
     requiredVillain: RequireCard<VillainGroup>,
-    private _requiredHero: RequireCardWithBackup<Hero>
+    private readonly _requiredHero: RequireCardWithBackup<Hero>
   ) {
     super(
       scheme,

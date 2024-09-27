@@ -88,7 +88,7 @@ export class MastermindStore extends CardStore<MastermindType> {
    * @param cardId the ID of an epic mastermind
    * @returns the reverse side of the card
    */
-  private _getStandardCardFromEpicId = (cardId: string) =>
+  private readonly _getStandardCardFromEpicId = (cardId: string) =>
     this.allCards
       .filter((mastermind) => mastermind instanceof MastermindWithEpic)
       .filter((mastermind): mastermind is MastermindWithEpic => !!mastermind)

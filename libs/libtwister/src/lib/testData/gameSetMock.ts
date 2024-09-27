@@ -221,7 +221,7 @@ export class GameSetMock {
     return schemes;
   }
 
-  private _buildPartialCard = <T extends AbstractCardGroup>(
+  private readonly _buildPartialCard = <T extends AbstractCardGroup>(
     cardType: string,
     num: number
   ): Pick<T, 'id' | 'name' | 'gameSet'> => ({
@@ -230,8 +230,10 @@ export class GameSetMock {
     gameSet: this._meta,
   });
 
-  private _buildFightable = <T extends AbstractFightableCardGroup>(): Pick<
-    T,
-    'attackPoints' | 'victoryPoints'
-  > => ({ attackPoints: randomInteger(10), victoryPoints: randomInteger(10) });
+  private readonly _buildFightable = <
+    T extends AbstractFightableCardGroup
+  >(): Pick<T, 'attackPoints' | 'victoryPoints'> => ({
+    attackPoints: randomInteger(10),
+    victoryPoints: randomInteger(10),
+  });
 }

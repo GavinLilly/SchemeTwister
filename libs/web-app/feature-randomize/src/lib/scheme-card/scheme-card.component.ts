@@ -34,11 +34,11 @@ import {
   styleUrls: ['./scheme-card.component.scss'],
 })
 export class SchemeCardComponent {
-  private _libTwister = this._store.selectSignal(
+  private readonly _libTwister = this._store.selectSignal(
     selectLibTwister(this._seriesRegister)
   );
 
-  private _availableCards = computed(
+  private readonly _availableCards = computed(
     () => this._libTwister().schemeFactory.availableCards
   );
 
@@ -53,12 +53,12 @@ export class SchemeCardComponent {
   faCog = faCog;
 
   constructor(
-    private _modalService: NgbModal,
-    private _store: Store<{
+    private readonly _modalService: NgbModal,
+    private readonly _store: Store<{
       gameSetup: IGameSetupState;
       numPlayers: INumPlayersState;
     }>,
-    @Inject(SERIES_REGISTER_TOKEN) private _seriesRegister: ISeries[]
+    @Inject(SERIES_REGISTER_TOKEN) private readonly _seriesRegister: ISeries[]
   ) {}
 
   pickScheme() {

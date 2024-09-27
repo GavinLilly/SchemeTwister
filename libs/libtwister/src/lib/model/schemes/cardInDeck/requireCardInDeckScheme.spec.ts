@@ -80,9 +80,7 @@ describe('Require Henchmen', () => {
 
       expect(setup.additionalDecks[0].deck.henchmen).toBeDefined();
 
-      expect(setup.additionalDecks[0].deck.henchmen!).toContain(
-        TEST_HENCHMEN_1
-      );
+      expect(setup.additionalDecks[0].deck.henchmen).toContain(TEST_HENCHMEN_1);
     });
   });
 });

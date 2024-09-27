@@ -14,9 +14,9 @@ export class RequireCardName<TCard extends AbstractCardGroup>
     shouldRemoveOthers: boolean
   );
   constructor(
-    private _cardName: string,
-    private _numberRequired = 1,
-    private _shouldRemoveOthers = false
+    private readonly _cardName: string,
+    private readonly _numberRequired = 1,
+    private readonly _shouldRemoveOthers = false
   ) {}
 
   getRequiredCard(store: CardStore<TCard>): TCard | TCard[] {

@@ -50,13 +50,13 @@ export class RandomizeComponent implements OnInit {
   numPlayerOptions = numPlayers;
 
   constructor(
-    private _modalService: NgbModal,
-    private _store: Store<{
+    private readonly _modalService: NgbModal,
+    private readonly _store: Store<{
       numPlayers: INumPlayersState;
       gameSetup: IGameSetupState;
     }>,
     meta: Meta,
-    private _screenOnLockStore: ScreenOnLockStore
+    private readonly _screenOnLockStore: ScreenOnLockStore
   ) {
     const deckAsNameString = (cards: Set<AbstractCardGroup>) =>
       Array.from(cards)

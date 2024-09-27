@@ -8,7 +8,7 @@ import { IRequireCardBehaviour } from './requireCardBehaviour.interface';
 export class RequireKeyword<TCard extends AbstractCardGroup>
   implements IRequireCardBehaviour<TCard>
 {
-  constructor(private _keyword: IKeyword) {}
+  constructor(private readonly _keyword: IKeyword) {}
 
   getRequiredCard(store: CardStore<TCard>): TCard | TCard[] {
     const applicableCards = store.availableCards.filter((card) =>

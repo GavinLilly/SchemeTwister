@@ -7,7 +7,7 @@ import { UpdateService } from './update.service';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  constructor(private _sw: UpdateService) {
+  constructor(private readonly _sw: UpdateService) {
     // check the service worker for updates
   }
 }

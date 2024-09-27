@@ -19,8 +19,8 @@ export class EpicMastermind extends Mastermind {
 
 export class MastermindWithEpic extends Mastermind {
   constructor(
-    private _normalMastermindConfig: IMastermind,
-    private _epicMastermindConfig: MastermindWithEpicConfig
+    private readonly _normalMastermindConfig: IMastermind,
+    private readonly _epicMastermindConfig: MastermindWithEpicConfig
   ) {
     super(_normalMastermindConfig);
   }

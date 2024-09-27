@@ -150,13 +150,13 @@ export class GameSetupEffects {
   );
 
   constructor(
-    private _actions$: Actions,
-    private _store: Store<{
+    private readonly _actions$: Actions,
+    private readonly _store: Store<{
       gameSets: IGameSetsState;
       numPlayers: INumPlayersState;
       gameSetup: IGameSetupState;
     }>,
-    private _storedSetupsService: StoredSetupsService,
-    @Inject(SERIES_REGISTER_TOKEN) private _seriesRegister: ISeries[]
+    private readonly _storedSetupsService: StoredSetupsService,
+    @Inject(SERIES_REGISTER_TOKEN) private readonly _seriesRegister: ISeries[]
   ) {}
 }

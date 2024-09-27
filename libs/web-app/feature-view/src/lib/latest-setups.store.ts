@@ -19,7 +19,7 @@ const initialState: LatestSetupsStoreState = {
 
 @Injectable()
 export class LatestSetupsStore extends ComponentStore<LatestSetupsStoreState> {
-  constructor(private _storedSetupsService: StoredSetupsService) {
+  constructor(private readonly _storedSetupsService: StoredSetupsService) {
     super(initialState);
   }
 

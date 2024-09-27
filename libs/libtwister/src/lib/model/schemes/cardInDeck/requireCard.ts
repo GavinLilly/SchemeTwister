@@ -7,7 +7,7 @@ import { IRequireCardBehaviour } from './requireCardBehaviour.interface';
 export class RequireCard<TCard extends AbstractCardGroup>
   implements IRequireCardBehaviour<TCard>
 {
-  private _availableCards: TCard[];
+  private readonly _availableCards: TCard[];
 
   constructor(required: TCard);
   constructor(firstCard: TCard, numberRequired: number);
@@ -19,8 +19,8 @@ export class RequireCard<TCard extends AbstractCardGroup>
   );
   constructor(
     firstCard: TCard,
-    private _numberRequired = 1,
-    private _shouldRemoveOthers = false,
+    private readonly _numberRequired = 1,
+    private readonly _shouldRemoveOthers = false,
     ...extraCards: TCard[]
   ) {
     this._availableCards = [firstCard];

@@ -63,7 +63,7 @@ export class LiteGameSetup {
    * @param twister The LibTwister instance to search within
    * @returns An array of card groups
    */
-  private static _getById = <T extends AbstractCardGroup>(
+  private static readonly _getById = <T extends AbstractCardGroup>(
     ids: string[],
     twister: LibTwister
   ): T[] =>

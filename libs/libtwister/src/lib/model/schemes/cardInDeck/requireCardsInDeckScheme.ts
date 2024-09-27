@@ -29,7 +29,7 @@ export interface IRequireCardsInDeckSchemeConfig {
 export class RequireCardsInDeckScheme extends Scheme {
   constructor(
     scheme: SchemeMinusRules,
-    private _config: IRequireCardsInDeckSchemeConfig
+    private readonly _config: IRequireCardsInDeckSchemeConfig
   ) {
     super(scheme);
   }

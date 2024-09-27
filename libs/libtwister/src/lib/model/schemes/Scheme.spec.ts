@@ -1,3 +1,5 @@
+import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
+
 import { StoreBuilder, StoreOfStores } from '../../factories';
 import { GameSetMock } from '../../testData/gameSetMock';
 import { TEST_GAME_SET_1, TEST_GAME_SET_2 } from '../../testData/gameSets';
@@ -188,10 +190,7 @@ describe('Scheme', () => {
 
       expect(additionalSetup.additionalDecks).toHaveLength(1);
       expect(additionalSetup.additionalDecks[0].deck).toBeTruthy();
-      expect(
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        Array.from(additionalSetup.additionalDecks[0].deck.heroes!)
-      ).toHaveLength(1);
+      expect(additionalSetup.additionalDecks[0].deck.heroes).toHaveLength(1);
     });
 
     it('should put 1 henchmen in the hero deck', () => {

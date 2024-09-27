@@ -26,7 +26,7 @@ export class GameSetsEffects implements OnInitEffects {
         this._store.select(selectLibTwister(this._seriesRegister))
       ),
       map(([gameSetIds, libTwister]) =>
-        this._mapIdsToResult(libTwister, gameSetIds)
+        GameSetsEffects._mapIdsToResult(libTwister, gameSetIds)
       )
     )
   );
@@ -40,7 +40,7 @@ export class GameSetsEffects implements OnInitEffects {
         this._store.select(selectLibTwister(this._seriesRegister))
       ),
       map(([gameSetIds, libTwister]) =>
-        this._mapIdsToResult(libTwister, gameSetIds)
+        GameSetsEffects._mapIdsToResult(libTwister, gameSetIds)
       )
     )
   );
@@ -56,7 +56,7 @@ export class GameSetsEffects implements OnInitEffects {
         this._store.select(selectLibTwister(this._seriesRegister))
       ),
       map(([gameSetIds, libTwister]) =>
-        this._mapIdsToResult(libTwister, gameSetIds)
+        GameSetsEffects._mapIdsToResult(libTwister, gameSetIds)
       )
     )
   );
@@ -82,11 +82,11 @@ export class GameSetsEffects implements OnInitEffects {
   );
 
   constructor(
-    private _actions$: Actions,
-    private _store: Store<{
+    private readonly _actions$: Actions,
+    private readonly _store: Store<{
       gameSets: IGameSetsState;
     }>,
-    @Inject(SERIES_REGISTER_TOKEN) private _seriesRegister: ISeries[]
+    @Inject(SERIES_REGISTER_TOKEN) private readonly _seriesRegister: ISeries[]
   ) {}
 
   ngrxOnInitEffects(): Action {
@@ -108,7 +108,10 @@ export class GameSetsEffects implements OnInitEffects {
     return [...firstSection, ...secondSection];
   }
 
-  private _mapIdsToResult = (libTwister: LibTwister, gameSetIds: string[]) =>
+  private static readonly _mapIdsToResult = (
+    libTwister: LibTwister,
+    gameSetIds: string[]
+  ) =>
     libTwister.validateGameSetIds(gameSetIds)
       ? gameSetCheckerActions.setGameSetsSuccess({
           gameSetIds,

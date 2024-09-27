@@ -16,11 +16,12 @@ import {
   templateUrl: './game-set-select.component.html',
 })
 export class GameSetSelectComponent {
-  private _libTwister = this._store.selectSignal(
+  private readonly _libTwister = this._store.selectSignal(
     selectLibTwister(this._seriesRegister)
   );
-  private _selectedGameSetIds = this._store.selectSignal(selectGameSetIds);
-  private _allGameSets: GameSet[] = this._libTwister()
+  private readonly _selectedGameSetIds =
+    this._store.selectSignal(selectGameSetIds);
+  private readonly _allGameSets: GameSet[] = this._libTwister()
     .allGameSets.asArray()
     .toSorted((a, b) => GameSet.sorter(a, b));
 
@@ -49,8 +50,8 @@ export class GameSetSelectComponent {
 
   constructor(
     public activeModal: NgbActiveModal,
-    private _store: Store<{ gameSets: IGameSetsState }>,
-    @Inject(SERIES_REGISTER_TOKEN) private _seriesRegister: ISeries[]
+    private readonly _store: Store<{ gameSets: IGameSetsState }>,
+    @Inject(SERIES_REGISTER_TOKEN) private readonly _seriesRegister: ISeries[]
   ) {}
 
   onSelectedUpdate(selected: GameSet[]) {

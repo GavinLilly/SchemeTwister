@@ -17,9 +17,9 @@ export class RequireCardInDeckScheme<
 > extends Scheme {
   constructor(
     scheme: SchemeMinusRules,
-    private _requireCard: IRequireCardBehaviour<TCard>,
-    private _requireCardType: IRequireCardTypeBehaviour<TCard>,
-    private _deck: DeckType
+    private readonly _requireCard: IRequireCardBehaviour<TCard>,
+    private readonly _requireCardType: IRequireCardTypeBehaviour<TCard>,
+    private readonly _deck: DeckType
   ) {
     super(scheme);
   }

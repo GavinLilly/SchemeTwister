@@ -32,7 +32,7 @@ export class VillainDeckComponent {
   faLockOpen = faLockOpen;
 
   constructor(
-    private _store: Store<{
+    private readonly _store: Store<{
       gameSetup: IGameSetupState;
     }>
   ) {}

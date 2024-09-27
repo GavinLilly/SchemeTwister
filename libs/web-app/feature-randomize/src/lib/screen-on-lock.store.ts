@@ -25,9 +25,11 @@ export class ScreenOnLockStore
   // eslint-disable-next-line no-undef
   private _screenLockSentinel?: WakeLockSentinel = undefined;
 
-  private _localStorageUpdateSub: Subscription;
+  private readonly _localStorageUpdateSub: Subscription;
 
-  constructor(private _screenOnStorageService: LocalStorageService<boolean>) {
+  constructor(
+    private readonly _screenOnStorageService: LocalStorageService<boolean>
+  ) {
     super(initialState);
 
     const isLocked = _screenOnStorageService.get(IS_LOCKED_KEY);

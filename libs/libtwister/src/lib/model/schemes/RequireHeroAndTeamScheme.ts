@@ -13,10 +13,10 @@ import {
 export class RequireHeroAndTeamScheme extends RequireCardInDeckScheme<Hero> {
   constructor(
     scheme: SchemeMinusRules,
-    private _requiredHero: Hero,
-    private _requiredTeam: ITeam,
-    private _numFromRequiredTeam: number,
-    private _numNotFromRequiredTeam: number
+    private readonly _requiredHero: Hero,
+    private readonly _requiredTeam: ITeam,
+    private readonly _numFromRequiredTeam: number,
+    private readonly _numNotFromRequiredTeam: number
   ) {
     super(
       scheme,

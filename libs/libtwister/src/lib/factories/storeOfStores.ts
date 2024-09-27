@@ -5,10 +5,10 @@ import { CardStore } from './cardStore';
 import { MastermindStore, MastermindType } from './mastermindStore';
 
 export class StoreOfStores {
-  private _mastermindStore!: CardStore<MastermindType>;
-  private _heroStore!: CardStore<Hero>;
-  private _villainStore!: CardStore<VillainGroup>;
-  private _henchmenStore!: CardStore<Henchmen>;
+  private readonly _mastermindStore!: CardStore<MastermindType>;
+  private readonly _heroStore!: CardStore<Hero>;
+  private readonly _villainStore!: CardStore<VillainGroup>;
+  private readonly _henchmenStore!: CardStore<Henchmen>;
 
   constructor(
     heroes: Hero[],

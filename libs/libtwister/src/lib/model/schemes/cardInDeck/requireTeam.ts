@@ -6,7 +6,7 @@ import { ITeam } from '../../interfaces/team.interface';
 import { IRequireCardBehaviour } from './requireCardBehaviour.interface';
 
 export class RequireTeam implements IRequireCardBehaviour<Hero> {
-  constructor(private _team: ITeam) {}
+  constructor(private readonly _team: ITeam) {}
 
   getRequiredCard(store: CardStore<Hero>): Hero | Hero[] {
     const teamHeroes = store.availableCards.filter(

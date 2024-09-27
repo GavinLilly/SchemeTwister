@@ -11,9 +11,7 @@ RUN npm install --ignore-scripts
 ARG node_env=production
 ENV NODE_ENV ${node_env}
 
-RUN npm run build-version
-
-RUN npm run build web-app
+RUN npm run build-version && npm run build web-app
 
 
 FROM nginx:alpine AS runtime

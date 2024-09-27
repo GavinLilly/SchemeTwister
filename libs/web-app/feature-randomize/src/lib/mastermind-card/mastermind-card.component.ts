@@ -34,11 +34,11 @@ type MastermindType = Mastermind | TransformingMastermind | AdaptingMastermind;
   styleUrls: ['./mastermind-card.component.scss'],
 })
 export class MastermindCardComponent {
-  private _libTwister = this._store.selectSignal(
+  private readonly _libTwister = this._store.selectSignal(
     selectLibTwister(this._seriesRegister)
   );
 
-  private _availableCards = computed(
+  private readonly _availableCards = computed(
     () => this._libTwister().stores.mastermindStore.availableCards
   );
 
@@ -54,11 +54,11 @@ export class MastermindCardComponent {
   faCog = faCog;
 
   constructor(
-    private _modalService: NgbModal,
-    private _store: Store<{
+    private readonly _modalService: NgbModal,
+    private readonly _store: Store<{
       gameSetup: IGameSetupState;
     }>,
-    @Inject(SERIES_REGISTER_TOKEN) private _seriesRegister: ISeries[]
+    @Inject(SERIES_REGISTER_TOKEN) private readonly _seriesRegister: ISeries[]
   ) {}
 
   pickMastermind() {
