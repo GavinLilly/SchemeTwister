@@ -1,3 +1,9 @@
+## [3.19.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.19.0...v3.19.1) (2024-09-27)
+
+### Dependencies
+
+* **deps:** bump rollup and @angular-devkit/build-angular ([#186](https://github.com/GavinLilly/SchemeTwister/issues/186)) ([abde91e](https://github.com/GavinLilly/SchemeTwister/commit/abde91ebb1a6b76be01b558cea9816b2fba1a829))
+
 ## [3.19.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.18.7...v3.19.0) (2024-09-27)
 
 ### Features
