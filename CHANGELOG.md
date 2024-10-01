@@ -1,3 +1,9 @@
+## [3.19.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.19.1...v3.19.2) (2024-10-01)
+
+### Dependencies
+
+* **deps:** bump basic-auth-connect from 1.0.0 to 1.1.0 ([d339aa8](https://github.com/GavinLilly/SchemeTwister/commit/d339aa8697c3fe0b5623a6382b40ad8ad5043577))
+
 ## [3.19.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.19.0...v3.19.1) (2024-09-27)
 
 ### Dependencies
