@@ -1,3 +1,9 @@
+## [3.19.3](https://github.com/GavinLilly/SchemeTwister/compare/v3.19.2...v3.19.3) (2024-10-24)
+
+### Dependencies
+
+* **deps:** bump cookie and express ([#188](https://github.com/GavinLilly/SchemeTwister/issues/188)) ([e71aac9](https://github.com/GavinLilly/SchemeTwister/commit/e71aac946b9524562199228a82d81fe64f278aa8))
+
 ## [3.19.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.19.1...v3.19.2) (2024-10-01)
 
 ### Dependencies
