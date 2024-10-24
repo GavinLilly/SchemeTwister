@@ -1,3 +1,9 @@
+## [3.19.4](https://github.com/GavinLilly/SchemeTwister/compare/v3.19.3...v3.19.4) (2024-10-24)
+
+### Dependencies
+
+* **deps:** bump http-proxy-middleware and @angular-devkit/build-angular ([#189](https://github.com/GavinLilly/SchemeTwister/issues/189)) ([cd4fa4e](https://github.com/GavinLilly/SchemeTwister/commit/cd4fa4e272225656b241749e5c0bed2dc62c2a82))
+
 ## [3.19.3](https://github.com/GavinLilly/SchemeTwister/compare/v3.19.2...v3.19.3) (2024-10-24)
 
 ### Dependencies
