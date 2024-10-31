@@ -1,3 +1,9 @@
+## [3.19.5](https://github.com/GavinLilly/SchemeTwister/compare/v3.19.4...v3.19.5) (2024-10-31)
+
+### Performance Improvements
+
+* **app:** remove wait for reloading on app update ([b2335d7](https://github.com/GavinLilly/SchemeTwister/commit/b2335d789b6a164ba02abdf19cab304eeb439c5b))
+
 ## [3.19.4](https://github.com/GavinLilly/SchemeTwister/compare/v3.19.3...v3.19.4) (2024-10-24)
 
 ### Dependencies
