@@ -51,7 +51,7 @@ import {
 
 @Injectable()
 export class GameSetupEffects {
-  private static _storeSendWaitSeconds = 5;
+  private static readonly _storeSendWaitSeconds = 5;
 
   readonly generateGameSetup$ = createEffect(() =>
     this._actions$.pipe(

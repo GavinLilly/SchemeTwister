@@ -3,8 +3,6 @@ import { SwUpdate } from '@angular/service-worker';
 
 @Injectable()
 export class UpdateService {
-  private static readonly _reloadTimeout = 5;
-
   constructor(_updates: SwUpdate) {
     if (_updates.isEnabled) {
       console.log(
@@ -21,10 +19,8 @@ export class UpdateService {
             console.log(
               `New app version ready for use: ${evt.latestVersion.hash}`
             );
-            console.log(`Reloading in ${UpdateService._reloadTimeout} seconds`);
-            setTimeout(() => {
-              window.location.reload();
-            }, UpdateService._reloadTimeout * 1000);
+            console.log(`Reloading now...`);
+            window.location.reload();
             break;
           case 'VERSION_INSTALLATION_FAILED':
             console.log(
