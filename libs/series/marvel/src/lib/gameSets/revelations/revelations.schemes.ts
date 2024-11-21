@@ -49,7 +49,7 @@ export const HOUSE_OF_M = new SchemeDefinition({
     },
     overrideScheme: {
       schemeType: RequireHeroAndTeamScheme,
-      params: [SCARLET_WITCH, X_MEN],
+      params: [SCARLET_WITCH, X_MEN, 4, 2],
     },
   },
   gameSet: META,
