@@ -1,3 +1,9 @@
+## [3.19.6](https://github.com/GavinLilly/SchemeTwister/compare/v3.19.5...v3.19.6) (2024-11-21)
+
+### Bug Fixes
+
+* **gamesets:** set correct heroes for House of M scheme ([efe160b](https://github.com/GavinLilly/SchemeTwister/commit/efe160baadb3f754ae34b4e44fb8a7b320814eb8))
+
 ## [3.19.5](https://github.com/GavinLilly/SchemeTwister/compare/v3.19.4...v3.19.5) (2024-10-31)
 
 ### Performance Improvements
