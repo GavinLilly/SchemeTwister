@@ -65,7 +65,7 @@
     "class-transformer": "^0.5.1",
     "genversion": "^3.1.1",
     "glob": "^10.3.10",
-    "nanoid": "^3.3.6",
+    "nanoid": "^3.3.8",
     "ngrx-store-localstorage": "^18.0.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "7.8.1",
