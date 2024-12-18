@@ -1,5 +1,5 @@
 import { Hero } from '@schemetwister/libtwister';
-import { AVENGERS } from '@schemetwister/schemetwister-series-marvel-common';
+import { AVENGERS } from '@schemetwister/series-marvel-common';
 
 import { MARVEL_KNIGHTS, X_FORCE } from '../../teams';
 import { BERSERK } from '../xMen/xMen.keywords';
