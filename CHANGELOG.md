@@ -1,3 +1,9 @@
+## [3.20.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.20.1...v3.20.2) (2024-12-18)
+
+### Dependencies
+
+* **deps:** bump nanoid from 3.3.7 to 3.3.8 ([d786bef](https://github.com/GavinLilly/SchemeTwister/commit/d786bef98eb7ccc95321ae5dcc6d7426fd225db9))
+
 ## [3.20.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.20.0...v3.20.1) (2024-12-18)
 
 ### Dependencies
