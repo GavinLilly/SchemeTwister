@@ -5,3 +5,4 @@ export { Scheme, ISetupConfigWithStore } from './Scheme';
 export { SoloBannedScheme } from './SoloBannedScheme';
 export { RequireVillainAndHeroWithBackupInVillainDeckScheme } from './RequireVillainAndHeroWithBackupInVillainDeck.Scheme';
 export { RequireHeroAndTeamScheme } from './RequireHeroAndTeamScheme';
+export { RequireUniqueHeroesScheme } from './RequireUniqueHeroes.scheme';

@@ -1,5 +1,6 @@
+import { GameSetup } from '../model';
 import { Henchmen, Hero, VillainGroup } from '../model/cards';
-import { ICardType, IPlayableObject } from '../model/interfaces';
+import { ICardType, IGameSetup, IPlayableObject } from '../model/interfaces';
 
 import { CardStore } from './cardStore';
 import { MastermindStore, MastermindType } from './mastermindStore';
@@ -82,5 +83,25 @@ export class StoreOfStores {
     }
 
     return undefined;
+  }
+
+  public resetForSetup(setup: IGameSetup) {
+    const gameSetup = new GameSetup(setup);
+
+    for (const card of gameSetup.getSelectedHeroes()) {
+      this._heroStore.resetCard(card);
+    }
+
+    for (const card of gameSetup.getSelectedVillains()) {
+      this._villainStore.resetCard(card);
+    }
+
+    for (const card of gameSetup.getSelectedHenchmen()) {
+      this._henchmenStore.resetCard(card);
+    }
+
+    for (const card of gameSetup.getSelectedMasterminds()) {
+      this._mastermindStore.resetCard(card);
+    }
   }
 }
