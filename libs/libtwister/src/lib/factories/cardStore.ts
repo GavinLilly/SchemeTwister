@@ -118,6 +118,11 @@ export class CardStore<
     this._excludedCardsForSetup.clear();
   }
 
+  public resetCard(card: TCard) {
+    this._pickedCards.delete(card.id);
+    this._excludedCardsForSetup.delete(card.id);
+  }
+
   /**
    * Removes the given card ID from the list of available cards
    * @param id the id of the card to remove
