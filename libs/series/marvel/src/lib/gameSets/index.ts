@@ -29,3 +29,4 @@ export * as THREE_D from './threeD';
 export * as VENOM from './venom';
 export * as WORLD_WAR_HULK from './worldWarHulk';
 export * as XMEN from './xMen';
+export * as WEAPON_X from './weaponX';

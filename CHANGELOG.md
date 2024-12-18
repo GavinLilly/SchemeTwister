@@ -1,3 +1,9 @@
+## [3.20.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.19.6...v3.20.0) (2024-12-18)
+
+### Features
+
+* **gamesets:** add Weapon X ([f9d69bd](https://github.com/GavinLilly/SchemeTwister/commit/f9d69bde75ec823211d18b9baf908f7834bd641a))
+
 ## [3.19.6](https://github.com/GavinLilly/SchemeTwister/compare/v3.19.5...v3.19.6) (2024-11-21)
 
 ### Bug Fixes

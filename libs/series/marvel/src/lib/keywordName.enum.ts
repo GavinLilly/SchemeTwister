@@ -13,6 +13,8 @@ export enum KeywordName {
 
   BERSERK = 'Berserk',
 
+  BERSERK_VILLAINS = 'Berserk Villains',
+
   BLOOD_FRENZY = 'Blood Frenzy',
 
   BRIBE = 'Bribe',
@@ -77,11 +79,15 @@ export enum KeywordName {
 
   ENDGAME = 'Endgame',
 
+  ENEMIES_WITH_WEAPON_X_SEQUENCE = 'Enemies with Weapon X Sequence',
+
   EXCESSIVE_KINDNESS = 'Excessive Kindness',
 
   EXCESSIVE_VIOLENCE = 'Excessive Violence',
 
   EXPLORE = 'Explore',
+
+  FAIL = 'Fail',
 
   FATEFUL_RESURRECTION = 'Fateful Resurrection',
 
@@ -206,6 +212,8 @@ export enum KeywordName {
   WAKING_NIGHTMARE = 'Waking Nightmare',
 
   WALL_CRAWL = 'Wall Crawl',
+
+  WEAPON_X_SEQUENCE = 'Weapon X Sequence',
 
   WHAT_IF = 'What If...?',
 
