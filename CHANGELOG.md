@@ -1,3 +1,9 @@
+## [3.20.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.20.0...v3.20.1) (2024-12-18)
+
+### Dependencies
+
+* **deps:** bump path-to-regexp and superstatic ([#190](https://github.com/GavinLilly/SchemeTwister/issues/190)) ([ca3eed8](https://github.com/GavinLilly/SchemeTwister/commit/ca3eed8a9fd078ce98c76811d25e0c30c0533350))
+
 ## [3.20.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.19.6...v3.20.0) (2024-12-18)
 
 ### Features
