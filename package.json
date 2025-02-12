@@ -156,7 +156,7 @@
     "type-fest": "^4.6.0",
     "typescript": "5.5.4",
     "vite": "^5.0.0",
-    "vitest": "1.5.3"
+    "vitest": "1.6.1"
   },
   "config": {
     "commitizen": {
