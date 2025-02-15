@@ -144,7 +144,7 @@
     "jest-preset-angular": "14.4.2",
     "jest-wake-lock-mock": "^1.1.0",
     "jsonc-parser": "^3.0.0",
-    "ng-mocks": "^14.13.1",
+    "ng-mocks": "^14.13.2",
     "nx": "20.4.4",
     "open": "^7.0.3",
     "prettier": "2.6.2",
