@@ -90,19 +90,23 @@ const _gameSetupReducer = createReducer(
   })),
   on(heroDeckActions.addCard, (state, { card }) => {
     if (card instanceof Hero) {
+      const heroes = new Set(state.lockedHeroDeck?.heroes ?? []);
+      heroes.add(card);
       return {
         ...state,
         lockedHeroDeck: {
           ...state.lockedHeroDeck,
-          heroes: [...(state.lockedHeroDeck?.heroes ?? []), card],
+          heroes: Array.from(heroes),
         },
       };
     } else if (card instanceof Henchmen) {
+      const henchmen = new Set(state.lockedHeroDeck?.henchmen ?? []);
+      henchmen.add(card);
       return {
         ...state,
         lockedHeroDeck: {
           ...state.lockedHeroDeck,
-          henchmen: [...(state.lockedHeroDeck?.henchmen ?? []), card],
+          henchmen: Array.from(henchmen),
         },
       };
     }
@@ -136,6 +140,10 @@ const _gameSetupReducer = createReducer(
 
     return state;
   }),
+  on(heroDeckActions.reset, (state) => ({
+    ...state,
+    lockedHeroDeck: undefined,
+  })),
   on(villainDeckActions.addCard, (state, { card }) => {
     if (card instanceof Hero) {
       return {

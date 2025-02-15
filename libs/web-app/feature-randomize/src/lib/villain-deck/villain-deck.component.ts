@@ -15,6 +15,7 @@ import {
   selectLockedVillainDeckCards,
   selectVillainDeck,
 } from '../+state/selectors/game-setup-scheme.selectors';
+import { BLANK_IMAGE_BASE64 } from '../constants';
 import { VillainAdditionalDeckCardType } from '../villainAdditionalDeckCard.type';
 
 @Component({
@@ -30,6 +31,7 @@ export class VillainDeckComponent {
 
   faLock = faLock;
   faLockOpen = faLockOpen;
+  blankImage = BLANK_IMAGE_BASE64;
 
   constructor(
     private readonly _store: Store<{

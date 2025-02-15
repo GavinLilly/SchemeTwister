@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IPlayableObject } from '@schemetwister/libtwister';
+import { INamedObject } from '@schemetwister/libtwister';
 
 @Pipe({
   name: 'sortByName',
   standalone: true,
 })
 export class SortByNamePipe implements PipeTransform {
-  transform(value?: IPlayableObject[]): IPlayableObject[] | undefined {
+  transform(value?: INamedObject[]): INamedObject[] | undefined {
     if (value === undefined) {
       return undefined;
     }
