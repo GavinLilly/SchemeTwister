@@ -6,10 +6,11 @@ import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import { LatestSetupsStore } from '../latest-setups.store';
 
 @Component({
-  selector: 'schemetwister-latest-setups',
-  templateUrl: './latest-setups.component.html',
-  styleUrls: ['./latest-setups.component.scss'],
-  providers: [LatestSetupsStore],
+    selector: 'schemetwister-latest-setups',
+    templateUrl: './latest-setups.component.html',
+    styleUrls: ['./latest-setups.component.scss'],
+    providers: [LatestSetupsStore],
+    standalone: false
 })
 export class LatestSetupsComponent {
   libTwister: LibTwister;
