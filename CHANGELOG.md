@@ -1,3 +1,9 @@
+## [3.21.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.20.2...v3.21.0) (2025-02-15)
+
+### Features
+
+* **app:** allow selection of heroes in hero deck ([a95d198](https://github.com/GavinLilly/SchemeTwister/commit/a95d198d9f297f4a92875f3a0391e7f455de0761))
+
 ## [3.20.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.20.1...v3.20.2) (2024-12-18)
 
 ### Dependencies
