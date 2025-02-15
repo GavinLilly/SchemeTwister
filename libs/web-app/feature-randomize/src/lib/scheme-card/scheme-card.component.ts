@@ -27,11 +27,10 @@ import {
 } from '../+state/selectors/game-setup-scheme.selectors';
 
 @Component({
-  selector: 'schemetwister-scheme-card',
-  standalone: true,
-  imports: [WebAppUiModule, FontAwesomeModule, NgbAccordionModule],
-  templateUrl: './scheme-card.component.html',
-  styleUrls: ['./scheme-card.component.scss'],
+    selector: 'schemetwister-scheme-card',
+    imports: [WebAppUiModule, FontAwesomeModule, NgbAccordionModule],
+    templateUrl: './scheme-card.component.html',
+    styleUrls: ['./scheme-card.component.scss']
 })
 export class SchemeCardComponent {
   private readonly _libTwister = this._store.selectSignal(

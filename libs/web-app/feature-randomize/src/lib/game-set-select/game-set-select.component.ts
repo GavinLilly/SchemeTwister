@@ -12,8 +12,9 @@ import {
 } from '../+state/selectors/game-sets.selectors';
 
 @Component({
-  selector: 'schemetwister-game-set-select',
-  templateUrl: './game-set-select.component.html',
+    selector: 'schemetwister-game-set-select',
+    templateUrl: './game-set-select.component.html',
+    standalone: false
 })
 export class GameSetSelectComponent {
   private readonly _libTwister = this._store.selectSignal(

@@ -3,8 +3,9 @@ import { Component } from '@angular/core';
 import { UpdateService } from './update.service';
 
 @Component({
-  selector: 'schemetwister-root',
-  templateUrl: './app.component.html',
+    selector: 'schemetwister-root',
+    templateUrl: './app.component.html',
+    standalone: false
 })
 export class AppComponent {
   constructor(private readonly _sw: UpdateService) {

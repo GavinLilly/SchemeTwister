@@ -19,9 +19,10 @@ import { BLANK_IMAGE_BASE64 } from '../constants';
 import { VillainAdditionalDeckCardType } from '../villainAdditionalDeckCard.type';
 
 @Component({
-  selector: 'schemetwister-villain-deck',
-  templateUrl: './villain-deck.component.html',
-  styleUrls: ['./villain-deck.component.scss'],
+    selector: 'schemetwister-villain-deck',
+    templateUrl: './villain-deck.component.html',
+    styleUrls: ['./villain-deck.component.scss'],
+    standalone: false
 })
 export class VillainDeckComponent {
   villainDeck: Signal<IVillainDeck> =

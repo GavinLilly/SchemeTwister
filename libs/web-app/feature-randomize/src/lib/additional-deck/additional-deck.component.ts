@@ -11,9 +11,10 @@ import {
 import { BLANK_IMAGE_BASE64 } from '../constants';
 
 @Component({
-  selector: 'schemetwister-additional-deck',
-  templateUrl: './additional-deck.component.html',
-  styleUrls: ['./additional-deck.component.scss'],
+    selector: 'schemetwister-additional-deck',
+    templateUrl: './additional-deck.component.html',
+    styleUrls: ['./additional-deck.component.scss'],
+    standalone: false
 })
 export class AdditionalDeckComponent {
   additionalDecks: Signal<IAdditionalDeck[]> = this._store.selectSignal(

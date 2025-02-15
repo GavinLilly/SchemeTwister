@@ -26,10 +26,11 @@ import { GameSetSelectComponent } from '../game-set-select/game-set-select.compo
 import { ScreenOnLockStore } from '../screen-on-lock.store';
 
 @Component({
-  selector: 'schemetwister-randomize',
-  templateUrl: './randomize.component.html',
-  styleUrls: ['./randomize.component.scss'],
-  providers: [ScreenOnLockStore],
+    selector: 'schemetwister-randomize',
+    templateUrl: './randomize.component.html',
+    styleUrls: ['./randomize.component.scss'],
+    providers: [ScreenOnLockStore],
+    standalone: false
 })
 export class RandomizeComponent implements OnInit {
   numberOfPlayers: Signal<NumPlayers> =

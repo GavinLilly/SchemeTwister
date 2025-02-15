@@ -4,11 +4,10 @@ import { NgbActiveModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { Hero, INamedObject } from '@schemetwister/libtwister';
 
 @Component({
-  selector: 'schemetwister-hero-selector',
-  standalone: true,
-  imports: [FormsModule, NgbModalModule],
-  templateUrl: './hero-selector.component.html',
-  styleUrl: './hero-selector.component.scss',
+    selector: 'schemetwister-hero-selector',
+    imports: [FormsModule, NgbModalModule],
+    templateUrl: './hero-selector.component.html',
+    styleUrl: './hero-selector.component.scss'
 })
 export class HeroSelectorComponent implements OnInit {
   @Input() availableHeroesInput!: Hero[];
