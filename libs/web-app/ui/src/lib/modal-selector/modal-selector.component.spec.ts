@@ -4,6 +4,8 @@ import {
   NgbModal,
   NgbModule,
 } from '@ng-bootstrap/ng-bootstrap';
+import { CARD_TYPE, LibTwister } from '@schemetwister/libtwister';
+import { marvelSeries } from '@schemetwister/series-marvel';
 
 import { SortByNamePipe } from '../SortByName.pipe';
 
@@ -21,6 +23,10 @@ describe('ModalSelectorComponent', () => {
 
     fixture = TestBed.createComponent(ModalSelectorComponent);
     component = fixture.componentInstance;
+    component.itemType = CARD_TYPE.mastermind;
+    component.availableItems = new LibTwister({
+      series: [marvelSeries],
+    }).stores.mastermindStore.availableCards;
     fixture.detectChanges();
   });
 
