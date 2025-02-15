@@ -62,21 +62,13 @@ export class MastermindCardComponent {
   ) {}
 
   pickMastermind() {
-    const libTwister = this._store.selectSignal(
-      selectLibTwister(this._seriesRegister)
-    );
-
-    const availableCards = computed(
-      () => libTwister().stores.mastermindStore.availableCards
-    );
-
     const selectedMastermind = this._store.selectSignal(
       selectDefinedMastermind
     );
 
     const modalSelector = this._modalService.open(ModalSelectorComponent);
     modalSelector.componentInstance.itemType = CARD_TYPE.mastermind;
-    modalSelector.componentInstance.availableItems = availableCards();
+    modalSelector.componentInstance.availableItems = this._availableCards();
 
     const selectedItem = selectedMastermind();
     if (selectedItem !== undefined) {

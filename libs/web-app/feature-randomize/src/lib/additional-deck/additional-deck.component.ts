@@ -8,6 +8,7 @@ import {
   selectAdditionalDecks,
   selectLockedAdditionalDeckCards,
 } from '../+state/selectors/game-setup-scheme.selectors';
+import { BLANK_IMAGE_BASE64 } from '../constants';
 
 @Component({
   selector: 'schemetwister-additional-deck',
@@ -22,6 +23,7 @@ export class AdditionalDeckComponent {
 
   faLock = faLock;
   faLockOpen = faLockOpen;
+  blankImage = BLANK_IMAGE_BASE64;
 
   constructor(
     private readonly _store: Store<{

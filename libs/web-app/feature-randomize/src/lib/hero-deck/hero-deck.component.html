@@ -1,6 +1,11 @@
 @if(heroDeck(); as heroDeck) {
 <div class="card">
-  <div class="card-header">Hero deck</div>
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Hero deck
+    <a (click)="pickHeroes()" href="javascript:void(0)" class="text-black">
+      <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
+    </a>
+  </div>
   <div class="card-body p-0">
     @if (heroDeck.numBystanders) {
     <div class="setup-cards card-body">
@@ -22,7 +27,7 @@
               />
               } @else {
               <img
-                src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D"
+                src="{{ blankImage }}"
                 alt="No team"
                 class="img-fluid"
                 id="hero-team"

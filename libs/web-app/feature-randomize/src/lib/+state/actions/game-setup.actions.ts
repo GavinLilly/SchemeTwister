@@ -30,6 +30,7 @@ export const heroDeckActions = createActionGroup({
   events: {
     'Add card': props<HeroDeckCardProps>(),
     'Remove card': props<HeroDeckCardProps>(),
+    Reset: emptyProps(),
   },
 });
 

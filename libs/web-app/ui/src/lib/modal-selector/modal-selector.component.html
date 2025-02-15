@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title">Select {{ itemType }}</h4>
+  <h4 class="modal-title">Select a {{ itemType }}</h4>
   <button
     type="button"
     class="btn-close"
@@ -15,8 +15,8 @@
     [ngModelOptions]="{ standalone: true }"
     (ngModelChange)="chosenItem.emit(itemSelect.value)"
   >
-    <option>**Random**</option>
-    @for (item of availableItems | sortByName; track item) {
+    <option>{{ randomText }}</option>
+    @for (item of adjustedAvailableItems; track item) {
     <option [value]="item.id">
       {{ item.name }}
     </option>
