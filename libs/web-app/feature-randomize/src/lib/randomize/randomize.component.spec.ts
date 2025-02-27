@@ -6,13 +6,13 @@ import { GameSetup } from '@schemetwister/libtwister';
 import { WebAppUiModule } from '@schemetwister/web-app/ui';
 import { MockBuilder, MockRender } from 'ng-mocks';
 
-import { ReplacePipe } from '../replace.pipe';
+import { WebAppFeatureRandomizeModule } from '../web-app-feature-randomize.module';
 
 import { RandomizeComponent } from './randomize.component';
 
 describe('RandomizeComponent', () => {
   beforeEach(() =>
-    MockBuilder(RandomizeComponent)
+    MockBuilder(RandomizeComponent, WebAppFeatureRandomizeModule)
       .provide(
         provideMockStore({
           initialState: {
@@ -23,10 +23,8 @@ describe('RandomizeComponent', () => {
           },
         })
       )
-      .provide(RandomizeComponent)
-      .provide(ReplacePipe)
+      .keep(WebAppUiModule)
       .mock(FormsModule)
-      .mock(WebAppUiModule)
       .mock(FontAwesomeModule)
       .mock(NgbModalModule)
       .mock(NgbAccordionModule)

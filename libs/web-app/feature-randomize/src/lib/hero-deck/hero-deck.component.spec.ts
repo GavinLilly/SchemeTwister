@@ -6,11 +6,13 @@ import { marvelSeries } from '@schemetwister/series-marvel';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
 
+import { WebAppFeatureRandomizeModule } from '../web-app-feature-randomize.module';
+
 import { HeroDeckComponent } from './hero-deck.component';
 
 describe('HeroDeckComponent', () => {
   beforeEach(() =>
-    MockBuilder(HeroDeckComponent)
+    MockBuilder(HeroDeckComponent, WebAppFeatureRandomizeModule)
       .provide(
         provideMockStore({
           initialState: {

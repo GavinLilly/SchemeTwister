@@ -1,8 +1,10 @@
 import { marvelSeries } from '@schemetwister/series-marvel';
 import {
   EMPTY_STORED_SETUP,
-  SERIES_REGISTER_TOKEN,
   StoredSetupsService,
+} from '@schemetwister/web-app/feature-setup-store';
+import {
+  SERIES_REGISTER_TOKEN,
   WebAppSharedModule,
 } from '@schemetwister/web-app/shared';
 import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';

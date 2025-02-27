@@ -4,12 +4,12 @@ import {
   LibTwister,
   LiteGameSetup,
 } from '@schemetwister/libtwister';
-import { IStoredGameSetup } from '@schemetwister/web-app/shared';
+import { IStoredGameSetup } from '@schemetwister/web-app/feature-setup-store';
 import { plainToInstance } from 'class-transformer';
 
 @Pipe({
-    name: 'storedSetupToGameSetup',
-    standalone: false
+  name: 'storedSetupToGameSetup',
+  standalone: false,
 })
 export class StoredSetupToGameSetupPipe implements PipeTransform {
   transform(value: IStoredGameSetup, libTwister: LibTwister): GameSetup {

@@ -11,9 +11,9 @@ import { Store } from '@ngrx/store';
 import { ISeries, LiteGameSetup } from '@schemetwister/libtwister';
 import {
   IStoredGameSetup,
-  SERIES_REGISTER_TOKEN,
   StoredSetupsService,
-} from '@schemetwister/web-app/shared';
+} from '@schemetwister/web-app/feature-setup-store';
+import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import { of, from } from 'rxjs';
 import {
   catchError,

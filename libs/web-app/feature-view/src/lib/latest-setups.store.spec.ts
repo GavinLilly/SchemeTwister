@@ -1,8 +1,8 @@
 import {
   EMPTY_STORED_SETUP,
   StoredSetupsService,
-  WebAppSharedModule,
-} from '@schemetwister/web-app/shared';
+} from '@schemetwister/web-app/feature-setup-store';
+import { WebAppSharedModule } from '@schemetwister/web-app/shared';
 import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { LatestSetupsStore } from './latest-setups.store';

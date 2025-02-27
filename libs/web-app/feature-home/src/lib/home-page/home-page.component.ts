@@ -12,10 +12,10 @@ import {
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
 @Component({
-    selector: 'schemetwister-home-page',
-    templateUrl: './home-page.component.html',
-    styleUrls: ['./home-page.component.scss'],
-    standalone: false
+  selector: 'schemetwister-home-page',
+  templateUrl: './home-page.component.html',
+  styleUrls: ['./home-page.component.scss'],
+  standalone: false,
 })
 export class HomePageComponent {
   numGameSets: number;

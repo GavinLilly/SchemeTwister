@@ -22,4 +22,5 @@ export default {
     'jest-preset-angular/build/serializers/ng-snapshot',
     'jest-preset-angular/build/serializers/html-comment',
   ],
+  testEnvironment: '../../../patch-jsdom.ts',
 };
