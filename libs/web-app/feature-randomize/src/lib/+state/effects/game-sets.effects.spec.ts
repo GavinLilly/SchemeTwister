@@ -1,7 +1,6 @@
 import { EffectsFeatureModule, EffectsModule } from '@ngrx/effects';
 import { StoreFeatureModule, StoreModule } from '@ngrx/store';
 import { marvelSeries } from '@schemetwister/series-marvel';
-import { WebAppFeatureSetupStoreModule } from '@schemetwister/web-app/feature-setup-store';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
 
@@ -18,7 +17,7 @@ describe('GameSetsEffects', () => {
         StoreModule.forRoot({}),
         EffectsModule.forRoot(),
       ],
-      [WebAppFeatureRandomizeModule, WebAppFeatureSetupStoreModule]
+      [WebAppFeatureRandomizeModule]
     )
       .keep(StoreFeatureModule)
       .keep(EffectsFeatureModule)
