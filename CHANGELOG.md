@@ -1,3 +1,9 @@
+## [3.21.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.0...v3.21.1) (2025-02-28)
+
+### Dependencies
+
+* **deps:** update to Angular 19 ([912b147](https://github.com/GavinLilly/SchemeTwister/commit/912b14789c953220569761d8526d8e518d6c38f4))
+
 ## [3.21.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.20.2...v3.21.0) (2025-02-15)
 
 ### Features
