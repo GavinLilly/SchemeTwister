@@ -28,10 +28,10 @@ import {
 
 @Component({
   selector: 'schemetwister-scheme-card',
-  standalone: true,
   imports: [WebAppUiModule, FontAwesomeModule, NgbAccordionModule],
   templateUrl: './scheme-card.component.html',
   styleUrls: ['./scheme-card.component.scss'],
+  standalone: true,
 })
 export class SchemeCardComponent {
   private readonly _libTwister = this._store.selectSignal(

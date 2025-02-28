@@ -28,10 +28,10 @@ import {
 type MastermindType = Mastermind | TransformingMastermind | AdaptingMastermind;
 @Component({
   selector: 'schemetwister-mastermind-card',
-  standalone: true,
   imports: [WebAppUiModule, FontAwesomeModule, NgbAccordionModule],
   templateUrl: './mastermind-card.component.html',
   styleUrls: ['./mastermind-card.component.scss'],
+  standalone: true,
 })
 export class MastermindCardComponent {
   private readonly _libTwister = this._store.selectSignal(

@@ -5,18 +5,13 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
-    "types": [],
-    "target": "ES2021",
-    "lib": ["dom"]
+    "types": []
   },
   "exclude": [
+    "src/**/*.spec.ts",
     "src/test-setup.ts",
-    "**/*.spec.ts",
-    "**/*.test.ts",
-    "jest.config.ts"
+    "jest.config.ts",
+    "src/**/*.test.ts"
   ],
-  "include": [
-    "**/*.ts",
-    "../feature-setup-store/src/lib/storedGameSetup.interface.ts"
-  ]
+  "include": ["src/**/*.ts"]
 }

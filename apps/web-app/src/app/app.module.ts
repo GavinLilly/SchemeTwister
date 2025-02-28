@@ -14,11 +14,9 @@ import { buffySeries } from '@schemetwister/series-buffy';
 import { marvelSeries } from '@schemetwister/series-marvel';
 import { marvelStudiosSeries } from '@schemetwister/series-marvel-studios';
 import { marvelVillainsSeries } from '@schemetwister/series-marvel-villains';
+import { FIRESTORE_COLLECTION_TOKEN } from '@schemetwister/web-app/feature-setup-store';
 import { WebAppFeatureStoreModule } from '@schemetwister/web-app/feature-store';
-import {
-  FIRESTORE_COLLECTION_TOKEN,
-  SERIES_REGISTER_TOKEN,
-} from '@schemetwister/web-app/shared';
+import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import { WebAppUiModule } from '@schemetwister/web-app/ui';
 import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
 

@@ -59,3 +59,7 @@ Thumbs.db
 
 # Ignore Firebase logs
 /*.log
+
+vite.config.*.timestamp*
+vitest.config.*.timestamp*
+.angular

@@ -17,7 +17,7 @@ describe('GameSetsEffects', () => {
         StoreModule.forRoot({}),
         EffectsModule.forRoot(),
       ],
-      WebAppFeatureRandomizeModule
+      [WebAppFeatureRandomizeModule]
     )
       .keep(StoreFeatureModule)
       .keep(EffectsFeatureModule)

@@ -1,14 +1,10 @@
-/* eslint-disable */
 export default {
+  displayName: 'web-app-feature-setup-store',
   preset: '../../../jest.preset.js',
-  coverageDirectory: '../../../coverage/libs/web-app/feature-randomize',
-  setupFiles: ['jest-wake-lock-mock'],
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  globals: { fetch: global.fetch },
-  displayName: 'web-app-feature-randomize',
-
+  coverageDirectory: '../../../coverage/libs/web-app/feature-setup-store',
   transform: {
-    '^.+.(ts|mjs|js|html)$': [
+    '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
       {
         tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -16,11 +12,10 @@ export default {
       },
     ],
   },
-  transformIgnorePatterns: ['node_modules/(?!.*.mjs$)'],
+  transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',
     'jest-preset-angular/build/serializers/html-comment',
   ],
-  testEnvironment: '../../../patch-jsdom.ts',
 };

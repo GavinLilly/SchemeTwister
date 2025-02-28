@@ -11,7 +11,7 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { WebAppSharedModule } from '@schemetwister/web-app/shared';
+import { WebAppFeatureSetupStoreModule } from '@schemetwister/web-app/feature-setup-store';
 import { WebAppUiModule } from '@schemetwister/web-app/ui';
 
 import { GameSetsEffects } from './+state/effects/game-sets.effects';
@@ -63,7 +63,7 @@ import { VillainDeckComponent } from './villain-deck/villain-deck.component';
 
     // Schemetwister
     WebAppUiModule,
-    WebAppSharedModule,
+    WebAppFeatureSetupStoreModule,
 
     // Standalone components
     MastermindCardComponent,

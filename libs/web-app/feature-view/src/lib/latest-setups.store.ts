@@ -4,7 +4,7 @@ import { tapResponse } from '@ngrx/operators';
 import {
   IStoredGameSetup,
   StoredSetupsService,
-} from '@schemetwister/web-app/shared';
+} from '@schemetwister/web-app/feature-setup-store';
 import { Observable, from } from 'rxjs';
 
 export interface LatestSetupsStoreState {

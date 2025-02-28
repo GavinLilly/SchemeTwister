@@ -46,6 +46,9 @@
       "@schemetwister/web-app/feature-randomize": [
         "libs/web-app/feature-randomize/src/index.ts"
       ],
+      "@schemetwister/web-app/feature-setup-store": [
+        "libs/web-app/feature-setup-store/src/index.ts"
+      ],
       "@schemetwister/web-app/feature-store": [
         "libs/web-app/feature-store/src/index.ts"
       ],

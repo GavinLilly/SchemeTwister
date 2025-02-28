@@ -8,10 +8,9 @@ import {
 } from '@schemetwister/libtwister';
 
 @Component({
-  selector: 'schemetwister-modal-selector',
-  standalone: true,
-  imports: [FormsModule, NgbModalModule],
-  templateUrl: './modal-selector.component.html',
+    selector: 'schemetwister-modal-selector',
+    imports: [FormsModule, NgbModalModule],
+    templateUrl: './modal-selector.component.html'
 })
 export class ModalSelectorComponent implements OnInit {
   randomText = '**Random**';

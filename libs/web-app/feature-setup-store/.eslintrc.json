@@ -13,7 +13,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "schemetwister",
+            "prefix": "lib",
             "style": "camelCase"
           }
         ],
@@ -21,11 +21,10 @@
           "error",
           {
             "type": "element",
-            "prefix": "schemetwister",
+            "prefix": "lib",
             "style": "kebab-case"
           }
-        ],
-        "@angular-eslint/prefer-standalone": "off"
+        ]
       }
     },
     {

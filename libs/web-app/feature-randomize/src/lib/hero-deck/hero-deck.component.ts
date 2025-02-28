@@ -22,9 +22,10 @@ import { HeroSelectorComponent } from '../hero-selector/hero-selector.component'
  * @todo check if bystanders are brought in
  */
 @Component({
-  selector: 'schemetwister-hero-deck',
-  templateUrl: './hero-deck.component.html',
-  styleUrls: ['./hero-deck.component.scss'],
+    selector: 'schemetwister-hero-deck',
+    templateUrl: './hero-deck.component.html',
+    styleUrls: ['./hero-deck.component.scss'],
+    standalone: false
 })
 export class HeroDeckComponent {
   private readonly _libTwister = this._store.selectSignal(

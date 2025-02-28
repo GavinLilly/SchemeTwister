@@ -6,9 +6,10 @@ import {
 } from '@schemetwister/libtwister';
 
 @Component({
-  selector: 'schemetwister-mastermind-card-content',
-  templateUrl: './mastermind-card-content.component.html',
-  styleUrls: ['./mastermind-card-content.component.scss'],
+    selector: 'schemetwister-mastermind-card-content',
+    templateUrl: './mastermind-card-content.component.html',
+    styleUrls: ['./mastermind-card-content.component.scss'],
+    standalone: false
 })
 export class MastermindCardContentComponent {
   @Input() mastermind!:
