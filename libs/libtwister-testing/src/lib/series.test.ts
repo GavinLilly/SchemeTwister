@@ -27,7 +27,7 @@ interface SeriesTestConfig {
   promoSetCount?: number;
 }
 
-export function seriesTest(config: SeriesTestConfig) {
+export function testSeries(config: SeriesTestConfig) {
   const series = config.series;
   const coreBoxCount = config.coreBoxCount;
   const bigBoxCount = config.bigBoxCount ?? 0;

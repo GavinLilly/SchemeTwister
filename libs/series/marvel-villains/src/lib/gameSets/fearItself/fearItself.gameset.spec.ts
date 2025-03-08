@@ -1,5 +1,11 @@
-import { gameSetTest } from '@schemetwister/libtwister/testing';
+import { testGameSet } from '@schemetwister/libtwister/testing';
 
-import { GAME_SET } from './fearItself.gameset';
+import { GAME_SET as gameSet } from './fearItself.gameset';
 
-gameSetTest(GAME_SET, 0, 6, 1, 0, 1, 3);
+testGameSet({
+  gameSet,
+  numHeroes: 6,
+  numVillains: 1,
+  numMasterminds: 1,
+  numSchemes: 3,
+});

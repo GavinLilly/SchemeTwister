@@ -1,5 +1,13 @@
-import { gameSetTest } from '@schemetwister/libtwister/testing';
+import { testGameSet } from '@schemetwister/libtwister/testing';
 
-import { GAME_SET } from './darkCity.gameset';
+import { GAME_SET as gameSet } from './darkCity.gameset';
 
-gameSetTest(GAME_SET, 3, 17, 6, 2, 5, 8);
+testGameSet({
+  gameSet,
+  numBystanders: 3,
+  numHeroes: 17,
+  numVillains: 6,
+  numHenchmen: 2,
+  numMasterminds: 5,
+  numSchemes: 8,
+});

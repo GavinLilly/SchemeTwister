@@ -5,7 +5,7 @@ import {
   StoreBuilder,
   StoreOfStores,
 } from '@schemetwister/libtwister';
-import { gameSetTest } from '@schemetwister/libtwister/testing';
+import { testGameSet } from '@schemetwister/libtwister/testing';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import { X_MEN } from '../../teams';
@@ -15,7 +15,15 @@ import { GAME_SET as REVELATIONS } from './revelations.gameset';
 import { SCARLET_WITCH } from './revelations.heroes';
 import { HOUSE_OF_M } from './revelations.schemes';
 
-gameSetTest(REVELATIONS, 3, 9, 4, 2, 3, 4);
+testGameSet({
+  gameSet: REVELATIONS,
+  numBystanders: 3,
+  numHeroes: 9,
+  numVillains: 4,
+  numHenchmen: 2,
+  numMasterminds: 3,
+  numSchemes: 4,
+});
 
 describe('House of M', () => {
   let store: StoreOfStores;

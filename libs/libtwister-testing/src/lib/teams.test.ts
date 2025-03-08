@@ -1,7 +1,7 @@
 import { ITeam } from '@schemetwister/libtwister';
 import { describe, it, expect, test } from 'vitest';
 
-export function teamsTest(teams: ITeam[]) {
+export function testTeams(teams: ITeam[]) {
   return describe('Teams', () => {
     it('should have unique team names', () => {
       const teamNames = Object.values(teams).map((team) => team.name);

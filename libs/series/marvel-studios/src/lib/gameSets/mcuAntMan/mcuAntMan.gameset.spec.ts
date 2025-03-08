@@ -1,5 +1,13 @@
-import { gameSetTest } from '@schemetwister/libtwister/testing';
+import { testGameSet } from '@schemetwister/libtwister/testing';
 
-import { GAME_SET } from './mcuAntMan.gameset';
+import { GAME_SET as gameSet } from './mcuAntMan.gameset';
 
-gameSetTest(GAME_SET, 4, 8, 4, 1, 3, 4);
+testGameSet({
+  gameSet,
+  numBystanders: 4,
+  numHeroes: 8,
+  numVillains: 4,
+  numHenchmen: 1,
+  numMasterminds: 3,
+  numSchemes: 4,
+});

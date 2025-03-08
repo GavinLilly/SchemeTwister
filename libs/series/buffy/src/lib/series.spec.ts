@@ -1,5 +1,5 @@
-import { seriesTest } from '@schemetwister/libtwister/testing';
+import { testSeries } from '@schemetwister/libtwister/testing';
 
 import { buffySeries } from './buffy.series';
 
-seriesTest({ series: buffySeries, coreBoxCount: 1 });
+testSeries({ series: buffySeries, coreBoxCount: 1 });

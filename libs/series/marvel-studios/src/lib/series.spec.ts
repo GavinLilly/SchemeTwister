@@ -1,8 +1,8 @@
-import { seriesTest } from '@schemetwister/libtwister/testing';
+import { testSeries } from '@schemetwister/libtwister/testing';
 
 import { marvelStudiosSeries } from './marvelStudios.series';
 
-seriesTest({
+testSeries({
   series: marvelStudiosSeries,
   coreBoxCount: 2,
   mediumBoxCount: 1,

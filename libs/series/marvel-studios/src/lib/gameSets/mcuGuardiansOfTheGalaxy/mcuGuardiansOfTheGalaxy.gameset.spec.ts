@@ -1,5 +1,5 @@
 import { LibTwister } from '@schemetwister/libtwister';
-import { gameSetTest } from '@schemetwister/libtwister/testing';
+import { testStandardSmallGameSet } from '@schemetwister/libtwister/testing';
 import { describe, beforeEach, it, expect } from 'vitest';
 
 import { marvelStudiosSeries } from '../../marvelStudios.series';
@@ -9,7 +9,7 @@ import { GAME_SET } from './mcuGuardiansOfTheGalaxy.gameset';
 import { EGO_THE_LIVING_PLANET } from './mcuGuardiansOfTheGalaxy.masterminds';
 import { UNLEASH_THE_ABILISK_SPACE_MONSTER } from './mcuGuardiansOfTheGalaxy.schemes';
 
-gameSetTest(GAME_SET, 0, 5, 2, 0, 2, 4);
+testStandardSmallGameSet(GAME_SET);
 
 describe('with MCU Guardians of the Galaxy', () => {
   let twister: LibTwister;

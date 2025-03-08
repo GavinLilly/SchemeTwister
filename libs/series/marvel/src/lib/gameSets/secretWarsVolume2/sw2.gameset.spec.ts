@@ -1,5 +1,13 @@
-import { gameSetTest } from '@schemetwister/libtwister/testing';
+import { testGameSet } from '@schemetwister/libtwister/testing';
 
-import { GAME_SET } from './sw2.gameset';
+import { GAME_SET as gameSet } from './sw2.gameset';
 
-gameSetTest(GAME_SET, 3, 16, 6, 3, 4, 8);
+testGameSet({
+  gameSet,
+  numBystanders: 3,
+  numHeroes: 16,
+  numVillains: 6,
+  numHenchmen: 3,
+  numMasterminds: 4,
+  numSchemes: 8,
+});
