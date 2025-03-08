@@ -18,14 +18,23 @@ expect.extend({
   },
 });
 
-export function seriesTest(
-  series: ISeries,
-  coreBoxCount: number,
-  bigBoxCount = 0,
-  mediumBoxCount = 0,
-  smallBoxCount = 0,
-  promoSetCount = 0
-) {
+interface SeriesTestConfig {
+  series: ISeries;
+  coreBoxCount: number;
+  bigBoxCount?: number;
+  mediumBoxCount?: number;
+  smallBoxCount?: number;
+  promoSetCount?: number;
+}
+
+export function seriesTest(config: SeriesTestConfig) {
+  const series = config.series;
+  const coreBoxCount = config.coreBoxCount;
+  const bigBoxCount = config.bigBoxCount ?? 0;
+  const mediumBoxCount = config.mediumBoxCount ?? 0;
+  const smallBoxCount = config.smallBoxCount ?? 0;
+  const promoSetCount = config.promoSetCount ?? 0;
+
   const totalGameSetCount =
     coreBoxCount + bigBoxCount + mediumBoxCount + smallBoxCount + promoSetCount;
 
