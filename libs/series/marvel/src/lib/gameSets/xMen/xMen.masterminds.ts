@@ -1,7 +1,7 @@
 import {
   MastermindWithEpic,
-  randomize,
   HeroClass,
+  Random,
 } from '@schemetwister/libtwister';
 
 import { SHIAR_DEATH_COMMANDOS, SHIAR_PATROL_CRAFT } from './xMen.henchmen';
@@ -68,7 +68,7 @@ export const DEATHBIRD = new MastermindWithEpic(
     name: 'Deathbird',
     gameSet: META,
     victoryPoints: 6,
-    alwaysLeads: [randomize([SHIAR_DEATH_COMMANDOS, SHIAR_PATROL_CRAFT])],
+    alwaysLeads: [Random.choice([SHIAR_DEATH_COMMANDOS, SHIAR_PATROL_CRAFT])],
     keywords: [TOKEN_CARDS],
     attackPoints: '8+',
   },

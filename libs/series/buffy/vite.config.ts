@@ -9,6 +9,7 @@ export default mergeConfig(sharedConfig, {
 
   test: {
     globals: true,
+    setupFiles: ['../../../tools/vitest/custom-matchers.ts'],
     coverage: {
       reportsDirectory: '../../../coverage/libs/series/buffy',
     },

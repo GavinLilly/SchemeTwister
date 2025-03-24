@@ -1,5 +1,5 @@
 import { CardStore } from '../../../factories/cardStore';
-import { randomize } from '../../../utils/randomize';
+import { Random } from '../../../utils/random';
 import { Hero } from '../../cards/hero';
 import { ITeam } from '../../interfaces/team.interface';
 
@@ -13,6 +13,6 @@ export class RequireTeam implements IRequireCardBehaviour<Hero> {
       (hero) => hero.team === this._team
     );
 
-    return randomize(teamHeroes);
+    return Random.choice(teamHeroes);
   }
 }

@@ -3,7 +3,7 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import { StoreBuilder, StoreOfStores } from '../../factories';
 import { GameSetMock } from '../../testData/gameSetMock';
 import { TEST_HERO_IN_VILLAIN_DECK_AND_REQUIRE_TEAMS_SCHEME } from '../../testData/schemes';
-import { randomize } from '../../utils/randomize';
+import { Random } from '../../utils/random';
 import { IGameSetup, ITeam } from '../interfaces';
 import { GAME_SET_SIZE } from '../types';
 
@@ -42,7 +42,7 @@ describe('RequireHeroAndTeamScheme', () => {
 
     const dedupedTeams = Array.from(new Set(allTeams));
 
-    selectedTeam = randomize(dedupedTeams);
+    selectedTeam = Random.choice(dedupedTeams);
 
     scheme = new RequireHeroAndTeamScheme(
       TEST_HERO_IN_VILLAIN_DECK_AND_REQUIRE_TEAMS_SCHEME,

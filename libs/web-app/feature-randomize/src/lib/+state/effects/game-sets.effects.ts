@@ -3,6 +3,7 @@ import { Actions, OnInitEffects, createEffect, ofType } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
 import { ISeries, LibTwister } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
+import { Effect } from 'effect';
 import { map, withLatestFrom } from 'rxjs/operators';
 
 import {
@@ -112,7 +113,7 @@ export class GameSetsEffects implements OnInitEffects {
     libTwister: LibTwister,
     gameSetIds: string[]
   ) =>
-    libTwister.validateGameSetIds(gameSetIds)
+    Effect.runSync(Effect.isSuccess(libTwister.validateGameSetIds(gameSetIds)))
       ? gameSetCheckerActions.setGameSetsSuccess({
           gameSetIds,
         })

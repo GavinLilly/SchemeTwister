@@ -1,4 +1,4 @@
-import { MastermindWithEpic, randomize } from '@schemetwister/libtwister';
+import { MastermindWithEpic, Random } from '@schemetwister/libtwister';
 
 import { SINISTER_SIX } from '../paintTheTownRed/paintTheTownRed.villains';
 import { UNDERCOVER } from '../shield/shield.keywords';
@@ -15,7 +15,11 @@ export const SINISTER_SIX_2099 = new MastermindWithEpic(
     attackPoints: '9, 6+, 7+, 8+, 10*, 11*',
     victoryPoints: 6,
     alwaysLeads: [
-      randomize([FALSE_AESIR_OF_ALCHEMAX, ALCHEMAX_ENFORCERS, SINISTER_SIX]),
+      Random.choice([
+        FALSE_AESIR_OF_ALCHEMAX,
+        ALCHEMAX_ENFORCERS,
+        SINISTER_SIX,
+      ]),
     ],
     gameSet: META,
     masterStrike: 'TBD',

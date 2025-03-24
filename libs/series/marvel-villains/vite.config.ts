@@ -8,6 +8,7 @@ export default mergeConfig(sharedConfig, {
   cacheDir: '../../../node_modules/.vite/libs/series/marvel-villains',
 
   test: {
+    setupFiles: ['../../../tools/vitest/custom-matchers.ts'],
     coverage: {
       reportsDirectory: '../../../coverage/libs/series/marvel-villains',
     },

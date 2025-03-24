@@ -1,5 +1,5 @@
 import { CardStore } from '../../../factories/cardStore';
-import { randomize } from '../../../utils/randomize';
+import { Random } from '../../../utils/random';
 import { AbstractCardGroup } from '../../cards/abstractCardGroup';
 import { IKeyword } from '../../interfaces';
 
@@ -15,6 +15,6 @@ export class RequireKeyword<TCard extends AbstractCardGroup>
       card.keywords.map((keyword) => keyword.name).includes(this._keyword.name)
     );
 
-    return randomize(applicableCards);
+    return Random.choice(applicableCards);
   }
 }

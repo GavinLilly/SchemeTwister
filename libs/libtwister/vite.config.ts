@@ -8,6 +8,7 @@ export default mergeConfig(sharedConfig, {
   cacheDir: '../../node_modules/.vite/libs/libtwister',
 
   test: {
+    setupFiles: ['../../tools/vitest/custom-matchers.ts'],
     globals: true,
     coverage: {
       reportsDirectory: '../../coverage/libs/libtwister',

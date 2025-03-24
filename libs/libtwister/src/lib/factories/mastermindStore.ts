@@ -4,7 +4,7 @@ import {
   AdaptingMastermind,
   TransformingMastermind,
 } from '../model/cards/mastermind';
-import { randomize } from '../utils/randomize';
+import { Random } from '../utils/random';
 
 import { CardFactory, GetRandomOptions } from './cardFactory';
 import { CardStore } from './cardStore';
@@ -29,7 +29,7 @@ export class MastermindStore extends CardStore<MastermindType> {
   ): MastermindType | MastermindType[] {
     const pickNormalOrEpic = (mastermind: MastermindType) =>
       mastermind instanceof MastermindWithEpic
-        ? randomize([mastermind, mastermind.epic])
+        ? Random.choice([mastermind, mastermind.epic])
         : mastermind;
 
     if (options === undefined) {

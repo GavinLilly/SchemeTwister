@@ -1,7 +1,7 @@
 import isUUID from 'validator/lib/isUUID';
 
 import { IPlayableObject } from '../model/interfaces/playableObject.interface';
-import { randomize } from '../utils/randomize';
+import { Random } from '../utils/random';
 
 export type GetRandomOptions<TCard extends IPlayableObject> = {
   count?: number;
@@ -136,14 +136,14 @@ export class CardFactory<TCard extends IPlayableObject> {
         : this.availableCards;
 
     if (options === undefined) {
-      return randomize(applicableCards);
+      return Random.choice(applicableCards);
     }
 
     if (options.count !== undefined) {
-      return randomize(applicableCards, options.count);
+      return Random.choice(applicableCards, options.count);
     }
 
-    return [randomize(applicableCards)];
+    return [Random.choice(applicableCards)];
   }
 
   /**

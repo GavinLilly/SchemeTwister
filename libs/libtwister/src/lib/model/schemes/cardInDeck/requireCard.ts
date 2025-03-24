@@ -1,5 +1,5 @@
 import { CardStore } from '../../../factories/cardStore';
-import { randomize } from '../../../utils/randomize';
+import { Random } from '../../../utils/random';
 import { AbstractCardGroup } from '../../cards/abstractCardGroup';
 
 import { IRequireCardBehaviour } from './requireCardBehaviour.interface';
@@ -40,7 +40,7 @@ export class RequireCard<TCard extends AbstractCardGroup>
       return this._availableCards[0];
     }
 
-    const random = randomize(this._availableCards, this._numberRequired);
+    const random = Random.choice(this._availableCards, this._numberRequired);
 
     if (this._shouldRemoveOthers) {
       this._availableCards

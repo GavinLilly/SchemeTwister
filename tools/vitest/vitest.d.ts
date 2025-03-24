@@ -1,7 +1,7 @@
 import type { Assertion, AsymmetricMatchersContaining } from 'vitest';
 
 interface CustomMatchers<R = unknown> {
-  toBeUUID: () => R;
+  toSucceed: () => R;
 }
 
 declare module 'vitest' {

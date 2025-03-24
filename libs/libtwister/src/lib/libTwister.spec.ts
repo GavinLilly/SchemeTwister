@@ -217,27 +217,27 @@ describe('LibTwister', () => {
 
     const twister = new LibTwister({ series: [series] });
 
-    it('should return true for a core and medium size game set IDs', () =>
+    it('should succeed for a core and medium size game set IDs', () =>
       expect(
         twister.validateGameSetIds([testLargeSet.id, testMediumSet.id])
-      ).toBe(true));
+      ).toSucceed());
 
     it('should return true for a single large set', () =>
-      expect(twister.validateGameSetIds([testLargeSet.id])).toBe(true));
+      expect(twister.validateGameSetIds([testLargeSet.id])).toSucceed());
 
     it('should return false for a single medium set', () =>
-      expect(twister.validateGameSetIds([testMediumSet.id])).toBe(false));
+      expect(twister.validateGameSetIds([testMediumSet.id])).not.toSucceed());
 
     it('should return false for a single small set', () =>
-      expect(twister.validateGameSetIds([testSmallSet.id])).toBe(false));
+      expect(twister.validateGameSetIds([testSmallSet.id])).not.toSucceed());
 
     it('should return false for a non-valid game set id', () =>
-      expect(() => twister.validateGameSetIds(['FOOBAR'])).toThrow());
+      expect(twister.validateGameSetIds(['FOOBAR'])).not.toSucceed());
 
     it('should return false for an empty string game set id', () =>
-      expect(() => twister.validateGameSetIds([''])).toThrow());
+      expect(twister.validateGameSetIds([''])).not.toSucceed());
 
     it('should return false for an empty game set ID array', () =>
-      expect(twister.validateGameSetIds([])).toBe(false));
+      expect(twister.validateGameSetIds([])).not.toSucceed());
   });
 });

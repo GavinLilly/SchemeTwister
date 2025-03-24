@@ -20,7 +20,7 @@ import {
   getGamesetSize,
   IGameSetSizeWithoutHeroes,
 } from '../utils/getGameSetSize';
-import { randomInteger } from '../utils/randomInteger';
+import { Random } from '../utils/random';
 
 interface IHeroTeamConfig {
   num: number;
@@ -76,7 +76,7 @@ export class GameSetMock {
     this._meta = {
       id: uuid.v4(),
       name: `Test Game Set ${this._gameSetShortId}`,
-      releaseYear: randomInteger(1970, 2024),
+      releaseYear: Random.integer(1970, 2024),
       series,
       size,
     };
@@ -233,7 +233,7 @@ export class GameSetMock {
   private readonly _buildFightable = <
     T extends AbstractFightableCardGroup
   >(): Pick<T, 'attackPoints' | 'victoryPoints'> => ({
-    attackPoints: randomInteger(10),
-    victoryPoints: randomInteger(10),
+    attackPoints: Random.integer(10),
+    victoryPoints: Random.integer(10),
   });
 }

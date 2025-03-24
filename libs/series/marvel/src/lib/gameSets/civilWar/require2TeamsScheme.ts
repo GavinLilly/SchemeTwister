@@ -2,7 +2,7 @@ import {
   IHeroDeck,
   INumPlayerRules,
   ITeam,
-  randomize,
+  Random,
   Scheme,
   StoreOfStores,
 } from '@schemetwister/libtwister';
@@ -26,7 +26,7 @@ export class Require2TeamsScheme extends Scheme {
       .filter(([, counts]) => counts > 3)
       .map(([team]) => team);
 
-    const chosenTeams = randomize(teamsWithThreeOrMoreHeroes, 2);
+    const chosenTeams = Random.choice(teamsWithThreeOrMoreHeroes, 2);
 
     return {
       heroes: chosenTeams

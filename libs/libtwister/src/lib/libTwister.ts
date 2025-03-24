@@ -1,3 +1,4 @@
+import { Effect, pipe } from 'effect';
 import isUUID from 'validator/lib/isUUID';
 
 import { CardFactory, StoreOfStores } from './factories';
@@ -153,24 +154,38 @@ export class LibTwister {
    * @param gameSetIds an array of game set IDs to check
    * @returns true if the array of game set IDs is valid
    */
-  public validateGameSetIds(gameSetIds: string[]): boolean {
+  public validateGameSetIds(gameSetIds: string[]): Effect.Effect<void, Error> {
     const invalidIds = gameSetIds.filter((id) => !isUUID(id));
 
     if (invalidIds.length > 0) {
-      throw new Error(
-        `The provided game set IDs (${invalidIds}) are not valid UUIDs`
+      return Effect.fail(
+        new Error(
+          `The provided game set IDs (${invalidIds}) are not valid UUIDs`
+        )
       );
     }
 
     const gameSets = this.gameSetIdsToGameSets(gameSetIds);
 
     if (gameSets.length !== gameSetIds.length) {
-      return false;
+      const notMatched = pipe(
+        gameSets,
+        (gameSets) => gameSets.map((gameSet) => gameSet.id),
+        (chosenGameSetIds) =>
+          gameSetIds.filter((id) => !chosenGameSetIds.includes(id))
+      );
+      return Effect.fail(
+        new Error(
+          `Not all game set IDs could be converted to game sets please check (${notMatched})`
+        )
+      );
     }
 
     return gameSets.some((gameSet) =>
       [GAME_SET_SIZE.core, GAME_SET_SIZE.large].includes(gameSet.size)
-    );
+    )
+      ? Effect.succeed(null)
+      : Effect.fail(new Error('At least one game set must be core or large'));
   }
 
   /**

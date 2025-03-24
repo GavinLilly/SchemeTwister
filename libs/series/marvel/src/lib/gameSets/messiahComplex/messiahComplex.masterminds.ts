@@ -1,7 +1,7 @@
 import {
   MastermindWithEpic,
   HeroClass,
-  randomize,
+  Random,
 } from '@schemetwister/libtwister';
 
 import { SENTINELS } from '../legendary/legendary.henchmen';
@@ -46,7 +46,7 @@ export const BASTION = new MastermindWithEpic(
     name: 'Bastion',
     gameSet: META,
     victoryPoints: 6,
-    alwaysLeads: [PURIFIERS, randomize([SENTINELS, SENTINEL_SQUAD_ONE])],
+    alwaysLeads: [PURIFIERS, Random.choice([SENTINELS, SENTINEL_SQUAD_ONE])],
     specialRules:
       'All Sentinel Masterminds get +1 Attack for each Master Strike in the KO pile, even after Bastion is defeated.',
   },

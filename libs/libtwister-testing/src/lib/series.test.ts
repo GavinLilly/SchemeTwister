@@ -4,19 +4,7 @@ import {
   ISeries,
   LibTwister,
 } from '@schemetwister/libtwister';
-import isUUID from 'validator/lib/isUUID';
 import { beforeAll, describe, expect, it, test } from 'vitest';
-
-expect.extend({
-  toBeUUID(received) {
-    const { isNot } = this;
-
-    return {
-      pass: isUUID(received),
-      message: () => `${received} is${isNot ? ' not' : ''} a UUID`,
-    };
-  },
-});
 
 interface SeriesTestConfig {
   series: ISeries;
