@@ -57,7 +57,7 @@
     "@ngrx/effects": "19.0.0",
     "@ngrx/operators": "19.0.0",
     "@ngrx/store": "19.0.0",
-    "@nx/angular": "20.4.4",
+    "@nx/angular": "20.7.2",
     "@nx/devkit": "20.4.4",
     "@popperjs/core": "^2.11.8",
     "@types/dom-screen-wake-lock": "^1.0.3",
