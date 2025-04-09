@@ -1,3 +1,9 @@
+## [3.21.3](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.2...v3.21.3) (2025-04-09)
+
+### Dependencies
+
+* **deps:** bump @babel/helpers from 7.26.9 to 7.27.0 ([6e430bd](https://github.com/GavinLilly/SchemeTwister/commit/6e430bddb38e09710fdfaefaa4719216feee26e2))
+
 ## [3.21.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.1...v3.21.2) (2025-04-09)
 
 ### Dependencies
