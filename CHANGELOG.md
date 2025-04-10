@@ -1,3 +1,9 @@
+## [3.21.4](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.3...v3.21.4) (2025-04-10)
+
+### Dependencies
+
+* **deps:** bump @babel/runtime and @angular-devkit/build-angular ([#204](https://github.com/GavinLilly/SchemeTwister/issues/204)) ([9ad7981](https://github.com/GavinLilly/SchemeTwister/commit/9ad79814165f1a5b9a7810cf309265e6a684f264))
+
 ## [3.21.3](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.2...v3.21.3) (2025-04-09)
 
 ### Dependencies
