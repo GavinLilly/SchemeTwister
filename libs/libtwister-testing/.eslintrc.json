@@ -1,11 +1,19 @@
 {
   "extends": ["../../.eslintrc.json"],
-  "ignorePatterns": ["!**/*"],
+  "ignorePatterns": [
+    "!**/*",
+    "**/vite.config.*.timestamp*",
+    "**/vitest.config.*.timestamp*"
+  ],
   "overrides": [
     {
       "files": ["**.test.ts"],
-      "env": { "jest": false },
-      "rules": { "max-nested-callbacks": "off" }
+      "env": {
+        "jest": false
+      },
+      "rules": {
+        "max-nested-callbacks": "off"
+      }
     }
   ]
 }
