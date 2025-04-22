@@ -1,3 +1,9 @@
+## [3.21.5](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.4...v3.21.5) (2025-04-22)
+
+### Dependencies
+
+* **deps:** update to nx 20.8.0 ([018918d](https://github.com/GavinLilly/SchemeTwister/commit/018918d1df98e21de47af3162c82351377012e42))
+
 ## [3.21.4](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.3...v3.21.4) (2025-04-10)
 
 ### Dependencies
