@@ -160,7 +160,13 @@ export default [
     })
     .map((config) => ({
       ...config,
-      files: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.spec.js', '**/*.spec.jsx'],
+      files: [
+        '**/*.spec.ts',
+        '**/*.spec.tsx',
+        '**/*.spec.js',
+        '**/*.spec.jsx',
+        '**.test.ts',
+      ],
       rules: {
         ...config.rules,
         'max-nested-callbacks': 'off',
