@@ -4,6 +4,12 @@
   "projectType": "library",
   "sourceRoot": "libs/web-app/ui/src",
   "prefix": "schemetwister",
+  "tags": ["type:ui", "scope:web-app"],
+  "generators": {
+    "@nx/angular:component": {
+      "style": "scss"
+    }
+  },
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
@@ -17,11 +23,5 @@
       },
       "outputs": ["{workspaceRoot}/coverage/libs/web-app/ui"]
     }
-  },
-  "generators": {
-    "@nx/angular:component": {
-      "style": "scss"
-    }
-  },
-  "tags": ["type:ui", "scope:web-app"]
+  }
 }

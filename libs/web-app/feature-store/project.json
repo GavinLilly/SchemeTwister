@@ -4,6 +4,7 @@
   "projectType": "library",
   "sourceRoot": "libs/web-app/feature-store/src",
   "prefix": "schemetwister",
+  "tags": ["type:feature", "scope:web-app"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
@@ -15,6 +16,5 @@
     "lint": {
       "executor": "@nx/eslint:lint"
     }
-  },
-  "tags": ["type:feature", "scope:web-app"]
+  }
 }
