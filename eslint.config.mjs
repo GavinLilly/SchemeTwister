@@ -61,8 +61,7 @@ export default [
       files: ['**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'],
       rules: {
         ...config.rules,
-        '@typescript-eslint/no-extra-semi': 'error',
-        'no-extra-semi': 'off',
+        'no-extra-semi': 'error',
       },
     })),
   ...compat
@@ -144,8 +143,7 @@ export default [
           },
         ],
         eqeqeq: ['error', 'smart'],
-        '@typescript-eslint/no-extra-semi': 'error',
-        'no-extra-semi': 'off',
+        'no-extra-semi': 'error',
       },
     })),
   {
