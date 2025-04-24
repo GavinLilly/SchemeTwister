@@ -1,33 +1,16 @@
-import { FlatCompat } from '@eslint/eslintrc';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import js from '@eslint/js';
 import baseConfig from '../../eslint.config.mjs';
-
-const compat = new FlatCompat({
-  baseDirectory: dirname(fileURLToPath(import.meta.url)),
-  recommendedConfig: js.configs.recommended,
-});
 
 export default [
   {
     ignores: ['**/dist'],
   },
   ...baseConfig,
-  ...compat
-    .config({
-      env: {
-        jest: false,
-      },
-    })
-    .map((config) => ({
-      ...config,
-      files: ['**.test.ts'],
-      rules: {
-        ...config.rules,
-        'max-nested-callbacks': 'off',
-      },
-    })),
+  {
+    files: ['**/*.test.ts'],
+    rules: {
+      'max-nested-callbacks': 'off',
+    },
+  },
   {
     ignores: ['**/vite.config.*.timestamp*', '**/vitest.config.*.timestamp*'],
   },
