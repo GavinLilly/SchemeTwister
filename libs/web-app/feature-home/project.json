@@ -4,6 +4,12 @@
   "projectType": "library",
   "sourceRoot": "libs/web-app/feature-home/src",
   "prefix": "schemetwister",
+  "tags": ["type:feature", "scope:web-app"],
+  "generators": {
+    "@nx/angular:component": {
+      "style": "scss"
+    }
+  },
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
@@ -17,11 +23,5 @@
       },
       "outputs": ["{workspaceRoot}/coverage/libs/web-app/feature-home"]
     }
-  },
-  "generators": {
-    "@nx/angular:component": {
-      "style": "scss"
-    }
-  },
-  "tags": ["type:feature", "scope:web-app"]
+  }
 }
