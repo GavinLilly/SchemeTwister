@@ -1,3 +1,9 @@
+## [3.21.6](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.5...v3.21.6) (2025-08-08)
+
+### Bug Fixes
+
+* **libtwister:** add missing keyword descriptions for 2099 ([82b5743](https://github.com/GavinLilly/SchemeTwister/commit/82b5743700f69020e1144acf69490c5b43858fa1))
+
 ## [3.21.5](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.4...v3.21.5) (2025-04-22)
 
 ### Dependencies
