@@ -3,7 +3,7 @@ import { MastermindWithEpic, randomize } from '@schemetwister/libtwister';
 import { SINISTER_SIX } from '../paintTheTownRed/paintTheTownRed.villains';
 import { UNDERCOVER } from '../shield/shield.keywords';
 
-import { CYBER_MOD } from './2099.keywords';
+import { CYBER_MODS_FOR_ENEMIES } from './2099.keywords';
 import { META } from './2099.meta';
 import { ALCHEMAX_ENFORCERS, FALSE_AESIR_OF_ALCHEMAX } from './2099.villains';
 
@@ -35,7 +35,7 @@ export const ALCHEMAX_EXECUTIVES = new MastermindWithEpic(
     alwaysLeads: [ALCHEMAX_ENFORCERS],
     gameSet: META,
     masterStrike: 'TBD',
-    keywords: [CYBER_MOD, UNDERCOVER],
+    keywords: [CYBER_MODS_FOR_ENEMIES, UNDERCOVER],
   },
   {
     id: 'a9d01c2d-2d6b-4ce1-8bf5-2f01fa3c9827',

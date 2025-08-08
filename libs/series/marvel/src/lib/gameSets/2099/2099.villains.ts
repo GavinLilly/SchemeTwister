@@ -1,7 +1,7 @@
 import { VillainGroup } from '@schemetwister/libtwister';
 import { URU_ENCHANTED_WEAPONS } from '@schemetwister/series-marvel-common';
 
-import { CYBER_MOD } from './2099.keywords';
+import { CYBER_MODS_FOR_ENEMIES } from './2099.keywords';
 import { META } from './2099.meta';
 
 export const FALSE_AESIR_OF_ALCHEMAX = new VillainGroup({
@@ -15,5 +15,5 @@ export const ALCHEMAX_ENFORCERS = new VillainGroup({
   id: '20f2e9a5-5f28-4682-98b3-9049b1d80cbc',
   name: 'Alchemax Enforcers',
   gameSet: META,
-  keywords: [CYBER_MOD],
+  keywords: [CYBER_MODS_FOR_ENEMIES],
 });

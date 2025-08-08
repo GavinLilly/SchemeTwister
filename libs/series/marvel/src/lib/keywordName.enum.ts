@@ -51,6 +51,8 @@ export enum KeywordName {
 
   CROSS_DIMENSIONAL_RAMPAGE = 'Cross Dimensional Rampage',
 
+  CYBER_MOD = 'Cyber-Mod',
+
   DANGER_SENSE_ON_VILLAINS = 'Danger Sense on Villains',
 
   DANGER_SENSE = 'Danger Sense',
@@ -88,6 +90,8 @@ export enum KeywordName {
   EXPLORE = 'Explore',
 
   FAIL = 'Fail',
+
+  FATED_FUTURE = 'Fated Future',
 
   FATEFUL_RESURRECTION = 'Fateful Resurrection',
 

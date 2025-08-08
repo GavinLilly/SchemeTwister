@@ -4,7 +4,7 @@ import { SPIDER_FRIENDS } from '@schemetwister/series-marvel-common';
 import { MARVEL_KNIGHTS } from '../../teams';
 import { UNDERCOVER } from '../shield/shield.keywords';
 
-import { CYBER_MOD, FATED_FUTURE } from './2099.keywords';
+import { CYBER_MODS_FOR_HEROES, FATED_FUTURE } from './2099.keywords';
 import { META } from './2099.meta';
 
 export const SPIDER_MAN_2099 = new Hero({
@@ -12,7 +12,7 @@ export const SPIDER_MAN_2099 = new Hero({
   name: 'Spider-Man 2099',
   team: SPIDER_FRIENDS,
   gameSet: META,
-  keywords: [UNDERCOVER, CYBER_MOD, FATED_FUTURE],
+  keywords: [UNDERCOVER, CYBER_MODS_FOR_HEROES, FATED_FUTURE],
 });
 
 export const GHOST_RIDER_2099 = new Hero({
@@ -20,14 +20,14 @@ export const GHOST_RIDER_2099 = new Hero({
   name: 'Ghost Rider 2099',
   team: MARVEL_KNIGHTS,
   gameSet: META,
-  keywords: [CYBER_MOD, UNDERCOVER, FATED_FUTURE],
+  keywords: [CYBER_MODS_FOR_HEROES, UNDERCOVER, FATED_FUTURE],
 });
 
 export const DOCTOR_DOOM_2099 = new Hero({
   id: '5c8c9d15-5922-43be-bf85-744bbb113590',
   name: 'Doctor Doom 2099',
   gameSet: META,
-  keywords: [UNDERCOVER, CYBER_MOD, FATED_FUTURE],
+  keywords: [UNDERCOVER, CYBER_MODS_FOR_HEROES, FATED_FUTURE],
 });
 
 export const HULK_2099 = new Hero({
@@ -35,7 +35,7 @@ export const HULK_2099 = new Hero({
   name: 'Hulk 2099',
   team: MARVEL_KNIGHTS,
   gameSet: META,
-  keywords: [CYBER_MOD, UNDERCOVER, FATED_FUTURE],
+  keywords: [CYBER_MODS_FOR_HEROES, UNDERCOVER, FATED_FUTURE],
 });
 
 export const RAVAGE_2099 = new Hero({
