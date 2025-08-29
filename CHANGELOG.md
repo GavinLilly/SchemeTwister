@@ -1,3 +1,11 @@
+## [3.21.7](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.6...v3.21.7) (2025-08-29)
+
+### Dependencies
+
+* **deps:** bump @angular-devkit/build-angular ([218e934](https://github.com/GavinLilly/SchemeTwister/commit/218e934e51183549608cec27cced168acf8fd88f))
+* **deps:** bump form-data from 2.5.3 to 2.5.5 ([b4b477b](https://github.com/GavinLilly/SchemeTwister/commit/b4b477b7a100eac7c5d6c9cd73fa6dc140c38c07))
+* **deps:** bump on-headers, morgan and compression ([a900d8d](https://github.com/GavinLilly/SchemeTwister/commit/a900d8d297539e2e407d53c6f78a2a48052afd56))
+
 ## [3.21.6](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.5...v3.21.6) (2025-08-08)
 
 ### Bug Fixes
