@@ -25,13 +25,12 @@ export class LatestSetupsStore extends ComponentStore<LatestSetupsStoreState> {
 
   readonly getLatestSetups = this.effect(() =>
     from(this._storedSetupsService.getLatestSetups()).pipe(
-      tapResponse(
-        (setups) =>
-          this.patchState(() => ({
-            setups,
-          })),
-        (error) => console.log(error)
-      )
+      tapResponse({
+    next: (setups) => this.patchState(() => ({
+        setups,
+    })),
+    error: (error) => console.log(error)
+})
     )
   );
 
