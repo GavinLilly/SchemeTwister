@@ -1,8 +1,8 @@
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { skip, take } from 'rxjs';
 
 import { LocalStorageService } from './local-storage.service';
 import { ScreenOnLockStore } from './screen-on-lock.store';
-import { TestBed, waitForAsync } from '@angular/core/testing';
 
 describe('ScreenOnLockStore', () => {
   describe('without any state in storage', () => {
