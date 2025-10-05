@@ -2,19 +2,22 @@ import { skip, take } from 'rxjs';
 
 import { LocalStorageService } from './local-storage.service';
 import { ScreenOnLockStore } from './screen-on-lock.store';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 
 describe('ScreenOnLockStore', () => {
   describe('without any state in storage', () => {
     let componentStore: ScreenOnLockStore;
 
-    beforeAll(async () => {
-      const localStorageService = new LocalStorageService<boolean>();
-      componentStore = new ScreenOnLockStore(localStorageService);
+    beforeAll(() => {
+      TestBed.configureTestingModule({
+        providers: [ScreenOnLockStore],
+      }).compileComponents();
+      componentStore = TestBed.inject(ScreenOnLockStore);
     });
 
-    it('should be created', () => {
+    it('should be created', waitForAsync(async () => {
       expect(componentStore).toBeTruthy();
-    });
+    }));
 
     it("should show that the screen wake lock isn't on by default", () =>
       expect(componentStore.state().isLocked).toEqual(false));
@@ -40,9 +43,12 @@ describe('ScreenOnLockStore', () => {
     let componentStore: ScreenOnLockStore;
 
     beforeAll(async () => {
-      const localStorageService = new LocalStorageService<boolean>();
+      TestBed.configureTestingModule({
+        providers: [LocalStorageService, ScreenOnLockStore],
+      });
+      const localStorageService = TestBed.inject(LocalStorageService);
       localStorageService.set('isScreenLocked', true);
-      componentStore = new ScreenOnLockStore(localStorageService);
+      componentStore = TestBed.inject(ScreenOnLockStore);
     });
 
     it('should be created', () => {
