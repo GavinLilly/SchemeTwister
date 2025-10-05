@@ -1,4 +1,4 @@
-import { Component, Signal } from '@angular/core';
+import { Component, Signal, inject } from '@angular/core';
 import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import { IAdditionalDeck } from '@schemetwister/libtwister';
@@ -17,6 +17,10 @@ import { BLANK_IMAGE_BASE64 } from '../constants';
     standalone: false
 })
 export class AdditionalDeckComponent {
+  private readonly _store = inject<Store<{
+    gameSetup: IGameSetupState;
+}>>(Store);
+
   additionalDecks: Signal<IAdditionalDeck[]> = this._store.selectSignal(
     selectAdditionalDecks
   );
@@ -25,10 +29,4 @@ export class AdditionalDeckComponent {
   faLock = faLock;
   faLockOpen = faLockOpen;
   blankImage = BLANK_IMAGE_BASE64;
-
-  constructor(
-    private readonly _store: Store<{
-      gameSetup: IGameSetupState;
-    }>
-  ) {}
 }

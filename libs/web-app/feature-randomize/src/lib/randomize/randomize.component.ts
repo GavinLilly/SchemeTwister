@@ -1,4 +1,4 @@
-import { Component, OnInit, Signal, effect } from '@angular/core';
+import { Component, OnInit, Signal, effect, inject } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { faCog, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -33,6 +33,13 @@ import { ScreenOnLockStore } from '../screen-on-lock.store';
     standalone: false
 })
 export class RandomizeComponent implements OnInit {
+  private readonly _modalService = inject(NgbModal);
+  private readonly _store = inject<Store<{
+    numPlayers: INumPlayersState;
+    gameSetup: IGameSetupState;
+}>>(Store);
+  private readonly _screenOnLockStore = inject(ScreenOnLockStore);
+
   numberOfPlayers: Signal<NumPlayers> =
     this._store.selectSignal(selectNumPlayers);
 
@@ -50,15 +57,9 @@ export class RandomizeComponent implements OnInit {
 
   numPlayerOptions = numPlayers;
 
-  constructor(
-    private readonly _modalService: NgbModal,
-    private readonly _store: Store<{
-      numPlayers: INumPlayersState;
-      gameSetup: IGameSetupState;
-    }>,
-    meta: Meta,
-    private readonly _screenOnLockStore: ScreenOnLockStore
-  ) {
+  constructor() {
+    const meta = inject(Meta);
+
     const deckAsNameString = (cards: Set<AbstractCardGroup>) =>
       Array.from(cards)
         .map((card) => card.name)

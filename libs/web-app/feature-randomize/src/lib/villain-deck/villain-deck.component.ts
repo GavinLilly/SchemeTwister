@@ -1,4 +1,4 @@
-import { Component, Signal } from '@angular/core';
+import { Component, Signal, inject } from '@angular/core';
 import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import {
@@ -25,6 +25,10 @@ import { VillainAdditionalDeckCardType } from '../villainAdditionalDeckCard.type
     standalone: false
 })
 export class VillainDeckComponent {
+  private readonly _store = inject<Store<{
+    gameSetup: IGameSetupState;
+}>>(Store);
+
   villainDeck: Signal<IVillainDeck> =
     this._store.selectSignal(selectVillainDeck);
 
@@ -33,12 +37,6 @@ export class VillainDeckComponent {
   faLock = faLock;
   faLockOpen = faLockOpen;
   blankImage = BLANK_IMAGE_BASE64;
-
-  constructor(
-    private readonly _store: Store<{
-      gameSetup: IGameSetupState;
-    }>
-  ) {}
 
   isCardLocked(card: VillainAdditionalDeckCardType) {
     const lockedCards = this.lockedCards();

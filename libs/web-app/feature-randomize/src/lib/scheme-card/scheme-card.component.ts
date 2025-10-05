@@ -1,11 +1,10 @@
-import { Component, Inject, Signal, computed } from '@angular/core';
+import { Component, Signal, computed, inject } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCog, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import { NgbAccordionModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import {
   CARD_TYPE,
-  ISeries,
   Scheme,
   SchemeMinusRules,
   SoloBannedScheme,
@@ -34,6 +33,15 @@ import {
   standalone: true,
 })
 export class SchemeCardComponent {
+  private readonly _modalService = inject(NgbModal);
+  private readonly _store = inject<
+    Store<{
+      gameSetup: IGameSetupState;
+      numPlayers: INumPlayersState;
+    }>
+  >(Store);
+  private readonly _seriesRegister = inject(SERIES_REGISTER_TOKEN);
+
   private readonly _libTwister = this._store.selectSignal(
     selectLibTwister(this._seriesRegister)
   );
@@ -51,15 +59,6 @@ export class SchemeCardComponent {
   faLock = faLock;
   faLockOpen = faLockOpen;
   faCog = faCog;
-
-  constructor(
-    private readonly _modalService: NgbModal,
-    private readonly _store: Store<{
-      gameSetup: IGameSetupState;
-      numPlayers: INumPlayersState;
-    }>,
-    @Inject(SERIES_REGISTER_TOKEN) private readonly _seriesRegister: ISeries[]
-  ) {}
 
   pickScheme() {
     const selectedScheme = this._store.selectSignal(selectDefinedScheme);

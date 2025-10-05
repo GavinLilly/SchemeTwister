@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   increment,
   setDoc,
@@ -8,7 +8,7 @@ import {
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { concatLatestFrom } from '@ngrx/operators';
 import { Store } from '@ngrx/store';
-import { ISeries, LiteGameSetup } from '@schemetwister/libtwister';
+import { LiteGameSetup } from '@schemetwister/libtwister';
 import {
   IStoredGameSetup,
   StoredSetupsService,
@@ -51,6 +51,17 @@ import {
 
 @Injectable()
 export class GameSetupEffects {
+  private readonly _actions$ = inject(Actions);
+  private readonly _store = inject<
+    Store<{
+      gameSets: IGameSetsState;
+      numPlayers: INumPlayersState;
+      gameSetup: IGameSetupState;
+    }>
+  >(Store);
+  private readonly _storedSetupsService = inject(StoredSetupsService);
+  private readonly _seriesRegister = inject(SERIES_REGISTER_TOKEN);
+
   private static readonly _storeSendWaitSeconds = 5;
 
   readonly generateGameSetup$ = createEffect(() =>
@@ -148,15 +159,4 @@ export class GameSetupEffects {
       })
     )
   );
-
-  constructor(
-    private readonly _actions$: Actions,
-    private readonly _store: Store<{
-      gameSets: IGameSetsState;
-      numPlayers: INumPlayersState;
-      gameSetup: IGameSetupState;
-    }>,
-    private readonly _storedSetupsService: StoredSetupsService,
-    @Inject(SERIES_REGISTER_TOKEN) private readonly _seriesRegister: ISeries[]
-  ) {}
 }

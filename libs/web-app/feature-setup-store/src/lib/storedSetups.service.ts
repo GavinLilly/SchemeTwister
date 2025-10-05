@@ -1,4 +1,4 @@
-import { Inject, Injectable, inject } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   CollectionReference,
   Firestore,
@@ -18,10 +18,10 @@ export const FIRESTORE_COLLECTION_TOKEN = 'FireStoreCollection';
 @Injectable()
 export class StoredSetupsService {
   setupsCollection: CollectionReference;
-  constructor(
-    @Inject(FIRESTORE_COLLECTION_TOKEN) collectionName: string,
-    firestore: Firestore = inject(Firestore)
-  ) {
+  constructor() {
+    const collectionName = inject<string>(FIRESTORE_COLLECTION_TOKEN as any);
+    const firestore = inject(Firestore) ?? inject(Firestore);
+
     this.setupsCollection = collection(firestore, collectionName);
   }
 

@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import {
   Mastermind,
@@ -6,7 +6,6 @@ import {
   Hero,
   SchemeMinusRules,
   VillainGroup,
-  ISeries,
   INamedObject,
 } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
@@ -25,10 +24,10 @@ export class HomePageComponent {
   numVillains: number;
   numSchemes: number;
 
-  constructor(
-    meta: Meta,
-    @Inject(SERIES_REGISTER_TOKEN) seriesRegister: ISeries[]
-  ) {
+  constructor() {
+    const meta = inject(Meta);
+    const seriesRegister = inject(SERIES_REGISTER_TOKEN);
+
     const allGameSets = seriesRegister.flatMap((series) => series.gameSets);
 
     this.numGameSets = allGameSets.length;

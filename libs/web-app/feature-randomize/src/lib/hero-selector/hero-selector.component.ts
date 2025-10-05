@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbActiveModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { Hero, INamedObject } from '@schemetwister/libtwister';
@@ -10,6 +10,8 @@ import { Hero, INamedObject } from '@schemetwister/libtwister';
     styleUrl: './hero-selector.component.scss'
 })
 export class HeroSelectorComponent implements OnInit {
+  activeModal = inject(NgbActiveModal);
+
   @Input() availableHeroesInput!: Hero[];
   @Input() numberOfHeroes!: number;
   @Input() lockedHeroes?: Hero[];
@@ -22,8 +24,6 @@ export class HeroSelectorComponent implements OnInit {
   numHeroesArray: number[] = [];
 
   randomText = '**Random**';
-
-  constructor(public activeModal: NgbActiveModal) {}
 
   ngOnInit(): void {
     this.numHeroesArray = Array(this.numberOfHeroes)

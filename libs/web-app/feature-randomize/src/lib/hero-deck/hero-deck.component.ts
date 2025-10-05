@@ -1,8 +1,8 @@
-import { Component, computed, Inject, Signal } from '@angular/core';
+import { Component, computed, Signal, inject } from '@angular/core';
 import { faLock, faLockOpen, faCog } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import { Henchmen, Hero, IHeroDeck, ISeries } from '@schemetwister/libtwister';
+import { Henchmen, Hero, IHeroDeck } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
 import {
@@ -22,12 +22,20 @@ import { HeroSelectorComponent } from '../hero-selector/hero-selector.component'
  * @todo check if bystanders are brought in
  */
 @Component({
-    selector: 'schemetwister-hero-deck',
-    templateUrl: './hero-deck.component.html',
-    styleUrls: ['./hero-deck.component.scss'],
-    standalone: false
+  selector: 'schemetwister-hero-deck',
+  templateUrl: './hero-deck.component.html',
+  styleUrls: ['./hero-deck.component.scss'],
+  standalone: false,
 })
 export class HeroDeckComponent {
+  private readonly _store = inject<
+    Store<{
+      gameSetup: IGameSetupState;
+    }>
+  >(Store);
+  private readonly _modalService = inject(NgbModal);
+  private readonly _seriesRegister = inject(SERIES_REGISTER_TOKEN);
+
   private readonly _libTwister = this._store.selectSignal(
     selectLibTwister(this._seriesRegister)
   );
@@ -42,14 +50,6 @@ export class HeroDeckComponent {
   faLockOpen = faLockOpen;
   faCog = faCog;
   blankImage = BLANK_IMAGE_BASE64;
-
-  constructor(
-    private readonly _store: Store<{
-      gameSetup: IGameSetupState;
-    }>,
-    private readonly _modalService: NgbModal,
-    @Inject(SERIES_REGISTER_TOKEN) private readonly _seriesRegister: ISeries[]
-  ) {}
 
   isCardLocked(card: Hero | Henchmen) {
     const lockedCards = this.lockedCards();
