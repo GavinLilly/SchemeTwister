@@ -13,6 +13,11 @@ import { RandomizeComponent } from './randomize.component';
 describe('RandomizeComponent', () => {
   beforeEach(() =>
     MockBuilder(RandomizeComponent, WebAppFeatureRandomizeModule)
+      .keep(WebAppUiModule)
+      .mock(FormsModule)
+      .mock(FontAwesomeModule)
+      .mock(NgbModalModule)
+      .mock(NgbAccordionModule)
       .provide(
         provideMockStore({
           initialState: {
@@ -23,11 +28,6 @@ describe('RandomizeComponent', () => {
           },
         })
       )
-      .keep(WebAppUiModule)
-      .mock(FormsModule)
-      .mock(FontAwesomeModule)
-      .mock(NgbModalModule)
-      .mock(NgbAccordionModule)
   );
 
   it('should create', () => {

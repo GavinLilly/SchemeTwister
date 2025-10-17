@@ -5,10 +5,12 @@ import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
 
 import { SchemeCardComponent } from './scheme-card.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('SchemeCardComponent', () => {
   beforeEach(() =>
     MockBuilder(SchemeCardComponent)
+      .mock(FontAwesomeModule)
       .provide(
         provideMockStore({
           initialState: {

@@ -13,6 +13,8 @@ import { HeroDeckComponent } from './hero-deck.component';
 describe('HeroDeckComponent', () => {
   beforeEach(() =>
     MockBuilder(HeroDeckComponent, WebAppFeatureRandomizeModule)
+      .mock(NgbAccordionModule)
+      .mock(FontAwesomeModule)
       .provide(
         provideMockStore({
           initialState: {
@@ -24,8 +26,6 @@ describe('HeroDeckComponent', () => {
         })
       )
       .provide(MockProvider(SERIES_REGISTER_TOKEN, [marvelSeries]))
-      .mock(NgbAccordionModule)
-      .mock(FontAwesomeModule)
   );
 
   it('should create', () => {

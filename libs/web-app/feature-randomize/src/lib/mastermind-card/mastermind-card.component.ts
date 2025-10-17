@@ -25,6 +25,7 @@ import {
 } from '../+state/selectors/game-setup-scheme.selectors';
 
 type MastermindType = Mastermind | TransformingMastermind | AdaptingMastermind;
+
 @Component({
   selector: 'schemetwister-mastermind-card',
   imports: [WebAppUiModule, FontAwesomeModule, NgbAccordionModule],
@@ -56,9 +57,9 @@ export class MastermindCardComponent {
   mastermind: Signal<MastermindType> =
     this._store.selectSignal(selectMastermind);
 
-  faLock = faLock;
-  faLockOpen = faLockOpen;
-  faCog = faCog;
+  readonly faLock = faLock;
+  readonly faLockOpen = faLockOpen;
+  readonly faCog = faCog;
 
   pickMastermind() {
     const selectedMastermind = this._store.selectSignal(
