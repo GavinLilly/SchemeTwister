@@ -5,18 +5,13 @@ import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
 
 import { MastermindCardComponent } from './mastermind-card.component';
-// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
-// import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
-// import { WebAppUiModule } from '@schemetwister/web-app/ui';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('MastermindCardComponent', () => {
   beforeEach(() =>
     MockBuilder(MastermindCardComponent)
-      // .mock(WebAppUiModule)
-      .keep(FontAwesomeTestingModule)
-      // .mock(FontAwesomeModule)
-      // .mock(NgbAccordionModule)
+      .replace(FontAwesomeModule, FontAwesomeTestingModule)
       .provide(
         provideMockStore({
           initialState: {

@@ -6,11 +6,12 @@ import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
 
 import { SchemeCardComponent } from './scheme-card.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 
 describe('SchemeCardComponent', () => {
   beforeEach(() =>
     MockBuilder(SchemeCardComponent)
-      .mock(FontAwesomeModule)
+      .replace(FontAwesomeModule, FontAwesomeTestingModule)
       .provide(
         provideMockStore({
           initialState: {
