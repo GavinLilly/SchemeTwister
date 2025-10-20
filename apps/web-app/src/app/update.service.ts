@@ -1,15 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
 
 @Injectable()
 export class UpdateService {
-  constructor(_updates: SwUpdate) {
-    if (_updates.isEnabled) {
+  constructor() {
+    const updates = inject(SwUpdate);
+
+    if (updates.isEnabled) {
       console.log(
         'Updates enabled. Will reload when a new SchemeTwister version is available'
       );
 
-      _updates.versionUpdates.subscribe((evt) => {
+      updates.versionUpdates.subscribe((evt) => {
         switch (evt.type) {
           case 'VERSION_DETECTED':
             console.log(`Downloading new app version: ${evt.version.hash}`);

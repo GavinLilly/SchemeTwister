@@ -1,4 +1,4 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy, inject } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { Observable, Subscription, switchMap } from 'rxjs';
 
@@ -22,17 +22,18 @@ export class ScreenOnLockStore
   extends ComponentStore<ScreenOnLockState>
   implements OnDestroy
 {
+  private readonly _screenOnStorageService =
+    inject<LocalStorageService<boolean>>(LocalStorageService);
+
   // eslint-disable-next-line no-undef
   private _screenLockSentinel?: WakeLockSentinel = undefined;
 
   private readonly _localStorageUpdateSub: Subscription;
 
-  constructor(
-    private readonly _screenOnStorageService: LocalStorageService<boolean>
-  ) {
+  constructor() {
     super(initialState);
 
-    const isLocked = _screenOnStorageService.get(IS_LOCKED_KEY);
+    const isLocked = this._screenOnStorageService.get(IS_LOCKED_KEY);
 
     if (isLocked !== null) {
       this.setLock(isLocked);

@@ -1,5 +1,5 @@
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 import { GameSetup } from '@schemetwister/libtwister';
 import { marvelSeries } from '@schemetwister/series-marvel';
@@ -13,6 +13,7 @@ import { HeroDeckComponent } from './hero-deck.component';
 describe('HeroDeckComponent', () => {
   beforeEach(() =>
     MockBuilder(HeroDeckComponent, WebAppFeatureRandomizeModule)
+      .replace(FontAwesomeModule, FontAwesomeTestingModule)
       .provide(
         provideMockStore({
           initialState: {
@@ -24,8 +25,6 @@ describe('HeroDeckComponent', () => {
         })
       )
       .provide(MockProvider(SERIES_REGISTER_TOKEN, [marvelSeries]))
-      .mock(NgbAccordionModule)
-      .mock(FontAwesomeModule)
   );
 
   it('should create', () => {

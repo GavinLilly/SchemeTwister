@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbActiveModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import {
@@ -13,6 +13,8 @@ import {
     templateUrl: './modal-selector.component.html'
 })
 export class ModalSelectorComponent implements OnInit {
+  activeModal = inject(NgbActiveModal);
+
   randomText = '**Random**';
 
   @Input() itemType!: CardType;
@@ -21,8 +23,6 @@ export class ModalSelectorComponent implements OnInit {
   @Output() chosenItem = new EventEmitter<string>();
 
   adjustedAvailableItems: INamedObject[] = [];
-
-  constructor(public activeModal: NgbActiveModal) {}
 
   ngOnInit(): void {
     this.availableItems

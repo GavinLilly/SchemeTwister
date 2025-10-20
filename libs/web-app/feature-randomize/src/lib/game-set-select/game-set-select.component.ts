@@ -1,7 +1,7 @@
-import { Component, Inject, Signal, computed } from '@angular/core';
+import { Component, Signal, computed, inject } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import { GameSet, GAME_SET_SIZE, ISeries } from '@schemetwister/libtwister';
+import { GameSet, GAME_SET_SIZE } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
 import { gameSetSelectionActions as fromGameSetDialog } from '../+state/actions/game-sets.actions';
@@ -12,11 +12,19 @@ import {
 } from '../+state/selectors/game-sets.selectors';
 
 @Component({
-    selector: 'schemetwister-game-set-select',
-    templateUrl: './game-set-select.component.html',
-    standalone: false
+  selector: 'schemetwister-game-set-select',
+  templateUrl: './game-set-select.component.html',
+  standalone: false,
 })
 export class GameSetSelectComponent {
+  activeModal = inject(NgbActiveModal);
+  private readonly _store = inject<
+    Store<{
+      gameSets: IGameSetsState;
+    }>
+  >(Store);
+  private readonly _seriesRegister = inject(SERIES_REGISTER_TOKEN);
+
   private readonly _libTwister = this._store.selectSignal(
     selectLibTwister(this._seriesRegister)
   );
@@ -48,12 +56,6 @@ export class GameSetSelectComponent {
   promoSets = this._allGameSets.filter(
     (item) => item.size === GAME_SET_SIZE.promo
   );
-
-  constructor(
-    public activeModal: NgbActiveModal,
-    private readonly _store: Store<{ gameSets: IGameSetsState }>,
-    @Inject(SERIES_REGISTER_TOKEN) private readonly _seriesRegister: ISeries[]
-  ) {}
 
   onSelectedUpdate(selected: GameSet[]) {
     this._store.dispatch(

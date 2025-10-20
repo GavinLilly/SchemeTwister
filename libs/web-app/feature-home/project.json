@@ -19,7 +19,8 @@
       "executor": "@nx/jest:jest",
       "options": {
         "jestConfig": "libs/web-app/feature-home/jest.config.ts",
-        "codeCoverage": true
+        "codeCoverage": true,
+        "tsConfig": "libs/web-app/feature-home/tsconfig.spec.json"
       },
       "outputs": ["{workspaceRoot}/coverage/libs/web-app/feature-home"]
     }

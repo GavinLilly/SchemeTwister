@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { UpdateService } from './update.service';
 
@@ -7,8 +7,6 @@ import { UpdateService } from './update.service';
     templateUrl: './app.component.html',
     standalone: false
 })
-export class AppComponent {
-  constructor(private readonly _sw: UpdateService) {
-    // check the service worker for updates
-  }
+export class AppComponent {  private readonly _sw = inject(UpdateService);
+
 }

@@ -1,9 +1,7 @@
-import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgbAccordionModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 import { GameSetup } from '@schemetwister/libtwister';
-import { WebAppUiModule } from '@schemetwister/web-app/ui';
 import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { WebAppFeatureRandomizeModule } from '../web-app-feature-randomize.module';
@@ -13,6 +11,7 @@ import { RandomizeComponent } from './randomize.component';
 describe('RandomizeComponent', () => {
   beforeEach(() =>
     MockBuilder(RandomizeComponent, WebAppFeatureRandomizeModule)
+      .replace(FontAwesomeModule, FontAwesomeTestingModule)
       .provide(
         provideMockStore({
           initialState: {
@@ -23,11 +22,6 @@ describe('RandomizeComponent', () => {
           },
         })
       )
-      .keep(WebAppUiModule)
-      .mock(FormsModule)
-      .mock(FontAwesomeModule)
-      .mock(NgbModalModule)
-      .mock(NgbAccordionModule)
   );
 
   it('should create', () => {

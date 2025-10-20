@@ -110,7 +110,8 @@
         "local": {
           "buildTarget": "web-app:build:local"
         }
-      }
+      },
+      "continuous": true
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
@@ -126,7 +127,8 @@
       "executor": "@nx/jest:jest",
       "options": {
         "jestConfig": "apps/web-app/jest.config.ts",
-        "codeCoverage": true
+        "codeCoverage": true,
+        "tsConfig": "apps/web-app/tsconfig.spec.json"
       },
       "outputs": ["{workspaceRoot}/coverage/apps/web-app"]
     },

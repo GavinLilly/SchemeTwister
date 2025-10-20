@@ -1,4 +1,4 @@
-import { Component, Inject, Signal, computed } from '@angular/core';
+import { Component, Signal, computed, inject } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCog, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import { NgbAccordionModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -8,7 +8,6 @@ import {
   CARD_TYPE,
   TransformingMastermind,
   AdaptingMastermind,
-  ISeries,
 } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import {
@@ -26,6 +25,7 @@ import {
 } from '../+state/selectors/game-setup-scheme.selectors';
 
 type MastermindType = Mastermind | TransformingMastermind | AdaptingMastermind;
+
 @Component({
   selector: 'schemetwister-mastermind-card',
   imports: [WebAppUiModule, FontAwesomeModule, NgbAccordionModule],
@@ -34,6 +34,14 @@ type MastermindType = Mastermind | TransformingMastermind | AdaptingMastermind;
   standalone: true,
 })
 export class MastermindCardComponent {
+  private readonly _modalService = inject(NgbModal);
+  private readonly _store = inject<
+    Store<{
+      gameSetup: IGameSetupState;
+    }>
+  >(Store);
+  private readonly _seriesRegister = inject(SERIES_REGISTER_TOKEN);
+
   private readonly _libTwister = this._store.selectSignal(
     selectLibTwister(this._seriesRegister)
   );
@@ -49,17 +57,9 @@ export class MastermindCardComponent {
   mastermind: Signal<MastermindType> =
     this._store.selectSignal(selectMastermind);
 
-  faLock = faLock;
-  faLockOpen = faLockOpen;
-  faCog = faCog;
-
-  constructor(
-    private readonly _modalService: NgbModal,
-    private readonly _store: Store<{
-      gameSetup: IGameSetupState;
-    }>,
-    @Inject(SERIES_REGISTER_TOKEN) private readonly _seriesRegister: ISeries[]
-  ) {}
+  readonly faLock = faLock;
+  readonly faLockOpen = faLockOpen;
+  readonly faCog = faCog;
 
   pickMastermind() {
     const selectedMastermind = this._store.selectSignal(

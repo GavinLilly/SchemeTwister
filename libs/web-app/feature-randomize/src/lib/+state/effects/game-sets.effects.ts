@@ -1,7 +1,7 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, OnInitEffects, createEffect, ofType } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
-import { ISeries, LibTwister } from '@schemetwister/libtwister';
+import { LibTwister } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import { map, withLatestFrom } from 'rxjs/operators';
 
@@ -18,6 +18,14 @@ import {
 
 @Injectable()
 export class GameSetsEffects implements OnInitEffects {
+  private readonly _actions$ = inject(Actions);
+  private readonly _store = inject<
+    Store<{
+      gameSets: IGameSetsState;
+    }>
+  >(Store);
+  private readonly _seriesRegister = inject(SERIES_REGISTER_TOKEN);
+
   readonly validateSetGameSets$ = createEffect(() =>
     this._actions$.pipe(
       ofType(gameSetSelectionActions.setGameSets),
@@ -80,14 +88,6 @@ export class GameSetsEffects implements OnInitEffects {
       )
     )
   );
-
-  constructor(
-    private readonly _actions$: Actions,
-    private readonly _store: Store<{
-      gameSets: IGameSetsState;
-    }>,
-    @Inject(SERIES_REGISTER_TOKEN) private readonly _seriesRegister: ISeries[]
-  ) {}
 
   ngrxOnInitEffects(): Action {
     const seriesIds = this._seriesRegister.map(

@@ -10,7 +10,8 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/web-app/shared"],
       "options": {
-        "jestConfig": "libs/web-app/shared/jest.config.ts"
+        "jestConfig": "libs/web-app/shared/jest.config.ts",
+        "tsConfig": "libs/web-app/shared/tsconfig.spec.json"
       }
     },
     "lint": {

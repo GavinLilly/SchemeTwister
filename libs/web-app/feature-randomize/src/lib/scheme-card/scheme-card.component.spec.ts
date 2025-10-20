@@ -1,3 +1,5 @@
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 import { GameSetup } from '@schemetwister/libtwister';
 import { marvelSeries } from '@schemetwister/series-marvel';
@@ -9,6 +11,7 @@ import { SchemeCardComponent } from './scheme-card.component';
 describe('SchemeCardComponent', () => {
   beforeEach(() =>
     MockBuilder(SchemeCardComponent)
+      .replace(FontAwesomeModule, FontAwesomeTestingModule)
       .provide(
         provideMockStore({
           initialState: {

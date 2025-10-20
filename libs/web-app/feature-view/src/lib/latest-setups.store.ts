@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { tapResponse } from '@ngrx/operators';
 import {
@@ -19,19 +19,20 @@ const initialState: LatestSetupsStoreState = {
 
 @Injectable()
 export class LatestSetupsStore extends ComponentStore<LatestSetupsStoreState> {
-  constructor(private readonly _storedSetupsService: StoredSetupsService) {
+  private readonly _storedSetupsService = inject(StoredSetupsService);
+
+  constructor() {
     super(initialState);
   }
 
   readonly getLatestSetups = this.effect(() =>
     from(this._storedSetupsService.getLatestSetups()).pipe(
-      tapResponse(
-        (setups) =>
-          this.patchState(() => ({
-            setups,
-          })),
-        (error) => console.log(error)
-      )
+      tapResponse({
+    next: (setups) => this.patchState(() => ({
+        setups,
+    })),
+    error: (error) => console.log(error)
+})
     )
   );
 
