@@ -1,3 +1,9 @@
+## [3.21.8](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.7...v3.21.8) (2025-10-20)
+
+### Dependencies
+
+* **deps:** migrate nx to v21 and Angular to v20 ([dae8a3e](https://github.com/GavinLilly/SchemeTwister/commit/dae8a3e29c19545b6ab1c0a92ce6be6a2bc66bc1))
+
 ## [3.21.7](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.6...v3.21.7) (2025-08-29)
 
 ### Dependencies
