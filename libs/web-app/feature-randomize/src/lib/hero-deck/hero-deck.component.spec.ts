@@ -1,4 +1,5 @@
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 import { GameSetup } from '@schemetwister/libtwister';
 import { marvelSeries } from '@schemetwister/series-marvel';
@@ -8,7 +9,6 @@ import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
 import { WebAppFeatureRandomizeModule } from '../web-app-feature-randomize.module';
 
 import { HeroDeckComponent } from './hero-deck.component';
-import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 
 describe('HeroDeckComponent', () => {
   beforeEach(() =>
