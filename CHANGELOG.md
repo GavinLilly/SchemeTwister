@@ -1,3 +1,9 @@
+## [3.21.9](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.8...v3.21.9) (2025-10-29)
+
+### Dependencies
+
+* **deps:** bump validator from 13.15.0 to 13.15.20 ([23cabf6](https://github.com/GavinLilly/SchemeTwister/commit/23cabf6ebe9412a47136761ef3148e587f334e46))
+
 ## [3.21.8](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.7...v3.21.8) (2025-10-20)
 
 ### Dependencies
