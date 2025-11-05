@@ -1,4 +1,4 @@
-FROM node:20 AS builder
+FROM node:lts AS builder
 
 WORKDIR /build
 
