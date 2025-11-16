@@ -1,3 +1,9 @@
+## [3.21.10](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.9...v3.21.10) (2025-11-16)
+
+### Performance Improvements
+
+* **app:** use set for selected heroes ([e593c28](https://github.com/GavinLilly/SchemeTwister/commit/e593c28615c038db14ce95fa52b5b5220e111f64))
+
 ## [3.21.9](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.8...v3.21.9) (2025-10-29)
 
 ### Dependencies
