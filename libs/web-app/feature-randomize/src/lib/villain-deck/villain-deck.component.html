@@ -98,22 +98,16 @@
         <h2 ngbAccordionHeader>
           <div class="d-flex align-items-center justify-content-between">
             <button ngbAccordionButton>
-              @if(hero.team) {
-
               <img
-                src="/assets/icons/teams/{{ hero.team.icon }}"
-                alt="{{ hero.team.name }}"
+                [src]="
+                  hero.team
+                    ? '/assets/icons/teams/' + hero.team.icon
+                    : blankImage
+                "
+                [alt]="hero.team ? hero.team.name : 'No team'"
                 class="img-fluid"
                 id="hero-team"
               />
-              } @else {
-              <img
-                src="{{ blankImage }}"
-                alt="No team"
-                class="img-fluid"
-                id="hero-team"
-              />
-              }
               <span>{{ hero.name }}</span>
             </button>
             <span
