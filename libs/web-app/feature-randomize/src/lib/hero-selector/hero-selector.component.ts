@@ -1,13 +1,20 @@
-import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  inject,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbActiveModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { Hero, INamedObject } from '@schemetwister/libtwister';
 
 @Component({
-    selector: 'schemetwister-hero-selector',
-    imports: [FormsModule, NgbModalModule],
-    templateUrl: './hero-selector.component.html',
-    styleUrl: './hero-selector.component.scss'
+  selector: 'schemetwister-hero-selector',
+  imports: [FormsModule, NgbModalModule],
+  templateUrl: './hero-selector.component.html',
+  styleUrl: './hero-selector.component.scss',
 })
 export class HeroSelectorComponent implements OnInit {
   activeModal = inject(NgbActiveModal);
@@ -26,7 +33,7 @@ export class HeroSelectorComponent implements OnInit {
   randomText = '**Random**';
 
   ngOnInit(): void {
-    this.numHeroesArray = Array(this.numberOfHeroes)
+    this.numHeroesArray = new Array(this.numberOfHeroes)
       .fill(0)
       .map((x, i) => i);
 
@@ -73,13 +80,13 @@ export class HeroSelectorComponent implements OnInit {
    * @returns all applicable heroes for the select box
    */
   getAvailableHeroes(index: number): INamedObject[] {
-    const chosenHeroesArray = Array.from(this._chosenHeroes.values()).map(
-      (hero) => hero.id
+    const chosenHeroesArray = new Set(
+      Array.from(this._chosenHeroes.values()).map((hero) => hero.id)
     );
     return this._availableHeroes.filter(
       (hero) =>
         hero.id === this._chosenHeroes.get(index)?.id ||
-        !chosenHeroesArray.includes(hero.id)
+        !chosenHeroesArray.has(hero.id)
     );
   }
 
