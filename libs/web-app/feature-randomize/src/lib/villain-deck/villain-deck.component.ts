@@ -17,12 +17,18 @@ import {
 } from '../+state/selectors/game-setup-scheme.selectors';
 import { BLANK_IMAGE_BASE64 } from '../constants';
 import { VillainAdditionalDeckCardType } from '../villainAdditionalDeckCard.type';
+import { NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordionToggle, NgbAccordionButton, NgbCollapse, NgbAccordionCollapse, NgbAccordionBody } from '@ng-bootstrap/ng-bootstrap';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { HenchmenCardContentComponent } from '../../../../ui/src/lib/henchmen-card-content/henchmen-card-content.component';
+import { VillaingroupCardContentComponent } from '../../../../ui/src/lib/villaingroup-card-content/villaingroup-card-content.component';
+import { HeroCardContentComponent } from '../../../../ui/src/lib/hero-card-content/hero-card-content.component';
+import { MastermindCardContentComponent } from '../../../../ui/src/lib/mastermind-card-content/mastermind-card-content.component';
 
 @Component({
     selector: 'schemetwister-villain-deck',
     templateUrl: './villain-deck.component.html',
     styleUrls: ['./villain-deck.component.scss'],
-    standalone: false
+    imports: [NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordionToggle, NgbAccordionButton, FaIconComponent, NgbCollapse, NgbAccordionCollapse, NgbAccordionBody, HenchmenCardContentComponent, VillaingroupCardContentComponent, HeroCardContentComponent, MastermindCardContentComponent]
 })
 export class VillainDeckComponent {
   private readonly _store = inject<Store<{

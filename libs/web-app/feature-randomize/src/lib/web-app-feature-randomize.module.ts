@@ -38,44 +38,37 @@ import { SchemeCardComponent } from './scheme-card/scheme-card.component';
 import { VillainDeckComponent } from './villain-deck/villain-deck.component';
 
 @NgModule({
-  imports: [
-    // Angular
-    CommonModule,
-    FormsModule,
-    RouterModule.forChild([
-      { path: '', pathMatch: 'full', component: RandomizeComponent },
-    ]),
-
-    // Bootstrap
-    NgbModule,
-    NgbAccordionModule,
-    NgbCollapseModule,
-    NgbDropdownModule,
-
-    // Icons
-    FontAwesomeModule,
-
-    // NGRX
-    StoreModule.forFeature(numPlayersFeatureKey, numPlayersReducer),
-    StoreModule.forFeature(gameSetsFeatureKey, gameSetsReducer),
-    StoreModule.forFeature(gameSetupFeatureKey, gameSetupReducer),
-    EffectsModule.forFeature([GameSetupEffects, GameSetsEffects]),
-
-    // Schemetwister
-    WebAppUiModule,
-    WebAppFeatureSetupStoreModule,
-
-    // Standalone components
-    MastermindCardComponent,
-    SchemeCardComponent,
-  ],
-  declarations: [
-    RandomizeComponent,
-    GameSetSelectComponent,
-    ReplacePipe,
-    HeroDeckComponent,
-    VillainDeckComponent,
-    AdditionalDeckComponent,
-  ],
+    imports: [
+        // Angular
+        CommonModule,
+        FormsModule,
+        RouterModule.forChild([
+            { path: '', pathMatch: 'full', component: RandomizeComponent },
+        ]),
+        // Bootstrap
+        NgbModule,
+        NgbAccordionModule,
+        NgbCollapseModule,
+        NgbDropdownModule,
+        // Icons
+        FontAwesomeModule,
+        // NGRX
+        StoreModule.forFeature(numPlayersFeatureKey, numPlayersReducer),
+        StoreModule.forFeature(gameSetsFeatureKey, gameSetsReducer),
+        StoreModule.forFeature(gameSetupFeatureKey, gameSetupReducer),
+        EffectsModule.forFeature([GameSetupEffects, GameSetsEffects]),
+        // Schemetwister
+        WebAppUiModule,
+        WebAppFeatureSetupStoreModule,
+        // Standalone components
+        MastermindCardComponent,
+        SchemeCardComponent,
+        RandomizeComponent,
+        GameSetSelectComponent,
+        ReplacePipe,
+        HeroDeckComponent,
+        VillainDeckComponent,
+        AdditionalDeckComponent,
+    ],
 })
 export class WebAppFeatureRandomizeModule {}

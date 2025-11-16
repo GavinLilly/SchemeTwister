@@ -10,8 +10,8 @@ describe('BaseCardContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BaseCardContentComponent],
-    }).compileComponents();
+    imports: [BaseCardContentComponent],
+}).compileComponents();
   });
 
   beforeEach(() => {

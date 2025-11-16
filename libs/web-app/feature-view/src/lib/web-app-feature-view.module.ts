@@ -9,18 +9,16 @@ import { StoredSetupToGameSetupPipe } from './stored-setup-to-game-setup.pipe';
 import { WebAppFeatureViewRoutingModule } from './web-app-feature-view-routing.module';
 
 @NgModule({
-  imports: [
-    // Angular
-    CommonModule,
-
-    // Bootstrap
-    NgbModule,
-
-    // Schemetwister
-    WebAppFeatureViewRoutingModule,
-    WebAppSharedModule,
-    WebAppFeatureSetupStoreModule,
-  ],
-  declarations: [LatestSetupsComponent, StoredSetupToGameSetupPipe],
+    imports: [
+        // Angular
+        CommonModule,
+        // Bootstrap
+        NgbModule,
+        // Schemetwister
+        WebAppFeatureViewRoutingModule,
+        WebAppSharedModule,
+        WebAppFeatureSetupStoreModule,
+        LatestSetupsComponent, StoredSetupToGameSetupPipe,
+    ],
 })
 export class WebAppFeatureViewModule {}

@@ -14,26 +14,23 @@ import { MastermindCardContentComponent } from './mastermind-card-content/master
 import { VillaingroupCardContentComponent } from './villaingroup-card-content/villaingroup-card-content.component';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, FontAwesomeModule, NgbModule],
-  declarations: [
-    HeaderComponent,
-    MastermindCardContentComponent,
-    FooterComponent,
-    HeroCardContentComponent,
-    BaseCardContentComponent,
-    HenchmenCardContentComponent,
-    VillaingroupCardContentComponent,
-    BadguyCardContentComponent,
-  ],
-  exports: [
-    HeaderComponent,
-    MastermindCardContentComponent,
-    FooterComponent,
-    HeroCardContentComponent,
-    BaseCardContentComponent,
-    HenchmenCardContentComponent,
-    VillaingroupCardContentComponent,
-    BadguyCardContentComponent,
-  ],
+    imports: [CommonModule, RouterModule, FontAwesomeModule, NgbModule, HeaderComponent,
+        MastermindCardContentComponent,
+        FooterComponent,
+        HeroCardContentComponent,
+        BaseCardContentComponent,
+        HenchmenCardContentComponent,
+        VillaingroupCardContentComponent,
+        BadguyCardContentComponent],
+    exports: [
+        HeaderComponent,
+        MastermindCardContentComponent,
+        FooterComponent,
+        HeroCardContentComponent,
+        BaseCardContentComponent,
+        HenchmenCardContentComponent,
+        VillaingroupCardContentComponent,
+        BadguyCardContentComponent,
+    ],
 })
 export class WebAppUiModule {}

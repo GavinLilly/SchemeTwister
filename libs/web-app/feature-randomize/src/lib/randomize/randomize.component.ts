@@ -1,7 +1,7 @@
 import { Component, OnInit, Signal, effect, inject } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { faCog, faCheck } from '@fortawesome/free-solid-svg-icons';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbDropdown, NgbDropdownToggle, NgbDropdownMenu, NgbDropdownButtonItem, NgbDropdownItem, NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordionToggle, NgbAccordionButton, NgbCollapse, NgbAccordionCollapse, NgbAccordionBody } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import {
   AbstractCardGroup,
@@ -24,13 +24,21 @@ import {
 } from '../+state/selectors/num-players.selectors';
 import { GameSetSelectComponent } from '../game-set-select/game-set-select.component';
 import { ScreenOnLockStore } from '../screen-on-lock.store';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
+import { SchemeCardComponent } from '../scheme-card/scheme-card.component';
+import { MastermindCardComponent } from '../mastermind-card/mastermind-card.component';
+import { VillainDeckComponent } from '../villain-deck/villain-deck.component';
+import { HeroDeckComponent } from '../hero-deck/hero-deck.component';
+import { NgClass, AsyncPipe } from '@angular/common';
+import { AdditionalDeckComponent } from '../additional-deck/additional-deck.component';
 
 @Component({
     selector: 'schemetwister-randomize',
     templateUrl: './randomize.component.html',
     styleUrls: ['./randomize.component.scss'],
     providers: [ScreenOnLockStore],
-    standalone: false
+    imports: [NgbDropdown, NgbDropdownToggle, FaIconComponent, NgbDropdownMenu, NgbDropdownButtonItem, NgbDropdownItem, FormsModule, SchemeCardComponent, MastermindCardComponent, VillainDeckComponent, HeroDeckComponent, NgClass, AdditionalDeckComponent, NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordionToggle, NgbAccordionButton, NgbCollapse, NgbAccordionCollapse, NgbAccordionBody, AsyncPipe]
 })
 export class RandomizeComponent implements OnInit {
   private readonly _modalService = inject(NgbModal);

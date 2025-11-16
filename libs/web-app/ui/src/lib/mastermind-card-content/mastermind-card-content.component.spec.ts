@@ -12,12 +12,10 @@ describe('MastermindCardContentComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        MastermindCardContentComponent,
+    imports: [MastermindCardContentComponent,
         BaseCardContentComponent,
-        BadguyCardContentComponent,
-      ],
-    }).compileComponents();
+        BadguyCardContentComponent,],
+}).compileComponents();
   }));
 
   beforeEach(() => {

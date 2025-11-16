@@ -1,5 +1,5 @@
 import { Component, Signal, computed, inject } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { GameSet, GAME_SET_SIZE } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
@@ -10,11 +10,12 @@ import {
   selectGameSetIds,
   selectLibTwister,
 } from '../+state/selectors/game-sets.selectors';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'schemetwister-game-set-select',
-  templateUrl: './game-set-select.component.html',
-  standalone: false,
+    selector: 'schemetwister-game-set-select',
+    templateUrl: './game-set-select.component.html',
+    imports: [FormsModule, NgbAlert],
 })
 export class GameSetSelectComponent {
   activeModal = inject(NgbActiveModal);
