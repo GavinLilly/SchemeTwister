@@ -86,10 +86,10 @@ export class SchemeCardComponent {
       (card) => card.id === lockedScheme.id
     );
 
-    if (scheme !== undefined) {
-      this._store.dispatch(randomizePageActions.lockScheme({ scheme }));
-    } else {
+    if (scheme === undefined) {
       this.dispatchReset();
+    } else {
+      this._store.dispatch(randomizePageActions.lockScheme({ scheme }));
     }
   }
 
@@ -113,10 +113,10 @@ export class SchemeCardComponent {
       (card) => card.id === receivedScheme
     );
 
-    if (scheme !== undefined) {
-      this._store.dispatch(randomizePageActions.setDefinedScheme({ scheme }));
-    } else {
+    if (scheme === undefined) {
       this.dispatchReset();
+    } else {
+      this._store.dispatch(randomizePageActions.setDefinedScheme({ scheme }));
     }
   }
 }

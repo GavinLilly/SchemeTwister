@@ -117,7 +117,9 @@ export class LibTwister {
   public get allGameSets(): GameSetMap {
     const gamesetMap = new GameSetMap();
 
-    this._allGameSets.forEach((gameset) => gamesetMap.set(gameset.id, gameset));
+    for (const gameset of this._allGameSets) {
+      gamesetMap.set(gameset.id, gameset);
+    }
 
     return gamesetMap;
   }
@@ -137,7 +139,7 @@ export class LibTwister {
   public gameSetIdsToGameSets(
     gameSetIdOrIds: string | string[]
   ): GameSet | GameSet[] | undefined {
-    if (gameSetIdOrIds instanceof Array) {
+    if (Array.isArray(gameSetIdOrIds)) {
       return this.allGameSets
         .asArray()
         .filter((gameSet) => gameSetIdOrIds.includes(gameSet.id));
@@ -186,7 +188,9 @@ export class LibTwister {
       ...(config.blacklist?.heroes ?? []),
     ];
 
-    blackListedHeroes.forEach((hero) => this.stores.heroStore.removeCard(hero));
+    for (const hero of blackListedHeroes) {
+      this.stores.heroStore.removeCard(hero);
+    }
 
     const createdScheme = instantiateScheme(
       config.scheme ?? this.schemeFactory.getRandom()
@@ -210,7 +214,7 @@ export class LibTwister {
     const villains: VillainGroup[] = [];
     const henchmen: Henchmen[] = [];
 
-    this._selectedGameSets.forEach((gameSet) => {
+    for (const gameSet of this._selectedGameSets) {
       heroes.push(...gameSet.heroes);
 
       if (gameSet.masterminds) {
@@ -228,7 +232,7 @@ export class LibTwister {
       if (gameSet.henchmen) {
         henchmen.push(...gameSet.henchmen);
       }
-    });
+    }
 
     this._stores = new StoreOfStores(heroes, masterminds, villains, henchmen);
 

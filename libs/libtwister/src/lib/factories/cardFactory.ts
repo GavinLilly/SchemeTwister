@@ -29,10 +29,7 @@ export class CardFactory<TCard extends IPlayableObject> {
 
   protected static getCardId = <T extends IPlayableObject>(
     idOrCard: string | T
-  ): string =>
-    typeof idOrCard === 'string' || idOrCard instanceof String
-      ? (idOrCard as string)
-      : idOrCard.id;
+  ): string => (typeof idOrCard === 'string' ? idOrCard : idOrCard.id);
 
   /**
    * The set of all cards (i.e. pre-filtered)
@@ -94,7 +91,9 @@ export class CardFactory<TCard extends IPlayableObject> {
   ): Map<string, TCard> {
     const availableCards = new Map(allCards);
 
-    cardIdsToExclude.forEach((id) => availableCards.delete(id));
+    for (const id of cardIdsToExclude) {
+      availableCards.delete(id);
+    }
 
     return availableCards;
   }
@@ -131,9 +130,9 @@ export class CardFactory<TCard extends IPlayableObject> {
   public getRandom(options: GetRandomOptions<TCard>): TCard[];
   public getRandom(options?: GetRandomOptions<TCard>): TCard | TCard[] {
     const applicableCards =
-      options?.filter !== undefined
-        ? this.availableCards.filter(options.filter)
-        : this.availableCards;
+      options?.filter === undefined
+        ? this.availableCards
+        : this.availableCards.filter(options.filter);
 
     if (options === undefined) {
       return randomize(applicableCards);
@@ -184,13 +183,13 @@ export class CardFactory<TCard extends IPlayableObject> {
    */
   public isAvailable(item: TCard): boolean;
   public isAvailable(item: string | TCard): boolean {
-    const itemIsString = typeof item === 'string' || item instanceof String;
+    const itemIsString = typeof item === 'string';
 
     if (!itemIsString) {
       return this.availableCards.includes(item);
     }
 
-    const itemId = item as string;
+    const itemId = item;
     if (!isUUID(itemId)) {
       throw new Error(`The provided card ID (${itemId}) is not a valid UUID`);
     }
@@ -214,7 +213,7 @@ export class CardFactory<TCard extends IPlayableObject> {
       array: string[]
     ) => CardType | undefined
   ): CardType | (CardType | undefined)[] | undefined {
-    const ids = idOrIds instanceof Array ? idOrIds : [idOrIds];
+    const ids = Array.isArray(idOrIds) ? idOrIds : [idOrIds];
 
     const cards = ids.map(mapFunc).filter((card): card is CardType => !!card);
 

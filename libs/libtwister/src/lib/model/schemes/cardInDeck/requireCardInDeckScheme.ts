@@ -77,7 +77,7 @@ export class RequireCardInDeckScheme<
     const applicableStore = this._requireCardType.getStore(store);
     const cards = this._requireCard.getRequiredCard(applicableStore);
 
-    const cardsAsArray = cards instanceof Array ? cards : [cards];
+    const cardsAsArray = Array.isArray(cards) ? cards : [cards];
     return cardsAsArray.map((card) => applicableStore.pickOne(card));
   }
 }

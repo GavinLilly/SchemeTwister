@@ -215,7 +215,9 @@ export class Scheme implements IPlayableObject {
       return [];
     }
 
-    existingCards.forEach((card) => store.removeCard(card));
+    for (const card of existingCards) {
+      store.removeCard(card);
+    }
 
     const returnCards = new Set(existingCards);
 
@@ -223,12 +225,14 @@ export class Scheme implements IPlayableObject {
 
     if (seedCards !== undefined) {
       const seeds = this._buildFromSeeds(numRequired(), seedCards);
-      store.pickMany(seeds).forEach((seed) => returnCards.add(seed));
+      for (const seed of store.pickMany(seeds)) {
+        returnCards.add(seed);
+      }
     }
 
-    this._buildFromRandomCards(numRequired(), store).forEach((card) =>
-      returnCards.add(card)
-    );
+    for (const card of this._buildFromRandomCards(numRequired(), store)) {
+      returnCards.add(card);
+    }
 
     return Array.from(returnCards).toSorted((a, b) =>
       a.name.localeCompare(b.name)
@@ -404,7 +408,9 @@ export class Scheme implements IPlayableObject {
         store.henchmenStore.pickOne(henchmen)
       );
 
-      mastermindHenchmen.forEach((card) => henchmen.add(card));
+      for (const card of mastermindHenchmen) {
+        henchmen.add(card);
+      }
     }
 
     // Check again in case the mastermind did not fill all the slots
@@ -438,7 +444,9 @@ export class Scheme implements IPlayableObject {
         store.villainStore.pickOne(villains)
       );
 
-      mastermindVillains.forEach((card) => villains.add(card));
+      for (const card of mastermindVillains) {
+        villains.add(card);
+      }
     }
 
     // Check again in case the mastermind did not fill all the slots
@@ -524,9 +532,9 @@ export class Scheme implements IPlayableObject {
   public overrideEachRule(
     func: (rule: INumPlayerRules, num: number) => INumPlayerRules
   ): this {
-    numPlayers.forEach((num) => {
+    for (const num of numPlayers) {
       this.rules[num] = func(this.rules[num], num);
-    });
+    }
 
     return this;
   }
@@ -540,18 +548,21 @@ export class Scheme implements IPlayableObject {
     const isAdvancedSolo = config.advancedSolo ?? false;
     // Get player rules
     const ruleSet =
-      config.mastermind?.ruleOverride !== undefined
-        ? this.overrideEachRule(config.mastermind.ruleOverride).rules
-        : this.rules;
+      config.mastermind?.ruleOverride === undefined
+        ? this.rules
+        : this.overrideEachRule(config.mastermind.ruleOverride).rules;
     const playerRules = ruleSet[config.numPlayers];
     const { heroDeck: heroRules, villainDeck: villainRules } = playerRules;
 
     const heroDeckSeed = config.partialHeroDeck?.heroes ?? [];
 
     if (config.mastermind?.alwaysInclude !== undefined) {
-      config.store.heroStore
-        .pickMany(config.mastermind.alwaysInclude)
-        .forEach((hero) => heroDeckSeed.push(hero));
+      const heroes = config.store.heroStore.pickMany(
+        config.mastermind.alwaysInclude
+      );
+      for (const hero of heroes) {
+        heroDeckSeed.push(hero);
+      }
     }
 
     const mastermind =

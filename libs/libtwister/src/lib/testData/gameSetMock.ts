@@ -52,9 +52,7 @@ export class GameSetMock {
     config?: IMockGameSetConfig,
     seriesMeta?: SeriesMeta
   ) {
-    if (config !== undefined) {
-      this._config = config;
-    } else {
+    if (config === undefined) {
       const gameSetSize = getGamesetSize(size);
 
       this._config = {
@@ -63,6 +61,8 @@ export class GameSetMock {
           num: gameSetSize.numHeroes,
         },
       };
+    } else {
+      this._config = config;
     }
 
     const series =

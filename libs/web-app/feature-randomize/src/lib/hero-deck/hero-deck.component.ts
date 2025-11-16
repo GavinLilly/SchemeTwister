@@ -91,9 +91,9 @@ export class HeroDeckComponent {
   private _handleChosenItems(receivedHeroes: Hero[] | undefined) {
     this._store.dispatch(heroDeckActions.reset());
     if (receivedHeroes !== undefined) {
-      receivedHeroes.forEach((hero) =>
-        this._store.dispatch(heroDeckActions.addCard({ card: hero }))
-      );
+      for (const hero of receivedHeroes) {
+        this._store.dispatch(heroDeckActions.addCard({ card: hero }));
+      }
 
       this._store.dispatch(randomizePageActions.generateGameSetup());
     }

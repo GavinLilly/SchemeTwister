@@ -22,7 +22,7 @@ export class UpdateService {
               `New app version ready for use: ${evt.latestVersion.hash}`
             );
             console.log(`Reloading now...`);
-            window.location.reload();
+            globalThis.location.reload();
             break;
           case 'VERSION_INSTALLATION_FAILED':
             console.log(

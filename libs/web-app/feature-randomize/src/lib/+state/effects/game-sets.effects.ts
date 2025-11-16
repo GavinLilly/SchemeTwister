@@ -78,9 +78,9 @@ export class GameSetsEffects implements OnInitEffects {
           .filter((series) => action.seriesIds.includes(series.seriesMeta.id))
           .flatMap((series) => series.gameSets);
 
-        return gameSetIds.length !== 0
-          ? allGameSets.filter((gameSet) => gameSetIds.includes(gameSet.id))
-          : allGameSets;
+        return gameSetIds.length === 0
+          ? allGameSets
+          : allGameSets.filter((gameSet) => gameSetIds.includes(gameSet.id));
       }),
       map((gameSets) => gameSets.map((gameSet) => gameSet.id)),
       map((gameSetIds) =>

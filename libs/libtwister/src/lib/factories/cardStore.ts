@@ -37,7 +37,9 @@ export class CardStore<
 
     const randoms = this.getRandom(options);
 
-    randoms.forEach((card) => this._pickedCards.add(card.id));
+    for (const card of randoms) {
+      this._pickedCards.add(card.id);
+    }
 
     return randoms;
   }

@@ -23,7 +23,7 @@ export const BECOME_PRESIDENT_OF_THE_UNITED_STATES = new SchemeDefinition({
   name: 'Become President of the United States',
   gameSet: META,
   setup: '11 Twists',
-  specialRules: `Once per turn, you may stack one of your non-grey Heroes next to the Scheme to earn "Ten Million Votes" for that Hero Name. If you do, you may also send one of your grey Heroes ${UNDERCOVER} as "Secret Service".`,
+  specialRules: `Once per turn, you may stack one of your non-grey Heroes next to the Scheme to earn "Ten Million Votes" for that Hero Name. If you do, you may also send one of your grey Heroes ${UNDERCOVER.name} as "Secret Service".`,
   twist:
     'If there\'s a Villain in the Bank or Streets, the Mastermind "vows to crush crime" and you stack this Twist next to the Mastermind as "Ten Million Votes". Otherwise, you may discard two cards to "counter negative advertising", shuffle this Twist back into the Villain Deck, and play another card from that deck. If you don\'t discard, stack this Twist next to the Mastermind as "Ten Million Votes"',
   evilWins:

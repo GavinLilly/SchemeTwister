@@ -92,12 +92,12 @@ export class MastermindCardComponent {
       (card) => card.id === receivedMastermind
     );
 
-    if (item !== undefined) {
+    if (item === undefined) {
+      this.dispatchReset();
+    } else {
       this._store.dispatch(
         randomizePageActions.setDefinedMastermind({ mastermind: item })
       );
-    } else {
-      this.dispatchReset();
     }
   }
 }
