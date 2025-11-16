@@ -12,7 +12,7 @@ import {
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { WebAppFeatureSetupStoreModule } from '@schemetwister/web-app/feature-setup-store';
-import { WebAppUiModule } from '@schemetwister/web-app/ui';
+
 
 import { GameSetsEffects } from './+state/effects/game-sets.effects';
 import { GameSetupEffects } from './+state/effects/game-setup.effects';
@@ -39,36 +39,34 @@ import { VillainDeckComponent } from './villain-deck/villain-deck.component';
 
 @NgModule({
     imports: [
-        // Angular
-        CommonModule,
-        FormsModule,
-        RouterModule.forChild([
-            { path: '', pathMatch: 'full', component: RandomizeComponent },
-        ]),
-        // Bootstrap
-        NgbModule,
-        NgbAccordionModule,
-        NgbCollapseModule,
-        NgbDropdownModule,
-        // Icons
-        FontAwesomeModule,
-        // NGRX
-        StoreModule.forFeature(numPlayersFeatureKey, numPlayersReducer),
-        StoreModule.forFeature(gameSetsFeatureKey, gameSetsReducer),
-        StoreModule.forFeature(gameSetupFeatureKey, gameSetupReducer),
-        EffectsModule.forFeature([GameSetupEffects, GameSetsEffects]),
-        // Schemetwister
-        WebAppUiModule,
-        WebAppFeatureSetupStoreModule,
-        // Standalone components
-        MastermindCardComponent,
-        SchemeCardComponent,
-        RandomizeComponent,
-        GameSetSelectComponent,
-        ReplacePipe,
-        HeroDeckComponent,
-        VillainDeckComponent,
-        AdditionalDeckComponent,
-    ],
+    // Angular
+    CommonModule,
+    FormsModule,
+    RouterModule.forChild([
+        { path: '', pathMatch: 'full', component: RandomizeComponent },
+    ]),
+    // Bootstrap
+    NgbModule,
+    NgbAccordionModule,
+    NgbCollapseModule,
+    NgbDropdownModule,
+    // Icons
+    FontAwesomeModule,
+    // NGRX
+    StoreModule.forFeature(numPlayersFeatureKey, numPlayersReducer),
+    StoreModule.forFeature(gameSetsFeatureKey, gameSetsReducer),
+    StoreModule.forFeature(gameSetupFeatureKey, gameSetupReducer),
+    EffectsModule.forFeature([GameSetupEffects, GameSetsEffects]),
+    WebAppFeatureSetupStoreModule,
+    // Standalone components
+    MastermindCardComponent,
+    SchemeCardComponent,
+    RandomizeComponent,
+    GameSetSelectComponent,
+    ReplacePipe,
+    HeroDeckComponent,
+    VillainDeckComponent,
+    AdditionalDeckComponent,
+],
 })
 export class WebAppFeatureRandomizeModule {}

@@ -17,7 +17,7 @@ import { marvelVillainsSeries } from '@schemetwister/series-marvel-villains';
 import { FIRESTORE_COLLECTION_TOKEN } from '@schemetwister/web-app/feature-setup-store';
 import { WebAppFeatureStoreModule } from '@schemetwister/web-app/feature-store';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
-import { WebAppUiModule } from '@schemetwister/web-app/ui';
+
 import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
 
 import { environment } from '../environments/environment';
@@ -50,17 +50,14 @@ const serviceWorkerRegistrationTime = 30 * 1000;
     EffectsModule.forRoot(),
     // Schemetwister
     AppRoutingModule,
-    WebAppUiModule,
     WebAppFeatureStoreModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: [EnvironmentType.PROD, EnvironmentType.TEST].includes(
-        environment.environmentType
-      ),
-      // Register the ServiceWorker as soon as the app is stable
-      // or after the timeout (whichever comes first).
-      registrationStrategy: `registerWhenStable:${serviceWorkerRegistrationTime}`,
+        enabled: [EnvironmentType.PROD, EnvironmentType.TEST].includes(environment.environmentType),
+        // Register the ServiceWorker as soon as the app is stable
+        // or after the timeout (whichever comes first).
+        registrationStrategy: `registerWhenStable:${serviceWorkerRegistrationTime}`,
     }),
-  ],
+],
   providers: [
     // Firebase
     provideFirebaseApp(() => initializeApp(environment.firebase)),
