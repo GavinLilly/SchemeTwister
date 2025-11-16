@@ -1,6 +1,6 @@
 import { Component, computed, Signal, inject } from '@angular/core';
 import { faLock, faLockOpen, faCog } from '@fortawesome/free-solid-svg-icons';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordionToggle, NgbAccordionButton, NgbCollapse, NgbAccordionCollapse, NgbAccordionBody } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { Henchmen, Hero, IHeroDeck } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
@@ -17,15 +17,30 @@ import {
 } from '../+state/selectors/game-setup-scheme.selectors';
 import { BLANK_IMAGE_BASE64 } from '../constants';
 import { HeroSelectorComponent } from '../hero-selector/hero-selector.component';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { HeroCardContentComponent } from '../../../../ui/src/lib/hero-card-content/hero-card-content.component';
+import { HenchmenCardContentComponent } from '../../../../ui/src/lib/henchmen-card-content/henchmen-card-content.component';
 
 /**
  * @todo check if bystanders are brought in
  */
 @Component({
-  selector: 'schemetwister-hero-deck',
-  templateUrl: './hero-deck.component.html',
-  styleUrls: ['./hero-deck.component.scss'],
-  standalone: false,
+    selector: 'schemetwister-hero-deck',
+    templateUrl: './hero-deck.component.html',
+    styleUrls: ['./hero-deck.component.scss'],
+    imports: [
+        FaIconComponent,
+        NgbAccordionDirective,
+        NgbAccordionItem,
+        NgbAccordionHeader,
+        NgbAccordionToggle,
+        NgbAccordionButton,
+        NgbCollapse,
+        NgbAccordionCollapse,
+        NgbAccordionBody,
+        HeroCardContentComponent,
+        HenchmenCardContentComponent,
+    ],
 })
 export class HeroDeckComponent {
   private readonly _store = inject<

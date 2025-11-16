@@ -11,19 +11,18 @@ describe('VillainDeckComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [VillainDeckComponent],
-      imports: [NgbAccordionModule],
-      providers: [
+    imports: [NgbAccordionModule, VillainDeckComponent],
+    providers: [
         provideMockStore({
-          initialState: {
-            gameSetup: {
-              gameSetup: GameSetup.empty(),
+            initialState: {
+                gameSetup: {
+                    gameSetup: GameSetup.empty(),
+                },
+                numPlayers: 2,
             },
-            numPlayers: 2,
-          },
         }),
-      ],
-    }).compileComponents();
+    ],
+}).compileComponents();
   });
 
   beforeEach(() => {

@@ -9,8 +9,8 @@ describe('BadguyCardContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BadguyCardContentComponent],
-    }).compileComponents();
+    imports: [BadguyCardContentComponent],
+}).compileComponents();
   });
 
   beforeEach(() => {

@@ -10,18 +10,18 @@ describe('AdditionalDeckComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AdditionalDeckComponent],
-      providers: [
+    imports: [AdditionalDeckComponent],
+    providers: [
         provideMockStore({
-          initialState: {
-            gameSetup: {
-              gameSetup: GameSetup.empty(),
+            initialState: {
+                gameSetup: {
+                    gameSetup: GameSetup.empty(),
+                },
+                numPlayers: 2,
             },
-            numPlayers: 2,
-          },
         }),
-      ],
-    }).compileComponents();
+    ],
+}).compileComponents();
   });
 
   beforeEach(() => {

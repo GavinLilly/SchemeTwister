@@ -13,27 +13,24 @@ describe('GameSetSelectComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [GameSetSelectComponent],
-      imports: [NgbModalModule, FormsModule],
-      providers: [
+    imports: [NgbModalModule, FormsModule, GameSetSelectComponent],
+    providers: [
         NgbActiveModal,
         provideMockStore({
-          initialState: {
-            gameSets: {
-              gameSetIds: Object.values(mainline).map(
-                (gameset) => gameset.GAME_SET.id
-              ),
-              seriesIds: [marvelSeries.seriesMeta.id],
+            initialState: {
+                gameSets: {
+                    gameSetIds: Object.values(mainline).map((gameset) => gameset.GAME_SET.id),
+                    seriesIds: [marvelSeries.seriesMeta.id],
+                },
+                numPlayers: 2,
             },
-            numPlayers: 2,
-          },
         }),
         {
-          provide: SERIES_REGISTER_TOKEN,
-          useValue: [marvelSeries],
+            provide: SERIES_REGISTER_TOKEN,
+            useValue: [marvelSeries],
         },
-      ],
-    }).compileComponents();
+    ],
+}).compileComponents();
   }));
 
   beforeEach(() => {

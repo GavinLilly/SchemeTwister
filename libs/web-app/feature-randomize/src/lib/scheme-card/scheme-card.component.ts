@@ -10,10 +10,7 @@ import {
   SoloBannedScheme,
 } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
-import {
-  ModalSelectorComponent,
-  WebAppUiModule,
-} from '@schemetwister/web-app/ui';
+import { ModalSelectorComponent } from '@schemetwister/web-app/ui';
 
 import { randomizePageActions } from '../+state/actions/game-setup.actions';
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
@@ -24,10 +21,11 @@ import {
   selectGameSetupScheme,
   selectIsDefinedScheme,
 } from '../+state/selectors/game-setup-scheme.selectors';
+import { BaseCardContentComponent } from '../../../../ui/src/lib/base-card-content/base-card-content.component';
 
 @Component({
   selector: 'schemetwister-scheme-card',
-  imports: [WebAppUiModule, FontAwesomeModule, NgbAccordionModule],
+  imports: [BaseCardContentComponent, FontAwesomeModule, NgbAccordionModule],
   templateUrl: './scheme-card.component.html',
   styleUrls: ['./scheme-card.component.scss'],
   standalone: true,

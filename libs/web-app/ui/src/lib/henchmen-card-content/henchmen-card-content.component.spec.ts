@@ -12,12 +12,10 @@ describe('HenchmenCardContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        HenchmenCardContentComponent,
+    imports: [HenchmenCardContentComponent,
         BadguyCardContentComponent,
-        BaseCardContentComponent,
-      ],
-    }).compileComponents();
+        BaseCardContentComponent,],
+}).compileComponents();
   });
 
   beforeEach(() => {

@@ -11,11 +11,9 @@ describe('VillaingroupCardContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        VillaingroupCardContentComponent,
-        BaseCardContentComponent,
-      ],
-    }).compileComponents();
+    imports: [VillaingroupCardContentComponent,
+        BaseCardContentComponent],
+}).compileComponents();
   });
 
   beforeEach(() => {

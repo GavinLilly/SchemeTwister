@@ -11,9 +11,8 @@ describe('HeaderComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [HeaderComponent],
-        imports: [RouterTestingModule, NgbCollapseModule],
-      }).compileComponents();
+    imports: [RouterTestingModule, NgbCollapseModule, HeaderComponent],
+}).compileComponents();
     })
   );
 
