@@ -43,24 +43,25 @@ export class HeroSelectorComponent implements OnInit {
       }
     }
 
-    this.availableHeroesInput
-      .toSorted((a, b) => a.name.localeCompare(b.name))
-      .forEach((currentHero, i, allHeroes) => {
-        const isNextHeroNameMatching =
-          i + 1 < allHeroes.length &&
-          currentHero.name === allHeroes[i + 1].name;
-        const isPreviousHeroNameMatching =
-          i - 1 > 0 && currentHero.name === allHeroes[i - 1].name;
+    const allHeroes = this.availableHeroesInput.toSorted((a, b) =>
+      a.name.localeCompare(b.name)
+    );
 
-        let name: string;
-        if (isNextHeroNameMatching || isPreviousHeroNameMatching) {
-          name = `${currentHero.name} (${currentHero.gameSet.name})`;
-        } else {
-          name = currentHero.name;
-        }
+    for (const [i, currentHero] of allHeroes.entries()) {
+      const isNextHeroNameMatching =
+        i + 1 < allHeroes.length && currentHero.name === allHeroes[i + 1].name;
+      const isPreviousHeroNameMatching =
+        i - 1 > 0 && currentHero.name === allHeroes[i - 1].name;
 
-        this._availableHeroes.push({ name, id: currentHero.id });
-      });
+      let name: string;
+      if (isNextHeroNameMatching || isPreviousHeroNameMatching) {
+        name = `${currentHero.name} (${currentHero.gameSet.name})`;
+      } else {
+        name = currentHero.name;
+      }
+
+      this._availableHeroes.push({ name, id: currentHero.id });
+    }
   }
 
   /**

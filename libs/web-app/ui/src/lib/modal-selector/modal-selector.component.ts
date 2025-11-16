@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  inject,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbActiveModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import {
@@ -8,9 +15,9 @@ import {
 } from '@schemetwister/libtwister';
 
 @Component({
-    selector: 'schemetwister-modal-selector',
-    imports: [FormsModule, NgbModalModule],
-    templateUrl: './modal-selector.component.html'
+  selector: 'schemetwister-modal-selector',
+  imports: [FormsModule, NgbModalModule],
+  templateUrl: './modal-selector.component.html',
 })
 export class ModalSelectorComponent implements OnInit {
   activeModal = inject(NgbActiveModal);
@@ -25,22 +32,24 @@ export class ModalSelectorComponent implements OnInit {
   adjustedAvailableItems: INamedObject[] = [];
 
   ngOnInit(): void {
-    this.availableItems
-      .toSorted((a, b) => a.name.localeCompare(b.name))
-      .forEach((currentItem, i, allItems) => {
-        const isNextItemNameMatching =
-          i + 1 < allItems.length && currentItem.name === allItems[i + 1].name;
-        const isPreviousItemNameMatching =
-          i - 1 > 0 && currentItem.name === allItems[i - 1].name;
+    const allItems = this.availableItems.toSorted((a, b) =>
+      a.name.localeCompare(b.name)
+    );
 
-        let name: string;
-        if (isNextItemNameMatching || isPreviousItemNameMatching) {
-          name = `${currentItem.name} (${currentItem.gameSet.name})`;
-        } else {
-          name = currentItem.name;
-        }
+    for (const [i, currentItem] of allItems.entries()) {
+      const isNextItemNameMatching =
+        i + 1 < allItems.length && currentItem.name === allItems[i + 1].name;
+      const isPreviousItemNameMatching =
+        i - 1 > 0 && currentItem.name === allItems[i - 1].name;
 
-        this.adjustedAvailableItems.push({ name, id: currentItem.id });
-      });
+      let name: string;
+      if (isNextItemNameMatching || isPreviousItemNameMatching) {
+        name = `${currentItem.name} (${currentItem.gameSet.name})`;
+      } else {
+        name = currentItem.name;
+      }
+
+      this.adjustedAvailableItems.push({ name, id: currentItem.id });
+    }
   }
 }

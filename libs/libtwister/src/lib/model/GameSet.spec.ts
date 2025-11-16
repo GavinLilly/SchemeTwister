@@ -79,11 +79,14 @@ describe('GameSet', () => {
       [CARD_TYPE.hero, Hero],
       [CARD_TYPE.mastermind, Mastermind],
       [CARD_TYPE.villainGroup, VillainGroup],
-    ])('should only return %s', (cardType, cardClass) =>
-      coreBox
-        .getCards(cardType)
-        ?.forEach((card) => expect(card).toBeInstanceOf(cardClass))
-    );
+    ])('should only return %s', (cardType, cardClass) => {
+      const cards = coreBox.getCards(cardType);
+      if (cards !== undefined) {
+        for (const card of cards) {
+          expect(card).toBeInstanceOf(cardClass);
+        }
+      }
+    });
 
     it('should return undefined', () =>
       expect(coreBox.getCards(CARD_TYPE.wound)).toBeUndefined());
@@ -99,7 +102,9 @@ describe('GameSet', () => {
           numVillains: 0,
         }).getGameSet();
 
-        gameSet.getCards().forEach((card) => expect(card).toBeInstanceOf(Hero));
+        for (const card of gameSet.getCards()) {
+          expect(card).toBeInstanceOf(Hero);
+        }
       }));
   });
 });
