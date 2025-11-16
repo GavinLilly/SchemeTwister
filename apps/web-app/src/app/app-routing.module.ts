@@ -18,9 +18,9 @@ const appRoutes: Routes = [
   },
   {
     path: 'view',
-    loadChildren: () =>
+    loadComponent: () =>
       import('@schemetwister/web-app-feature-view').then(
-        (m) => m.WebAppFeatureViewModule
+        (m) => m.LatestSetupsComponent
       ),
   },
   {

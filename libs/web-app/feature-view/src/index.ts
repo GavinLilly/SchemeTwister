@@ -1,1 +1,1 @@
-export * from './lib/web-app-feature-view.module';
+export { LatestSetupsComponent } from './lib/latest-setups/latest-setups.component';

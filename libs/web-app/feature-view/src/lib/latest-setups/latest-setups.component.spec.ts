@@ -3,22 +3,14 @@ import {
   EMPTY_STORED_SETUP,
   StoredSetupsService,
 } from '@schemetwister/web-app/feature-setup-store';
-import {
-  SERIES_REGISTER_TOKEN,
-  WebAppSharedModule,
-} from '@schemetwister/web-app/shared';
+import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
-
-import { WebAppFeatureViewModule } from '../web-app-feature-view.module';
 
 import { LatestSetupsComponent } from './latest-setups.component';
 
 describe('LatestSetupsComponent', () => {
   beforeEach(() =>
-    MockBuilder(LatestSetupsComponent, [
-      WebAppFeatureViewModule,
-      WebAppSharedModule,
-    ])
+    MockBuilder(LatestSetupsComponent)
       .mock(StoredSetupsService, {
         getLatestSetups: () => Promise.resolve([EMPTY_STORED_SETUP]),
       })
