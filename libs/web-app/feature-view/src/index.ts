@@ -1,1 +1,1 @@
-export { LatestSetupsComponent } from './lib/latest-setups/latest-setups.component';
+export { VIEW_ROUTES } from './lib/view.routes';

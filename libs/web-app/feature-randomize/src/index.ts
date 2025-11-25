@@ -1,4 +1,3 @@
-export * from './lib/web-app-feature-randomize.module';
 export {
   IGameSetsState,
   gameSetsReducer,
@@ -11,3 +10,4 @@ export {
   INumPlayersState,
   numPlayersReducer,
 } from './lib/+state/reducers/num-players.reducer';
+export { RANDOMIZE_ROUTES } from './lib/randomize.routes';

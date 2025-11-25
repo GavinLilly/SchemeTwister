@@ -1,26 +1,20 @@
-import { EffectsFeatureModule, EffectsModule } from '@ngrx/effects';
-import { StoreFeatureModule, StoreModule } from '@ngrx/store';
+import { Action } from '@ngrx/store';
 import { marvelSeries } from '@schemetwister/series-marvel';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
-
-import { WebAppFeatureRandomizeModule } from '../../web-app-feature-randomize.module';
+import { provideMockActions } from '@ngrx/effects/testing';
+import { provideMockStore } from '@ngrx/store/testing';
+import { Observable } from 'rxjs';
 
 import { GameSetupEffects } from './game-setup.effects';
+import { StoredSetupsService } from '@schemetwister/web-app/feature-setup-store';
 
 describe('GameSetupEffects', () => {
   beforeEach(() =>
-    MockBuilder(
-      [
-        GameSetupEffects,
-        // providing root tools
-        StoreModule.forRoot({}),
-        EffectsModule.forRoot(),
-      ],
-      [WebAppFeatureRandomizeModule]
-    )
-      .keep(StoreFeatureModule)
-      .keep(EffectsFeatureModule)
+    MockBuilder(GameSetupEffects)
+      .mock(StoredSetupsService)
+      .provide(provideMockStore({}))
+      .provide(provideMockActions(() => new Observable<Action>()))
       .provide(MockProvider(SERIES_REGISTER_TOKEN, [marvelSeries]))
   );
 

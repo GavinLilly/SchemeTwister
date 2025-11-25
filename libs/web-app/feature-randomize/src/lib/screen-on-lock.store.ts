@@ -17,7 +17,7 @@ const initialState: ScreenOnLockState = {
 /**
  * A store which controls the screen-on lock state.
  */
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ScreenOnLockStore
   extends ComponentStore<ScreenOnLockState>
   implements OnDestroy

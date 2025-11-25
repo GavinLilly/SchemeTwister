@@ -17,7 +17,7 @@ const initialState: LatestSetupsStoreState = {
   numSetupsToGet: 10,
 };
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class LatestSetupsStore extends ComponentStore<LatestSetupsStoreState> {
   private readonly _storedSetupsService = inject(StoredSetupsService);
 
@@ -28,11 +28,12 @@ export class LatestSetupsStore extends ComponentStore<LatestSetupsStoreState> {
   readonly getLatestSetups = this.effect(() =>
     from(this._storedSetupsService.getLatestSetups()).pipe(
       tapResponse({
-    next: (setups) => this.patchState(() => ({
-        setups,
-    })),
-    error: (error) => console.log(error)
-})
+        next: (setups) =>
+          this.patchState(() => ({
+            setups,
+          })),
+        error: (error) => console.log(error),
+      })
     )
   );
 

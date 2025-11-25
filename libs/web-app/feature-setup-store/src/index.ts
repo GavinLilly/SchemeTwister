@@ -1,5 +1,3 @@
-export * from './lib/web-app-feature-setup-store.module';
-
 export {
   StoredSetupsService,
   FIRESTORE_COLLECTION_TOKEN,

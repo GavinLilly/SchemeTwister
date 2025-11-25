@@ -15,12 +15,12 @@ import { IStoredGameSetup } from './storedGameSetup.interface';
 
 export const FIRESTORE_COLLECTION_TOKEN = 'FireStoreCollection';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class StoredSetupsService {
   setupsCollection: CollectionReference;
   constructor() {
     const collectionName = inject<string>(FIRESTORE_COLLECTION_TOKEN as any);
-    const firestore = inject(Firestore) ?? inject(Firestore);
+    const firestore = inject(Firestore);
 
     this.setupsCollection = collection(firestore, collectionName);
   }

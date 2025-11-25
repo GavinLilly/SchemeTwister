@@ -1,7 +1,22 @@
 import { Component, OnInit, Signal, effect, inject } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { faCog, faCheck } from '@fortawesome/free-solid-svg-icons';
-import { NgbModal, NgbDropdown, NgbDropdownToggle, NgbDropdownMenu, NgbDropdownButtonItem, NgbDropdownItem, NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordionToggle, NgbAccordionButton, NgbCollapse, NgbAccordionCollapse, NgbAccordionBody } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbModal,
+  NgbDropdown,
+  NgbDropdownToggle,
+  NgbDropdownMenu,
+  NgbDropdownButtonItem,
+  NgbDropdownItem,
+  NgbAccordionDirective,
+  NgbAccordionItem,
+  NgbAccordionHeader,
+  NgbAccordionToggle,
+  NgbAccordionButton,
+  NgbCollapse,
+  NgbAccordionCollapse,
+  NgbAccordionBody,
+} from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import {
   AbstractCardGroup,
@@ -34,18 +49,47 @@ import { NgClass, AsyncPipe } from '@angular/common';
 import { AdditionalDeckComponent } from '../additional-deck/additional-deck.component';
 
 @Component({
-    selector: 'schemetwister-randomize',
-    templateUrl: './randomize.component.html',
-    styleUrls: ['./randomize.component.scss'],
-    providers: [ScreenOnLockStore],
-    imports: [NgbDropdown, NgbDropdownToggle, FaIconComponent, NgbDropdownMenu, NgbDropdownButtonItem, NgbDropdownItem, FormsModule, SchemeCardComponent, MastermindCardComponent, VillainDeckComponent, HeroDeckComponent, NgClass, AdditionalDeckComponent, NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordionToggle, NgbAccordionButton, NgbCollapse, NgbAccordionCollapse, NgbAccordionBody, AsyncPipe]
+  selector: 'schemetwister-randomize',
+  templateUrl: './randomize.component.html',
+  styleUrls: ['./randomize.component.scss'],
+  providers: [ScreenOnLockStore],
+  imports: [
+    // Angular
+    FormsModule,
+    NgClass,
+    AsyncPipe,
+    // Bootstrap
+    NgbDropdown,
+    NgbDropdownToggle,
+    NgbDropdownMenu,
+    NgbDropdownButtonItem,
+    NgbDropdownItem,
+    NgbAccordionDirective,
+    NgbAccordionItem,
+    NgbAccordionHeader,
+    NgbAccordionToggle,
+    NgbAccordionButton,
+    NgbCollapse,
+    NgbAccordionCollapse,
+    NgbAccordionBody,
+    // Font awesome
+    FaIconComponent,
+    // Schemetwister
+    SchemeCardComponent,
+    MastermindCardComponent,
+    VillainDeckComponent,
+    HeroDeckComponent,
+    AdditionalDeckComponent,
+  ],
 })
 export class RandomizeComponent implements OnInit {
   private readonly _modalService = inject(NgbModal);
-  private readonly _store = inject<Store<{
-    numPlayers: INumPlayersState;
-    gameSetup: IGameSetupState;
-}>>(Store);
+  private readonly _store = inject<
+    Store<{
+      numPlayers: INumPlayersState;
+      gameSetup: IGameSetupState;
+    }>
+  >(Store);
   private readonly _screenOnLockStore = inject(ScreenOnLockStore);
 
   numberOfPlayers: Signal<NumPlayers> =

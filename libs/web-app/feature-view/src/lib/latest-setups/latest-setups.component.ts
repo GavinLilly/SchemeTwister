@@ -8,11 +8,11 @@ import { DatePipe } from '@angular/common';
 import { StoredSetupToGameSetupPipe } from '../stored-setup-to-game-setup.pipe';
 
 @Component({
-    selector: 'schemetwister-latest-setups',
-    templateUrl: './latest-setups.component.html',
-    styleUrls: ['./latest-setups.component.scss'],
-    providers: [LatestSetupsStore],
-    imports: [DatePipe, StoredSetupToGameSetupPipe],
+  selector: 'schemetwister-latest-setups',
+  templateUrl: './latest-setups.component.html',
+  styleUrls: ['./latest-setups.component.scss'],
+  providers: [LatestSetupsStore],
+  imports: [DatePipe, StoredSetupToGameSetupPipe],
 })
 export class LatestSetupsComponent {
   private readonly _store = inject(LatestSetupsStore);
