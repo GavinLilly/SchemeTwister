@@ -1,11 +1,12 @@
+import { marvelSeries } from '@schemetwister/series-marvel';
 import { EMPTY_STORED_SETUP } from '@schemetwister/web-app/feature-setup-store';
+import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
+import { of } from 'rxjs';
+
+import { LatestSetupsStore } from '../latest-setups.store';
 
 import { LatestSetupsComponent } from './latest-setups.component';
-import { LatestSetupsStore } from '../latest-setups.store';
-import { of } from 'rxjs';
-import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
-import { marvelSeries } from '@schemetwister/series-marvel';
 
 describe('LatestSetupsComponent', () => {
   beforeEach(() =>

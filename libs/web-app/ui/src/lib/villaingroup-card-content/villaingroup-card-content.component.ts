@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { VillainGroup } from '@schemetwister/libtwister';
+
 import { BaseCardContentComponent } from '../base-card-content/base-card-content.component';
 
 @Component({

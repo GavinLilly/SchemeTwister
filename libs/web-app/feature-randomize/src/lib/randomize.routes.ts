@@ -1,11 +1,9 @@
 import { Routes } from '@angular/router';
-import { RandomizeComponent } from './randomize/randomize.component';
-import { provideState } from '@ngrx/store';
-import {
-  numPlayersFeatureKey,
-  numPlayersReducer,
-} from './+state/reducers/num-players.reducer';
 import { provideEffects } from '@ngrx/effects';
+import { provideState } from '@ngrx/store';
+
+import { GameSetsEffects } from './+state/effects/game-sets.effects';
+import { GameSetupEffects } from './+state/effects/game-setup.effects';
 import {
   gameSetsFeatureKey,
   gameSetsReducer,
@@ -14,8 +12,11 @@ import {
   gameSetupFeatureKey,
   gameSetupReducer,
 } from './+state/reducers/game-setup.reducer';
-import { GameSetupEffects } from './+state/effects/game-setup.effects';
-import { GameSetsEffects } from './+state/effects/game-sets.effects';
+import {
+  numPlayersFeatureKey,
+  numPlayersReducer,
+} from './+state/reducers/num-players.reducer';
+import { RandomizeComponent } from './randomize/randomize.component';
 
 export const RANDOMIZE_ROUTES: Routes = [
   {

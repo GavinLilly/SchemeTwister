@@ -1,4 +1,5 @@
 import { Component, Signal, computed, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { NgbActiveModal, NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { GameSet, GAME_SET_SIZE } from '@schemetwister/libtwister';
@@ -10,7 +11,6 @@ import {
   selectGameSetIds,
   selectLibTwister,
 } from '../+state/selectors/game-sets.selectors';
-import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'schemetwister-game-set-select',

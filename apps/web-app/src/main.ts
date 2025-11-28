@@ -1,33 +1,32 @@
-import { enableProdMode, importProvidersFrom } from '@angular/core';
 import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
-import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { provideEffects } from '@ngrx/effects';
-import { APP_ROUTES } from './app/app.routes';
-import { metaReducers, reducers } from '@schemetwister/web-app/feature-store';
-import { ServiceWorkerModule } from '@angular/service-worker';
+import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideFirestore } from '@angular/fire/firestore';
-import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore';
-
-import { FIRESTORE_COLLECTION_TOKEN } from '@schemetwister/web-app/feature-setup-store';
-import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
+import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
+import { provideRouter } from '@angular/router';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { provideEffects } from '@ngrx/effects';
+import { provideStore } from '@ngrx/store';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { buffySeries } from '@schemetwister/series-buffy';
 import { marvelSeries } from '@schemetwister/series-marvel';
 import { marvelStudiosSeries } from '@schemetwister/series-marvel-studios';
 import { marvelVillainsSeries } from '@schemetwister/series-marvel-villains';
-import { buffySeries } from '@schemetwister/series-buffy';
+import { FIRESTORE_COLLECTION_TOKEN } from '@schemetwister/web-app/feature-setup-store';
+import { metaReducers, reducers } from '@schemetwister/web-app/feature-store';
+import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
+import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore';
 
+import { AppComponent } from './app/app.component';
+import { APP_ROUTES } from './app/app.routes';
+import { UpdateService } from './app/update.service';
 import { environment } from './environments/environment';
 import { EnvironmentType } from './environments/environmentType';
-import { UpdateService } from './app/update.service';
-import { AppComponent } from './app/app.component';
-import { provideRouter } from '@angular/router';
-import { provideStore } from '@ngrx/store';
-import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 const seriesRegister = [
   marvelSeries,

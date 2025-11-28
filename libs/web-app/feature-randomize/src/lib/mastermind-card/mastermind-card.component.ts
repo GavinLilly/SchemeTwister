@@ -10,7 +10,10 @@ import {
   AdaptingMastermind,
 } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
-import { ModalSelectorComponent } from '@schemetwister/web-app/ui';
+import {
+  MastermindCardContentComponent,
+  ModalSelectorComponent,
+} from '@schemetwister/web-app/ui';
 
 import { randomizePageActions } from '../+state/actions/game-setup.actions';
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
@@ -20,13 +23,16 @@ import {
   selectIsDefinedMastermind,
   selectMastermind,
 } from '../+state/selectors/game-setup-scheme.selectors';
-import { MastermindCardContentComponent } from '../../../../ui/src/lib/mastermind-card-content/mastermind-card-content.component';
 
 type MastermindType = Mastermind | TransformingMastermind | AdaptingMastermind;
 
 @Component({
   selector: 'schemetwister-mastermind-card',
-  imports: [MastermindCardContentComponent, FontAwesomeModule, NgbAccordionModule],
+  imports: [
+    MastermindCardContentComponent,
+    FontAwesomeModule,
+    NgbAccordionModule,
+  ],
   templateUrl: './mastermind-card.component.html',
   styleUrls: ['./mastermind-card.component.scss'],
   standalone: true,

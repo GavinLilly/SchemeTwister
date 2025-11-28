@@ -1,5 +1,8 @@
+import { NgClass, AsyncPipe } from '@angular/common';
 import { Component, OnInit, Signal, effect, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Meta } from '@angular/platform-browser';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faCog, faCheck } from '@fortawesome/free-solid-svg-icons';
 import {
   NgbModal,
@@ -37,16 +40,13 @@ import {
   selectIsAdvancedSolo,
   selectNumPlayers,
 } from '../+state/selectors/num-players.selectors';
-import { GameSetSelectComponent } from '../game-set-select/game-set-select.component';
-import { ScreenOnLockStore } from '../screen-on-lock.store';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { FormsModule } from '@angular/forms';
-import { SchemeCardComponent } from '../scheme-card/scheme-card.component';
-import { MastermindCardComponent } from '../mastermind-card/mastermind-card.component';
-import { VillainDeckComponent } from '../villain-deck/villain-deck.component';
-import { HeroDeckComponent } from '../hero-deck/hero-deck.component';
-import { NgClass, AsyncPipe } from '@angular/common';
 import { AdditionalDeckComponent } from '../additional-deck/additional-deck.component';
+import { GameSetSelectComponent } from '../game-set-select/game-set-select.component';
+import { HeroDeckComponent } from '../hero-deck/hero-deck.component';
+import { MastermindCardComponent } from '../mastermind-card/mastermind-card.component';
+import { SchemeCardComponent } from '../scheme-card/scheme-card.component';
+import { ScreenOnLockStore } from '../screen-on-lock.store';
+import { VillainDeckComponent } from '../villain-deck/villain-deck.component';
 
 @Component({
   selector: 'schemetwister-randomize',

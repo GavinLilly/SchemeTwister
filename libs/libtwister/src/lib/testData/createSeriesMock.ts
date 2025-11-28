@@ -18,6 +18,10 @@ interface ISeriesConfig {
   numSmall: number;
 }
 
+/**
+ *
+ * @param config
+ */
 export function createSeriesMock(config: ISeriesConfig): ISeries {
   const numCore = config.numCore > 0 ? config.numCore : 1;
 
@@ -36,6 +40,12 @@ export function createSeriesMock(config: ISeriesConfig): ISeries {
   };
 }
 
+/**
+ *
+ * @param size
+ * @param count
+ * @param series
+ */
 function generateGameSets(
   size: GameSetSize,
   count: number,

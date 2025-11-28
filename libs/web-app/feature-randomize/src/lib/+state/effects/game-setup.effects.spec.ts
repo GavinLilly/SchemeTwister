@@ -1,13 +1,14 @@
+import { provideMockActions } from '@ngrx/effects/testing';
 import { Action } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
 import { marvelSeries } from '@schemetwister/series-marvel';
+import { StoredSetupsService } from '@schemetwister/web-app/feature-setup-store';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
-import { provideMockActions } from '@ngrx/effects/testing';
-import { provideMockStore } from '@ngrx/store/testing';
 import { Observable } from 'rxjs';
 
 import { GameSetupEffects } from './game-setup.effects';
-import { StoredSetupsService } from '@schemetwister/web-app/feature-setup-store';
+
 
 describe('GameSetupEffects', () => {
   beforeEach(() =>
