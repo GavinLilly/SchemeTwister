@@ -11,8 +11,8 @@ import {
 } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import {
+  MastermindCardContentComponent,
   ModalSelectorComponent,
-  WebAppUiModule,
 } from '@schemetwister/web-app/ui';
 
 import { randomizePageActions } from '../+state/actions/game-setup.actions';
@@ -28,7 +28,11 @@ type MastermindType = Mastermind | TransformingMastermind | AdaptingMastermind;
 
 @Component({
   selector: 'schemetwister-mastermind-card',
-  imports: [WebAppUiModule, FontAwesomeModule, NgbAccordionModule],
+  imports: [
+    MastermindCardContentComponent,
+    FontAwesomeModule,
+    NgbAccordionModule,
+  ],
   templateUrl: './mastermind-card.component.html',
   styleUrls: ['./mastermind-card.component.scss'],
   standalone: true,

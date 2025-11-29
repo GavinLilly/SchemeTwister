@@ -11,8 +11,8 @@ import {
 } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import {
+  BaseCardContentComponent,
   ModalSelectorComponent,
-  WebAppUiModule,
 } from '@schemetwister/web-app/ui';
 
 import { randomizePageActions } from '../+state/actions/game-setup.actions';
@@ -27,7 +27,7 @@ import {
 
 @Component({
   selector: 'schemetwister-scheme-card',
-  imports: [WebAppUiModule, FontAwesomeModule, NgbAccordionModule],
+  imports: [BaseCardContentComponent, FontAwesomeModule, NgbAccordionModule],
   templateUrl: './scheme-card.component.html',
   styleUrls: ['./scheme-card.component.scss'],
   standalone: true,

@@ -1,6 +1,10 @@
 import { ITeam } from '@schemetwister/libtwister';
 import { describe, it, expect, test } from 'vitest';
 
+/**
+ *
+ * @param teams
+ */
 export function testTeams(teams: ITeam[]) {
   return describe('Teams', () => {
     it('should have unique team names', () => {

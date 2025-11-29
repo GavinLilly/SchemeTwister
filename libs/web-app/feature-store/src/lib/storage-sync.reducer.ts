@@ -3,6 +3,10 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 
 import { IRootState } from './models/root-state';
 
+/**
+ *
+ * @param reducer
+ */
 export function localStorageSyncReducer(
   reducer: ActionReducer<IRootState>
 ): ActionReducer<IRootState> {

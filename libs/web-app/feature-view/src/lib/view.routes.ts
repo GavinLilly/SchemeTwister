@@ -1,9 +1,8 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { LatestSetupsComponent } from './latest-setups/latest-setups.component';
 
-const routes: Routes = [
+export const VIEW_ROUTES: Routes = [
   { path: 'setups', pathMatch: 'full', component: LatestSetupsComponent },
   {
     path: '',
@@ -15,9 +14,3 @@ const routes: Routes = [
     redirectTo: 'setups',
   },
 ];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class WebAppFeatureViewRoutingModule {}

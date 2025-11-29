@@ -1,1 +1,1 @@
-export * from './lib/web-app-feature-home.module';
+export { HomePageComponent } from './lib/home-page/home-page.component';

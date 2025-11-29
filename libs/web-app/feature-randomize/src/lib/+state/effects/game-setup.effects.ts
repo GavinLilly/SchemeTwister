@@ -49,7 +49,7 @@ import {
   selectIsAdvancedSolo,
 } from '../selectors/num-players.selectors';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class GameSetupEffects {
   private readonly _actions$ = inject(Actions);
   private readonly _store = inject<

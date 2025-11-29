@@ -1,9 +1,24 @@
 import { Component, computed, Signal, inject } from '@angular/core';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faLock, faLockOpen, faCog } from '@fortawesome/free-solid-svg-icons';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbModal,
+  NgbAccordionDirective,
+  NgbAccordionItem,
+  NgbAccordionHeader,
+  NgbAccordionToggle,
+  NgbAccordionButton,
+  NgbCollapse,
+  NgbAccordionCollapse,
+  NgbAccordionBody,
+} from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { Henchmen, Hero, IHeroDeck } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
+import {
+  HeroCardContentComponent,
+  HenchmenCardContentComponent,
+} from '@schemetwister/web-app/ui';
 
 import {
   heroDeckActions,
@@ -25,7 +40,19 @@ import { HeroSelectorComponent } from '../hero-selector/hero-selector.component'
   selector: 'schemetwister-hero-deck',
   templateUrl: './hero-deck.component.html',
   styleUrls: ['./hero-deck.component.scss'],
-  standalone: false,
+  imports: [
+    FaIconComponent,
+    NgbAccordionDirective,
+    NgbAccordionItem,
+    NgbAccordionHeader,
+    NgbAccordionToggle,
+    NgbAccordionButton,
+    NgbCollapse,
+    NgbAccordionCollapse,
+    NgbAccordionBody,
+    HeroCardContentComponent,
+    HenchmenCardContentComponent,
+  ],
 })
 export class HeroDeckComponent {
   private readonly _store = inject<

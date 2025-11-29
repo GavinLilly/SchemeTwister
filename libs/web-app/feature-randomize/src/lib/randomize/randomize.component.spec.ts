@@ -4,13 +4,11 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { GameSetup } from '@schemetwister/libtwister';
 import { MockBuilder, MockRender } from 'ng-mocks';
 
-import { WebAppFeatureRandomizeModule } from '../web-app-feature-randomize.module';
-
 import { RandomizeComponent } from './randomize.component';
 
 describe('RandomizeComponent', () => {
   beforeEach(() =>
-    MockBuilder(RandomizeComponent, WebAppFeatureRandomizeModule)
+    MockBuilder(RandomizeComponent)
       .replace(FontAwesomeModule, FontAwesomeTestingModule)
       .provide(
         provideMockStore({

@@ -12,6 +12,10 @@ interface IGameSetSize extends IGameSetSizeWithoutHeroes {
   numHeroes: number;
 }
 
+/**
+ *
+ * @param gameSetSize
+ */
 export function getGamesetSize(gameSetSize: GameSetSize): IGameSetSize {
   switch (gameSetSize) {
     case GAME_SET_SIZE.core:

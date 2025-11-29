@@ -1,5 +1,16 @@
 import { Component, Signal, inject } from '@angular/core';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
+import {
+  NgbAccordionDirective,
+  NgbAccordionItem,
+  NgbAccordionHeader,
+  NgbAccordionToggle,
+  NgbAccordionButton,
+  NgbCollapse,
+  NgbAccordionCollapse,
+  NgbAccordionBody,
+} from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import {
   Henchmen,
@@ -8,6 +19,12 @@ import {
   Mastermind,
   VillainGroup,
 } from '@schemetwister/libtwister';
+import {
+  HenchmenCardContentComponent,
+  VillaingroupCardContentComponent,
+  HeroCardContentComponent,
+  MastermindCardContentComponent,
+} from '@schemetwister/web-app/ui';
 
 import { villainDeckActions } from '../+state/actions/game-setup.actions';
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
@@ -19,15 +36,31 @@ import { BLANK_IMAGE_BASE64 } from '../constants';
 import { VillainAdditionalDeckCardType } from '../villainAdditionalDeckCard.type';
 
 @Component({
-    selector: 'schemetwister-villain-deck',
-    templateUrl: './villain-deck.component.html',
-    styleUrls: ['./villain-deck.component.scss'],
-    standalone: false
+  selector: 'schemetwister-villain-deck',
+  templateUrl: './villain-deck.component.html',
+  styleUrls: ['./villain-deck.component.scss'],
+  imports: [
+    NgbAccordionDirective,
+    NgbAccordionItem,
+    NgbAccordionHeader,
+    NgbAccordionToggle,
+    NgbAccordionButton,
+    FaIconComponent,
+    NgbCollapse,
+    NgbAccordionCollapse,
+    NgbAccordionBody,
+    HenchmenCardContentComponent,
+    VillaingroupCardContentComponent,
+    HeroCardContentComponent,
+    MastermindCardContentComponent,
+  ],
 })
 export class VillainDeckComponent {
-  private readonly _store = inject<Store<{
-    gameSetup: IGameSetupState;
-}>>(Store);
+  private readonly _store = inject<
+    Store<{
+      gameSetup: IGameSetupState;
+    }>
+  >(Store);
 
   villainDeck: Signal<IVillainDeck> =
     this._store.selectSignal(selectVillainDeck);

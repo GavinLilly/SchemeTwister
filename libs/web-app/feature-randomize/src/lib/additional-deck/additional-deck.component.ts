@@ -1,7 +1,23 @@
 import { Component, Signal, inject } from '@angular/core';
 import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
+import {
+  NgbAccordionDirective,
+  NgbAccordionItem,
+  NgbAccordionHeader,
+  NgbAccordionToggle,
+  NgbAccordionButton,
+  NgbCollapse,
+  NgbAccordionCollapse,
+  NgbAccordionBody,
+} from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { IAdditionalDeck } from '@schemetwister/libtwister';
+import {
+  HenchmenCardContentComponent,
+  VillaingroupCardContentComponent,
+  HeroCardContentComponent,
+  MastermindCardContentComponent,
+} from '@schemetwister/web-app/ui';
 
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
 import {
@@ -11,15 +27,30 @@ import {
 import { BLANK_IMAGE_BASE64 } from '../constants';
 
 @Component({
-    selector: 'schemetwister-additional-deck',
-    templateUrl: './additional-deck.component.html',
-    styleUrls: ['./additional-deck.component.scss'],
-    standalone: false
+  selector: 'schemetwister-additional-deck',
+  templateUrl: './additional-deck.component.html',
+  styleUrls: ['./additional-deck.component.scss'],
+  imports: [
+    NgbAccordionDirective,
+    NgbAccordionItem,
+    NgbAccordionHeader,
+    NgbAccordionToggle,
+    NgbAccordionButton,
+    NgbCollapse,
+    NgbAccordionCollapse,
+    NgbAccordionBody,
+    HenchmenCardContentComponent,
+    VillaingroupCardContentComponent,
+    HeroCardContentComponent,
+    MastermindCardContentComponent,
+  ],
 })
 export class AdditionalDeckComponent {
-  private readonly _store = inject<Store<{
-    gameSetup: IGameSetupState;
-}>>(Store);
+  private readonly _store = inject<
+    Store<{
+      gameSetup: IGameSetupState;
+    }>
+  >(Store);
 
   additionalDecks: Signal<IAdditionalDeck[]> = this._store.selectSignal(
     selectAdditionalDecks

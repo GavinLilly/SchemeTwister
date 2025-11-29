@@ -1,1 +1,1 @@
-export * from './lib/web-app-feature-view.module';
+export { VIEW_ROUTES } from './lib/view.routes';

@@ -16,7 +16,7 @@ import {
   selectLibTwister,
 } from '../selectors/game-sets.selectors';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class GameSetsEffects implements OnInitEffects {
   private readonly _actions$ = inject(Actions);
   private readonly _store = inject<
