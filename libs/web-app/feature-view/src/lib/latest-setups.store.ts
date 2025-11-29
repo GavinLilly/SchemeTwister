@@ -32,7 +32,11 @@ export class LatestSetupsStore extends ComponentStore<LatestSetupsStoreState> {
           this.patchState(() => ({
             setups,
           })),
-        error: (error) => console.log(error),
+        error: (error) =>
+          console.error(
+            'Error while getting latest setups from Firebase',
+            error
+          ),
       })
     )
   );
