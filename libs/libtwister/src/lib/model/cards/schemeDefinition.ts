@@ -1,6 +1,8 @@
 import { IKeyword, IScheme, IGameSetMeta, ISchemeMeta } from '../interfaces';
 import { CARD_TYPE } from '../types/cardType.type';
 
+export type SchemeDefinitionConfig = Omit<IScheme, 'cardType'>;
+
 export class SchemeDefinition implements IScheme {
   private readonly _id: string;
   private readonly _name: string;
@@ -12,7 +14,7 @@ export class SchemeDefinition implements IScheme {
   private readonly _meta: ISchemeMeta;
   private readonly _keywords: IKeyword[];
 
-  constructor(config: Omit<IScheme, 'cardType'>) {
+  constructor(config: SchemeDefinitionConfig) {
     ({
       id: this._id,
       name: this._name,

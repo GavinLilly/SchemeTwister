@@ -10,11 +10,13 @@ interface IHero extends IPlayableObject {
   team?: ITeam;
 }
 
+export type HeroConfig = IHero & Partial<ICardType>;
+
 export class Hero extends AbstractCardGroup implements IHero {
   private readonly _team?: ITeam;
   private readonly _cardType: CardType;
 
-  constructor(heroConfig: IHero & Partial<ICardType>) {
+  constructor(heroConfig: HeroConfig) {
     super(heroConfig);
 
     ({ team: this._team } = heroConfig);
