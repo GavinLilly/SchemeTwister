@@ -7,13 +7,14 @@ interface IBystander extends IVictoryPileCard {
   copies: number;
 }
 
+export type BystanderConfig = Omit<IBystander, 'victoryPoints'> &
+  Partial<IVictoryPileCard>;
+
 export class Bystander extends AbstractCardGroup implements IBystander {
   private readonly _copies: number;
   private readonly _victoryPoints: number;
 
-  constructor(
-    config: Omit<IBystander, 'victoryPoints'> & Partial<IVictoryPileCard>
-  ) {
+  constructor(config: BystanderConfig) {
     super(config);
 
     this._copies = config.copies;

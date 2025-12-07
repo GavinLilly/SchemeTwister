@@ -21,14 +21,10 @@ import {
   IGameSetSizeWithoutHeroes,
 } from '../utils/getGameSetSize';
 import { randomInteger } from '../utils/randomInteger';
-
-interface IHeroTeamConfig {
-  num: number;
-  teams?: {
-    numberOfTeams: number;
-    heroesPerTeam: number;
-  };
-}
+import {
+  FakeCardFactory,
+  IHeroTeamConfig,
+} from '@schemetwister/libtwister/testing/data';
 
 interface IMockGameSetConfig extends IGameSetSizeWithoutHeroes {
   heroes: IHeroTeamConfig;
@@ -81,8 +77,12 @@ export class GameSetMock {
       size,
     };
 
-    this._heroes = this._buildHeroes();
-    this._villains = this._buildVillains();
+    const fakeCardFactory = new FakeCardFactory();
+
+    this._heroes = fakeCardFactory.createHeroes(this._config.heroes);
+    this._villains = fakeCardFactory.createVillainGroups(
+      this._config.numVillains
+    );
     this._masterminds = this._buildMasterminds();
     this._henchmen = this._buildHenchmen();
     this._schemes = this._buildSchemes();
@@ -99,55 +99,6 @@ export class GameSetMock {
       this._henchmen.length > 0 ? this._henchmen : undefined,
       this._bystanders.length > 0 ? this._bystanders : undefined
     );
-
-  private _buildHeroes(): Hero[] {
-    const numTeamHeroes =
-      (this._config.heroes.teams?.heroesPerTeam ?? 0) *
-      (this._config.heroes.teams?.numberOfTeams ?? 0);
-
-    if (numTeamHeroes > this._config.heroes.num) {
-      throw new Error(
-        'The number of heroes in specific teams is greater than the number of total heroes'
-      );
-    }
-
-    const teams: ITeam[] = [];
-    const numberOfTeams = this._config.heroes.teams?.numberOfTeams ?? 0;
-    for (let i = 0; i < numberOfTeams; i++) {
-      teams.push({
-        name: `Test Team - ${this._gameSetShortId} - ${i + 1}`,
-        icon: 'N/A',
-      });
-    }
-
-    let currentTeam = 0;
-
-    const heroes: Hero[] = [];
-    for (let i = 0; i < this._config.heroes.num; i++) {
-      let team = undefined;
-      if (
-        currentTeam < numberOfTeams &&
-        this._config.heroes.teams !== undefined
-      ) {
-        team = teams[currentTeam];
-
-        if (
-          (heroes.length + 1) % this._config.heroes.teams.heroesPerTeam ===
-          0
-        ) {
-          currentTeam++;
-        }
-      }
-
-      const hero = new Hero({
-        ...this._buildPartialCard('Hero', i),
-        team,
-      });
-      heroes.push(hero);
-    }
-
-    return heroes;
-  }
 
   private _buildVillains(): VillainGroup[] {
     const villains: VillainGroup[] = [];
