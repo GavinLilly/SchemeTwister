@@ -10,14 +10,15 @@ interface IHenchmen extends IFightable {
   ability?: string;
 }
 
+export type HenchmenConfig = Omit<IHenchmen, 'victoryPoints'> &
+  Partial<IVictoryPileCard>;
+
 export class Henchmen extends AbstractFightableCardGroup implements IHenchmen {
   private readonly _fight?: string;
   private readonly _ambush?: string;
   private readonly _ability?: string;
 
-  constructor(
-    config: Omit<IHenchmen, 'victoryPoints'> & Partial<IVictoryPileCard>
-  ) {
+  constructor(config: HenchmenConfig) {
     super({
       ...config,
       victoryPoints: config.victoryPoints ?? 1,
