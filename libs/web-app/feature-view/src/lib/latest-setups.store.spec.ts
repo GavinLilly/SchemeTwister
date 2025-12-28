@@ -3,9 +3,9 @@ import {
   StoredSetupsService,
 } from '@schemetwister/web-app/feature-setup-store';
 import { MockBuilder, MockInstance, MockRender } from 'ng-mocks';
+import { firstValueFrom } from 'rxjs';
 
 import { LatestSetupsStore } from './latest-setups.store';
-import { firstValueFrom } from 'rxjs';
 
 describe('LatestSetupsStore', () => {
   MockInstance.scope();
@@ -14,7 +14,10 @@ describe('LatestSetupsStore', () => {
   beforeEach(() => {
     logSpy = jest
       .spyOn(globalThis.console, 'error')
-      .mockImplementation(() => {});
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      .mockImplementation(() => {
+        // NOOP
+      });
     return MockBuilder(LatestSetupsStore).mock(StoredSetupsService, {
       getLatestSetups: () => Promise.resolve([EMPTY_STORED_SETUP]),
     });
@@ -46,7 +49,7 @@ describe('LatestSetupsStore', () => {
 
     const fixture = MockRender(LatestSetupsStore);
     const instance = fixture.point.componentInstance;
-    instance.setups$.subscribe((val) => {
+    instance.setups$.subscribe(() => {
       expect(logSpy).toHaveBeenCalledWith(
         'Error while getting latest setups from Firebase'
       );
