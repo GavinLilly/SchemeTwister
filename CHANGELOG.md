@@ -1,3 +1,9 @@
+## [3.21.12](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.11...v3.21.12) (2025-12-28)
+
+### Dependencies
+
+* **deps:** bump jws ([#230](https://github.com/GavinLilly/SchemeTwister/issues/230)) ([daba6bf](https://github.com/GavinLilly/SchemeTwister/commit/daba6bf8a918b5025aa0b8db056c3b3e71bcbe4d))
+
 ## [3.21.11](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.10...v3.21.11) (2025-12-28)
 
 ### Dependencies
