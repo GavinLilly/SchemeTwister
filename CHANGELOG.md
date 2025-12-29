@@ -1,3 +1,9 @@
+## [3.21.13](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.12...v3.21.13) (2025-12-29)
+
+### Dependencies
+
+* **deps:** update to latest NX 21 ([0cfa645](https://github.com/GavinLilly/SchemeTwister/commit/0cfa645a95a0073e0c2e874672d49400a6bfc09e))
+
 ## [3.21.12](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.11...v3.21.12) (2025-12-28)
 
 ### Dependencies
