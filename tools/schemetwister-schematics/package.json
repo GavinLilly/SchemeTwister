@@ -2,7 +2,7 @@
   "name": "@schemetwister/schematics",
   "version": "0.0.1",
   "dependencies": {
-    "@nx/devkit": "21.6.3",
+    "@nx/devkit": "21.6.9",
     "@schemetwister/libtwister": "0.0.1",
     "camelcase": "^6.0.0",
     "tslib": "^2.3.0",
