@@ -1,3 +1,9 @@
+## [3.21.14](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.13...v3.21.14) (2025-12-31)
+
+### Dependencies
+
+* **deps:** allow for latest Angular 20 ([520d465](https://github.com/GavinLilly/SchemeTwister/commit/520d46550a1212e180bb4689e8a7c758a3d2ee26))
+
 ## [3.21.13](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.12...v3.21.13) (2025-12-29)
 
 ### Dependencies
