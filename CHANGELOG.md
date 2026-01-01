@@ -1,3 +1,10 @@
+## [3.21.15](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.14...v3.21.15) (2026-01-01)
+
+### Dependencies
+
+* **deps:** update Angular compiler-cli to 20.3 ([3d01e5a](https://github.com/GavinLilly/SchemeTwister/commit/3d01e5aa5849d957d77c837ee2c135f1e33bfbe0))
+* **deps:** update to latest Angular 20.3 ([b113ad8](https://github.com/GavinLilly/SchemeTwister/commit/b113ad8d59efdcf68240f73b9864a4d1762c7b98))
+
 ## [3.21.14](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.13...v3.21.14) (2025-12-31)
 
 ### Dependencies
