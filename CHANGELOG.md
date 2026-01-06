@@ -1,3 +1,9 @@
+## [3.21.16](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.15...v3.21.16) (2026-01-06)
+
+### Dependencies
+
+* **deps:** update all possible packages ([e79db65](https://github.com/GavinLilly/SchemeTwister/commit/e79db65c3a93b5328fec9d9f6e9992ba16dff03a))
+
 ## [3.21.15](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.14...v3.21.15) (2026-01-01)
 
 ### Dependencies
