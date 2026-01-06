@@ -5,20 +5,32 @@ updates:
     schedule:
       interval: "weekly"
     groups:
-      angular:
-        applies-to: version-updates
+      angular-major: # group angular dependencies and the store dependencies together
+        patterns:
+          - "@angular*"
+          - "@ngxs*"
+          - "ngx-float-ui"
+        update-types:
+          - major
+      angular-minor: # group angular dependencies together for minor updates
         patterns:
           - "@angular*"
         update-types:
-          - "minor"
-          - "patch"
-      minor-and-patch:
-        applies-to: security-updates
+          - minor
+          - patch
+      nx: # group nx- dependencies together
         patterns:
-          - "@angular*"
+          - "@nx/nx-*"
         update-types:
-          - "patch"
-          - "minor"
-    ignore:
-      - dependency-name: "@angular*"
-        update-types: ["version-update:semver-major"]
+          - major
+      eslint: # group eslint dependencies together
+        patterns:
+          - "@typescript-eslint/*"
+        update-types:
+          - major
+      all: # group all minor/patch updates
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
