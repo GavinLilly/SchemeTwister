@@ -42,7 +42,7 @@
     "@angular/common": "v20-lts",
     "@angular/compiler": "v20-lts",
     "@angular/core": "v20-lts",
-    "@angular/fire": "v20-lts",
+    "@angular/fire": "^20.0.0",
     "@angular/forms": "v20-lts",
     "@angular/localize": "v20-lts",
     "@angular/platform-browser": "v20-lts",
