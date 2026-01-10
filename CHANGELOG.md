@@ -1,3 +1,11 @@
+## [3.21.17](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.16...v3.21.17) (2026-01-10)
+
+### Dependencies
+
+* **deps:** fix XSS issue in Angular ([9e91e99](https://github.com/GavinLilly/SchemeTwister/commit/9e91e99591b6cb08d68b9d657508d7ccfa500043))
+* **deps:** update package lock ([29d3ed2](https://github.com/GavinLilly/SchemeTwister/commit/29d3ed2d73faf7e5dbcdc004cd18c7f608fabd11))
+* **deps:** use Angular v20-lts version tag ([29cd7f2](https://github.com/GavinLilly/SchemeTwister/commit/29cd7f2661fe090697ce0f3c5d4a7c15a7c183e5))
+
 ## [3.21.16](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.15...v3.21.16) (2026-01-06)
 
 ### Dependencies
