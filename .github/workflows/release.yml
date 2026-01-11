@@ -23,8 +23,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Semantic Release
-        # https://github.com/cycjimmy/semantic-release-action/releases/tag/v4.2.2
-        uses: cycjimmy/semantic-release-action@16ca923e6ccbb50770c415a0ccd43709a8c5f7a4
+        # https://github.com/cycjimmy/semantic-release-action/releases/tag/v6.0.0
+        uses: cycjimmy/semantic-release-action@b12c8f6015dc215fe37bc154d4ad456dd3833c90
         id: semantic
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
