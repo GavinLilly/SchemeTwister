@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Substitute Secrets into Tokenised File
         uses: Lambdaspire/action-substitute-secrets-in-file@main
         with:
