@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
       - name: Install dependencies
         run: npm ci
       - name: Semantic Release
@@ -38,4 +38,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SCHEMETWISTER }}'
           projectId: schemetwister
           channelId: live
-          firebaseToolsVersion: v13.9.0
+          firebaseToolsVersion: v14.27.0
