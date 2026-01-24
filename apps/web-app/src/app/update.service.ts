@@ -28,7 +28,7 @@ export class UpdateService {
             this._document.location.reload();
             break;
           case 'VERSION_INSTALLATION_FAILED':
-            console.log(
+            console.error(
               `Failed to install app version '${evt.version.hash}': ${evt.error}`
             );
             break;
