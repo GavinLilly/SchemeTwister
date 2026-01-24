@@ -13,7 +13,7 @@ describe('LatestSetupsStore', () => {
 
   beforeEach(() => {
     logSpy = jest
-      .spyOn(globalThis.console, 'error')
+      .spyOn(console, 'error')
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       .mockImplementation(() => {
         // NOOP

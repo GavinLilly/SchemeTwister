@@ -1,8 +1,11 @@
+import { DOCUMENT } from '@angular/common'
 import { Injectable, inject } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
 
 @Injectable()
 export class UpdateService {
+  private document = inject(DOCUMENT);
+
   constructor() {
     const updates = inject(SwUpdate);
 
@@ -22,7 +25,7 @@ export class UpdateService {
               `New app version ready for use: ${evt.latestVersion.hash}`
             );
             console.log(`Reloading now...`);
-            globalThis.location.reload();
+            this.document.location.reload();
             break;
           case 'VERSION_INSTALLATION_FAILED':
             console.log(
