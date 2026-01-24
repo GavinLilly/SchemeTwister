@@ -1,5 +1,5 @@
 {
-  "name": "schemetwister-series-buffy",
+  "name": "series-buffy",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/series/buffy/src",
   "projectType": "library",

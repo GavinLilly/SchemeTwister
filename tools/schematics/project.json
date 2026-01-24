@@ -1,7 +1,7 @@
 {
-  "name": "schemetwister-schematics",
+  "name": "schematics",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "tools/schemetwister-schematics/src",
+  "sourceRoot": "tools/schematics/src",
   "projectType": "library",
   "tags": [],
   "targets": {
@@ -9,28 +9,28 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/tools/schemetwister-schematics",
-        "main": "tools/schemetwister-schematics/src/index.ts",
-        "tsConfig": "tools/schemetwister-schematics/tsconfig.lib.json",
+        "outputPath": "dist/tools/schematics",
+        "main": "tools/schematics/src/index.ts",
+        "tsConfig": "tools/schematics/tsconfig.lib.json",
         "assets": [
-          "tools/schemetwister-schematics/*.md",
+          "tools/schematics/*.md",
           {
-            "input": "./tools/schemetwister-schematics/src",
+            "input": "./tools/schematics/src",
             "glob": "**/!(*.ts)",
             "output": "./src"
           },
           {
-            "input": "./tools/schemetwister-schematics/src",
+            "input": "./tools/schematics/src",
             "glob": "**/*.d.ts",
             "output": "./src"
           },
           {
-            "input": "./tools/schemetwister-schematics",
+            "input": "./tools/schematics",
             "glob": "generators.json",
             "output": "."
           },
           {
-            "input": "./tools/schemetwister-schematics",
+            "input": "./tools/schematics",
             "glob": "executors.json",
             "output": "."
           }

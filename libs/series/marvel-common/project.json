@@ -1,5 +1,5 @@
 {
-  "name": "schemetwister-series-marvel-common",
+  "name": "series-marvel-common",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/series/marvel-common/src",
   "projectType": "library",
