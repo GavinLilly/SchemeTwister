@@ -1,8 +1,9 @@
-import { MockBuilder, ngMocks } from 'ng-mocks';
-import { SwUpdate, VersionEvent } from '@angular/service-worker';
-import { Subject } from 'rxjs';
-import { UpdateService } from './update.service';
 import { DOCUMENT } from '@angular/common';
+import { SwUpdate, VersionEvent } from '@angular/service-worker';
+import { MockBuilder, ngMocks } from 'ng-mocks';
+import { Subject } from 'rxjs';
+
+import { UpdateService } from './update.service';
 
 describe('UpdateService', () => {
   let versionUpdates$: Subject<VersionEvent>;
@@ -42,7 +43,7 @@ describe('UpdateService', () => {
 
   it('should log initialization message when updates are enabled', () => {
     // Instantiating triggers the constructor logic
-    const service = ngMocks.findInstance(UpdateService);
+    ngMocks.findInstance(UpdateService);
 
     expect(logSpy).toHaveBeenCalledWith(
       expect.stringContaining('Updates enabled')
