@@ -1,17 +1,10 @@
 import { Component, computed, Signal, inject } from '@angular/core';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faLock, faLockOpen, faCog } from '@fortawesome/free-solid-svg-icons';
-import {
-  NgbModal,
-  NgbAccordionDirective,
-  NgbAccordionItem,
-  NgbAccordionHeader,
-  NgbAccordionToggle,
-  NgbAccordionButton,
-  NgbCollapse,
-  NgbAccordionCollapse,
-  NgbAccordionBody,
-} from '@ng-bootstrap/ng-bootstrap';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { Store } from '@ngrx/store';
 import { Henchmen, Hero, IHeroDeck } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
@@ -42,17 +35,13 @@ import { HeroSelectorComponent } from '../hero-selector/hero-selector.component'
   styleUrls: ['./hero-deck.component.scss'],
   imports: [
     FaIconComponent,
-    NgbAccordionDirective,
-    NgbAccordionItem,
-    NgbAccordionHeader,
-    NgbAccordionToggle,
-    NgbAccordionButton,
-    NgbCollapse,
-    NgbAccordionCollapse,
-    NgbAccordionBody,
+    MatExpansionModule,
+    MatButtonModule,
+    MatDialogModule,
     HeroCardContentComponent,
     HenchmenCardContentComponent,
   ],
+  standalone: true,
 })
 export class HeroDeckComponent {
   private readonly _store = inject<
@@ -60,7 +49,7 @@ export class HeroDeckComponent {
       gameSetup: IGameSetupState;
     }>
   >(Store);
-  private readonly _modalService = inject(NgbModal);
+  private readonly _dialog = inject(MatDialog);
   private readonly _seriesRegister = inject(SERIES_REGISTER_TOKEN);
 
   private readonly _libTwister = this._store.selectSignal(
@@ -102,14 +91,13 @@ export class HeroDeckComponent {
 
   pickHeroes() {
     const numHeroes = computed(() => this.heroDeck().heroes.length);
-
-    const modalSelector = this._modalService.open(HeroSelectorComponent);
-    modalSelector.componentInstance.availableHeroesInput =
+    const dialogRef = this._dialog.open(HeroSelectorComponent);
+    dialogRef.componentInstance.availableHeroesInput =
       this._availableCards();
-    modalSelector.componentInstance.numberOfHeroes = numHeroes();
-    modalSelector.componentInstance.lockedHeroes = this.lockedCards().heroes;
+    dialogRef.componentInstance.numberOfHeroes = numHeroes();
+    dialogRef.componentInstance.lockedHeroes = this.lockedCards().heroes;
 
-    modalSelector.componentInstance.chosenItems.subscribe(
+    dialogRef.componentInstance.chosenItems.subscribe(
       (receivedHeroes: Hero[] | undefined) =>
         this._handleChosenItems(receivedHeroes)
     );

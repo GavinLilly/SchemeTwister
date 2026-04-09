@@ -1,43 +1,70 @@
-.card {
+ .setup-card {
   margin: 1rem;
 }
 
-#bottom-row {
-  margin: auto;
-  margin-top: 1rem;
+.setup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
 
-  > .col-12 {
-    padding-left: 0;
-    padding-right: 0;
-  }
+.setup-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
 
-  > .col-lg-4,
-  > .col-lg-8 {
-    padding-left: 15px;
-    padding-right: 15px;
+.randomize-layout {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.setup-column {
+  display: flex;
+  justify-content: center;
+}
+
+.entity-columns {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 960px) {
+  .entity-columns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-.btn {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+.entity-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-#keywords {
-  margin: 0;
+.bottom-row {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
 }
 
-@media all and (max-width: 950px) {
-  #hero-deck-container {
-    margin-top: 1rem;
+@media (min-width: 960px) {
+  .bottom-row {
+    grid-template-columns: 1fr 2fr;
   }
-
-  #additional-deck-container {
-    margin-bottom: 1rem;
-  }
 }
 
-#lock-warning {
+.additional-deck-card,
+.keywords-card {
+  width: 100%;
+}
+
+#hero-deck-container {
+  margin-bottom: 0;
+}
+
+ #lock-warning {
   margin-top: 16px;
   margin-bottom: 0px;
   color: darkred;

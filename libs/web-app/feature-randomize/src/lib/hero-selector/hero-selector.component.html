@@ -1,32 +1,31 @@
-<div class="modal-header">
-  <h4 class="modal-title">Select heroes to use in the setup</h4>
-  <button
-    type="button"
-    class="btn-close"
-    aria-label="Close"
-    (click)="activeModal.dismiss('Cross click')"
-  ></button>
-</div>
-<div class="modal-body">
-  @for (num of numHeroesArray; track $index) {
-  <select
-    class="form-select form-control hero-select"
-    #item
-    [ngModel]="getSelected($index)"
-    (ngModelChange)="setChosenHero($index, $event)"
-    [hidden]="isDisabled($index)"
-  >
-    <option>{{ randomText }}</option>
-    @for (item of getAvailableHeroes($index); track item) {
-    <option [value]="item.id">
-      {{ item.name }}
-    </option>
-    }
-  </select>
-  }
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-primary" (click)="emitHeroes()">
-    Close
+<h2 mat-dialog-title>Select heroes to use in the setup</h2>
+<mat-dialog-content>
+  <ng-container *ngFor="let num of numHeroesArray; let i = index">
+    <mat-form-field
+      appearance="fill"
+      class="full-width"
+      *ngIf="!isDisabled(i)"
+    >
+      <mat-label>Hero {{ i + 1 }}</mat-label>
+      <mat-select
+        [(ngModel)]="selectedHeroIds[i]"
+        [ngModelOptions]="{ standalone: true }"
+        (selectionChange)="setChosenHero(i, $event.value)"
+      >
+        <mat-option [value]="randomText">{{ randomText }}</mat-option>
+        <mat-option
+          *ngFor="let item of getAvailableHeroes(i)"
+          [value]="item.id"
+        >
+          {{ item.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </ng-container>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Close</button>
+  <button mat-flat-button color="primary" (click)="emitHeroes()">
+    Confirm
   </button>
-</div>
+</mat-dialog-actions>

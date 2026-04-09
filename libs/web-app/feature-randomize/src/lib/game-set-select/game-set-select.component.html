@@ -1,67 +1,55 @@
-<div class="modal-header">
-  <h4 class="modal-title" id="modal-title">Select game sets</h4>
-  <button
-    type="button"
-    class="btn-close"
-    aria-label="Close"
-    (click)="activeModal.dismiss('Cross click')"
-  ></button>
-</div>
-<div class="modal-body">
-  <select
-    multiple="true"
-    [ngModel]="selectedGameSets()"
-    (ngModelChange)="onSelectedUpdate($event)"
-    class="form-control"
-    size="20"
-  >
-    <option disabled>&#x2500;&#x2500; Core sets &#x2500;&#x2500;</option>
-    @for (gameSet of coreSets; track gameSet) {
-    <option [value]="gameSet">
-      {{ gameSet.name }}
-    </option>
-    }
-    <option disabled>&#x2500;&#x2500; Large sets &#x2500;&#x2500;</option>
-    @for (gameSet of lrgSets; track gameSet) {
-    <option [value]="gameSet">
-      {{ gameSet.name }}
-    </option>
-    } @if (medSets.length) {
-    <option disabled>&#x2500;&#x2500; Medium sets &#x2500;&#x2500;</option>
-    } @for (gameSet of medSets; track gameSet) {
-    <option [value]="gameSet">
-      {{ gameSet.name }}
-    </option>
-    }
-    <option disabled>&#x2500;&#x2500; Small sets &#x2500;&#x2500;</option>
-    @for (gameSet of smlSets; track gameSet) {
-    <option [value]="gameSet">
-      {{ gameSet.name }}
-    </option>
-    }
-    <option disabled>&#x2500;&#x2500; Promo sets &#x2500;&#x2500;</option>
-    @for (gameSet of promoSets; track gameSet) {
-    <option [value]="gameSet">
-      {{ gameSet.name }}
-    </option>
-    }
-  </select>
-</div>
-<div class="modal-footer">
-  <button
-    type="button"
-    ngbAutofocus
-    class="btn btn-primary"
-    (click)="activeModal.close('Close click')"
-  >
-    Close
-  </button>
-</div>
-@if (gameSelectError(); as gameSelectError) {
-<ngb-alert
-  #selfClosingAlert
-  type="danger"
-  (closed)="(gameSelectError === '')"
-  >{{ gameSelectError }}</ngb-alert
->
-}
+<h2 mat-dialog-title>Select game sets</h2>
+<mat-dialog-content>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Game sets</mat-label>
+    <mat-select
+      multiple
+      [value]="selectedGameSets()"
+      (selectionChange)="onSelectedUpdate($event.value)"
+    >
+      <mat-optgroup label="Core sets">
+        @for (gameSet of coreSets; track $index) {
+        <mat-option [value]="gameSet">
+          {{ gameSet.name }}
+        </mat-option>
+        }
+      </mat-optgroup>
+      <mat-optgroup label="Large sets">
+        @for (gameSet of lrgSets; track $index) {
+        <mat-option [value]="gameSet">
+          {{ gameSet.name }}
+        </mat-option>
+        }
+      </mat-optgroup>
+      @if (medSets.length) {
+      <mat-optgroup label="Medium sets">
+        @for (gameSet of medSets; track $index) {
+        <mat-option [value]="gameSet">
+          {{ gameSet.name }}
+        </mat-option>
+        }
+      </mat-optgroup>
+      }
+      <mat-optgroup label="Small sets">
+        @for (gameSet of smlSets; track $index) {
+        <mat-option [value]="gameSet">
+          {{ gameSet.name }}
+        </mat-option>
+        }
+      </mat-optgroup>
+      <mat-optgroup label="Promo sets">
+        @for (gameSet of promoSets; track $index) {
+        <mat-option [value]="gameSet">
+          {{ gameSet.name }}
+        </mat-option>
+        }
+      </mat-optgroup>
+    </mat-select>
+  </mat-form-field>
+  @if (gameSelectError()) {
+  <div class="error-message">{{ gameSelectError() }}</div>
+  }
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Close</button>
+</mat-dialog-actions>

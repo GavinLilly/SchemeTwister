@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { NgbActiveModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogRef } from '@angular/material/dialog';
 import { provideMockStore } from '@ngrx/store/testing';
 import { mainline, marvelSeries } from '@schemetwister/series-marvel';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
@@ -13,9 +13,12 @@ describe('GameSetSelectComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    imports: [NgbModalModule, FormsModule, GameSetSelectComponent],
+    imports: [FormsModule, GameSetSelectComponent],
     providers: [
-        NgbActiveModal,
+        {
+          provide: MatDialogRef,
+          useValue: { close: () => {} },
+        },
         provideMockStore({
             initialState: {
                 gameSets: {

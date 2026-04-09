@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideMockStore } from '@ngrx/store/testing';
 import { GameSetup } from '@schemetwister/libtwister';
 
@@ -11,7 +10,7 @@ describe('VillainDeckComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [NgbAccordionModule, VillainDeckComponent],
+    imports: [VillainDeckComponent],
     providers: [
         provideMockStore({
             initialState: {

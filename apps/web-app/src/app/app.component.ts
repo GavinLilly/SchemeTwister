@@ -5,6 +5,7 @@ import { FooterComponent, HeaderComponent } from '@schemetwister/web-app/ui';
 import { UpdateService } from './update.service';
 
 @Component({
+  standalone: true,
   selector: 'schemetwister-root',
   templateUrl: './app.component.html',
   imports: [RouterOutlet, FooterComponent, HeaderComponent],

@@ -1,7 +1,9 @@
 import { Component, Signal, computed, inject } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCog, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
-import { NgbAccordionModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { Store } from '@ngrx/store';
 import {
   CARD_TYPE,
@@ -27,13 +29,13 @@ import {
 
 @Component({
   selector: 'schemetwister-scheme-card',
-  imports: [BaseCardContentComponent, FontAwesomeModule, NgbAccordionModule],
+  imports: [BaseCardContentComponent, FontAwesomeModule, MatExpansionModule, MatButtonModule, MatDialogModule],
   templateUrl: './scheme-card.component.html',
   styleUrls: ['./scheme-card.component.scss'],
   standalone: true,
 })
 export class SchemeCardComponent {
-  private readonly _modalService = inject(NgbModal);
+  private readonly _dialog = inject(MatDialog);
   private readonly _store = inject<
     Store<{
       gameSetup: IGameSetupState;
@@ -63,7 +65,7 @@ export class SchemeCardComponent {
   pickScheme() {
     const selectedScheme = this._store.selectSignal(selectDefinedScheme);
 
-    const modalSelector = this._modalService.open(ModalSelectorComponent);
+    const modalSelector = this._dialog.open(ModalSelectorComponent);
     modalSelector.componentInstance.itemType = CARD_TYPE.scheme;
     modalSelector.componentInstance.availableItems =
       this._availableCards().filter((scheme) =>

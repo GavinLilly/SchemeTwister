@@ -1,8 +1,4 @@
-@import 'node_modules/bootstrap/scss/functions';
-@import 'node_modules/bootstrap/scss/variables';
-@import 'node_modules/bootstrap/scss/mixins/_breakpoints';
-
-@include media-breakpoint-down(xs) {
+@media (max-width: 575.98px) {
   .jumbotron .container h1 {
     font-size: 3rem;
   }

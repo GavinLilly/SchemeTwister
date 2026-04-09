@@ -1,47 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* Override bootstrap widths */
-$container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1280px,
-) !default;
-
-/* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
-
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 
-.accordion {
-  .accordion-item {
-    &.hero {
-      .accordion-header button {
-        background-color: rgb(204, 250, 204);
-      }
-    }
-
-    &.henchmen {
-      .accordion-header button {
-        background-color: rgb(255, 254, 197);
-      }
-    }
-
-    &.mastermind {
-      .accordion-header button {
-        background-color: rgb(255, 227, 227);
-      }
-    }
-
-    &.villainGroup {
-      .accordion-header button {
-        background-color: rgb(255, 236, 199);
-      }
-    }
-  }
+.mat-expansion-panel.group-hero .mat-expansion-panel-header {
+  background-color: rgb(204, 250, 204);
 }
 
-.accordion-header .accordion-button {
+.mat-expansion-panel.group-henchmen .mat-expansion-panel-header {
+  background-color: rgb(255, 254, 197);
+}
+
+.mat-expansion-panel.group-mastermind .mat-expansion-panel-header {
+  background-color: rgb(255, 227, 227);
+}
+
+.mat-expansion-panel.group-villainGroup .mat-expansion-panel-header {
+  background-color: rgb(255, 236, 199);
+}
+
+.mat-expansion-panel-header {
   color: rgb(0, 123, 255);
 }
 

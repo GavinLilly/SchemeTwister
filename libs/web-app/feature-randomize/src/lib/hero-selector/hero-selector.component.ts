@@ -7,17 +7,22 @@ import {
   inject,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgbActiveModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { NgFor, NgIf } from '@angular/common';
 import { Hero, INamedObject } from '@schemetwister/libtwister';
 
 @Component({
+  standalone: true,
   selector: 'schemetwister-hero-selector',
-  imports: [FormsModule, NgbModalModule],
+  imports: [FormsModule, NgIf, NgFor, MatDialogModule, MatFormFieldModule, MatSelectModule, MatButtonModule],
   templateUrl: './hero-selector.component.html',
-  styleUrl: './hero-selector.component.scss',
+  styleUrls: ['./hero-selector.component.scss'],
 })
 export class HeroSelectorComponent implements OnInit {
-  activeModal = inject(NgbActiveModal);
+  dialogRef = inject(MatDialogRef<HeroSelectorComponent>);
 
   @Input() availableHeroesInput!: Hero[];
   @Input() numberOfHeroes!: number;
@@ -32,6 +37,8 @@ export class HeroSelectorComponent implements OnInit {
 
   randomText = '**Random**';
 
+  selectedHeroIds: string[] = [];
+
   ngOnInit(): void {
     this.numHeroesArray = new Array(this.numberOfHeroes)
       .fill(0)
@@ -40,6 +47,7 @@ export class HeroSelectorComponent implements OnInit {
     if (this.lockedHeroes !== undefined) {
       for (let i = 0; i < this.lockedHeroes.length; i++) {
         this._chosenHeroes.set(i, this.lockedHeroes[i]);
+        this.selectedHeroIds[i] = this.lockedHeroes[i].id;
       }
     }
 
@@ -105,6 +113,7 @@ export class HeroSelectorComponent implements OnInit {
       );
       if (heroItem !== undefined) {
         this._chosenHeroes.set(index, heroItem);
+        this.selectedHeroIds[index] = heroId;
       }
     }
   }
@@ -122,6 +131,10 @@ export class HeroSelectorComponent implements OnInit {
 
   emitHeroes() {
     this.chosenItems.emit(Array.from(this._chosenHeroes.values()));
-    this.activeModal.close('Close click');
+    this.dialogRef.close();
+  }
+  
+  close(): void {
+    this.dialogRef.close();
   }
 }

@@ -1,53 +1,27 @@
 <div class="card">
   <div class="card-header d-flex align-items-center justify-content-between">
     Mastermind
-
-    <a (click)="pickMastermind()" href="javascript:void(0)" class="text-black">
+    <button mat-icon-button type="button" aria-label="Pick mastermind" (click)="pickMastermind()">
       <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
-    </a>
+    </button>
   </div>
   @if (mastermind(); as mastermind) {
   <div class="card-body p-0">
-    <div ngbAccordion>
-      <div ngbAccordionItem class="mastermind">
-        <h2 ngbAccordionHeader>
-          <div class="d-flex align-items-center">
-            <button ngbAccordionButton>
-              {{ mastermind.name }}
+    <mat-accordion>
+      <mat-expansion-panel class="mastermind">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{ mastermind.name }}</mat-panel-title>
+          <mat-panel-description>
+            <button mat-icon-button type="button" (click)="toggleLocked()">
+              <span [class.locked]="mastermindLocked()" [class.unlocked]="!mastermindLocked()">
+                <fa-icon [icon]="mastermindLocked() ? faLock : faLockOpen"></fa-icon>
+              </span>
             </button>
-            @if(mastermindLocked()) {
-            <span
-              (click)="dispatchReset()"
-              (keydown)="dispatchReset()"
-              class="lock-block"
-              ><fa-icon
-                [icon]="faLock"
-                class="ml-auto lock-icon locked"
-              ></fa-icon
-            ></span>
-            } @else {
-            <span
-              (click)="dispatchLocked()"
-              (keydown)="dispatchLocked()"
-              class="lock-block"
-              ><fa-icon
-                [icon]="faLockOpen"
-                class="ml-auto lock-icon unlocked"
-              ></fa-icon
-            ></span>
-            }
-          </div>
-        </h2>
-        <div ngbAccordionCollapse>
-          <div ngbAccordionBody>
-            <ng-template ngbPanelContent>
-              <schemetwister-mastermind-card-content [mastermind]="mastermind">
-              </schemetwister-mastermind-card-content>
-            </ng-template>
-          </div>
-        </div>
-      </div>
-    </div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <schemetwister-mastermind-card-content [mastermind]="mastermind"></schemetwister-mastermind-card-content>
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
   }
 </div>

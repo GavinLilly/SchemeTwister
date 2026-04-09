@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink } from '@angular/router';
-import { NgbCollapse, NgbNav, NgbNavItem, NgbNavItemRole, NgbNavLink, NgbNavLinkBase } from '@ng-bootstrap/ng-bootstrap';
+import { NgFor } from '@angular/common';
 
 @Component({
+  standalone: true,
     selector: 'schemetwister-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
-    imports: [RouterLink, NgbCollapse, NgbNav, NgbNavItem, NgbNavItemRole, NgbNavLink, NgbNavLinkBase]
+    imports: [RouterLink, NgFor, MatToolbarModule, MatButtonModule]
 })
 export class HeaderComponent {
-  public isMenuCollapsed = true;
-
   public links: { name: string; link: string }[] = [
     {
       name: 'Home',

@@ -1,103 +1,56 @@
 @if(heroDeck(); as heroDeck) {
-<div class="card">
-  <div class="card-header d-flex align-items-center justify-content-between">
-    Hero deck
-    <a (click)="pickHeroes()" href="javascript:void(0)" class="text-black">
-      <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
-    </a>
-  </div>
-  <div class="card-body p-0">
-    @if (heroDeck.numBystanders) {
-    <div class="setup-cards card-body">
-      <p><b>Bystanders: </b>{{ heroDeck.numBystanders }}</p>
+  <div class="card">
+    <div class="card-header d-flex align-items-center justify-content-between">
+      Hero deck
+      <button mat-icon-button type="button" aria-label="Pick heroes" (click)="pickHeroes()">
+        <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
+      </button>
     </div>
-    }
-    <div ngbAccordion [closeOthers]="true">
-      @for (hero of heroDeck.heroes; track $index) {
-      <div ngbAccordionItem id="herodeck-panel-{{ hero.id }}" class="hero">
-        <h2 ngbAccordionHeader>
-          <div class="d-flex align-items-center justify-content-between">
-            <button ngbAccordionButton>
+    <div class="card-body p-0">
+      @if (heroDeck.numBystanders) {
+      <div class="setup-cards card-body">
+        <p><b>Bystanders: </b>{{ heroDeck.numBystanders }}</p>
+      </div>
+      }
+      <mat-accordion>
+        @for (hero of heroDeck.heroes; track $index) {
+        <mat-expansion-panel class="hero">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
               <img
-                [src]="
-                  hero.team
-                    ? '/assets/icons/teams/' + hero.team.icon
-                    : blankImage
-                "
+                [src]="hero.team ? '/assets/icons/teams/' + hero.team.icon : blankImage"
                 [alt]="hero.team ? hero.team.name : 'No team'"
                 class="img-fluid"
                 id="hero-team"
               />
               <span>{{ hero.name }}</span>
-            </button>
-            <span
-              (click)="toggleLocked(hero)"
-              (keydown)="toggleLocked(hero)"
-              class="lock-block"
-            >
-              @if(isCardLocked(hero)) {
-              <fa-icon
-                [icon]="faLock"
-                class="ml-auto lock-icon locked"
-              ></fa-icon>
-              } @else {
-              <fa-icon
-                [icon]="faLockOpen"
-                class="ml-auto lock-icon unlocked"
-              ></fa-icon>
-              }
-            </span>
-          </div>
-        </h2>
-        <div ngbAccordionCollapse>
-          <div ngbAccordionBody>
-            <ng-template ngbPanelContent>
-              <schemetwister-hero-card-content
-                [hero]="hero"
-              ></schemetwister-hero-card-content>
-            </ng-template>
-          </div>
-        </div>
-      </div>
-      } @for (henchmen of heroDeck.henchmen; track $index) {
-      <div
-        ngbAccordionItem
-        id="herodeck-panel-{{ henchmen.id }}"
-        class="henchmen"
-      >
-        <h2 ngbAccordionHeader>
-          <div class="d-flex align-items-center justify-content-between">
-            <button ngbAccordionButton>{{ henchmen.name }}</button>
-            <span
-              (click)="toggleLocked(henchmen)"
-              (keydown)="toggleLocked(henchmen)"
-              class="lock-block"
-            >
-              @if(isCardLocked(henchmen)) {
-              <fa-icon
-                [icon]="faLock"
-                class="ml-auto lock-icon locked"
-              ></fa-icon>
-              } @else {<fa-icon
-                [icon]="faLockOpen"
-                class="ml-auto lock-icon unlocked"
-              ></fa-icon>
-              }
-            </span>
-          </div>
-        </h2>
-        <div ngbAccordionCollapse>
-          <div ngbAccordionBody>
-            <ng-template ngbPanelContent>
-              <schemetwister-henchmen-card-content
-                [henchmen]="henchmen"
-              ></schemetwister-henchmen-card-content>
-            </ng-template>
-          </div>
-        </div>
-      </div>
-      }
+            </mat-panel-title>
+            <mat-panel-description>
+              <button mat-icon-button type="button" (click)="toggleLocked(hero)">
+                <span [class.locked]="isCardLocked(hero)" [class.unlocked]="!isCardLocked(hero)">
+                  <fa-icon [icon]="isCardLocked(hero) ? faLock : faLockOpen"></fa-icon>
+                </span>
+              </button>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <schemetwister-hero-card-content [hero]="hero"></schemetwister-hero-card-content>
+        </mat-expansion-panel>
+        } @for (henchmen of heroDeck.henchmen; track $index) {
+        <mat-expansion-panel class="henchmen">
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{ henchmen.name }}</mat-panel-title>
+            <mat-panel-description>
+              <button mat-icon-button type="button" (click)="toggleLocked(henchmen)">
+                <span [class.locked]="isCardLocked(henchmen)" [class.unlocked]="!isCardLocked(henchmen)">
+                  <fa-icon [icon]="isCardLocked(henchmen) ? faLock : faLockOpen"></fa-icon>
+                </span>
+              </button>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <schemetwister-henchmen-card-content [henchmen]="henchmen"></schemetwister-henchmen-card-content>
+        </mat-expansion-panel>
+        }
+      </mat-accordion>
     </div>
   </div>
-</div>
 }

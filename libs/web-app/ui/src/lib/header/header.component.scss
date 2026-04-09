@@ -1,5 +1,16 @@
-.navbar-brand {
+.brand {
   font-family: Bangers, sans-serif;
   font-size: 2rem;
   margin-left: 8px;
+  text-transform: none;
+}
+
+.app-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.spacer {
+  flex: 1 1 auto;
 }

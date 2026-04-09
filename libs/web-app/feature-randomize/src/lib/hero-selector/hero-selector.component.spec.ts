@@ -1,9 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {
-  NgbActiveModal,
-  NgbModal,
-  NgbModule,
-} from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { LibTwister } from '@schemetwister/libtwister';
 import { marvelSeries } from '@schemetwister/series-marvel';
 
@@ -15,8 +11,13 @@ describe('HeroSelectorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HeroSelectorComponent, NgbModule],
-      providers: [NgbActiveModal, NgbModal],
+      imports: [HeroSelectorComponent, MatDialogModule],
+      providers: [
+        {
+          provide: MatDialogRef,
+          useValue: { close: () => undefined },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HeroSelectorComponent);

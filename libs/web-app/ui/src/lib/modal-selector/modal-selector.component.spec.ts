@@ -1,9 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {
-  NgbActiveModal,
-  NgbModal,
-  NgbModule,
-} from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { CARD_TYPE, LibTwister } from '@schemetwister/libtwister';
 import { marvelSeries } from '@schemetwister/series-marvel';
 
@@ -17,8 +13,13 @@ describe('ModalSelectorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModalSelectorComponent, NgbModule, SortByNamePipe],
-      providers: [NgbActiveModal, NgbModal],
+      imports: [ModalSelectorComponent, MatDialogModule, SortByNamePipe],
+      providers: [
+        {
+          provide: MatDialogRef,
+          useValue: { close: () => undefined },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ModalSelectorComponent);

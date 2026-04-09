@@ -1,59 +1,33 @@
 <div class="card">
   <div class="card-header d-flex align-items-center justify-content-between">
     Scheme
-
-    <a (click)="pickScheme()" href="javascript:void(0)" class="text-black">
+    <button mat-icon-button type="button" aria-label="Pick scheme" (click)="pickScheme()">
       <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
-    </a>
+    </button>
   </div>
   @if (scheme(); as scheme) {
   <div class="card-body p-0">
-    <div ngbAccordion>
-      <div ngbAccordionItem>
-        <h2 ngbAccordionHeader>
-          <div class="d-flex align-items-center">
-            <button ngbAccordionButton>
-              {{ scheme.name }}
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{ scheme.name }}</mat-panel-title>
+          <mat-panel-description>
+            <button mat-icon-button type="button" (click)="schemeLocked() ? dispatchReset() : dispatchLocked(scheme)">
+              <span [class.locked]="schemeLocked()" [class.unlocked]="!schemeLocked()">
+                <fa-icon [icon]="schemeLocked() ? faLock : faLockOpen"></fa-icon>
+              </span>
             </button>
-            @if(schemeLocked()) {
-            <span
-              (click)="dispatchReset()"
-              (keydown)="dispatchReset()"
-              class="lock-block"
-              ><fa-icon
-                [icon]="faLock"
-                class="ml-auto lock-icon locked"
-              ></fa-icon
-            ></span>
-            } @else {
-            <span
-              (click)="dispatchLocked(scheme)"
-              (keydown)="dispatchLocked(scheme)"
-              class="lock-block"
-              ><fa-icon
-                [icon]="faLockOpen"
-                class="ml-auto lock-icon unlocked"
-              ></fa-icon
-            ></span>
-            }
-          </div>
-        </h2>
-        <div ngbAccordionCollapse>
-          <div ngbAccordionBody>
-            <ng-template ngbPanelContent>
-              <p class="card-text"><b>Setup: </b>{{ scheme.setup }}</p>
-              <p class="card-text"><b>Twist: </b>{{ scheme.twist }}</p>
-              <p class="card-text"><b>Evil Wins: </b>{{ scheme.evilWins }}</p>
-
-              <hr />
-              <schemetwister-base-card-content
-                [card]="scheme"
-              ></schemetwister-base-card-content>
-            </ng-template>
-          </div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="mat-expansion-panel-body">
+          <p class="card-text"><b>Setup: </b>{{ scheme.setup }}</p>
+          <p class="card-text"><b>Twist: </b>{{ scheme.twist }}</p>
+          <p class="card-text"><b>Evil Wins: </b>{{ scheme.evilWins }}</p>
+          <hr />
+          <schemetwister-base-card-content [card]="scheme"></schemetwister-base-card-content>
         </div>
-      </div>
-    </div>
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
   }
 </div>

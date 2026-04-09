@@ -6,10 +6,10 @@ import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideFirestore } from '@angular/fire/firestore';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
@@ -51,8 +51,6 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(
       // Angular
       BrowserModule,
-      // Bootstrap
-      NgbModule,
       // Icons
       FontAwesomeModule,
       // Schemetwister
@@ -65,6 +63,7 @@ bootstrapApplication(AppComponent, {
         registrationStrategy: `registerWhenStable:${serviceWorkerRegistrationTime}`,
       })
     ),
+    provideAnimations(),
     // Firebase
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => {

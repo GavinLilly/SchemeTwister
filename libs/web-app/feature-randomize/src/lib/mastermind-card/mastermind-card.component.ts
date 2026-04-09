@@ -1,7 +1,9 @@
 import { Component, Signal, computed, inject } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCog, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
-import { NgbAccordionModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { Store } from '@ngrx/store';
 import {
   Mastermind,
@@ -31,14 +33,16 @@ type MastermindType = Mastermind | TransformingMastermind | AdaptingMastermind;
   imports: [
     MastermindCardContentComponent,
     FontAwesomeModule,
-    NgbAccordionModule,
+    MatExpansionModule,
+    MatButtonModule,
+    MatDialogModule,
   ],
   templateUrl: './mastermind-card.component.html',
   styleUrls: ['./mastermind-card.component.scss'],
   standalone: true,
 })
 export class MastermindCardComponent {
-  private readonly _modalService = inject(NgbModal);
+  private readonly _dialog = inject(MatDialog);
   private readonly _store = inject<
     Store<{
       gameSetup: IGameSetupState;
@@ -70,7 +74,7 @@ export class MastermindCardComponent {
       selectDefinedMastermind
     );
 
-    const modalSelector = this._modalService.open(ModalSelectorComponent);
+    const modalSelector = this._dialog.open(ModalSelectorComponent);
     modalSelector.componentInstance.itemType = CARD_TYPE.mastermind;
     modalSelector.componentInstance.availableItems = this._availableCards();
 
@@ -90,6 +94,14 @@ export class MastermindCardComponent {
 
   dispatchReset = () =>
     this._store.dispatch(randomizePageActions.resetDefinedMastermind());
+
+  toggleLocked() {
+    if (this.mastermindLocked()) {
+      this.dispatchReset();
+    } else {
+      this.dispatchLocked();
+    }
+  }
 
   private _handleChosenItem(receivedMastermind: string | undefined) {
     const item = this._availableCards().find(

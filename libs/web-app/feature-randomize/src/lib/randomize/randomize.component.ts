@@ -1,25 +1,18 @@
-import { NgClass, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, OnInit, Signal, effect, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Meta } from '@angular/platform-browser';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faCog, faCheck } from '@fortawesome/free-solid-svg-icons';
-import {
-  NgbModal,
-  NgbDropdown,
-  NgbDropdownToggle,
-  NgbDropdownMenu,
-  NgbDropdownButtonItem,
-  NgbDropdownItem,
-  NgbAccordionDirective,
-  NgbAccordionItem,
-  NgbAccordionHeader,
-  NgbAccordionToggle,
-  NgbAccordionButton,
-  NgbCollapse,
-  NgbAccordionCollapse,
-  NgbAccordionBody,
-} from '@ng-bootstrap/ng-bootstrap';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import { Store } from '@ngrx/store';
 import {
   AbstractCardGroup,
@@ -56,22 +49,17 @@ import { VillainDeckComponent } from '../villain-deck/villain-deck.component';
   imports: [
     // Angular
     FormsModule,
-    NgClass,
     AsyncPipe,
-    // Bootstrap
-    NgbDropdown,
-    NgbDropdownToggle,
-    NgbDropdownMenu,
-    NgbDropdownButtonItem,
-    NgbDropdownItem,
-    NgbAccordionDirective,
-    NgbAccordionItem,
-    NgbAccordionHeader,
-    NgbAccordionToggle,
-    NgbAccordionButton,
-    NgbCollapse,
-    NgbAccordionCollapse,
-    NgbAccordionBody,
+    // Material
+    MatButtonModule,
+    MatDialogModule,
+    MatIconModule,
+    MatMenuModule,
+    MatExpansionModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatSelectModule,
     // Font awesome
     FaIconComponent,
     // Schemetwister
@@ -83,7 +71,7 @@ import { VillainDeckComponent } from '../villain-deck/villain-deck.component';
   ],
 })
 export class RandomizeComponent implements OnInit {
-  private readonly _modalService = inject(NgbModal);
+  private readonly _dialog = inject(MatDialog);
   private readonly _store = inject<
     Store<{
       numPlayers: INumPlayersState;
@@ -152,7 +140,7 @@ export class RandomizeComponent implements OnInit {
       numPlayersActions.setAdvancedSolo({ isAdvancedSolo: isEnabled })
     );
 
-  pickGameSets = () => this._modalService.open(GameSetSelectComponent);
+  pickGameSets = () => this._dialog.open(GameSetSelectComponent);
 
   reset = () => this._store.dispatch(randomizePageActions.resetAll());
 

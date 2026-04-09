@@ -1,15 +1,8 @@
 import { Component, Signal, inject } from '@angular/core';
 import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
-import {
-  NgbAccordionDirective,
-  NgbAccordionItem,
-  NgbAccordionHeader,
-  NgbAccordionToggle,
-  NgbAccordionButton,
-  NgbCollapse,
-  NgbAccordionCollapse,
-  NgbAccordionBody,
-} from '@ng-bootstrap/ng-bootstrap';
+import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { NgFor, NgIf } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { IAdditionalDeck } from '@schemetwister/libtwister';
 import {
@@ -31,19 +24,14 @@ import { BLANK_IMAGE_BASE64 } from '../constants';
   templateUrl: './additional-deck.component.html',
   styleUrls: ['./additional-deck.component.scss'],
   imports: [
-    NgbAccordionDirective,
-    NgbAccordionItem,
-    NgbAccordionHeader,
-    NgbAccordionToggle,
-    NgbAccordionButton,
-    NgbCollapse,
-    NgbAccordionCollapse,
-    NgbAccordionBody,
+    MatExpansionModule,
+    MatButtonModule,
     HenchmenCardContentComponent,
     VillaingroupCardContentComponent,
     HeroCardContentComponent,
     MastermindCardContentComponent,
   ],
+  standalone: true,
 })
 export class AdditionalDeckComponent {
   private readonly _store = inject<

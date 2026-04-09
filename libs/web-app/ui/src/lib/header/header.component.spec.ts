@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HeaderComponent } from './header.component';
 
@@ -11,7 +10,7 @@ describe('HeaderComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-    imports: [RouterTestingModule, NgbCollapseModule, HeaderComponent],
+    imports: [RouterTestingModule, HeaderComponent],
 }).compileComponents();
     })
   );

@@ -1,44 +1,10 @@
-<header class="navbar navbar-expand-lg navbar-light navbar-fixed-top bg-light">
-  <a
-    class="navbar-brand"
-    [routerLink]="'/home'"
-    (click)="isMenuCollapsed = true"
-  >
-    <img
-      src="assets/icons/twister.svg"
-      width="30"
-      height="30"
-      class="d-inline-block"
-      alt=""
-    />
+<mat-toolbar color="primary" class="app-header">
+  <a mat-button class="brand" [routerLink]="'/home'">
+    <img src="assets/icons/twister.svg" width="30" height="30" alt="SchemeTwister" />
     SchemeTwister
   </a>
-
-  <button
-    class="navbar-toggler navbar-toggler-right"
-    type="button"
-    (click)="isMenuCollapsed = !isMenuCollapsed"
-    [attr.aria-expanded]="!isMenuCollapsed"
-    aria-controls="navbarContent"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div
-    [ngbCollapse]="isMenuCollapsed"
-    class="navbar-collapse"
-    id="navbarContent"
-  >
-    <ul ngbNav>
-      @for (link of links; track link) {
-      <li ngbNavItem>
-        <a ngbNavLink [routerLink]="link.link" (click)="isMenuCollapsed = true">
-          {{ link.name }}
-        </a>
-      </li>
-      }
-    </ul>
-  </div>
-</header>
+  <span class="spacer"></span>
+  <ng-container *ngFor="let link of links">
+    <a mat-button [routerLink]="link.link">{{ link.name }}</a>
+  </ng-container>
+</mat-toolbar>

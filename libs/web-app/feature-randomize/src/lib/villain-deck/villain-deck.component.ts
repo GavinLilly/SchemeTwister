@@ -1,16 +1,8 @@
 import { Component, Signal, inject } from '@angular/core';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
-import {
-  NgbAccordionDirective,
-  NgbAccordionItem,
-  NgbAccordionHeader,
-  NgbAccordionToggle,
-  NgbAccordionButton,
-  NgbCollapse,
-  NgbAccordionCollapse,
-  NgbAccordionBody,
-} from '@ng-bootstrap/ng-bootstrap';
+import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { Store } from '@ngrx/store';
 import {
   Henchmen,
@@ -40,15 +32,9 @@ import { VillainAdditionalDeckCardType } from '../villainAdditionalDeckCard.type
   templateUrl: './villain-deck.component.html',
   styleUrls: ['./villain-deck.component.scss'],
   imports: [
-    NgbAccordionDirective,
-    NgbAccordionItem,
-    NgbAccordionHeader,
-    NgbAccordionToggle,
-    NgbAccordionButton,
+    MatExpansionModule,
+    MatButtonModule,
     FaIconComponent,
-    NgbCollapse,
-    NgbAccordionCollapse,
-    NgbAccordionBody,
     HenchmenCardContentComponent,
     VillaingroupCardContentComponent,
     HeroCardContentComponent,

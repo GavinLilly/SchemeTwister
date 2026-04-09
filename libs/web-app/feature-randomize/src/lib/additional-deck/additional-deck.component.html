@@ -1,113 +1,67 @@
-@for (additionalDeck of additionalDecks(); track additionalDeck) {
-<div class="card">
-  <div class="card-header">
-    {{ additionalDeck.name || 'Additional Deck' }}
-  </div>
-  <div class="card-body p-0">
-    @if (additionalDeck.instructions) {
-    <p>
-      {{ additionalDeck.instructions }}
-    </p>
-    } @if (additionalDeck.deck.numTwists) {
-    <p><b>Twists: </b>{{ additionalDeck.deck.numTwists }}</p>
-    } @if (additionalDeck.deck.numBystanders) {
-    <p><b>Bystanders: </b>{{ additionalDeck.deck.numBystanders }}</p>
-    } @if (additionalDeck.deck.numWounds) {
-    <p><b>Wounds: </b>{{ additionalDeck.deck.numWounds }}</p>
-    }
+@for (additionalDeck of additionalDecks(); track $index) {
+  <div class="card">
+    <div class="card-header">
+      {{ additionalDeck.name || 'Additional Deck' }}
+    </div>
+    <div class="card-body p-0">
+      @if (additionalDeck.instructions) {
+      <p>{{ additionalDeck.instructions }}</p>
+      }
+      @if (additionalDeck.deck.numTwists) {
+      <p><b>Twists: </b>{{ additionalDeck.deck.numTwists }}</p>
+      }
+      @if (additionalDeck.deck.numBystanders) {
+      <p><b>Bystanders: </b>{{ additionalDeck.deck.numBystanders }}</p>
+      }
+      @if (additionalDeck.deck.numWounds) {
+      <p><b>Wounds: </b>{{ additionalDeck.deck.numWounds }}</p>
+      }
 
-    <div ngbAccordion [closeOthers]="true">
-      @for (henchmen of additionalDeck.deck.henchmen; track $index) {
-      <div
-        ngbAccordionItem
-        id="additionaldeck-panel-{{ henchmen.id }}"
-        class="henchmen"
-      >
-        <h2 ngbAccordionHeader>
-          <button ngbAccordionButton>{{ henchmen.name }}</button>
-        </h2>
-        <div ngbAccordionCollapse>
-          <div ngbAccordionBody>
-            <ng-template ngbPanelContent>
-              <schemetwister-henchmen-card-content
-                [henchmen]="henchmen"
-              ></schemetwister-henchmen-card-content>
-            </ng-template>
-          </div>
-        </div>
-      </div>
-      } @for (villainGroup of additionalDeck.deck.villains; track $index) {
-      <div
-        ngbAccordionItem
-        id="additionaldeck-panel-{{ villainGroup.id }}"
-        class="villainGroup"
-      >
-        <h2 ngbAccordionHeader>
-          <button ngbAccordionButton>{{ villainGroup.name }}</button>
-        </h2>
-        <div ngbAccordionCollapse>
-          <div ngbAccordionBody>
-            <ng-template ngbPanelContent>
-              <schemetwister-villaingroup-card-content
-                [villaingroup]="villainGroup"
-              ></schemetwister-villaingroup-card-content>
-            </ng-template>
-          </div>
-        </div>
-      </div>
-      } @for (hero of additionalDeck.deck.heroes; track $index) {
-      <div
-        ngbAccordionItem
-        id="additionaldeck-panel-{{ hero.id }}"
-        class="hero"
-      >
-        <h2 ngbAccordionHeader>
-          <div class="d-flex align-items-center justify-content-between">
-            <button ngbAccordionButton>
+      <mat-accordion>
+        @for (henchmen of additionalDeck.deck.henchmen; track $index) {
+        <mat-expansion-panel class="henchmen">
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{ henchmen.name }}</mat-panel-title>
+          </mat-expansion-panel-header>
+          <schemetwister-henchmen-card-content [henchmen]="henchmen"></schemetwister-henchmen-card-content>
+        </mat-expansion-panel>
+        }
+
+        @for (villainGroup of additionalDeck.deck.villains; track $index) {
+        <mat-expansion-panel class="villainGroup">
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{ villainGroup.name }}</mat-panel-title>
+          </mat-expansion-panel-header>
+          <schemetwister-villaingroup-card-content [villaingroup]="villainGroup"></schemetwister-villaingroup-card-content>
+        </mat-expansion-panel>
+        }
+
+        @for (hero of additionalDeck.deck.heroes; track $index) {
+        <mat-expansion-panel class="hero">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
               <img
-                [src]="
-                  hero.team
-                    ? '/assets/icons/teams/' + hero.team.icon
-                    : blankImage
-                "
+                [src]="hero.team ? '/assets/icons/teams/' + hero.team.icon : blankImage"
                 [alt]="hero.team ? hero.team.name : 'No team'"
                 class="img-fluid"
                 id="hero-team"
               />
               <span>{{ hero.name }}</span>
-            </button>
-          </div>
-        </h2>
-        <div ngbAccordionCollapse>
-          <div ngbAccordionBody>
-            <ng-template ngbPanelContent>
-              <schemetwister-hero-card-content
-                [hero]="hero"
-              ></schemetwister-hero-card-content>
-            </ng-template>
-          </div>
-        </div>
-      </div>
-      } @for (mastermind of additionalDeck.deck.masterminds; track $index) {
-      <div
-        ngbAccordionItem
-        id="additionaldeck-panel-{{ mastermind.id }}"
-        class="mastermind"
-      >
-        <h2 ngbAccordionHeader>
-          <button ngbAccordionButton>{{ mastermind.name }}</button>
-        </h2>
-        <div ngbAccordionCollapse>
-          <div ngbAccordionBody>
-            <ng-template ngbPanelContent>
-              <schemetwister-mastermind-card-content [mastermind]="mastermind">
-              </schemetwister-mastermind-card-content>
-            </ng-template>
-          </div>
-        </div>
-      </div>
-      }
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <schemetwister-hero-card-content [hero]="hero"></schemetwister-hero-card-content>
+        </mat-expansion-panel>
+        }
+
+        @for (mastermind of additionalDeck.deck.masterminds; track $index) {
+        <mat-expansion-panel class="mastermind">
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{ mastermind.name }}</mat-panel-title>
+          </mat-expansion-panel-header>
+          <schemetwister-mastermind-card-content [mastermind]="mastermind"></schemetwister-mastermind-card-content>
+        </mat-expansion-panel>
+        }
+      </mat-accordion>
     </div>
   </div>
-</div>
 }

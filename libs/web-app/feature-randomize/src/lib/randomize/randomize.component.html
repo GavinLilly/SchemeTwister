@@ -1,164 +1,107 @@
 @if (gameSetup(); as gameSetup) {
-<div class="container">
-  <div class="row">
-    <div class="col-12 col-md-6 mx-auto">
-      <!--Picker-->
-      <div class="card text-center">
-        <div class="card-header">
-          <div class="d-flex align-items-center">
-            <p class="mx-auto w-100 mb-1">Setup</p>
-            <div ngbDropdown class="d-inline-block">
-              <button
-                type="button"
-                class="btn btn-outline-primary"
-                id="dropdownBasic1"
-                ngbDropdownToggle
-              >
-                <fa-icon [icon]="faCog" class="ml-auto"></fa-icon>
-              </button>
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem (click)="pickGameSets()">
-                  Pick Game Sets
-                </button>
-                <button ngbDropdownItem (click)="toggleScreenOnLock()">
-                  Keep screen on @if (isLocked$ | async) { &nbsp;&nbsp;
-                  <fa-icon
-                    [icon]="faCheck"
-                    class="ml-auto"
-                    id="screen-on-check"
-                  ></fa-icon>
-                  }
-                </button>
-              </div>
-            </div>
-          </div>
+<div class="randomize-layout">
+  <div class="setup-column">
+    <mat-card class="setup-card">
+      <mat-card-header>
+        <div class="setup-header">
+          <span class="setup-title">Setup</span>
+          <button mat-icon-button [matMenuTriggerFor]="settingsMenu" aria-label="Setup options">
+            <fa-icon [icon]="faCog"></fa-icon>
+          </button>
         </div>
-        <div class="card-body">
-          <form>
-            <div class="form-group text-left">
-              <label for="numPlayersSelect">Players</label>
-              <select
-                class="form-select mb-3 form-control"
-                #numPlayersSelect
-                [ngModel]="numberOfPlayers()"
-                [ngModelOptions]="{ standalone: true }"
-                (change)="setNumberOfPlayers(numPlayersSelect.value)"
-                id="numPlayersSelect"
-              >
-                @for (num of numPlayerOptions; track num) {
-                <option value="{{ num }}">
-                  {{ num }}
-                </option>
-                }
-              </select>
-            </div>
+      </mat-card-header>
 
-            @if (numberOfPlayers() === 1) {
-            <div class="form-group">
-              <input
-                #advancedSoloInput
-                class="form-check-input"
-                type="checkbox"
-                [ngModel]="isAdvancedSolo()"
-                [ngModelOptions]="{ standalone: true }"
-                (click)="setAdvancedSolo(advancedSoloInput.checked)"
-                (keydown)="setAdvancedSolo(advancedSoloInput.checked)"
-                id="advancedSoloCheck"
-              />
-              <label class="form-check-label" for="advancedSoloCheck"
-                >Advanced solo mode?</label
-              >
-            </div>
-            }
-
-            <div class="form-group">
-              <a
-                href="javascript:void(0)"
-                class="btn btn-primary"
-                (click)="generateDecks()"
-                >Twist!</a
-              >
-              <a
-                href="javascript:void(0)"
-                class="btn btn-secondary"
-                (click)="reset()"
-                >Reset</a
-              >
-            </div>
-          </form>
-          @if (isVillainDeckLocked$ | async) {
-          <p id="lock-warning">
-            Locked cards in the Villain Deck may be overridden by Scheme and/or
-            Mastermind requirements
-          </p>
+      <mat-menu #settingsMenu="matMenu">
+        <button mat-menu-item type="button" (click)="pickGameSets()">
+          Pick Game Sets
+        </button>
+        <button mat-menu-item type="button" (click)="toggleScreenOnLock()">
+          Keep screen on
+          @if (isLocked$ | async) {
+          <fa-icon [icon]="faCheck" id="screen-on-check"></fa-icon>
           }
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 col-lg-4">
-      <!--Scheme-->
-      <schemetwister-scheme-card></schemetwister-scheme-card>
+        </button>
+      </mat-menu>
 
-      <!--Mastermind-->
+      <mat-card-content>
+        <form>
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Players</mat-label>
+            <mat-select [value]="numberOfPlayers()" (selectionChange)="setNumberOfPlayers($event.value)">
+              @for (num of numPlayerOptions; track num) {
+              <mat-option [value]="num">{{ num }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          @if (numberOfPlayers() === 1) {
+          <mat-checkbox [checked]="isAdvancedSolo()" (change)="setAdvancedSolo($event.checked)">
+            Advanced solo mode?
+          </mat-checkbox>
+          }
+
+          <div class="action-buttons">
+            <button mat-flat-button color="primary" type="button" (click)="generateDecks()">
+              Twist!
+            </button>
+            <button mat-stroked-button color="accent" type="button" (click)="reset()">
+              Reset
+            </button>
+          </div>
+        </form>
+        @if (isVillainDeckLocked$ | async) {
+        <p id="lock-warning">
+          Locked cards in the Villain Deck may be overridden by Scheme and/or
+          Mastermind requirements
+        </p>
+        }
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="entity-columns">
+    <div class="entity-card">
+      <schemetwister-scheme-card></schemetwister-scheme-card>
       <schemetwister-mastermind-card></schemetwister-mastermind-card>
     </div>
-    <!--Villain deck-->
-    <div class="col-12 col-lg-4">
+    <div class="entity-card">
       <schemetwister-villain-deck></schemetwister-villain-deck>
     </div>
-
-    <!--Hero deck-->
-    <div class="col-12 col-lg-4" id="hero-deck-container">
+    <div class="entity-card" id="hero-deck-container">
       <schemetwister-hero-deck></schemetwister-hero-deck>
     </div>
   </div>
-  @if ( (gameSetup.keywords && gameSetup.keywords.size > 0) ||
-  gameSetup.additionalDecks.length > 0 ) {
-  <div class="row" id="bottom-row">
-    <!--Additional deck-->
+
+  @if ((gameSetup.keywords && gameSetup.keywords.size > 0) || gameSetup.additionalDecks.length > 0) {
+  <div class="bottom-row">
     @if (gameSetup.additionalDecks.length > 0) {
-    <div
-      [ngClass]="
-        gameSetup.keywords && gameSetup.keywords.size > 0
-          ? 'col-12 col-lg-4'
-          : 'col-12'
-      "
-      id="additional-deck-container"
-    >
-      <schemetwister-additional-deck></schemetwister-additional-deck>
-    </div>
+    <mat-card class="additional-deck-card">
+      <mat-card-header>
+        <mat-card-title>Additional Deck</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <schemetwister-additional-deck></schemetwister-additional-deck>
+      </mat-card-content>
+    </mat-card>
     }
-    <!--Keywords-->
     @if (gameSetup.keywords && gameSetup.keywords.size > 0) {
-    <div
-      [ngClass]="
-        gameSetup.additionalDecks.length > 0 ? 'col-12 col-lg-8' : 'col-12'
-      "
-    >
-      <div class="card" id="keywords">
-        <div class="card-header">Keywords in play</div>
-        <div class="card-body p-0">
-          <div ngbAccordion>
-            @for (word of gameSetup.keywords; track $index) {
-            <div ngbAccordionItem id="panel-keyword-{{ word.id }}">
-              <h2 ngbAccordionHeader>
-                <button ngbAccordionButton>{{ word.name }}</button>
-              </h2>
-              <div ngbAccordionCollapse>
-                <div ngbAccordionBody>
-                  <ng-template ngbPanelContent>
-                    <div [innerHTML]="word.description"></div>
-                  </ng-template>
-                </div>
-              </div>
-            </div>
-            }
-          </div>
-        </div>
-      </div>
-    </div>
+    <mat-card class="keywords-card">
+      <mat-card-header>
+        <mat-card-title>Keywords in play</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-accordion>
+          @for (word of gameSetup.keywords; track $index) {
+          <mat-expansion-panel id="panel-keyword-{{ word.id }}">
+            <mat-expansion-panel-header>
+              <mat-panel-title>{{ word.name }}</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div [innerHTML]="word.description"></div>
+          </mat-expansion-panel>
+          }
+        </mat-accordion>
+      </mat-card-content>
+    </mat-card>
     }
   </div>
   }

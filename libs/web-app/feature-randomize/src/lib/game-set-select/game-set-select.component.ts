@@ -1,6 +1,11 @@
 import { Component, Signal, computed, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgbActiveModal, NgbAlert } from '@ng-bootstrap/ng-bootstrap';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+// NgFor and NgIf are not needed because this template uses the project's custom @for/@if syntax
+// and Angular's built-in directives are not used here.
 import { Store } from '@ngrx/store';
 import { GameSet, GAME_SET_SIZE } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
@@ -13,12 +18,13 @@ import {
 } from '../+state/selectors/game-sets.selectors';
 
 @Component({
+  standalone: true,
     selector: 'schemetwister-game-set-select',
     templateUrl: './game-set-select.component.html',
-    imports: [FormsModule, NgbAlert],
+    imports: [FormsModule, MatDialogModule, MatFormFieldModule, MatSelectModule, MatButtonModule],
 })
 export class GameSetSelectComponent {
-  activeModal = inject(NgbActiveModal);
+  dialogRef = inject(MatDialogRef<GameSetSelectComponent>);
   private readonly _store = inject<
     Store<{
       gameSets: IGameSetsState;
@@ -64,5 +70,9 @@ export class GameSetSelectComponent {
         gameSetIds: selected.map((item) => item.id),
       })
     );
+  }
+
+  close(): void {
+    this.dialogRef.close();
   }
 }

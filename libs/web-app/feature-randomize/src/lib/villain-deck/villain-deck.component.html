@@ -16,168 +16,73 @@
       }
     </div>
 
-    <div ngbAccordion [closeOthers]="true">
+    <mat-accordion>
       @for (henchmen of villainDeck.henchmen; track $index) {
-      <div
-        ngbAccordionItem
-        id="villaindeck-panel-{{ henchmen.id }}"
-        class="henchmen"
-      >
-        <h2 ngbAccordionHeader>
-          <div class="d-flex align-items-center justify-content-between">
-            <button ngbAccordionButton>{{ henchmen.name }}</button>
-            <span
-              (click)="toggleLocked(henchmen)"
-              (keydown)="toggleLocked(henchmen)"
-              class="lock-block"
-            >
-              @if(isCardLocked(henchmen)) {
-              <fa-icon
-                [icon]="faLock"
-                class="ml-auto lock-icon locked"
-              ></fa-icon>
-              } @else {
-              <fa-icon
-                [icon]="faLockOpen"
-                class="ml-auto lock-icon unlocked"
-              ></fa-icon>
-              }
-            </span>
-          </div>
-        </h2>
-        <div ngbAccordionCollapse>
-          <div ngbAccordionBody>
-            <ng-template ngbPanelContent>
-              <schemetwister-henchmen-card-content
-                [henchmen]="henchmen"
-              ></schemetwister-henchmen-card-content>
-            </ng-template>
-          </div>
-        </div>
-      </div>
-      } @for (villainGroup of villainDeck.villains; track $index) {
-      <div
-        ngbAccordionItem
-        id="villaindeck-panel-{{ villainGroup.id }}"
-        class="villainGroup"
-      >
-        <h2 ngbAccordionHeader>
-          <div class="d-flex align-items-center justify-content-between">
-            <button ngbAccordionButton>{{ villainGroup.name }}</button>
-            <span
-              (click)="toggleLocked(villainGroup)"
-              (keydown)="toggleLocked(villainGroup)"
-              class="lock-block"
-            >
-              @if(isCardLocked(villainGroup)) {
-              <fa-icon
-                [icon]="faLock"
-                class="ml-auto lock-icon locked"
-              ></fa-icon>
-              } @else {
-              <fa-icon
-                [icon]="faLockOpen"
-                class="ml-auto lock-icon unlocked"
-              ></fa-icon>
-              }
-            </span>
-          </div>
-        </h2>
-        <div ngbAccordionCollapse>
-          <div ngbAccordionBody>
-            <ng-template ngbPanelContent>
-              <schemetwister-villaingroup-card-content
-                [villaingroup]="villainGroup"
-              ></schemetwister-villaingroup-card-content>
-            </ng-template>
-          </div>
-        </div>
-      </div>
-      } @for (hero of villainDeck.heroes; track $index) {
-      <div ngbAccordionItem id="villaindeck-panel-{{ hero.id }}" class="hero">
-        <h2 ngbAccordionHeader>
-          <div class="d-flex align-items-center justify-content-between">
-            <button ngbAccordionButton>
-              <img
-                [src]="
-                  hero.team
-                    ? '/assets/icons/teams/' + hero.team.icon
-                    : blankImage
-                "
-                [alt]="hero.team ? hero.team.name : 'No team'"
-                class="img-fluid"
-                id="hero-team"
-              />
-              <span>{{ hero.name }}</span>
+      <mat-expansion-panel id="villaindeck-panel-{{ henchmen.id }}" class="henchmen">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{ henchmen.name }}</mat-panel-title>
+          <mat-panel-description>
+            <button mat-icon-button type="button" (click)="toggleLocked(henchmen)">
+              <span [class.locked]="isCardLocked(henchmen)" [class.unlocked]="!isCardLocked(henchmen)">
+                <fa-icon [icon]="isCardLocked(henchmen) ? faLock : faLockOpen"></fa-icon>
+              </span>
             </button>
-            <span
-              (click)="toggleLocked(hero)"
-              (keydown)="toggleLocked(hero)"
-              class="lock-block"
-            >
-              @if(isCardLocked(hero)) {
-              <fa-icon
-                [icon]="faLock"
-                class="ml-auto lock-icon locked"
-              ></fa-icon>
-              } @else {
-              <fa-icon
-                [icon]="faLockOpen"
-                class="ml-auto lock-icon unlocked"
-              ></fa-icon>
-              }
-            </span>
-          </div>
-        </h2>
-        <div ngbAccordionCollapse>
-          <div ngbAccordionBody>
-            <ng-template ngbPanelContent>
-              <schemetwister-hero-card-content
-                [hero]="hero"
-              ></schemetwister-hero-card-content>
-            </ng-template>
-          </div>
-        </div>
-      </div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <schemetwister-henchmen-card-content [henchmen]="henchmen"></schemetwister-henchmen-card-content>
+      </mat-expansion-panel>
+      } @for (villainGroup of villainDeck.villains; track $index) {
+      <mat-expansion-panel id="villaindeck-panel-{{ villainGroup.id }}" class="villainGroup">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{ villainGroup.name }}</mat-panel-title>
+          <mat-panel-description>
+            <button mat-icon-button type="button" (click)="toggleLocked(villainGroup)">
+              <span [class.locked]="isCardLocked(villainGroup)" [class.unlocked]="!isCardLocked(villainGroup)">
+                <fa-icon [icon]="isCardLocked(villainGroup) ? faLock : faLockOpen"></fa-icon>
+              </span>
+            </button>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <schemetwister-villaingroup-card-content [villaingroup]="villainGroup"></schemetwister-villaingroup-card-content>
+      </mat-expansion-panel>
+      } @for (hero of villainDeck.heroes; track $index) {
+      <mat-expansion-panel id="villaindeck-panel-{{ hero.id }}" class="hero">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <img
+              [src]="hero.team ? '/assets/icons/teams/' + hero.team.icon : blankImage"
+              [alt]="hero.team ? hero.team.name : 'No team'"
+              class="img-fluid"
+              id="hero-team"
+            />
+            <span>{{ hero.name }}</span>
+          </mat-panel-title>
+          <mat-panel-description>
+            <button mat-icon-button type="button" (click)="toggleLocked(hero)">
+              <span [class.locked]="isCardLocked(hero)" [class.unlocked]="!isCardLocked(hero)">
+                <fa-icon [icon]="isCardLocked(hero) ? faLock : faLockOpen"></fa-icon>
+              </span>
+            </button>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <schemetwister-hero-card-content [hero]="hero"></schemetwister-hero-card-content>
+      </mat-expansion-panel>
       } @for (mastermind of villainDeck.masterminds; track $index) {
-      <div
-        ngbAccordionItem
-        id="villaindeck-panel-{{ mastermind.id }}"
-        class="mastermind"
-      >
-        <h2 ngbAccordionHeader>
-          <div class="d-flex align-items-center justify-content-between">
-            <button ngbAccordionButton>{{ mastermind.name }}</button>
-            <span
-              (click)="toggleLocked(mastermind)"
-              (keydown)="toggleLocked(mastermind)"
-              class="lock-block"
-            >
-              @if(isCardLocked(mastermind)) {
-              <fa-icon
-                [icon]="faLock"
-                class="ml-auto lock-icon locked"
-              ></fa-icon>
-              } @else {
-              <fa-icon
-                [icon]="faLockOpen"
-                class="ml-auto lock-icon unlocked"
-              ></fa-icon>
-              }
-            </span>
-          </div>
-        </h2>
-        <div ngbAccordionCollapse>
-          <div ngbAccordionBody>
-            <ng-template ngbPanelContent>
-              <schemetwister-mastermind-card-content [mastermind]="mastermind">
-              </schemetwister-mastermind-card-content>
-            </ng-template>
-          </div>
-        </div>
-      </div>
+      <mat-expansion-panel id="villaindeck-panel-{{ mastermind.id }}" class="mastermind">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{ mastermind.name }}</mat-panel-title>
+          <mat-panel-description>
+            <button mat-icon-button type="button" (click)="toggleLocked(mastermind)">
+              <span [class.locked]="isCardLocked(mastermind)" [class.unlocked]="!isCardLocked(mastermind)">
+                <fa-icon [icon]="isCardLocked(mastermind) ? faLock : faLockOpen"></fa-icon>
+              </span>
+            </button>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <schemetwister-mastermind-card-content [mastermind]="mastermind"></schemetwister-mastermind-card-content>
+      </mat-expansion-panel>
       }
-    </div>
+    </mat-accordion>
   </div>
 </div>
 }

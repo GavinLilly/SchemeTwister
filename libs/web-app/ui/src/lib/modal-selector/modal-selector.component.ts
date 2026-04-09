@@ -7,7 +7,11 @@ import {
   inject,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgbActiveModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { NgFor } from '@angular/common';
 import {
   CardType,
   INamedObject,
@@ -15,12 +19,13 @@ import {
 } from '@schemetwister/libtwister';
 
 @Component({
+  standalone: true,
   selector: 'schemetwister-modal-selector',
-  imports: [FormsModule, NgbModalModule],
+  imports: [FormsModule, NgFor, MatDialogModule, MatFormFieldModule, MatSelectModule, MatButtonModule],
   templateUrl: './modal-selector.component.html',
 })
 export class ModalSelectorComponent implements OnInit {
-  activeModal = inject(NgbActiveModal);
+  dialogRef = inject(MatDialogRef<ModalSelectorComponent>);
 
   randomText = '**Random**';
 
@@ -51,5 +56,13 @@ export class ModalSelectorComponent implements OnInit {
 
       this.adjustedAvailableItems.push({ name, id: currentItem.id });
     }
+  }
+
+  close(): void {
+    this.dialogRef.close();
+  }
+
+  onSelectionChange(event: { value: string }): void {
+    this.chosenItem.emit(event.value);
   }
 }
