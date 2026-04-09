@@ -5,6 +5,7 @@ import { SwUpdate } from '@angular/service-worker';
 @Injectable()
 export class UpdateService {
   private _document = inject(DOCUMENT);
+  private _reloadInProgress = false;
 
   constructor() {
     const updates = inject(SwUpdate);
@@ -20,6 +21,10 @@ export class UpdateService {
             console.log(`Downloading new app version: ${evt.version.hash}`);
             break;
           case 'VERSION_READY':
+            if (this._reloadInProgress) {
+              return;
+            }
+            this._reloadInProgress = true;
             console.log(`Current app version: ${evt.currentVersion.hash}`);
             console.log(
               `New app version ready for use: ${evt.latestVersion.hash}`
