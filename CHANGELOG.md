@@ -1,3 +1,9 @@
+## [3.21.19](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.18...v3.21.19) (2026-04-09)
+
+### Bug Fixes
+
+* **app:** prevent reload loops in dev mode ([106ab33](https://github.com/GavinLilly/SchemeTwister/commit/106ab33276fd9a0dd7b7527f8f154d683f27a283))
+
 ## [3.21.18](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.17...v3.21.18) (2026-01-23)
 
 ### Dependencies
