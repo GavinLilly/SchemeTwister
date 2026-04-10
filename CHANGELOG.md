@@ -1,3 +1,9 @@
+## [3.21.20](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.19...v3.21.20) (2026-04-10)
+
+### Dependencies
+
+* **deps:** bump axios from 1.13.2 to 1.15.0 ([5fd56f3](https://github.com/GavinLilly/SchemeTwister/commit/5fd56f33eb465d9af0e83bf4ade4de4106901772))
+
 ## [3.21.19](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.18...v3.21.19) (2026-04-09)
 
 ### Bug Fixes
