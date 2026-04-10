@@ -1,3 +1,9 @@
+## [3.21.21](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.20...v3.21.21) (2026-04-10)
+
+### Dependencies
+
+* **deps:** bump undici and @actions/http-client ([#268](https://github.com/GavinLilly/SchemeTwister/issues/268)) ([566b9b4](https://github.com/GavinLilly/SchemeTwister/commit/566b9b4278f94a5f695b46db1db56178ee32b657))
+
 ## [3.21.20](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.19...v3.21.20) (2026-04-10)
 
 ### Dependencies
