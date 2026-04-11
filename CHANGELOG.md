@@ -1,3 +1,10 @@
+## [3.21.23](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.22...v3.21.23) (2026-04-11)
+
+### Dependencies
+
+* **deps:** bump node-forge from 1.3.3 to 1.4.0 ([50fa651](https://github.com/GavinLilly/SchemeTwister/commit/50fa65163018cbee93536211c2c090d01f24c834))
+* **deps:** bump qs from 6.14.1 to 6.14.2 ([48a90d6](https://github.com/GavinLilly/SchemeTwister/commit/48a90d683839230dd0ae3d3e66f796870d07f2ba))
+
 ## [3.21.22](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.21...v3.21.22) (2026-04-11)
 
 ### Dependencies
