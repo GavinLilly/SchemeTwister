@@ -1,3 +1,9 @@
+## [3.21.22](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.21...v3.21.22) (2026-04-11)
+
+### Dependencies
+
+* **deps:** bump webpack and @angular-devkit/build-angular ([#250](https://github.com/GavinLilly/SchemeTwister/issues/250)) ([9a8b091](https://github.com/GavinLilly/SchemeTwister/commit/9a8b091e2bb39df580a4d0a94ca0d938e120c01b))
+
 ## [3.21.21](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.20...v3.21.21) (2026-04-10)
 
 ### Dependencies
