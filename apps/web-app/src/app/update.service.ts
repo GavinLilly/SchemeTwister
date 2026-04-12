@@ -4,7 +4,7 @@ import { SwUpdate } from '@angular/service-worker';
 
 @Injectable()
 export class UpdateService {
-  private _document = inject(DOCUMENT);
+  private readonly _document = inject(DOCUMENT);
   private _reloadInProgress = false;
 
   constructor() {

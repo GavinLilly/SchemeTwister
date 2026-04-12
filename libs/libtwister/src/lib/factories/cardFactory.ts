@@ -215,7 +215,9 @@ export class CardFactory<TCard extends IPlayableObject> {
   ): CardType | (CardType | undefined)[] | undefined {
     const ids = Array.isArray(idOrIds) ? idOrIds : [idOrIds];
 
-    const cards = ids.map(mapFunc).filter((card): card is CardType => !!card);
+    const cards = ids
+      .map((id, idx, array) => mapFunc(id, idx, array))
+      .filter((card): card is CardType => !!card);
 
     switch (cards.length) {
       case 0:

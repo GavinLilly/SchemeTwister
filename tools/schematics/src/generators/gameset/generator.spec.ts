@@ -1,4 +1,4 @@
-// Disabled due due to more work required to create test series
+// Disabled due to more work required to create test series
 
 import { describe } from 'node:test';
 
