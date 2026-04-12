@@ -1,3 +1,9 @@
+## [3.21.25](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.24...v3.21.25) (2026-04-12)
+
+### Bug Fixes
+
+* resolve sonarqube issues ([fbf7408](https://github.com/GavinLilly/SchemeTwister/commit/fbf7408a1b54027ce3e152e5e93dec1ce1998df2))
+
 ## [3.21.24](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.23...v3.21.24) (2026-04-12)
 
 ### Dependencies
