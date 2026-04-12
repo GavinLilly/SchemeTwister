@@ -1,3 +1,11 @@
+## [3.21.24](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.23...v3.21.24) (2026-04-12)
+
+### Dependencies
+
+* **deps:** bump @hono/node-server from 1.19.8 to 1.19.13 ([8a83484](https://github.com/GavinLilly/SchemeTwister/commit/8a8348473654fc9eabaa554fdb754bb1c6007146))
+* **deps:** bump basic-ftp from 5.1.0 to 5.2.2 ([9843559](https://github.com/GavinLilly/SchemeTwister/commit/9843559ef8503cf64542534834c3964d248891c2))
+* **deps:** bump hono from 4.11.4 to 4.12.12 ([93dd609](https://github.com/GavinLilly/SchemeTwister/commit/93dd6091673b7c5ed90795fc427db14c74ce7d5d))
+
 ## [3.21.23](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.22...v3.21.23) (2026-04-11)
 
 ### Dependencies
