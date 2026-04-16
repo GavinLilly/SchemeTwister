@@ -1,3 +1,10 @@
+## [3.21.26](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.25...v3.21.26) (2026-04-16)
+
+### Dependencies
+
+* **deps:** bump follow-redirects from 1.15.11 to 1.16.0 ([0813a2c](https://github.com/GavinLilly/SchemeTwister/commit/0813a2c2d466472f840923c16dd049d00eeca256))
+* **deps:** bump hono from 4.12.12 to 4.12.14 ([7c18247](https://github.com/GavinLilly/SchemeTwister/commit/7c18247b50243a26e602321ab9ffa39a12bf7b7b))
+
 ## [3.21.25](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.24...v3.21.25) (2026-04-12)
 
 ### Bug Fixes
