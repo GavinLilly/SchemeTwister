@@ -1,3 +1,9 @@
+## [3.21.27](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.26...v3.21.27) (2026-04-17)
+
+### Dependencies
+
+* **deps:** bump protobufjs from 7.5.4 to 7.5.5 ([de94dc1](https://github.com/GavinLilly/SchemeTwister/commit/de94dc18325e9ec850544a4614d4f29c098e3f67))
+
 ## [3.21.26](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.25...v3.21.26) (2026-04-16)
 
 ### Dependencies
