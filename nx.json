@@ -137,5 +137,19 @@
   "useInferencePlugins": false,
   "defaultBase": "main",
   "neverConnectToCloud": true,
-  "analytics": true
+  "analytics": true,
+  "plugins": [
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    },
+    {
+      "plugin": "@nx/jest/plugin",
+      "options": {
+        "targetName": "test"
+      }
+    }
+  ]
 }
