@@ -9,8 +9,8 @@ export class RequireUniqueHeroesScheme extends Scheme {
   constructor(scheme: SchemeMinusRules) {
     super(scheme);
   }
-
-  public getSetup(config: Readonly<ISetupConfigWithStore>): IGameSetup {
+  
+  public override getSetup(config: Readonly<ISetupConfigWithStore>): IGameSetup {
     let setup: IGameSetup = super.getSetup(config);
 
     let isHeroesOk = false;

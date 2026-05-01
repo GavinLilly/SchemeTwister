@@ -12,14 +12,16 @@
   },
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@angular/build:application",
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/web-app",
-        "index": "apps/web-app/src/index.html",
-        "main": "apps/web-app/src/main.ts",
-        "polyfills": "apps/web-app/src/polyfills.ts",
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/web-app/tsconfig.app.json",
-        "aot": true,
         "assets": [
           "apps/web-app/src/favicon.ico",
           "apps/web-app/src/assets",
@@ -43,20 +45,12 @@
             "glob": "*",
             "input": "libs/series/marvel-villains/src/assets/icons/teams",
             "output": "./assets/icons/teams"
-          },
-          {
-            "glob": "*",
-            "input": "libs/series/buffy/src/assets/icons/teams",
-            "output": "./assets/icons/teams"
           }
         ],
-        "styles": ["apps/web-app/src/styles.scss"],
-        "scripts": [],
-        "sourceMap": true,
-        "buildOptimizer": false,
-        "optimization": false,
-        "serviceWorker": true,
-        "ngswConfigPath": "apps/web-app/ngsw-config.json"
+        "styles": [
+          "apps/web-app/src/styles.scss"
+        ],
+        "serviceWorker": false
       },
       "configurations": {
         "production": {
@@ -66,13 +60,7 @@
               "with": "apps/web-app/src/environments/environment.prod.ts"
             }
           ],
-          "optimization": true,
           "outputHashing": "all",
-          "sourceMap": false,
-          "namedChunks": false,
-          "extractLicenses": true,
-          "vendorChunk": false,
-          "buildOptimizer": true,
           "budgets": [
             {
               "type": "initial",
@@ -93,12 +81,18 @@
               "with": "apps/web-app/src/environments/environment.local.ts"
             }
           ]
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
         }
       },
-      "outputs": ["{options.outputPath}"]
+      "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@angular/build:dev-server",
+      "continuous": true,
       "options": {
         "proxyConfig": "apps/web-app/proxy.conf.json",
         "buildTarget": "web-app:build"
@@ -109,38 +103,45 @@
         },
         "local": {
           "buildTarget": "web-app:build:local"
+        },
+        "development": {
+          "buildTarget": "web-app:build:development"
         }
       },
-      "continuous": true
+      "defaultConfiguration": "development"
     },
     "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "executor": "@angular/build:extract-i18n",
       "options": {
         "buildTarget": "web-app:build"
       }
     },
     "lint": {
-      "inputs": [
-        "default",
-        "^default",
-        "{workspaceRoot}/.eslintrc.json",
-        "{workspaceRoot}/eslint.config.mjs",
-        "{workspaceRoot}/tools/eslint-rules/**/*",
-        {
-          "externalDependencies": ["eslint"]
-        }
-      ]
+      "executor": "@nx/eslint:lint"
     },
     "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
-        "passWithNoTests": true,
-        "coverage": true
+        "jestConfig": "apps/foot-test/jest.config.ts",
+        "tsConfig": "apps/foot-test/tsconfig.spec.json"
       },
       "configurations": {
         "ci": {
           "ci": true,
           "coverage": true
         }
+      }
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "foot-test:build",
+        "staticFilePath": "dist/apps/foot-test/browser",
+        "spa": true
       }
     },
     "deploy": {
