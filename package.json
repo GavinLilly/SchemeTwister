@@ -86,6 +86,7 @@
     "@angular/cli": "v20-lts",
     "@angular/compiler-cli": "v20-lts",
     "@angular/language-service": "v20-lts",
+    "@angular/pwa": "^21.2.9",
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
     "@commitlint/types": "^15.0.0",
@@ -164,7 +165,8 @@
     "vitest": "4.1.5"
   },
   "overrides": {
-    "chokidar": "4.0.3"
+    "chokidar": "4.0.3",
+    "vitest": "4.1.5"
   },
   "config": {
     "commitizen": {

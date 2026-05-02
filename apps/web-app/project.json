@@ -52,7 +52,8 @@
               "maximumWarning": "6kb",
               "maximumError": "10kb"
             }
-          ]
+          ],
+          "serviceWorker": "apps/web-app/ngsw-config.json"
         },
         "local": {
           "fileReplacements": [

@@ -2,12 +2,12 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
-import { enableProdMode, importProvidersFrom } from '@angular/core';
+import { enableProdMode, importProvidersFrom, isDevMode } from '@angular/core';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideFirestore } from '@angular/fire/firestore';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
-import { ServiceWorkerModule } from '@angular/service-worker';
+import { provideServiceWorker } from '@angular/service-worker';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideEffects } from '@ngrx/effects';
@@ -55,15 +55,6 @@ bootstrapApplication(AppComponent, {
       NgbModule,
       // Icons
       FontAwesomeModule,
-      // Schemetwister
-      ServiceWorkerModule.register('ngsw-worker.js', {
-        enabled: [EnvironmentType.PROD, EnvironmentType.TEST].includes(
-          environment.environmentType
-        ),
-        // Register the ServiceWorker as soon as the app is stable
-        // or after the timeout (whichever comes first).
-        registrationStrategy: `registerWhenStable:${serviceWorkerRegistrationTime}`,
-      })
     ),
     // Firebase
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -83,5 +74,9 @@ bootstrapApplication(AppComponent, {
       provide: SERIES_REGISTER_TOKEN,
       useValue: seriesRegister,
     },
+    provideServiceWorker('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      registrationStrategy: `registerWhenStable:${serviceWorkerRegistrationTime}`,
+    }),
   ],
 }).catch((err) => console.error(err));
