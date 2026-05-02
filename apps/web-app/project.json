@@ -25,27 +25,7 @@
         "assets": [
           "apps/web-app/src/favicon.ico",
           "apps/web-app/src/assets",
-          "apps/web-app/src/manifest.webmanifest",
-          {
-            "glob": "*",
-            "input": "libs/series/marvel/src/assets/icons/teams",
-            "output": "./assets/icons/teams"
-          },
-          {
-            "glob": "*",
-            "input": "libs/series/marvel-common/src/assets/icons/teams",
-            "output": "./assets/icons/teams"
-          },
-          {
-            "glob": "*",
-            "input": "libs/series/marvel-studios/src/assets/icons/teams",
-            "output": "./assets/icons/teams"
-          },
-          {
-            "glob": "*",
-            "input": "libs/series/marvel-villains/src/assets/icons/teams",
-            "output": "./assets/icons/teams"
-          }
+          "apps/web-app/src/manifest.webmanifest"
         ],
         "styles": [
           "apps/web-app/src/styles.scss"

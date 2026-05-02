@@ -13,39 +13,27 @@
         "{workspaceRoot}/eslint.config.mjs",
         "{workspaceRoot}/tools/eslint-rules/**/*",
         {
-          "externalDependencies": ["eslint"]
+          "externalDependencies": [
+            "eslint"
+          ]
         }
       ]
     },
     "build": {
-      "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@nx/vite:build",
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
-        "main": "libs/series/marvel-common/src/index.ts",
-        "outputPath": "dist/libs/series/marvel-common",
-        "outputFileName": "main.js",
-        "tsConfig": "libs/series/marvel-common/tsconfig.lib.json",
-        "assets": [
-          {
-            "glob": "README.md",
-            "input": "libs/series/marvel-common",
-            "output": "."
-          },
-          {
-            "glob": "*",
-            "input": "libs/series/marvel-common/src/assets/icons/teams",
-            "output": "assets/icons/teams"
-          }
-        ],
-        "platform": "neutral"
+        "outputPath": "dist/libs/series/marvel-common"
       },
       "configurations": {
         "development": {
-          "minify": false
+          "mode": "development"
         },
         "production": {
-          "minify": true
+          "mode": "production"
         }
       }
     }

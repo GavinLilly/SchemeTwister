@@ -24,15 +24,15 @@
         "libs/libtwister-testing/src/index.ts"
       ],
       "@schemetwister/series-buffy": ["dist/libs/series/buffy"],
-      "@schemetwister/series-marvel": ["libs/series/marvel/src/index.ts"],
+      "@schemetwister/series-marvel": ["dist/libs/series/marvel"],
       "@schemetwister/series-marvel-common": [
         "libs/series/marvel-common/src/index.ts"
       ],
       "@schemetwister/series-marvel-studios": [
-        "libs/series/marvel-studios/src/index.ts"
+        "dist/libs/series/marvel-studios"
       ],
       "@schemetwister/series-marvel-villains": [
-        "libs/series/marvel-villains/src/index.ts"
+        "dist/libs/series/marvel-villains"
       ],
       "@schemetwister/web-app-feature-view": [
         "libs/web-app/feature-view/src/index.ts"
