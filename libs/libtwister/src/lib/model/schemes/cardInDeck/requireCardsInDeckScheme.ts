@@ -72,7 +72,7 @@ export class RequireCardsInDeckScheme extends Scheme {
     return emptyDeck;
   }
 
-  protected initialiseAdditionalDecks(
+  protected override initialiseAdditionalDecks(
     rules: Readonly<INumPlayerRules>,
     store: Readonly<StoreOfStores>
   ): IAdditionalDeckDeck | undefined {

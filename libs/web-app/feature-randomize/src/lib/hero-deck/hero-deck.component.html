@@ -21,7 +21,7 @@
               <img
                 [src]="
                   hero.team
-                    ? '/assets/icons/teams/' + hero.team.icon
+                    ? hero.team.icon
                     : blankImage
                 "
                 [alt]="hero.team ? hero.team.name : 'No team'"

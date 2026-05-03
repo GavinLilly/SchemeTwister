@@ -8,7 +8,7 @@ import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 
 export default mergeConfig(sharedConfig, {
   root: import.meta.dirname,
-  cacheDir: '../../../node_modules/.vite/libs/series/marvel-villains',
+  cacheDir: '../../../node_modules/.vite/libs/series/buffy',
   plugins: [
     nxViteTsPaths(),
     nxCopyAssetsPlugin(['*.md']),
@@ -19,7 +19,7 @@ export default mergeConfig(sharedConfig, {
     }),
   ],
   build: {
-    outDir: '../../../dist/libs/series/marvel-villains',
+    outDir: '../../../dist/libs/series/buffy',
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {
@@ -28,7 +28,7 @@ export default mergeConfig(sharedConfig, {
     lib: {
       // Could also be a dictionary or array of multiple entry points.
       entry: 'src/index.ts',
-      name: 'series-marvel-villains',
+      name: 'series-buffy',
       fileName: 'index',
       // Change this to the formats you want to support.
       // Don't forget to update your package.json as well.
@@ -43,7 +43,7 @@ export default mergeConfig(sharedConfig, {
   test: {
     globals: true,
     coverage: {
-      reportsDirectory: '../../../coverage/libs/series/marvel-villains',
+      reportsDirectory: '../../../coverage/libs/series/buffy',
     },
   },
 });

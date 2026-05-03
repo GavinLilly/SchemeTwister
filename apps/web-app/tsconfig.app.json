@@ -5,8 +5,13 @@
     "types": [],
     "target": "ES2022",
     "useDefineForClassFields": false,
-    "moduleResolution": "bundler"
   },
-  "files": ["src/main.ts", "src/polyfills.ts"],
-  "exclude": ["jest.config.ts"]
+  "include": ["src/**/*.ts"],
+  "exclude": [
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts",
+    "jest.config.ts",
+    "jest.config.cts",
+    "src/test-setup.ts"
+  ]
 }

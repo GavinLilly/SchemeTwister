@@ -1,4 +1,14 @@
 {
   "name": "@schemetwister/series-buffy",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./index.js",
+  "module": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    }
+  }
 }
