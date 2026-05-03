@@ -1,0 +1,10 @@
+{
+    "name": "@schemetwister/web-app",
+    "version": "0.0.1",
+    "dependencies": {
+        "@schemetwister/series-buffy": "*",
+        "@schemetwister/series-marvel": "*",
+        "@schemetwister/series-marvel-studios": "*",
+        "@schemetwister/series-marvel-villains": "*"
+    }
+}
