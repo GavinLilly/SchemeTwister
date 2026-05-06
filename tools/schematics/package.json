@@ -1,17 +1,17 @@
 {
-  "name": "@schemetwister/schematics",
-  "version": "0.0.1",
-  "dependencies": {
-    "@nx/devkit": "23.0.1",
-    "@schemetwister/libtwister": "0.0.1",
-    "camelcase": "^6.0.0",
-    "tslib": "^2.3.0",
-    "uuid": "^9.0.0",
-    "vitest": "4.1.9"
-  },
-  "type": "commonjs",
-  "main": "./src/index.js",
-  "typings": "./src/index.d.ts",
-  "private": true,
-  "generators": "./generators.json"
+    "name": "@schemetwister/schematics",
+    "version": "0.0.1",
+    "dependencies": {
+        "@nx/devkit": "23.0.1",
+        "@schemetwister/libtwister": "0.0.1",
+        "camelcase": "^6.0.0",
+        "tslib": "^2.3.0",
+        "uuid": "^9.0.0",
+        "vitest": "4.1.9"
+    },
+    "type": "commonjs",
+    "main": "./src/index.js",
+    "typings": "./src/index.d.ts",
+    "private": true,
+    "generators": "./generators.json"
 }
