@@ -83,10 +83,14 @@ export class GameSetMock {
     this._villains = fakeCardFactory.createVillainGroups(
       this._config.numVillains
     );
-    this._masterminds = this._buildMasterminds();
-    this._henchmen = this._buildHenchmen();
-    this._schemes = this._buildSchemes();
-    this._bystanders = this._buildBystanders();
+    this._masterminds = fakeCardFactory.createMasterminds(
+      this._config.numMasterminds
+    );
+    this._henchmen = fakeCardFactory.createHenchmens(this._config.numHenchmen);
+    this._schemes = fakeCardFactory.createSchemes(this._config.numSchemes);
+    this._bystanders = fakeCardFactory.createBystanders(
+      this._config.numBystanders
+    );
   }
 
   public getGameSet = () =>
