@@ -33,7 +33,7 @@
     "build-version": "genversion --es6 --semi libs/web-app/ui/src/lib/footer/version.ts",
     "workspace-generator": "nx workspace-generator",
     "deploy": "firebase deploy",
-    "prepare": "is-ci || husky install",
+    "prepare": "husky",
     "test:ci": "npm run test && node ./tools/coverageMerger.js"
   },
   "private": true,
@@ -134,7 +134,7 @@
     "firebase-tools": "^14.0.0",
     "genversion": "^3.1.1",
     "glob": ">=10.5.0",
-    "husky": "^8.0.0",
+    "husky": "^9.0.0",
     "inquirer": "^6.2.2",
     "inquirer-autocomplete-prompt": "^1.0.1",
     "is-ci": "^3.0.1",
@@ -164,12 +164,6 @@
   "config": {
     "commitizen": {
       "path": "cz-customizable"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
-      "commit-msg": "npx --no -- commitlint --edit $1"
     }
   }
 }
