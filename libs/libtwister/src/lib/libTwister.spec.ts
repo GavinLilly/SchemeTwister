@@ -69,7 +69,7 @@ describe('LibTwister', () => {
       });
 
       it.each([2, 3, 4, 5] as NumPlayers[])(
-        'should generate a setup with %p players, only using Test gameset cards',
+        'should generate a setup with %d players, only using Test gameset cards',
         (numPlayers) => {
           const setup = twister.getSetup({ numPlayers });
 
@@ -163,9 +163,8 @@ describe('LibTwister', () => {
       ])(
         'should contain all of the test gameset %s in the %s store',
         (_cardTypePlural, _cardType, store, gs1Cards, gs2Cards) => {
-          const ids = store.allCards.map((card) => card.id);
-
           if (gs1Cards !== undefined && gs2Cards !== undefined) {
+            const ids = store.allCards.map((card) => card.id);
             expect(ids).toEqual(
               expect.arrayContaining(gs2Cards.map((card) => card.id))
             );
