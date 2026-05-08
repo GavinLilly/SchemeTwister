@@ -12,6 +12,7 @@ import {
   IPlayableObject,
   ITeam,
   Mastermind,
+  MastermindWithEpic,
   SchemeDefinition,
   SchemeDefinitionConfig,
   SeriesMeta,
@@ -172,6 +173,11 @@ export class FakeCardFactory {
       mastermindWins,
       specialRules,
     });
+  }
+
+  public createEpicMastermind(overwrites: Partial<IMastermind> = {}): MastermindWithEpic {
+    const mastermind = this.createMastermind(overwrites);
+    return new MastermindWithEpic(mastermind, {id: faker.string.uuid()});
   }
 
   public createBystanders = (count?: number) =>
