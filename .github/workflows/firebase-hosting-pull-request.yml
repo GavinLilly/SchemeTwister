@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 22
       - run: npm ci
-      - run: npx nx build web-app
+      - run: npm run build-prod
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'

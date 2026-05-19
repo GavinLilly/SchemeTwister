@@ -10,7 +10,7 @@
     "start": "nx serve",
     "startdev": "nx serve --configuration local",
     "build": "npm run build-version && nx build",
-    "build-prod": "npm run build-version && nx build --prod",
+    "build-prod": "npm run build-version && nx build web-app --prod",
     "test": "nx run-many --all --target=test --update-snapshot",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e",
