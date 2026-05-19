@@ -3,16 +3,13 @@ on:
   push:
     branches: [main]
 
-env:
-  HUSKY: 0
-
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Substitute Secrets into Tokenised File
         uses: Lambdaspire/action-substitute-secrets-in-file@main
         with:
@@ -20,14 +17,13 @@ jobs:
           tokenPattern: ${TOKEN}
           secretsJson: ${{ toJSON(secrets) }}
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 22
       - name: Install dependencies
         run: npm ci
       - name: Semantic Release
-        # https://github.com/cycjimmy/semantic-release-action/releases/tag/v6.0.0
-        uses: cycjimmy/semantic-release-action@b12c8f6015dc215fe37bc154d4ad456dd3833c90
+        uses: cycjimmy/semantic-release-action@v6
         id: semantic
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

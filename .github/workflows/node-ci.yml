@@ -7,8 +7,6 @@ on:
     branches: [main]
 
 env:
-  # Prevents Nx from failing if it can't write to a read-only cache environment
-  NX_REJECT_UNKNOWN_LOCAL_CACHE: 0
   NODE_VERSION: 22
 
 jobs:
@@ -76,6 +74,13 @@ jobs:
             nx-cache-${{ github.job }}-
             nx-cache-
 
+      - name: Substitute Secrets into Tokenised File
+        uses: Lambdaspire/action-substitute-secrets-in-file@main
+        with:
+          file: apps/web-app/src/environments/environment.prod.ts
+          tokenPattern: ${TOKEN}
+          secretsJson: ${{ toJSON(secrets) }}
+
       - name: Run Lint
         run: npx nx affected -t lint --base=${{ needs.setup.outputs.base }} --head=${{ needs.setup.outputs.head }} --parallel
 
@@ -109,14 +114,26 @@ jobs:
             nx-cache-${{ github.job }}-
             nx-cache-
 
-      - name: Run Tests with Coverage
-        run: npx nx affected -t test --base=${{ needs.setup.outputs.base }} --head=${{ needs.setup.outputs.head }} --parallel --codeCoverage
+      - name: Substitute Secrets into Tokenised File
+        uses: Lambdaspire/action-substitute-secrets-in-file@main
+        with:
+          file: apps/web-app/src/environments/environment.prod.ts
+          tokenPattern: ${TOKEN}
+          secretsJson: ${{ toJSON(secrets) }}
 
-      - run: node ./tools/coverageMerger.js
+      - name: Run Tests with Coverage
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            npx nx affected -t test --base=${{ needs.setup.outputs.base }} --head=${{ needs.setup.outputs.head }} --parallel --codeCoverage
+          else
+            # On pushes to main, run everything to establish the Codecov baseline
+            npx nx run-many -t test --all --parallel --codeCoverage
+          fi
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
         with:
-          files: ./coverage/lcov.info
           token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./coverage
+          fail_ci_if_error: false
           flags: web-app
