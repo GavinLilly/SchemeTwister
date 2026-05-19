@@ -121,6 +121,8 @@ jobs:
           tokenPattern: ${TOKEN}
           secretsJson: ${{ toJSON(secrets) }}
 
+      - run: npm run build-version
+
       - name: Run Tests with Coverage
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
