@@ -38,9 +38,9 @@ const configuration: UserConfig = {
     ],
   },
   ignores: [
-    (commit) => commit.includes('skip-ci'),
+    (commit) => commit.includes('skip ci'),
     (commit) => /^Bumps \[.+]\(.+\) from .+ to .+\.$/m.test(commit),
   ],
 };
 
-module.exports = configuration;
+export default configuration;
