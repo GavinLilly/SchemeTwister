@@ -1,0 +1,122 @@
+name: Node CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  # Prevents Nx from failing if it can't write to a read-only cache environment
+  NX_REJECT_UNKNOWN_LOCAL_CACHE: 0
+  NODE_VERSION: 22
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      base: ${{ steps.set-shas.outputs.base }}
+      head: ${{ steps.set-shas.outputs.head }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          # Critical: Nx requires full history to calculate affected projects
+          fetch-depth: 0
+          # Optional, but recommended: reduce the size of the checkout with tree filtering, see https://github.blog/open-source/git/get-up-to-speed-with-partial-clone-and-shallow-clone/
+          filter: tree:0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm' # Automatically caches global npm registry data
+
+      - name: Cache node_modules
+        id: cache-node-modules
+        uses: actions/cache@v5
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Derive Target SHAs for Nx Affected
+        id: set-shas
+        uses: nrwl/nx-set-shas@v5
+
+  lint:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          filter: tree:0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Restore node_modules
+        uses: actions/cache@v5
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('package-lock.json') }}
+
+      - name: Cache Nx Local Computation Cache
+        uses: actions/cache@v5
+        with:
+          path: .nx/cache
+          key: nx-cache-${{ github.job }}-${{ github.sha }}
+          restore-keys: |
+            nx-cache-${{ github.job }}-
+            nx-cache-
+
+      - name: Run Lint
+        run: npx nx affected -t lint --base=${{ needs.setup.outputs.base }} --head=${{ needs.setup.outputs.head }} --parallel
+
+  test:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          filter: tree:0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Restore node_modules
+        uses: actions/cache@v5
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('package-lock.json') }}
+
+      - name: Cache Nx Local Computation Cache
+        uses: actions/cache@v5
+        with:
+          path: .nx/cache
+          key: nx-cache-${{ github.job }}-${{ github.sha }}
+          restore-keys: |
+            nx-cache-${{ github.job }}-
+            nx-cache-
+
+      - name: Run Tests with Coverage
+        run: npx nx affected -t test --base=${{ needs.setup.outputs.base }} --head=${{ needs.setup.outputs.head }} --parallel --codeCoverage
+
+      - run: node ./tools/coverageMerger.js
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./coverage/lcov.info
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: web-app
