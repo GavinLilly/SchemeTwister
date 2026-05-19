@@ -1,3 +1,12 @@
+## [3.21.27](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.26...v3.21.27) (2026-05-19)
+
+### Dependencies
+
+* **deps:** align package lock ([d787a6d](https://github.com/GavinLilly/SchemeTwister/commit/d787a6dab6528a321dc2cfcd415f63298154f5af))
+* **deps:** bump axios from 1.15.0 to 1.16.0 ([b04b364](https://github.com/GavinLilly/SchemeTwister/commit/b04b364ad09bafc71e1cbb893c8dbdadbdb09e2b))
+* **deps:** bump protobufjs from 7.5.4 to 7.5.5 ([de94dc1](https://github.com/GavinLilly/SchemeTwister/commit/de94dc18325e9ec850544a4614d4f29c098e3f67))
+* **deps:** bump protobufjs from 7.5.5 to 7.5.8 ([0aed6e6](https://github.com/GavinLilly/SchemeTwister/commit/0aed6e662aca9d0ed94c911cb9fccb6aeadb0899))
+
 ## [3.21.27](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.26...v3.21.27) (2026-04-17)
 
 ### Dependencies
