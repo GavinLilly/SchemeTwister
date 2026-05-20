@@ -1,4 +1,4 @@
-import * as uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import { describe, it, expect, beforeAll } from 'vitest';
 
 import { GameSetMock } from '../testData/gameSetMock';
@@ -24,13 +24,13 @@ describe('GameSet', () => {
   });
 
   describe('sorter', () => {
-    const series = new SeriesMeta(uuid.v4(), 'Test Series', 'Test Series');
+    const series = new SeriesMeta(uuidv4(), 'Test Series', 'Test Series');
 
     const largeBox = new GameSetMock(GAME_SET_SIZE.large).getGameSet();
 
     const firstBox = new GameSet(
       {
-        id: uuid.v4(),
+        id: uuidv4(),
         name: 'First',
         releaseYear: 1970,
         series: series,

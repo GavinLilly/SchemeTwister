@@ -1,4 +1,4 @@
-import * as uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import { describe, beforeAll, it, expect } from 'vitest';
 
 import { LibTwister } from './libTwister';
@@ -211,7 +211,7 @@ describe('LibTwister', () => {
     const testSmallSet = new GameSetMock(GAME_SET_SIZE.small).getGameSet();
 
     const series: ISeries = {
-      seriesMeta: new SeriesMeta(uuid.v4(), 'Test Series', ''),
+      seriesMeta: new SeriesMeta(uuidv4(), 'Test Series', ''),
       gameSets: [testLargeSet, testMediumSet, testSmallSet],
     };
 

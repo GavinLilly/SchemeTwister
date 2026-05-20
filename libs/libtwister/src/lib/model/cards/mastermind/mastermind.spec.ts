@@ -1,4 +1,4 @@
-import * as uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import { describe, beforeAll, it, expect } from 'vitest';
 
 import { TEST_SERIES_META_1 } from '../../../testData/seriesMeta';
@@ -15,7 +15,7 @@ describe('Mastermind', () => {
 
   beforeAll(() => {
     gameSet = {
-      id: uuid.v4(),
+      id: uuidv4(),
       name: 'Test GameSet',
       releaseYear: 2024,
       series: TEST_SERIES_META_1,
@@ -23,7 +23,7 @@ describe('Mastermind', () => {
     };
 
     villain = new VillainGroup({
-      id: uuid.v4(),
+      id: uuidv4(),
       gameSet: gameSet,
       name: 'Test Villain',
     });
@@ -37,7 +37,7 @@ describe('Mastermind', () => {
         alwaysLeads: [villain],
         attackPoints: 10,
         gameSet: gameSet,
-        id: uuid.v4(),
+        id: uuidv4(),
         masterStrike: 'Master-strike',
         name: 'Test Mastermind',
         victoryPoints: 5,
@@ -85,7 +85,7 @@ describe('Mastermind', () => {
     beforeAll(() => {
       villain2 = new VillainGroup({
         gameSet: gameSet,
-        id: uuid.v4(),
+        id: uuidv4(),
         name: 'Villain 2',
       });
 
@@ -93,7 +93,7 @@ describe('Mastermind', () => {
         alwaysLeads: [villain, villain2],
         attackPoints: 5,
         gameSet: gameSet,
-        id: uuid.v4(),
+        id: uuidv4(),
         masterStrike: '',
         name: 'Mastermind 2',
         victoryPoints: 4,
@@ -115,7 +115,7 @@ describe('Mastermind', () => {
     beforeAll(() => {
       henchmen = new Henchmen({
         gameSet: gameSet,
-        id: uuid.v4(),
+        id: uuidv4(),
         name: 'Henchmen',
         attackPoints: 2,
         fight: '',
@@ -125,7 +125,7 @@ describe('Mastermind', () => {
         alwaysLeads: [villain, henchmen],
         attackPoints: 5,
         gameSet: gameSet,
-        id: uuid.v4(),
+        id: uuidv4(),
         masterStrike: '',
         name: 'Mastermind 2',
         victoryPoints: 4,

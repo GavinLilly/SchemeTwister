@@ -1,4 +1,4 @@
-import * as uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import { TEST_SERIES_META_1 } from '../../../testData/seriesMeta';
@@ -15,7 +15,7 @@ describe('MastermindWithEpic', () => {
 
   beforeAll(() => {
     const gameSet = {
-      id: uuid.v4(),
+      id: uuidv4(),
       name: 'Test GameSet',
       releaseYear: 2024,
       series: TEST_SERIES_META_1,
@@ -23,7 +23,7 @@ describe('MastermindWithEpic', () => {
     };
 
     villain = new VillainGroup({
-      id: uuid.v4(),
+      id: uuidv4(),
       gameSet: gameSet,
       name: 'Test Villain',
     });
@@ -33,13 +33,13 @@ describe('MastermindWithEpic', () => {
         alwaysLeads: [villain],
         attackPoints: 10,
         gameSet: gameSet,
-        id: uuid.v4(),
+        id: uuidv4(),
         masterStrike: '',
         name: 'Test Mastermind',
         victoryPoints: 5,
       },
       {
-        id: uuid.v4(),
+        id: uuidv4(),
       }
     );
   });

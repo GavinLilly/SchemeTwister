@@ -1,4 +1,4 @@
-import * as uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 import { GameSet } from '../GameSet';
 import { ICardType, IPlayableObject, ITeam } from '../interfaces';
@@ -36,7 +36,7 @@ export class Hero extends AbstractCardGroup implements IHero {
    */
   public static empty(): Hero {
     return new Hero({
-      id: uuid.v4(),
+      id: uuidv4(),
       name: 'EMPTY HERO',
       gameSet: GameSet.empty(),
     });

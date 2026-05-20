@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import * as uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 import {
   AbstractCardGroup,
@@ -68,13 +68,13 @@ export class GameSetMock {
     const series =
       seriesMeta ??
       new SeriesMeta(
-        uuid.v4(),
+        uuidv4(),
         `Test Series ${this._gameSetShortId}`,
         'Test Series'
       );
 
     this._meta = {
-      id: uuid.v4(),
+      id: uuidv4(),
       name: `Test Game Set ${this._gameSetShortId}`,
       releaseYear: randomInteger(1970, 2024),
       series,
@@ -225,7 +225,7 @@ export class GameSetMock {
     cardType: string,
     num: number
   ): Pick<T, 'id' | 'name' | 'gameSet'> => ({
-    id: uuid.v4(),
+    id: uuidv4(),
     name: `Test ${cardType} - ${this._gameSetShortId} - ${num + 1}`,
     gameSet: this._meta,
   });

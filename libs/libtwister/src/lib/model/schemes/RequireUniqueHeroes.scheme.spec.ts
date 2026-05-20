@@ -1,4 +1,4 @@
-import * as uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import { StoreBuilder, StoreOfStores } from '../../factories';
@@ -34,12 +34,12 @@ describe('RequireUniqueHeroesScheme', () => {
     const heroes: Hero[] = [];
 
     for (let i = 0; i < 7; i++) {
-      const loganHero = new Hero({ id: uuid.v4(), name: 'Logan', gameSet });
+      const loganHero = new Hero({ id: uuidv4(), name: 'Logan', gameSet });
       heroes.push(loganHero);
     }
 
     const randomHero = new Hero({
-      id: uuid.v4(),
+      id: uuidv4(),
       name: 'Hero',
       gameSet,
     });
