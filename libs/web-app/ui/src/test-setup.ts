@@ -1,4 +1,4 @@
-import 'jest-preset-angular/setup-jest';
+import '@analogjs/vitest-angular/setup-zone';
 
 import { getTestBed } from '@angular/core/testing';
 import {

@@ -16,13 +16,11 @@
       "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "executor": "@nx/jest:jest",
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "jestConfig": "libs/web-app/ui/jest.config.ts",
-        "codeCoverage": true,
-        "tsConfig": "libs/web-app/ui/tsconfig.spec.json"
-      },
-      "outputs": ["{workspaceRoot}/coverage/libs/web-app/ui"]
+        "reportsDirectory": "../../../coverage/libs/web-app/ui"
+      }
     }
   }
 }

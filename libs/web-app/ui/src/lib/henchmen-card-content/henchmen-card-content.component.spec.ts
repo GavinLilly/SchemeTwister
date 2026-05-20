@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { mainline } from '@schemetwister/series-marvel';
+import { describe, beforeEach, it, expect } from 'vitest';
 
 import { BadguyCardContentComponent } from '../badguy-card-content/badguy-card-content.component';
 import { BaseCardContentComponent } from '../base-card-content/base-card-content.component';
@@ -12,10 +13,12 @@ describe('HenchmenCardContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [HenchmenCardContentComponent,
+      imports: [
+        HenchmenCardContentComponent,
         BadguyCardContentComponent,
-        BaseCardContentComponent,],
-}).compileComponents();
+        BaseCardContentComponent,
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

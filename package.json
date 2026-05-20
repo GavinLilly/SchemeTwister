@@ -75,6 +75,8 @@
     "zone.js": "0.15.0"
   },
   "devDependencies": {
+    "@analogjs/vite-plugin-angular": "~1.19.1",
+    "@analogjs/vitest-angular": "~1.19.1",
     "@angular-devkit/architect": "v20-lts",
     "@angular-devkit/build-angular": "v20-lts",
     "@angular-devkit/core": "v20-lts",
@@ -82,6 +84,7 @@
     "@angular-eslint/eslint-plugin": "^20.3.0",
     "@angular-eslint/eslint-plugin-template": "^20.3.0",
     "@angular-eslint/template-parser": "^20.3.0",
+    "@angular/build": "v20-lts",
     "@angular/cli": "v20-lts",
     "@angular/compiler-cli": "v20-lts",
     "@angular/language-service": "v20-lts",
@@ -112,7 +115,7 @@
     "@swc/core": "1.5.7",
     "@swc/helpers": "0.5.13",
     "@types/jest": "29.5.13",
-    "@types/node": "^20.0.0",
+    "@types/node": "20.19.9",
     "@types/seedrandom": "^3.0.5",
     "@types/uuid": "^9.0.0",
     "@types/validator": "^13.11.1",
@@ -144,6 +147,7 @@
     "jest-preset-angular": "14.6.2",
     "jest-wake-lock-mock": "^1.1.0",
     "jiti": "2.4.2",
+    "jsdom": "~22.1.0",
     "jsonc-parser": "^3.0.0",
     "ng-mocks": "^14.13.5",
     "nx": "21.6.10",

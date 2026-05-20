@@ -13,7 +13,11 @@ const compat = new FlatCompat({
 
 export default [
   {
-    ignores: ['**/dist'],
+    ignores: [
+      '**/dist',
+      '**/vite.config.*.timestamp*',
+      '**/vitest.config.*.timestamp*',
+    ],
   },
   {
     plugins: {

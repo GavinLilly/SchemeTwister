@@ -1,5 +1,6 @@
 import { GameSet, Hero } from '@schemetwister/libtwister';
 import * as uuid from 'uuid';
+import { describe, expect, it } from 'vitest';
 
 import { SortByNamePipe } from './SortByName.pipe';
 
