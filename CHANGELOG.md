@@ -1,3 +1,16 @@
+## [3.21.27](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.26...v3.21.27) (2026-05-22)
+
+### Dependencies
+
+* **deps:** align package lock ([d787a6d](https://github.com/GavinLilly/SchemeTwister/commit/d787a6dab6528a321dc2cfcd415f63298154f5af))
+* **deps:** bump @babel/plugin-transform-modules-systemjs ([a73c6f2](https://github.com/GavinLilly/SchemeTwister/commit/a73c6f2f751ebd381fadfdb5d2ec068c4da0a012))
+* **deps:** bump @tootallnate/once from 2.0.0 to 2.0.1 ([aaa6eb7](https://github.com/GavinLilly/SchemeTwister/commit/aaa6eb71bfd0586fa5e13dc9aa72c01ab7cc2481))
+* **deps:** bump axios from 1.15.0 to 1.16.0 ([b04b364](https://github.com/GavinLilly/SchemeTwister/commit/b04b364ad09bafc71e1cbb893c8dbdadbdb09e2b))
+* **deps:** bump fast-uri from 3.1.0 to 3.1.2 ([56355c8](https://github.com/GavinLilly/SchemeTwister/commit/56355c8837af1f51c8e6f491f0887da0fdca9a08))
+* **deps:** bump hono from 4.12.14 to 4.12.21 ([1907fd7](https://github.com/GavinLilly/SchemeTwister/commit/1907fd72ac87783ffb83bb3908e1546a18359c0c))
+* **deps:** bump protobufjs from 7.5.4 to 7.5.5 ([de94dc1](https://github.com/GavinLilly/SchemeTwister/commit/de94dc18325e9ec850544a4614d4f29c098e3f67))
+* **deps:** bump protobufjs from 7.5.5 to 7.5.8 ([0aed6e6](https://github.com/GavinLilly/SchemeTwister/commit/0aed6e662aca9d0ed94c911cb9fccb6aeadb0899))
+
 ## [3.21.27](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.26...v3.21.27) (2026-05-20)
 
 ### Dependencies
