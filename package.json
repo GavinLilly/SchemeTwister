@@ -131,7 +131,7 @@
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsdoc": "^46.5.1",
     "eslint-plugin-ordered-imports": "^0.6.0",
-    "firebase-tools": "^14.0.0",
+    "firebase-tools": "^15.22.3",
     "genversion": "^3.1.1",
     "glob": ">=10.5.0",
     "husky": "^9.0.0",
