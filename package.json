@@ -91,7 +91,7 @@
     "@eslint/eslintrc": "^2.1.1",
     "@ngrx/schematics": "20.0.0",
     "@ngrx/store-devtools": "20.0.0",
-    "@nx/angular": "21.6.10",
+    "@nx/angular": "22.6.5",
     "@nx/devkit": "21.6.10",
     "@nx/esbuild": "21.6.10",
     "@nx/eslint": "21.6.10",
