@@ -10,7 +10,7 @@ import {
 } from '@nx/devkit';
 import { GAME_SET_SIZE, getGamesetSize } from '@schemetwister/libtwister';
 import camelCase from 'camelcase';
-import * as uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 import { GamesetGeneratorSchema } from './schema';
 
@@ -67,7 +67,7 @@ export async function gamesetGenerator(
     numMasterminds: cardNumbers.numMasterminds,
     numVillains: cardNumbers.numVillains,
     numSchemes: cardNumbers.numSchemes,
-    generateUuid: () => uuid.v4(),
+    generateUuid: () => uuidv4(),
     seriesMetaClass,
     tpl: '',
   });

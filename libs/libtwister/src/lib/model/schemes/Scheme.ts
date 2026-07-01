@@ -1,6 +1,6 @@
 import merge from 'ts-deepmerge';
 import { PartialDeep } from 'type-fest';
-import * as uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 import { CardStore, StoreOfStores } from '../../factories';
 import { ISetupConfig } from '../../libTwister';
@@ -130,7 +130,7 @@ export class Scheme implements IPlayableObject {
    */
   public static empty(): Scheme {
     return new Scheme({
-      id: uuid.v4(),
+      id: uuidv4(),
       name: 'EMPTY SCHEME',
       setup: 'n/a',
       evilWins: 'n/a',

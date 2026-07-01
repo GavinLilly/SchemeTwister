@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import * as uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 import {
   GAME_SET_SIZE,
@@ -25,7 +25,7 @@ interface ISeriesConfig {
 export function createSeriesMock(config: ISeriesConfig): ISeries {
   const numCore = config.numCore > 0 ? config.numCore : 1;
 
-  const series = new SeriesMeta(uuid.v4(), `Test series ${nanoid(4)}`, '');
+  const series = new SeriesMeta(uuidv4(), `Test series ${nanoid(4)}`, '');
 
   const gameSets = [
     [GAME_SET_SIZE.core, numCore],

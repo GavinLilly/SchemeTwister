@@ -1,4 +1,4 @@
-import * as uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 import { nameSorter } from '../utils/nameSorter';
 
@@ -65,10 +65,10 @@ export class GameSet implements IGameSetMeta {
   public static empty(): GameSet {
     return new GameSet(
       {
-        id: uuid.v4(),
+        id: uuidv4(),
         name: 'EMPTY GAME SET',
         releaseYear: 1970,
-        series: new SeriesMeta(uuid.v4(), 'EMPTY SERIES', 'EMPTY DESCRIPTION'),
+        series: new SeriesMeta(uuidv4(), 'EMPTY SERIES', 'EMPTY DESCRIPTION'),
         size: GAME_SET_SIZE.promo,
       },
       []
