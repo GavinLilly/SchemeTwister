@@ -1,3 +1,9 @@
+## [3.21.28](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.27...v3.21.28) (2026-07-01)
+
+### Dependencies
+
+* **deps:** bump @sigstore/core and @angular/cli ([#322](https://github.com/GavinLilly/SchemeTwister/issues/322)) ([33d6a6a](https://github.com/GavinLilly/SchemeTwister/commit/33d6a6ae012c4c490e31d902fa281bbce3a32ece))
+
 ## [3.21.27](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.26...v3.21.27) (2026-06-26)
 
 ### Dependencies
