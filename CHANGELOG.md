@@ -1,3 +1,9 @@
+## [3.21.30](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.29...v3.21.30) (2026-07-03)
+
+### Dependencies
+
+* **deps:** update Angular and NX to latest minor versions ([#325](https://github.com/GavinLilly/SchemeTwister/issues/325)) ([3cbdd05](https://github.com/GavinLilly/SchemeTwister/commit/3cbdd053f6599fe6cd8cc5f15ad55f05a44f42a8))
+
 ## [3.21.29](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.28...v3.21.29) (2026-07-01)
 
 ### Dependencies
