@@ -1,4 +1,4 @@
-import merge from 'ts-deepmerge';
+import { merge } from 'ts-deepmerge';
 import { PartialDeep } from 'type-fest';
 import * as uuid from 'uuid';
 
