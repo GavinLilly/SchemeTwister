@@ -1,3 +1,10 @@
+## [3.21.31](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.30...v3.21.31) (2026-07-05)
+
+### Dependencies
+
+* **deps:** align package-lock ([9e5caa8](https://github.com/GavinLilly/SchemeTwister/commit/9e5caa8c4a199df379ebc872a50e648b9f73a52b))
+* **deps:** update ts-deepmerge to v8 ([2fb97e0](https://github.com/GavinLilly/SchemeTwister/commit/2fb97e0f516e046f24c0aa8751766f1446cce97f))
+
 ## [3.21.30](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.29...v3.21.30) (2026-07-03)
 
 ### Dependencies
