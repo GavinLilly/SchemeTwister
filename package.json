@@ -105,6 +105,8 @@
     "@nx/web": "23.0.1",
     "@nx/workspace": "23.0.1",
     "@schematics/angular": "v20-lts",
+    "@swc/cli": "^0.8.1",
+    "@swc/core": "^1.15.43",
     "@types/jest": "29.5.13",
     "@types/node": "^20.0.0",
     "@types/seedrandom": "^3.0.5",

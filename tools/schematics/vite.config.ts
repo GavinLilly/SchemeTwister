@@ -1,5 +1,5 @@
 /// <reference types='vitest' />
-import { mergeConfig } from 'vite';
+import { mergeConfig } from 'vitest/config';
 
 import { sharedConfig } from '../../vitest.shared';
 
