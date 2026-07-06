@@ -76,8 +76,10 @@
     "@nx/eslint:lint": {
       "inputs": [
         "default",
+        "^default",
         "{workspaceRoot}/.eslintrc.json",
-        "{workspaceRoot}/eslint.config.mjs"
+        "{workspaceRoot}/eslint.config.mjs",
+        "{workspaceRoot}/tools/eslint-rules/**/*"
       ],
       "cache": true
     },
@@ -94,10 +96,6 @@
         }
       }
     },
-    "@nx/vite:test": {
-      "cache": true,
-      "inputs": ["default", "^production"]
-    },
     "@nx/esbuild:esbuild": {
       "cache": true,
       "dependsOn": ["^build"],
@@ -112,6 +110,10 @@
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
+    },
+    "@nx/vitest:test": {
+      "cache": true,
+      "inputs": ["default", "^production"]
     }
   },
   "namedInputs": {

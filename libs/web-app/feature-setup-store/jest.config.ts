@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   displayName: 'web-app-feature-setup-store',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
