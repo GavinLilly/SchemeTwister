@@ -1,3 +1,9 @@
+## [3.21.32](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.31...v3.21.32) (2026-07-30)
+
+### Dependencies
+
+* **deps:** align package-lock ([be478e1](https://github.com/GavinLilly/SchemeTwister/commit/be478e1e79e8508e68b920262fc6e3e7c53728ca))
+
 ## [3.21.31](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.30...v3.21.31) (2026-07-05)
 
 ### Dependencies
