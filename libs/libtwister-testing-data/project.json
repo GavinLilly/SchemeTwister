@@ -7,7 +7,9 @@
   "targets": {
     "build": {
       "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/libs/libtwister-testing-data"
@@ -22,10 +24,13 @@
       }
     },
     "test": {
-      "executor": "@nx/vite:test",
-      "outputs": ["{options.reportsDirectory}"],
+      "executor": "@nx/vitest:test",
+      "outputs": [
+        "{options.reportsDirectory}"
+      ],
       "options": {
-        "reportsDirectory": "../../coverage/libs/libtwister-testing-data"
+        "reportsDirectory": "../../coverage/libs/libtwister-testing-data",
+        "passWithNoTests": true
       }
     },
     "lint": {
