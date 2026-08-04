@@ -1,9 +1,9 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 
-import { GameSetMock } from '../../../testData/gameSetMock';
 import { GameSet } from '../../GameSet';
 import { GAME_SET_SIZE } from '../../types';
 
+import { FakeGameSetFactory } from '@schemetwister/libtwister/testing/data';
 import { RequireCard } from './requireCard';
 
 describe('RequireCard', () => {
@@ -11,7 +11,7 @@ describe('RequireCard', () => {
 
   beforeAll(() => {
     // 15 heroes by default
-    gameSet = new GameSetMock(GAME_SET_SIZE.core).getGameSet();
+    gameSet = new FakeGameSetFactory().createGameSet(GAME_SET_SIZE.core);
   });
 
   it('should not allow more heroes to be required than are available', () =>
