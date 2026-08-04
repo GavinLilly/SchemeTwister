@@ -23,6 +23,12 @@
       "@schemetwister/libtwister/testing": [
         "libs/libtwister-testing/src/index.ts"
       ],
+      "@schemetwister/libtwister/testing/data": [
+        "libs/libtwister-testing-data/src/index.ts"
+      ],
+      "@schemetwister/schematics": [
+        "tools/schemetwister-schematics/src/index.ts"
+      ],
       "@schemetwister/series-buffy": ["libs/series/buffy/src/index.ts"],
       "@schemetwister/series-marvel": ["libs/series/marvel/src/index.ts"],
       "@schemetwister/series-marvel-common": [
@@ -51,7 +57,6 @@
       ],
       "@schemetwister/web-app/shared": ["libs/web-app/shared/src/index.ts"],
       "@schemetwister/web-app/ui": ["libs/web-app/ui/src/index.ts"],
-      "schematics": ["tools/schematics/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"],

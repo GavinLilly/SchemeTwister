@@ -1,5 +1,7 @@
+import { FakeGameSetFactory } from '@schemetwister/libtwister/testing/data';
+import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
+
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { GameSetMock } from '../../testData/gameSetMock';
 import { TEST_REQUIRE_VILLAIN_AND_HERO_SCHEME } from '../../testData/schemes';
 import { GameSet } from '../GameSet';
 import { IGameSetup } from '../interfaces/gameSetup.interface';
@@ -16,8 +18,8 @@ describe('RequireVillainAndHeroWithBackupInVillainDeckScheme', () => {
   let gameSet2: GameSet;
 
   beforeAll(() => {
-    gameSet1 = new GameSetMock(GAME_SET_SIZE.core).getGameSet();
-    gameSet2 = new GameSetMock(GAME_SET_SIZE.large).getGameSet();
+    gameSet1 = new FakeGameSetFactory().createGameSet(GAME_SET_SIZE.core);
+    gameSet2 = new FakeGameSetFactory().createGameSet(GAME_SET_SIZE.large);
 
     scheme = new RequireVillainAndHeroWithBackupInVillainDeckScheme(
       TEST_REQUIRE_VILLAIN_AND_HERO_SCHEME,
@@ -47,7 +49,7 @@ describe('RequireVillainAndHeroWithBackupInVillainDeckScheme', () => {
   describe('with only test game set 1 for heroes and villains', () => {
     let setup: IGameSetup;
     beforeAll(() => {
-      const dcHeroStore = new StoreBuilder()
+      const gameSet2HeroStore = new StoreBuilder()
         .withHeroGamesets(gameSet2)
         .withMastermindGamesets(gameSet1, gameSet2)
         .withVillainGamesets(gameSet1, gameSet2)
@@ -55,8 +57,8 @@ describe('RequireVillainAndHeroWithBackupInVillainDeckScheme', () => {
         .build();
       setup = scheme.getSetup({
         numPlayers: 2,
-        mastermind: dcHeroStore.mastermindStore.getRandom(),
-        store: dcHeroStore,
+        mastermind: gameSet2HeroStore.mastermindStore.getRandom(),
+        store: gameSet2HeroStore,
       });
     });
 

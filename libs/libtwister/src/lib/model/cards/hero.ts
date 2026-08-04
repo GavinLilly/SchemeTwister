@@ -2,7 +2,7 @@ import * as uuid from 'uuid';
 
 import { GameSet } from '../GameSet';
 import { ICardType, IPlayableObject, ITeam } from '../interfaces';
-import { CardType } from '../types/cardType.type';
+import { CARD_TYPE, CardType } from '../types/cardType.type';
 
 import { AbstractCardGroup } from './abstractCardGroup';
 
@@ -10,24 +10,17 @@ interface IHero extends IPlayableObject {
   team?: ITeam;
 }
 
-export class Hero extends AbstractCardGroup implements IHero {
-  private readonly _team?: ITeam;
-  private readonly _cardType: CardType;
+export type HeroConfig = IHero & Partial<ICardType>;
 
-  constructor(heroConfig: IHero & Partial<ICardType>) {
+export class Hero extends AbstractCardGroup implements IHero {
+  public readonly team?: ITeam;
+  public override readonly cardType: CardType;
+
+  constructor(heroConfig: HeroConfig) {
     super(heroConfig);
 
-    ({ team: this._team } = heroConfig);
-
-    this._cardType = heroConfig.cardType ?? 'Hero';
-  }
-
-  get team() {
-    return this._team;
-  }
-
-  override get cardType() {
-    return this._cardType;
+    this.team = heroConfig.team;
+    this.cardType = heroConfig.cardType ?? CARD_TYPE.hero;
   }
 
   /**

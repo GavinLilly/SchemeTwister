@@ -1,8 +1,8 @@
+import { FakeGameSetFactory } from '@schemetwister/libtwister/testing/data';
 import * as uuid from 'uuid';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { GameSetMock } from '../../testData/gameSetMock';
 import { Hero } from '../cards';
 import { GAME_SET_SIZE } from '../types';
 
@@ -12,7 +12,7 @@ import { Scheme } from './Scheme';
 describe('RequireUniqueHeroesScheme', () => {
   let store: StoreOfStores;
   let scheme: Scheme;
-  const gameSet = new GameSetMock(GAME_SET_SIZE.core).getGameSet();
+  const gameSet = new FakeGameSetFactory().createGameSet(GAME_SET_SIZE.core);
 
   beforeAll(() => {
     store = new StoreBuilder().withAllFromGamesets(gameSet).build();

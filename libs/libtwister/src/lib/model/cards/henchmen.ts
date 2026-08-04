@@ -10,39 +10,26 @@ interface IHenchmen extends IFightable {
   ability?: string;
 }
 
-export class Henchmen extends AbstractFightableCardGroup implements IHenchmen {
-  private readonly _fight?: string;
-  private readonly _ambush?: string;
-  private readonly _ability?: string;
+export type HenchmenConfig = Omit<IHenchmen, 'victoryPoints'> &
+  Partial<IVictoryPileCard>;
 
-  constructor(
-    config: Omit<IHenchmen, 'victoryPoints'> & Partial<IVictoryPileCard>
-  ) {
+export class Henchmen extends AbstractFightableCardGroup implements IHenchmen {
+  public readonly fight?: string;
+  public readonly ambush?: string;
+  public readonly ability?: string;
+
+  constructor(config: HenchmenConfig) {
     super({
       ...config,
       victoryPoints: config.victoryPoints ?? 1,
     });
 
-    ({
-      fight: this._fight,
-      ambush: this._ambush,
-      ability: this._ability,
-    } = config);
+    this.fight = config.fight;
+    this.ambush = config.ambush;
+    this.ability = config.ability;
   }
 
   get cardType() {
     return CARD_TYPE.henchmen;
-  }
-
-  get fight() {
-    return this._fight;
-  }
-
-  get ambush() {
-    return this._ambush;
-  }
-
-  get ability() {
-    return this._ability;
   }
 }

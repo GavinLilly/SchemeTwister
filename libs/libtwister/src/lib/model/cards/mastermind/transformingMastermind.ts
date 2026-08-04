@@ -7,12 +7,8 @@ type TransformingMastermindConfig = MultiMastermindConfig &
 export class TransformingMastermind extends Mastermind {
   constructor(
     mastermindConfig: IMastermind,
-    private readonly _transformed: TransformingMastermindConfig
+    public readonly transformed: TransformingMastermindConfig
   ) {
     super(mastermindConfig);
-  }
-
-  public get transformed() {
-    return this._transformed;
   }
 }

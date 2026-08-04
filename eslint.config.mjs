@@ -1,10 +1,10 @@
 import { FlatCompat } from '@eslint/eslintrc';
-import { dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import js from '@eslint/js';
 import nxEslintPlugin from '@nx/eslint-plugin';
 import typescriptEslintEslintPlugin from '@typescript-eslint/eslint-plugin';
 import eslintPluginJsdoc from 'eslint-plugin-jsdoc';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const compat = new FlatCompat({
   baseDirectory: dirname(fileURLToPath(import.meta.url)),
@@ -13,7 +13,11 @@ const compat = new FlatCompat({
 
 export default [
   {
-    ignores: ['**/dist'],
+    ignores: [
+      '**/dist',
+      '**/vite.config.*.timestamp*',
+      '**/vitest.config.*.timestamp*',
+    ],
   },
   {
     plugins: {
@@ -37,7 +41,7 @@ export default [
         'error',
         {
           enforceBuildableLibDependency: true,
-          allow: [],
+          "allow": ["libtwister-testing-data", "@schemetwister/libtwister/testing/data"],
           depConstraints: [
             {
               sourceTag: '*',

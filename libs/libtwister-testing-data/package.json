@@ -1,0 +1,12 @@
+{
+  "name": "libtwister-testing-data",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "dependencies": {
+    "@faker-js/faker": "^10.1.0",
+    "@schemetwister/libtwister": "*"
+  }
+}

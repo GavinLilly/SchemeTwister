@@ -14,15 +14,15 @@ import {
 import {
   AdditionalDeckDeckMinimal,
   IAdditionalDeck,
+  IAdditionalDeckDeck,
   IAdditionalDeckRules,
-  IPlayableObject,
   IGameSetMeta,
   IGameSetup,
   IHeroDeck,
   IKeyword,
   INumPlayerRules,
+  IPlayableObject,
   IVillainDeck,
-  IAdditionalDeckDeck,
 } from '../interfaces';
 import { Rules, RulesType } from '../rules';
 import { CARD_TYPE, SchemeMinusRules, numPlayers } from '../types';
