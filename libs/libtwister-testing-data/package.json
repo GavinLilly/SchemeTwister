@@ -5,5 +5,8 @@
   "type": "module",
   "main": "./index.js",
   "types": "./index.d.ts",
-  "dependencies": {}
+  "dependencies": {
+    "@faker-js/faker": "^10.1.0",
+    "@schemetwister/libtwister": "*"
+  }
 }

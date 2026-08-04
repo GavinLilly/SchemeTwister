@@ -1,3 +1,4 @@
+import { FakeGameSetFactory } from '@schemetwister/libtwister/testing/data';
 import * as uuid from 'uuid';
 import { beforeAll, describe, expect, it } from 'vitest';
 
@@ -5,7 +6,6 @@ import { StoreBuilder, StoreOfStores } from '../../factories';
 import { Hero } from '../cards';
 import { GAME_SET_SIZE } from '../types';
 
-import { FakeGameSetFactory } from '@schemetwister/libtwister/testing/data';
 import { RequireUniqueHeroesScheme } from './RequireUniqueHeroes.scheme';
 import { Scheme } from './Scheme';
 

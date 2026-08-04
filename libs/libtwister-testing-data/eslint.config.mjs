@@ -19,4 +19,10 @@ export default [
       parser: await import('jsonc-eslint-parser'),
     },
   },
+  {
+    files: ['**/*.ts'],
+    rules: {
+      "@nx/enforce-module-boundaries": "off"
+    }
+  }
 ];

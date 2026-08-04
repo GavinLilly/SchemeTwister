@@ -1,3 +1,4 @@
+import { FakeGameSetFactory } from '@schemetwister/libtwister/testing/data';
 import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
 import { StoreBuilder, StoreOfStores } from '../../factories';
@@ -22,7 +23,6 @@ import { Rules } from '../rules';
 import { CARD_TYPE, GAME_SET_SIZE, SchemeMinusRules } from '../types';
 import { NumPlayers, numPlayers } from '../types/numPlayers.type';
 
-import { FakeGameSetFactory } from '@schemetwister/libtwister/testing/data';
 import { Scheme } from './Scheme';
 
 const baseSchemeDesc: Omit<SchemeMinusRules, 'meta'> = {

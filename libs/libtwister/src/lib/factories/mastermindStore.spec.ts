@@ -1,7 +1,7 @@
-import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
-
 import { faker } from '@faker-js/faker';
 import { FakeCardFactory } from '@schemetwister/libtwister/testing/data';
+import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
+
 import { MastermindStore } from './mastermindStore';
 
 describe('MastermindStore', () => {

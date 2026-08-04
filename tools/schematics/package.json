@@ -7,7 +7,7 @@
         "camelcase": "^6.0.0",
         "tslib": "^2.3.0",
         "uuid": "^9.0.0",
-        "vitest": "4.1.9"
+        "vitest": "3.2.7"
     },
     "type": "commonjs",
     "main": "./src/index.js",

@@ -1,11 +1,12 @@
 import { FakeGameSetFactory } from '@schemetwister/libtwister/testing/data';
+import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
+
 import { StoreBuilder, StoreOfStores } from '../../factories';
 import { TEST_REQUIRE_VILLAIN_AND_HERO_SCHEME } from '../../testData/schemes';
 import { GameSet } from '../GameSet';
 import { IGameSetup } from '../interfaces/gameSetup.interface';
 import { GAME_SET_SIZE } from '../types';
 
-import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { RequireVillainAndHeroWithBackupInVillainDeckScheme } from './RequireVillainAndHeroWithBackupInVillainDeck.Scheme';
 import { Scheme } from './Scheme';
 import { RequireCard, RequireCardWithBackup } from './cardInDeck';
