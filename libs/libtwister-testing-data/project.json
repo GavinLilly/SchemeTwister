@@ -3,7 +3,9 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/libtwister-testing-data/src",
   "projectType": "library",
-  "tags": [],
+  "tags": [
+    "type: testing"
+  ],
   "targets": {
     "build": {
       "executor": "@nx/vite:build",
@@ -26,10 +28,9 @@
     "test": {
       "executor": "@nx/vitest:test",
       "outputs": [
-        "{options.reportsDirectory}"
+        "{workspaceRoot}/coverage/{projectRoot}"
       ],
       "options": {
-        "reportsDirectory": "../../coverage/libs/libtwister-testing-data",
         "passWithNoTests": true
       }
     },

@@ -1,9 +1,9 @@
+import { FakeGameSetFactory } from '@schemetwister/libtwister/testing/data';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import { GameSet } from '../../GameSet';
 import { GAME_SET_SIZE } from '../../types';
 
-import { FakeGameSetFactory } from '@schemetwister/libtwister/testing/data';
 import { RequireCard } from './requireCard';
 
 describe('RequireCard', () => {

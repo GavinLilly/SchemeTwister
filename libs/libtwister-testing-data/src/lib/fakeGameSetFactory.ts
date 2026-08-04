@@ -4,12 +4,11 @@ import {
   GameSetSize,
   getGamesetSize,
   Hero,
-  VillainGroup,
-} from '@schemetwister/libtwister';
-import {
   IGameSetSize,
   IHeroTeamConfig,
-} from 'libs/libtwister/src/lib/utils/getGameSetSize';
+  VillainGroup,
+} from '@schemetwister/libtwister';
+
 import { FakeCardFactory } from './fakeCardFactory';
 import {
   createGamesetMeta,
@@ -36,13 +35,13 @@ export class FakeGameSetFactory {
 
     const heroes =
       typeof gameSetSizes.numHeroes === 'number'
-        ? this.createNormalHeroes(fakeCardFactory, gameSetSizes.numHeroes)
-        : this.createHeroesForTeams(fakeCardFactory, gameSetSizes.numHeroes);
+        ? this._createNormalHeroes(fakeCardFactory, gameSetSizes.numHeroes)
+        : this._createHeroesForTeams(fakeCardFactory, gameSetSizes.numHeroes);
 
     return new GameSet(
       gameSetMeta,
       heroes,
-      this.createMasterminds(
+      this._createMasterminds(
         fakeCardFactory,
         villains,
         gameSetSizes.numMasterminds
@@ -60,7 +59,7 @@ export class FakeGameSetFactory {
     );
   }
 
-  private createNormalHeroes(
+  private _createNormalHeroes(
     fakeCardFactory: FakeCardFactory,
     count: number
   ): Hero[] {
@@ -71,7 +70,7 @@ export class FakeGameSetFactory {
     });
   }
 
-  private createHeroesForTeams(
+  private _createHeroesForTeams(
     fakeCardFactory: FakeCardFactory,
     config: IHeroTeamConfig
   ): Hero[] {
@@ -86,7 +85,7 @@ export class FakeGameSetFactory {
     );
   }
 
-  private readonly createMasterminds = (
+  private readonly _createMasterminds = (
     fakeCardFactory: FakeCardFactory,
     villains: VillainGroup[],
     count: number

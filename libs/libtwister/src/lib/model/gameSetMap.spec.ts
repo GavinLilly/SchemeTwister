@@ -1,8 +1,8 @@
+import { FakeSeriesFactory } from '@schemetwister/libtwister/testing/data';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import { LibTwister } from '../libTwister';
 
-import { FakeSeriesFactory } from '@schemetwister/libtwister/testing/data';
 import { GameSetMap } from './gameSetMap';
 import { ISeries } from './interfaces';
 import { GAME_SET_SIZE } from './types';

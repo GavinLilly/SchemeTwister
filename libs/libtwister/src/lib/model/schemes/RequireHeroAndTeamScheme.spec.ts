@@ -1,3 +1,4 @@
+import { FakeGameSetFactory } from '@schemetwister/libtwister/testing/data';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import { StoreBuilder, StoreOfStores } from '../../factories';
@@ -6,7 +7,6 @@ import { randomize } from '../../utils/randomize';
 import { IGameSetup, ITeam } from '../interfaces';
 import { GAME_SET_SIZE } from '../types';
 
-import { FakeGameSetFactory } from '@schemetwister/libtwister/testing/data';
 import { RequireHeroAndTeamScheme } from './RequireHeroAndTeamScheme';
 import { Scheme } from './Scheme';
 

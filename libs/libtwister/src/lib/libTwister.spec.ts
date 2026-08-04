@@ -1,10 +1,9 @@
-import { v4 as uuidV4 } from 'uuid';
-import { beforeAll, describe, expect, it } from 'vitest';
-
 import {
   FakeGameSetFactory,
   FakeSeriesFactory,
 } from '@schemetwister/libtwister/testing/data';
+import { beforeAll, describe, expect, it } from 'vitest';
+
 import { LibTwister } from './libTwister';
 import { GAME_SET_SIZE, ISeries, NumPlayers, SeriesMeta } from './model';
 

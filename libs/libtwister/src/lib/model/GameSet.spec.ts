@@ -2,6 +2,7 @@ import { v4 as uuidV4 } from 'uuid';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import { FakeGameSetFactory } from '@schemetwister/libtwister/testing/data';
+
 import {
   Bystander,
   Henchmen,

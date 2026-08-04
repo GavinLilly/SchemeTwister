@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { GAME_SET_SIZE, ISeries } from '@schemetwister/libtwister';
+
 import { FakeGameSetFactory } from './fakeGameSetFactory';
 import { createSeriesMeta } from './fakerUtils';
 
