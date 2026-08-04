@@ -34,7 +34,7 @@ export class Mastermind
   implements IMastermind
 {
   public readonly alwaysLeads: (VillainGroup | Henchmen)[];
-  public readonly overrideFunction?: RuleOverrideFunction;
+  public readonly ruleOverride?: RuleOverrideFunction;
   public readonly masterStrike: string;
   public readonly specialRules?: string;
   public readonly startOfGame?: string;
@@ -52,7 +52,7 @@ export class Mastermind
     }
 
     this.alwaysLeads = mastermindConfig.alwaysLeads;
-    this.overrideFunction = mastermindConfig.ruleOverride;
+    this.ruleOverride = mastermindConfig.ruleOverride;
     this.masterStrike = mastermindConfig.masterStrike;
     this.escape = mastermindConfig.escape;
     this.finishThePrey = mastermindConfig.finishThePrey;
