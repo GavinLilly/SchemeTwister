@@ -7,13 +7,9 @@ type MastermindWithEpicConfig = SetRequired<Partial<IMastermind>, 'id'>;
 export class EpicMastermind extends Mastermind {
   constructor(
     config: IMastermind,
-    private readonly _reverse: MastermindWithEpic
+    public readonly reverse: MastermindWithEpic
   ) {
     super(config);
-  }
-
-  public get reverse() {
-    return this._reverse;
   }
 }
 

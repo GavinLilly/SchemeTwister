@@ -1,7 +1,7 @@
 import {
+  AdaptingMastermind,
   Mastermind,
   MastermindWithEpic,
-  AdaptingMastermind,
   TransformingMastermind,
 } from '../model/cards/mastermind';
 import { randomize } from '../utils/randomize';
@@ -27,18 +27,13 @@ export class MastermindStore extends CardStore<MastermindType> {
   public override getRandom(
     options?: GetRandomOptions<MastermindType>
   ): MastermindType | MastermindType[] {
-    const pickNormalOrEpic = (mastermind: MastermindType) =>
-      mastermind instanceof MastermindWithEpic
-        ? randomize([mastermind, mastermind.epic])
-        : mastermind;
-
     if (options === undefined) {
       const picked = super.getRandom();
 
-      return pickNormalOrEpic(picked);
+      return MastermindStore._pickNormalOrEpic(picked);
     }
 
-    return super.getRandom(options).map(pickNormalOrEpic);
+    return super.getRandom(options).map(MastermindStore._pickNormalOrEpic);
   }
 
   public override removeCard(idOrCard: string | MastermindType): void {
@@ -93,4 +88,9 @@ export class MastermindStore extends CardStore<MastermindType> {
       .filter((mastermind) => mastermind instanceof MastermindWithEpic)
       .filter((mastermind): mastermind is MastermindWithEpic => !!mastermind)
       .find((mastermind) => mastermind.epic.id === cardId);
+
+  private static readonly _pickNormalOrEpic = (mastermind: MastermindType) =>
+    mastermind instanceof MastermindWithEpic
+      ? randomize([mastermind, mastermind.epic])
+      : mastermind;
 }

@@ -1,7 +1,6 @@
 import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { GameSetMock } from '../../testData/gameSetMock';
 import { TEST_GAME_SET_1, TEST_GAME_SET_2 } from '../../testData/gameSets';
 import { TEST_HENCHMEN_1 } from '../../testData/henchmen';
 import {
@@ -23,6 +22,7 @@ import { Rules } from '../rules';
 import { CARD_TYPE, GAME_SET_SIZE, SchemeMinusRules } from '../types';
 import { NumPlayers, numPlayers } from '../types/numPlayers.type';
 
+import { FakeGameSetFactory } from '@schemetwister/libtwister/testing/data';
 import { Scheme } from './Scheme';
 
 const baseSchemeDesc: Omit<SchemeMinusRules, 'meta'> = {
@@ -213,7 +213,9 @@ describe('Scheme', () => {
 
     it('should put 1 mastermind in the villain deck', () => {
       const dynamicStore = new StoreBuilder()
-        .withAllFromGamesets(new GameSetMock(GAME_SET_SIZE.core).getGameSet())
+        .withAllFromGamesets(
+          new FakeGameSetFactory().createGameSet(GAME_SET_SIZE.core)
+        )
         .build();
 
       const mastermindVillain = new Scheme({

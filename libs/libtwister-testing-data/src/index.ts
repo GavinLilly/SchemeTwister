@@ -1,1 +1,3 @@
-export { FakeCardFactory, IHeroTeamConfig } from './lib/fakeCardFactory';
+export { FakeCardFactory } from './lib/fakeCardFactory';
+export { FakeGameSetFactory } from './lib/fakeGameSetFactory';
+export { FakeSeriesFactory } from './lib/fakeSeriesFactory';

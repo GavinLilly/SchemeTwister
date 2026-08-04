@@ -1,24 +1,25 @@
-import { describe, beforeAll, it, expect } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 
 import { LibTwister } from '../libTwister';
-import { createSeriesMock } from '../testData/createSeriesMock';
 
+import { FakeSeriesFactory } from '@schemetwister/libtwister/testing/data';
 import { GameSetMap } from './gameSetMap';
 import { ISeries } from './interfaces';
 import { GAME_SET_SIZE } from './types';
 
 describe('GameSetMap', () => {
+  const fakeSeriesFactory = new FakeSeriesFactory();
   let map: GameSetMap;
   let series: ISeries;
 
   beforeAll(() => {
-    series = createSeriesMock({
+    series = fakeSeriesFactory.createSeries({
       numCore: 1,
       numLarge: 3,
       numMedium: 0,
       numSmall: 0,
     });
-    const otherSeries = createSeriesMock({
+    const otherSeries = fakeSeriesFactory.createSeries({
       numCore: 1,
       numLarge: 0,
       numMedium: 1,

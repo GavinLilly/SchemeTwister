@@ -1,15 +1,17 @@
 import { GAME_SET_SIZE, GameSetSize } from '../model';
 
-export interface IGameSetSizeWithoutHeroes {
+export interface IHeroTeamConfig {
+  numberOfTeams: number;
+  heroesPerTeam: number;
+}
+
+export interface IGameSetSize {
+  numHeroes: number | IHeroTeamConfig;
   numMasterminds: number;
   numVillains: number;
   numHenchmen: number;
   numBystanders: number;
   numSchemes: number;
-}
-
-interface IGameSetSize extends IGameSetSizeWithoutHeroes {
-  numHeroes: number;
 }
 
 /**

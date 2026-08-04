@@ -1,8 +1,7 @@
 import * as uuid from 'uuid';
-import { describe, it, expect, beforeAll } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 
-import { GameSetMock } from '../testData/gameSetMock';
-
+import { FakeGameSetFactory } from '@schemetwister/libtwister/testing/data';
 import { GameSet } from './GameSet';
 import {
   Bystander,
@@ -20,13 +19,15 @@ describe('GameSet', () => {
   let coreBox: GameSet;
 
   beforeAll(() => {
-    coreBox = new GameSetMock(GAME_SET_SIZE.core).getGameSet();
+    coreBox = new FakeGameSetFactory().createGameSet(GAME_SET_SIZE.core);
   });
 
   describe('sorter', () => {
     const series = new SeriesMeta(uuid.v4(), 'Test Series', 'Test Series');
 
-    const largeBox = new GameSetMock(GAME_SET_SIZE.large).getGameSet();
+    const largeBox = new FakeGameSetFactory().createGameSet(
+      GAME_SET_SIZE.large
+    );
 
     const firstBox = new GameSet(
       {
@@ -93,14 +94,17 @@ describe('GameSet', () => {
 
     describe('with only heroes', () =>
       it('should only return the heroes', () => {
-        const gameSet = new GameSetMock(GAME_SET_SIZE.core, {
-          heroes: { num: 5 },
-          numBystanders: 0,
-          numHenchmen: 0,
-          numMasterminds: 0,
-          numSchemes: 0,
-          numVillains: 0,
-        }).getGameSet();
+        const gameSet = new FakeGameSetFactory().createGameSet(
+          GAME_SET_SIZE.core,
+          {
+            numHeroes: 5,
+            numBystanders: 0,
+            numHenchmen: 0,
+            numMasterminds: 0,
+            numSchemes: 0,
+            numVillains: 0,
+          }
+        );
 
         for (const card of gameSet.getCards()) {
           expect(card).toBeInstanceOf(Hero);

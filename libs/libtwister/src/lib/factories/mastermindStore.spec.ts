@@ -1,13 +1,14 @@
 import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
-import { MastermindStore } from './mastermindStore';
+import { faker } from '@faker-js/faker';
 import { FakeCardFactory } from '@schemetwister/libtwister/testing/data';
+import { MastermindStore } from './mastermindStore';
 
 describe('MastermindStore', () => {
   let store: MastermindStore;
-  const fakeCardFactory = new FakeCardFactory()
-  const TEST_MASTERMIND_1 = fakeCardFactory.createMastermind()
-  const TEST_MASTERMIND_2 = fakeCardFactory.createEpicMastermind()
+  const fakeCardFactory = new FakeCardFactory();
+  const TEST_MASTERMIND_1 = fakeCardFactory.createMastermind();
+  const TEST_MASTERMIND_2 = fakeCardFactory.createEpicMastermind();
 
   beforeAll(() => {
     store = new MastermindStore([TEST_MASTERMIND_2]);
@@ -49,8 +50,11 @@ describe('MastermindStore', () => {
     let largerStore: MastermindStore;
 
     beforeAll(() => {
-      
-      largerStore = new MastermindStore(fakeCardFactory.createMasterminds(2));
+      return (largerStore = new MastermindStore(
+        faker.helpers.multiple(() => fakeCardFactory.createMastermind(), {
+          count: 2,
+        })
+      ));
     });
 
     beforeEach(() => {

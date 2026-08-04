@@ -1,15 +1,19 @@
 import * as uuid from 'uuid';
-import { describe, beforeAll, it, expect } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 
+import {
+  FakeGameSetFactory,
+  FakeSeriesFactory,
+} from '@schemetwister/libtwister/testing/data';
 import { LibTwister } from './libTwister';
 import { GAME_SET_SIZE, ISeries, NumPlayers, SeriesMeta } from './model';
-import { createSeriesMock } from './testData/createSeriesMock';
-import { GameSetMock } from './testData/gameSetMock';
 
 describe('LibTwister', () => {
+  const fakeSeriesFactory = new FakeSeriesFactory();
+
   describe('Setups', () => {
     describe('with 1 game set', () => {
-      const series = createSeriesMock({
+      const series = fakeSeriesFactory.createSeries({
         numCore: 1,
         numLarge: 0,
         numMedium: 0,
@@ -98,7 +102,7 @@ describe('LibTwister', () => {
     });
 
     describe('with 2 game sets', () => {
-      const series = createSeriesMock({
+      const series = fakeSeriesFactory.createSeries({
         numCore: 1,
         numLarge: 1,
         numMedium: 0,
@@ -182,7 +186,7 @@ describe('LibTwister', () => {
     });
 
     describe('gameSetIdToGameSet', () => {
-      const series = createSeriesMock({
+      const series = fakeSeriesFactory.createSeries({
         numCore: 1,
         numLarge: 0,
         numMedium: 0,
@@ -203,11 +207,17 @@ describe('LibTwister', () => {
   });
 
   describe('validateGameSetIds', () => {
-    const testLargeSet = new GameSetMock(GAME_SET_SIZE.large).getGameSet();
+    const testLargeSet = new FakeGameSetFactory().createGameSet(
+      GAME_SET_SIZE.large
+    );
 
-    const testMediumSet = new GameSetMock(GAME_SET_SIZE.medium).getGameSet();
+    const testMediumSet = new FakeGameSetFactory().createGameSet(
+      GAME_SET_SIZE.medium
+    );
 
-    const testSmallSet = new GameSetMock(GAME_SET_SIZE.small).getGameSet();
+    const testSmallSet = new FakeGameSetFactory().createGameSet(
+      GAME_SET_SIZE.small
+    );
 
     const series: ISeries = {
       seriesMeta: new SeriesMeta(uuid.v4(), 'Test Series', ''),
