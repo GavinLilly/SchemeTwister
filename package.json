@@ -76,7 +76,7 @@
   },
   "devDependencies": {
     "@angular-devkit/architect": "v20-lts",
-    "@angular-devkit/build-angular": "v20-lts",
+    "@angular-devkit/build-angular": "v22-lts",
     "@angular-devkit/core": "v20-lts",
     "@angular-devkit/schematics": "v20-lts",
     "@angular-eslint/eslint-plugin": "^20.3.0",
@@ -91,7 +91,7 @@
     "@eslint/eslintrc": "^2.1.1",
     "@ngrx/schematics": "20.0.0",
     "@ngrx/store-devtools": "20.0.0",
-    "@nx/angular": "23.0.1",
+    "@nx/angular": "23.1.1",
     "@nx/devkit": "23.0.1",
     "@nx/esbuild": "23.0.1",
     "@nx/eslint": "23.0.1",
