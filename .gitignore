@@ -70,3 +70,7 @@ vitest.config.*.timestamp*
 .nx/polygraph
 .nx/self-healing
 .nx/migrate-runs
+
+# Nix devenv
+.devenv
+.direnv/
