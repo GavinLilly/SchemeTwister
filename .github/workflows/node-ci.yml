@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [main]
 
-env:
-  NODE_VERSION: 22
-
 jobs:
   setup:
     runs-on: ubuntu-latest
@@ -23,17 +20,11 @@ jobs:
           # Optional, but recommended: reduce the size of the checkout with tree filtering, see https://github.blog/open-source/git/get-up-to-speed-with-partial-clone-and-shallow-clone/
           filter: tree:0
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
+      - uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile --ignore-scripts
+          version: 11
+          runtime: node@22
+          cache: true
 
       - name: Derive Target SHAs for Nx Affected
         id: set-shas
@@ -49,17 +40,11 @@ jobs:
           fetch-depth: 0
           filter: tree:0
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
+      - uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile --ignore-scripts
+          version: 11
+          runtime: node@22
+          cache: true
 
       - name: Cache Nx Local Computation Cache
         uses: actions/cache@v5
@@ -90,17 +75,11 @@ jobs:
           fetch-depth: 0
           filter: tree:0
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
+      - uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile --ignore-scripts
+          version: 11
+          runtime: node@22
+          cache: true
 
       - name: Cache Nx Local Computation Cache
         uses: actions/cache@v5
