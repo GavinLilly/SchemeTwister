@@ -12,18 +12,22 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
+
       - name: Substitute Secrets into Tokenised File
         uses: Lambdaspire/action-substitute-secrets-in-file@main
         with:
           file: apps/web-app/src/environments/environment.ts
           tokenPattern: ${TOKEN}
           secretsJson: ${{ toJSON(secrets) }}
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
+
+      - uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2
         with:
-          node-version: 22
-      - run: pnpm install --frozen-lockfile
+          version: 11
+          runtime: node@22
+          cache: true
+
       - run: pnpm run build-prod
+
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'

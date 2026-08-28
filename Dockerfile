@@ -1,8 +1,8 @@
-FROM node:lts AS builder
+FROM ghcr.io/pnpm/pnpm:11 AS builder
 
 WORKDIR /build
 
-COPY nx.json package-lock.json package.json tsconfig.base.json ./
+COPY nx.json pnpm-lock.yaml pnpm-workspace.yaml package.json tsconfig.base.json ./
 COPY apps apps/
 COPY libs libs/
 
