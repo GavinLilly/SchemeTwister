@@ -96,6 +96,7 @@
     "@types/seedrandom": "^3.0.5",
     "@types/uuid": "^9.0.0",
     "@types/validator": "^13.11.1",
+    "@typescript-eslint/eslint-plugin": "^8.68.0",
     "@typescript-eslint/utils": "8.40.0",
     "@vitest/coverage-v8": "4.1.9",
     "@vitest/ui": "4.1.9",

@@ -9,7 +9,7 @@ COPY libs libs/
 RUN pnpm install --frozen-lockfile --ignore-scripts
 
 ARG node_env=production
-ENV NODE_ENV ${node_env}
+ENV NODE_ENV=${node_env}
 
 RUN pnpm run build
 
