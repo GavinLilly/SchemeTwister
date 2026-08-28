@@ -6,12 +6,12 @@ COPY nx.json package-lock.json package.json tsconfig.base.json ./
 COPY apps apps/
 COPY libs libs/
 
-RUN npm install --ignore-scripts
+RUN pnpm install --frozen-lockfile
 
 ARG node_env=production
 ENV NODE_ENV ${node_env}
 
-RUN npm run build-version && npm run build web-app
+RUN pnpm run build
 
 
 FROM nginx:alpine AS runtime

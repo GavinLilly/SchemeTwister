@@ -65,12 +65,11 @@ export default {
       }
     ],
     [
-      "@semantic-release/npm",
+      "@semantic-release/exec",
       {
-        npmPublish: false,
-        tarballDir: "dist"
+        prepareCmd: 'pnpm pack --out dist.tgz'
       }
-    ],
+    ]
     [
       "@semantic-release/git",
       {

@@ -44,7 +44,7 @@ git clone https://github.com/GavinLilly/schemetwister.git
 - Install dependencies
 
 ```shell
-npm install
+pnpm install
 ```
 
 - Run schemetwister web app
@@ -56,7 +56,7 @@ nx serve web-app
 - Commit your changes
 
 ```shell
-npm run cm
+pnpm run cm
 ```
 
 ---
@@ -74,7 +74,7 @@ To be filled
 To run tests just run
 
 ```shell
-npm test
+pnpm test
 ```
 
 ---

@@ -19,4 +19,4 @@ Follow the guidelines in the [Code of Conduct](https://github.com/GavinLilly/sch
 
 ## Style guide
 
-All commits should adhere to the conventional commits specification. `Commitlint` and `Commitizen` are configured on the repository to ensure you follow these guides. Just run `npm run commit` to follow the guide.
+All commits should adhere to the conventional commits specification. `Commitlint` and `Commitizen` are configured on the repository to ensure you follow these guides. Just run `pnpm run commit` to follow the guide.
