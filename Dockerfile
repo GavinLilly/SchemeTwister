@@ -11,7 +11,7 @@ RUN pnpm install --frozen-lockfile --ignore-scripts
 ARG node_env=production
 ENV NODE_ENV=${node_env}
 
-RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash - \
+RUN npx get-pnpm \
   && pnpm run build
 
 
