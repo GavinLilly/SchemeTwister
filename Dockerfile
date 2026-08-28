@@ -1,4 +1,4 @@
-FROM ghcr.io/pnpm/pnpm:11 AS builder
+FROM node:22 AS builder
 
 WORKDIR /build
 
@@ -11,7 +11,8 @@ RUN pnpm install --frozen-lockfile --ignore-scripts
 ARG node_env=production
 ENV NODE_ENV=${node_env}
 
-RUN pnpm run build
+RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash - \
+  && pnpm run build
 
 
 FROM nginx:alpine AS runtime
