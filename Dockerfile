@@ -6,7 +6,7 @@ COPY nx.json package-lock.json package.json tsconfig.base.json ./
 COPY apps apps/
 COPY libs libs/
 
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile --ignore-scripts
 
 ARG node_env=production
 ENV NODE_ENV ${node_env}
