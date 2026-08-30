@@ -18,11 +18,12 @@ jobs:
           tokenPattern: ${TOKEN}
           secretsJson: ${{ toJSON(secrets) }}
 
-      - uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2
+      - uses: pnpm/setup@703c52620218391530e48b9e8870d5c0082e1b9b
         with:
           version: 11
           runtime: node@22
           cache: true
+          require-lockfile: true
 
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v6

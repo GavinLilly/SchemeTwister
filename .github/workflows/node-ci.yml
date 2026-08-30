@@ -20,7 +20,7 @@ jobs:
           # Optional, but recommended: reduce the size of the checkout with tree filtering, see https://github.blog/open-source/git/get-up-to-speed-with-partial-clone-and-shallow-clone/
           filter: tree:0
 
-      - uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2
+      - uses: pnpm/setup@703c52620218391530e48b9e8870d5c0082e1b9b
         with:
           version: 11
           runtime: node@22
@@ -41,7 +41,7 @@ jobs:
           fetch-depth: 0
           filter: tree:0
 
-      - uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2
+      - uses: pnpm/setup@703c52620218391530e48b9e8870d5c0082e1b9b
         with:
           version: 11
           runtime: node@22
@@ -77,7 +77,7 @@ jobs:
           fetch-depth: 0
           filter: tree:0
 
-      - uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2
+      - uses: pnpm/setup@703c52620218391530e48b9e8870d5c0082e1b9b
         with:
           version: 11
           runtime: node@22
