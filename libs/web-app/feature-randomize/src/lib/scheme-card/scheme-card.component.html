@@ -19,6 +19,7 @@
             <span
               (click)="dispatchReset()"
               (keydown)="dispatchReset()"
+              tabindex="0"
               class="lock-block"
               ><fa-icon
                 [icon]="faLock"
@@ -29,6 +30,7 @@
             <span
               (click)="dispatchLocked(scheme)"
               (keydown)="dispatchLocked(scheme)"
+              tabindex="0"
               class="lock-block"
               ><fa-icon
                 [icon]="faLockOpen"

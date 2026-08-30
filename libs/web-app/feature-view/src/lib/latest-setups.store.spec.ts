@@ -1,11 +1,12 @@
-import {
-  EMPTY_STORED_SETUP,
-  StoredSetupsService,
-} from '@schemetwister/web-app/feature-setup-store';
 import { MockBuilder, MockInstance, MockRender } from 'ng-mocks';
 import { firstValueFrom } from 'rxjs';
 
 import { LatestSetupsStore } from './latest-setups.store';
+
+import {
+  EMPTY_STORED_SETUP,
+  StoredSetupsService,
+} from '@schemetwister/web-app/feature-setup-store';
 
 describe('LatestSetupsStore', () => {
   MockInstance.scope();

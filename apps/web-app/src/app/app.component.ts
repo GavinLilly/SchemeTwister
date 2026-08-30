@@ -1,8 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FooterComponent, HeaderComponent } from '@schemetwister/web-app/ui';
 
 import { UpdateService } from './update.service';
+
+import { FooterComponent, HeaderComponent } from '@schemetwister/web-app/ui';
+
 
 @Component({
   selector: 'schemetwister-root',

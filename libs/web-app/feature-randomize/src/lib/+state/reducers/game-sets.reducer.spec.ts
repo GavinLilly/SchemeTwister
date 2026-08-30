@@ -1,8 +1,9 @@
-import { mainline } from '@schemetwister/series-marvel';
 
 import { gameSetSelectionActions } from '../actions/game-sets.actions';
 
 import { gameSetsReducer } from './game-sets.reducer';
+
+import { mainline } from '@schemetwister/series-marvel';
 
 describe('GameSets Reducer', () => {
   describe('Set Game Sets', () => {

@@ -13,13 +13,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { buffySeries } from '@schemetwister/series-buffy';
-import { marvelSeries } from '@schemetwister/series-marvel';
-import { marvelStudiosSeries } from '@schemetwister/series-marvel-studios';
-import { marvelVillainsSeries } from '@schemetwister/series-marvel-villains';
-import { FIRESTORE_COLLECTION_TOKEN } from '@schemetwister/web-app/feature-setup-store';
-import { metaReducers, reducers } from '@schemetwister/web-app/feature-store';
-import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore';
 
 import { AppComponent } from './app/app.component';
@@ -27,6 +20,15 @@ import { APP_ROUTES } from './app/app.routes';
 import { UpdateService } from './app/update.service';
 import { environment } from './environments/environment';
 import { EnvironmentType } from './environments/environmentType';
+
+import { buffySeries } from '@schemetwister/series-buffy';
+import { marvelSeries } from '@schemetwister/series-marvel';
+import { marvelStudiosSeries } from '@schemetwister/series-marvel-studios';
+import { marvelVillainsSeries } from '@schemetwister/series-marvel-villains';
+import { FIRESTORE_COLLECTION_TOKEN } from '@schemetwister/web-app/feature-setup-store';
+import { metaReducers, reducers } from '@schemetwister/web-app/feature-store';
+import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
+
 
 const seriesRegister = [
   marvelSeries,

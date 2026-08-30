@@ -1,8 +1,9 @@
-import { mainline, marvelSeries } from '@schemetwister/series-marvel';
 
 import { IGameSetsState } from '../reducers/game-sets.reducer';
 
 import { selectGameSetIds } from './game-sets.selectors';
+
+import { mainline, marvelSeries } from '@schemetwister/series-marvel';
 
 describe('GameSets Selectors', () => {
   const initialState: IGameSetsState = {

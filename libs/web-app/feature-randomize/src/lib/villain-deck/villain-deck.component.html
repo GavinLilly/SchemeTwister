@@ -29,6 +29,7 @@
             <span
               (click)="toggleLocked(henchmen)"
               (keydown)="toggleLocked(henchmen)"
+              tabindex="0"
               class="lock-block"
             >
               @if(isCardLocked(henchmen)) {
@@ -67,6 +68,7 @@
             <span
               (click)="toggleLocked(villainGroup)"
               (keydown)="toggleLocked(villainGroup)"
+              tabindex="0"
               class="lock-block"
             >
               @if(isCardLocked(villainGroup)) {
@@ -113,6 +115,7 @@
             <span
               (click)="toggleLocked(hero)"
               (keydown)="toggleLocked(hero)"
+              tabindex="0"
               class="lock-block"
             >
               @if(isCardLocked(hero)) {
@@ -151,6 +154,7 @@
             <span
               (click)="toggleLocked(mastermind)"
               (keydown)="toggleLocked(mastermind)"
+              tabindex="0"
               class="lock-block"
             >
               @if(isCardLocked(mastermind)) {

@@ -1,12 +1,14 @@
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { provideMockStore } from '@ngrx/store/testing';
-import { GameSetup } from '@schemetwister/libtwister';
-import { marvelSeries } from '@schemetwister/series-marvel';
-import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
 
 import { HeroDeckComponent } from './hero-deck.component';
+
+import { GameSetup } from '@schemetwister/libtwister';
+import { marvelSeries } from '@schemetwister/series-marvel';
+import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
+
 
 describe('HeroDeckComponent', () => {
   beforeEach(() =>

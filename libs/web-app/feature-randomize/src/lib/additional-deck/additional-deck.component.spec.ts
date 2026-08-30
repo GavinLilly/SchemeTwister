@@ -1,8 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideMockStore } from '@ngrx/store/testing';
-import { GameSetup } from '@schemetwister/libtwister';
 
 import { AdditionalDeckComponent } from './additional-deck.component';
+
+import { GameSetup } from '@schemetwister/libtwister';
+
 
 describe('AdditionalDeckComponent', () => {
   let component: AdditionalDeckComponent;

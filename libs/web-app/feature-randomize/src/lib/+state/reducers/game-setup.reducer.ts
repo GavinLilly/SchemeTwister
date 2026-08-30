@@ -1,4 +1,13 @@
 import { Action, createReducer, on } from '@ngrx/store';
+
+import {
+  additionalDeckActions,
+  gameSetupGeneratorActions,
+  heroDeckActions,
+  randomizePageActions,
+  villainDeckActions,
+} from '../actions/game-setup.actions';
+
 import {
   Mastermind,
   GameSetup,
@@ -13,13 +22,6 @@ import {
   VillainGroup,
 } from '@schemetwister/libtwister';
 
-import {
-  additionalDeckActions,
-  gameSetupGeneratorActions,
-  heroDeckActions,
-  randomizePageActions,
-  villainDeckActions,
-} from '../actions/game-setup.actions';
 
 export const gameSetupFeatureKey = 'gameSetup';
 
@@ -317,6 +319,11 @@ const _gameSetupReducer = createReducer(
   })
 );
 
+/**
+ *
+ * @param state
+ * @param action
+ */
 export function gameSetupReducer(
   state: IGameSetupState | undefined,
   action: Action

@@ -3,13 +3,13 @@ import { VillainGroup, Hero } from '../cards';
 import { INumPlayerRules, IVillainDeck } from '../interfaces';
 import { DECK_TYPE, SchemeMinusRules } from '../types';
 
-import { Scheme } from './Scheme';
 import {
   RequireCard,
   RequireCardInDeckScheme,
   RequireCardWithBackup,
   RequireVillainGroup,
 } from './cardInDeck';
+import { Scheme } from './Scheme';
 
 export class RequireVillainAndHeroWithBackupInVillainDeckScheme extends RequireCardInDeckScheme<VillainGroup> {
   constructor(

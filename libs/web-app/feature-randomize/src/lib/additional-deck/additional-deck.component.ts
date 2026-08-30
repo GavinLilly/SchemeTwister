@@ -11,13 +11,7 @@ import {
   NgbAccordionBody,
 } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import { IAdditionalDeck } from '@schemetwister/libtwister';
-import {
-  HenchmenCardContentComponent,
-  VillaingroupCardContentComponent,
-  HeroCardContentComponent,
-  MastermindCardContentComponent,
-} from '@schemetwister/web-app/ui';
+
 
 import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
 import {
@@ -25,6 +19,14 @@ import {
   selectLockedAdditionalDeckCards,
 } from '../+state/selectors/game-setup-scheme.selectors';
 import { BLANK_IMAGE_BASE64 } from '../constants';
+
+import { IAdditionalDeck } from '@schemetwister/libtwister';
+import {
+  HenchmenCardContentComponent,
+  VillaingroupCardContentComponent,
+  HeroCardContentComponent,
+  MastermindCardContentComponent,
+} from '@schemetwister/web-app/ui';
 
 @Component({
   selector: 'schemetwister-additional-deck',

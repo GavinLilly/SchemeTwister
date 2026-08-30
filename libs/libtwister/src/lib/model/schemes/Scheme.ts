@@ -4,13 +4,13 @@ import * as uuid from 'uuid';
 
 import { CardStore, StoreOfStores } from '../../factories';
 import { ISetupConfig } from '../../libTwister';
-import { GameSet } from '../GameSet';
 import {
   AbstractCardGroup,
   Henchmen,
   Mastermind,
   VillainGroup,
 } from '../cards';
+import { GameSet } from '../GameSet';
 import {
   AdditionalDeckDeckMinimal,
   IAdditionalDeck,

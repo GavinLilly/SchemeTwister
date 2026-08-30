@@ -1,11 +1,12 @@
 import { Injectable, inject } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { tapResponse } from '@ngrx/operators';
+import { Observable, from } from 'rxjs';
+
 import {
   IStoredGameSetup,
   StoredSetupsService,
 } from '@schemetwister/web-app/feature-setup-store';
-import { Observable, from } from 'rxjs';
 
 export interface LatestSetupsStoreState {
   setups: IStoredGameSetup[];

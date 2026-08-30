@@ -2,8 +2,7 @@ import { Component, Signal, computed, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbActiveModal, NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import { GameSet, GAME_SET_SIZE } from '@schemetwister/libtwister';
-import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
+
 
 import { gameSetSelectionActions as fromGameSetDialog } from '../+state/actions/game-sets.actions';
 import { IGameSetsState } from '../+state/reducers/game-sets.reducer';
@@ -11,6 +10,9 @@ import {
   selectGameSetIds,
   selectLibTwister,
 } from '../+state/selectors/game-sets.selectors';
+
+import { GameSet, GAME_SET_SIZE } from '@schemetwister/libtwister';
+import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
 @Component({
     selector: 'schemetwister-game-set-select',

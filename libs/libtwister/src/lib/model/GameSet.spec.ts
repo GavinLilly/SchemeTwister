@@ -3,7 +3,6 @@ import { describe, it, expect, beforeAll } from 'vitest';
 
 import { GameSetMock } from '../testData/gameSetMock';
 
-import { GameSet } from './GameSet';
 import {
   Bystander,
   Henchmen,
@@ -12,6 +11,7 @@ import {
   SchemeDefinition,
   VillainGroup,
 } from './cards';
+import { GameSet } from './GameSet';
 import { SeriesMeta } from './seriesMeta';
 import { CARD_TYPE } from './types';
 import { GAME_SET_SIZE } from './types/gameSetSize.type';

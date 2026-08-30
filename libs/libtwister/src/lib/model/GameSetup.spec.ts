@@ -9,8 +9,8 @@ import {
 } from '../testData/schemes';
 import instantiateScheme from '../utils/instantiateScheme';
 
-import { GameSetup } from './GameSetup';
 import { Mastermind } from './cards';
+import { GameSetup } from './GameSetup';
 import { Scheme } from './schemes';
 
 let store: StoreOfStores;

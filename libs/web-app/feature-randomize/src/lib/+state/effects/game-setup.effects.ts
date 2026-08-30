@@ -8,12 +8,6 @@ import {
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { concatLatestFrom } from '@ngrx/operators';
 import { Store } from '@ngrx/store';
-import { LiteGameSetup } from '@schemetwister/libtwister';
-import {
-  IStoredGameSetup,
-  StoredSetupsService,
-} from '@schemetwister/web-app/feature-setup-store';
-import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import { of, from } from 'rxjs';
 import {
   catchError,
@@ -48,6 +42,13 @@ import {
   selectNumPlayers,
   selectIsAdvancedSolo,
 } from '../selectors/num-players.selectors';
+
+import { LiteGameSetup } from '@schemetwister/libtwister';
+import {
+  IStoredGameSetup,
+  StoredSetupsService,
+} from '@schemetwister/web-app/feature-setup-store';
+import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
 @Injectable({ providedIn: 'root' })
 export class GameSetupEffects {

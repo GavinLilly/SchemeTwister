@@ -4,9 +4,9 @@ import seedrandom from 'seedrandom';
 import { LibTwister } from '../libTwister';
 import instantiateScheme from '../utils/instantiateScheme';
 
-import { GameSetup } from './GameSetup';
 import { Henchmen, Hero, Mastermind, VillainGroup } from './cards';
 import { AbstractCardGroup } from './cards/abstractCardGroup';
+import { GameSetup } from './GameSetup';
 import {
   IAdditionalDeck,
   IAdditionalDeckRules,

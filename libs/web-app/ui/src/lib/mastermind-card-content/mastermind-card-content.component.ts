@@ -1,12 +1,14 @@
 import { Component, Input } from '@angular/core';
+
+
+import { BadguyCardContentComponent } from '../badguy-card-content/badguy-card-content.component';
+import { BaseCardContentComponent } from '../base-card-content/base-card-content.component';
+
 import {
   Mastermind,
   AdaptingMastermind,
   TransformingMastermind,
 } from '@schemetwister/libtwister';
-
-import { BadguyCardContentComponent } from '../badguy-card-content/badguy-card-content.component';
-import { BaseCardContentComponent } from '../base-card-content/base-card-content.component';
 
 @Component({
     selector: 'schemetwister-mastermind-card-content',

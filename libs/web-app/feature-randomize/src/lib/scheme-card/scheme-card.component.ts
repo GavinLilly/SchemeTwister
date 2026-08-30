@@ -3,6 +3,18 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCog, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import { NgbAccordionModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
+
+
+import { randomizePageActions } from '../+state/actions/game-setup.actions';
+import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
+import { INumPlayersState } from '../+state/reducers/num-players.reducer';
+import { selectLibTwister } from '../+state/selectors/game-sets.selectors';
+import {
+  selectDefinedScheme,
+  selectGameSetupScheme,
+  selectIsDefinedScheme,
+} from '../+state/selectors/game-setup-scheme.selectors';
+
 import {
   CARD_TYPE,
   Scheme,
@@ -14,16 +26,6 @@ import {
   BaseCardContentComponent,
   ModalSelectorComponent,
 } from '@schemetwister/web-app/ui';
-
-import { randomizePageActions } from '../+state/actions/game-setup.actions';
-import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
-import { INumPlayersState } from '../+state/reducers/num-players.reducer';
-import { selectLibTwister } from '../+state/selectors/game-sets.selectors';
-import {
-  selectDefinedScheme,
-  selectGameSetupScheme,
-  selectIsDefinedScheme,
-} from '../+state/selectors/game-setup-scheme.selectors';
 
 @Component({
   selector: 'schemetwister-scheme-card',

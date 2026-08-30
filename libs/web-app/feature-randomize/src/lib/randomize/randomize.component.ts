@@ -21,12 +21,7 @@ import {
   NgbAccordionBody,
 } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import {
-  AbstractCardGroup,
-  GameSetup,
-  NumPlayers,
-  numPlayers,
-} from '@schemetwister/libtwister';
+
 
 import { randomizePageActions } from '../+state/actions/game-setup.actions';
 import { numPlayersActions } from '../+state/actions/num-players.actions';
@@ -47,6 +42,13 @@ import { MastermindCardComponent } from '../mastermind-card/mastermind-card.comp
 import { SchemeCardComponent } from '../scheme-card/scheme-card.component';
 import { ScreenOnLockStore } from '../screen-on-lock.store';
 import { VillainDeckComponent } from '../villain-deck/villain-deck.component';
+
+import {
+  AbstractCardGroup,
+  GameSetup,
+  NumPlayers,
+  numPlayers,
+} from '@schemetwister/libtwister';
 
 @Component({
   selector: 'schemetwister-randomize',

@@ -33,6 +33,7 @@
             <span
               (click)="toggleLocked(hero)"
               (keydown)="toggleLocked(hero)"
+              tabindex="0"
               class="lock-block"
             >
               @if(isCardLocked(hero)) {
@@ -71,6 +72,7 @@
             <span
               (click)="toggleLocked(henchmen)"
               (keydown)="toggleLocked(henchmen)"
+              tabindex="0"
               class="lock-block"
             >
               @if(isCardLocked(henchmen)) {

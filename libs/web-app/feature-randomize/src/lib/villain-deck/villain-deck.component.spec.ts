@@ -1,9 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideMockStore } from '@ngrx/store/testing';
-import { GameSetup } from '@schemetwister/libtwister';
 
 import { VillainDeckComponent } from './villain-deck.component';
+
+import { GameSetup } from '@schemetwister/libtwister';
+
 
 describe('VillainDeckComponent', () => {
   let component: VillainDeckComponent;

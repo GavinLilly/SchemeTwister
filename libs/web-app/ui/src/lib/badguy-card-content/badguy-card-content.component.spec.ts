@@ -1,7 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { mainline } from '@schemetwister/series-marvel';
 
 import { BadguyCardContentComponent } from './badguy-card-content.component';
+
+import { mainline } from '@schemetwister/series-marvel';
+
 
 describe('BadguyCardContentComponent', () => {
   let component: BadguyCardContentComponent;

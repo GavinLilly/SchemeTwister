@@ -1,7 +1,8 @@
-import { GameSet, Hero } from '@schemetwister/libtwister';
 import * as uuid from 'uuid';
 
 import { SortByNamePipe } from './SortByName.pipe';
+
+import { GameSet, Hero } from '@schemetwister/libtwister';
 
 describe('SortByNamePipe', () => {
   it('create an instance', () => {
