@@ -6,13 +6,12 @@ COPY nx.json pnpm-lock.yaml pnpm-workspace.yaml package.json tsconfig.base.json 
 COPY apps apps/
 COPY libs libs/
 
-RUN pnpm install --frozen-lockfile --ignore-scripts
+RUN npx get-pnpm && pnpm install --frozen-lockfile --ignore-scripts
 
 ARG node_env=production
 ENV NODE_ENV=${node_env}
 
-RUN npx get-pnpm \
-  && pnpm run build
+RUN pnpm run build
 
 
 FROM nginx:alpine AS runtime

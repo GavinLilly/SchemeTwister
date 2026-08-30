@@ -25,6 +25,7 @@ jobs:
           version: 11
           runtime: node@22
           cache: true
+          require-lockfile: true
 
       - name: Derive Target SHAs for Nx Affected
         id: set-shas
@@ -45,6 +46,7 @@ jobs:
           version: 11
           runtime: node@22
           cache: true
+          require-lockfile: true
 
       - name: Cache Nx Local Computation Cache
         uses: actions/cache@v5
@@ -80,6 +82,7 @@ jobs:
           version: 11
           runtime: node@22
           cache: true
+          require-lockfile: true
 
       - name: Cache Nx Local Computation Cache
         uses: actions/cache@v5

@@ -67,7 +67,7 @@ export default [
       },
     },
     plugins: {
-      ...jsdoc.configs['flat/recommended-typescript'].plugins,
+      jsdoc,
     },
     // Override or add rules here
     rules: {
