@@ -6,7 +6,7 @@
     "declarationMap": true,
     "inlineSources": true,
     "types": [],
-    "target": "ES2021",
+    "target": "ES2022",
     "lib": ["dom"]
   },
   "exclude": [

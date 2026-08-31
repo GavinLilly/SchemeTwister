@@ -228,7 +228,9 @@ export class LiteGameSetup {
       }));
     } catch (err) {
       console.error(err);
-      throw new Error('Unsupported card type in the additional deck');
+      throw new Error('Unsupported card type in the additional deck', {
+        cause: err,
+      });
     }
   }
 }

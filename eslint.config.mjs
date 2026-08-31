@@ -5,7 +5,6 @@ import jsdoc from 'eslint-plugin-jsdoc';
 export default [
   ...nx.configs['flat/base'],
   ...nx.configs['flat/typescript'],
-  ...nx.configs['flat/javascript'],
   importPlugin.flatConfigs.recommended,
   {
     ignores: [

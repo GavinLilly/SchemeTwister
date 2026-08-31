@@ -9,7 +9,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "ES2021",
+    "target": "ES2022",
     "module": "esnext",
     "typeRoots": ["node_modules/@types"],
     "lib": ["dom", "ES2023"],
