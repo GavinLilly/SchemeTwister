@@ -1,21 +1,29 @@
-FROM node:22 AS builder
+FROM ghcr.io/pnpm/pnpm:11 AS base
 
-WORKDIR /build
+RUN pnpm runtime set node 22 -g
 
-COPY nx.json pnpm-lock.yaml pnpm-workspace.yaml package.json tsconfig.base.json ./
-COPY apps apps/
-COPY libs libs/
-
-RUN curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=11 sh - \
-  && pnpm install --frozen-lockfile --ignore-scripts
+FROM base AS builder
 
 ARG node_env=production
 ENV NODE_ENV=${node_env}
+
+WORKDIR /build
+
+COPY pnpm-lock.yaml ./
+
+RUN pnpm fetch
+
+COPY nx.json pnpm-workspace.yaml package.json tsconfig.base.json ./
+COPY apps apps/
+COPY libs libs/
 
 RUN pnpm run build
 
 
 FROM nginx:alpine AS runtime
+
+ARG port=80
+ENV PORT=${port}
 
 RUN addgroup -S nonroot \
   && adduser -S nonroot -G nonroot
@@ -26,6 +34,4 @@ COPY ./docker/nginx.conf /etc/nginx/conf.d/default.conf
 
 USER nonroot
 
-ARG port=80
-ENV PORT ${port}
 EXPOSE ${port}
