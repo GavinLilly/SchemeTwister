@@ -7,8 +7,8 @@ import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import {
   getFirestore,
   connectFirestoreEmulator,
+  provideFirestore,
 } from '@angular/fire/firestore';
-import { provideFirestore } from '@angular/fire/firestore';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
