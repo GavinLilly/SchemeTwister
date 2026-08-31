@@ -43,7 +43,6 @@
     "@types/dom-screen-wake-lock": "^1.0.3",
     "bootstrap": "~5.3.6",
     "class-transformer": "^0.5.1",
-    "firebase": "^12.18.0",
     "nanoid": "^3.3.8",
     "ngrx-store-localstorage": "^20.0.0",
     "reflect-metadata": "^0.1.13",

@@ -33,7 +33,7 @@
             <button
               type="button"
               (click)="toggleLocked(hero)"
-              [attr.aria-pressed]="isCardLocked"
+              [attr.aria-pressed]="isCardLocked(hero)"
               class="lock-block"
             >
               @if(isCardLocked(hero)) {

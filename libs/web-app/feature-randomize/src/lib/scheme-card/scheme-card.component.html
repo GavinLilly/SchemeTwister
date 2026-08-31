@@ -16,27 +16,29 @@
               {{ scheme.name }}
             </button>
             @if(schemeLocked()) {
-            <span
+            <button
+              type="button"
               (click)="dispatchReset()"
-              (keydown)="dispatchReset()"
-              tabindex="0"
+              [attr.aria-pressed]="schemeLocked()"
               class="lock-block"
-              ><fa-icon
+            >
+              <fa-icon
                 [icon]="faLock"
                 class="ml-auto lock-icon locked"
-              ></fa-icon
-            ></span>
+              ></fa-icon>
+            </button>
             } @else {
-            <span
+            <button
+              type="button"
               (click)="dispatchLocked(scheme)"
-              (keydown)="dispatchLocked(scheme)"
-              tabindex="0"
+              [attr.aria-pressed]="!schemeLocked()"
               class="lock-block"
-              ><fa-icon
+            >
+              <fa-icon
                 [icon]="faLockOpen"
                 class="ml-auto lock-icon unlocked"
-              ></fa-icon
-            ></span>
+              ></fa-icon>
+            </button>
             }
           </div>
         </h2>

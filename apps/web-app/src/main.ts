@@ -4,6 +4,10 @@ import {
 } from '@angular/common/http';
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import {
+  getFirestore,
+  connectFirestoreEmulator,
+} from '@angular/fire/firestore';
 import { provideFirestore } from '@angular/fire/firestore';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
@@ -13,7 +17,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore';
 
 import { AppComponent } from './app/app.component';
 import { APP_ROUTES } from './app/app.routes';
@@ -28,7 +31,6 @@ import { marvelVillainsSeries } from '@schemetwister/series-marvel-villains';
 import { FIRESTORE_COLLECTION_TOKEN } from '@schemetwister/web-app/feature-setup-store';
 import { metaReducers, reducers } from '@schemetwister/web-app/feature-store';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
-
 
 const seriesRegister = [
   marvelSeries,
@@ -46,6 +48,15 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
     provideRouter(APP_ROUTES),
+    // Firebase
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => {
+      const firestore = getFirestore();
+      if (environment.environmentType === EnvironmentType.DEV) {
+        connectFirestoreEmulator(firestore, 'localhost', 8080);
+      }
+      return firestore;
+    }),
     // NGRX
     provideStore(reducers, { metaReducers }),
     provideStoreDevtools({ maxAge: 30, serialize: true, connectInZone: true }),
@@ -67,15 +78,6 @@ bootstrapApplication(AppComponent, {
         registrationStrategy: `registerWhenStable:${serviceWorkerRegistrationTime}`,
       })
     ),
-    // Firebase
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => {
-      const firestore = getFirestore();
-      if (environment.environmentType === EnvironmentType.DEV) {
-        connectFirestoreEmulator(firestore, 'localhost', 8080);
-      }
-      return firestore;
-    }),
     UpdateService,
     {
       provide: FIRESTORE_COLLECTION_TOKEN,

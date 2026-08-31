@@ -26,10 +26,10 @@
         <h2 ngbAccordionHeader>
           <div class="d-flex align-items-center justify-content-between">
             <button ngbAccordionButton>{{ henchmen.name }}</button>
-            <span
+            <button
+              type="button"
               (click)="toggleLocked(henchmen)"
-              (keydown)="toggleLocked(henchmen)"
-              tabindex="0"
+              [attr.aria-pressed]="isCardLocked(henchmen)"
               class="lock-block"
             >
               @if(isCardLocked(henchmen)) {
@@ -43,7 +43,7 @@
                 class="ml-auto lock-icon unlocked"
               ></fa-icon>
               }
-            </span>
+            </button>
           </div>
         </h2>
         <div ngbAccordionCollapse>
@@ -65,10 +65,10 @@
         <h2 ngbAccordionHeader>
           <div class="d-flex align-items-center justify-content-between">
             <button ngbAccordionButton>{{ villainGroup.name }}</button>
-            <span
+            <button
+              type="button"
               (click)="toggleLocked(villainGroup)"
-              (keydown)="toggleLocked(villainGroup)"
-              tabindex="0"
+              [attr.aria-pressed]="isCardLocked(villainGroup)"
               class="lock-block"
             >
               @if(isCardLocked(villainGroup)) {
@@ -82,7 +82,7 @@
                 class="ml-auto lock-icon unlocked"
               ></fa-icon>
               }
-            </span>
+            </button>
           </div>
         </h2>
         <div ngbAccordionCollapse>
@@ -112,10 +112,10 @@
               />
               <span>{{ hero.name }}</span>
             </button>
-            <span
+            <button
+              type="button"
               (click)="toggleLocked(hero)"
-              (keydown)="toggleLocked(hero)"
-              tabindex="0"
+              [attr.aria-pressed]="isCardLocked(hero)"
               class="lock-block"
             >
               @if(isCardLocked(hero)) {
@@ -129,7 +129,7 @@
                 class="ml-auto lock-icon unlocked"
               ></fa-icon>
               }
-            </span>
+            </button>
           </div>
         </h2>
         <div ngbAccordionCollapse>
@@ -151,10 +151,10 @@
         <h2 ngbAccordionHeader>
           <div class="d-flex align-items-center justify-content-between">
             <button ngbAccordionButton>{{ mastermind.name }}</button>
-            <span
+            <button
+              type="button"
               (click)="toggleLocked(mastermind)"
-              (keydown)="toggleLocked(mastermind)"
-              tabindex="0"
+              [attr.aria-pressed]="isCardLocked(mastermind)"
               class="lock-block"
             >
               @if(isCardLocked(mastermind)) {
@@ -168,7 +168,7 @@
                 class="ml-auto lock-icon unlocked"
               ></fa-icon>
               }
-            </span>
+            </button>
           </div>
         </h2>
         <div ngbAccordionCollapse>
