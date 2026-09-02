@@ -1,10 +1,9 @@
 import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
 
-import { HomePageComponent } from './home-page.component';
-
 import { marvelSeries } from '@schemetwister/series-marvel';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
+import { HomePageComponent } from './home-page.component';
 
 describe('HomePageComponent', () => {
   beforeEach(() =>

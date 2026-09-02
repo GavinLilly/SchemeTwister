@@ -17,6 +17,13 @@ import {
   mergeMap,
 } from 'rxjs/operators';
 
+import { LiteGameSetup } from '@schemetwister/libtwister';
+import {
+  IStoredGameSetup,
+  StoredSetupsService,
+} from '@schemetwister/web-app/feature-setup-store';
+import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
+
 import { gameSetCheckerActions } from '../actions/game-sets.actions';
 import {
   randomizePageActions,
@@ -42,13 +49,6 @@ import {
   selectNumPlayers,
   selectIsAdvancedSolo,
 } from '../selectors/num-players.selectors';
-
-import { LiteGameSetup } from '@schemetwister/libtwister';
-import {
-  IStoredGameSetup,
-  StoredSetupsService,
-} from '@schemetwister/web-app/feature-setup-store';
-import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
 @Injectable({ providedIn: 'root' })
 export class GameSetupEffects {

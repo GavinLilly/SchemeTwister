@@ -8,7 +8,7 @@ import {
 } from '@schemetwister/libtwister';
 import { IStoredGameSetup } from '@schemetwister/web-app/feature-setup-store';
 
-@Pipe({ name: 'storedSetupToGameSetup', })
+@Pipe({ name: 'storedSetupToGameSetup' })
 export class StoredSetupToGameSetupPipe implements PipeTransform {
   transform(value: IStoredGameSetup, libTwister: LibTwister): GameSetup {
     const liteSetup = plainToInstance(LiteGameSetup, value);

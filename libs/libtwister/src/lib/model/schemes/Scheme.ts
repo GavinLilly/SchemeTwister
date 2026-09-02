@@ -1,6 +1,6 @@
 import { merge } from 'ts-deepmerge';
 import { PartialDeep } from 'type-fest';
-import * as uuid from 'uuid';
+import { v4 as uuidV4 } from 'uuid';
 
 import { CardStore, StoreOfStores } from '../../factories';
 import { ISetupConfig } from '../../libTwister';
@@ -130,7 +130,7 @@ export class Scheme implements IPlayableObject {
    */
   public static empty(): Scheme {
     return new Scheme({
-      id: uuid.v4(),
+      id: uuidV4(),
       name: 'EMPTY SCHEME',
       setup: 'n/a',
       evilWins: 'n/a',
@@ -267,7 +267,7 @@ export class Scheme implements IPlayableObject {
     rules: Readonly<INumPlayerRules>,
     store: Readonly<StoreOfStores>,
     // TODO Disabled while trying to figure out the best way to lock additional decks
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     partialAdditionalDeck?: Readonly<AdditionalDeckDeckMinimal>
   ): IAdditionalDeck[] {
     const additionalDecks = [];
@@ -617,11 +617,11 @@ export class Scheme implements IPlayableObject {
   }
 
   protected initialiseHeroDeck(
-    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     rules: Readonly<INumPlayerRules>,
-    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     store: Readonly<StoreOfStores>,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     numPlayers: number
   ): IHeroDeck {
     return {
@@ -631,7 +631,7 @@ export class Scheme implements IPlayableObject {
 
   protected initialiseVillainDeck(
     rules: Readonly<INumPlayerRules>,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     store: Readonly<StoreOfStores>
   ): IVillainDeck {
     return {
@@ -643,9 +643,9 @@ export class Scheme implements IPlayableObject {
   }
 
   protected initialiseAdditionalDecks(
-    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     rules: Readonly<INumPlayerRules>,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     store: Readonly<StoreOfStores>
   ): IAdditionalDeckDeck | undefined {
     return undefined;

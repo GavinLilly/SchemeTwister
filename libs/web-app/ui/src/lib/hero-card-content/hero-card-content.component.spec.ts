@@ -1,11 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { mainline } from '@schemetwister/series-marvel';
 
 import { BaseCardContentComponent } from '../base-card-content/base-card-content.component';
 
 import { HeroCardContentComponent } from './hero-card-content.component';
-
-import { mainline } from '@schemetwister/series-marvel';
 
 describe('HeroCardContentComponent', () => {
   let component: HeroCardContentComponent;
@@ -13,8 +12,8 @@ describe('HeroCardContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [HeroCardContentComponent, BaseCardContentComponent],
-}).compileComponents();
+      imports: [HeroCardContentComponent, BaseCardContentComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

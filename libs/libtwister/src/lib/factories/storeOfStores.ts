@@ -1,6 +1,12 @@
-import { GameSetup } from '../model';
-import { Henchmen, Hero, VillainGroup } from '../model/cards';
-import { ICardType, IGameSetup, IPlayableObject } from '../model/interfaces';
+import {
+  GameSetup,
+  Henchmen,
+  Hero,
+  VillainGroup,
+  ICardType,
+  IGameSetup,
+  IPlayableObject,
+} from '../model';
 
 import { CardStore } from './cardStore';
 import { MastermindStore, MastermindType } from './mastermindStore';

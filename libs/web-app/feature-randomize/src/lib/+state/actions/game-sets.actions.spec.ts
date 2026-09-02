@@ -1,7 +1,6 @@
-import { gameSetSelectionActions } from './game-sets.actions';
-
 import { mainline } from '@schemetwister/series-marvel';
 
+import { gameSetSelectionActions } from './game-sets.actions';
 
 describe('loadSelectedGameSetss', () => {
   it('should return an action', () => {

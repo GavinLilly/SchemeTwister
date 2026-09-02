@@ -1,8 +1,8 @@
-import * as uuid from 'uuid';
-
-import { SortByNamePipe } from './SortByName.pipe';
+import { v4 as uuidV4 } from 'uuid';
 
 import { GameSet, Hero } from '@schemetwister/libtwister';
+
+import { SortByNamePipe } from './SortByName.pipe';
 
 describe('SortByNamePipe', () => {
   it('create an instance', () => {
@@ -17,17 +17,17 @@ describe('SortByNamePipe', () => {
 
   it('should sort entries passed to it', () => {
     const hero1 = new Hero({
-      id: uuid.v4(),
+      id: uuidV4(),
       name: 'Hero ONE',
       gameSet: GameSet.empty(),
     });
     const hero2 = new Hero({
-      id: uuid.v4(),
+      id: uuidV4(),
       name: 'Hero TWO',
       gameSet: GameSet.empty(),
     });
     const hero3 = new Hero({
-      id: uuid.v4(),
+      id: uuidV4(),
       name: 'Hero THREE',
       gameSet: GameSet.empty(),
     });

@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BadguyCardContentComponent } from './badguy-card-content.component';
-
 import { mainline } from '@schemetwister/series-marvel';
 
+import { BadguyCardContentComponent } from './badguy-card-content.component';
 
 describe('BadguyCardContentComponent', () => {
   let component: BadguyCardContentComponent;
@@ -11,8 +10,8 @@ describe('BadguyCardContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [BadguyCardContentComponent],
-}).compileComponents();
+      imports: [BadguyCardContentComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -1,12 +1,16 @@
-import { RequireCardName, RequireHenchmen, RequireHero } from '../model';
-import { SchemeDefinition } from '../model/cards/schemeDefinition';
-import { RequireCard } from '../model/schemes/cardInDeck/requireCard';
-import { RequireCardInDeckScheme } from '../model/schemes/cardInDeck/requireCardInDeckScheme';
-import { RequireVillainGroup } from '../model/schemes/cardInDeck/requireVillainGroup';
-import { PlayerPicksAHeroScheme } from '../model/schemes/PlayerPicksAHeroScheme';
-import { RequireVillainAndHeroWithBackupInVillainDeckScheme } from '../model/schemes/RequireVillainAndHeroWithBackupInVillainDeck.Scheme';
-import { SoloBannedScheme } from '../model/schemes/SoloBannedScheme';
-import { DECK_TYPE } from '../model/types/deckType.type';
+import {
+  DECK_TYPE,
+  PlayerPicksAHeroScheme,
+  RequireCard,
+  RequireCardInDeckScheme,
+  RequireCardName,
+  RequireHenchmen,
+  RequireHero,
+  RequireVillainAndHeroWithBackupInVillainDeckScheme,
+  RequireVillainGroup,
+  SchemeDefinition,
+  SoloBannedScheme,
+} from '../model';
 
 import { TEST_GAME_SET_META_1, TEST_GAME_SET_META_2 } from './gameSets';
 import { TEST_HENCHMEN_1 } from './henchmen';

@@ -1,12 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
+import { ISeries, LibTwister } from '@schemetwister/libtwister';
+
 import {
   gameSetsFeatureKey,
   IGameSetsState,
 } from '../reducers/game-sets.reducer';
-
-import { ISeries, LibTwister } from '@schemetwister/libtwister';
-
 
 const selectGameSetsFeature =
   createFeatureSelector<IGameSetsState>(gameSetsFeatureKey);

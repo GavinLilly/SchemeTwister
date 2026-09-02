@@ -5,11 +5,10 @@ import {
   NgbModule,
 } from '@ng-bootstrap/ng-bootstrap';
 
-import { HeroSelectorComponent } from './hero-selector.component';
-
 import { LibTwister } from '@schemetwister/libtwister';
 import { marvelSeries } from '@schemetwister/series-marvel';
 
+import { HeroSelectorComponent } from './hero-selector.component';
 
 describe('HeroSelectorComponent', () => {
   let component: HeroSelectorComponent;

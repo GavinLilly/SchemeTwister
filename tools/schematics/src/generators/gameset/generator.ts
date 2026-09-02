@@ -10,7 +10,7 @@ import {
 } from '@nx/devkit';
 import { GAME_SET_SIZE, getGamesetSize } from '@schemetwister/libtwister';
 import camelCase from 'camelcase';
-import * as uuid from 'uuid';
+import { v4 as uuidV4 } from 'uuid';
 
 import { GamesetGeneratorSchema } from './schema';
 
@@ -31,7 +31,6 @@ function getRealGameSetSize(
   }
 }
 
-// eslint-disable-next-line jsdoc/require-jsdoc
 export async function gamesetGenerator(
   tree: Tree,
   options: GamesetGeneratorSchema
@@ -57,7 +56,6 @@ export async function gamesetGenerator(
     seriesMetaFile.length - 3
   );
 
-  // eslint-disable-next-line no-undef
   generateFiles(tree, path.join(__dirname, 'files'), gameSetRoot, {
     ...options,
     camelName,
@@ -67,7 +65,7 @@ export async function gamesetGenerator(
     numMasterminds: cardNumbers.numMasterminds,
     numVillains: cardNumbers.numVillains,
     numSchemes: cardNumbers.numSchemes,
-    generateUuid: () => uuid.v4(),
+    generateUuid: () => uuidV4(),
     seriesMetaClass,
     tpl: '',
   });

@@ -14,6 +14,12 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 
+import { Henchmen, Hero, IHeroDeck } from '@schemetwister/libtwister';
+import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
+import {
+  HeroCardContentComponent,
+  HenchmenCardContentComponent,
+} from '@schemetwister/web-app/ui';
 
 import {
   heroDeckActions,
@@ -27,13 +33,6 @@ import {
 } from '../+state/selectors/game-setup-scheme.selectors';
 import { BLANK_IMAGE_BASE64 } from '../constants';
 import { HeroSelectorComponent } from '../hero-selector/hero-selector.component';
-
-import { Henchmen, Hero, IHeroDeck } from '@schemetwister/libtwister';
-import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
-import {
-  HeroCardContentComponent,
-  HenchmenCardContentComponent,
-} from '@schemetwister/web-app/ui';
 
 /**
  * @todo check if bystanders are brought in

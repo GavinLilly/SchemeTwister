@@ -4,13 +4,11 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
 import { Observable } from 'rxjs';
 
-import { GameSetupEffects } from './game-setup.effects';
-
 import { marvelSeries } from '@schemetwister/series-marvel';
 import { StoredSetupsService } from '@schemetwister/web-app/feature-setup-store';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
-
+import { GameSetupEffects } from './game-setup.effects';
 
 describe('GameSetupEffects', () => {
   beforeEach(() =>

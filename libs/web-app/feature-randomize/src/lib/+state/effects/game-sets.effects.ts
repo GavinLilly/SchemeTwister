@@ -3,6 +3,9 @@ import { Actions, OnInitEffects, createEffect, ofType } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
 import { map, withLatestFrom } from 'rxjs/operators';
 
+import { LibTwister } from '@schemetwister/libtwister';
+import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
+
 import {
   gameSetSelectionActions,
   gameSetCheckerActions,
@@ -13,9 +16,6 @@ import {
   selectGameSetIds,
   selectLibTwister,
 } from '../selectors/game-sets.selectors';
-
-import { LibTwister } from '@schemetwister/libtwister';
-import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
 @Injectable({ providedIn: 'root' })
 export class GameSetsEffects implements OnInitEffects {

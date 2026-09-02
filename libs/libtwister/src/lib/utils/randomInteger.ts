@@ -1,5 +1,3 @@
-/* eslint-disable no-redeclare */
-
 /**
  * Get a random number between 0 and maxNumber
  * @param maxNumber the maximum number to pick from

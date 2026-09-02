@@ -1,12 +1,11 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { mainline } from '@schemetwister/series-marvel';
 
 import { BadguyCardContentComponent } from '../badguy-card-content/badguy-card-content.component';
 import { BaseCardContentComponent } from '../base-card-content/base-card-content.component';
 
 import { MastermindCardContentComponent } from './mastermind-card-content.component';
-
-import { mainline } from '@schemetwister/series-marvel';
 
 describe('MastermindCardContentComponent', () => {
   let component: MastermindCardContentComponent;
@@ -14,10 +13,12 @@ describe('MastermindCardContentComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    imports: [MastermindCardContentComponent,
+      imports: [
+        MastermindCardContentComponent,
         BaseCardContentComponent,
-        BadguyCardContentComponent,],
-}).compileComponents();
+        BadguyCardContentComponent,
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

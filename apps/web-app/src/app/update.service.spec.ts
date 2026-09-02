@@ -17,14 +17,14 @@ describe('UpdateService', () => {
 
     logSpy = jest
       .spyOn(console, 'log')
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
+
       .mockImplementation(() => {
         // NOOP
       });
 
     errorSpy = jest
       .spyOn(console, 'error')
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
+
       .mockImplementation(() => {
         // NOOP
       });

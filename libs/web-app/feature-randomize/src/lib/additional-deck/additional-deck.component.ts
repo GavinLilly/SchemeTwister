@@ -12,14 +12,6 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 
-
-import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
-import {
-  selectAdditionalDecks,
-  selectLockedAdditionalDeckCards,
-} from '../+state/selectors/game-setup-scheme.selectors';
-import { BLANK_IMAGE_BASE64 } from '../constants';
-
 import { IAdditionalDeck } from '@schemetwister/libtwister';
 import {
   HenchmenCardContentComponent,
@@ -27,6 +19,13 @@ import {
   HeroCardContentComponent,
   MastermindCardContentComponent,
 } from '@schemetwister/web-app/ui';
+
+import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
+import {
+  selectAdditionalDecks,
+  selectLockedAdditionalDeckCards,
+} from '../+state/selectors/game-setup-scheme.selectors';
+import { BLANK_IMAGE_BASE64 } from '../constants';
 
 @Component({
   selector: 'schemetwister-additional-deck',

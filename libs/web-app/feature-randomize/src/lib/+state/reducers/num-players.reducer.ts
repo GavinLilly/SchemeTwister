@@ -1,9 +1,8 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { numPlayersActions } from '../actions/num-players.actions';
-
 import { NumPlayers } from '@schemetwister/libtwister';
 
+import { numPlayersActions } from '../actions/num-players.actions';
 
 export const numPlayersFeatureKey = 'numPlayers';
 

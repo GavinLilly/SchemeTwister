@@ -1,7 +1,3 @@
-import { IGameSetupState } from '../reducers/game-setup.reducer';
-
-import { selectGameSetupScheme } from './game-setup-scheme.selectors';
-
 import {
   GameSetup,
   instantiateScheme,
@@ -11,7 +7,9 @@ import {
 } from '@schemetwister/libtwister';
 import { mainline } from '@schemetwister/series-marvel';
 
+import { IGameSetupState } from '../reducers/game-setup.reducer';
 
+import { selectGameSetupScheme } from './game-setup-scheme.selectors';
 
 describe('GameSetupScheme Selectors', () => {
   let store: StoreOfStores;

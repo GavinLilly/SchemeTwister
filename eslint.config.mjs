@@ -1,11 +1,14 @@
 import nx from '@nx/eslint-plugin';
-import importPlugin from 'eslint-plugin-import';
+import tsParser from '@typescript-eslint/parser';
+import { importX } from 'eslint-plugin-import-x';
 import jsdoc from 'eslint-plugin-jsdoc';
 
 export default [
   ...nx.configs['flat/base'],
+  ...nx.configs['flat/javascript'],
   ...nx.configs['flat/typescript'],
-  importPlugin.flatConfigs.recommended,
+  importX.flatConfigs.recommended,
+  importX.flatConfigs.typescript,
   {
     ignores: [
       '**/dist',
@@ -57,13 +60,21 @@ export default [
       '**/*.mjs',
     ],
     settings: {
-      'import/resolver': {
+      'import-x/resolver': {
         typescript: {
           alwaysTryTypes: true,
-          project: ['./tsconfig.base.json', './libs/**/tsconfig.*.json'],
+          project: [
+            './tsconfig.base.json',
+            '**/tsconfig.json',
+            '**/tsconfig.*.json',
+          ],
         },
-        node: true,
       },
+    },
+    languageOptions: {
+      parser: tsParser,
+      ecmaVersion: 'latest',
+      sourceType: 'module',
     },
     plugins: {
       jsdoc,
@@ -107,9 +118,17 @@ export default [
           format: ['UPPER_CASE'],
         },
       ],
-      'import/order': [
+      'import-x/order': [
         'error',
         {
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+          ],
           pathGroups: [
             {
               pattern: '@schemetwister/**',

@@ -3,12 +3,11 @@ import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testi
 import { provideMockStore } from '@ngrx/store/testing';
 import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
 
-import { SchemeCardComponent } from './scheme-card.component';
-
 import { GameSetup } from '@schemetwister/libtwister';
 import { marvelSeries } from '@schemetwister/series-marvel';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
+import { SchemeCardComponent } from './scheme-card.component';
 
 describe('SchemeCardComponent', () => {
   beforeEach(() =>

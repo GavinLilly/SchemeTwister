@@ -13,16 +13,6 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 
-
-import { villainDeckActions } from '../+state/actions/game-setup.actions';
-import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
-import {
-  selectLockedVillainDeckCards,
-  selectVillainDeck,
-} from '../+state/selectors/game-setup-scheme.selectors';
-import { BLANK_IMAGE_BASE64 } from '../constants';
-import { VillainAdditionalDeckCardType } from '../villainAdditionalDeckCard.type';
-
 import {
   Henchmen,
   Hero,
@@ -36,6 +26,15 @@ import {
   HeroCardContentComponent,
   MastermindCardContentComponent,
 } from '@schemetwister/web-app/ui';
+
+import { villainDeckActions } from '../+state/actions/game-setup.actions';
+import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
+import {
+  selectLockedVillainDeckCards,
+  selectVillainDeck,
+} from '../+state/selectors/game-setup-scheme.selectors';
+import { BLANK_IMAGE_BASE64 } from '../constants';
+import { VillainAdditionalDeckCardType } from '../villainAdditionalDeckCard.type';
 
 @Component({
   selector: 'schemetwister-villain-deck',

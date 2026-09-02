@@ -2,10 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideMockStore } from '@ngrx/store/testing';
 
-import { VillainDeckComponent } from './villain-deck.component';
-
 import { GameSetup } from '@schemetwister/libtwister';
 
+import { VillainDeckComponent } from './villain-deck.component';
 
 describe('VillainDeckComponent', () => {
   let component: VillainDeckComponent;
@@ -13,18 +12,18 @@ describe('VillainDeckComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [NgbAccordionModule, VillainDeckComponent],
-    providers: [
+      imports: [NgbAccordionModule, VillainDeckComponent],
+      providers: [
         provideMockStore({
-            initialState: {
-                gameSetup: {
-                    gameSetup: GameSetup.empty(),
-                },
-                numPlayers: 2,
+          initialState: {
+            gameSetup: {
+              gameSetup: GameSetup.empty(),
             },
+            numPlayers: 2,
+          },
         }),
-    ],
-}).compileComponents();
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

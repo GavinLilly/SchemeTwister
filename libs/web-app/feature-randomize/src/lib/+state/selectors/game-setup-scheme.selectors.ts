@@ -1,12 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
+import { GameSetup } from '@schemetwister/libtwister';
+
 import {
   gameSetupFeatureKey,
   IGameSetupState,
 } from '../reducers/game-setup.reducer';
-
-import { GameSetup } from '@schemetwister/libtwister';
-
 
 const selectGameSetupFeature =
   createFeatureSelector<IGameSetupState>(gameSetupFeatureKey);

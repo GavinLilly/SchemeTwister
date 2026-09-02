@@ -3,24 +3,18 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/libtwister/src",
   "projectType": "library",
-  "tags": [
-    "scope:shared"
-  ],
+  "tags": ["scope:shared"],
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": [
-        "{options.outputFile}"
-      ]
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nx/vitest:test",
       "options": {
         "codeCoverage": true
       },
-      "outputs": [
-        "{workspaceRoot}/coverage/libs/libtwister"
-      ]
+      "outputs": ["{workspaceRoot}/coverage/libs/libtwister"]
     },
     "build": {
       "executor": "@nx/js:swc",
@@ -30,9 +24,7 @@
         "packageJson": "libs/libtwister/package.json",
         "main": "libs/libtwister/src/index.ts"
       },
-      "outputs": [
-        "{options.outputPath}"
-      ]
+      "outputs": ["{options.outputPath}"]
     }
   }
 }

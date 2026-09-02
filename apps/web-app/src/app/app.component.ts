@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
+import { Firestore } from '@angular/fire/firestore';
 import { RouterOutlet } from '@angular/router';
 
-import { UpdateService } from './update.service';
-
 import { FooterComponent, HeaderComponent } from '@schemetwister/web-app/ui';
-import { Firestore } from '@angular/fire/firestore';
+
+import { UpdateService } from './update.service';
 
 @Component({
   selector: 'schemetwister-root',

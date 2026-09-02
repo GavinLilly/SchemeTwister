@@ -4,16 +4,6 @@ import { faCog, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import { NgbAccordionModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 
-
-import { randomizePageActions } from '../+state/actions/game-setup.actions';
-import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
-import { selectLibTwister } from '../+state/selectors/game-sets.selectors';
-import {
-  selectDefinedMastermind,
-  selectIsDefinedMastermind,
-  selectMastermind,
-} from '../+state/selectors/game-setup-scheme.selectors';
-
 import {
   Mastermind,
   CARD_TYPE,
@@ -25,6 +15,15 @@ import {
   MastermindCardContentComponent,
   ModalSelectorComponent,
 } from '@schemetwister/web-app/ui';
+
+import { randomizePageActions } from '../+state/actions/game-setup.actions';
+import { IGameSetupState } from '../+state/reducers/game-setup.reducer';
+import { selectLibTwister } from '../+state/selectors/game-sets.selectors';
+import {
+  selectDefinedMastermind,
+  selectIsDefinedMastermind,
+  selectMastermind,
+} from '../+state/selectors/game-setup-scheme.selectors';
 
 type MastermindType = Mastermind | TransformingMastermind | AdaptingMastermind;
 

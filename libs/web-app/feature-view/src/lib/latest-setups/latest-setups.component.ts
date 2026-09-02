@@ -2,12 +2,11 @@ import { DatePipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 
-import { LatestSetupsStore } from '../latest-setups.store';
-import { StoredSetupToGameSetupPipe } from '../stored-setup-to-game-setup.pipe';
-
 import { LibTwister } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
+import { LatestSetupsStore } from '../latest-setups.store';
+import { StoredSetupToGameSetupPipe } from '../stored-setup-to-game-setup.pipe';
 
 @Component({
   selector: 'schemetwister-latest-setups',

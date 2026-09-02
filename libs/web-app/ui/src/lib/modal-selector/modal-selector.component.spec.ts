@@ -5,14 +5,12 @@ import {
   NgbModule,
 } from '@ng-bootstrap/ng-bootstrap';
 
-import { SortByNamePipe } from '../SortByName.pipe';
-
-import { ModalSelectorComponent } from './modal-selector.component';
-
 import { CARD_TYPE, LibTwister } from '@schemetwister/libtwister';
 import { marvelSeries } from '@schemetwister/series-marvel';
 
+import { SortByNamePipe } from '../SortByName.pipe';
 
+import { ModalSelectorComponent } from './modal-selector.component';
 
 describe('ModalSelectorComponent', () => {
   let component: ModalSelectorComponent;

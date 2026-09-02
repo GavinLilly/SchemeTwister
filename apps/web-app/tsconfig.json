@@ -1,8 +1,8 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "types": ["node"],
-    "target": "ES2022"
+    "module": "esnext",
+    "moduleResolution": "bundler"
   },
   "files": [],
   "include": [],
