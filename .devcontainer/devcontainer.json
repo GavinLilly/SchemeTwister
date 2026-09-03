@@ -1,0 +1,25 @@
+{
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode-remote.remote-containers",
+        "sonarsource.sonarlint-vscode",
+        "nrwl.angular-console",
+        "angular.ng-template",
+        "esbenp.prettier-vscode",
+        "knisterpeter.vscode-commitizen",
+        "firsttris.vscode-jest-runner",
+        "dbaeumer.vscode-eslint"
+      ],
+      "settings": {
+        "sonarlint.pathToNodeExecutable": "/nix/store/b1j1a9h54h2fnyk203fwjsi1nzx7bf90-nodejs-slim-22.23.2/bin/node"
+      }
+    },
+    "zed": {
+      "extensions": []
+    }
+  },
+  "image": "ghcr.io/cachix/devenv/devcontainer:latest",
+  "overrideCommand": false,
+  "updateContentCommand": "devenv test"
+}
