@@ -124,7 +124,7 @@
     "jsonc-eslint-parser": "^3.3.0",
     "jsonc-parser": "^3.0.0",
     "ng-mocks": "^14.13.5",
-    "nx": "23.0.1",
+    "nx": "23.0.2",
     "open": "^7.0.3",
     "prettier": "2.6.2",
     "ts-jest": "29.4.4",
