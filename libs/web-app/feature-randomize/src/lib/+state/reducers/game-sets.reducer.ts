@@ -58,6 +58,11 @@ export const _gameSetsReducer = createReducer(
   }))
 );
 
+/**
+ *
+ * @param state
+ * @param action
+ */
 export function gameSetsReducer(
   state: IGameSetsState | undefined,
   action: Action

@@ -1,8 +1,9 @@
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { provideMockStore } from '@ngrx/store/testing';
-import { GameSetup } from '@schemetwister/libtwister';
 import { MockBuilder, MockRender } from 'ng-mocks';
+
+import { GameSetup } from '@schemetwister/libtwister';
 
 import { RandomizeComponent } from './randomize.component';
 

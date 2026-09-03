@@ -1,8 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "types": ["node"],
-    "lib": ["ES2023.Array"]
+    "types": ["node"]
   },
   "include": [],
   "files": [],

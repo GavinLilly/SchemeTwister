@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
+
 import { NumPlayers } from '@schemetwister/libtwister';
 
 export const numPlayersActions = createActionGroup({

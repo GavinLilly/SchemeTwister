@@ -1,4 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
+
 import {
   Mastermind,
   GameSetup,
@@ -317,6 +318,11 @@ const _gameSetupReducer = createReducer(
   })
 );
 
+/**
+ *
+ * @param state
+ * @param action
+ */
 export function gameSetupReducer(
   state: IGameSetupState | undefined,
   action: Action

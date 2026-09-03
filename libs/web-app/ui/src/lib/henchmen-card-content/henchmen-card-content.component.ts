@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+
 import { Henchmen } from '@schemetwister/libtwister';
 
 import { BadguyCardContentComponent } from '../badguy-card-content/badguy-card-content.component';

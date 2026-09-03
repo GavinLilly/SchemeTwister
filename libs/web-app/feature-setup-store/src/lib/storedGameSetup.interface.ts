@@ -1,4 +1,5 @@
 import { Timestamp } from '@angular/fire/firestore';
+
 import { GameSetup, LiteGameSetup } from '@schemetwister/libtwister';
 
 export const TWIST_COUNT_NAME = 'twistCount';

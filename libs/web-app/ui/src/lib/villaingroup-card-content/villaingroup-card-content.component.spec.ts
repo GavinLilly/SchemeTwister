@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { mainline } from '@schemetwister/series-marvel';
 
 import { BaseCardContentComponent } from '../base-card-content/base-card-content.component';
@@ -11,9 +12,8 @@ describe('VillaingroupCardContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [VillaingroupCardContentComponent,
-        BaseCardContentComponent],
-}).compileComponents();
+      imports: [VillaingroupCardContentComponent, BaseCardContentComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

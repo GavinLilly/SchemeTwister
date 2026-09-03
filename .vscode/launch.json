@@ -6,9 +6,9 @@
   "configurations": [
     {
       "name": "ng serve",
-      "type": "firefox",
+      "type": "chrome",
       "request": "launch",
-      "preLaunchTask": "npm: start",
+      "preLaunchTask": "pnpm: start",
       "url": "http://localhost:4200/",
       "webRoot": "${workspaceFolder}/dist/apps/web-app",
       "sourceMaps": true,

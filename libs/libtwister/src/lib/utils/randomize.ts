@@ -1,5 +1,3 @@
-/* eslint-disable no-redeclare */
-
 import { randomInteger } from './randomInteger';
 
 /**

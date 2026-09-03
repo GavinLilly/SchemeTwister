@@ -1,9 +1,10 @@
 import { Injectable, inject } from '@angular/core';
 import { Actions, OnInitEffects, createEffect, ofType } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
+import { map, withLatestFrom } from 'rxjs/operators';
+
 import { LibTwister } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
-import { map, withLatestFrom } from 'rxjs/operators';
 
 import {
   gameSetSelectionActions,

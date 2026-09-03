@@ -13,6 +13,7 @@ import {
   NgbAccordionBody,
 } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
+
 import { Henchmen, Hero, IHeroDeck } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import {

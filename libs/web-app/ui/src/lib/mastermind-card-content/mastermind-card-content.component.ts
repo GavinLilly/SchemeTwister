@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+
 import {
   Mastermind,
   AdaptingMastermind,
@@ -9,10 +10,10 @@ import { BadguyCardContentComponent } from '../badguy-card-content/badguy-card-c
 import { BaseCardContentComponent } from '../base-card-content/base-card-content.component';
 
 @Component({
-    selector: 'schemetwister-mastermind-card-content',
-    templateUrl: './mastermind-card-content.component.html',
-    styleUrls: ['./mastermind-card-content.component.scss'],
-    imports: [BadguyCardContentComponent, BaseCardContentComponent]
+  selector: 'schemetwister-mastermind-card-content',
+  templateUrl: './mastermind-card-content.component.html',
+  styleUrls: ['./mastermind-card-content.component.scss'],
+  imports: [BadguyCardContentComponent, BaseCardContentComponent],
 })
 export class MastermindCardContentComponent {
   @Input() mastermind!:

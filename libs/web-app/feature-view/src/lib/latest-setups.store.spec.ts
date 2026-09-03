@@ -1,9 +1,10 @@
+import { MockBuilder, MockInstance, MockRender } from 'ng-mocks';
+import { firstValueFrom } from 'rxjs';
+
 import {
   EMPTY_STORED_SETUP,
   StoredSetupsService,
 } from '@schemetwister/web-app/feature-setup-store';
-import { MockBuilder, MockInstance, MockRender } from 'ng-mocks';
-import { firstValueFrom } from 'rxjs';
 
 import { LatestSetupsStore } from './latest-setups.store';
 
@@ -14,7 +15,7 @@ describe('LatestSetupsStore', () => {
   beforeEach(() => {
     logSpy = jest
       .spyOn(console, 'error')
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
+
       .mockImplementation(() => {
         // NOOP
       });

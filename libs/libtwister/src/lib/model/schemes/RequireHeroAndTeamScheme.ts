@@ -3,12 +3,12 @@ import { Hero } from '../cards/hero';
 import { IHeroDeck, INumPlayerRules, ITeam } from '../interfaces';
 import { DECK_TYPE, SchemeMinusRules } from '../types';
 
-import { Scheme } from './Scheme';
 import {
   RequireCard,
   RequireCardInDeckScheme,
   RequireHero,
 } from './cardInDeck';
+import { Scheme } from './Scheme';
 
 export class RequireHeroAndTeamScheme extends RequireCardInDeckScheme<Hero> {
   constructor(

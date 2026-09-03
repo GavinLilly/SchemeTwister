@@ -2,87 +2,85 @@
  * @type {import('semantic-release').GlobalConfig}
  */
 export default {
-  branches: ["main"],
+  branches: ['main'],
   plugins: [
     [
-      "@semantic-release/commit-analyzer",
+      '@semantic-release/commit-analyzer',
       {
-        preset: "conventionalcommits",
-        releaseRules: [
-          { type: "build", scope: "deps", release: "patch" }
-        ]
-      }
+        preset: 'conventionalcommits',
+        releaseRules: [{ type: 'build', scope: 'deps', release: 'patch' }],
+      },
     ],
     [
-      "@semantic-release/release-notes-generator",
+      '@semantic-release/release-notes-generator',
       {
-        preset: "conventionalcommits",
+        preset: 'conventionalcommits',
         presetConfig: {
           types: [
-            { type: "feat", section: "Features" },
-            { type: "feature", section: "Features" },
-            { type: "fix", section: "Bug Fixes" },
-            { type: "perf", section: "Performance Improvements" },
-            { type: "revert", section: "Reverts" },
+            { type: 'feat', section: 'Features' },
+            { type: 'feature', section: 'Features' },
+            { type: 'fix', section: 'Bug Fixes' },
+            { type: 'perf', section: 'Performance Improvements' },
+            { type: 'revert', section: 'Reverts' },
             {
-              type: "build",
-              scope: "deps",
-              section: "Dependencies",
-              hidden: false
+              type: 'build',
+              scope: 'deps',
+              section: 'Dependencies',
+              hidden: false,
             },
-            { type: "docs", section: "Documentation", hidden: true },
-            { type: "style", section: "Styles", hidden: true },
+            { type: 'docs', section: 'Documentation', hidden: true },
+            { type: 'style', section: 'Styles', hidden: true },
             {
-              type: "chore",
-              section: "Miscellaneous Chores",
-              hidden: true
-            },
-            {
-              type: "refactor",
-              section: "Code Refactoring",
-              hidden: true
-            },
-            { type: "test", section: "Tests", hidden: true },
-            { type: "build", section: "Build System", hidden: true },
-            {
-              type: "ci",
-              section: "Continuous Integration",
-              hidden: true
+              type: 'chore',
+              section: 'Miscellaneous Chores',
+              hidden: true,
             },
             {
-              type: "wip",
-              section: "Work in Progress",
-              hidden: true
-            }
-          ]
-        }
-      }
+              type: 'refactor',
+              section: 'Code Refactoring',
+              hidden: true,
+            },
+            { type: 'test', section: 'Tests', hidden: true },
+            { type: 'build', section: 'Build System', hidden: true },
+            {
+              type: 'ci',
+              section: 'Continuous Integration',
+              hidden: true,
+            },
+            {
+              type: 'wip',
+              section: 'Work in Progress',
+              hidden: true,
+            },
+          ],
+        },
+      },
     ],
     [
-      "@semantic-release/changelog",
+      '@semantic-release/changelog',
       {
-        changelogFile: "CHANGELOG.md"
-      }
+        changelogFile: 'CHANGELOG.md',
+      },
     ],
     [
-      "@semantic-release/npm",
+      '@semantic-release/exec',
       {
-        npmPublish: false,
-        tarballDir: "dist"
-      }
+        prepareCmd: 'pnpm pack --out dist.tgz',
+      },
     ],
     [
-      "@semantic-release/git",
+      '@semantic-release/git',
       {
-        assets: ["package.json", "CHANGELOG.md"],
-        message: "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-      }
+        assets: ['package.json', 'CHANGELOG.md'],
+        message:
+          'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
+      },
     ],
     [
-      "@semantic-release/github",
+      '@semantic-release/github',
       {
-        assets: "dist/*.tgz"
-      }
-    ]
-  ]
+        assets: 'dist/*.tgz',
+      },
+    ],
+  ],
 };

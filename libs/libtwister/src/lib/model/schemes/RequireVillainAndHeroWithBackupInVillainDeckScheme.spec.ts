@@ -5,9 +5,9 @@ import { GameSet } from '../GameSet';
 import { IGameSetup } from '../interfaces/gameSetup.interface';
 import { GAME_SET_SIZE } from '../types';
 
+import { RequireCard, RequireCardWithBackup } from './cardInDeck';
 import { RequireVillainAndHeroWithBackupInVillainDeckScheme } from './RequireVillainAndHeroWithBackupInVillainDeck.Scheme';
 import { Scheme } from './Scheme';
-import { RequireCard, RequireCardWithBackup } from './cardInDeck';
 
 describe('RequireVillainAndHeroWithBackupInVillainDeckScheme', () => {
   let store: StoreOfStores;

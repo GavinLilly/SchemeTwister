@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+
 import { INamedObject } from '@schemetwister/libtwister';
 
 @Pipe({

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { Hero } from '@schemetwister/libtwister';
 import { mainline } from '@schemetwister/series-marvel';
 
@@ -10,8 +11,8 @@ describe('BaseCardContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [BaseCardContentComponent],
-}).compileComponents();
+      imports: [BaseCardContentComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

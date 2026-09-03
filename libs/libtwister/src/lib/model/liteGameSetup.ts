@@ -4,9 +4,9 @@ import seedrandom from 'seedrandom';
 import { LibTwister } from '../libTwister';
 import instantiateScheme from '../utils/instantiateScheme';
 
-import { GameSetup } from './GameSetup';
 import { Henchmen, Hero, Mastermind, VillainGroup } from './cards';
 import { AbstractCardGroup } from './cards/abstractCardGroup';
+import { GameSetup } from './GameSetup';
 import {
   IAdditionalDeck,
   IAdditionalDeckRules,
@@ -228,7 +228,9 @@ export class LiteGameSetup {
       }));
     } catch (err) {
       console.error(err);
-      throw new Error('Unsupported card type in the additional deck');
+      throw new Error('Unsupported card type in the additional deck', {
+        cause: err,
+      });
     }
   }
 }

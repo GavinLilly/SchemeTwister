@@ -4,7 +4,7 @@
     "outDir": "../../../dist/out-tsc",
     "declaration": true,
     "inlineSources": true,
-    "lib": ["dom", "es2018"]
+    "lib": ["dom"]
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,

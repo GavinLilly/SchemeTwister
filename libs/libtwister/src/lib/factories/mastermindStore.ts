@@ -3,7 +3,7 @@ import {
   MastermindWithEpic,
   AdaptingMastermind,
   TransformingMastermind,
-} from '../model/cards/mastermind';
+} from '../model';
 import { randomize } from '../utils/randomize';
 
 import { CardFactory, GetRandomOptions } from './cardFactory';

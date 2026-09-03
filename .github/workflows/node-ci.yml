@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [main]
 
-env:
-  NODE_VERSION: 22
-
 jobs:
   setup:
     runs-on: ubuntu-latest
@@ -23,22 +20,12 @@ jobs:
           # Optional, but recommended: reduce the size of the checkout with tree filtering, see https://github.blog/open-source/git/get-up-to-speed-with-partial-clone-and-shallow-clone/
           filter: tree:0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
+      - uses: pnpm/setup@703c52620218391530e48b9e8870d5c0082e1b9b
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm' # Automatically caches global npm registry data
-
-      - name: Cache node_modules
-        id: cache-node-modules
-        uses: actions/cache@v5
-        with:
-          path: node_modules
-          key: node-modules-${{ hashFiles('package-lock.json') }}
-
-      - name: Install Dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
+          version: 11
+          runtime: node@22
+          cache: true
+          require-lockfile: true
 
       - name: Derive Target SHAs for Nx Affected
         id: set-shas
@@ -54,16 +41,12 @@ jobs:
           fetch-depth: 0
           filter: tree:0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
+      - uses: pnpm/setup@703c52620218391530e48b9e8870d5c0082e1b9b
         with:
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: Restore node_modules
-        uses: actions/cache@v5
-        with:
-          path: node_modules
-          key: node-modules-${{ hashFiles('package-lock.json') }}
+          version: 11
+          runtime: node@22
+          cache: true
+          require-lockfile: true
 
       - name: Cache Nx Local Computation Cache
         uses: actions/cache@v5
@@ -82,7 +65,7 @@ jobs:
           secretsJson: ${{ toJSON(secrets) }}
 
       - name: Run Lint
-        run: npx nx affected -t lint --base=${{ needs.setup.outputs.base }} --head=${{ needs.setup.outputs.head }} --parallel
+        run: pnpm dlx nx affected -t lint --base=${{ needs.setup.outputs.base }} --head=${{ needs.setup.outputs.head }} --parallel
 
   test:
     needs: setup
@@ -94,16 +77,12 @@ jobs:
           fetch-depth: 0
           filter: tree:0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
+      - uses: pnpm/setup@703c52620218391530e48b9e8870d5c0082e1b9b
         with:
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: Restore node_modules
-        uses: actions/cache@v5
-        with:
-          path: node_modules
-          key: node-modules-${{ hashFiles('package-lock.json') }}
+          version: 11
+          runtime: node@22
+          cache: true
+          require-lockfile: true
 
       - name: Cache Nx Local Computation Cache
         uses: actions/cache@v5
@@ -121,15 +100,15 @@ jobs:
           tokenPattern: ${TOKEN}
           secretsJson: ${{ toJSON(secrets) }}
 
-      - run: npm run build-version
+      - run: pnpm run build-version
 
       - name: Run Tests with Coverage
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
-            npx nx affected -t test --base=${{ needs.setup.outputs.base }} --head=${{ needs.setup.outputs.head }} --parallel --codeCoverage
+            pnpm dlx nx affected -t test --base=${{ needs.setup.outputs.base }} --head=${{ needs.setup.outputs.head }} --parallel --codeCoverage
           else
             # On pushes to main, run everything to establish the Codecov baseline
-            npx nx run-many -t test --all --parallel --codeCoverage
+            pnpm dlx nx run-many -t test --all --parallel --codeCoverage
           fi
 
       - name: Upload coverage reports to Codecov

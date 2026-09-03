@@ -11,7 +11,7 @@ export class Require2TeamsScheme extends Scheme {
   protected override initialiseHeroDeck(
     rules: Readonly<INumPlayerRules>,
     store: Readonly<StoreOfStores>,
-    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     numPlayers: number
   ): IHeroDeck {
     const teamCounts = store.heroStore.availableCards

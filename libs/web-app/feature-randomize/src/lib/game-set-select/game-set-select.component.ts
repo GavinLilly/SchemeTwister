@@ -2,6 +2,7 @@ import { Component, Signal, computed, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbActiveModal, NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
+
 import { GameSet, GAME_SET_SIZE } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
@@ -13,9 +14,9 @@ import {
 } from '../+state/selectors/game-sets.selectors';
 
 @Component({
-    selector: 'schemetwister-game-set-select',
-    templateUrl: './game-set-select.component.html',
-    imports: [FormsModule, NgbAlert],
+  selector: 'schemetwister-game-set-select',
+  templateUrl: './game-set-select.component.html',
+  imports: [FormsModule, NgbAlert],
 })
 export class GameSetSelectComponent {
   activeModal = inject(NgbActiveModal);

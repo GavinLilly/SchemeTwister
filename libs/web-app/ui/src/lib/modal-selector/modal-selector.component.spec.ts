@@ -4,6 +4,7 @@ import {
   NgbModal,
   NgbModule,
 } from '@ng-bootstrap/ng-bootstrap';
+
 import { CARD_TYPE, LibTwister } from '@schemetwister/libtwister';
 import { marvelSeries } from '@schemetwister/series-marvel';
 

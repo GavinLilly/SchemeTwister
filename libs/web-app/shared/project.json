@@ -4,7 +4,7 @@
   "projectType": "library",
   "sourceRoot": "libs/web-app/shared/src",
   "prefix": "schemetwister",
-  "tags": [],
+  "tags": ["scope:shared"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",

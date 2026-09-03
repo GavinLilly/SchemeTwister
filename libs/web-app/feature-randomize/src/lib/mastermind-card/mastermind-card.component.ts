@@ -3,6 +3,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCog, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import { NgbAccordionModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
+
 import {
   Mastermind,
   CARD_TYPE,

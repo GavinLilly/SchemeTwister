@@ -25,7 +25,6 @@ export class ScreenOnLockStore
   private readonly _screenOnStorageService =
     inject<LocalStorageService<boolean>>(LocalStorageService);
 
-  // eslint-disable-next-line no-undef
   private _screenLockSentinel?: WakeLockSentinel = undefined;
 
   private readonly _localStorageUpdateSub: Subscription;

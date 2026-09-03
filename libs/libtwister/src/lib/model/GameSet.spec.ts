@@ -1,9 +1,8 @@
-import * as uuid from 'uuid';
+import { v4 as uuidV4 } from 'uuid';
 import { describe, it, expect, beforeAll } from 'vitest';
 
 import { GameSetMock } from '../testData/gameSetMock';
 
-import { GameSet } from './GameSet';
 import {
   Bystander,
   Henchmen,
@@ -12,6 +11,7 @@ import {
   SchemeDefinition,
   VillainGroup,
 } from './cards';
+import { GameSet } from './GameSet';
 import { SeriesMeta } from './seriesMeta';
 import { CARD_TYPE } from './types';
 import { GAME_SET_SIZE } from './types/gameSetSize.type';
@@ -24,13 +24,13 @@ describe('GameSet', () => {
   });
 
   describe('sorter', () => {
-    const series = new SeriesMeta(uuid.v4(), 'Test Series', 'Test Series');
+    const series = new SeriesMeta(uuidV4(), 'Test Series', 'Test Series');
 
     const largeBox = new GameSetMock(GAME_SET_SIZE.large).getGameSet();
 
     const firstBox = new GameSet(
       {
-        id: uuid.v4(),
+        id: uuidV4(),
         name: 'First',
         releaseYear: 1970,
         series: series,

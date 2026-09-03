@@ -1,4 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
+
 import { NumPlayers } from '@schemetwister/libtwister';
 
 import { numPlayersActions } from '../actions/num-players.actions';
@@ -36,6 +37,11 @@ const _numPlayersReducer = createReducer(
   }))
 );
 
+/**
+ *
+ * @param state
+ * @param action
+ */
 export function numPlayersReducer(
   state: INumPlayersState | undefined,
   action: Action

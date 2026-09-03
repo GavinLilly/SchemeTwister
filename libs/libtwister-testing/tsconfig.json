@@ -1,9 +1,5 @@
 {
   "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "module": "commonjs",
-    "lib": ["ES2023.Array"]
-  },
   "files": [],
   "include": [],
   "references": [

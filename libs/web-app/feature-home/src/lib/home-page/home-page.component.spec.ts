@@ -1,6 +1,7 @@
+import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
+
 import { marvelSeries } from '@schemetwister/series-marvel';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
-import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
 
 import { HomePageComponent } from './home-page.component';
 

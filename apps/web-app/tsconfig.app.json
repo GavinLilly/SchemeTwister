@@ -2,10 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "types": [],
-    "target": "ES2022",
     "useDefineForClassFields": false,
-    "moduleResolution": "bundler"
+    "types": ["node"]
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
   "exclude": ["jest.config.ts"]

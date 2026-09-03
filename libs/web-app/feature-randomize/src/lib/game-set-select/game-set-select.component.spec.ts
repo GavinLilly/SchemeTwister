@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { NgbActiveModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideMockStore } from '@ngrx/store/testing';
+
 import { mainline, marvelSeries } from '@schemetwister/series-marvel';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
@@ -13,24 +14,26 @@ describe('GameSetSelectComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    imports: [NgbModalModule, FormsModule, GameSetSelectComponent],
-    providers: [
+      imports: [NgbModalModule, FormsModule, GameSetSelectComponent],
+      providers: [
         NgbActiveModal,
         provideMockStore({
-            initialState: {
-                gameSets: {
-                    gameSetIds: Object.values(mainline).map((gameset) => gameset.GAME_SET.id),
-                    seriesIds: [marvelSeries.seriesMeta.id],
-                },
-                numPlayers: 2,
+          initialState: {
+            gameSets: {
+              gameSetIds: Object.values(mainline).map(
+                (gameset) => gameset.GAME_SET.id
+              ),
+              seriesIds: [marvelSeries.seriesMeta.id],
             },
+            numPlayers: 2,
+          },
         }),
         {
-            provide: SERIES_REGISTER_TOKEN,
-            useValue: [marvelSeries],
+          provide: SERIES_REGISTER_TOKEN,
+          useValue: [marvelSeries],
         },
-    ],
-}).compileComponents();
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
