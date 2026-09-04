@@ -1,13 +1,10 @@
 import { faker } from '@faker-js/faker';
-import {
-  GAME_SET_SIZE,
-  IKeyword,
-  ITeam,
-  SeriesMeta,
-} from '@schemetwister/libtwister';
 
-export const createGamesetMeta = (
-  series = createSeriesMeta(),
+import { GAME_SET_SIZE, IKeyword, ITeam } from '../model';
+import { SeriesMeta } from '../model/seriesMeta';
+
+export const createMockGamesetMeta = (
+  series = createMockSeriesMeta(),
   size = faker.helpers.objectValue(GAME_SET_SIZE)
 ) => ({
   id: faker.string.uuid(),
@@ -17,7 +14,7 @@ export const createGamesetMeta = (
   size,
 });
 
-export const createSeriesMeta = () =>
+export const createMockSeriesMeta = () =>
   new SeriesMeta(
     faker.string.uuid(),
     faker.commerce.productName(),
@@ -28,7 +25,7 @@ export const createSeriesMeta = () =>
  * Creates a fake team with a name like a company
  * @returns a fake team
  */
-export function createTeam(): ITeam {
+export function createMockTeam(): ITeam {
   const name = faker.company.name();
 
   return {
@@ -50,8 +47,8 @@ export const capitalise = (string: string) =>
  * @param maxCount the maximum number of keywords that may be created. Defaults to 5
  * @returns an array of fake keywords
  */
-export const createKeywords = (maxCount = 5) =>
-  faker.helpers.multiple(() => createKeyword(), {
+export const createMockKeywords = (maxCount = 5) =>
+  faker.helpers.multiple(() => createMockKeyword(), {
     count: {
       min: 0,
       max: maxCount,
@@ -62,7 +59,7 @@ export const createKeywords = (maxCount = 5) =>
  * Creates a fake keyword
  * @returns a fake keyword
  */
-export const createKeyword = (): IKeyword => ({
+export const createMockKeyword = (): IKeyword => ({
   id: faker.string.uuid(),
   name:
     capitalise(faker.word.adjective()) + ' ' + capitalise(faker.word.verb()),

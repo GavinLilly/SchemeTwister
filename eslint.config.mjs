@@ -41,7 +41,7 @@ export default [
         'error',
         {
           enforceBuildableLibDependency: true,
-          "allow": ["libtwister-testing-data", "@schemetwister/libtwister/testing/data"],
+          "allow": [],
           depConstraints: [
             {
               sourceTag: '*',

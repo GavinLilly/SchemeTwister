@@ -11,26 +11,34 @@
     "importHelpers": true,
     "target": "ES2021",
     "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["dom", "ES2023"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "dom",
+      "ES2023"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "paths": {
-      "@schemetwister/libtwister": ["libs/libtwister/src/index.ts"],
+      "@schemetwister/libtwister": [
+        "libs/libtwister/src/index.ts"
+      ],
       "@schemetwister/libtwister/testing": [
         "libs/libtwister-testing/src/index.ts"
-      ],
-      "@schemetwister/libtwister/testing/data": [
-        "libs/libtwister-testing-data/src/index.ts"
       ],
       "@schemetwister/schematics": [
         "tools/schemetwister-schematics/src/index.ts"
       ],
-      "@schemetwister/series-buffy": ["libs/series/buffy/src/index.ts"],
-      "@schemetwister/series-marvel": ["libs/series/marvel/src/index.ts"],
+      "@schemetwister/series-buffy": [
+        "libs/series/buffy/src/index.ts"
+      ],
+      "@schemetwister/series-marvel": [
+        "libs/series/marvel/src/index.ts"
+      ],
       "@schemetwister/series-marvel-common": [
         "libs/series/marvel-common/src/index.ts"
       ],
@@ -55,11 +63,18 @@
       "@schemetwister/web-app/feature-store": [
         "libs/web-app/feature-store/src/index.ts"
       ],
-      "@schemetwister/web-app/shared": ["libs/web-app/shared/src/index.ts"],
-      "@schemetwister/web-app/ui": ["libs/web-app/ui/src/index.ts"],
+      "@schemetwister/web-app/shared": [
+        "libs/web-app/shared/src/index.ts"
+      ],
+      "@schemetwister/web-app/ui": [
+        "libs/web-app/ui/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"],
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ],
   "angularCompilerOptions": {
     "strictTemplates": true
   }

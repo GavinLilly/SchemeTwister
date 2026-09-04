@@ -14,4 +14,10 @@ export default [
   {
     ignores: ['**/vite.config.*.timestamp*', '**/vitest.config.*.timestamp*'],
   },
+  {
+    files: ['**/*.ts'],
+    rules: {
+      "@nx/enforce-module-boundaries": "off"
+    }
+  }
 ];

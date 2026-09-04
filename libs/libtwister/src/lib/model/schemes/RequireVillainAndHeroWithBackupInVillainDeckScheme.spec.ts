@@ -1,8 +1,7 @@
-import { FakeGameSetFactory } from '@schemetwister/libtwister/testing/data';
 import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { TEST_REQUIRE_VILLAIN_AND_HERO_SCHEME } from '../../testData/schemes';
+import { MockCardFactory, MockGameSetFactory } from '../../mocks';
 import { GameSet } from '../GameSet';
 import { IGameSetup } from '../interfaces/gameSetup.interface';
 import { GAME_SET_SIZE } from '../types';
@@ -18,11 +17,13 @@ describe('RequireVillainAndHeroWithBackupInVillainDeckScheme', () => {
   let gameSet2: GameSet;
 
   beforeAll(() => {
-    gameSet1 = new FakeGameSetFactory().createGameSet(GAME_SET_SIZE.core);
-    gameSet2 = new FakeGameSetFactory().createGameSet(GAME_SET_SIZE.large);
+    gameSet1 = new MockGameSetFactory().createGameSet(GAME_SET_SIZE.core);
+    gameSet2 = new MockGameSetFactory().createGameSet(GAME_SET_SIZE.large);
+
+    const schemeDefinition = new MockCardFactory().createScheme();
 
     scheme = new RequireVillainAndHeroWithBackupInVillainDeckScheme(
-      TEST_REQUIRE_VILLAIN_AND_HERO_SCHEME,
+      schemeDefinition,
       new RequireCard(gameSet1.villains![0]),
       new RequireCardWithBackup(gameSet1.heroes[0], gameSet2.heroes[0])
     );

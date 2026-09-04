@@ -1,33 +1,35 @@
-import { beforeAll, afterEach, describe, it, expect } from 'vitest';
+import { afterEach, beforeAll, describe, expect, it } from 'vitest';
 
-import { StoreOfStores, StoreBuilder } from '../factories';
+import { StoreBuilder, StoreOfStores } from '../factories';
 import { LibTwister } from '../libTwister';
-import { TEST_GAME_SET_1 } from '../testData/gameSets';
-import { TEST_NORMAL_SCHEME } from '../testData/schemes';
-import { TEST_SERIES_1 } from '../testData/series';
 import instantiateScheme from '../utils/instantiateScheme';
 
+import { MockSeriesFactory } from '../mocks';
 import { GameSetup } from './GameSetup';
 import { LiteGameSetup } from './liteGameSetup';
 
-let store: StoreOfStores;
-
-beforeAll(() => {
-  store = new StoreBuilder()
-    .withHeroGamesets(TEST_GAME_SET_1)
-    .withMastermindGamesets(TEST_GAME_SET_1)
-    .withVillainGamesets(TEST_GAME_SET_1)
-    .withHenchmenGamesets(TEST_GAME_SET_1)
-    .build();
-});
-
-afterEach(() => store.reset());
+const SERIES_FACTORY = new MockSeriesFactory();
+const SERIES = SERIES_FACTORY.createSeries();
+const TEST_GAME_SET_1 = SERIES.gameSets[0];
 
 describe('LiteGameSetup', () => {
+  let store: StoreOfStores;
+
+  beforeAll(() => {
+    store = new StoreBuilder()
+      .withHeroGamesets(TEST_GAME_SET_1)
+      .withMastermindGamesets(TEST_GAME_SET_1)
+      .withVillainGamesets(TEST_GAME_SET_1)
+      .withHenchmenGamesets(TEST_GAME_SET_1)
+      .build();
+  });
+
+  afterEach(() => store.reset());
+
   let liteSetup: LiteGameSetup;
 
   beforeAll(() => {
-    const scheme = instantiateScheme(TEST_NORMAL_SCHEME);
+    const scheme = instantiateScheme(TEST_GAME_SET_1.schemes![0]);
     const setup = scheme.getSetup({ numPlayers: 2, store });
     const gameSetup = new GameSetup(setup);
 
@@ -54,7 +56,7 @@ describe('LiteGameSetup', () => {
 
   describe('toGameSetup', () => {
     let gameSetup: GameSetup;
-    const libTwister = new LibTwister({ series: [TEST_SERIES_1] });
+    const libTwister = new LibTwister({ series: [SERIES] });
 
     beforeAll(() => {
       gameSetup = liteSetup.toGameSetup(libTwister);
@@ -71,7 +73,9 @@ describe('LiteGameSetup', () => {
         }).toGameSetup(libTwister)
       ).toThrow());
 
-    it('should have 8 twists', () =>
-      expect(gameSetup.villainDeck.numTwists).toBe(8));
+    const expectedNumTwists = TEST_GAME_SET_1.schemes![0].meta.numTwists;
+
+    it(`should have ${expectedNumTwists} twists`, () =>
+      expect(gameSetup.villainDeck.numTwists).toBe(expectedNumTwists));
   });
 });

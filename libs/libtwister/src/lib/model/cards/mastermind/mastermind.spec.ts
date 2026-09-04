@@ -1,9 +1,9 @@
 import * as uuid from 'uuid';
-import { describe, beforeAll, it, expect } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 
-import { TEST_SERIES_META_1 } from '../../../testData/seriesMeta';
+import { createMockGamesetMeta } from '../../../mocks/mockUtils';
 import { IGameSetMeta } from '../../interfaces';
-import { CARD_TYPE, GAME_SET_SIZE } from '../../types';
+import { CARD_TYPE } from '../../types';
 import { Henchmen } from '../henchmen';
 import { VillainGroup } from '../villainGroup';
 
@@ -14,13 +14,7 @@ describe('Mastermind', () => {
   let gameSet: IGameSetMeta;
 
   beforeAll(() => {
-    gameSet = {
-      id: uuid.v4(),
-      name: 'Test GameSet',
-      releaseYear: 2024,
-      series: TEST_SERIES_META_1,
-      size: GAME_SET_SIZE.core,
-    };
+    gameSet = createMockGamesetMeta();
 
     villain = new VillainGroup({
       id: uuid.v4(),

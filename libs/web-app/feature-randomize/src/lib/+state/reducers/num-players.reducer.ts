@@ -36,6 +36,11 @@ const _numPlayersReducer = createReducer(
   }))
 );
 
+/**
+ *
+ * @param state
+ * @param action
+ */
 export function numPlayersReducer(
   state: INumPlayersState | undefined,
   action: Action

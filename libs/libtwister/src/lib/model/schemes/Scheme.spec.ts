@@ -1,29 +1,19 @@
-import { FakeGameSetFactory } from '@schemetwister/libtwister/testing/data';
+import { faker } from '@faker-js/faker';
 import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { TEST_GAME_SET_1, TEST_GAME_SET_2 } from '../../testData/gameSets';
-import { TEST_HENCHMEN_1 } from '../../testData/henchmen';
-import {
-  TEST_HERO_1,
-  TEST_HERO_2,
-  TEST_HERO_3,
-  TEST_HERO_4,
-  TEST_HERO_5,
-  TEST_HERO_6,
-} from '../../testData/heroes';
-import {
-  TEST_MASTERMIND_1,
-  TEST_MASTERMIND_2,
-} from '../../testData/masterminds';
-import { TEST_VILLAIN_1, TEST_VILLAIN_2 } from '../../testData/villains';
+import { MockCardFactory, MockGameSetFactory } from '../../mocks';
 import { GameSetup } from '../GameSetup';
 import { IGameSetup } from '../interfaces/gameSetup.interface';
 import { Rules } from '../rules';
-import { CARD_TYPE, GAME_SET_SIZE, SchemeMinusRules } from '../types';
+import { CARD_TYPE, SchemeMinusRules } from '../types';
 import { NumPlayers, numPlayers } from '../types/numPlayers.type';
 
 import { Scheme } from './Scheme';
+
+const gameSetFactory = new MockGameSetFactory();
+const gameSet1 = gameSetFactory.createGameSet();
+const gameSet2 = gameSetFactory.createGameSet();
 
 const baseSchemeDesc: Omit<SchemeMinusRules, 'meta'> = {
   name: 'Test scheme',
@@ -33,7 +23,7 @@ const baseSchemeDesc: Omit<SchemeMinusRules, 'meta'> = {
   setup: 'Setup',
   cardType: CARD_TYPE.scheme,
   specialRules: 'Special rules',
-  gameSet: TEST_GAME_SET_1,
+  gameSet: gameSet1,
 };
 
 const schemeDescSimpleTwist: SchemeMinusRules = {
@@ -55,6 +45,18 @@ const schemeDescComplexTwist: SchemeMinusRules = {
     },
   },
 };
+
+const mockCardFactory = new MockCardFactory();
+
+const TEST_MASTERMIND_1 = mockCardFactory.createEpicMastermind([
+  gameSet1.villains![0],
+]);
+gameSet1.masterminds?.push(TEST_MASTERMIND_1);
+
+const TEST_MASTERMIND_2 = mockCardFactory.createEpicMastermind([
+  gameSet1.henchmen![0],
+  gameSet1.villains![0],
+]);
 
 describe('Scheme', () => {
   let baseScheme: Scheme;
@@ -150,7 +152,7 @@ describe('Scheme', () => {
 
     beforeAll(() => {
       scheme = new Scheme(schemeDescSimpleTwist);
-      store = new StoreBuilder().withAllFromGamesets(TEST_GAME_SET_1).build();
+      store = new StoreBuilder().withAllFromGamesets(gameSet1).build();
       setup = scheme.getSetup({
         numPlayers: 2,
         mastermind: TEST_MASTERMIND_1,
@@ -167,7 +169,7 @@ describe('Scheme', () => {
       expect(setup.mastermind).toBe(TEST_MASTERMIND_1));
 
     it('should include Murderworld in the villain deck', () =>
-      expect(setup.villainDeck.villains).toContain(TEST_VILLAIN_1));
+      expect(setup.villainDeck.villains).toContain(gameSet1.villains![0]));
 
     it('should put 1 hero in an additional deck', () => {
       const heroAdditional = new Scheme({
@@ -213,9 +215,7 @@ describe('Scheme', () => {
 
     it('should put 1 mastermind in the villain deck', () => {
       const dynamicStore = new StoreBuilder()
-        .withAllFromGamesets(
-          new FakeGameSetFactory().createGameSet(GAME_SET_SIZE.core)
-        )
+        .withAllFromGamesets(new MockGameSetFactory().createGameSet())
         .build();
 
       const mastermindVillain = new Scheme({
@@ -262,10 +262,10 @@ describe('Scheme', () => {
 
     it('should include Doombots in the villain deck', () => {
       const doomHenchmenStore = new StoreBuilder()
-        .withHeroGamesets(TEST_GAME_SET_1)
-        .withMastermindGamesets(TEST_GAME_SET_1)
-        .withVillainGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
-        .withHenchmenGamesets(TEST_GAME_SET_1)
+        .withHeroGamesets(gameSet1)
+        .withMastermindGamesets(gameSet1)
+        .withVillainGamesets(gameSet1, gameSet2)
+        .withHenchmenGamesets(gameSet1)
         .build();
       const doomSetup = scheme.getSetup({
         numPlayers: 4,
@@ -273,71 +273,11 @@ describe('Scheme', () => {
         store: doomHenchmenStore,
       });
 
-      expect(doomSetup.villainDeck.henchmen).toContain(TEST_HENCHMEN_1);
+      expect(doomSetup.villainDeck.henchmen).toContain(gameSet1.henchmen![0]);
     });
 
-    // TODO remove
-    // it.each([2, 3, 4, 5] as NumPlayers[])(
-    //   'should always put Ultron Sentries in the villain deck',
-    //   (numPlayers) => {
-    //     const ultronStore = new StoreBuilder()
-    //       .withHeroGamesets(XMEN)
-    //       .withMastermindGamesets(LEGENDARY, WHAT_IF)
-    //       .withVillainGamesets(XMEN)
-    //       .withHenchmenGamesets(LEGENDARY, WHAT_IF)
-    //       .build();
-
-    //     const ultronScheme = new Scheme({
-    //       ...baseSchemeDesc,
-    //       meta: {
-    //         numTwists: 8,
-    //       },
-    //     });
-
-    //     const setup = ultronScheme.getSetup({
-    //       selectedMastermind: ULTRON_INFINITY,
-    //       numPlayers,
-    //       store: ultronStore,
-    //     });
-
-    //     expect(setup.villainDeck.henchmen).toContain(
-    //       ULTRON_SENTRIES
-    //     );
-    //   }
-    // );
-
-    // TODO remove
-    // it.each([TEST_MASTERMIND_2, TEST_MASTERMIND_2.epic])(
-    //   'should always put Killmonger Spec Ops in the hero deck',
-    //   (killmonger) => {
-    //     const killmongerStore = new StoreBuilder()
-    //       .withHeroGamesets(XMEN, WHAT_IF)
-    //       .withMastermindGamesets(LEGENDARY, WHAT_IF)
-    //       .withVillainGamesets(XMEN)
-    //       .withHenchmenGamesets(LEGENDARY, WHAT_IF)
-    //       .build();
-
-    //     const killmongerScheme = new Scheme({
-    //       ...baseSchemeDesc,
-    //       meta: {
-    //         numTwists: 8,
-    //       },
-    //     });
-
-    //     const setup = killmongerScheme.getSetup({
-    //       selectedMastermind: killmonger,
-    //       numPlayers: 3,
-    //       store: killmongerStore,
-    //     });
-
-    //     expect(Array.from(setup.heroDeck.heroes)).toContain(
-    //       KILLMONGER_SPEC_OPS
-    //     );
-    //   }
-    // );
-
     it('should not need to fill in any more slots in the villain deck', () => {
-      const villains = [TEST_VILLAIN_1, TEST_VILLAIN_2];
+      const villains = gameSet1.villains!.slice(0, 2);
       const filledSetup = scheme.getSetup({
         numPlayers: 3,
         store,
@@ -385,24 +325,33 @@ describe('Scheme', () => {
   });
 
   describe('addToDeck', () => {
-    const origDeck = [TEST_HERO_1, TEST_HERO_2, TEST_HERO_3];
+    const origDeck = faker.helpers.multiple(
+      () => mockCardFactory.createHero(),
+      { count: 3 }
+    );
 
-    it('should add Wolverine to the original deck', () => {
-      const newDeck = Array.from(Scheme.addToDeck(origDeck, TEST_HERO_4));
+    const newHero = mockCardFactory.createHero();
+
+    it('should add a new hero to the original deck', () => {
+      const newDeck = Array.from(Scheme.addToDeck(origDeck, newHero));
       expect(newDeck).toHaveLength(4);
-      expect(newDeck).toEqual(
-        expect.arrayContaining([...origDeck, TEST_HERO_4])
-      );
+      expect(newDeck).toEqual(expect.arrayContaining([...origDeck, newHero]));
     });
 
     it('should throw an error when the number of cards to add is larger than the maximum length', () =>
       expect(() =>
-        Scheme.addToDeck(origDeck, TEST_HERO_4, 1, TEST_HERO_5)
+        Scheme.addToDeck(origDeck, newHero, 1, mockCardFactory.createHero())
       ).toThrow());
 
     it('should throw an error when the number of cards to add is larger than the space in the array', () =>
       expect(() =>
-        Scheme.addToDeck(origDeck, TEST_HERO_4, 5, TEST_HERO_5, TEST_HERO_6)
+        Scheme.addToDeck(
+          origDeck,
+          newHero,
+          5,
+          mockCardFactory.createHero(),
+          mockCardFactory.createHero()
+        )
       ).toThrow());
   });
 });

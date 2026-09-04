@@ -1,15 +1,12 @@
-import {
-  FakeGameSetFactory,
-  FakeSeriesFactory,
-} from '@schemetwister/libtwister/testing/data';
 import * as uuid from 'uuid';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import { LibTwister } from './libTwister';
+import { MockGameSetFactory, MockSeriesFactory } from './mocks';
 import { GAME_SET_SIZE, ISeries, NumPlayers, SeriesMeta } from './model';
 
 describe('LibTwister', () => {
-  const fakeSeriesFactory = new FakeSeriesFactory();
+  const fakeSeriesFactory = new MockSeriesFactory();
 
   describe('Setups', () => {
     describe('with 1 game set', () => {
@@ -207,15 +204,15 @@ describe('LibTwister', () => {
   });
 
   describe('validateGameSetIds', () => {
-    const testLargeSet = new FakeGameSetFactory().createGameSet(
+    const testLargeSet = new MockGameSetFactory().createGameSet(
       GAME_SET_SIZE.large
     );
 
-    const testMediumSet = new FakeGameSetFactory().createGameSet(
+    const testMediumSet = new MockGameSetFactory().createGameSet(
       GAME_SET_SIZE.medium
     );
 
-    const testSmallSet = new FakeGameSetFactory().createGameSet(
+    const testSmallSet = new MockGameSetFactory().createGameSet(
       GAME_SET_SIZE.small
     );
 

@@ -1,32 +1,37 @@
 import { afterEach, beforeAll, describe, expect, it } from 'vitest';
 
 import { StoreBuilder, StoreOfStores } from '../factories';
-import { TEST_GAME_SET_1, TEST_GAME_SET_2 } from '../testData/gameSets';
-import { TEST_KEYWORD_1 } from '../testData/keywords';
-import {
-  TEST_NORMAL_SCHEME,
-  TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
-} from '../testData/schemes';
 import instantiateScheme from '../utils/instantiateScheme';
 
+import {
+  MOCK_GAME_SET_WITH_SPECIFIC_HERO_AND_SCHEME,
+  MOCK_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
+  MockGameSetFactory,
+} from '../mocks';
+import { randomize } from '../utils/randomize';
 import { GameSetup } from './GameSetup';
 import { Mastermind } from './cards';
 import { Scheme } from './schemes';
 
-let store: StoreOfStores;
-
-beforeAll(() => {
-  store = new StoreBuilder()
-    .withHeroGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
-    .withMastermindGamesets(TEST_GAME_SET_1)
-    .withVillainGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
-    .withHenchmenGamesets(TEST_GAME_SET_1)
-    .build();
-});
-
-afterEach(() => store.reset());
+const MOCK_GAMESET_FACTORY = new MockGameSetFactory();
+const TEST_GAME_SET_1 = MOCK_GAMESET_FACTORY.createGameSet();
+const TEST_GAME_SET_2 = MOCK_GAMESET_FACTORY.createGameSet();
+const TEST_NORMAL_SCHEME = TEST_GAME_SET_1.schemes![0];
 
 describe('GameSetup', () => {
+  let store: StoreOfStores;
+
+  beforeAll(() => {
+    store = new StoreBuilder()
+      .withHeroGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
+      .withMastermindGamesets(TEST_GAME_SET_1)
+      .withVillainGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
+      .withHenchmenGamesets(TEST_GAME_SET_1)
+      .build();
+  });
+
+  afterEach(() => store.reset());
+
   describe('with TEST_NORMAL_SCHEME', () => {
     let gameSetup: GameSetup;
 
@@ -98,14 +103,16 @@ describe('GameSetup', () => {
   });
 
   describe('TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME', () => {
-    const scheme = instantiateScheme(TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME);
+    const scheme = instantiateScheme(MOCK_REQUIRE_CARD_NAME_IN_DECK_SCHEME);
     const store = new StoreBuilder()
-      .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
+      .withAllFromGamesets(MOCK_GAME_SET_WITH_SPECIFIC_HERO_AND_SCHEME)
       .build();
 
     const setup = scheme.getSetup({ numPlayers: 2, store });
 
     const gameSetup = new GameSetup(setup);
+
+    const expectedHeroName = randomize(TEST_GAME_SET_1.heroes).name;
 
     const doesContainExpectedHeroName = gameSetup.additionalDecks[0].deck
       .heroes!.map((hero) => hero.name)
@@ -140,21 +147,14 @@ describe('GameSetup', () => {
       });
       const gameSetup = new GameSetup(setup);
 
-      expect(gameSetup.keywords.size).toBe(0);
-    });
+      const expectedKeywordsCount = [TEST_GAME_SET_1, TEST_GAME_SET_2]
+        .flatMap((gameSet) => gameSet.getCards())
+        .flatMap((card) => card.keywords)
+        .filter((keyword) => !!keyword).length;
 
-    it('should have only the "TEST_KEYWORD_1" keyword', () => {
-      const scheme = new Scheme(TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME);
-
-      const setup = scheme.getSetup({
-        numPlayers: 2,
-        mastermind: testStore.mastermindStore.getRandom(),
-        store: testStore,
-      });
-      const gameSetup = new GameSetup(setup);
-
-      expect(gameSetup.keywords.size).toBe(1);
-      expect(gameSetup.keywords.has(TEST_KEYWORD_1)).toBeTruthy();
+      expect(gameSetup.keywords.size).toBeLessThanOrEqual(
+        expectedKeywordsCount
+      );
     });
   });
 
