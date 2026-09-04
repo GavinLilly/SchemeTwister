@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+
 import {
   Bystander,
   Henchmen,
@@ -8,19 +9,19 @@ import {
   MastermindWithEpic,
   SchemeDefinition,
   VillainGroup,
-} from '@schemetwister/libtwister';
+} from '../model';
 
 import {
   capitalise,
-  createGamesetMeta,
-  createKeywords,
-  createTeam,
-} from './fakerUtils';
+  createMockGamesetMeta,
+  createMockKeywords,
+  createMockTeam,
+} from './mockUtils';
 
-export class FakeCardFactory {
+export class MockCardFactory {
   constructor(
-    private readonly _gameSet = createGamesetMeta(),
-    private readonly _availableKeywords = createKeywords(),
+    private readonly _gameSet = createMockGamesetMeta(),
+    private readonly _availableKeywords = createMockKeywords(),
     seed?: number
   ) {
     faker.seed(seed);
@@ -37,7 +38,7 @@ export class FakeCardFactory {
     } else {
       const teams =
         teamOrTeams === undefined
-          ? faker.helpers.multiple(() => createTeam())
+          ? faker.helpers.multiple(() => createMockTeam())
           : teamOrTeams;
 
       team = faker.helpers.maybe(() => faker.helpers.arrayElement(teams), {

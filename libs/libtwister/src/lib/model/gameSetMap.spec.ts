@@ -1,14 +1,14 @@
-import { FakeSeriesFactory } from '@schemetwister/libtwister/testing/data';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import { LibTwister } from '../libTwister';
+import { MockSeriesFactory } from '../mocks';
 
 import { GameSetMap } from './gameSetMap';
 import { ISeries } from './interfaces';
 import { GAME_SET_SIZE } from './types';
 
 describe('GameSetMap', () => {
-  const fakeSeriesFactory = new FakeSeriesFactory();
+  const fakeSeriesFactory = new MockSeriesFactory();
   let map: GameSetMap;
   let series: ISeries;
 

@@ -1,15 +1,15 @@
-import { describe, beforeAll, it, expect, afterEach } from 'vitest';
+import { afterEach, beforeAll, describe, expect, it } from 'vitest';
 
 import { CARD_TYPE, CardType, IPlayableObject } from '../model';
-import {
-  TEST_GAME_SET_META_1,
-  TEST_GAME_SET_META_2,
-} from '../testData/gameSets';
 
+import { createMockGamesetMeta } from '../mocks/mockUtils';
 import { CardFactory } from './cardFactory';
 import { CardStore } from './cardStore';
 
 const cardType = CARD_TYPE.hero;
+
+const TEST_GAME_SET_META_1 = createMockGamesetMeta();
+const TEST_GAME_SET_META_2 = createMockGamesetMeta();
 
 class LegCard implements IPlayableObject {
   gameSet = TEST_GAME_SET_META_1;

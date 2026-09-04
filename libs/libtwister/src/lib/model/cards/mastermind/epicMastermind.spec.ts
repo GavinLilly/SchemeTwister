@@ -1,8 +1,7 @@
 import { v4 as uuidV4 } from 'uuid';
 import { beforeAll, describe, expect, it } from 'vitest';
 
-import { TEST_SERIES_META_1 } from '../../../testData/seriesMeta';
-import { GAME_SET_SIZE } from '../../types';
+import { createMockGamesetMeta } from '../../../mocks/mockUtils';
 import { VillainGroup } from '../villainGroup';
 
 import { MastermindWithEpic } from './epicMastermind';
@@ -14,13 +13,7 @@ describe('MastermindWithEpic', () => {
   let mastermind: MastermindWithEpic;
 
   beforeAll(() => {
-    const gameSet = {
-      id: uuidV4(),
-      name: 'Test GameSet',
-      releaseYear: 2024,
-      series: TEST_SERIES_META_1,
-      size: GAME_SET_SIZE.core,
-    };
+    const gameSet = createMockGamesetMeta();
 
     villain = new VillainGroup({
       id: uuidV4(),

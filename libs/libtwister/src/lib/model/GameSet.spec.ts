@@ -1,8 +1,9 @@
-import { v4 as uuidV4 } from 'uuid';
-import { beforeAll, describe, expect, it } from 'vitest';
+import { faker } from '@faker-js/faker';
+import { describe, expect, it } from 'vitest';
 
-import { FakeGameSetFactory } from '@schemetwister/libtwister/testing/data';
+import { MockGameSetFactory } from '../mocks';
 
+import { createMockSeriesMeta } from '../mocks/mockUtils';
 import {
   Bystander,
   Henchmen,
@@ -12,42 +13,58 @@ import {
   VillainGroup,
 } from './cards';
 import { GameSet } from './GameSet';
-import { SeriesMeta } from './seriesMeta';
 import { CARD_TYPE } from './types';
 import { GAME_SET_SIZE } from './types/gameSetSize.type';
 
 describe('GameSet', () => {
-  let coreBox: GameSet;
-
-  beforeAll(() => {
-    coreBox = new FakeGameSetFactory().createGameSet(GAME_SET_SIZE.core);
-  });
+  const coreBox = new MockGameSetFactory().createGameSet(GAME_SET_SIZE.core);
 
   describe('sorter', () => {
-    const series = new SeriesMeta(uuidV4(), 'Test Series', 'Test Series');
-
-    const largeBox = new FakeGameSetFactory().createGameSet(
-      GAME_SET_SIZE.large
-    );
+    const series = createMockSeriesMeta();
 
     const firstBox = new GameSet(
       {
-        id: uuidV4(),
+        id: faker.string.uuid(),
         name: 'First',
-        releaseYear: 1970,
+        releaseYear: faker.date.past().getFullYear(),
         series: series,
         size: GAME_SET_SIZE.large,
       },
       []
     );
 
+    const largeBox = new GameSet(
+      {
+        id: faker.string.uuid(),
+        name: 'Second',
+        releaseYear: faker.date.past().getFullYear(),
+        series,
+        size: GAME_SET_SIZE.large,
+      },
+      []
+    );
+
     it('should sort core boxes before big boxes', () => {
-      expect(GameSet.sorter(coreBox, largeBox)).toBe(-1);
+      const sorted = GameSet.sorter(coreBox, largeBox);
+
+      if (sorted !== -1) {
+        console.log('Core', coreBox);
+        console.log('Large', largeBox);
+      }
+
+      expect(sorted).toBe(-1);
       expect(GameSet.sorter(largeBox, coreBox)).toBe(1);
     });
 
     it('should sort by name, alphabetically', () => {
-      expect(GameSet.sorter(firstBox, largeBox)).toBe(-1);
+      const sorted = GameSet.sorter(firstBox, largeBox);
+
+      if (sorted !== -1) {
+        console.log('First', firstBox);
+        console.log('Large', largeBox);
+      }
+
+      expect(sorted).toBe(-1);
       expect(GameSet.sorter(largeBox, firstBox)).toBe(1);
       expect(GameSet.sorter(firstBox, firstBox)).toBe(0);
     });
@@ -95,7 +112,7 @@ describe('GameSet', () => {
 
     describe('with only heroes', () =>
       it('should only return the heroes', () => {
-        const gameSet = new FakeGameSetFactory().createGameSet(
+        const gameSet = new MockGameSetFactory().createGameSet(
           GAME_SET_SIZE.core,
           {
             numHeroes: 5,

@@ -1,20 +1,15 @@
-import { FakeGameSetFactory } from '@schemetwister/libtwister/testing/data';
-import { beforeAll, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
-import { StoreBuilder, StoreOfStores } from '../../factories';
-import { TEST_HERO_IN_VILLAIN_DECK_AND_REQUIRE_TEAMS_SCHEME } from '../../testData/schemes';
+import { StoreBuilder } from '../../factories';
+import { MockCardFactory, MockGameSetFactory } from '../../mocks';
 import { randomize } from '../../utils/randomize';
-import { IGameSetup, ITeam } from '../interfaces';
+import { ITeam } from '../interfaces';
 import { GAME_SET_SIZE } from '../types';
 
 import { RequireHeroAndTeamScheme } from './RequireHeroAndTeamScheme';
-import { Scheme } from './Scheme';
 
 describe('RequireHeroAndTeamScheme', () => {
-  let store: StoreOfStores;
-  let scheme: Scheme;
-  let setup: IGameSetup;
-  const gameSet = new FakeGameSetFactory().createGameSet(GAME_SET_SIZE.core, {
+  const gameSet = new MockGameSetFactory().createGameSet(GAME_SET_SIZE.core, {
     numHeroes: {
       heroesPerTeam: 5,
       numberOfTeams: 3,
@@ -26,31 +21,27 @@ describe('RequireHeroAndTeamScheme', () => {
     numSchemes: 2,
   });
   const selectedHero = gameSet.heroes[0];
-  let selectedTeam = gameSet.heroes
+  const allTeams = gameSet.heroes
     .map((hero) => hero.team)
-    .filter((team): team is ITeam => team !== undefined)[1];
+    .filter((team): team is ITeam => team !== undefined);
 
-  beforeAll(() => {
-    store = new StoreBuilder().withAllFromGamesets(gameSet).build();
-
-    const allTeams = gameSet.heroes
-      .map((hero) => hero.team)
-      .filter((team): team is ITeam => team !== undefined);
-
-    const dedupedTeams = Array.from(new Set(allTeams));
-
-    selectedTeam = randomize(dedupedTeams);
-
-    scheme = new RequireHeroAndTeamScheme(
-      TEST_HERO_IN_VILLAIN_DECK_AND_REQUIRE_TEAMS_SCHEME,
-      selectedHero,
-      selectedTeam,
-      4,
-      2
-    );
-
-    setup = scheme.getSetup({ numPlayers: 2, store });
-  });
+  const dedupedTeams = Array.from(new Set(allTeams));
+  const selectedTeam = randomize(dedupedTeams);
+  const schemeDefinition = new MockCardFactory().createScheme();
+  schemeDefinition.meta.rules = (rule) => {
+    rule.heroDeck.numHeroes = 6;
+    rule.villainDeck.numHeroes = 1;
+    return rule;
+  };
+  const scheme = new RequireHeroAndTeamScheme(
+    schemeDefinition,
+    selectedHero,
+    selectedTeam,
+    4,
+    2
+  );
+  const store = new StoreBuilder().withAllFromGamesets(gameSet).build();
+  const setup = scheme.getSetup({ numPlayers: 2, store });
 
   it('should include selectedHero in the villain deck', () =>
     expect(setup.villainDeck.heroes).toContain(selectedHero));

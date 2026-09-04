@@ -1,31 +1,36 @@
 import { faker } from '@faker-js/faker';
+
+import { GAME_SET_SIZE, Hero, VillainGroup } from '../model';
+import { GameSet } from '../model/GameSet';
 import {
-  GameSet,
-  GameSetSize,
   getGamesetSize,
-  Hero,
   IGameSetSize,
   IHeroTeamConfig,
-  VillainGroup,
-} from '@schemetwister/libtwister';
+} from '../utils/getGameSetSize';
 
-import { FakeCardFactory } from './fakeCardFactory';
+import { MockCardFactory } from './mockCardFactory';
 import {
-  createGamesetMeta,
-  createKeywords,
-  createSeriesMeta,
-  createTeam,
-} from './fakerUtils';
+  createMockGamesetMeta,
+  createMockKeywords,
+  createMockSeriesMeta,
+  createMockTeam,
+} from './mockUtils';
 
-export class FakeGameSetFactory {
-  constructor(private readonly _series = createSeriesMeta(), seed?: number) {
+export class MockGameSetFactory {
+  constructor(
+    private readonly _series = createMockSeriesMeta(),
+    seed?: number
+  ) {
     faker.seed(seed);
   }
 
-  public createGameSet(size?: GameSetSize, cardCounts?: IGameSetSize): GameSet {
-    const gameSetMeta = createGamesetMeta(this._series, size);
-    const keywords = createKeywords();
-    const fakeCardFactory = new FakeCardFactory(gameSetMeta, keywords);
+  public createGameSet(
+    size = GAME_SET_SIZE.core,
+    cardCounts?: IGameSetSize
+  ): GameSet {
+    const gameSetMeta = createMockGamesetMeta(this._series, size);
+    const keywords = createMockKeywords();
+    const fakeCardFactory = new MockCardFactory(gameSetMeta, keywords);
     const gameSetSizes = cardCounts ?? getGamesetSize(gameSetMeta.size);
 
     const villains = faker.helpers.multiple(
@@ -60,10 +65,10 @@ export class FakeGameSetFactory {
   }
 
   private _createNormalHeroes(
-    fakeCardFactory: FakeCardFactory,
+    fakeCardFactory: MockCardFactory,
     count: number
   ): Hero[] {
-    const teams = faker.helpers.multiple(() => createTeam());
+    const teams = faker.helpers.multiple(() => createMockTeam());
 
     return faker.helpers.multiple(() => fakeCardFactory.createHero(teams), {
       count: count,
@@ -71,10 +76,10 @@ export class FakeGameSetFactory {
   }
 
   private _createHeroesForTeams(
-    fakeCardFactory: FakeCardFactory,
+    fakeCardFactory: MockCardFactory,
     config: IHeroTeamConfig
   ): Hero[] {
-    const teams = faker.helpers.multiple(() => createTeam(), {
+    const teams = faker.helpers.multiple(() => createMockTeam(), {
       count: config.numberOfTeams,
     });
 
@@ -86,7 +91,7 @@ export class FakeGameSetFactory {
   }
 
   private readonly _createMasterminds = (
-    fakeCardFactory: FakeCardFactory,
+    fakeCardFactory: MockCardFactory,
     villains: VillainGroup[],
     count: number
   ) =>

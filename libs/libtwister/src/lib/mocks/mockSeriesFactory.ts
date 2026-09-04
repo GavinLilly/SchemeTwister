@@ -1,8 +1,9 @@
 import { faker } from '@faker-js/faker';
-import { GAME_SET_SIZE, ISeries } from '@schemetwister/libtwister';
 
-import { FakeGameSetFactory } from './fakeGameSetFactory';
-import { createSeriesMeta } from './fakerUtils';
+import { GAME_SET_SIZE, ISeries } from '../model';
+
+import { MockGameSetFactory } from './mockGameSetFactory';
+import { createMockSeriesMeta } from './mockUtils';
 
 interface ISeriesConfig {
   numCore: number;
@@ -11,14 +12,14 @@ interface ISeriesConfig {
   numSmall: number;
 }
 
-export class FakeSeriesFactory {
+export class MockSeriesFactory {
   constructor(seed?: number) {
     faker.seed(seed);
   }
 
   public createSeries(config?: ISeriesConfig): ISeries {
-    const seriesMeta = createSeriesMeta();
-    const gameSetFactory = new FakeGameSetFactory(seriesMeta);
+    const seriesMeta = createMockSeriesMeta();
+    const gameSetFactory = new MockGameSetFactory(seriesMeta);
 
     if (config === undefined) {
       return {
