@@ -58,7 +58,7 @@
   },
   "devDependencies": {
     "@angular-devkit/architect": "v20-lts",
-    "@angular-devkit/build-angular": "v20-lts",
+    "@angular-devkit/build-angular": "v21-lts",
     "@angular-devkit/core": "v20-lts",
     "@angular-devkit/schematics": "v20-lts",
     "@angular/cli": "v20-lts",
