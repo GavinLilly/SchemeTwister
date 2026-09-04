@@ -105,8 +105,8 @@ importers:
         specifier: ^4.6.0
         version: 4.41.0
       uuid:
-        specifier: ^9.0.0
-        version: 9.0.1
+        specifier: ^14.0.0
+        version: 14.0.2
       validator:
         specifier: ^13.15.22
         version: 13.15.35
