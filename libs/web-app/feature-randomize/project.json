@@ -4,7 +4,10 @@
   "projectType": "library",
   "sourceRoot": "libs/web-app/feature-randomize/src",
   "prefix": "schemetwister",
-  "tags": ["type:feature", "scope:web-app"],
+  "tags": [
+    "type:feature",
+    "scope:web-app"
+  ],
   "generators": {
     "@nx/angular:component": {
       "style": "scss"
@@ -12,17 +15,29 @@
   },
   "targets": {
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "inputs": [
+        "default",
+        "^default",
+        "{workspaceRoot}/.eslintrc.json",
+        "{workspaceRoot}/eslint.config.mjs",
+        "{workspaceRoot}/tools/eslint-rules/**/*",
+        {
+          "externalDependencies": [
+            "eslint"
+          ]
+        }
+      ]
     },
     "test": {
       "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/web-app/feature-randomize"
+      ],
       "options": {
         "jestConfig": "libs/web-app/feature-randomize/jest.config.ts",
         "codeCoverage": true,
         "tsConfig": "libs/web-app/feature-randomize/tsconfig.spec.json"
-      },
-      "outputs": ["{workspaceRoot}/coverage/libs/web-app/feature-randomize"]
+      }
     }
   }
 }

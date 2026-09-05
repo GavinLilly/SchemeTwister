@@ -193,6 +193,12 @@
         "libs/series/marvel-villains/**/*",
         "tools/schematics/**/*"
       ]
+    },
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
     }
   ]
 }

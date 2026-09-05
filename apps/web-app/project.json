@@ -13,6 +13,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/web-app",
         "index": "apps/web-app/src/index.html",
@@ -50,7 +53,9 @@
             "output": "./assets/icons/teams"
           }
         ],
-        "styles": ["apps/web-app/src/styles.scss"],
+        "styles": [
+          "apps/web-app/src/styles.scss"
+        ],
         "scripts": [],
         "sourceMap": true,
         "buildOptimizer": false,
@@ -94,11 +99,11 @@
             }
           ]
         }
-      },
-      "outputs": ["{options.outputPath}"]
+      }
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
+      "continuous": true,
       "options": {
         "proxyConfig": "apps/web-app/proxy.conf.json",
         "buildTarget": "web-app:build"
@@ -110,8 +115,7 @@
         "local": {
           "buildTarget": "web-app:build:local"
         }
-      },
-      "continuous": true
+      }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
@@ -120,17 +124,29 @@
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "inputs": [
+        "default",
+        "^default",
+        "{workspaceRoot}/.eslintrc.json",
+        "{workspaceRoot}/eslint.config.mjs",
+        "{workspaceRoot}/tools/eslint-rules/**/*",
+        {
+          "externalDependencies": [
+            "eslint"
+          ]
+        }
+      ]
     },
     "test": {
       "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/apps/web-app"
+      ],
       "options": {
         "jestConfig": "apps/web-app/jest.config.ts",
         "codeCoverage": true,
         "tsConfig": "apps/web-app/tsconfig.spec.json"
-      },
-      "outputs": ["{workspaceRoot}/coverage/apps/web-app"]
+      }
     },
     "deploy": {
       "executor": "@angular/fire:deploy",

@@ -10,6 +10,7 @@ export default mergeConfig(sharedConfig, {
   test: {
     globals: true,
     coverage: {
+      enabled: true,
       reportsDirectory: '../../coverage/libs/libtwister',
     },
   },

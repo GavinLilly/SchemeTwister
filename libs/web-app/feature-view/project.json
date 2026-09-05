@@ -8,14 +8,27 @@
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/web-app/feature-view"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/web-app/feature-view"
+      ],
       "options": {
         "jestConfig": "libs/web-app/feature-view/jest.config.ts",
         "tsConfig": "libs/web-app/feature-view/tsconfig.spec.json"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint"
+      "inputs": [
+        "default",
+        "^default",
+        "{workspaceRoot}/.eslintrc.json",
+        "{workspaceRoot}/eslint.config.mjs",
+        "{workspaceRoot}/tools/eslint-rules/**/*",
+        {
+          "externalDependencies": [
+            "eslint"
+          ]
+        }
+      ]
     }
   }
 }
