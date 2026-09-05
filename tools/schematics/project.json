@@ -7,7 +7,9 @@
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/tools/schematics",
         "main": "tools/schematics/src/index.ts",
@@ -41,8 +43,10 @@
       "executor": "@nx/eslint:lint"
     },
     "test": {
-      "executor": "@nx/vitest:test",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}",
+        "{workspaceRoot}/coverage/libs/schemetwister-schematics"
+      ],
       "options": {
         "codeCoverage": true
       }

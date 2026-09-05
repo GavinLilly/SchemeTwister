@@ -1,4 +1,4 @@
-import { IGameSetMeta, GAME_SET_SIZE, GameSet } from '../model';
+import { GAME_SET_SIZE, GameSet, IGameSetMeta } from '../model';
 
 import { TEST_BYSTANDER_1, TEST_BYSTANDER_AS_HERO } from './bystanders';
 import { TEST_HENCHMEN_1, TEST_HENCHMEN_2, TEST_HENCHMEN_3 } from './henchmen';
@@ -14,7 +14,7 @@ import {
   TEST_HERO_9,
 } from './heroes';
 import { TEST_MASTERMIND_1 } from './masterminds';
-import { TEST_NORMAL_SCHEME, TEST_PLAYER_PICKS_A_HERO_SCHEME } from './schemes';
+import { TEST_NORMAL_SCHEME } from './schemes';
 import { TEST_SERIES_META_1, TEST_SERIES_META_2 } from './seriesMeta';
 import {
   TEST_VILLAIN_1,
@@ -43,7 +43,7 @@ export const TEST_GAME_SET_1 = new GameSet(
     TEST_HERO_9,
   ],
   [TEST_MASTERMIND_1],
-  [TEST_NORMAL_SCHEME, TEST_PLAYER_PICKS_A_HERO_SCHEME],
+  [TEST_NORMAL_SCHEME],
   [TEST_VILLAIN_1, TEST_VILLAIN_2, TEST_VILLAIN_3, TEST_VILLAIN_4],
   [TEST_HENCHMEN_1, TEST_HENCHMEN_2, TEST_HENCHMEN_3],
   [TEST_BYSTANDER_1, TEST_BYSTANDER_AS_HERO]

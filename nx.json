@@ -176,5 +176,23 @@
   "parallel": 1,
   "useInferencePlugins": false,
   "defaultBase": "main",
-  "analytics": true
+  "analytics": true,
+  "plugins": [
+    {
+      "plugin": "@nx/vitest",
+      "options": {
+        "testTargetName": "test",
+        "testMode": "watch"
+      },
+      "include": [
+        "libs/libtwister/**/*",
+        "libs/libtwister-testing/**/*",
+        "libs/series/buffy/**/*",
+        "libs/series/marvel/**/*",
+        "libs/series/marvel-studios/**/*",
+        "libs/series/marvel-villains/**/*",
+        "tools/schematics/**/*"
+      ]
+    }
+  ]
 }

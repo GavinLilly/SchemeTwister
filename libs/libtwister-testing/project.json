@@ -11,13 +11,6 @@
         "{options.outputFile}"
       ]
     },
-    "test": {
-      "executor": "@nx/vitest:test",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
-      "options": {}
-    },
     "build": {
       "executor": "@nx/js:swc",
       "outputs": [
