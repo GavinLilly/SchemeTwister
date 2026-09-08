@@ -2,6 +2,7 @@ import { faker } from '@faker-js/faker';
 
 import { GAME_SET_SIZE, IKeyword, ITeam } from '../model';
 import { SeriesMeta } from '../model/seriesMeta';
+import { capitalise } from '../utils/capitalise';
 
 export const createMockGamesetMeta = (
   series = createMockSeriesMeta(),
@@ -33,14 +34,6 @@ export function createMockTeam(): ITeam {
     icon: `${faker.helpers.slugify(name)}.png`,
   };
 }
-
-/**
- * Capitalises the first character of the given string
- * @param string the string to capitalise
- * @returns a capitalised string
- */
-export const capitalise = (string: string) =>
-  string[0].toUpperCase() + string.slice(1);
 
 /**
  * Creates an array of keywords

@@ -2,8 +2,8 @@ import { describe, expect, it } from 'vitest';
 
 import { RequireCardInDeckScheme, Scheme, SoloBannedScheme } from '../model';
 import {
+  createRequireCardInDeckScheme,
   TEST_NORMAL_SCHEME,
-  TEST_REQUIRE_CARD_IN_DECK_SCHEME,
   TEST_SOLO_BANNED_SCHEME,
 } from '../testData/schemes';
 
@@ -16,9 +16,9 @@ describe('instantiateScheme', () => {
 
   describe('with parameters in the overridden scheme', () =>
     it("should create a 'RequireCardInDeckScheme' instance", () =>
-      expect(
-        instantiateScheme(TEST_REQUIRE_CARD_IN_DECK_SCHEME)
-      ).toBeInstanceOf(RequireCardInDeckScheme)));
+      expect(instantiateScheme(createRequireCardInDeckScheme())).toBeInstanceOf(
+        RequireCardInDeckScheme
+      )));
 
   describe('with no parameters in the overridden scheme', () =>
     it("should create a 'SoloBannedScheme' instance", () =>

@@ -444,9 +444,7 @@ export class Scheme implements IPlayableObject {
         store.villainStore.pickOne(villains)
       );
 
-      for (const card of mastermindVillains) {
-        villains.add(card);
-      }
+      mastermindVillains.forEach((villain) => villains.add(villain));
     }
 
     // Check again in case the mastermind did not fill all the slots

@@ -72,33 +72,34 @@ export const TEST_HERO_IN_VILLAIN_DECK_SCHEME = new SchemeDefinition({
   gameSet: TEST_GAME_SET_META_1,
 });
 
-export const TEST_REQUIRE_CARD_IN_DECK_SCHEME = new SchemeDefinition({
-  id: 'f0728254-a7b5-481c-993a-9af34c9ad5d0',
-  name: 'Test require card in deck scheme',
-  setup:
-    '8 Twists. 6 Heroes. Skrull Villain Group required. Shuffle 12 random Heroes from the Hero Deck into the Villain Deck.',
-  specialRules:
-    "Heroes in the Villain Deck count as Skrull Villains with Attack equal to the Hero's Cost +2. If you defeat that Hero, you gain it.",
-  twist:
-    'The highest-cost Hero from the HQ moves into the Sewers as a Skrull Villain, as above.',
-  evilWins: 'If 6 Heroes get into the Escaped Villains pile.',
-  meta: {
-    numTwists: 8,
-    rules: (rule) => {
-      rule.heroDeck.numHeroes = 6;
-      return rule;
+export const createRequireCardInDeckScheme = (gameSet = TEST_GAME_SET_META_2) =>
+  new SchemeDefinition({
+    id: 'f0728254-a7b5-481c-993a-9af34c9ad5d0',
+    name: 'Test require card in deck scheme',
+    setup:
+      '8 Twists. 6 Heroes. Skrull Villain Group required. Shuffle 12 random Heroes from the Hero Deck into the Villain Deck.',
+    specialRules:
+      "Heroes in the Villain Deck count as Skrull Villains with Attack equal to the Hero's Cost +2. If you defeat that Hero, you gain it.",
+    twist:
+      'The highest-cost Hero from the HQ moves into the Sewers as a Skrull Villain, as above.',
+    evilWins: 'If 6 Heroes get into the Escaped Villains pile.',
+    meta: {
+      numTwists: 8,
+      rules: (rule) => {
+        rule.heroDeck.numHeroes = 6;
+        return rule;
+      },
+      overrideScheme: {
+        schemeType: RequireCardInDeckScheme,
+        params: [
+          new RequireCard(TEST_VILLAIN_1),
+          new RequireVillainGroup(),
+          DECK_TYPE.villain,
+        ],
+      },
     },
-    overrideScheme: {
-      schemeType: RequireCardInDeckScheme,
-      params: [
-        new RequireCard(TEST_VILLAIN_1),
-        new RequireVillainGroup(),
-        DECK_TYPE.villain,
-      ],
-    },
-  },
-  gameSet: TEST_GAME_SET_META_2,
-});
+    gameSet,
+  });
 
 export const TEST_REQUIRE_CARD_NAME_IN_HERO_DECK_SCHEME = new SchemeDefinition({
   id: '3a64b756-7ed7-4dd9-a930-e76acda748fb',
@@ -158,37 +159,40 @@ export const TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME = new SchemeDefinition({
   keywords: [TEST_KEYWORD_1],
 });
 
-export const TEST_REQUIRE_HENCHMEN_IN_ADDITIONAL_DECK = new SchemeDefinition({
-  id: '01b42c1f-22f0-4e0b-851c-a2ec357f757e',
-  name: 'Test Require Henchmen in Additional Deck',
-  setup: '8 Twists. Stack 2 Cops per player next to this Plot.',
-  twist: `Each player returns all Cops from their Victory Pile to the Cop Stack. Then each player puts a non-grey Ally from their hand in front of them. Put a Cop from the Cop Stack on top of each of those Allies.`,
-  evilWins:
-    'When a Twist must put out a Cop, but the Cop Stack is already empty.',
-  specialRules:
-    'You can fight any Cop on top of Allies. If you do, the player of your choice gains that Ally.',
-  meta: {
-    numTwists: 8,
-    rules: (rule) => {
-      rule.additionalDeck.push({
-        name: 'Cop stack',
-        deck: {
-          numHenchmenGroups: 1,
-        },
-      });
-      return rule;
+export const createRequireCardInAdditionalDeckScheme = (
+  gameSet = TEST_GAME_SET_META_1
+) =>
+  new SchemeDefinition({
+    id: '01b42c1f-22f0-4e0b-851c-a2ec357f757e',
+    name: 'Test Require Henchmen in Additional Deck',
+    setup: '8 Twists. Stack 2 Cops per player next to this Plot.',
+    twist: `Each player returns all Cops from their Victory Pile to the Cop Stack. Then each player puts a non-grey Ally from their hand in front of them. Put a Cop from the Cop Stack on top of each of those Allies.`,
+    evilWins:
+      'When a Twist must put out a Cop, but the Cop Stack is already empty.',
+    specialRules:
+      'You can fight any Cop on top of Allies. If you do, the player of your choice gains that Ally.',
+    meta: {
+      numTwists: 8,
+      rules: (rule) => {
+        rule.additionalDeck.push({
+          name: 'Cop stack',
+          deck: {
+            numHenchmenGroups: 1,
+          },
+        });
+        return rule;
+      },
+      overrideScheme: {
+        schemeType: RequireCardInDeckScheme,
+        params: [
+          new RequireCard(TEST_HENCHMEN_1),
+          new RequireHenchmen(),
+          DECK_TYPE.additional,
+        ],
+      },
     },
-    overrideScheme: {
-      schemeType: RequireCardInDeckScheme,
-      params: [
-        new RequireCard(TEST_HENCHMEN_1),
-        new RequireHenchmen(),
-        DECK_TYPE.additional,
-      ],
-    },
-  },
-  gameSet: TEST_GAME_SET_META_1,
-});
+    gameSet,
+  });
 
 export const TEST_REQUIRE_VILLAINS_IN_ADDITIONAL_DECK = new SchemeDefinition({
   id: '37a16e45-b759-44a6-85c3-6ca20b3cdb79',

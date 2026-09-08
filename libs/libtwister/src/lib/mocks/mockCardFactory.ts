@@ -11,8 +11,8 @@ import {
   VillainGroup,
 } from '../model';
 
+import { capitalise } from '../utils/capitalise';
 import {
-  capitalise,
   createMockGamesetMeta,
   createMockKeywords,
   createMockTeam,

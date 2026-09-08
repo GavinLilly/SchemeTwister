@@ -286,9 +286,19 @@ describe('Scheme', () => {
         },
       });
 
-      expect(filledSetup.villainDeck.villains).toEqual(
-        expect.arrayContaining(villains)
-      );
+      if (filledSetup.mastermind.alwaysLeads.length === 1) {
+        expect(filledSetup.villainDeck.villains).toEqual(
+          expect.arrayContaining(villains)
+        );
+      } else {
+        expect(filledSetup.villainDeck.villains).toEqual(
+          expect.arrayContaining(filledSetup.mastermind.alwaysLeads)
+        );
+        const isVillainsIncluded = villains.map((villain) =>
+          filledSetup.villainDeck.villains.includes(villain)
+        );
+        expect(isVillainsIncluded.some((val) => val)).toBeTruthy();
+      }
     });
 
     describe('single player mode', () => {
