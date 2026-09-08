@@ -1,5 +1,6 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 
+import { faker } from '@faker-js/faker';
 import { LibTwister } from './libTwister';
 import { MockGameSetFactory, MockSeriesFactory } from './mocks';
 import { GAME_SET_SIZE, ISeries, NumPlayers, SeriesMeta } from './model';
@@ -216,7 +217,7 @@ describe('LibTwister', () => {
     );
 
     const series: ISeries = {
-      seriesMeta: new SeriesMeta(uuidV4(), 'Test Series', ''),
+      seriesMeta: new SeriesMeta(faker.string.uuid(), 'Test Series', ''),
       gameSets: [testLargeSet, testMediumSet, testSmallSet],
     };
 

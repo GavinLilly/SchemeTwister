@@ -1,14 +1,14 @@
 import { afterEach, beforeAll, describe, expect, it } from 'vitest';
 
 import { StoreBuilder, StoreOfStores } from '../factories';
-import instantiateScheme from '../utils/instantiateScheme';
-
 import {
   MOCK_GAME_SET_WITH_SPECIFIC_HERO_AND_SCHEME,
   MOCK_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
   MockGameSetFactory,
 } from '../mocks';
+import instantiateScheme from '../utils/instantiateScheme';
 import { randomize } from '../utils/randomize';
+
 import { Mastermind } from './cards';
 import { GameSetup } from './GameSetup';
 import { Scheme } from './schemes';

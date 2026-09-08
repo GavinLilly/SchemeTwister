@@ -2,8 +2,8 @@ import { faker } from '@faker-js/faker';
 import { describe, expect, it } from 'vitest';
 
 import { MockGameSetFactory } from '../mocks';
-
 import { createMockSeriesMeta } from '../mocks/mockUtils';
+
 import {
   Bystander,
   Henchmen,

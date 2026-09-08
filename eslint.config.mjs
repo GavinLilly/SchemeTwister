@@ -175,4 +175,14 @@ export default [
       'max-nested-callbacks': 'off',
     },
   },
+  {
+    files: ['**/*.html'],
+    rules: {
+      // Disable import-x rules for HTML files
+      'import-x/namespace': 'off',
+      'import-x/default': 'off',
+      'import-x/named': 'off',
+      'import-x/no-duplicates': 'off',
+    },
+  },
 ];

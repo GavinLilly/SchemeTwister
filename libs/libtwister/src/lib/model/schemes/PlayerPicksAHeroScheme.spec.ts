@@ -4,8 +4,8 @@ import { StoreBuilder, StoreOfStores } from '../../factories';
 import { MockGameSetFactory } from '../../mocks';
 import { createMockGamesetMeta } from '../../mocks/mockUtils';
 import { SchemeDefinition } from '../cards';
-
 import { GAME_SET_SIZE } from '../types';
+
 import { PlayerPicksAHeroScheme } from './PlayerPicksAHeroScheme';
 
 describe('Player Picks a Hero Scheme', () => {
