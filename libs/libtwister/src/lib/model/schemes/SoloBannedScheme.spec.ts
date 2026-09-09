@@ -1,8 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { StoreBuilder } from '../../factories';
-import { MockGameSetFactory } from '../../mocks';
-import { TEST_SOLO_BANNED_SCHEME } from '../../testData/schemes';
+import { MockCardFactory, MockGameSetFactory } from '../../mocks';
 import { SinglePlayerError } from '../errors/SinglePlayerError';
 import { NumPlayers } from '../types/numPlayers.type';
 
@@ -12,7 +11,9 @@ const gameSetFactory = new MockGameSetFactory();
 
 describe('Solo Banned Scheme', () => {
   describe('Negative Zone Prison Breakout', () => {
-    const scheme = new SoloBannedScheme(TEST_SOLO_BANNED_SCHEME);
+    const scheme = new SoloBannedScheme(
+      new MockCardFactory().createSchemeDefinition()
+    );
 
     it('should throw an error for 1 player', () => {
       const store = new StoreBuilder()
@@ -28,7 +29,7 @@ describe('Solo Banned Scheme', () => {
       }
     });
 
-    it.each([2, 3, 4, 5])('should generate a setup for %p players', (arg) => {
+    it.each([2, 3, 4, 5])('should generate a setup for %s players', (arg) => {
       const store = new StoreBuilder()
         .withAllFromGamesets(
           gameSetFactory.createGameSet(),

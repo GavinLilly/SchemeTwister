@@ -1,16 +1,16 @@
 import { afterEach, beforeAll, describe, expect, it } from 'vitest';
 
 import { StoreBuilder, StoreOfStores } from '../factories';
-import {
-  MOCK_GAME_SET_WITH_SPECIFIC_HERO_AND_SCHEME,
-  MOCK_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
-  MockGameSetFactory,
-} from '../mocks';
+import { MockGameSetFactory } from '../mocks';
 import instantiateScheme from '../utils/instantiateScheme';
 import { randomize } from '../utils/randomize';
 
 import { Mastermind } from './cards';
 import { GameSetup } from './GameSetup';
+import {
+  MOCK_GAME_SET_WITH_SPECIFIC_HERO_AND_SCHEME,
+  MOCK_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
+} from './gameSetWithSpecificHero.mock';
 import { Scheme } from './schemes';
 
 const MOCK_GAMESET_FACTORY = new MockGameSetFactory();

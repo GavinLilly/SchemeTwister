@@ -1,25 +1,11 @@
-import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 import { StoreBuilder, StoreOfStores } from '../../../factories';
-import { TEST_GAME_SET_1, TEST_GAME_SET_2 } from '../../../testData/gameSets';
-import { TEST_HERO_1 } from '../../../testData/heroes';
-import {
-  createRequireCardInAdditionalDeckScheme,
-  createRequireCardInDeckScheme as createRequireCardInVillainDeckScheme,
-  TEST_HERO_IN_VILLAIN_DECK_SCHEME,
-  TEST_NORMAL_SCHEME,
-  TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
-  TEST_REQUIRE_CARD_NAME_IN_HERO_DECK_SCHEME,
-  TEST_REQUIRE_VILLAINS_IN_ADDITIONAL_DECK,
-} from '../../../testData/schemes';
-import { TEST_TEAM_1 } from '../../../testData/teams';
-import { TEST_VILLAIN_1 } from '../../../testData/villains';
-import { Hero, SchemeDefinition, VillainGroup } from '../../cards';
+import { VillainGroup } from '../../cards';
 import { IGameSetup } from '../../interfaces';
 import { DECK_TYPE } from '../../types';
-import { Scheme } from '../Scheme';
 
-import { MockGameSetFactory } from '../../../mocks';
+import { MockCardFactory, MockGameSetFactory } from '../../../mocks';
 import { randomize } from '../../../utils/randomize';
 import { GameSet } from '../../GameSet';
 import { RequireCard } from './requireCard';
@@ -30,6 +16,7 @@ import { RequireHero } from './requireHero';
 import { RequireTeam } from './requireTeam';
 import { RequireVillainGroup } from './requireVillainGroup';
 
+const mockCardFactory = new MockCardFactory();
 const gameSetFactory = new MockGameSetFactory();
 
 describe('Require Henchmen', () => {
@@ -42,16 +29,10 @@ describe('Require Henchmen', () => {
   });
 
   describe('in Villain Deck', () => {
-    let schemeDef: SchemeDefinition;
-
-    beforeEach(() => {
-      schemeDef = createRequireCardInVillainDeckScheme(gameSet);
-    });
-
     it('should include a specific Henchmen in the villain deck', () => {
       const expectedHenchmen = store.henchmenStore.getRandom();
       const scheme = new RequireCardInDeckScheme(
-        schemeDef,
+        mockCardFactory.createSchemeDefinition(),
         new RequireCard(expectedHenchmen),
         new RequireHenchmen(),
         DECK_TYPE.villain
@@ -67,13 +48,18 @@ describe('Require Henchmen', () => {
   });
 
   describe('in Additional Deck', () => {
-    let schemeDef: SchemeDefinition;
-
-    beforeEach(() => {
-      schemeDef = createRequireCardInAdditionalDeckScheme(gameSet);
-    });
-
     it('should include a specific Henchmen in the additional deck', () => {
+      const schemeDef = mockCardFactory.createSchemeDefinition();
+      schemeDef.meta.numTwists = 8;
+      schemeDef.meta.rules = (rule) => {
+        rule.additionalDeck.push({
+          name: 'Cop stack',
+          deck: {
+            numHenchmenGroups: 1,
+          },
+        });
+        return rule;
+      };
       const expectedHenchmen = store.henchmenStore.getRandom();
       const scheme = new RequireCardInDeckScheme(
         schemeDef,
@@ -92,129 +78,107 @@ describe('Require Henchmen', () => {
 });
 
 describe('Require Hero', () => {
-  describe('in Additional Deck', () => {
-    let store: StoreOfStores;
-
-    beforeAll(() => {
-      store = new StoreBuilder()
-        .withHeroGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
-        .withMastermindGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
-        .withVillainGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
-        .withHenchmenGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
-        .build();
-    });
-
-    it('should include a Hero with "Foo" in their name in the additional deck', () => {
-      const scheme = new RequireCardInDeckScheme(
-        TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
-        new RequireCardName('Foo'),
-        new RequireHero(),
-        DECK_TYPE.additional
-      );
-      const setup = scheme.getSetup({ numPlayers: 2, store });
-
-      const heroes = setup.additionalDecks[0].deck.heroes!;
-
-      expect(heroes.some((hero) => hero.name.includes('Foo'))).toBe(true);
-    });
-  });
-
   describe('in Villain Deck', () => {
     let store: StoreOfStores;
+    let gameSet = gameSetFactory.createGameSet();
 
-    beforeAll(() => {
-      store = new StoreBuilder()
-        .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
-        .build();
+    beforeEach(() => {
+      store = new StoreBuilder().withAllFromGamesets(gameSet).build();
     });
 
-    it('should include TEST_HERO_1 in the villain deck', () => {
+    it('should include a hero in the villain deck', () => {
+      const hero = randomize(gameSet.heroes);
       const scheme = new RequireCardInDeckScheme(
-        TEST_HERO_IN_VILLAIN_DECK_SCHEME,
-        new RequireCard(TEST_HERO_1),
+        mockCardFactory.createSchemeDefinition(),
+        new RequireCard(hero),
         new RequireHero(),
         DECK_TYPE.villain
       );
       const setup = scheme.getSetup({ numPlayers: 2, store });
 
-      expect(setup.villainDeck.heroes!).toContain(TEST_HERO_1);
+      expect(setup.villainDeck.heroes!).toContain(hero);
     });
   });
 });
 
 describe('Require Hero Name', () => {
+  const gameSet = gameSetFactory.createGameSet();
+  const store = new StoreBuilder().withAllFromGamesets(gameSet).build();
+
+  beforeEach(() => {
+    store.reset();
+  });
+
   describe('in Additional Deck', () => {
-    let store: StoreOfStores;
-    let scheme: Scheme;
-    let setup: IGameSetup;
+    const selectedHeroName = store.heroStore.getRandom().name;
 
-    const isName = (hero: Hero) => hero.name.includes('Foo');
+    const schemeDef = mockCardFactory.createSchemeDefinition();
+    schemeDef.meta.numTwists = 8;
+    schemeDef.meta.rules = (rule) => {
+      rule.heroDeck.numHeroes = 4;
+      rule.additionalDeck.push({
+        name: 'Test heroes with Foo in name',
+        deck: { numHeroes: 1 },
+      });
+      return rule;
+    };
 
-    beforeAll(() => {
-      store = new StoreBuilder()
-        .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
-        .build();
+    const scheme = new RequireCardInDeckScheme(
+      schemeDef,
+      new RequireCardName(selectedHeroName),
+      new RequireHero(),
+      DECK_TYPE.additional
+    );
 
-      scheme = new RequireCardInDeckScheme(
-        TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
-        new RequireCardName('Foo'),
-        new RequireHero(),
-        DECK_TYPE.additional
-      );
-
-      setup = scheme.getSetup({ numPlayers: 2, store });
-    });
-
-    it('should include 1 "Foo" hero in the additional deck', () => {
+    it(`should include 1 hero with name "${selectedHeroName}" in the additional deck`, () => {
+      const setup = scheme.getSetup({ numPlayers: 2, store });
       expect(setup.additionalDecks).toHaveLength(1);
       expect(setup.additionalDecks[0].deck.heroes).toBeDefined();
-      const hulkHeroes = setup.additionalDecks[0].deck.heroes!.filter(isName);
 
-      expect(hulkHeroes).toHaveLength(1);
+      const heroWithName = setup.additionalDecks[0].deck.heroes!.filter(
+        (hero) => hero.name === selectedHeroName
+      );
+
+      expect(heroWithName).toHaveLength(1);
     });
 
     it('should throw an error when no "Foo" cards are available', () => {
-      store = new StoreBuilder().withAllFromGamesets(TEST_GAME_SET_1).build();
+      const emptyStore = new StoreBuilder()
+        .withAllFromGamesets(gameSetFactory.createGameSet())
+        .build();
 
-      expect(() => scheme.getSetup({ numPlayers: 3, store })).toThrow();
+      expect(() =>
+        scheme.getSetup({ numPlayers: 3, store: emptyStore })
+      ).toThrow();
     });
   });
 
   describe('in Hero Deck', () => {
-    describe('with 2 game sets', () => {
-      const isName = (hero: Hero) => hero.name.includes('Bar');
-      let store: StoreOfStores;
-      let setup: IGameSetup;
-      beforeAll(() => {
-        store = new StoreBuilder()
-          .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
-          .build();
-        const scheme = new RequireCardInDeckScheme(
-          TEST_REQUIRE_CARD_NAME_IN_HERO_DECK_SCHEME,
-          new RequireCardName('Bar', 1, true),
-          new RequireHero(),
-          DECK_TYPE.hero
-        );
-        setup = scheme.getSetup({ numPlayers: 2, store });
-      });
-      it('should only include 1 "Bar" hero', () => {
-        const nameHeroes = setup.heroDeck.heroes.filter(isName);
-        expect(nameHeroes).toHaveLength(1);
-      });
-      it('should not have any "Bar" heroes available in the store', () => {
-        const nameHeroes = store.heroStore.availableCards.filter(isName);
-        expect(nameHeroes).toHaveLength(0);
-      });
+    const selectedHeroName = store.heroStore.getRandom().name;
+    it(`should only include 1 "${selectedHeroName}" hero`, () => {
+      const scheme = new RequireCardInDeckScheme(
+        mockCardFactory.createSchemeDefinition(),
+        new RequireCardName(selectedHeroName, 1, true),
+        new RequireHero(),
+        DECK_TYPE.hero
+      );
+      const setup = scheme.getSetup({ numPlayers: 2, store });
+      const nameHeroes = setup.heroDeck.heroes.filter(
+        (hero) => hero.name === selectedHeroName
+      );
+      expect(nameHeroes).toHaveLength(1);
+      expect(
+        store.heroStore.availableCards.filter(
+          (hero) => hero.name === selectedHeroName
+        )
+      ).toHaveLength(0);
     });
     it('should throw an error when no cards are available with "Bar" in their name', () => {
       const store = new StoreBuilder()
-        .withHeroGamesets(TEST_GAME_SET_1)
-        .withMastermindGamesets(TEST_GAME_SET_1)
-        .withVillainGamesets(TEST_GAME_SET_1)
-        .withHenchmenGamesets(TEST_GAME_SET_1)
+        .withAllFromGamesets(gameSetFactory.createGameSet())
         .build();
       const scheme = new RequireCardInDeckScheme(
-        TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
+        mockCardFactory.createSchemeDefinition(),
         new RequireCardName('Bar', 1, true),
         new RequireHero(),
         DECK_TYPE.hero
@@ -224,35 +188,27 @@ describe('Require Hero Name', () => {
   });
 
   describe('in Villain Deck', () => {
-    let scheme: Scheme;
+    const selectedHeroName = store.heroStore.getRandom().name;
 
-    const isName = (hero: Hero) => hero.name.includes('Foo');
+    const scheme = new RequireCardInDeckScheme(
+      mockCardFactory.createSchemeDefinition(),
+      new RequireCardName(selectedHeroName),
+      new RequireHero(),
+      DECK_TYPE.villain
+    );
 
-    beforeAll(() => {
-      scheme = new RequireCardInDeckScheme(
-        TEST_HERO_IN_VILLAIN_DECK_SCHEME,
-        new RequireCardName('Foo'),
-        new RequireHero(),
-        DECK_TYPE.villain
-      );
-    });
-
-    it('should only include 1 "Foo" hero', () => {
-      const store = new StoreBuilder()
-        .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
-        .build();
+    it(`should only include 1 "${selectedHeroName}" hero`, () => {
       const setup = scheme.getSetup({ numPlayers: 2, store });
       expect(setup.villainDeck.heroes).toBeDefined();
-      const name = setup.villainDeck.heroes!.filter(isName);
+      const name = setup.villainDeck.heroes!.filter(
+        (hero) => hero.name === selectedHeroName
+      );
       expect(name).toHaveLength(1);
     });
 
     it('should throw an error when no "Foo" heroes are available', () => {
       const store = new StoreBuilder()
-        .withHeroGamesets(TEST_GAME_SET_1)
-        .withMastermindGamesets(TEST_GAME_SET_1)
-        .withVillainGamesets(TEST_GAME_SET_1)
-        .withHenchmenGamesets(TEST_GAME_SET_1)
+        .withAllFromGamesets(gameSetFactory.createGameSet())
         .build();
 
       expect(() => scheme.getSetup({ numPlayers: 3, store })).toThrow();
@@ -263,26 +219,30 @@ describe('Require Hero Name', () => {
 describe('Require Team', () => {
   describe('in Hero Deck', () => {
     let store: StoreOfStores;
+    let gameSet = gameSetFactory.createGameSet();
 
-    beforeAll(() => {
-      store = new StoreBuilder()
-        .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
-        .build();
+    beforeEach(() => {
+      store = new StoreBuilder().withAllFromGamesets(gameSet).build();
     });
 
     it('should have at least 1 Merc for Money hero', () => {
+      const teams = gameSet.heroes
+        .flatMap((hero) => hero.team)
+        .filter((team) => !!team);
+      const team = randomize(teams);
+
       const scheme = new RequireCardInDeckScheme(
-        TEST_NORMAL_SCHEME,
-        new RequireTeam(TEST_TEAM_1),
+        mockCardFactory.createSchemeDefinition(),
+        new RequireTeam(team),
         new RequireHero(),
         DECK_TYPE.hero
       );
       const setup = scheme.getSetup({ numPlayers: 2, store });
 
-      const merc = setup.heroDeck.heroes.filter(
-        (hero) => hero.team === TEST_TEAM_1
+      const heroesWithTeam = setup.heroDeck.heroes.filter(
+        (hero) => hero.team === team
       );
-      expect(merc.length).toBeGreaterThanOrEqual(1);
+      expect(heroesWithTeam.length).toBeGreaterThanOrEqual(1);
     });
   });
 });
@@ -290,24 +250,35 @@ describe('Require Team', () => {
 describe('Require Villain Group', () => {
   describe('in Additional Deck', () => {
     let store: StoreOfStores;
+    let gameSet = gameSetFactory.createGameSet();
 
-    beforeAll(() => {
-      store = new StoreBuilder()
-        .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
-        .build();
+    beforeEach(() => {
+      store = new StoreBuilder().withAllFromGamesets(gameSet).build();
     });
 
-    it('should include TEST_VILLAIN_1 in the additional deck', () => {
+    it('should include a villain group in the additional deck', () => {
+      const villainGroup = randomize(gameSet.villains!);
+      const schemeDef = mockCardFactory.createSchemeDefinition();
+      schemeDef.meta.numTwists = 8;
+      schemeDef.meta.rules = (rule) => {
+        rule.additionalDeck.push({
+          name: 'Villain stack',
+          deck: {
+            numVillainGroups: 1,
+          },
+        });
+        return rule;
+      };
       const scheme = new RequireCardInDeckScheme(
-        TEST_REQUIRE_VILLAINS_IN_ADDITIONAL_DECK,
-        new RequireCard(TEST_VILLAIN_1),
+        schemeDef,
+        new RequireCard(villainGroup),
         new RequireVillainGroup(),
         DECK_TYPE.additional
       );
       const setup = scheme.getSetup({ numPlayers: 2, store });
 
       expect(setup.additionalDecks.length).toBeGreaterThan(0);
-      expect(setup.additionalDecks[0].deck.villains).toContain(TEST_VILLAIN_1);
+      expect(setup.additionalDecks[0].deck.villains).toContain(villainGroup);
     });
   });
 });

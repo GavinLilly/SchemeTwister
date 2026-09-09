@@ -20,7 +20,7 @@ describe('RequireVillainAndHeroWithBackupInVillainDeckScheme', () => {
     gameSet1 = new MockGameSetFactory().createGameSet(GAME_SET_SIZE.core);
     gameSet2 = new MockGameSetFactory().createGameSet(GAME_SET_SIZE.large);
 
-    const schemeDefinition = new MockCardFactory().createScheme();
+    const schemeDefinition = new MockCardFactory().createSchemeDefinition();
 
     scheme = new RequireVillainAndHeroWithBackupInVillainDeckScheme(
       schemeDefinition,

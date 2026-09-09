@@ -8,10 +8,10 @@ import {
   RequireCardName,
   RequireHero,
   SchemeDefinition,
-} from '../model';
+} from '.';
 
-import { MockGameSetFactory } from './mockGameSetFactory';
-import { createMockGamesetMeta, createMockKeywords } from './mockUtils';
+import { MockGameSetFactory } from '../mocks/mockGameSetFactory';
+import { createMockGamesetMeta, createMockKeywords } from '../mocks/mockUtils';
 
 const GAME_SET_META = createMockGamesetMeta();
 
@@ -58,9 +58,11 @@ const MOCK_GAME_SET_FACTORY = new MockGameSetFactory();
 
 const MOCK_GAME_SET_WITH_SPECIFIC_HERO_AND_SCHEME =
   MOCK_GAME_SET_FACTORY.createGameSet(GAME_SET_SIZE.core);
+
 MOCK_GAME_SET_WITH_SPECIFIC_HERO_AND_SCHEME.schemes?.push(
   MOCK_REQUIRE_CARD_NAME_IN_DECK_SCHEME
 );
+
 MOCK_GAME_SET_WITH_SPECIFIC_HERO_AND_SCHEME.heroes.push(FOO_HERO);
 
 export { MOCK_GAME_SET_WITH_SPECIFIC_HERO_AND_SCHEME };

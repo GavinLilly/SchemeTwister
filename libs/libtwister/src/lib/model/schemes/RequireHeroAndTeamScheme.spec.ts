@@ -27,7 +27,7 @@ describe('RequireHeroAndTeamScheme', () => {
 
   const dedupedTeams = Array.from(new Set(allTeams));
   const selectedTeam = randomize(dedupedTeams);
-  const schemeDefinition = new MockCardFactory().createScheme();
+  const schemeDefinition = new MockCardFactory().createSchemeDefinition();
   schemeDefinition.meta.rules = (rule) => {
     rule.heroDeck.numHeroes = 6;
     rule.villainDeck.numHeroes = 1;

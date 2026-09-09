@@ -51,7 +51,7 @@ export class MockGameSetFactory {
         villains,
         gameSetSizes.numMasterminds
       ),
-      faker.helpers.multiple(() => fakeCardFactory.createScheme(), {
+      faker.helpers.multiple(() => fakeCardFactory.createSchemeDefinition(), {
         count: gameSetSizes.numSchemes,
       }),
       villains,

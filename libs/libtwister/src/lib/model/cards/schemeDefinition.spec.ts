@@ -8,5 +8,7 @@ describe('SchemeDefinition', () => {
 
   describe('cardType', () =>
     it('should be CARD_TYPE.scheme', () =>
-      expect(cardFactory.createScheme().cardType).toBe(CARD_TYPE.scheme)));
+      expect(cardFactory.createSchemeDefinition().cardType).toBe(
+        CARD_TYPE.scheme
+      )));
 });

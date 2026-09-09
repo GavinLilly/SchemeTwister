@@ -111,7 +111,7 @@ export class MockCardFactory {
       victoryPoints: faker.helpers.maybe(() => faker.number.int(5)),
     });
 
-  public readonly createScheme = () =>
+  public readonly createSchemeDefinition = () =>
     new SchemeDefinition({
       id: faker.string.uuid(),
       name: `${faker.word.verb()} ${faker.word.conjunction()} ${faker.word.sample()}`,
