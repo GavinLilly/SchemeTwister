@@ -14,7 +14,7 @@ COPY pnpm-lock.yaml ./
 
 RUN pnpm fetch
 
-COPY nx.json pnpm-workspace.yaml package.json tsconfig.base.json ./
+COPY nx.json pnpm-workspace.yaml package.json tsconfig.base.json vitest.shared.ts ./
 COPY apps apps/
 COPY libs libs/
 
