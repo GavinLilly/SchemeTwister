@@ -105,10 +105,10 @@ jobs:
       - name: Run Tests with Coverage
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
-            pnpm dlx nx affected -t test --base=${{ needs.setup.outputs.base }} --head=${{ needs.setup.outputs.head }} --parallel --codeCoverage
+            pnpm dlx nx affected -t test --base=${{ needs.setup.outputs.base }} --head=${{ needs.setup.outputs.head }} --parallel
           else
             # On pushes to main, run everything to establish the Codecov baseline
-            pnpm dlx nx run-many -t test --all --parallel --codeCoverage
+            pnpm dlx nx run-many -t test --all --parallel
           fi
 
       - name: Upload coverage reports to Codecov

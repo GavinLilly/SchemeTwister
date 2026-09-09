@@ -10,8 +10,8 @@ import {
   SchemeDefinition,
   VillainGroup,
 } from '../model';
-
 import { capitalise } from '../utils/capitalise';
+
 import {
   createMockGamesetMeta,
   createMockKeywords,

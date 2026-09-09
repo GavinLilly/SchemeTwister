@@ -1,6 +1,6 @@
+import { faker } from '@faker-js/faker';
 import { beforeAll, describe, expect, it } from 'vitest';
 
-import { faker } from '@faker-js/faker';
 import { LibTwister } from './libTwister';
 import { MockGameSetFactory, MockSeriesFactory } from './mocks';
 import { GAME_SET_SIZE, ISeries, NumPlayers, SeriesMeta } from './model';

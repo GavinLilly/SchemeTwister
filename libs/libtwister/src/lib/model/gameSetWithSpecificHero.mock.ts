@@ -1,5 +1,9 @@
 import { faker } from '@faker-js/faker';
 
+
+import { MockGameSetFactory } from '../mocks/mockGameSetFactory';
+import { createMockGamesetMeta, createMockKeywords } from '../mocks/mockUtils';
+
 import {
   DECK_TYPE,
   GAME_SET_SIZE,
@@ -9,9 +13,6 @@ import {
   RequireHero,
   SchemeDefinition,
 } from '.';
-
-import { MockGameSetFactory } from '../mocks/mockGameSetFactory';
-import { createMockGamesetMeta, createMockKeywords } from '../mocks/mockUtils';
 
 const GAME_SET_META = createMockGamesetMeta();
 

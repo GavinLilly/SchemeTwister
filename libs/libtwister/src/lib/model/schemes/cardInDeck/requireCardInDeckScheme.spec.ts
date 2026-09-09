@@ -1,13 +1,14 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 
 import { StoreBuilder, StoreOfStores } from '../../../factories';
+import { MockCardFactory, MockGameSetFactory } from '../../../mocks';
+import { randomize } from '../../../utils/randomize';
 import { VillainGroup } from '../../cards';
+import { GameSet } from '../../GameSet';
 import { IGameSetup } from '../../interfaces';
 import { DECK_TYPE } from '../../types';
 
-import { MockCardFactory, MockGameSetFactory } from '../../../mocks';
-import { randomize } from '../../../utils/randomize';
-import { GameSet } from '../../GameSet';
+
 import { RequireCard } from './requireCard';
 import { RequireCardInDeckScheme } from './requireCardInDeckScheme';
 import { RequireCardName } from './requireCardName';
@@ -80,7 +81,7 @@ describe('Require Henchmen', () => {
 describe('Require Hero', () => {
   describe('in Villain Deck', () => {
     let store: StoreOfStores;
-    let gameSet = gameSetFactory.createGameSet();
+    const gameSet = gameSetFactory.createGameSet();
 
     beforeEach(() => {
       store = new StoreBuilder().withAllFromGamesets(gameSet).build();
@@ -219,7 +220,7 @@ describe('Require Hero Name', () => {
 describe('Require Team', () => {
   describe('in Hero Deck', () => {
     let store: StoreOfStores;
-    let gameSet = gameSetFactory.createGameSet();
+    const gameSet = gameSetFactory.createGameSet();
 
     beforeEach(() => {
       store = new StoreBuilder().withAllFromGamesets(gameSet).build();
@@ -250,7 +251,7 @@ describe('Require Team', () => {
 describe('Require Villain Group', () => {
   describe('in Additional Deck', () => {
     let store: StoreOfStores;
-    let gameSet = gameSetFactory.createGameSet();
+    const gameSet = gameSetFactory.createGameSet();
 
     beforeEach(() => {
       store = new StoreBuilder().withAllFromGamesets(gameSet).build();
