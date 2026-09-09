@@ -10,4 +10,5 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "js/ts.updateImportsOnFileMove.enabled": "always"
 }

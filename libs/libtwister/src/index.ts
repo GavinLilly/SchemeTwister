@@ -1,89 +1,101 @@
-export { CardFactory } from './lib/factories/cardFactory';
-export { CardStore } from './lib/factories/cardStore';
-export {
-  MastermindStore,
-  MastermindType,
-} from './lib/factories/mastermindStore';
-export { StoreBuilder } from './lib/factories/storeBuilder';
-export { StoreOfStores } from './lib/factories/storeOfStores';
+export { CardFactory } from './lib/stores/card-factory';
+export { CardStore } from './lib/stores/card-store';
+export { MastermindStore, MastermindType } from './lib/stores/mastermind-store';
+export { StoreBuilder } from './lib/stores/store-builder';
+export { StoreOfStores } from './lib/stores/store-of-stores';
 
-export { HeroClass } from './lib/heroClass.enum';
-export { LibTwister } from './lib/libTwister';
+export { HeroClass } from './lib/hero-class.enum';
+export { LibTwister } from './lib/lib-twister';
 export {
-  getGamesetSize,
+  getGameSetSize as getGamesetSize,
   IGameSetSize,
   IHeroTeamConfig,
-} from './lib/utils/getGameSetSize';
-export { default as instantiateScheme } from './lib/utils/instantiateScheme';
+} from './lib/utils/get-game-set-size';
+export { default as instantiateScheme } from './lib/utils/instantiate-scheme';
 export { randomize } from './lib/utils/randomize';
 
-export { SinglePlayerError } from './lib/model/errors/SinglePlayerError';
-export { GameSet } from './lib/model/GameSet';
-export { GameSetMap } from './lib/model/gameSetMap';
-export { GameSetup } from './lib/model/GameSetup';
-export { LiteGameSetup } from './lib/model/liteGameSetup';
-export { SeriesMeta } from './lib/model/seriesMeta';
+export { SinglePlayerError } from './lib/model/errors/single-player-error';
+export { GameSet } from './lib/model/game-set';
+export { GameSetMap } from './lib/model/game-set-map';
+export { GameSetup } from './lib/model/game-setup';
+export { LiteGameSetup } from './lib/model/lite-game-setup';
+export { SeriesMeta } from './lib/model/series-meta';
 
-export { AbstractCardGroup } from './lib/model/cards/abstractCardGroup';
 export { Bystander, BystanderConfig } from './lib/model/cards/bystander';
+export { CardGroup as AbstractCardGroup } from './lib/model/cards/card-group';
 export { Henchmen, HenchmenConfig } from './lib/model/cards/henchmen';
 export { Hero, HeroConfig } from './lib/model/cards/hero';
-export { AdaptingMastermind } from './lib/model/cards/mastermind/adaptingMastermind';
+export { AdaptingMastermind } from './lib/model/cards/mastermind/adapting-mastermind';
 export {
   EpicMastermind,
   MastermindWithEpic,
-} from './lib/model/cards/mastermind/epicMastermind';
+} from './lib/model/cards/mastermind/epic-mastermind';
 export {
   IMastermind,
   Mastermind,
 } from './lib/model/cards/mastermind/mastermind';
-export { TransformingMastermind } from './lib/model/cards/mastermind/transformingMastermind';
+export { TransformingMastermind } from './lib/model/cards/mastermind/transforming-mastermind';
 export {
   SchemeDefinition,
   SchemeDefinitionConfig,
-} from './lib/model/cards/schemeDefinition';
-export { VillainGroup } from './lib/model/cards/villainGroup';
+} from './lib/model/cards/scheme-definition';
+export { VillainGroup } from './lib/model/cards/villain-group';
 
-export { ICardType } from './lib/model/interfaces/cardType.interface';
+export { ICardType } from './lib/model/interfaces/card-type.interface';
+export {
+  AdditionalDeckDeckMinimal,
+  HeroDeckMinimal,
+  IAdditionalDeck,
+  IHeroDeck,
+  IVillainDeck,
+  VillainDeckMinimal,
+} from './lib/model/interfaces/deck.interface';
 export { IFightable } from './lib/model/interfaces/fightable.interface';
-export { IGameSetMeta } from './lib/model/interfaces/gameSet.interface';
-export { IGameSetup } from './lib/model/interfaces/gameSetup.interface';
+export { IGameSetMeta } from './lib/model/interfaces/game-set.interface';
+export { IGameSetup } from './lib/model/interfaces/game-setup.interface';
 export { IKeyword } from './lib/model/interfaces/keyword.interface';
-export { INamedObject } from './lib/model/interfaces/namedObject.interface';
+export { INamedObject } from './lib/model/interfaces/named-object.interface';
 export { INomenclature } from './lib/model/interfaces/nomenclature.interface';
-export { IPlayableObject } from './lib/model/interfaces/playableObject.interface';
+export { IPlayableObject } from './lib/model/interfaces/playable-object.interface';
+export { INumPlayerRules } from './lib/model/interfaces/rules.interface';
 export {
   IOverrideScheme,
   IScheme,
   ISchemeMeta,
 } from './lib/model/interfaces/scheme.interface';
 export { ISeries } from './lib/model/interfaces/series.interface';
-export { ISpecialRules } from './lib/model/interfaces/specialRules.interface';
+export { ISpecialRules } from './lib/model/interfaces/special-rules.interface';
 export { ITeam } from './lib/model/interfaces/team.interface';
 
-export { RequireCard } from './lib/model/schemes/cardInDeck/requireCard';
-export { RequireCardInDeckScheme } from './lib/model/schemes/cardInDeck/requireCardInDeckScheme';
-export { RequireCardName } from './lib/model/schemes/cardInDeck/requireCardName';
+export { RequireCardInDeckScheme } from './lib/model/schemes/cardInDeck/require-card-in-deck.scheme';
+export { RequireCardName } from './lib/model/schemes/cardInDeck/require-card-name.behaviour';
+export { RequireCardWithBackup } from './lib/model/schemes/cardInDeck/require-card-with-backup.behaviour';
+export { RequireCard } from './lib/model/schemes/cardInDeck/require-card.behaviour';
 export {
   IRequireCardsInDeckSchemeConfig,
   RequireCardsInDeckScheme,
-} from './lib/model/schemes/cardInDeck/requireCardsInDeckScheme';
-export { RequireCardWithBackup } from './lib/model/schemes/cardInDeck/requireCardWithBackup';
-export { RequireHenchmen } from './lib/model/schemes/cardInDeck/requireHenchmen';
-export { RequireHero } from './lib/model/schemes/cardInDeck/requireHero';
-export { RequireKeyword } from './lib/model/schemes/cardInDeck/requireKeyword';
-export { RequireTeam } from './lib/model/schemes/cardInDeck/requireTeam';
-export { RequireVillainGroup } from './lib/model/schemes/cardInDeck/requireVillainGroup';
-export { PlayerPicksAHeroScheme } from './lib/model/schemes/PlayerPicksAHeroScheme';
-export { RequireHeroAndTeamScheme } from './lib/model/schemes/RequireHeroAndTeamScheme';
-export { RequireUniqueHeroesScheme } from './lib/model/schemes/RequireUniqueHeroes.scheme';
-export { RequireVillainAndHeroWithBackupInVillainDeckScheme } from './lib/model/schemes/RequireVillainAndHeroWithBackupInVillainDeck.Scheme';
-export { ISetupConfigWithStore, Scheme } from './lib/model/schemes/Scheme';
-export { SoloBannedScheme } from './lib/model/schemes/SoloBannedScheme';
+} from './lib/model/schemes/cardInDeck/require-cards-in-deck.scheme';
+export { RequireHenchmen } from './lib/model/schemes/cardInDeck/require-henchmen.behaviour';
+export { RequireHero } from './lib/model/schemes/cardInDeck/require-hero.behaviour';
+export { RequireKeyword } from './lib/model/schemes/cardInDeck/require-keyword.behaviour';
+export { RequireTeam } from './lib/model/schemes/cardInDeck/require-team.behaviour';
+export { RequireVillainGroup } from './lib/model/schemes/cardInDeck/require-villain-group.behaviour';
+export { PlayerPicksAHeroScheme } from './lib/model/schemes/player-picks-a-hero.scheme';
+export { RequireHeroAndTeamScheme } from './lib/model/schemes/require-hero-and-team.scheme';
+export { RequireUniqueHeroesScheme } from './lib/model/schemes/require-unique-heroes.scheme';
+export { RequireVillainAndHeroWithBackupInVillainDeckScheme } from './lib/model/schemes/require-villain-and-hero-with-backup-in-villain-deck.scheme';
+export { ISetupConfigWithStore, Scheme } from './lib/model/schemes/scheme';
+export { SoloBannedScheme } from './lib/model/schemes/solo-banned.scheme';
 
-export { AllCardTypes } from './lib/model/types/allCardTypes.type';
-export { CARD_TYPE, CardType } from './lib/model/types/cardType.type';
-export { DECK_TYPE, DeckType } from './lib/model/types/deckType.type';
-export { GAME_SET_SIZE, GameSetSize } from './lib/model/types/gameSetSize.type';
-export { NumPlayers, numPlayers } from './lib/model/types/numPlayers.type';
-export { SchemeMinusRules } from './lib/model/types/schemeMinusRules.type';
+export { CARD_TYPE, CardType } from './lib/model/constants/card-type.const';
+export { DECK_TYPE, DeckType } from './lib/model/constants/deck-type.const';
+export {
+  GAME_SET_SIZE,
+  GameSetSize,
+} from './lib/model/constants/game-set-size.const';
+export {
+  NumPlayers,
+  numPlayers,
+} from './lib/model/constants/num-players.const';
+export { AllCardTypes } from './lib/model/types/all-card-types.type';
+export { SchemeMinusRules } from './lib/model/types/scheme-minus-rules.type';

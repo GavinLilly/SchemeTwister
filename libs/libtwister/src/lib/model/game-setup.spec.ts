@@ -1,0 +1,164 @@
+import { afterEach, beforeAll, describe, expect, it } from 'vitest';
+
+import {
+  MOCK_GAME_SET_WITH_SPECIFIC_HERO_AND_SCHEME,
+  MOCK_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
+} from '../mocks/game-set-with-specific-hero.mock';
+import { MockGameSetFactory } from '../mocks/mock-game-set.factory';
+import { StoreBuilder } from '../stores/store-builder';
+import { StoreOfStores } from '../stores/store-of-stores';
+import instantiateScheme from '../utils/instantiate-scheme';
+import { randomize } from '../utils/randomize';
+
+import { Mastermind } from './cards/mastermind/mastermind';
+import { GameSetup } from './game-setup';
+import { Scheme } from './schemes/scheme';
+
+const MOCK_GAMESET_FACTORY = new MockGameSetFactory();
+const TEST_GAME_SET_1 = MOCK_GAMESET_FACTORY.createGameSet();
+const TEST_GAME_SET_2 = MOCK_GAMESET_FACTORY.createGameSet();
+const TEST_NORMAL_SCHEME = TEST_GAME_SET_1.schemes![0];
+
+describe('GameSetup', () => {
+  let store: StoreOfStores;
+
+  beforeAll(() => {
+    store = new StoreBuilder()
+      .withHeroGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
+      .withMastermindGamesets(TEST_GAME_SET_1)
+      .withVillainGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
+      .withHenchmenGamesets(TEST_GAME_SET_1)
+      .build();
+  });
+
+  afterEach(() => store.reset());
+
+  describe('with TEST_NORMAL_SCHEME', () => {
+    let gameSetup: GameSetup;
+
+    beforeAll(() => {
+      const scheme = new Scheme(TEST_NORMAL_SCHEME);
+      const setup = scheme.getSetup({ numPlayers: 2, store });
+      gameSetup = new GameSetup(setup);
+    });
+
+    it('should have 5 heroes', () =>
+      expect(Array.from(gameSetup.getSelectedHeroes())).toHaveLength(5));
+
+    it('should have 1 henchmen group', () =>
+      expect(Array.from(gameSetup.getSelectedHenchmen())).toHaveLength(1));
+
+    it('should have 2 villain groups', () =>
+      expect(Array.from(gameSetup.getSelectedVillains())).toHaveLength(2));
+
+    it('should have 1 mastermind', () =>
+      expect(Array.from(gameSetup.getSelectedMasterminds())).toHaveLength(1));
+
+    it('toString', () => {
+      const {
+        numPlayers,
+        scheme,
+        mastermind,
+        heroDeck,
+        villainDeck,
+        additionalDeck,
+      } = JSON.parse(gameSetup.toString());
+      expect(numPlayers).toBe(2);
+      expect(scheme).toBe(TEST_NORMAL_SCHEME.name);
+      expect(mastermind).toBe(gameSetup.mastermind.name);
+      expect(heroDeck).toEqual(
+        expect.arrayContaining(
+          Array.from(gameSetup.heroDeck.heroes).map((hero) => hero.name)
+        )
+      );
+      expect(villainDeck).toEqual(
+        expect.arrayContaining(
+          Array.from(gameSetup.villainDeck.henchmen).map(
+            (henchmen) => henchmen.name
+          )
+        )
+      );
+      expect(villainDeck).toEqual(
+        expect.arrayContaining(
+          Array.from(gameSetup.villainDeck.villains).map(
+            (villains) => villains.name
+          )
+        )
+      );
+      expect(additionalDeck).toHaveLength(0);
+    });
+
+    describe('villainDeckAsArray', () =>
+      it('should not have any masterminds', () => {
+        gameSetup
+          .villainDeckAsArray()
+          .forEach((card) => expect(card).not.toBeInstanceOf(Mastermind));
+      }));
+
+    describe('additionalDeckAsArray', () =>
+      it('should return an empty Set', () => {
+        const additionalDeck = gameSetup.additionalDecksAsArray();
+        expect(additionalDeck).toBeInstanceOf(Set);
+        expect(additionalDeck.size).toBe(0);
+      }));
+  });
+
+  describe('TEST_REQUIRE_CARD_NAME_IN_DECK_SCHEME', () => {
+    const scheme = instantiateScheme(MOCK_REQUIRE_CARD_NAME_IN_DECK_SCHEME);
+    const store = new StoreBuilder()
+      .withAllFromGamesets(MOCK_GAME_SET_WITH_SPECIFIC_HERO_AND_SCHEME)
+      .build();
+
+    const setup = scheme.getSetup({ numPlayers: 2, store });
+
+    const gameSetup = new GameSetup(setup);
+
+    const expectedHeroName = randomize(TEST_GAME_SET_1.heroes).name;
+
+    const doesContainExpectedHeroName = gameSetup.additionalDecks[0].deck
+      .heroes!.map((hero) => hero.name)
+      .some((heroName) => heroName.includes('Foo'));
+
+    it('should contain the expected hero name', () =>
+      expect(doesContainExpectedHeroName).toBeTruthy());
+
+    it('should return a set of the additional deck cards', () => {
+      expect(gameSetup.additionalDecksAsArray()).toBeInstanceOf(Set);
+      expect(gameSetup.additionalDecksAsArray().size).toBe(1);
+    });
+  });
+
+  describe('get keywords', () => {
+    let testStore: StoreOfStores;
+
+    beforeAll(() => {
+      testStore = new StoreBuilder()
+        .withAllFromGamesets(TEST_GAME_SET_1, TEST_GAME_SET_2)
+        .build();
+    });
+
+    afterEach(() => testStore.reset());
+
+    it('should have no keywords', () => {
+      const scheme = new Scheme(TEST_NORMAL_SCHEME);
+      const setup = scheme.getSetup({
+        numPlayers: 2,
+        mastermind: testStore.mastermindStore.getRandom(),
+        store: testStore,
+      });
+      const gameSetup = new GameSetup(setup);
+
+      const expectedKeywordsCount = [TEST_GAME_SET_1, TEST_GAME_SET_2]
+        .flatMap((gameSet) => gameSet.getCards())
+        .flatMap((card) => card.keywords)
+        .filter((keyword) => !!keyword).length;
+
+      expect(gameSetup.keywords.size).toBeLessThanOrEqual(
+        expectedKeywordsCount
+      );
+    });
+  });
+
+  describe('that is empty', () =>
+    it('should create', () => expect(GameSetup.empty()).toBeDefined()));
+});

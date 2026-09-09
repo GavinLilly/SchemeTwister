@@ -1,0 +1,65 @@
+import { v4 as uuidV4 } from 'uuid';
+import { beforeAll, describe, expect, it } from 'vitest';
+
+import { MockGameSetFactory } from '../../mocks/mock-game-set.factory';
+import { StoreBuilder } from '../../stores/store-builder';
+import { StoreOfStores } from '../../stores/store-of-stores';
+import { Hero } from '../cards/hero';
+
+import { RequireUniqueHeroesScheme } from './require-unique-heroes.scheme';
+import { Scheme } from './scheme';
+
+describe('RequireUniqueHeroesScheme', () => {
+  let store: StoreOfStores;
+  let scheme: Scheme;
+  const gameSet = new MockGameSetFactory().createGameSet();
+
+  beforeAll(() => {
+    store = new StoreBuilder().withAllFromGamesets(gameSet).build();
+
+    if (gameSet.schemes !== undefined && gameSet.schemes.length > 0) {
+      scheme = new RequireUniqueHeroesScheme(gameSet.schemes[0]);
+    }
+  });
+
+  it('should not have any duplicated cards', () => {
+    const setup = scheme.getSetup({ numPlayers: 2, store });
+
+    expect(setup.heroDeck.heroes).toHaveLength(
+      new Set(setup.heroDeck.heroes).size
+    );
+  });
+
+  it('should default back to including duplicates if 10 iterations are reached', () => {
+    const heroes: Hero[] = [];
+
+    for (let i = 0; i < 7; i++) {
+      const loganHero = new Hero({ id: uuidV4(), name: 'Logan', gameSet });
+      heroes.push(loganHero);
+    }
+
+    const randomHero = new Hero({
+      id: uuidV4(),
+      name: 'Hero',
+      gameSet,
+    });
+    heroes.push(randomHero);
+
+    const localStore = new StoreOfStores(
+      heroes,
+      store.mastermindStore.allCards,
+      store.villainStore.allCards,
+      store.henchmenStore.allCards
+    );
+
+    const setup = scheme.getSetup({ numPlayers: 2, store: localStore });
+    expect(setup.heroDeck.heroes).toHaveLength(
+      scheme.rules[2].heroDeck.numHeroes
+    );
+
+    const heroNames = setup.heroDeck.heroes.map((hero) => hero.name);
+    const uniqueHeroNames = new Set(heroNames);
+
+    expect(heroNames).not.toHaveLength(uniqueHeroNames.size);
+  });
+});

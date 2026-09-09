@@ -1,8 +1,8 @@
+import { CARD_TYPE } from '../constants/card-type.const';
 import { IFightable } from '../interfaces/fightable.interface';
-import { IVictoryPileCard } from '../interfaces/victoryPileCard.interface';
-import { CARD_TYPE } from '../types/cardType.type';
+import { IVictoryPileCard } from '../interfaces/victory-pile-card.interface';
 
-import { AbstractFightableCardGroup } from './abstractFightableCardGroup';
+import { FightableCardGroup } from './fightable-card-group';
 
 interface IHenchmen extends IFightable {
   fight?: string;
@@ -13,7 +13,7 @@ interface IHenchmen extends IFightable {
 export type HenchmenConfig = Omit<IHenchmen, 'victoryPoints'> &
   Partial<IVictoryPileCard>;
 
-export class Henchmen extends AbstractFightableCardGroup implements IHenchmen {
+export class Henchmen extends FightableCardGroup implements IHenchmen {
   public readonly fight?: string;
   public readonly ambush?: string;
   public readonly ability?: string;

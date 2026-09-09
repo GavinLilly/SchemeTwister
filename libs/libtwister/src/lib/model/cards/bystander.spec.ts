@@ -1,7 +1,7 @@
-import { describe, beforeAll, it, expect } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 
-import { GameSet } from '../GameSet';
-import { CARD_TYPE } from '../types/cardType.type';
+import { CARD_TYPE } from '../constants/card-type.const';
+import { GameSet } from '../game-set';
 
 import { Bystander } from './bystander';
 

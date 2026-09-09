@@ -1,10 +1,10 @@
 import { Constructor } from 'type-fest';
 
 import { RulesModifierFunction } from '../rules';
-import { Scheme } from '../schemes/Scheme';
+import { Scheme } from '../schemes/scheme';
 
-import { ICardType } from './cardType.interface';
-import { ISpecialRules } from './specialRules.interface';
+import { ICardType } from './card-type.interface';
+import { ISpecialRules } from './special-rules.interface';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 interface IEachPlayerNumber {

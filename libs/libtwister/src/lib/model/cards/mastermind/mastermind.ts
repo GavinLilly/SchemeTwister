@@ -1,12 +1,12 @@
-import { GameSet } from '../../GameSet';
+import { CARD_TYPE } from '../../constants/card-type.const';
+import { GameSet } from '../../game-set';
 import { IFightable } from '../../interfaces/fightable.interface';
 import { INumPlayerRules } from '../../interfaces/rules.interface';
-import { ISpecialRules } from '../../interfaces/specialRules.interface';
-import { CARD_TYPE } from '../../types/cardType.type';
-import { AbstractFightableCardGroup } from '../abstractFightableCardGroup';
+import { ISpecialRules } from '../../interfaces/special-rules.interface';
+import { FightableCardGroup } from '../fightable-card-group';
 import { Henchmen } from '../henchmen';
 import { Hero } from '../hero';
-import { VillainGroup } from '../villainGroup';
+import { VillainGroup } from '../villain-group';
 
 /**
  * A function that will override the rules provided,
@@ -31,10 +31,7 @@ export interface IMastermind extends IFightable, ISpecialRules {
   readonly dark?: string;
 }
 
-export class Mastermind
-  extends AbstractFightableCardGroup
-  implements IMastermind
-{
+export class Mastermind extends FightableCardGroup implements IMastermind {
   public readonly alwaysLeads: (VillainGroup | Henchmen)[];
   public readonly ruleOverride?: RuleOverrideFunction;
   public readonly masterStrike: string;

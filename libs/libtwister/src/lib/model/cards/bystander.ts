@@ -1,7 +1,7 @@
-import { IVictoryPileCard } from '../interfaces/victoryPileCard.interface';
-import { CARD_TYPE } from '../types/cardType.type';
+import { CARD_TYPE } from '../constants/card-type.const';
+import { IVictoryPileCard } from '../interfaces/victory-pile-card.interface';
 
-import { AbstractCardGroup } from './abstractCardGroup';
+import { CardGroup } from './card-group';
 
 interface IBystander extends IVictoryPileCard {
   copies: number;
@@ -10,7 +10,7 @@ interface IBystander extends IVictoryPileCard {
 export type BystanderConfig = Omit<IBystander, 'victoryPoints'> &
   Partial<IVictoryPileCard>;
 
-export class Bystander extends AbstractCardGroup implements IBystander {
+export class Bystander extends CardGroup implements IBystander {
   public readonly copies: number;
   public readonly victoryPoints: number;
 

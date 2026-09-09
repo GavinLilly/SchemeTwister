@@ -1,5 +1,5 @@
-import { GameSet } from '../GameSet';
-import { SeriesMeta } from '../seriesMeta';
+import { GameSet } from '../game-set';
+import { SeriesMeta } from '../series-meta';
 
 export interface ISeries {
   seriesMeta: SeriesMeta;

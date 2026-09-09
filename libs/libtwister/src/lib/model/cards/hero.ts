@@ -1,12 +1,12 @@
 import { v4 as uuidV4 } from 'uuid';
 
-import { GameSet } from '../GameSet';
-import { ICardType } from '../interfaces/cardType.interface';
-import { IPlayableObject } from '../interfaces/playableObject.interface';
+import { CARD_TYPE, CardType } from '../constants/card-type.const';
+import { GameSet } from '../game-set';
+import { ICardType } from '../interfaces/card-type.interface';
+import { IPlayableObject } from '../interfaces/playable-object.interface';
 import { ITeam } from '../interfaces/team.interface';
-import { CARD_TYPE, CardType } from '../types/cardType.type';
 
-import { AbstractCardGroup } from './abstractCardGroup';
+import { CardGroup } from './card-group';
 
 interface IHero extends IPlayableObject {
   team?: ITeam;
@@ -14,7 +14,7 @@ interface IHero extends IPlayableObject {
 
 export type HeroConfig = IHero & Partial<ICardType>;
 
-export class Hero extends AbstractCardGroup implements IHero {
+export class Hero extends CardGroup implements IHero {
   public readonly team?: ITeam;
   public override readonly cardType: CardType;
 
