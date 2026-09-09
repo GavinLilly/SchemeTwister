@@ -37,9 +37,7 @@ export class MockCardFactory {
       team = teamOrTeams;
     } else {
       const teams =
-        teamOrTeams === undefined
-          ? faker.helpers.multiple(() => createMockTeam())
-          : teamOrTeams;
+        teamOrTeams ?? faker.helpers.multiple(() => createMockTeam());
 
       team = faker.helpers.maybe(() => faker.helpers.arrayElement(teams), {
         probability: 0.65,
