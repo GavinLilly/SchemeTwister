@@ -1,4 +1,7 @@
-import { Hero, Henchmen, VillainGroup, Mastermind } from '../cards';
+import { Henchmen } from '../cards/henchmen';
+import { Hero } from '../cards/hero';
+import { Mastermind } from '../cards/mastermind/mastermind';
+import { VillainGroup } from '../cards/villainGroup';
 
 interface IDeck {
   heroes?: Hero[];

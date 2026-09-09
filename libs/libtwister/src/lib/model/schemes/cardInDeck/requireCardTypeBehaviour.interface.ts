@@ -1,11 +1,12 @@
-import { CardStore, StoreOfStores } from '../../../factories';
+import { CardStore } from '../../../factories/cardStore';
+import { StoreOfStores } from '../../../factories/storeOfStores';
 import { AbstractCardGroup } from '../../cards/abstractCardGroup';
 import {
+  AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   VillainDeckMinimal,
-  AdditionalDeckDeckMinimal,
-  INumPlayerRules,
-} from '../../interfaces';
+} from '../../interfaces/deck.interface';
+import { INumPlayerRules } from '../../interfaces/rules.interface';
 import { DeckType } from '../../types/deckType.type';
 
 export interface IRequireCardTypeBehaviour<TCard extends AbstractCardGroup> {

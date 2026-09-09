@@ -2,7 +2,8 @@ import { faker } from '@faker-js/faker';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import { LibTwister } from './libTwister';
-import { MockGameSetFactory, MockSeriesFactory } from './mocks';
+import { MockGameSetFactory } from './mocks/mockGameSetFactory';
+import { MockSeriesFactory } from './mocks/mockSeriesFactory';
 import { GAME_SET_SIZE, ISeries, NumPlayers, SeriesMeta } from './model';
 
 describe('LibTwister', () => {

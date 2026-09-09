@@ -1,6 +1,6 @@
 import { GameSet } from './GameSet';
 import { SeriesMeta } from './seriesMeta';
-import { GameSetSize } from './types';
+import { GameSetSize } from './types/gameSetSize.type';
 
 /**
  * An extension of a Map specifically for Game Sets.

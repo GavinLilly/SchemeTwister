@@ -1,7 +1,9 @@
 import { v4 as uuidV4 } from 'uuid';
 
 import { GameSet } from '../GameSet';
-import { ICardType, IPlayableObject, ITeam } from '../interfaces';
+import { ICardType } from '../interfaces/cardType.interface';
+import { IPlayableObject } from '../interfaces/playableObject.interface';
+import { ITeam } from '../interfaces/team.interface';
 import { CARD_TYPE, CardType } from '../types/cardType.type';
 
 import { AbstractCardGroup } from './abstractCardGroup';

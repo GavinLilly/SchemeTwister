@@ -1,19 +1,23 @@
 import isUUID from 'validator/lib/isUUID';
 
-import { CardFactory, StoreOfStores } from './factories';
+import { CardFactory } from './factories/cardFactory';
+import { StoreOfStores } from './factories/storeOfStores';
+import { Henchmen } from './model/cards/henchmen';
+import { Hero } from './model/cards/hero';
+import { Mastermind } from './model/cards/mastermind/mastermind';
+import { VillainGroup } from './model/cards/villainGroup';
+import { GameSet } from './model/GameSet';
+import { GameSetMap } from './model/gameSetMap';
+import { GameSetup } from './model/GameSetup';
 import {
-  GameSet,
-  GAME_SET_SIZE,
-  GameSetup,
-  SchemeMinusRules,
-  GameSetMap,
-  NumPlayers,
+  AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   VillainDeckMinimal,
-  AdditionalDeckDeckMinimal,
-} from './model';
-import { Hero, Henchmen, Mastermind, VillainGroup } from './model/cards';
+} from './model/interfaces/deck.interface';
 import { ISeries } from './model/interfaces/series.interface';
+import { GAME_SET_SIZE } from './model/types/gameSetSize.type';
+import { NumPlayers } from './model/types/numPlayers.type';
+import { SchemeMinusRules } from './model/types/schemeMinusRules.type';
 import instantiateScheme from './utils/instantiateScheme';
 
 export interface IBlacklist {

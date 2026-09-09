@@ -1,8 +1,9 @@
 import { afterEach, beforeAll, describe, expect, it } from 'vitest';
 
-import { StoreBuilder, StoreOfStores } from '../factories';
+import { StoreBuilder } from '../factories/storeBuilder';
+import { StoreOfStores } from '../factories/storeOfStores';
 import { LibTwister } from '../libTwister';
-import { MockSeriesFactory } from '../mocks';
+import { MockSeriesFactory } from '../mocks/mockSeriesFactory';
 import instantiateScheme from '../utils/instantiateScheme';
 
 import { GameSetup } from './GameSetup';

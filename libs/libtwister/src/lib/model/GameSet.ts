@@ -1,17 +1,17 @@
 import { v4 as uuidV4 } from 'uuid';
-
 import { nameSorter } from '../utils/nameSorter';
 
-import { Bystander, Henchmen, Hero, Mastermind, VillainGroup } from './cards';
+import { Bystander } from './cards/bystander';
+import { Henchmen } from './cards/henchmen';
+import { Hero } from './cards/hero';
+import { Mastermind } from './cards/mastermind/mastermind';
+import { VillainGroup } from './cards/villainGroup';
 import { IGameSetMeta } from './interfaces/gameSet.interface';
 import { SeriesMeta } from './seriesMeta';
-import {
-  AllCardTypes,
-  CardType,
-  GAME_SET_SIZE,
-  GameSetSize,
-  SchemeMinusRules,
-} from './types';
+import { AllCardTypes } from './types/allCardTypes.type';
+import { CardType } from './types/cardType.type';
+import { GAME_SET_SIZE, GameSetSize } from './types/gameSetSize.type';
+import { SchemeMinusRules } from './types/schemeMinusRules.type';
 
 export class GameSet implements IGameSetMeta {
   readonly id: string;

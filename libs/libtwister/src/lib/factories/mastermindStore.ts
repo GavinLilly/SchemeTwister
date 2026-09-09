@@ -1,9 +1,7 @@
-import {
-  AdaptingMastermind,
-  Mastermind,
-  MastermindWithEpic,
-  TransformingMastermind,
-} from '../model';
+import { AdaptingMastermind } from '../model/cards/mastermind/adaptingMastermind';
+import { MastermindWithEpic } from '../model/cards/mastermind/epicMastermind';
+import { Mastermind } from '../model/cards/mastermind/mastermind';
+import { TransformingMastermind } from '../model/cards/mastermind/transformingMastermind';
 import { randomize } from '../utils/randomize';
 
 import { CardFactory, GetRandomOptions } from './cardFactory';

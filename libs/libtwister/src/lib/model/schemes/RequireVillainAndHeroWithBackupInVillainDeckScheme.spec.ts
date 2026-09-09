@@ -1,11 +1,13 @@
 import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
-import { StoreBuilder, StoreOfStores } from '../../factories';
-import { MockCardFactory, MockGameSetFactory } from '../../mocks';
+import { StoreBuilder } from '../../factories/storeBuilder';
+import { StoreOfStores } from '../../factories/storeOfStores';
+import { MockGameSetFactory } from '../../mocks/mockGameSetFactory';
 import { GameSet } from '../GameSet';
 import { IGameSetup } from '../interfaces/gameSetup.interface';
 import { GAME_SET_SIZE } from '../types';
 
+import { MockCardFactory } from '../../mocks/mockCardFactory';
 import { RequireCard, RequireCardWithBackup } from './cardInDeck';
 import { RequireVillainAndHeroWithBackupInVillainDeckScheme } from './RequireVillainAndHeroWithBackupInVillainDeck.Scheme';
 import { Scheme } from './Scheme';

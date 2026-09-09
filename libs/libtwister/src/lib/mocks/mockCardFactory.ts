@@ -1,15 +1,13 @@
 import { faker } from '@faker-js/faker';
 
-import {
-  Bystander,
-  Henchmen,
-  Hero,
-  ITeam,
-  Mastermind,
-  MastermindWithEpic,
-  SchemeDefinition,
-  VillainGroup,
-} from '../model';
+import { Bystander } from '../model/cards/bystander';
+import { Henchmen } from '../model/cards/henchmen';
+import { Hero } from '../model/cards/hero';
+import { MastermindWithEpic } from '../model/cards/mastermind/epicMastermind';
+import { Mastermind } from '../model/cards/mastermind/mastermind';
+import { SchemeDefinition } from '../model/cards/schemeDefinition';
+import { VillainGroup } from '../model/cards/villainGroup';
+import { ITeam } from '../model/interfaces/team.interface';
 import { capitalise } from '../utils/capitalise';
 
 import {

@@ -1,5 +1,5 @@
 import { INumPlayerRules } from './interfaces/rules.interface';
-import { numPlayers, NumPlayers } from './types';
+import { NumPlayers, numPlayers } from './types/numPlayers.type';
 
 export type RulesType = Record<NumPlayers, INumPlayerRules>;
 

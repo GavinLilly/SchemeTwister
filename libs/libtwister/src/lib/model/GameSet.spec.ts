@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { describe, expect, it } from 'vitest';
 
-import { MockGameSetFactory } from '../mocks';
+import { MockGameSetFactory } from '../mocks/mockGameSetFactory';
 import { createMockSeriesMeta } from '../mocks/mockUtils';
 
 import {

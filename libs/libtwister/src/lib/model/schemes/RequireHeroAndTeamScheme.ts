@@ -1,13 +1,15 @@
-import { StoreOfStores } from '../../factories';
+import { StoreOfStores } from '../../factories/storeOfStores';
 import { Hero } from '../cards/hero';
-import { IHeroDeck, INumPlayerRules, ITeam } from '../interfaces';
-import { DECK_TYPE, SchemeMinusRules } from '../types';
+import { IHeroDeck } from '../interfaces/deck.interface';
+import { INumPlayerRules } from '../interfaces/rules.interface';
+import { ITeam } from '../interfaces/team.interface';
+import { DECK_TYPE } from '../types/deckType.type';
+import { SchemeMinusRules } from '../types/schemeMinusRules.type';
 
-import {
-  RequireCard,
-  RequireCardInDeckScheme,
-  RequireHero,
-} from './cardInDeck';
+import { RequireCard } from './cardInDeck/requireCard';
+import { RequireCardInDeckScheme } from './cardInDeck/requireCardInDeckScheme';
+import { RequireHero } from './cardInDeck/requireHero';
+
 import { Scheme } from './Scheme';
 
 export class RequireHeroAndTeamScheme extends RequireCardInDeckScheme<Hero> {

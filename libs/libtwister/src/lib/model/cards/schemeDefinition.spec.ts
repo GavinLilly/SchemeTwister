@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { MockCardFactory } from '../../mocks';
+import { MockCardFactory } from '../../mocks/mockCardFactory';
 import { CARD_TYPE } from '../types';
 
 describe('SchemeDefinition', () => {

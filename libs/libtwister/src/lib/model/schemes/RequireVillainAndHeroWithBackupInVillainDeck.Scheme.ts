@@ -1,14 +1,15 @@
-import { StoreOfStores } from '../../factories';
-import { VillainGroup, Hero } from '../cards';
-import { INumPlayerRules, IVillainDeck } from '../interfaces';
-import { DECK_TYPE, SchemeMinusRules } from '../types';
+import { StoreOfStores } from '../../factories/storeOfStores';
+import { Hero } from '../cards/hero';
+import { VillainGroup } from '../cards/villainGroup';
+import { IVillainDeck } from '../interfaces/deck.interface';
+import { INumPlayerRules } from '../interfaces/rules.interface';
 
-import {
-  RequireCard,
-  RequireCardInDeckScheme,
-  RequireCardWithBackup,
-  RequireVillainGroup,
-} from './cardInDeck';
+import { DECK_TYPE } from '../types/deckType.type';
+import { SchemeMinusRules } from '../types/schemeMinusRules.type';
+import { RequireCard } from './cardInDeck/requireCard';
+import { RequireCardInDeckScheme } from './cardInDeck/requireCardInDeckScheme';
+import { RequireCardWithBackup } from './cardInDeck/requireCardWithBackup';
+import { RequireVillainGroup } from './cardInDeck/requireVillainGroup';
 import { Scheme } from './Scheme';
 
 export class RequireVillainAndHeroWithBackupInVillainDeckScheme extends RequireCardInDeckScheme<VillainGroup> {

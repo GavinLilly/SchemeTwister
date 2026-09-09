@@ -1,14 +1,16 @@
 import { faker } from '@faker-js/faker';
 import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
-import { StoreBuilder, StoreOfStores } from '../../factories';
-import { MockCardFactory, MockGameSetFactory } from '../../mocks';
+import { StoreBuilder } from '../../factories/storeBuilder';
+import { StoreOfStores } from '../../factories/storeOfStores';
+import { MockGameSetFactory } from '../../mocks/mockGameSetFactory';
 import { GameSetup } from '../GameSetup';
 import { IGameSetup } from '../interfaces/gameSetup.interface';
 import { Rules } from '../rules';
 import { CARD_TYPE, SchemeMinusRules } from '../types';
 import { NumPlayers, numPlayers } from '../types/numPlayers.type';
 
+import { MockCardFactory } from '../../mocks/mockCardFactory';
 import { Scheme } from './Scheme';
 
 const gameSetFactory = new MockGameSetFactory();

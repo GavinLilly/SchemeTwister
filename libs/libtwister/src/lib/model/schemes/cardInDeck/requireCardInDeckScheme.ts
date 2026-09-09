@@ -1,12 +1,13 @@
-import { StoreOfStores } from '../../../factories';
+import { StoreOfStores } from '../../../factories/storeOfStores';
 import { AbstractCardGroup } from '../../cards/abstractCardGroup';
 import {
   IAdditionalDeckDeck,
   IHeroDeck,
-  INumPlayerRules,
   IVillainDeck,
-} from '../../interfaces';
-import { DeckType, SchemeMinusRules } from '../../types';
+} from '../../interfaces/deck.interface';
+import { INumPlayerRules } from '../../interfaces/rules.interface';
+import { DeckType } from '../../types/deckType.type';
+import { SchemeMinusRules } from '../../types/schemeMinusRules.type';
 import { Scheme } from '../Scheme';
 
 import { IRequireCardBehaviour } from './requireCardBehaviour.interface';

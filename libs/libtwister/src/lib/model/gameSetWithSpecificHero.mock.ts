@@ -1,18 +1,15 @@
 import { faker } from '@faker-js/faker';
 
-
 import { MockGameSetFactory } from '../mocks/mockGameSetFactory';
 import { createMockGamesetMeta, createMockKeywords } from '../mocks/mockUtils';
 
-import {
-  DECK_TYPE,
-  GAME_SET_SIZE,
-  Hero,
-  RequireCardInDeckScheme,
-  RequireCardName,
-  RequireHero,
-  SchemeDefinition,
-} from '.';
+import { Hero } from './cards/hero';
+import { SchemeDefinition } from './cards/schemeDefinition';
+import { RequireCardInDeckScheme } from './schemes/cardInDeck/requireCardInDeckScheme';
+import { RequireCardName } from './schemes/cardInDeck/requireCardName';
+import { RequireHero } from './schemes/cardInDeck/requireHero';
+import { DECK_TYPE } from './types/deckType.type';
+import { GAME_SET_SIZE } from './types/gameSetSize.type';
 
 const GAME_SET_META = createMockGamesetMeta();
 

@@ -1,4 +1,8 @@
-import { GameSet, Henchmen, Hero, Mastermind, VillainGroup } from '../model';
+import { Henchmen } from '../model/cards/henchmen';
+import { Hero } from '../model/cards/hero';
+import { Mastermind } from '../model/cards/mastermind/mastermind';
+import { VillainGroup } from '../model/cards/villainGroup';
+import { GameSet } from '../model/GameSet';
 
 import { StoreOfStores } from './storeOfStores';
 

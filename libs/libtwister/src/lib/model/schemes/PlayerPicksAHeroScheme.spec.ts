@@ -1,9 +1,11 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 
-import { StoreBuilder, StoreOfStores } from '../../factories';
-import { MockCardFactory, MockGameSetFactory } from '../../mocks';
+import { StoreBuilder } from '../../factories/storeBuilder';
+import { StoreOfStores } from '../../factories/storeOfStores';
+import { MockGameSetFactory } from '../../mocks/mockGameSetFactory';
 import { GAME_SET_SIZE } from '../types';
 
+import { MockCardFactory } from '../../mocks/mockCardFactory';
 import { PlayerPicksAHeroScheme } from './PlayerPicksAHeroScheme';
 
 describe('Player Picks a Hero Scheme', () => {

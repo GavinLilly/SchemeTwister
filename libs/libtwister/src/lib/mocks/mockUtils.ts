@@ -1,7 +1,9 @@
 import { faker } from '@faker-js/faker';
 
-import { GAME_SET_SIZE, IKeyword, ITeam } from '../model';
+import { IKeyword } from '../model/interfaces/keyword.interface';
+import { ITeam } from '../model/interfaces/team.interface';
 import { SeriesMeta } from '../model/seriesMeta';
+import { GAME_SET_SIZE } from '../model/types/gameSetSize.type';
 import { capitalise } from '../utils/capitalise';
 
 export const createMockGamesetMeta = (

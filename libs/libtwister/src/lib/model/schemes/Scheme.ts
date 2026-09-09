@@ -2,30 +2,33 @@ import { merge } from 'ts-deepmerge';
 import { PartialDeep } from 'type-fest';
 import { v4 as uuidV4 } from 'uuid';
 
-import { CardStore, StoreOfStores } from '../../factories';
+import { CardStore } from '../../factories/cardStore';
+import { StoreOfStores } from '../../factories/storeOfStores';
 import { ISetupConfig } from '../../libTwister';
-import {
-  AbstractCardGroup,
-  Henchmen,
-  Mastermind,
-  VillainGroup,
-} from '../cards';
 import { GameSet } from '../GameSet';
+import { AbstractCardGroup } from '../cards/abstractCardGroup';
+import { Henchmen } from '../cards/henchmen';
+import { Mastermind } from '../cards/mastermind/mastermind';
+import { VillainGroup } from '../cards/villainGroup';
 import {
   AdditionalDeckDeckMinimal,
   IAdditionalDeck,
   IAdditionalDeckDeck,
-  IAdditionalDeckRules,
-  IGameSetMeta,
-  IGameSetup,
   IHeroDeck,
-  IKeyword,
-  INumPlayerRules,
-  IPlayableObject,
   IVillainDeck,
-} from '../interfaces';
+} from '../interfaces/deck.interface';
+import { IGameSetMeta } from '../interfaces/gameSet.interface';
+import { IGameSetup } from '../interfaces/gameSetup.interface';
+import { IKeyword } from '../interfaces/keyword.interface';
+import { IPlayableObject } from '../interfaces/playableObject.interface';
+import {
+  IAdditionalDeckRules,
+  INumPlayerRules,
+} from '../interfaces/rules.interface';
 import { Rules, RulesType } from '../rules';
-import { CARD_TYPE, SchemeMinusRules, numPlayers } from '../types';
+import { CARD_TYPE } from '../types/cardType.type';
+import { numPlayers } from '../types/numPlayers.type';
+import { SchemeMinusRules } from '../types/schemeMinusRules.type';
 
 export interface ISetupConfigWithStore extends Omit<ISetupConfig, 'scheme'> {
   /** A collection of stores to select cards from */

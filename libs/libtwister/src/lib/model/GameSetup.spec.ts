@@ -1,10 +1,11 @@
 import { afterEach, beforeAll, describe, expect, it } from 'vitest';
 
-import { StoreBuilder, StoreOfStores } from '../factories';
-import { MockGameSetFactory } from '../mocks';
+import { MockGameSetFactory } from '../mocks/mockGameSetFactory';
 import instantiateScheme from '../utils/instantiateScheme';
 import { randomize } from '../utils/randomize';
 
+import { StoreBuilder } from '../factories/storeBuilder';
+import { StoreOfStores } from '../factories/storeOfStores';
 import { Mastermind } from './cards';
 import { GameSetup } from './GameSetup';
 import {

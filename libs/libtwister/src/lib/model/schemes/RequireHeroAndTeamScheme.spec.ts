@@ -1,11 +1,12 @@
 import { describe, expect, it } from 'vitest';
 
-import { StoreBuilder } from '../../factories';
-import { MockCardFactory, MockGameSetFactory } from '../../mocks';
+import { StoreBuilder } from '../../factories/storeBuilder';
+import { MockGameSetFactory } from '../../mocks/mockGameSetFactory';
 import { randomize } from '../../utils/randomize';
 import { ITeam } from '../interfaces';
 import { GAME_SET_SIZE } from '../types';
 
+import { MockCardFactory } from '../../mocks/mockCardFactory';
 import { RequireHeroAndTeamScheme } from './RequireHeroAndTeamScheme';
 
 describe('RequireHeroAndTeamScheme', () => {

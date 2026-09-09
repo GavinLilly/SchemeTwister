@@ -1,8 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
-import { MockCardFactory } from '../mocks';
-
+import { MockCardFactory } from '../mocks/mockCardFactory';
 import { MastermindStore } from './mastermindStore';
 
 describe('MastermindStore', () => {

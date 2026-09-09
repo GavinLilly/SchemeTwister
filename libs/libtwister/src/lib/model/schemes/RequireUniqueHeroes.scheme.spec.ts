@@ -1,8 +1,9 @@
 import { v4 as uuidV4 } from 'uuid';
 import { beforeAll, describe, expect, it } from 'vitest';
 
-import { StoreBuilder, StoreOfStores } from '../../factories';
-import { MockGameSetFactory } from '../../mocks';
+import { StoreBuilder } from '../../factories/storeBuilder';
+import { StoreOfStores } from '../../factories/storeOfStores';
+import { MockGameSetFactory } from '../../mocks/mockGameSetFactory';
 import { Hero } from '../cards';
 
 import { RequireUniqueHeroesScheme } from './RequireUniqueHeroes.scheme';

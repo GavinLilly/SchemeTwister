@@ -1,11 +1,11 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import { LibTwister } from '../libTwister';
-import { MockSeriesFactory } from '../mocks';
+import { MockSeriesFactory } from '../mocks/mockSeriesFactory';
 
 import { GameSetMap } from './gameSetMap';
-import { ISeries } from './interfaces';
-import { GAME_SET_SIZE } from './types';
+import { ISeries } from './interfaces/series.interface';
+import { GAME_SET_SIZE } from './types/gameSetSize.type';
 
 describe('GameSetMap', () => {
   const fakeSeriesFactory = new MockSeriesFactory();

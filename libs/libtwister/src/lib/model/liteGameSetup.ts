@@ -4,16 +4,16 @@ import seedrandom from 'seedrandom';
 import { LibTwister } from '../libTwister';
 import instantiateScheme from '../utils/instantiateScheme';
 
-import { Henchmen, Hero, Mastermind, VillainGroup } from './cards';
 import { AbstractCardGroup } from './cards/abstractCardGroup';
+import { Henchmen } from './cards/henchmen';
+import { Hero } from './cards/hero';
+import { Mastermind } from './cards/mastermind/mastermind';
+import { VillainGroup } from './cards/villainGroup';
 import { GameSetup } from './GameSetup';
-import {
-  IAdditionalDeck,
-  IAdditionalDeckRules,
-  IHeroDeck,
-  INamedObject,
-} from './interfaces';
-import { NumPlayers } from './types';
+import { IAdditionalDeck, IHeroDeck } from './interfaces/deck.interface';
+import { INamedObject } from './interfaces/namedObject.interface';
+import { IAdditionalDeckRules } from './interfaces/rules.interface';
+import { NumPlayers } from './types/numPlayers.type';
 
 interface LiteGameSetupConfig {
   numPlayers: number;

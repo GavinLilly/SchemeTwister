@@ -1,6 +1,5 @@
 import isUUID from 'validator/lib/isUUID';
-
-import { IPlayableObject } from '../model';
+import { IPlayableObject } from '../model/interfaces/playableObject.interface';
 
 import { CardFactory, GetRandomOptions } from './cardFactory';
 

@@ -1,4 +1,4 @@
-import { GAME_SET_SIZE, GameSetSize } from '../model';
+import { GAME_SET_SIZE, GameSetSize } from '../model/types/gameSetSize.type';
 
 export interface IHeroTeamConfig {
   numberOfTeams: number;

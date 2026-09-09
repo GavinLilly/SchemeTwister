@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 
-import { MockGameSetFactory } from '../../../mocks';
+import { MockGameSetFactory } from '../../../mocks/mockGameSetFactory';
 import { GameSet } from '../../GameSet';
 
 import { RequireCard } from './requireCard';

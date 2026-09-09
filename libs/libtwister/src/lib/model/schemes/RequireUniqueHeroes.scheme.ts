@@ -1,5 +1,5 @@
-import { IGameSetup } from '../interfaces';
-import { SchemeMinusRules } from '../types';
+import { IGameSetup } from '../interfaces/gameSetup.interface';
+import { SchemeMinusRules } from '../types/schemeMinusRules.type';
 
 import { ISetupConfigWithStore, Scheme } from './Scheme';
 

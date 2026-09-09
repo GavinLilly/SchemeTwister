@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker';
 
-import { GAME_SET_SIZE, ISeries } from '../model';
+import { ISeries } from '../model/interfaces/series.interface';
+import { GAME_SET_SIZE } from '../model/types/gameSetSize.type';
 
 import { MockGameSetFactory } from './mockGameSetFactory';
 import { createMockSeriesMeta } from './mockUtils';

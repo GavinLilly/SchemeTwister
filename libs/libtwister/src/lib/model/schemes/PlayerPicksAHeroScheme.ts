@@ -1,6 +1,7 @@
-import { StoreOfStores } from '../../factories';
+import { StoreOfStores } from '../../factories/storeOfStores';
 import { Hero } from '../cards/hero';
-import { INumPlayerRules, IHeroDeck } from '../interfaces';
+import { IHeroDeck } from '../interfaces/deck.interface';
+import { INumPlayerRules } from '../interfaces/rules.interface';
 
 import { Scheme } from './Scheme';
 

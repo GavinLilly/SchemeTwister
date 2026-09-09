@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { MockCardFactory, MockGameSetFactory } from '../mocks';
+import { MockGameSetFactory } from '../mocks/mockGameSetFactory';
 import {
   DECK_TYPE,
   RequireCard,
@@ -10,6 +10,7 @@ import {
   SoloBannedScheme,
 } from '../model';
 
+import { MockCardFactory } from '../mocks/mockCardFactory';
 import instantiateScheme from './instantiateScheme';
 import { randomize } from './randomize';
 

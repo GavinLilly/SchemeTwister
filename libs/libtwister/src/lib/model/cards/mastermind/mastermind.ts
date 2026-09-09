@@ -1,6 +1,8 @@
 import { GameSet } from '../../GameSet';
-import { IFightable, INumPlayerRules, ISpecialRules } from '../../interfaces';
-import { CARD_TYPE } from '../../types';
+import { IFightable } from '../../interfaces/fightable.interface';
+import { INumPlayerRules } from '../../interfaces/rules.interface';
+import { ISpecialRules } from '../../interfaces/specialRules.interface';
+import { CARD_TYPE } from '../../types/cardType.type';
 import { AbstractFightableCardGroup } from '../abstractFightableCardGroup';
 import { Henchmen } from '../henchmen';
 import { Hero } from '../hero';

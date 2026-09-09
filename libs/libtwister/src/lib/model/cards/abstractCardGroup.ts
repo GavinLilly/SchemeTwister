@@ -1,9 +1,7 @@
-import {
-  ICardType,
-  IGameSetMeta,
-  IKeyword,
-  IPlayableObject,
-} from '../interfaces';
+import { ICardType } from '../interfaces/cardType.interface';
+import { IGameSetMeta } from '../interfaces/gameSet.interface';
+import { IKeyword } from '../interfaces/keyword.interface';
+import { IPlayableObject } from '../interfaces/playableObject.interface';
 import { CardType } from '../types/cardType.type';
 
 export abstract class AbstractCardGroup implements IPlayableObject, ICardType {

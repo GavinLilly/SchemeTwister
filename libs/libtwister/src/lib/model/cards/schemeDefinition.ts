@@ -1,4 +1,6 @@
-import { IKeyword, IScheme, IGameSetMeta, ISchemeMeta } from '../interfaces';
+import { IGameSetMeta } from '../interfaces/gameSet.interface';
+import { IKeyword } from '../interfaces/keyword.interface';
+import { IScheme, ISchemeMeta } from '../interfaces/scheme.interface';
 import { CARD_TYPE } from '../types/cardType.type';
 
 export type SchemeDefinitionConfig = Omit<IScheme, 'cardType'>;

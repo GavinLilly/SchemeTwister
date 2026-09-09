@@ -1,15 +1,16 @@
-import { StoreOfStores } from '../../../factories';
+import { StoreOfStores } from '../../../factories/storeOfStores';
 import { AbstractCardGroup } from '../../cards/abstractCardGroup';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   IAdditionalDeckDeck,
   IHeroDeck,
-  INumPlayerRules,
   IVillainDeck,
   VillainDeckMinimal,
-} from '../../interfaces';
-import { DECK_TYPE, DeckType, SchemeMinusRules } from '../../types';
+} from '../../interfaces/deck.interface';
+import { INumPlayerRules } from '../../interfaces/rules.interface';
+import { DECK_TYPE, DeckType } from '../../types/deckType.type';
+import { SchemeMinusRules } from '../../types/schemeMinusRules.type';
 import { Scheme } from '../Scheme';
 
 import { IRequireCardBehaviour } from './requireCardBehaviour.interface';

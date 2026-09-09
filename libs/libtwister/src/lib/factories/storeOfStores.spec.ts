@@ -1,7 +1,6 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 
-import { MockCardFactory } from '../mocks';
-
+import { MockCardFactory } from '../mocks/mockCardFactory';
 import { StoreOfStores } from './storeOfStores';
 
 const MOCK_CARD_FACTORY = new MockCardFactory();
