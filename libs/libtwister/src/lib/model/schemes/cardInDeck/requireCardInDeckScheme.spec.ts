@@ -5,10 +5,10 @@ import { StoreOfStores } from '../../../factories/storeOfStores';
 import { MockCardFactory } from '../../../mocks/mockCardFactory';
 import { MockGameSetFactory } from '../../../mocks/mockGameSetFactory';
 import { randomize } from '../../../utils/randomize';
-import { VillainGroup } from '../../cards';
+import { VillainGroup } from '../../cards/villainGroup';
 import { GameSet } from '../../GameSet';
-import { IGameSetup } from '../../interfaces';
-import { DECK_TYPE } from '../../types';
+import { IGameSetup } from '../../interfaces/gameSetup.interface';
+import { DECK_TYPE } from '../../types/deckType.type';
 
 import { RequireCard } from './requireCard';
 import { RequireCardInDeckScheme } from './requireCardInDeckScheme';

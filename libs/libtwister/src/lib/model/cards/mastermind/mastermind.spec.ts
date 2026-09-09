@@ -2,8 +2,8 @@ import { v4 as uuidV4 } from 'uuid';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import { createMockGamesetMeta } from '../../../mocks/mockUtils';
-import { IGameSetMeta } from '../../interfaces';
-import { CARD_TYPE } from '../../types';
+import { IGameSetMeta } from '../../interfaces/gameSet.interface';
+import { CARD_TYPE } from '../../types/cardType.type';
 import { Henchmen } from '../henchmen';
 import { VillainGroup } from '../villainGroup';
 

@@ -4,7 +4,7 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import { StoreBuilder } from '../../factories/storeBuilder';
 import { StoreOfStores } from '../../factories/storeOfStores';
 import { MockGameSetFactory } from '../../mocks/mockGameSetFactory';
-import { Hero } from '../cards';
+import { Hero } from '../cards/hero';
 
 import { RequireUniqueHeroesScheme } from './RequireUniqueHeroes.scheme';
 import { Scheme } from './Scheme';

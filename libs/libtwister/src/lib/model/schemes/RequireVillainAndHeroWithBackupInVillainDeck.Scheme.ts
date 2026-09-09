@@ -3,9 +3,9 @@ import { Hero } from '../cards/hero';
 import { VillainGroup } from '../cards/villainGroup';
 import { IVillainDeck } from '../interfaces/deck.interface';
 import { INumPlayerRules } from '../interfaces/rules.interface';
-
 import { DECK_TYPE } from '../types/deckType.type';
 import { SchemeMinusRules } from '../types/schemeMinusRules.type';
+
 import { RequireCard } from './cardInDeck/requireCard';
 import { RequireCardInDeckScheme } from './cardInDeck/requireCardInDeckScheme';
 import { RequireCardWithBackup } from './cardInDeck/requireCardWithBackup';

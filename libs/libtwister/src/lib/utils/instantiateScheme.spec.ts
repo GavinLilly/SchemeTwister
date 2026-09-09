@@ -1,16 +1,14 @@
 import { describe, expect, it } from 'vitest';
 
-import { MockGameSetFactory } from '../mocks/mockGameSetFactory';
-import {
-  DECK_TYPE,
-  RequireCard,
-  RequireCardInDeckScheme,
-  RequireVillainGroup,
-  Scheme,
-  SoloBannedScheme,
-} from '../model';
-
 import { MockCardFactory } from '../mocks/mockCardFactory';
+import { MockGameSetFactory } from '../mocks/mockGameSetFactory';
+import { RequireCard } from '../model/schemes/cardInDeck/requireCard';
+import { RequireCardInDeckScheme } from '../model/schemes/cardInDeck/requireCardInDeckScheme';
+import { RequireVillainGroup } from '../model/schemes/cardInDeck/requireVillainGroup';
+import { Scheme } from '../model/schemes/Scheme';
+import { SoloBannedScheme } from '../model/schemes/SoloBannedScheme';
+import { DECK_TYPE } from '../model/types/deckType.type';
+
 import instantiateScheme from './instantiateScheme';
 import { randomize } from './randomize';
 

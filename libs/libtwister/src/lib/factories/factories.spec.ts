@@ -1,7 +1,8 @@
 import { afterEach, beforeAll, describe, expect, it } from 'vitest';
 
 import { createMockGamesetMeta } from '../mocks/mockUtils';
-import { CARD_TYPE, CardType, IPlayableObject } from '../model';
+import { IPlayableObject } from '../model/interfaces/playableObject.interface';
+import { CARD_TYPE, CardType } from '../model/types/cardType.type';
 
 import { CardFactory } from './cardFactory';
 import { CardStore } from './cardStore';

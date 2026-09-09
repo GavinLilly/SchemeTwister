@@ -4,7 +4,10 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import { LibTwister } from './libTwister';
 import { MockGameSetFactory } from './mocks/mockGameSetFactory';
 import { MockSeriesFactory } from './mocks/mockSeriesFactory';
-import { GAME_SET_SIZE, ISeries, NumPlayers, SeriesMeta } from './model';
+import { ISeries } from './model/interfaces/series.interface';
+import { SeriesMeta } from './model/seriesMeta';
+import { GAME_SET_SIZE } from './model/types/gameSetSize.type';
+import { NumPlayers } from './model/types/numPlayers.type';
 
 describe('LibTwister', () => {
   const fakeSeriesFactory = new MockSeriesFactory();

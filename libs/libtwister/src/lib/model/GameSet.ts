@@ -1,4 +1,5 @@
 import { v4 as uuidV4 } from 'uuid';
+
 import { nameSorter } from '../utils/nameSorter';
 
 import { Bystander } from './cards/bystander';

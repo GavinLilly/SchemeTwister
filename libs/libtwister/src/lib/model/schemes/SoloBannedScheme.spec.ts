@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
 
 import { StoreBuilder } from '../../factories/storeBuilder';
+import { MockCardFactory } from '../../mocks/mockCardFactory';
 import { MockGameSetFactory } from '../../mocks/mockGameSetFactory';
 import { SinglePlayerError } from '../errors/SinglePlayerError';
 import { NumPlayers } from '../types/numPlayers.type';
 
-import { MockCardFactory } from '../../mocks/mockCardFactory';
 import { SoloBannedScheme } from './SoloBannedScheme';
 
 const gameSetFactory = new MockGameSetFactory();

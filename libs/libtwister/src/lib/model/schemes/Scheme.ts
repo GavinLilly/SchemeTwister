@@ -5,11 +5,11 @@ import { v4 as uuidV4 } from 'uuid';
 import { CardStore } from '../../factories/cardStore';
 import { StoreOfStores } from '../../factories/storeOfStores';
 import { ISetupConfig } from '../../libTwister';
-import { GameSet } from '../GameSet';
 import { AbstractCardGroup } from '../cards/abstractCardGroup';
 import { Henchmen } from '../cards/henchmen';
 import { Mastermind } from '../cards/mastermind/mastermind';
 import { VillainGroup } from '../cards/villainGroup';
+import { GameSet } from '../GameSet';
 import {
   AdditionalDeckDeckMinimal,
   IAdditionalDeck,

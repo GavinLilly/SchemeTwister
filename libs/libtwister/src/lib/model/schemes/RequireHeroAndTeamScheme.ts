@@ -9,7 +9,6 @@ import { SchemeMinusRules } from '../types/schemeMinusRules.type';
 import { RequireCard } from './cardInDeck/requireCard';
 import { RequireCardInDeckScheme } from './cardInDeck/requireCardInDeckScheme';
 import { RequireHero } from './cardInDeck/requireHero';
-
 import { Scheme } from './Scheme';
 
 export class RequireHeroAndTeamScheme extends RequireCardInDeckScheme<Hero> {

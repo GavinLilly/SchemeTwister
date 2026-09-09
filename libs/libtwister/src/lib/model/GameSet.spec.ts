@@ -4,16 +4,14 @@ import { describe, expect, it } from 'vitest';
 import { MockGameSetFactory } from '../mocks/mockGameSetFactory';
 import { createMockSeriesMeta } from '../mocks/mockUtils';
 
-import {
-  Bystander,
-  Henchmen,
-  Hero,
-  Mastermind,
-  SchemeDefinition,
-  VillainGroup,
-} from './cards';
+import { Bystander } from './cards/bystander';
+import { Henchmen } from './cards/henchmen';
+import { Hero } from './cards/hero';
+import { Mastermind } from './cards/mastermind/mastermind';
+import { SchemeDefinition } from './cards/schemeDefinition';
+import { VillainGroup } from './cards/villainGroup';
 import { GameSet } from './GameSet';
-import { CARD_TYPE } from './types';
+import { CARD_TYPE } from './types/cardType.type';
 import { GAME_SET_SIZE } from './types/gameSetSize.type';
 
 describe('GameSet', () => {

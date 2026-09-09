@@ -11,7 +11,6 @@ import {
 } from './interfaces/deck.interface';
 import { IGameSetup } from './interfaces/gameSetup.interface';
 import { IKeyword } from './interfaces/keyword.interface';
-
 import { Scheme } from './schemes/Scheme';
 
 type VillainAdditionalDeckCards = Henchmen | VillainGroup | Mastermind | Hero;

@@ -7,7 +7,6 @@ import {
   VillainDeckMinimal,
 } from '../../interfaces/deck.interface';
 import { INumPlayerRules } from '../../interfaces/rules.interface';
-
 import { DeckType } from '../../types/deckType.type';
 import { Scheme } from '../Scheme';
 

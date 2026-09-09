@@ -1,15 +1,16 @@
 import { faker } from '@faker-js/faker';
 
+
+import { Hero } from '../model/cards/hero';
+import { VillainGroup } from '../model/cards/villainGroup';
 import { GameSet } from '../model/GameSet';
+import { GAME_SET_SIZE } from '../model/types/gameSetSize.type';
 import {
   getGamesetSize,
   IGameSetSize,
   IHeroTeamConfig,
 } from '../utils/getGameSetSize';
 
-import { Hero } from '../model/cards/hero';
-import { VillainGroup } from '../model/cards/villainGroup';
-import { GAME_SET_SIZE } from '../model/types/gameSetSize.type';
 import { MockCardFactory } from './mockCardFactory';
 import {
   createMockGamesetMeta,
