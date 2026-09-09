@@ -1,6 +1,8 @@
+import { beforeAll, describe, expect, it } from 'vitest';
+
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { TEST_GAME_SET_1 } from '../../testData/gameSets';
-import { TEST_PLAYER_PICKS_A_HERO_SCHEME } from '../../testData/schemes';
+import { MockCardFactory, MockGameSetFactory } from '../../mocks';
+import { GAME_SET_SIZE } from '../types';
 
 import { PlayerPicksAHeroScheme } from './PlayerPicksAHeroScheme';
 
@@ -8,13 +10,14 @@ describe('Player Picks a Hero Scheme', () => {
   let store: StoreOfStores;
 
   beforeAll(() => {
-    store = new StoreBuilder().withAllFromGamesets(TEST_GAME_SET_1).build();
+    const gameSet = new MockGameSetFactory().createGameSet(GAME_SET_SIZE.core);
+    store = new StoreBuilder().withAllFromGamesets(gameSet).build();
   });
 
   describe("Sneak Attack the Heroes' Homes", () => {
     it('should put 3 blank heroes in the hero deck', () => {
       const scheme = new PlayerPicksAHeroScheme(
-        TEST_PLAYER_PICKS_A_HERO_SCHEME
+        new MockCardFactory().createSchemeDefinition()
       );
       const setup = scheme.getSetup({ numPlayers: 3, store });
 

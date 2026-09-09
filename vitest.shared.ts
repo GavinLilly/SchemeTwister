@@ -1,8 +1,8 @@
+import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig } from 'vitest/config';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
 export const sharedConfig = defineConfig({
-  plugins: [nxViteTsPaths()],
+  plugins: [tsconfigPaths()],
 
   test: {
     environment: 'node',

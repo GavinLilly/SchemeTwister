@@ -1,11 +1,15 @@
+import { faker } from '@faker-js/faker';
 import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
-import { TEST_MASTERMIND_1, TEST_MASTERMIND_2 } from '../testData/masterminds';
+import { MockCardFactory } from '../mocks';
 
 import { MastermindStore } from './mastermindStore';
 
 describe('MastermindStore', () => {
   let store: MastermindStore;
+  const cardFactory = new MockCardFactory();
+  const TEST_MASTERMIND_1 = cardFactory.createMastermind();
+  const TEST_MASTERMIND_2 = cardFactory.createEpicMastermind();
 
   beforeAll(() => {
     store = new MastermindStore([TEST_MASTERMIND_2]);
@@ -47,7 +51,11 @@ describe('MastermindStore', () => {
     let largerStore: MastermindStore;
 
     beforeAll(() => {
-      largerStore = new MastermindStore([TEST_MASTERMIND_1, TEST_MASTERMIND_2]);
+      return (largerStore = new MastermindStore(
+        faker.helpers.multiple(() => cardFactory.createMastermind(), {
+          count: 2,
+        })
+      ));
     });
 
     beforeEach(() => {

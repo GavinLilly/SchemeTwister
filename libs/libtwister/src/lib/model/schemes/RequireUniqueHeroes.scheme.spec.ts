@@ -2,9 +2,8 @@ import { v4 as uuidV4 } from 'uuid';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import { StoreBuilder, StoreOfStores } from '../../factories';
-import { GameSetMock } from '../../testData/gameSetMock';
+import { MockGameSetFactory } from '../../mocks';
 import { Hero } from '../cards';
-import { GAME_SET_SIZE } from '../types';
 
 import { RequireUniqueHeroesScheme } from './RequireUniqueHeroes.scheme';
 import { Scheme } from './Scheme';
@@ -12,7 +11,7 @@ import { Scheme } from './Scheme';
 describe('RequireUniqueHeroesScheme', () => {
   let store: StoreOfStores;
   let scheme: Scheme;
-  const gameSet = new GameSetMock(GAME_SET_SIZE.core).getGameSet();
+  const gameSet = new MockGameSetFactory().createGameSet();
 
   beforeAll(() => {
     store = new StoreBuilder().withAllFromGamesets(gameSet).build();

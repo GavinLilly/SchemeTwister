@@ -1,6 +1,6 @@
 import { GameSet } from '../../GameSet';
-import { INumPlayerRules, IFightable, ISpecialRules } from '../../interfaces';
-import { CARD_TYPE } from '../../types/cardType.type';
+import { IFightable, INumPlayerRules, ISpecialRules } from '../../interfaces';
+import { CARD_TYPE } from '../../types';
 import { AbstractFightableCardGroup } from '../abstractFightableCardGroup';
 import { Henchmen } from '../henchmen';
 import { Hero } from '../hero';
@@ -33,81 +33,42 @@ export class Mastermind
   extends AbstractFightableCardGroup
   implements IMastermind
 {
-  private readonly _alwaysLeads: (VillainGroup | Henchmen)[];
-  private readonly _overrideFunction?: RuleOverrideFunction;
-  private readonly _masterStrike: string;
-  private readonly _specialRules?: string;
-  private readonly _startOfGame?: string;
-  private readonly _escape?: string;
-  private readonly _finishThePrey?: string;
-  private readonly _mastermindWins?: string;
-  private readonly _alwaysInclude: Hero[];
-  private readonly _dark?: string;
+  public readonly alwaysLeads: (VillainGroup | Henchmen)[];
+  public readonly ruleOverride?: RuleOverrideFunction;
+  public readonly masterStrike: string;
+  public readonly specialRules?: string;
+  public readonly startOfGame?: string;
+  public readonly escape?: string;
+  public readonly finishThePrey?: string;
+  public readonly mastermindWins?: string;
+  public readonly alwaysInclude: Hero[];
+  public readonly dark?: string;
 
   constructor(mastermindConfig: IMastermind) {
     super(mastermindConfig);
 
-    ({
-      alwaysLeads: this._alwaysLeads,
-      ruleOverride: this._overrideFunction,
-      masterStrike: this._masterStrike,
-      escape: this._escape,
-      finishThePrey: this._finishThePrey,
-      specialRules: this._specialRules,
-      startOfGame: this._startOfGame,
-      mastermindWins: this._mastermindWins,
-      dark: this._dark,
-    } = mastermindConfig);
+    if (mastermindConfig.alwaysLeads === undefined) {
+      console.log('FOO');
+    }
 
-    this._alwaysInclude = mastermindConfig.alwaysInclude ?? [];
-  }
-
-  get alwaysLeads() {
-    return this._alwaysLeads;
-  }
-
-  get isEpic() {
-    return this.name.startsWith('Epic');
-  }
-
-  get ruleOverride() {
-    return this._overrideFunction;
-  }
-
-  get masterStrike() {
-    return this._masterStrike;
-  }
-
-  get specialRules() {
-    return this._specialRules;
+    this.alwaysLeads = mastermindConfig.alwaysLeads;
+    this.ruleOverride = mastermindConfig.ruleOverride;
+    this.masterStrike = mastermindConfig.masterStrike;
+    this.escape = mastermindConfig.escape;
+    this.finishThePrey = mastermindConfig.finishThePrey;
+    this.specialRules = mastermindConfig.specialRules;
+    this.startOfGame = mastermindConfig.startOfGame;
+    this.mastermindWins = mastermindConfig.mastermindWins;
+    this.dark = mastermindConfig.dark;
+    this.alwaysInclude = mastermindConfig.alwaysInclude ?? [];
   }
 
   get cardType() {
     return CARD_TYPE.mastermind;
   }
 
-  get startOfGame() {
-    return this._startOfGame;
-  }
-
-  get escape() {
-    return this._escape;
-  }
-
-  get finishThePrey() {
-    return this._finishThePrey;
-  }
-
-  get mastermindWins() {
-    return this._mastermindWins;
-  }
-
-  get alwaysInclude() {
-    return this._alwaysInclude;
-  }
-
-  get dark() {
-    return this._dark;
+  get isEpic() {
+    return this.name.startsWith('Epic');
   }
 
   /**

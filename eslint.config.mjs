@@ -25,7 +25,11 @@ export default [
         'error',
         {
           enforceBuildableLibDependency: true,
-          allow: [String.raw`^.*/eslint(\.base)?\.config\.[cm]?[jt]s$`],
+          allow: [
+            String.raw`^.*/eslint(\.base)?\.config\.[cm]?[jt]s$`,
+            'libtwister-testing-data',
+            '@schemetwister/libtwister/testing/data',
+          ],
           depConstraints: [
             {
               sourceTag: 'scope:shared',
@@ -169,6 +173,16 @@ export default [
     ],
     rules: {
       'max-nested-callbacks': 'off',
+    },
+  },
+  {
+    files: ['**/*.html'],
+    rules: {
+      // Disable import-x rules for HTML files
+      'import-x/namespace': 'off',
+      'import-x/default': 'off',
+      'import-x/named': 'off',
+      'import-x/no-duplicates': 'off',
     },
   },
 ];

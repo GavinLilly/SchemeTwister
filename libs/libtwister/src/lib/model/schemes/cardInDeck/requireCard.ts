@@ -4,10 +4,14 @@ import { AbstractCardGroup } from '../../cards/abstractCardGroup';
 
 import { IRequireCardBehaviour } from './requireCardBehaviour.interface';
 
+/**
+ * A card requirer that picks the required number of cards from the provided
+ * list before (possibly) removing the left overs.
+ */
 export class RequireCard<TCard extends AbstractCardGroup>
   implements IRequireCardBehaviour<TCard>
 {
-  private readonly _availableCards: TCard[];
+  private readonly _requiredCardsOptions: TCard[];
 
   constructor(required: TCard);
   constructor(firstCard: TCard, numberRequired: number);
@@ -23,27 +27,27 @@ export class RequireCard<TCard extends AbstractCardGroup>
     private readonly _shouldRemoveOthers = false,
     ...extraCards: TCard[]
   ) {
-    this._availableCards = [firstCard];
+    this._requiredCardsOptions = [firstCard];
     if (extraCards !== undefined && extraCards.length > 0) {
-      this._availableCards.push(...extraCards);
+      this._requiredCardsOptions.push(...extraCards);
     }
 
-    if (_numberRequired > this._availableCards.length) {
+    if (_numberRequired > this._requiredCardsOptions.length) {
       throw new Error(
-        `The number of supplied cards (${this._availableCards.length}) must be more than the number required (${_numberRequired})`
+        `The number of supplied cards (${this._requiredCardsOptions.length}) must be more than the number required (${_numberRequired})`
       );
     }
   }
 
   getRequiredCard(store: CardStore<TCard>): TCard | TCard[] {
-    if (this._availableCards.length === 1) {
-      return this._availableCards[0];
+    if (this._requiredCardsOptions.length === 1) {
+      return this._requiredCardsOptions[0];
     }
 
-    const random = randomize(this._availableCards, this._numberRequired);
+    const random = randomize(this._requiredCardsOptions, this._numberRequired);
 
     if (this._shouldRemoveOthers) {
-      this._availableCards
+      this._requiredCardsOptions
         .filter((card) => !random.includes(card))
         .forEach((card) => store.removeCard(card));
     }

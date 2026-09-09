@@ -1,15 +1,16 @@
-import { v4 as uuidV4 } from 'uuid';
-import { describe, beforeAll, it, expect } from 'vitest';
+import { faker } from '@faker-js/faker';
+import { beforeAll, describe, expect, it } from 'vitest';
 
 import { LibTwister } from './libTwister';
+import { MockGameSetFactory, MockSeriesFactory } from './mocks';
 import { GAME_SET_SIZE, ISeries, NumPlayers, SeriesMeta } from './model';
-import { createSeriesMock } from './testData/createSeriesMock';
-import { GameSetMock } from './testData/gameSetMock';
 
 describe('LibTwister', () => {
+  const fakeSeriesFactory = new MockSeriesFactory();
+
   describe('Setups', () => {
     describe('with 1 game set', () => {
-      const series = createSeriesMock({
+      const series = fakeSeriesFactory.createSeries({
         numCore: 1,
         numLarge: 0,
         numMedium: 0,
@@ -69,7 +70,7 @@ describe('LibTwister', () => {
       });
 
       it.each([2, 3, 4, 5] as NumPlayers[])(
-        'should generate a setup with %p players, only using Test gameset cards',
+        'should generate a setup with %d players, only using Test gameset cards',
         (numPlayers) => {
           const setup = twister.getSetup({ numPlayers });
 
@@ -98,7 +99,7 @@ describe('LibTwister', () => {
     });
 
     describe('with 2 game sets', () => {
-      const series = createSeriesMock({
+      const series = fakeSeriesFactory.createSeries({
         numCore: 1,
         numLarge: 1,
         numMedium: 0,
@@ -163,9 +164,8 @@ describe('LibTwister', () => {
       ])(
         'should contain all of the test gameset %s in the %s store',
         (_cardTypePlural, _cardType, store, gs1Cards, gs2Cards) => {
-          const ids = store.allCards.map((card) => card.id);
-
           if (gs1Cards !== undefined && gs2Cards !== undefined) {
+            const ids = store.allCards.map((card) => card.id);
             expect(ids).toEqual(
               expect.arrayContaining(gs2Cards.map((card) => card.id))
             );
@@ -183,7 +183,7 @@ describe('LibTwister', () => {
     });
 
     describe('gameSetIdToGameSet', () => {
-      const series = createSeriesMock({
+      const series = fakeSeriesFactory.createSeries({
         numCore: 1,
         numLarge: 0,
         numMedium: 0,
@@ -204,14 +204,20 @@ describe('LibTwister', () => {
   });
 
   describe('validateGameSetIds', () => {
-    const testLargeSet = new GameSetMock(GAME_SET_SIZE.large).getGameSet();
+    const testLargeSet = new MockGameSetFactory().createGameSet(
+      GAME_SET_SIZE.large
+    );
 
-    const testMediumSet = new GameSetMock(GAME_SET_SIZE.medium).getGameSet();
+    const testMediumSet = new MockGameSetFactory().createGameSet(
+      GAME_SET_SIZE.medium
+    );
 
-    const testSmallSet = new GameSetMock(GAME_SET_SIZE.small).getGameSet();
+    const testSmallSet = new MockGameSetFactory().createGameSet(
+      GAME_SET_SIZE.small
+    );
 
     const series: ISeries = {
-      seriesMeta: new SeriesMeta(uuidV4(), 'Test Series', ''),
+      seriesMeta: new SeriesMeta(faker.string.uuid(), 'Test Series', ''),
       gameSets: [testLargeSet, testMediumSet, testSmallSet],
     };
 
