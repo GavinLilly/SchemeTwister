@@ -57,10 +57,7 @@
       "outputs": [
         "{workspaceRoot}/coverage/{projectRoot}",
         "{workspaceRoot}/coverage/libs/schemetwister-schematics"
-      ],
-      "options": {
-        "codeCoverage": true
-      }
+      ]
     }
   }
 }

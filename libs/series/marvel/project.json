@@ -19,11 +19,6 @@
         }
       ]
     },
-    "test": {
-      "options": {
-        "codeCoverage": true
-      }
-    },
     "build": {
       "executor": "@nx/esbuild:esbuild",
       "outputs": [
