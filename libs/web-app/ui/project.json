@@ -29,14 +29,15 @@
       ]
     },
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/libs/web-app/ui"
-      ],
       "options": {
-        "jestConfig": "libs/web-app/ui/jest.config.ts",
-        "codeCoverage": true,
-        "tsConfig": "libs/web-app/ui/tsconfig.spec.json"
+        "passWithNoTests": true,
+        "coverage": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "coverage": true
+        }
       }
     }
   }

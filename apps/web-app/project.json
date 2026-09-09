@@ -138,14 +138,15 @@
       ]
     },
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/apps/web-app"
-      ],
       "options": {
-        "jestConfig": "apps/web-app/jest.config.ts",
-        "codeCoverage": true,
-        "tsConfig": "apps/web-app/tsconfig.spec.json"
+        "passWithNoTests": true,
+        "coverage": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "coverage": true
+        }
       }
     },
     "deploy": {
