@@ -36,26 +36,22 @@ export class StoreBuilder implements StepA, StepB, StepC, StepD, Build {
   private readonly _henchmenGamesets: GameSet[] = [];
 
   withHeroGamesets(gameset: GameSet, ...otherGamesets: GameSet[]): StepB {
-    this._heroGamesets.push(gameset);
-    this._heroGamesets.push(...otherGamesets);
+    this._heroGamesets.push(gameset, ...otherGamesets);
     return this;
   }
 
   withVillainGamesets(gameset: GameSet, ...otherGamesets: GameSet[]): StepD {
-    this._villainGamesets.push(gameset);
-    this._villainGamesets.push(...otherGamesets);
+    this._heroGamesets.push(gameset, ...otherGamesets);
     return this;
   }
 
   withMastermindGamesets(gameset: GameSet, ...otherGamesets: GameSet[]): StepC {
-    this._mastermindGamesets.push(gameset);
-    this._mastermindGamesets.push(...otherGamesets);
+    this._heroGamesets.push(gameset, ...otherGamesets);
     return this;
   }
 
   withHenchmenGamesets(gameset: GameSet, ...otherGamesets: GameSet[]): Build {
-    this._henchmenGamesets.push(gameset);
-    this._henchmenGamesets.push(...otherGamesets);
+    this._heroGamesets.push(gameset, ...otherGamesets);
     return this;
   }
 

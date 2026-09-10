@@ -99,7 +99,7 @@ export class RequireCardsInDeckScheme extends Scheme {
     const applicableStore = requirements.requireCardType.getStore(store);
     const cards = requirements.requireCard.getRequiredCard(applicableStore);
 
-    const cardsAsArray = cards instanceof Array ? cards : [cards];
+    const cardsAsArray = Array.isArray(cards) ? cards : [cards];
     const picked = cardsAsArray.map((card) => applicableStore.pickOne(card));
 
     return requirements.requireCardType.createDeck(
