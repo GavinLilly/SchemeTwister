@@ -7,31 +7,21 @@ import { FightableCardGroup } from '../fightable-card-group';
 import { Henchmen } from '../henchmen';
 import { Hero } from '../hero';
 import { VillainGroup } from '../villain-group';
+import { MastermindConfig } from './mastermind-config.interface';
 
 /**
  * A function that will override the rules provided,
  * optionally basing it on the number of players.
  */
-type RuleOverrideFunction = (
+export type RuleOverrideFunction = (
   rule: INumPlayerRules,
   num: number
 ) => INumPlayerRules;
 
-export interface IMastermind extends IFightable, ISpecialRules {
-  readonly alwaysLeads: (VillainGroup | Henchmen)[];
-  /**
-   * Override the rules for each number of players.
-   * Useful for setting a rule based on the number of players
-   */
-  readonly ruleOverride?: RuleOverrideFunction;
-  readonly masterStrike: string;
-  readonly startOfGame?: string;
-  readonly mastermindWins?: string;
-  readonly alwaysInclude?: Hero[];
-  readonly dark?: string;
-}
-
-export class Mastermind extends FightableCardGroup implements IMastermind {
+export class Mastermind
+  extends FightableCardGroup
+  implements IFightable, ISpecialRules
+{
   public readonly alwaysLeads: (VillainGroup | Henchmen)[];
   public readonly ruleOverride?: RuleOverrideFunction;
   public readonly masterStrike: string;
@@ -43,12 +33,8 @@ export class Mastermind extends FightableCardGroup implements IMastermind {
   public readonly alwaysInclude: Hero[];
   public readonly dark?: string;
 
-  constructor(mastermindConfig: IMastermind) {
+  constructor(mastermindConfig: MastermindConfig) {
     super(mastermindConfig);
-
-    if (mastermindConfig.alwaysLeads === undefined) {
-      console.log('FOO');
-    }
 
     this.alwaysLeads = mastermindConfig.alwaysLeads;
     this.ruleOverride = mastermindConfig.ruleOverride;

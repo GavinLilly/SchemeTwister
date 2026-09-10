@@ -1,6 +1,6 @@
 import { AdaptingMastermind } from '../model/cards/mastermind/adapting-mastermind';
-import { MastermindWithEpic } from '../model/cards/mastermind/epic-mastermind';
 import { Mastermind } from '../model/cards/mastermind/mastermind';
+import { MastermindWithEpic } from '../model/cards/mastermind/mastermind-with-epic';
 import { TransformingMastermind } from '../model/cards/mastermind/transforming-mastermind';
 import { randomize } from '../utils/randomize';
 

@@ -1,34 +1,12 @@
-import type { SetRequired } from 'type-fest';
-
-import { IMastermind, Mastermind } from './mastermind';
-
-type MastermindWithEpicConfig = SetRequired<Partial<IMastermind>, 'id'>;
+import { Mastermind } from './mastermind';
+import { MastermindConfig } from './mastermind-config.interface';
+import { MastermindWithEpic } from './mastermind-with-epic';
 
 export class EpicMastermind extends Mastermind {
   constructor(
-    config: IMastermind,
+    config: MastermindConfig,
     public readonly reverse: MastermindWithEpic
   ) {
     super(config);
-  }
-}
-
-export class MastermindWithEpic extends Mastermind {
-  constructor(
-    private readonly _normalMastermindConfig: IMastermind,
-    private readonly _epicMastermindConfig: MastermindWithEpicConfig
-  ) {
-    super(_normalMastermindConfig);
-  }
-
-  public get epic(): EpicMastermind {
-    return new EpicMastermind(
-      {
-        ...this._normalMastermindConfig,
-        ...this._epicMastermindConfig,
-        name: this._epicMastermindConfig.name ?? `Epic ${this.name}`,
-      },
-      this
-    );
   }
 }

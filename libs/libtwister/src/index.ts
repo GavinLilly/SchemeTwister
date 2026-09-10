@@ -26,14 +26,10 @@ export { CardGroup as AbstractCardGroup } from './lib/model/cards/card-group';
 export { Henchmen, HenchmenConfig } from './lib/model/cards/henchmen';
 export { Hero, HeroConfig } from './lib/model/cards/hero';
 export { AdaptingMastermind } from './lib/model/cards/mastermind/adapting-mastermind';
-export {
-  EpicMastermind,
-  MastermindWithEpic,
-} from './lib/model/cards/mastermind/epic-mastermind';
-export {
-  IMastermind,
-  Mastermind,
-} from './lib/model/cards/mastermind/mastermind';
+export { EpicMastermind } from './lib/model/cards/mastermind/epic-mastermind';
+export { Mastermind } from './lib/model/cards/mastermind/mastermind';
+export { MastermindConfig } from './lib/model/cards/mastermind/mastermind-config.interface';
+export { MastermindWithEpic } from './lib/model/cards/mastermind/mastermind-with-epic';
 export { TransformingMastermind } from './lib/model/cards/mastermind/transforming-mastermind';
 export {
   SchemeDefinition,

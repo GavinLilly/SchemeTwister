@@ -1,7 +1,7 @@
-import { IMastermind } from './mastermind';
+import { MastermindConfig } from './mastermind-config.interface';
 
 export type MultiMastermindConfig = Omit<
-  IMastermind,
+  MastermindConfig,
   | 'id'
   | 'gameSet'
   | 'alwaysLeads'
