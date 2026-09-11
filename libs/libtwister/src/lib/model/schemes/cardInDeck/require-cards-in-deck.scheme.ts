@@ -2,60 +2,60 @@ import { StoreOfStores } from '../../../stores/store-of-stores';
 import { CardGroup } from '../../cards/card-group';
 import { DECK_TYPE, DeckType } from '../../constants/deck-type.const';
 import {
+  AdditionalDeck,
   AdditionalDeckDeckMinimal,
+  HeroDeck,
   HeroDeckMinimal,
-  IAdditionalDeckDeck,
-  IHeroDeck,
-  IVillainDeck,
+  VillainDeck,
   VillainDeckMinimal,
 } from '../../interfaces/deck.interface';
-import { INumPlayerRules } from '../../interfaces/rules.interface';
+import { NumPlayerRules } from '../../interfaces/rules.interface';
 import { SchemeMinusRules } from '../../types/scheme-minus-rules.type';
 import { Scheme } from '../scheme';
 
-import { IRequireCardBehaviour } from './require-card-behaviour.interface';
-import { IRequireCardTypeBehaviour } from './require-card-type-behaviour.interface';
+import { RequireCardBehaviour } from './require-card-behaviour.interface';
+import { RequireCardTypeBehaviour } from './require-card-type-behaviour.interface';
 
-interface IDeckRequirements<TCard extends CardGroup> {
-  requireCard: IRequireCardBehaviour<TCard>;
-  requireCardType: IRequireCardTypeBehaviour<TCard>;
+interface DeckRequirements<TCard extends CardGroup> {
+  requireCard: RequireCardBehaviour<TCard>;
+  requireCardType: RequireCardTypeBehaviour<TCard>;
 }
 
-export interface IRequireCardsInDeckSchemeConfig {
-  heroDeckRequirements?: IDeckRequirements<CardGroup>;
-  villainDeckRequirements?: IDeckRequirements<CardGroup>;
-  additionalDeckRequirements?: IDeckRequirements<CardGroup>;
+export interface RequireCardsInDeckSchemeConfig {
+  heroDeckRequirements?: DeckRequirements<CardGroup>;
+  villainDeckRequirements?: DeckRequirements<CardGroup>;
+  additionalDeckRequirements?: DeckRequirements<CardGroup>;
 }
 
 export class RequireCardsInDeckScheme extends Scheme {
   constructor(
     scheme: SchemeMinusRules,
-    private readonly _config: IRequireCardsInDeckSchemeConfig
+    private readonly _config: RequireCardsInDeckSchemeConfig
   ) {
     super(scheme);
   }
 
   protected override initialiseHeroDeck(
-    rules: Readonly<INumPlayerRules>,
+    rules: Readonly<NumPlayerRules>,
     store: Readonly<StoreOfStores>,
     numPlayers: number
-  ): IHeroDeck {
+  ): HeroDeck {
     if (this._config.heroDeckRequirements !== undefined) {
       return this._setDeckRequirement(
         this._config.heroDeckRequirements,
         store,
         rules,
         DECK_TYPE.hero
-      ) as IHeroDeck;
+      ) as HeroDeck;
     }
 
     return super.initialiseHeroDeck(rules, store, numPlayers);
   }
 
   protected override initialiseVillainDeck(
-    rules: Readonly<INumPlayerRules>,
+    rules: Readonly<NumPlayerRules>,
     store: Readonly<StoreOfStores>
-  ): IVillainDeck {
+  ): VillainDeck {
     const emptyDeck = super.initialiseVillainDeck(rules, store);
 
     if (this._config.villainDeckRequirements !== undefined) {
@@ -74,9 +74,9 @@ export class RequireCardsInDeckScheme extends Scheme {
   }
 
   protected initialiseAdditionalDecks(
-    rules: Readonly<INumPlayerRules>,
+    rules: Readonly<NumPlayerRules>,
     store: Readonly<StoreOfStores>
-  ): IAdditionalDeckDeck | undefined {
+  ): AdditionalDeck | undefined {
     if (this._config.additionalDeckRequirements !== undefined) {
       return this._setDeckRequirement(
         this._config.additionalDeckRequirements,
@@ -90,9 +90,9 @@ export class RequireCardsInDeckScheme extends Scheme {
   }
 
   private _setDeckRequirement(
-    requirements: IDeckRequirements<CardGroup>,
+    requirements: DeckRequirements<CardGroup>,
     store: Readonly<StoreOfStores>,
-    rules: Readonly<INumPlayerRules>,
+    rules: Readonly<NumPlayerRules>,
     deckType: DeckType,
     deck?: HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal
   ) {

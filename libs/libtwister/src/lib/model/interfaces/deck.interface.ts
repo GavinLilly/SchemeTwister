@@ -3,25 +3,25 @@ import { Hero } from '../cards/hero';
 import { Mastermind } from '../cards/mastermind/mastermind';
 import { VillainGroup } from '../cards/villain-group';
 
-interface IDeck {
+interface BaseDeck {
   heroes?: Hero[];
   henchmen?: Henchmen[];
   numBystanders?: number;
 }
 
-interface INonHeroDeck extends IDeck {
+interface NonHeroDeck extends BaseDeck {
   villains?: VillainGroup[];
   numTwists?: number;
   masterminds?: Mastermind[];
 }
 
-export interface IHeroDeck extends IDeck {
+export interface HeroDeck extends BaseDeck {
   heroes: Hero[];
 }
 
-export type HeroDeckMinimal = Partial<Pick<IHeroDeck, 'heroes' | 'henchmen'>>;
+export type HeroDeckMinimal = Partial<Pick<HeroDeck, 'heroes' | 'henchmen'>>;
 
-export interface IVillainDeck extends INonHeroDeck {
+export interface VillainDeck extends NonHeroDeck {
   villains: VillainGroup[];
   henchmen: Henchmen[];
   numTwists: number;
@@ -32,19 +32,19 @@ export interface IVillainDeck extends INonHeroDeck {
 }
 
 export type VillainDeckMinimal = Partial<
-  Pick<IVillainDeck, 'heroes' | 'villains' | 'henchmen' | 'masterminds'>
+  Pick<VillainDeck, 'heroes' | 'villains' | 'henchmen' | 'masterminds'>
 >;
 
-export interface IAdditionalDeckDeck extends INonHeroDeck {
+export interface AdditionalDeck extends NonHeroDeck {
   numWounds?: number;
 }
 
 export type AdditionalDeckDeckMinimal = Partial<
-  Pick<IAdditionalDeckDeck, 'heroes' | 'henchmen' | 'masterminds' | 'villains'>
+  Pick<AdditionalDeck, 'heroes' | 'henchmen' | 'masterminds' | 'villains'>
 >;
 
-export interface IAdditionalDeck {
+export interface AdditionalDeckConfig {
   name: string;
   instructions?: string;
-  deck: IAdditionalDeckDeck;
+  deck: AdditionalDeck;
 }

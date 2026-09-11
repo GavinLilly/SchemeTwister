@@ -1,10 +1,10 @@
 import { CardStore } from '../../../stores/card-store';
 import { CardGroup } from '../../cards/card-group';
 
-import { IRequireCardBehaviour } from './require-card-behaviour.interface';
+import { RequireCardBehaviour } from './require-card-behaviour.interface';
 
 export class RequireCardWithBackup<TCard extends CardGroup>
-  implements IRequireCardBehaviour<TCard>
+  implements RequireCardBehaviour<TCard>
 {
   constructor(
     private readonly _preferred: TCard,

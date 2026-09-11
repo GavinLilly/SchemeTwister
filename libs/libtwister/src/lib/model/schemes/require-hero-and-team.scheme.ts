@@ -1,9 +1,9 @@
 import { StoreOfStores } from '../../stores/store-of-stores';
 import { Hero } from '../cards/hero';
 import { DECK_TYPE } from '../constants/deck-type.const';
-import { IHeroDeck } from '../interfaces/deck.interface';
-import { INumPlayerRules } from '../interfaces/rules.interface';
-import { ITeam } from '../interfaces/team.interface';
+import { HeroDeck } from '../interfaces/deck.interface';
+import { NumPlayerRules } from '../interfaces/rules.interface';
+import { Team } from '../interfaces/team.interface';
 import { SchemeMinusRules } from '../types/scheme-minus-rules.type';
 
 import { RequireCardInDeckScheme } from './cardInDeck/require-card-in-deck.scheme';
@@ -15,7 +15,7 @@ export class RequireHeroAndTeamScheme extends RequireCardInDeckScheme<Hero> {
   constructor(
     scheme: SchemeMinusRules,
     private readonly _requiredHero: Hero,
-    private readonly _requiredTeam: ITeam,
+    private readonly _requiredTeam: Team,
     private readonly _numFromRequiredTeam: number,
     private readonly _numNotFromRequiredTeam: number
   ) {
@@ -28,10 +28,10 @@ export class RequireHeroAndTeamScheme extends RequireCardInDeckScheme<Hero> {
   }
 
   protected override initialiseHeroDeck(
-    rules: Readonly<INumPlayerRules>,
+    rules: Readonly<NumPlayerRules>,
     store: Readonly<StoreOfStores>,
     numPlayers: number
-  ): IHeroDeck {
+  ): HeroDeck {
     const requiredTeamHeroes = store.heroStore.pickRandom({
       count: this._numFromRequiredTeam,
       filter: (hero) => hero.team === this._requiredTeam,

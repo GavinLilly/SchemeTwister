@@ -7,12 +7,12 @@ import {
   HeroDeckMinimal,
   VillainDeckMinimal,
 } from '../../interfaces/deck.interface';
-import { INumPlayerRules } from '../../interfaces/rules.interface';
+import { NumPlayerRules } from '../../interfaces/rules.interface';
 
-export interface IRequireCardTypeBehaviour<TCard extends CardGroup> {
+export interface RequireCardTypeBehaviour<TCard extends CardGroup> {
   createDeck(
     cards: TCard[],
-    rules: INumPlayerRules,
+    rules: NumPlayerRules,
     deckType: DeckType,
     deck?: HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal
   ): HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal;

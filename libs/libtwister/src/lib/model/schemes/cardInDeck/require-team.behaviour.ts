@@ -1,12 +1,12 @@
 import { CardStore } from '../../../stores/card-store';
 import { randomize } from '../../../utils/randomize';
 import { Hero } from '../../cards/hero';
-import { ITeam } from '../../interfaces/team.interface';
+import { Team } from '../../interfaces/team.interface';
 
-import { IRequireCardBehaviour } from './require-card-behaviour.interface';
+import { RequireCardBehaviour } from './require-card-behaviour.interface';
 
-export class RequireTeam implements IRequireCardBehaviour<Hero> {
-  constructor(private readonly _team: ITeam) {}
+export class RequireTeam implements RequireCardBehaviour<Hero> {
+  constructor(private readonly _team: Team) {}
 
   getRequiredCard(store: CardStore<Hero>): Hero | Hero[] {
     const teamHeroes = store.availableCards.filter(

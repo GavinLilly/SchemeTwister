@@ -1,4 +1,4 @@
-export interface INamedObject {
+export interface NamedObject {
   /**
    * The name of the object
    */

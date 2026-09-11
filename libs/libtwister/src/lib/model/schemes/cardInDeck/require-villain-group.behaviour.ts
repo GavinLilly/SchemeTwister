@@ -7,17 +7,17 @@ import {
   HeroDeckMinimal,
   VillainDeckMinimal,
 } from '../../interfaces/deck.interface';
-import { INumPlayerRules } from '../../interfaces/rules.interface';
+import { NumPlayerRules } from '../../interfaces/rules.interface';
 import { Scheme } from '../scheme';
 
-import { IRequireCardTypeBehaviour } from './require-card-type-behaviour.interface';
+import { RequireCardTypeBehaviour } from './require-card-type-behaviour.interface';
 
 export class RequireVillainGroup
-  implements IRequireCardTypeBehaviour<VillainGroup>
+  implements RequireCardTypeBehaviour<VillainGroup>
 {
   createDeck(
     cards: VillainGroup[],
-    rules: INumPlayerRules,
+    rules: NumPlayerRules,
     deckType: DeckType,
     deck: VillainDeckMinimal | AdditionalDeckDeckMinimal = {}
   ): HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal {

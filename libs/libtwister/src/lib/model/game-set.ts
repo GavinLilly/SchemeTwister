@@ -9,12 +9,20 @@ import { Mastermind } from './cards/mastermind/mastermind';
 import { VillainGroup } from './cards/villain-group';
 import { CardType } from './constants/card-type.const';
 import { GAME_SET_SIZE, GameSetSize } from './constants/game-set-size.const';
-import { IGameSetMeta } from './interfaces/game-set.interface';
+import { NamedObject } from './interfaces/named-object.interface';
 import { SeriesMeta } from './series-meta';
 import { AllCardTypes } from './types/all-card-types.type';
 import { SchemeMinusRules } from './types/scheme-minus-rules.type';
 
-export class GameSet implements IGameSetMeta {
+export interface GameSetProps {
+  readonly id: string;
+  readonly name: string;
+  readonly size: GameSetSize;
+  readonly releaseYear: number;
+  readonly series: SeriesMeta;
+}
+
+export class GameSet implements NamedObject {
   readonly id: string;
   readonly name: string;
   readonly size: GameSetSize;
@@ -33,7 +41,7 @@ export class GameSet implements IGameSetMeta {
   }
 
   constructor(
-    gameSetProps: IGameSetMeta,
+    readonly gameSetProps: GameSetProps,
     readonly heroes: Hero[],
     readonly masterminds?: Mastermind[],
     readonly schemes?: SchemeMinusRules[],

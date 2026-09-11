@@ -2,14 +2,14 @@ import { CardStore } from '../../../stores/card-store';
 import { randomize } from '../../../utils/randomize';
 import { CardGroup } from '../../cards/card-group';
 
-import { IRequireCardBehaviour } from './require-card-behaviour.interface';
+import { RequireCardBehaviour } from './require-card-behaviour.interface';
 
 /**
  * A card requirer that picks the required number of cards from the provided
  * list before (possibly) removing the left overs.
  */
 export class RequireCard<TCard extends CardGroup>
-  implements IRequireCardBehaviour<TCard>
+  implements RequireCardBehaviour<TCard>
 {
   private readonly _requiredCardsOptions: TCard[];
 

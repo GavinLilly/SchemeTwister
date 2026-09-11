@@ -2,10 +2,10 @@ import { CardStore } from '../../../stores/card-store';
 import { randomize } from '../../../utils/randomize';
 import { CardGroup } from '../../cards/card-group';
 
-import { IRequireCardBehaviour } from './require-card-behaviour.interface';
+import { RequireCardBehaviour } from './require-card-behaviour.interface';
 
 export class RequireCardName<TCard extends CardGroup>
-  implements IRequireCardBehaviour<TCard>
+  implements RequireCardBehaviour<TCard>
 {
   constructor(cardName: string | string[]);
   constructor(

@@ -1,20 +1,53 @@
+import { Constructor } from 'type-fest';
 import { CARD_TYPE } from '../constants/card-type.const';
-import { IGameSetMeta } from '../interfaces/game-set.interface';
-import { IKeyword } from '../interfaces/keyword.interface';
-import { IScheme, ISchemeMeta } from '../interfaces/scheme.interface';
+import { GameSet } from '../game-set';
+import { ICardType } from '../interfaces/card-type.interface';
+import { Keyword } from '../interfaces/keyword.interface';
+import { SpecialRules } from '../interfaces/special-rules.interface';
+import { RulesModifierFunction } from '../rules';
+import { Scheme } from '../schemes/scheme';
 
-export type SchemeDefinitionConfig = Omit<IScheme, 'cardType'>;
+/* eslint-disable @typescript-eslint/naming-convention */
+interface EachPlayerNumber {
+  1: number;
+  2: number;
+  3: number;
+  4: number;
+  5: number;
+}
+/* eslint-enable @typescript-eslint/naming-convention */
 
-export class SchemeDefinition implements IScheme {
+interface OverrideScheme {
+  schemeType: Constructor<Scheme>;
+  params?: unknown[];
+}
+
+interface SchemeMeta {
+  numTwists: number | EachPlayerNumber;
+  rules?: RulesModifierFunction;
+  overrideScheme?: OverrideScheme;
+  numCourageTokens?: number | EachPlayerNumber;
+}
+
+export interface SchemeDefinitionConfig
+  extends SpecialRules,
+    Partial<ICardType> {
+  setup: string;
+  twist: string;
+  evilWins: string;
+  meta: SchemeMeta;
+}
+
+export class SchemeDefinition implements SpecialRules, ICardType {
   private readonly _id: string;
   private readonly _name: string;
-  private readonly _gameSet: IGameSetMeta;
+  private readonly _gameSet: GameSet;
   private readonly _setup: string;
   private readonly _twist: string;
   private readonly _evilWins: string;
   private readonly _specialRules?: string;
-  private readonly _meta: ISchemeMeta;
-  private readonly _keywords: IKeyword[];
+  private readonly _meta: SchemeMeta;
+  private readonly _keywords: Keyword[];
 
   constructor(config: SchemeDefinitionConfig) {
     ({

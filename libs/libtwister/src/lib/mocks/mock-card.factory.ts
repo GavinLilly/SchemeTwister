@@ -7,7 +7,7 @@ import { Mastermind } from '../model/cards/mastermind/mastermind';
 import { MastermindWithEpic } from '../model/cards/mastermind/mastermind-with-epic';
 import { SchemeDefinition } from '../model/cards/scheme-definition';
 import { VillainGroup } from '../model/cards/villain-group';
-import { ITeam } from '../model/interfaces/team.interface';
+import { Team } from '../model/interfaces/team.interface';
 import { capitalise } from '../utils/capitalise';
 
 import {
@@ -26,10 +26,10 @@ export class MockCardFactory {
   }
 
   public createHero(): Hero;
-  public createHero(availableTeams: ITeam[]): Hero;
-  public createHero(team: ITeam): Hero;
-  public createHero(teamOrTeams?: ITeam[] | ITeam): Hero {
-    let team: ITeam | undefined;
+  public createHero(availableTeams: Team[]): Hero;
+  public createHero(team: Team): Hero;
+  public createHero(teamOrTeams?: Team[] | Team): Hero {
+    let team: Team | undefined;
 
     if (teamOrTeams !== undefined && !Array.isArray(teamOrTeams)) {
       team = teamOrTeams;

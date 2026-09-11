@@ -8,7 +8,6 @@ import { StoreOfStores } from '../../stores/store-of-stores';
 import { CARD_TYPE } from '../constants/card-type.const';
 import { NumPlayers, numPlayers } from '../constants/num-players.const';
 import { GameSetup } from '../game-setup';
-import { IGameSetup } from '../interfaces/game-setup.interface';
 import { Rules } from '../rules';
 import { SchemeMinusRules } from '../types/scheme-minus-rules.type';
 
@@ -150,7 +149,7 @@ describe('Scheme', () => {
 
   describe('getSetup()', () => {
     let scheme: Scheme;
-    let setup: IGameSetup;
+    let setup: GameSetup;
     let store: StoreOfStores;
 
     beforeAll(() => {

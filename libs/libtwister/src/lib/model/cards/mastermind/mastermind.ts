@@ -1,8 +1,8 @@
 import { CARD_TYPE } from '../../constants/card-type.const';
 import { GameSet } from '../../game-set';
-import { IFightable } from '../../interfaces/fightable.interface';
-import { INumPlayerRules } from '../../interfaces/rules.interface';
-import { ISpecialRules } from '../../interfaces/special-rules.interface';
+import { Fightable } from '../../interfaces/fightable.interface';
+import { NumPlayerRules } from '../../interfaces/rules.interface';
+import { SpecialRules } from '../../interfaces/special-rules.interface';
 import { FightableCardGroup } from '../fightable-card-group';
 import { Henchmen } from '../henchmen';
 import { Hero } from '../hero';
@@ -14,13 +14,13 @@ import { MastermindConfig } from './mastermind-config.interface';
  * optionally basing it on the number of players.
  */
 export type RuleOverrideFunction = (
-  rule: INumPlayerRules,
+  rule: NumPlayerRules,
   num: number
-) => INumPlayerRules;
+) => NumPlayerRules;
 
 export class Mastermind
   extends FightableCardGroup
-  implements IFightable, ISpecialRules
+  implements Fightable, SpecialRules
 {
   public readonly alwaysLeads: (VillainGroup | Henchmen)[];
   public readonly ruleOverride?: RuleOverrideFunction;

@@ -3,15 +3,15 @@ import { beforeAll, describe, expect, it } from 'vitest';
 
 import { createMockGamesetMeta } from '../../../mocks/mock.utils';
 import { CARD_TYPE } from '../../constants/card-type.const';
-import { IGameSetMeta } from '../../interfaces/game-set.interface';
 import { Henchmen } from '../henchmen';
 import { VillainGroup } from '../villain-group';
 
+import { GameSet } from '../../game-set';
 import { Mastermind } from './mastermind';
 
 describe('Mastermind', () => {
   let villain: VillainGroup;
-  let gameSet: IGameSetMeta;
+  let gameSet: GameSet;
 
   beforeAll(() => {
     gameSet = createMockGamesetMeta();

@@ -5,7 +5,7 @@ import { MockGameSetFactory } from '../../mocks/mock-game-set.factory';
 import { StoreBuilder } from '../../stores/store-builder';
 import { randomize } from '../../utils/randomize';
 import { GAME_SET_SIZE } from '../constants/game-set-size.const';
-import { ITeam } from '../interfaces/team.interface';
+import { Team } from '../interfaces/team.interface';
 
 import { RequireHeroAndTeamScheme } from './require-hero-and-team.scheme';
 
@@ -24,7 +24,7 @@ describe('RequireHeroAndTeamScheme', () => {
   const selectedHero = gameSet.heroes[0];
   const allTeams = gameSet.heroes
     .map((hero) => hero.team)
-    .filter((team): team is ITeam => team !== undefined);
+    .filter((team): team is Team => team !== undefined);
 
   const dedupedTeams = Array.from(new Set(allTeams));
   const selectedTeam = randomize(dedupedTeams);

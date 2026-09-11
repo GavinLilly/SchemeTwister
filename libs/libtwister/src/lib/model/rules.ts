@@ -1,12 +1,12 @@
 import { NumPlayers, numPlayers } from './constants/num-players.const';
-import { INumPlayerRules } from './interfaces/rules.interface';
+import { NumPlayerRules } from './interfaces/rules.interface';
 
-export type RulesType = Record<NumPlayers, INumPlayerRules>;
+export type RulesType = Record<NumPlayers, NumPlayerRules>;
 
 export type RulesModifierFunction = (
-  rule: INumPlayerRules,
+  rule: NumPlayerRules,
   num: number
-) => INumPlayerRules;
+) => NumPlayerRules;
 
 export class Rules {
   private readonly _rules = Rules.defaultRules;

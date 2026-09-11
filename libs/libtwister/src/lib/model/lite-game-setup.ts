@@ -11,9 +11,9 @@ import { Mastermind } from './cards/mastermind/mastermind';
 import { VillainGroup } from './cards/villain-group';
 import { NumPlayers } from './constants/num-players.const';
 import { GameSetup } from './game-setup';
-import { IAdditionalDeck, IHeroDeck } from './interfaces/deck.interface';
-import { INamedObject } from './interfaces/named-object.interface';
-import { IAdditionalDeckRules } from './interfaces/rules.interface';
+import { AdditionalDeckConfig, HeroDeck } from './interfaces/deck.interface';
+import { NamedObject } from './interfaces/named-object.interface';
+import { AdditionalDeckRules } from './interfaces/rules.interface';
 
 interface LiteGameSetupConfig {
   numPlayers: number;
@@ -113,7 +113,7 @@ export class LiteGameSetup {
    * @returns A LiteGameSetup instance
    */
   public static of(setup: GameSetup): LiteGameSetup {
-    const mapToId = <TVal extends INamedObject>(value: TVal) => value.id;
+    const mapToId = <TVal extends NamedObject>(value: TVal) => value.id;
 
     return new LiteGameSetup({
       numPlayers: setup.numPlayers,
@@ -191,7 +191,7 @@ export class LiteGameSetup {
     });
   }
 
-  private _buildHeroDeck(twister: LibTwister): IHeroDeck {
+  private _buildHeroDeck(twister: LibTwister): HeroDeck {
     const henchmen: Henchmen[] = [];
     const heroes: Hero[] = [];
 
@@ -215,9 +215,9 @@ export class LiteGameSetup {
   }
 
   private _buildFullAdditionalDeck(
-    rules: IAdditionalDeckRules[],
+    rules: AdditionalDeckRules[],
     twister: LibTwister
-  ): IAdditionalDeck[] {
+  ): AdditionalDeckConfig[] {
     try {
       return rules.map((rule) => ({
         name: rule.name,

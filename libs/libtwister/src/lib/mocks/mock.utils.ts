@@ -1,21 +1,26 @@
 import { faker } from '@faker-js/faker';
 
 import { GAME_SET_SIZE } from '../model/constants/game-set-size.const';
-import { IKeyword } from '../model/interfaces/keyword.interface';
-import { ITeam } from '../model/interfaces/team.interface';
+import { GameSet } from '../model/game-set';
+import { Keyword } from '../model/interfaces/keyword.interface';
+import { Team } from '../model/interfaces/team.interface';
 import { SeriesMeta } from '../model/series-meta';
 import { capitalise } from '../utils/capitalise';
 
 export const createMockGamesetMeta = (
   series = createMockSeriesMeta(),
   size = faker.helpers.objectValue(GAME_SET_SIZE)
-) => ({
-  id: faker.string.uuid(),
-  name: faker.commerce.productName(),
-  releaseYear: faker.date.past().getFullYear(),
-  series,
-  size,
-});
+) =>
+  new GameSet(
+    {
+      id: faker.string.uuid(),
+      name: faker.commerce.productName(),
+      releaseYear: faker.date.past().getFullYear(),
+      series,
+      size,
+    },
+    []
+  );
 
 export const createMockSeriesMeta = () =>
   new SeriesMeta(
@@ -28,7 +33,7 @@ export const createMockSeriesMeta = () =>
  * Creates a fake team with a name like a company
  * @returns a fake team
  */
-export function createMockTeam(): ITeam {
+export function createMockTeam(): Team {
   const name = faker.company.name();
 
   return {
@@ -54,7 +59,7 @@ export const createMockKeywords = (maxCount = 5) =>
  * Creates a fake keyword
  * @returns a fake keyword
  */
-export const createMockKeyword = (): IKeyword => ({
+export const createMockKeyword = (): Keyword => ({
   id: faker.string.uuid(),
   name:
     capitalise(faker.word.adjective()) + ' ' + capitalise(faker.word.verb()),

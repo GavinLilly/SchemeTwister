@@ -5,12 +5,12 @@ import { Hero } from './cards/hero';
 import { Mastermind } from './cards/mastermind/mastermind';
 import { VillainGroup } from './cards/villain-group';
 import {
-  IAdditionalDeck,
-  IHeroDeck,
-  IVillainDeck,
+  AdditionalDeckConfig,
+  HeroDeck,
+  VillainDeck,
 } from './interfaces/deck.interface';
-import { IGameSetup } from './interfaces/game-setup.interface';
-import { IKeyword } from './interfaces/keyword.interface';
+import { GameSetup as IGameSetup } from './interfaces/game-setup.interface';
+import { Keyword } from './interfaces/keyword.interface';
 import { Scheme } from './schemes/scheme';
 
 type VillainAdditionalDeckCards = Henchmen | VillainGroup | Mastermind | Hero;
@@ -24,9 +24,9 @@ export class GameSetup implements IGameSetup {
   readonly mastermind: Mastermind;
   readonly numWounds?: number;
   readonly numShieldOfficers?: number;
-  heroDeck: IHeroDeck;
-  villainDeck: IVillainDeck;
-  additionalDecks: IAdditionalDeck[];
+  heroDeck: HeroDeck;
+  villainDeck: VillainDeck;
+  additionalDecks: AdditionalDeckConfig[];
 
   constructor(setup: IGameSetup) {
     ({
@@ -45,7 +45,7 @@ export class GameSetup implements IGameSetup {
    * All the keywords contained in this game setup.
    * @returns A set of keywords in use in this game setup
    */
-  public get keywords(): Set<IKeyword> {
+  public get keywords(): Set<Keyword> {
     const keywords = [
       ...this.getSelectedHenchmen(),
       ...this.getSelectedHeroes(),
@@ -53,7 +53,7 @@ export class GameSetup implements IGameSetup {
       ...this.getSelectedVillains(),
     ]
       .flatMap((card) => card.keywords)
-      .filter((keyword): keyword is IKeyword => !!keyword);
+      .filter((keyword): keyword is Keyword => !!keyword);
 
     if (this.scheme.keywords) {
       keywords.push(...this.scheme.keywords);

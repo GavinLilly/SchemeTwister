@@ -1,10 +1,10 @@
-export interface IDeckRequirements {
+interface BaseDeckRequirements {
   numHeroes?: number;
   numHenchmenGroups?: number;
   numBystanders?: number;
 }
 
-export interface IVillainDeckRequirements extends IDeckRequirements {
+export interface VillainDeckRequirements extends BaseDeckRequirements {
   numTwists: number;
   numSidekicks?: number;
   numShieldOfficers?: number;
@@ -15,28 +15,27 @@ export interface IVillainDeckRequirements extends IDeckRequirements {
   numMasterStrikes: number;
 }
 
-export interface IHeroDeckRequirements extends IDeckRequirements {
+export interface HeroDeckRequirements extends BaseDeckRequirements {
   numHeroes: number;
 }
 
-export interface IAdditionalDeckRequirements extends IDeckRequirements {
+export interface AdditionalDeckRequirements extends BaseDeckRequirements {
   numMasterminds?: number;
   numTwists?: number;
   numVillainGroups?: number;
   numWounds?: number;
 }
 
-export interface IAdditionalDeckRules {
+export interface AdditionalDeckRules {
   name: string;
   instruction?: string;
-  deck?: IAdditionalDeckRequirements;
+  deck?: AdditionalDeckRequirements;
 }
 
-export interface INumPlayerRules {
-  heroDeck: IHeroDeckRequirements;
-  villainDeck: IVillainDeckRequirements;
-
-  additionalDeck: IAdditionalDeckRules[];
+export interface NumPlayerRules {
+  heroDeck: HeroDeckRequirements;
+  villainDeck: VillainDeckRequirements;
+  additionalDeck: AdditionalDeckRules[];
   numWounds?: number;
   numShieldOfficers?: number;
   numShards?: number;

@@ -1,19 +1,19 @@
 import { CardType } from '../constants/card-type.const';
+import { GameSet } from '../game-set';
 import { ICardType } from '../interfaces/card-type.interface';
-import { IGameSetMeta } from '../interfaces/game-set.interface';
-import { IKeyword } from '../interfaces/keyword.interface';
-import { IPlayableObject } from '../interfaces/playable-object.interface';
+import { Keyword } from '../interfaces/keyword.interface';
+import { PlayableObject } from '../interfaces/playable-object.interface';
 
-export abstract class CardGroup implements IPlayableObject, ICardType {
+export abstract class CardGroup implements PlayableObject, ICardType {
   public readonly id: string;
   public readonly name: string;
-  public readonly gameSet: IGameSetMeta;
-  public readonly keywords: IKeyword[];
+  public readonly gameSet: GameSet;
+  public readonly keywords: Keyword[];
 
   /** The type of the card */
   public abstract readonly cardType: CardType;
 
-  constructor(config: IPlayableObject) {
+  constructor(config: PlayableObject) {
     this.id = config.id;
     this.name = config.name;
     this.gameSet = config.gameSet;

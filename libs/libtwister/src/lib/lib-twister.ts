@@ -14,17 +14,17 @@ import {
   HeroDeckMinimal,
   VillainDeckMinimal,
 } from './model/interfaces/deck.interface';
-import { ISeries } from './model/interfaces/series.interface';
+import { Series } from './model/interfaces/series.interface';
 import { SchemeMinusRules } from './model/types/scheme-minus-rules.type';
 import { CardFactory } from './stores/card-factory';
 import { StoreOfStores } from './stores/store-of-stores';
 import instantiateScheme from './utils/instantiate-scheme';
 
-export interface IBlacklist {
+export interface Blacklist {
   heroes: Hero[];
 }
 
-export interface ISetupConfig {
+export interface SetupConfig {
   /** The number of players to build the setup for */
   numPlayers: NumPlayers;
   /** The scheme to setup with */
@@ -40,13 +40,13 @@ export interface ISetupConfig {
   /** An additional deck to start the setup from */
   partialAdditionalDeck?: AdditionalDeckDeckMinimal;
   /** Any cards to blacklist */
-  blacklist?: IBlacklist;
+  blacklist?: Blacklist;
 }
 
-export interface ILibTwisterConfig {
-  series: ISeries[];
+export interface LibTwisterConfig {
+  series: Series[];
   gameSets?: GameSet[];
-  blacklist?: IBlacklist;
+  blacklist?: Blacklist;
 }
 
 /**
@@ -57,15 +57,15 @@ export class LibTwister {
   private _schemeFactory!: CardFactory<SchemeMinusRules>;
   private _stores!: StoreOfStores;
   private _selectedGameSets: GameSet[] = [];
-  private readonly _series: ISeries[];
-  private readonly _blacklist?: IBlacklist;
+  private readonly _series: Series[];
+  private readonly _blacklist?: Blacklist;
 
   /**
    * Create a new LibTwister instance with the given Series and optionally the
    * game sets
    * @param config configuration options for this setup of LibTwister
    */
-  constructor(config: Readonly<ILibTwisterConfig>) {
+  constructor(config: Readonly<LibTwisterConfig>) {
     this._series = config.series;
 
     if (config.gameSets !== undefined && config.gameSets.length > 0) {
@@ -184,7 +184,7 @@ export class LibTwister {
    * @param config the configuration to use to create a setup
    * @returns a promise of a GameSetup
    */
-  public getSetup(config: Readonly<ISetupConfig>): GameSetup {
+  public getSetup(config: Readonly<SetupConfig>): GameSetup {
     this._stores.reset();
 
     const blackListedHeroes = [

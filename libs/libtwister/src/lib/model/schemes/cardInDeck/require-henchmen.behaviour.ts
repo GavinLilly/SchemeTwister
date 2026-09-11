@@ -7,15 +7,15 @@ import {
   HeroDeckMinimal,
   VillainDeckMinimal,
 } from '../../interfaces/deck.interface';
-import { INumPlayerRules } from '../../interfaces/rules.interface';
+import { NumPlayerRules } from '../../interfaces/rules.interface';
 import { Scheme } from '../scheme';
 
-import { IRequireCardTypeBehaviour } from './require-card-type-behaviour.interface';
+import { RequireCardTypeBehaviour } from './require-card-type-behaviour.interface';
 
-export class RequireHenchmen implements IRequireCardTypeBehaviour<Henchmen> {
+export class RequireHenchmen implements RequireCardTypeBehaviour<Henchmen> {
   createDeck(
     cards: Henchmen[],
-    rules: INumPlayerRules,
+    rules: NumPlayerRules,
     deckType: DeckType,
     deck: HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal = {}
   ): HeroDeckMinimal | VillainDeckMinimal | AdditionalDeckDeckMinimal {

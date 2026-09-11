@@ -1,7 +1,7 @@
-import { INomenclature } from './interfaces/nomenclature.interface';
+import { Nomenclature } from './interfaces/nomenclature.interface';
 
 export class SeriesMeta {
-  private readonly _nomenclature: INomenclature;
+  private readonly _nomenclature: Nomenclature;
 
   public get id() {
     return this._id;
@@ -23,7 +23,7 @@ export class SeriesMeta {
     private readonly _id: string,
     private readonly _seriesName: string,
     private readonly _description: string,
-    nomenclature?: Partial<INomenclature>
+    nomenclature?: Partial<Nomenclature>
   ) {
     this._nomenclature = {
       bystander: 'Bystander',

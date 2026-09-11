@@ -1,8 +1,8 @@
 import { merge } from 'ts-deepmerge';
-import { PartialDeep } from 'type-fest';
+import { PartialDeep, SetOptional } from 'type-fest';
 import { v4 as uuidV4 } from 'uuid';
 
-import { ISetupConfig } from '../../lib-twister';
+import { SetupConfig } from '../../lib-twister';
 import { CardStore } from '../../stores/card-store';
 import { StoreOfStores } from '../../stores/store-of-stores';
 import { CardGroup } from '../cards/card-group';
@@ -13,37 +13,38 @@ import { CARD_TYPE } from '../constants/card-type.const';
 import { numPlayers } from '../constants/num-players.const';
 import { GameSet } from '../game-set';
 import {
+  AdditionalDeck,
+  AdditionalDeckConfig,
   AdditionalDeckDeckMinimal,
-  IAdditionalDeck,
-  IAdditionalDeckDeck,
-  IHeroDeck,
-  IVillainDeck,
+  HeroDeck,
+  VillainDeck,
 } from '../interfaces/deck.interface';
-import { IGameSetMeta } from '../interfaces/game-set.interface';
-import { IGameSetup } from '../interfaces/game-setup.interface';
-import { IKeyword } from '../interfaces/keyword.interface';
-import { IPlayableObject } from '../interfaces/playable-object.interface';
+import { GameSetup } from '../interfaces/game-setup.interface';
+import { Keyword } from '../interfaces/keyword.interface';
+import { PlayableObject } from '../interfaces/playable-object.interface';
 import {
-  IAdditionalDeckRules,
-  INumPlayerRules,
+  AdditionalDeckRules,
+  NumPlayerRules,
 } from '../interfaces/rules.interface';
 import { Rules, RulesType } from '../rules';
 import { SchemeMinusRules } from '../types/scheme-minus-rules.type';
 
-export interface ISetupConfigWithStore extends Omit<ISetupConfig, 'scheme'> {
+export interface SetupConfigWithStore extends Omit<SetupConfig, 'scheme'> {
   /** A collection of stores to select cards from */
   store: StoreOfStores;
 }
+
+export type SchemeConfig = SetOptional<SchemeMinusRules, 'specialRules'>;
 
 /**
  * Scheme allows for a Scheme-rules from the game to be instantiated and
  * generate a game setup.
  */
-export class Scheme implements IPlayableObject {
+export class Scheme implements PlayableObject {
   // Meta
   private readonly _id: string;
-  private readonly _gameSet: IGameSetMeta;
-  private readonly _keywords?: IKeyword[] = undefined;
+  private readonly _gameSet: GameSet;
+  private readonly _keywords?: Keyword[] = [];
   private readonly _rules: RulesType;
 
   // Card content
@@ -53,7 +54,7 @@ export class Scheme implements IPlayableObject {
   private readonly _evilWins: string;
   private readonly _specialRules?: string = undefined;
 
-  constructor(scheme: SchemeMinusRules) {
+  constructor(scheme: SchemeConfig) {
     ({
       id: this._id,
       name: this._name,
@@ -143,6 +144,7 @@ export class Scheme implements IPlayableObject {
       meta: {
         numTwists: 0,
       },
+      keywords: [],
     });
   }
 
@@ -153,7 +155,7 @@ export class Scheme implements IPlayableObject {
    * @param card the card to add to the deck
    * @param maxLength the maximum size of the deck
    */
-  public static addToDeck<T extends IPlayableObject>(
+  public static addToDeck<T extends PlayableObject>(
     deck: T[],
     card: T,
     maxDeckLength?: number
@@ -166,13 +168,13 @@ export class Scheme implements IPlayableObject {
    * @param maxDeckLength the maximum size of the deck
    * @param extraCards an array of additional cards to add to the deck
    */
-  public static addToDeck<T extends IPlayableObject>(
+  public static addToDeck<T extends PlayableObject>(
     deck: T[],
     card: T,
     maxDeckLength?: number,
     ...extraCards: T[]
   ): T[];
-  public static addToDeck<T extends IPlayableObject>(
+  public static addToDeck<T extends PlayableObject>(
     deck: T[],
     card: T,
     maxDeckLength?: number,
@@ -267,12 +269,12 @@ export class Scheme implements IPlayableObject {
   }
 
   private _buildAdditionalDecks(
-    rules: Readonly<INumPlayerRules>,
+    rules: Readonly<NumPlayerRules>,
     store: Readonly<StoreOfStores>,
     // TODO Disabled while trying to figure out the best way to lock additional decks
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     partialAdditionalDeck?: Readonly<AdditionalDeckDeckMinimal>
-  ): IAdditionalDeck[] {
+  ): AdditionalDeckConfig[] {
     const additionalDecks = [];
     const requiredAdditionalDeck = this.initialiseAdditionalDecks(rules, store);
 
@@ -306,11 +308,11 @@ export class Scheme implements IPlayableObject {
    * @returns an instantiation of an additional deck
    */
   private static _buildAdditionalDeck(
-    additionalRules: Readonly<IAdditionalDeckRules>,
+    additionalRules: Readonly<AdditionalDeckRules>,
     store: Readonly<StoreOfStores>,
     partialAdditionalDeck?: Readonly<AdditionalDeckDeckMinimal>
-  ): IAdditionalDeck {
-    const addDeck: IAdditionalDeck = {
+  ): AdditionalDeckConfig {
+    const addDeck: AdditionalDeckConfig = {
       name: additionalRules.name,
       instructions: additionalRules.instruction,
       deck: { ...additionalRules.deck, ...partialAdditionalDeck },
@@ -357,11 +359,11 @@ export class Scheme implements IPlayableObject {
    * @returns an instantiation of the hero deck
    */
   private _buildHeroDeck(
-    rules: Readonly<INumPlayerRules>,
+    rules: Readonly<NumPlayerRules>,
     numPlayers: number,
     store: Readonly<StoreOfStores>,
-    partialHeroDeck: Readonly<IHeroDeck>
-  ): IHeroDeck {
+    partialHeroDeck: Readonly<HeroDeck>
+  ): HeroDeck {
     const heroDeck = this.initialiseHeroDeck(rules, store, numPlayers);
 
     if (heroDeck.heroes.length < rules.heroDeck.numHeroes) {
@@ -391,7 +393,7 @@ export class Scheme implements IPlayableObject {
 
   private static _buildHenchmenForVillainDeck(
     initiatedHenchmen: Henchmen[],
-    rules: Readonly<INumPlayerRules>,
+    rules: Readonly<NumPlayerRules>,
     store: StoreOfStores,
     partialDeck: ReadonlyArray<Henchmen>,
     selectedMastermind: Mastermind
@@ -427,7 +429,7 @@ export class Scheme implements IPlayableObject {
 
   private static _buildVillainsForVillainDeck(
     initiatedVillains: VillainGroup[],
-    rules: Readonly<INumPlayerRules>,
+    rules: Readonly<NumPlayerRules>,
     store: StoreOfStores,
     partialDeck: ReadonlyArray<VillainGroup>,
     selectedMastermind: Mastermind
@@ -460,13 +462,13 @@ export class Scheme implements IPlayableObject {
   }
 
   private _buildVillainDeck(
-    rules: Readonly<INumPlayerRules>,
+    rules: Readonly<NumPlayerRules>,
     store: StoreOfStores,
     partialDeck: Readonly<
-      Pick<IVillainDeck, 'heroes' | 'henchmen' | 'villains' | 'masterminds'>
+      Pick<VillainDeck, 'heroes' | 'henchmen' | 'villains' | 'masterminds'>
     >,
     selectedMastermind: Mastermind
-  ): IVillainDeck {
+  ): VillainDeck {
     // Initiate deck with cards required by scheme
     const returnDeck = this.initialiseVillainDeck(rules, store);
 
@@ -519,8 +521,8 @@ export class Scheme implements IPlayableObject {
    * @param override a partial set of rules to override the defaults
    * @returns a configured instance of an {@link Scheme}
    */
-  public overrideDefaultRules(override: PartialDeep<INumPlayerRules>): this {
-    this.overrideEachRule((rule) => merge(rule, override) as INumPlayerRules);
+  public overrideDefaultRules(override: PartialDeep<NumPlayerRules>): this {
+    this.overrideEachRule((rule) => merge(rule, override) as NumPlayerRules);
     return this;
   }
 
@@ -531,7 +533,7 @@ export class Scheme implements IPlayableObject {
    * @returns a configured instance of an {@link Scheme}
    */
   public overrideEachRule(
-    func: (rule: INumPlayerRules, num: number) => INumPlayerRules
+    func: (rule: NumPlayerRules, num: number) => NumPlayerRules
   ): this {
     for (const num of numPlayers) {
       this.rules[num] = func(this.rules[num], num);
@@ -545,7 +547,7 @@ export class Scheme implements IPlayableObject {
    * @param config the config to use to create a game setup
    * @returns a fully populated setup for a game
    */
-  public getSetup(config: Readonly<ISetupConfigWithStore>): IGameSetup {
+  public getSetup(config: Readonly<SetupConfigWithStore>): GameSetup {
     const isAdvancedSolo = config.advancedSolo ?? false;
     // Get player rules
     const ruleSet =
@@ -619,22 +621,22 @@ export class Scheme implements IPlayableObject {
 
   protected initialiseHeroDeck(
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    rules: Readonly<INumPlayerRules>,
+    rules: Readonly<NumPlayerRules>,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     store: Readonly<StoreOfStores>,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     numPlayers: number
-  ): IHeroDeck {
+  ): HeroDeck {
     return {
       heroes: [],
     };
   }
 
   protected initialiseVillainDeck(
-    rules: Readonly<INumPlayerRules>,
+    rules: Readonly<NumPlayerRules>,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     store: Readonly<StoreOfStores>
-  ): IVillainDeck {
+  ): VillainDeck {
     return {
       henchmen: [],
       villains: [],
@@ -645,10 +647,10 @@ export class Scheme implements IPlayableObject {
 
   protected initialiseAdditionalDecks(
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    rules: Readonly<INumPlayerRules>,
+    rules: Readonly<NumPlayerRules>,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     store: Readonly<StoreOfStores>
-  ): IAdditionalDeckDeck | undefined {
+  ): AdditionalDeck | undefined {
     return undefined;
   }
 }

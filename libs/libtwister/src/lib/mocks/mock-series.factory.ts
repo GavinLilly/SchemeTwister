@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 
 import { GAME_SET_SIZE } from '../model/constants/game-set-size.const';
-import { ISeries } from '../model/interfaces/series.interface';
+import { Series } from '../model/interfaces/series.interface';
 
 import { MockGameSetFactory } from './mock-game-set.factory';
 import { createMockSeriesMeta } from './mock.utils';
@@ -18,7 +18,7 @@ export class MockSeriesFactory {
     faker.seed(seed);
   }
 
-  public createSeries(config?: ISeriesConfig): ISeries {
+  public createSeries(config?: ISeriesConfig): Series {
     const seriesMeta = createMockSeriesMeta();
     const gameSetFactory = new MockGameSetFactory(seriesMeta);
 

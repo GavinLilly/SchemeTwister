@@ -8,7 +8,7 @@ import { randomize } from '../../../utils/randomize';
 import { VillainGroup } from '../../cards/villain-group';
 import { DECK_TYPE } from '../../constants/deck-type.const';
 import { GameSet } from '../../game-set';
-import { IGameSetup } from '../../interfaces/game-setup.interface';
+import { GameSetup } from '../../interfaces/game-setup.interface';
 
 import { RequireCardInDeckScheme } from './require-card-in-deck.scheme';
 import { RequireCardName } from './require-card-name.behaviour';
@@ -311,7 +311,7 @@ describe('Require Villains Groups', () => {
     });
 
     describe('Require 2 villain groups', () => {
-      let setup: IGameSetup;
+      let setup: GameSetup;
       let villains: VillainGroup[];
 
       beforeEach(() => {
@@ -333,7 +333,7 @@ describe('Require Villains Groups', () => {
     });
 
     describe('Require 1 villains group and remove others', () => {
-      let setup: IGameSetup;
+      let setup: GameSetup;
       let villains: VillainGroup[];
 
       beforeEach(() => {

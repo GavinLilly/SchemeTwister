@@ -1,15 +1,15 @@
-import { IGameSetMeta } from './game-set.interface';
-import { IKeyword } from './keyword.interface';
-import { INamedObject } from './named-object.interface';
+import { GameSet } from '../game-set';
+import { Keyword } from './keyword.interface';
+import { NamedObject } from './named-object.interface';
 
-export interface IPlayableObject extends INamedObject {
+export interface PlayableObject extends NamedObject {
   /**
    * Meta: The associated game set
    */
-  readonly gameSet: IGameSetMeta;
+  readonly gameSet: GameSet;
 
   /**
    * Keywords associated to the card
    */
-  readonly keywords?: IKeyword[];
+  readonly keywords?: Keyword[];
 }

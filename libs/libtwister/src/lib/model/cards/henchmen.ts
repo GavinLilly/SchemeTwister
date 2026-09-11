@@ -1,19 +1,17 @@
+import { SetOptional } from 'type-fest';
 import { CARD_TYPE } from '../constants/card-type.const';
-import { IFightable } from '../interfaces/fightable.interface';
-import { IVictoryPileCard } from '../interfaces/victory-pile-card.interface';
+import { Fightable } from '../interfaces/fightable.interface';
 
 import { FightableCardGroup } from './fightable-card-group';
 
-interface IHenchmen extends IFightable {
+export interface HenchmenConfig
+  extends SetOptional<Fightable, 'victoryPoints'> {
   fight?: string;
   ambush?: string;
   ability?: string;
 }
 
-export type HenchmenConfig = Omit<IHenchmen, 'victoryPoints'> &
-  Partial<IVictoryPileCard>;
-
-export class Henchmen extends FightableCardGroup implements IHenchmen {
+export class Henchmen extends FightableCardGroup implements Fightable {
   public readonly fight?: string;
   public readonly ambush?: string;
   public readonly ability?: string;

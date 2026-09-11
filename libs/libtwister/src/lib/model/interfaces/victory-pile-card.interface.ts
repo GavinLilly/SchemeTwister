@@ -1,5 +1,5 @@
-import { IPlayableObject } from './playable-object.interface';
+import { PlayableObject } from './playable-object.interface';
 
-export interface IVictoryPileCard extends IPlayableObject {
+export interface VictoryPileCard extends PlayableObject {
   victoryPoints: number;
 }

@@ -3,11 +3,12 @@ import { Hero } from '../model/cards/hero';
 import { VillainGroup } from '../model/cards/villain-group';
 import { GameSetup } from '../model/game-setup';
 import { ICardType } from '../model/interfaces/card-type.interface';
-import { IGameSetup } from '../model/interfaces/game-setup.interface';
-import { IPlayableObject } from '../model/interfaces/playable-object.interface';
+import { GameSetup as IGameSetup } from '../model/interfaces/game-setup.interface';
+import { PlayableObject } from '../model/interfaces/playable-object.interface';
 
+import { MastermindType } from '../model/types/mastermind.type';
 import { CardStore } from './card-store';
-import { MastermindStore, MastermindType } from './mastermind-store';
+import { MastermindStore } from './mastermind-store';
 
 export class StoreOfStores {
   private readonly _mastermindStore!: CardStore<MastermindType>;
@@ -78,7 +79,7 @@ export class StoreOfStores {
     this._villainStore.resetStore();
   }
 
-  public getCardById(id: string): (IPlayableObject & ICardType) | undefined {
+  public getCardById(id: string): (PlayableObject & ICardType) | undefined {
     for (const store of this._allStores) {
       const card = store.get(id);
       if (card !== undefined) {

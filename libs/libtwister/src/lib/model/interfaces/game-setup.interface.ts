@@ -2,9 +2,9 @@ import { Mastermind } from '../cards/mastermind/mastermind';
 import { TransformingMastermind } from '../cards/mastermind/transforming-mastermind';
 import { Scheme } from '../schemes/scheme';
 
-import { IAdditionalDeck, IHeroDeck, IVillainDeck } from './deck.interface';
+import { AdditionalDeckConfig, HeroDeck, VillainDeck } from './deck.interface';
 
-export interface IGameSetup {
+export interface GameSetup {
   /** The number of players playing this setup */
   numPlayers: number;
 
@@ -28,15 +28,15 @@ export interface IGameSetup {
   numShieldOfficers?: number;
 
   /** The cards that will form the Hero deck */
-  heroDeck: IHeroDeck;
+  heroDeck: HeroDeck;
 
   /** The cards that will for the Villain deck */
-  villainDeck: IVillainDeck;
+  villainDeck: VillainDeck;
 
   /**
    * The definition of the additional decks. Will be empty if there are no
    * additional decks
    *
    */
-  additionalDecks: IAdditionalDeck[];
+  additionalDecks: AdditionalDeckConfig[];
 }

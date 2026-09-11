@@ -1,6 +1,6 @@
 import isUUID from 'validator/lib/isUUID';
 
-import { IPlayableObject } from '../model/interfaces/playable-object.interface';
+import { PlayableObject } from '../model/interfaces/playable-object.interface';
 
 import { CardFactory, GetRandomOptions } from './card-factory';
 
@@ -8,7 +8,7 @@ import { CardFactory, GetRandomOptions } from './card-factory';
  * A CardFactory with memory!
  */
 export class CardStore<
-  TCard extends IPlayableObject
+  TCard extends PlayableObject
 > extends CardFactory<TCard> {
   private readonly _pickedCards: Set<string> = new Set();
   private readonly _excludedCardsForSetup: Set<string> = new Set();

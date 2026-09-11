@@ -1,17 +1,16 @@
-import { IGameSetup } from '../interfaces/game-setup.interface';
-import { SchemeMinusRules } from '../types/scheme-minus-rules.type';
+import { GameSetup } from '../interfaces/game-setup.interface';
 
-import { ISetupConfigWithStore, Scheme } from './scheme';
+import { Scheme, SchemeConfig, SetupConfigWithStore } from './scheme';
 
 export class RequireUniqueHeroesScheme extends Scheme {
   private static readonly _maxIterations = 10;
 
-  constructor(scheme: SchemeMinusRules) {
+  constructor(scheme: SchemeConfig) {
     super(scheme);
   }
 
-  public getSetup(config: Readonly<ISetupConfigWithStore>): IGameSetup {
-    let setup: IGameSetup = super.getSetup(config);
+  public override getSetup(config: Readonly<SetupConfigWithStore>): GameSetup {
+    let setup: GameSetup = super.getSetup(config);
 
     let isHeroesOk = false;
     let iterations = 0;

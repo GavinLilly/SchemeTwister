@@ -2,32 +2,32 @@ import { StoreOfStores } from '../../../stores/store-of-stores';
 import { CardGroup } from '../../cards/card-group';
 import { DeckType } from '../../constants/deck-type.const';
 import {
-  IAdditionalDeckDeck,
-  IHeroDeck,
-  IVillainDeck,
+  AdditionalDeck,
+  HeroDeck,
+  VillainDeck,
 } from '../../interfaces/deck.interface';
-import { INumPlayerRules } from '../../interfaces/rules.interface';
+import { NumPlayerRules } from '../../interfaces/rules.interface';
 import { SchemeMinusRules } from '../../types/scheme-minus-rules.type';
 import { Scheme } from '../scheme';
 
-import { IRequireCardBehaviour } from './require-card-behaviour.interface';
-import { IRequireCardTypeBehaviour } from './require-card-type-behaviour.interface';
+import { RequireCardBehaviour } from './require-card-behaviour.interface';
+import { RequireCardTypeBehaviour } from './require-card-type-behaviour.interface';
 
 export class RequireCardInDeckScheme<TCard extends CardGroup> extends Scheme {
   constructor(
     scheme: SchemeMinusRules,
-    private readonly _requireCard: IRequireCardBehaviour<TCard>,
-    private readonly _requireCardType: IRequireCardTypeBehaviour<TCard>,
+    private readonly _requireCard: RequireCardBehaviour<TCard>,
+    private readonly _requireCardType: RequireCardTypeBehaviour<TCard>,
     private readonly _deck: DeckType
   ) {
     super(scheme);
   }
 
   protected override initialiseHeroDeck(
-    rules: Readonly<INumPlayerRules>,
+    rules: Readonly<NumPlayerRules>,
     store: Readonly<StoreOfStores>,
     numPlayers: number
-  ): IHeroDeck {
+  ): HeroDeck {
     if (this._deck !== 'HERO') {
       return super.initialiseHeroDeck(rules, store, numPlayers);
     }
@@ -38,13 +38,13 @@ export class RequireCardInDeckScheme<TCard extends CardGroup> extends Scheme {
       picked,
       rules,
       this._deck
-    ) as IHeroDeck;
+    ) as HeroDeck;
   }
 
   protected override initialiseVillainDeck(
-    rules: Readonly<INumPlayerRules>,
+    rules: Readonly<NumPlayerRules>,
     store: Readonly<StoreOfStores>
-  ): IVillainDeck {
+  ): VillainDeck {
     const emptyDeck = super.initialiseVillainDeck(rules, store);
 
     if (this._deck !== 'VILLAIN') {
@@ -60,9 +60,9 @@ export class RequireCardInDeckScheme<TCard extends CardGroup> extends Scheme {
   }
 
   protected override initialiseAdditionalDecks(
-    rules: Readonly<INumPlayerRules>,
+    rules: Readonly<NumPlayerRules>,
     store: Readonly<StoreOfStores>
-  ): IAdditionalDeckDeck | undefined {
+  ): AdditionalDeck | undefined {
     if (this._deck !== 'ADDITIONAL') {
       return super.initialiseAdditionalDecks(rules, store);
     }

@@ -1,11 +1,11 @@
-import { IFightable } from '../../interfaces/fightable.interface';
-import { ISpecialRules } from '../../interfaces/special-rules.interface';
+import { Fightable } from '../../interfaces/fightable.interface';
+import { SpecialRules } from '../../interfaces/special-rules.interface';
 import { Henchmen } from '../henchmen';
 import { Hero } from '../hero';
 import { VillainGroup } from '../villain-group';
 import { RuleOverrideFunction } from './mastermind';
 
-export interface MastermindConfig extends IFightable, ISpecialRules {
+export interface MastermindConfig extends Fightable, SpecialRules {
   readonly alwaysLeads: (VillainGroup | Henchmen)[];
   /**
    * Override the rules for each number of players.

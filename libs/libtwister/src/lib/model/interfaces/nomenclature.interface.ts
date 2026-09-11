@@ -1,17 +1,17 @@
-interface IPlural {
+interface Plural {
   singular: string;
   plural: string;
 }
 
-export interface INomenclature {
+export interface Nomenclature {
   bystander: string;
-  henchmen: string | IPlural;
-  hero: string | IPlural;
+  henchmen: string | Plural;
+  hero: string | Plural;
   mastermind: string;
   scheme: string;
   sidekick: string;
   twist: string;
-  villain: string | IPlural;
+  villain: string | Plural;
   wound: string;
   purchase: string;
   attack: string;

@@ -6,7 +6,7 @@ import { StoreBuilder } from '../../stores/store-builder';
 import { StoreOfStores } from '../../stores/store-of-stores';
 import { GAME_SET_SIZE } from '../constants/game-set-size.const';
 import { GameSet } from '../game-set';
-import { IGameSetup } from '../interfaces/game-setup.interface';
+import { GameSetup } from '../interfaces/game-setup.interface';
 
 import { RequireCardWithBackup } from './cardInDeck/require-card-with-backup.behaviour';
 import { RequireCard } from './cardInDeck/require-card.behaviour';
@@ -35,7 +35,7 @@ describe('RequireVillainAndHeroWithBackupInVillainDeckScheme', () => {
   beforeEach(() => store.reset());
 
   describe('with both test game sets', () => {
-    let setup: IGameSetup;
+    let setup: GameSetup;
     beforeAll(() => {
       store = new StoreBuilder()
         .withAllFromGamesets(gameSet1, gameSet2)
@@ -51,7 +51,7 @@ describe('RequireVillainAndHeroWithBackupInVillainDeckScheme', () => {
   });
 
   describe('with only test game set 1 for heroes and villains', () => {
-    let setup: IGameSetup;
+    let setup: GameSetup;
     beforeAll(() => {
       const gameSet2HeroStore = new StoreBuilder()
         .withHeroGamesets(gameSet2)

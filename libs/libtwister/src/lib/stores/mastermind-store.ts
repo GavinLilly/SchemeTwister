@@ -1,17 +1,9 @@
-import { AdaptingMastermind } from '../model/cards/mastermind/adapting-mastermind';
-import { Mastermind } from '../model/cards/mastermind/mastermind';
 import { MastermindWithEpic } from '../model/cards/mastermind/mastermind-with-epic';
-import { TransformingMastermind } from '../model/cards/mastermind/transforming-mastermind';
 import { randomize } from '../utils/randomize';
 
+import { MastermindType } from '../model/types/mastermind.type';
 import { CardFactory, GetRandomOptions } from './card-factory';
 import { CardStore } from './card-store';
-
-export type MastermindType =
-  | Mastermind
-  | TransformingMastermind
-  | AdaptingMastermind
-  | MastermindWithEpic;
 
 /**
  * A store specifically for Masterminds that allows for randomizing between epic

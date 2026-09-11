@@ -2,8 +2,8 @@ import { StoreOfStores } from '../../stores/store-of-stores';
 import { Hero } from '../cards/hero';
 import { VillainGroup } from '../cards/villain-group';
 import { DECK_TYPE } from '../constants/deck-type.const';
-import { IVillainDeck } from '../interfaces/deck.interface';
-import { INumPlayerRules } from '../interfaces/rules.interface';
+import { VillainDeck } from '../interfaces/deck.interface';
+import { NumPlayerRules } from '../interfaces/rules.interface';
 import { SchemeMinusRules } from '../types/scheme-minus-rules.type';
 
 import { RequireCardInDeckScheme } from './cardInDeck/require-card-in-deck.scheme';
@@ -27,9 +27,9 @@ export class RequireVillainAndHeroWithBackupInVillainDeckScheme extends RequireC
   }
 
   protected override initialiseVillainDeck(
-    rules: Readonly<INumPlayerRules>,
+    rules: Readonly<NumPlayerRules>,
     store: Readonly<StoreOfStores>
-  ): IVillainDeck {
+  ): VillainDeck {
     const hero = this._requiredHero.getRequiredCard(store.heroStore);
 
     const pickedHero = store.heroStore.pickOne(hero);

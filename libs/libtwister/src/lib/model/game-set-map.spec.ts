@@ -5,12 +5,12 @@ import { MockSeriesFactory } from '../mocks/mock-series.factory';
 
 import { GAME_SET_SIZE } from './constants/game-set-size.const';
 import { GameSetMap } from './game-set-map';
-import { ISeries } from './interfaces/series.interface';
+import { Series } from './interfaces/series.interface';
 
 describe('GameSetMap', () => {
   const fakeSeriesFactory = new MockSeriesFactory();
   let map: GameSetMap;
-  let series: ISeries;
+  let series: Series;
 
   beforeAll(() => {
     series = fakeSeriesFactory.createSeries({

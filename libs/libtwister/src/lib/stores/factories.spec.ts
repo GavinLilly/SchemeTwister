@@ -2,7 +2,7 @@ import { afterEach, beforeAll, describe, expect, it } from 'vitest';
 
 import { createMockGamesetMeta } from '../mocks/mock.utils';
 import { CARD_TYPE, CardType } from '../model/constants/card-type.const';
-import { IPlayableObject } from '../model/interfaces/playable-object.interface';
+import { PlayableObject } from '../model/interfaces/playable-object.interface';
 
 import { CardFactory } from './card-factory';
 import { CardStore } from './card-store';
@@ -12,7 +12,7 @@ const cardType = CARD_TYPE.hero;
 const TEST_GAME_SET_META_1 = createMockGamesetMeta();
 const TEST_GAME_SET_META_2 = createMockGamesetMeta();
 
-class LegCard implements IPlayableObject {
+class LegCard implements PlayableObject {
   gameSet = TEST_GAME_SET_META_1;
   constructor(
     public name: string,
@@ -21,7 +21,7 @@ class LegCard implements IPlayableObject {
   ) {}
 }
 
-class DcCard implements IPlayableObject {
+class DcCard implements PlayableObject {
   gameSet = TEST_GAME_SET_META_2;
   constructor(
     public name: string,
@@ -53,7 +53,7 @@ const dcData = [
 
 describe('Card Factory', () => {
   describe('with all cards', () => {
-    let instance: CardFactory<IPlayableObject>;
+    let instance: CardFactory<PlayableObject>;
 
     beforeAll(() => {
       instance = new CardFactory([...legData, ...dcData]);
@@ -122,7 +122,7 @@ describe('Card Factory', () => {
   });
 
   describe('with only Legendary cards', () => {
-    let instance: CardFactory<IPlayableObject>;
+    let instance: CardFactory<PlayableObject>;
 
     beforeAll(() => {
       instance = new CardFactory(legData);
@@ -169,7 +169,7 @@ describe('Card Factory', () => {
 
 describe('Card Store', () => {
   describe('with all cards', () => {
-    let store: CardStore<IPlayableObject>;
+    let store: CardStore<PlayableObject>;
 
     beforeAll(() => {
       store = new CardStore([...legData, ...dcData]);

@@ -1,17 +1,17 @@
 import isUUID from 'validator/lib/isUUID';
 
-import { IPlayableObject } from '../model/interfaces/playable-object.interface';
+import { PlayableObject } from '../model/interfaces/playable-object.interface';
 import { randomize } from '../utils/randomize';
 
-export type GetRandomOptions<TCard extends IPlayableObject> = {
+export interface GetRandomOptions<TCard extends PlayableObject> {
   count?: number;
   filter?: (card: TCard) => boolean;
-};
+}
 
 /**
  * A factory for selecting cards from a large set.
  */
-export class CardFactory<TCard extends IPlayableObject> {
+export class CardFactory<TCard extends PlayableObject> {
   private readonly _allCards: Map<string, TCard>;
   private readonly _excludedCardIds: Set<string>;
 
@@ -27,7 +27,7 @@ export class CardFactory<TCard extends IPlayableObject> {
     this._excludedCardIds = new Set(excludedCardIds);
   }
 
-  protected static getCardId = <T extends IPlayableObject>(
+  protected static getCardId = <T extends PlayableObject>(
     idOrCard: string | T
   ): string => (typeof idOrCard === 'string' ? idOrCard : idOrCard.id);
 

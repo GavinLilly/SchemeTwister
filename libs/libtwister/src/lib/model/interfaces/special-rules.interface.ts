@@ -1,5 +1,5 @@
-import { IPlayableObject } from './playable-object.interface';
+import { PlayableObject } from './playable-object.interface';
 
-export interface ISpecialRules extends IPlayableObject {
+export interface SpecialRules extends PlayableObject {
   readonly specialRules?: string;
 }

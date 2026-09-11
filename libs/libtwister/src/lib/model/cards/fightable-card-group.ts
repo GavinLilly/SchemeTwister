@@ -1,15 +1,15 @@
-import { IFightable } from '../interfaces/fightable.interface';
+import { Fightable } from '../interfaces/fightable.interface';
 
 import { CardGroup } from './card-group';
 
 export abstract class FightableCardGroup
   extends CardGroup
-  implements IFightable
+  implements Fightable
 {
   public readonly attackPoints: string | number;
   public readonly victoryPoints: number;
 
-  constructor(config: IFightable) {
+  constructor(config: Fightable) {
     super(config);
 
     this.attackPoints = config.attackPoints;

@@ -6,7 +6,7 @@ import { MockGameSetFactory } from './mocks/mock-game-set.factory';
 import { MockSeriesFactory } from './mocks/mock-series.factory';
 import { GAME_SET_SIZE } from './model/constants/game-set-size.const';
 import { NumPlayers } from './model/constants/num-players.const';
-import { ISeries } from './model/interfaces/series.interface';
+import { Series } from './model/interfaces/series.interface';
 import { SeriesMeta } from './model/series-meta';
 
 describe('LibTwister', () => {
@@ -220,7 +220,7 @@ describe('LibTwister', () => {
       GAME_SET_SIZE.small
     );
 
-    const series: ISeries = {
+    const series: Series = {
       seriesMeta: new SeriesMeta(faker.string.uuid(), 'Test Series', ''),
       gameSets: [testLargeSet, testMediumSet, testSmallSet],
     };
