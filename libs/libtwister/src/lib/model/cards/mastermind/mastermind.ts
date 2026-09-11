@@ -1,37 +1,26 @@
-import { GameSet } from '../../GameSet';
-import { IFightable, INumPlayerRules, ISpecialRules } from '../../interfaces';
-import { CARD_TYPE } from '../../types';
-import { AbstractFightableCardGroup } from '../abstractFightableCardGroup';
+import { CARD_TYPE } from '../../constants/card-type.const';
+import { GameSet } from '../../game-set';
+import { Fightable } from '../../interfaces/fightable.interface';
+import { NumPlayerRules } from '../../interfaces/rules.interface';
+import { SpecialRules } from '../../interfaces/special-rules.interface';
+import { FightableCardGroup } from '../fightable-card-group';
 import { Henchmen } from '../henchmen';
 import { Hero } from '../hero';
-import { VillainGroup } from '../villainGroup';
+import { VillainGroup } from '../villain-group';
+import { MastermindConfig } from './mastermind-config.interface';
 
 /**
  * A function that will override the rules provided,
  * optionally basing it on the number of players.
  */
-type RuleOverrideFunction = (
-  rule: INumPlayerRules,
+export type RuleOverrideFunction = (
+  rule: NumPlayerRules,
   num: number
-) => INumPlayerRules;
-
-export interface IMastermind extends IFightable, ISpecialRules {
-  readonly alwaysLeads: (VillainGroup | Henchmen)[];
-  /**
-   * Override the rules for each number of players.
-   * Useful for setting a rule based on the number of players
-   */
-  readonly ruleOverride?: RuleOverrideFunction;
-  readonly masterStrike: string;
-  readonly startOfGame?: string;
-  readonly mastermindWins?: string;
-  readonly alwaysInclude?: Hero[];
-  readonly dark?: string;
-}
+) => NumPlayerRules;
 
 export class Mastermind
-  extends AbstractFightableCardGroup
-  implements IMastermind
+  extends FightableCardGroup
+  implements Fightable, SpecialRules
 {
   public readonly alwaysLeads: (VillainGroup | Henchmen)[];
   public readonly ruleOverride?: RuleOverrideFunction;
@@ -44,12 +33,8 @@ export class Mastermind
   public readonly alwaysInclude: Hero[];
   public readonly dark?: string;
 
-  constructor(mastermindConfig: IMastermind) {
+  constructor(mastermindConfig: MastermindConfig) {
     super(mastermindConfig);
-
-    if (mastermindConfig.alwaysLeads === undefined) {
-      console.log('FOO');
-    }
 
     this.alwaysLeads = mastermindConfig.alwaysLeads;
     this.ruleOverride = mastermindConfig.ruleOverride;

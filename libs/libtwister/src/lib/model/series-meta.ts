@@ -1,0 +1,51 @@
+import { Nomenclature } from './interfaces/nomenclature.interface';
+
+export class SeriesMeta {
+  private readonly _nomenclature: Nomenclature;
+
+  public get id() {
+    return this._id;
+  }
+
+  public get seriesName() {
+    return this._seriesName;
+  }
+
+  public get description() {
+    return this._description;
+  }
+
+  public get nomenclature() {
+    return this._nomenclature;
+  }
+
+  constructor(
+    private readonly _id: string,
+    private readonly _seriesName: string,
+    private readonly _description: string,
+    nomenclature?: Partial<Nomenclature>
+  ) {
+    this._nomenclature = {
+      bystander: 'Bystander',
+      henchmen: 'Henchmen',
+      hero: {
+        singular: 'Hero',
+        plural: 'Heroes',
+      },
+      mastermind: 'Mastermind',
+      scheme: 'Scheme',
+      sidekick: 'Sidekick',
+      twist: 'Twist',
+      villain: 'Villain',
+      wound: 'Wound',
+      purchase: 'Purchase',
+      attack: 'Attack',
+      agents: 'S.H.I.E.L.D. Agents',
+      troopers: 'S.H.I.E.L.D. Troopers',
+      officers: 'S.H.I.E.L.D. Officers',
+      city: 'City',
+      hq: 'HQ',
+      ...nomenclature,
+    };
+  }
+}

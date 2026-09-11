@@ -1,19 +1,19 @@
 import { v4 as uuidV4 } from 'uuid';
 
-import { GameSet } from '../GameSet';
-import { ICardType, IPlayableObject, ITeam } from '../interfaces';
-import { CARD_TYPE, CardType } from '../types/cardType.type';
+import { CARD_TYPE, CardType } from '../constants/card-type.const';
+import { GameSet } from '../game-set';
+import { ICardType } from '../interfaces/card-type.interface';
+import { PlayableObject } from '../interfaces/playable-object.interface';
+import { Team } from '../interfaces/team.interface';
 
-import { AbstractCardGroup } from './abstractCardGroup';
+import { CardGroup } from './card-group';
 
-interface IHero extends IPlayableObject {
-  team?: ITeam;
+export interface HeroConfig extends PlayableObject, Partial<ICardType> {
+  team?: Team;
 }
 
-export type HeroConfig = IHero & Partial<ICardType>;
-
-export class Hero extends AbstractCardGroup implements IHero {
-  public readonly team?: ITeam;
+export class Hero extends CardGroup implements PlayableObject {
+  public readonly team?: Team;
   public override readonly cardType: CardType;
 
   constructor(heroConfig: HeroConfig) {

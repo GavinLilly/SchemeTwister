@@ -1,17 +1,17 @@
 import { v4 as uuidV4 } from 'uuid';
 import { beforeAll, describe, expect, it } from 'vitest';
 
-import { createMockGamesetMeta } from '../../../mocks/mockUtils';
-import { IGameSetMeta } from '../../interfaces';
-import { CARD_TYPE } from '../../types';
+import { createMockGamesetMeta } from '../../../mocks/mock.utils';
+import { CARD_TYPE } from '../../constants/card-type.const';
 import { Henchmen } from '../henchmen';
-import { VillainGroup } from '../villainGroup';
+import { VillainGroup } from '../villain-group';
 
+import { GameSet } from '../../game-set';
 import { Mastermind } from './mastermind';
 
 describe('Mastermind', () => {
   let villain: VillainGroup;
-  let gameSet: IGameSetMeta;
+  let gameSet: GameSet;
 
   beforeAll(() => {
     gameSet = createMockGamesetMeta();

@@ -1,6 +1,6 @@
-import { IVictoryPileCard } from './victoryPileCard.interface';
+import { VictoryPileCard } from './victory-pile-card.interface';
 
-export interface IFightable extends IVictoryPileCard {
+export interface Fightable extends VictoryPileCard {
   readonly attackPoints: number | string;
   readonly escape?: string;
   readonly finishThePrey?: string;

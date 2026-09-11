@@ -1,4 +1,4 @@
-import { randomInteger } from './randomInteger';
+import { randomInteger } from './random-integer';
 
 /**
  * Return one random card from a list of available cards
