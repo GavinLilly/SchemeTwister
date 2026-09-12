@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 
-import { MockCardFactory } from '../mocks/mock-card.factory';
+import { MockCardFactory } from '../testing/mocks/mock-card.factory';
 
 import { StoreOfStores } from './store-of-stores';
 

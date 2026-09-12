@@ -1,13 +1,13 @@
 import { faker } from '@faker-js/faker';
 import { beforeAll, describe, expect, it } from 'vitest';
 
+import { GAME_SET_SIZE } from './constants/game-set-size.const';
+import { NumPlayers } from './constants/num-players.const';
 import { LibTwister } from './lib-twister';
-import { MockGameSetFactory } from './mocks/mock-game-set.factory';
-import { MockSeriesFactory } from './mocks/mock-series.factory';
-import { GAME_SET_SIZE } from './model/constants/game-set-size.const';
-import { NumPlayers } from './model/constants/num-players.const';
-import { Series } from './model/interfaces/series.interface';
-import { SeriesMeta } from './model/series-meta';
+import { SeriesMeta } from './shared/series-meta';
+import { Series } from './shared/series.interface';
+import { MockGameSetFactory } from './testing/mocks/mock-game-set.factory';
+import { MockSeriesFactory } from './testing/mocks/mock-series.factory';
 
 describe('LibTwister', () => {
   const fakeSeriesFactory = new MockSeriesFactory();

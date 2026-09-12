@@ -1,0 +1,120 @@
+import { v4 as uuidV4 } from 'uuid';
+
+import { nameSorter } from '../shared/utils/name-sorter';
+
+import { Bystander } from '../bystander/bystander.model';
+import { CardType } from '../constants/card-type.const';
+import { GAME_SET_SIZE, GameSetSize } from '../constants/game-set-size.const';
+import { Henchmen } from '../henchmen/henchmen.model';
+import { Hero } from '../hero/hero.model';
+import { Mastermind } from '../mastermind/mastermind.model';
+import { SchemeMinusRules } from '../scheme/scheme-minus-rules.type';
+import { AllCardTypes } from '../shared/all-card-types.type';
+import { NamedObject } from '../shared/named-object.interface';
+import { SeriesMeta } from '../shared/series-meta';
+import { VillainGroup } from '../villain-group/villain-group.model';
+
+export interface GameSetProps {
+  readonly id: string;
+  readonly name: string;
+  readonly size: GameSetSize;
+  readonly releaseYear: number;
+  readonly series: SeriesMeta;
+}
+
+export class GameSet implements NamedObject {
+  readonly id: string;
+  readonly name: string;
+  readonly size: GameSetSize;
+  readonly releaseYear: number;
+  readonly series: SeriesMeta;
+
+  private get _allCards(): AllCardTypes[] {
+    return [
+      ...(this.bystanders ?? []),
+      ...(this.schemes ?? []),
+      ...(this.henchmen ?? []),
+      ...this.heroes,
+      ...(this.masterminds ?? []),
+      ...(this.villains ?? []),
+    ];
+  }
+
+  constructor(
+    readonly gameSetProps: GameSetProps,
+    readonly heroes: Hero[],
+    readonly masterminds?: Mastermind[],
+    readonly schemes?: SchemeMinusRules[],
+    readonly villains?: VillainGroup[],
+    readonly henchmen?: Henchmen[],
+    readonly bystanders?: (Hero | Bystander)[]
+  ) {
+    ({
+      id: this.id,
+      name: this.name,
+      size: this.size,
+      releaseYear: this.releaseYear,
+      series: this.series,
+    } = gameSetProps);
+  }
+
+  /**
+   * A sorter for GameSet objects
+   * @param a the first GameSet
+   * @param b the second GameSet
+   * @returns -1 if param a comes first. 1 if param b. 0 if they're equal
+   */
+  public static readonly sorter = (a: GameSet, b: GameSet): number =>
+    b.size - a.size || nameSorter(a, b);
+
+  /**
+   * Creates an empty GameSet
+   * @returns a GameSet
+   */
+  public static empty(): GameSet {
+    return new GameSet(
+      {
+        id: uuidV4(),
+        name: 'EMPTY GAME SET',
+        releaseYear: 1970,
+        series: new SeriesMeta(uuidV4(), 'EMPTY SERIES', 'EMPTY DESCRIPTION'),
+        size: GAME_SET_SIZE.promo,
+      },
+      []
+    );
+  }
+
+  /**
+   * Gets all the cards in the game set
+   * @returns An array of cards
+   */
+  public getCards(): AllCardTypes[];
+  /**
+   * Gets all the cards in the game set with the given type
+   * @param cardType The type of card to get
+   * @returns An array of cards
+   */
+  public getCards(cardType: CardType): AllCardTypes[] | undefined;
+  public getCards(cardType?: CardType): AllCardTypes[] | undefined {
+    if (cardType === undefined) {
+      return this._allCards;
+    }
+
+    switch (cardType) {
+      case 'Bystander':
+        return this.bystanders;
+      case 'Scheme':
+        return this.schemes;
+      case 'Henchmen':
+        return this.henchmen;
+      case 'Hero':
+        return this.heroes;
+      case 'Mastermind':
+        return this.masterminds;
+      case 'Villain Group':
+        return this.villains;
+      default:
+        return undefined;
+    }
+  }
+}

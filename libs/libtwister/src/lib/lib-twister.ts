@@ -1,24 +1,24 @@
 import isUUID from 'validator/lib/isUUID';
 
-import { Henchmen } from './model/cards/henchmen';
-import { Hero } from './model/cards/hero';
-import { Mastermind } from './model/cards/mastermind/mastermind';
-import { VillainGroup } from './model/cards/villain-group';
-import { GAME_SET_SIZE } from './model/constants/game-set-size.const';
-import { NumPlayers } from './model/constants/num-players.const';
-import { GameSet } from './model/game-set';
-import { GameSetMap } from './model/game-set-map';
-import { GameSetup } from './model/game-setup';
+import { GAME_SET_SIZE } from './constants/game-set-size.const';
+import { NumPlayers } from './constants/num-players.const';
+import { GameSet } from './game-set/game-set';
+import { GameSetMap } from './game-set/game-set-map';
 import {
   AdditionalDeckDeckMinimal,
   HeroDeckMinimal,
   VillainDeckMinimal,
-} from './model/interfaces/deck.interface';
-import { Series } from './model/interfaces/series.interface';
-import { SchemeMinusRules } from './model/types/scheme-minus-rules.type';
+} from './game-setup/deck.interface';
+import { GameSetup } from './game-setup/game-setup';
+import { Henchmen } from './henchmen/henchmen.model';
+import { Hero } from './hero/hero.model';
+import { Mastermind } from './mastermind/mastermind.model';
+import { SchemeMinusRules } from './scheme/scheme-minus-rules.type';
+import { Series } from './shared/series.interface';
+import instantiateScheme from './shared/utils/instantiate-scheme';
 import { CardFactory } from './stores/card-factory';
 import { StoreOfStores } from './stores/store-of-stores';
-import instantiateScheme from './utils/instantiate-scheme';
+import { VillainGroup } from './villain-group/villain-group.model';
 
 export interface Blacklist {
   heroes: Hero[];

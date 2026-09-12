@@ -1,14 +1,14 @@
-import { Henchmen } from '../model/cards/henchmen';
-import { Hero } from '../model/cards/hero';
-import { VillainGroup } from '../model/cards/villain-group';
-import { GameSetup } from '../model/game-setup';
-import { ICardType } from '../model/interfaces/card-type.interface';
-import { GameSetup as IGameSetup } from '../model/interfaces/game-setup.interface';
-import { PlayableObject } from '../model/interfaces/playable-object.interface';
+import { Henchmen } from '../henchmen/henchmen.model';
+import { Hero } from '../hero/hero.model';
+import { ICardType } from '../shared/card-type.interface';
+import { PlayableObject } from '../shared/playable-object.interface';
+import { VillainGroup } from '../villain-group/villain-group.model';
 
-import { MastermindType } from '../model/types/mastermind.type';
+import { GameSetup } from '../game-setup/game-setup';
+import { GameSetup as IGameSetup } from '../game-setup/game-setup.interface';
+import { MastermindStore } from '../mastermind/mastermind.store';
+import { MastermindType } from '../mastermind/mastermind.type';
 import { CardStore } from './card-store';
-import { MastermindStore } from './mastermind-store';
 
 export class StoreOfStores {
   private readonly _mastermindStore!: CardStore<MastermindType>;

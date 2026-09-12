@@ -1,7 +1,7 @@
 import isUUID from 'validator/lib/isUUID';
 
-import { PlayableObject } from '../model/interfaces/playable-object.interface';
-import { randomize } from '../utils/randomize';
+import { PlayableObject } from '../shared/playable-object.interface';
+import { randomize } from '../shared/utils/randomize';
 
 export interface GetRandomOptions<TCard extends PlayableObject> {
   count?: number;
