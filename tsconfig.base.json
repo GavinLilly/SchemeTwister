@@ -28,7 +28,7 @@
         "libs/libtwister/src/index.ts"
       ],
       "@schemetwister/libtwister/testing": [
-        "libs/libtwister-testing/src/index.ts"
+        "libs/libtwister/src/testing.ts"
       ],
       "@schemetwister/schematics": [
         "tools/schemetwister-schematics/src/index.ts"

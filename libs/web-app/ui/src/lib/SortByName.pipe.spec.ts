@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/en';
 import { GameSet, Hero } from '@schemetwister/libtwister';
 
 import { SortByNamePipe } from './SortByName.pipe';
@@ -32,7 +32,7 @@ describe('SortByNamePipe', () => {
     });
 
     const pipe = new SortByNamePipe();
-    const sorted = pipe.transform();
+    const sorted = pipe.transform([hero3, hero1, hero2]);
 
     expect(sorted).toEqual([hero1, hero3, hero2]);
   });

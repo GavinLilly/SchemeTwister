@@ -25,11 +25,7 @@ export default [
         'error',
         {
           enforceBuildableLibDependency: true,
-          allow: [
-            String.raw`^.*/eslint(\.base)?\.config\.[cm]?[jt]s$`,
-            'libtwister-testing-data',
-            '@schemetwister/libtwister/testing/data',
-          ],
+          allow: [String.raw`^.*/eslint(\.base)?\.config\.[cm]?[jt]s$`],
           depConstraints: [
             {
               sourceTag: 'scope:shared',
