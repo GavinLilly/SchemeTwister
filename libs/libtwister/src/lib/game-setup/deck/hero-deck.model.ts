@@ -1,4 +1,5 @@
 import { Hero } from '../../hero/hero.model';
+
 import { BaseDeck } from './base-deck.model';
 
 export interface HeroDeck extends BaseDeck {

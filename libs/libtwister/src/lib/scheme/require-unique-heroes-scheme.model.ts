@@ -1,4 +1,5 @@
 import { GameSetup } from '../game-setup/game-setup.interface';
+
 import { Scheme, SchemeConfig, SetupConfigWithStore } from './scheme.model';
 
 export class RequireUniqueHeroesScheme extends Scheme {

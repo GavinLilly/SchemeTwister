@@ -1,5 +1,6 @@
 import { Henchmen } from '../../henchmen/henchmen.model';
 import { VillainGroup } from '../../villain-group/villain-group.model';
+
 import { NonHeroDeck } from './non-hero-deck.model';
 
 export interface VillainDeck extends NonHeroDeck {

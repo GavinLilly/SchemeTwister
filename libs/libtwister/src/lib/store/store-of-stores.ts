@@ -1,13 +1,13 @@
+import { GameSetup } from '../game-setup/game-setup';
+import { GameSetup as IGameSetup } from '../game-setup/game-setup.interface';
 import { Henchmen } from '../henchmen/henchmen.model';
 import { Hero } from '../hero/hero.model';
+import { MastermindStore } from '../mastermind/mastermind.store';
+import { MastermindType } from '../mastermind/mastermind.type';
 import { ICardType } from '../shared/card-type.interface';
 import { PlayableObject } from '../shared/playable-object.interface';
 import { VillainGroup } from '../villain-group/villain-group.model';
 
-import { GameSetup } from '../game-setup/game-setup';
-import { GameSetup as IGameSetup } from '../game-setup/game-setup.interface';
-import { MastermindStore } from '../mastermind/mastermind.store';
-import { MastermindType } from '../mastermind/mastermind.type';
 import { CardStore } from './card-store';
 
 export class StoreOfStores {

@@ -16,6 +16,7 @@ import { CardGroup } from '../../shared/card-group';
 import { StoreOfStores } from '../../store/store-of-stores';
 import { SchemeMinusRules } from '../scheme-minus-rules.type';
 import { Scheme } from '../scheme.model';
+
 import { RequireCardBehaviour } from './require-card-behaviour.interface';
 import { RequireCardTypeBehaviour } from './require-card-type-behaviour.interface';
 

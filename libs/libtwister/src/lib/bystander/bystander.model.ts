@@ -1,8 +1,9 @@
 import { SetOptional } from 'type-fest';
+
 import { CARD_TYPE } from '../constants/card-type.const';
+import { CardGroup } from '../shared/card-group';
 import { VictoryPileCard } from '../shared/victory-pile-card.interface';
 
-import { CardGroup } from '../shared/card-group';
 
 export interface BystanderConfig
   extends SetOptional<VictoryPileCard, 'victoryPoints'> {

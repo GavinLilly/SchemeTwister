@@ -3,6 +3,7 @@ import { Hero } from '../hero/hero.model';
 import { Fightable } from '../shared/fightable.interface';
 import { SpecialRules } from '../shared/special-rules.interface';
 import { VillainGroup } from '../villain-group/villain-group.model';
+
 import { RuleOverrideFunction } from './mastermind.model';
 
 export interface MastermindConfig extends Fightable, SpecialRules {

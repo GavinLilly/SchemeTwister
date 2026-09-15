@@ -1,11 +1,10 @@
-import {
-  AllCardTypes,
-  GAME_SET_SIZE,
-  ISeries,
-  LibTwister,
-} from '@schemetwister/libtwister';
 import isUUID from 'validator/lib/isUUID';
 import { beforeAll, describe, expect, it, test } from 'vitest';
+
+import { GAME_SET_SIZE } from '../constants/game-set-size.const';
+import { LibTwister } from '../lib-twister';
+import { Series } from '../series/series.interface';
+import { AllCardTypes } from '../shared/all-card-types.type';
 
 expect.extend({
   toBeUUID(received) {
@@ -19,7 +18,7 @@ expect.extend({
 });
 
 interface SeriesTestConfig {
-  series: ISeries;
+  series: Series;
   coreBoxCount: number;
   bigBoxCount?: number;
   mediumBoxCount?: number;

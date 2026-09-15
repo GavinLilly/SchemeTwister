@@ -1,5 +1,6 @@
 import { CardType } from '../constants/card-type.const';
 import { GameSetProps } from '../game-set/game-set';
+
 import { ICardType } from './card-type.interface';
 import { Keyword } from './keyword.interface';
 import { PlayableObject } from './playable-object.interface';

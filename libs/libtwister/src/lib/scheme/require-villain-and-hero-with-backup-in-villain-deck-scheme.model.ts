@@ -4,12 +4,13 @@ import { NumPlayerRules } from '../game-setup/rules/num-player-rules';
 import { Hero } from '../hero/hero.model';
 import { StoreOfStores } from '../store/store-of-stores';
 import { VillainGroup } from '../villain-group/villain-group.model';
-import { SchemeMinusRules } from './scheme-minus-rules.type';
+
 
 import { RequireCardInDeckScheme } from './cardInDeck/require-card-in-deck.scheme';
 import { RequireCardWithBackup } from './cardInDeck/require-card-with-backup.behaviour';
 import { RequireCard } from './cardInDeck/require-card.behaviour';
 import { RequireVillainGroup } from './cardInDeck/require-villain-group.behaviour';
+import { SchemeMinusRules } from './scheme-minus-rules.type';
 import { Scheme } from './scheme.model';
 
 export class RequireVillainAndHeroWithBackupInVillainDeckScheme extends RequireCardInDeckScheme<VillainGroup> {

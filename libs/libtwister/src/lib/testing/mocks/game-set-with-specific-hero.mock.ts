@@ -3,13 +3,11 @@ import { faker } from '@faker-js/faker';
 import { DECK_TYPE } from '../../constants/deck-type.const';
 import { GAME_SET_SIZE } from '../../constants/game-set-size.const';
 import { Hero } from '../../hero/hero.model';
+import { RequireCardInDeckScheme } from '../../scheme/cardInDeck/require-card-in-deck.scheme';
+import { RequireCardName } from '../../scheme/cardInDeck/require-card-name.behaviour';
+import { RequireHero } from '../../scheme/cardInDeck/require-hero.behaviour';
 import { SchemeDefinition } from '../../scheme/scheme-definition';
 
-import {
-  RequireCardInDeckScheme,
-  RequireCardName,
-  RequireHero,
-} from '@schemetwister/libtwister';
 import { MockGameSetFactory } from './mock-game-set.factory';
 import { createMockGamesetMeta, createMockKeywords } from './mock.utils';
 

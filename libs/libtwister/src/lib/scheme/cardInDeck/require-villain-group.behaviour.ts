@@ -7,6 +7,7 @@ import { CardStore } from '../../store/card-store';
 import { StoreOfStores } from '../../store/store-of-stores';
 import { VillainGroup } from '../../villain-group/villain-group.model';
 import { Scheme } from '../scheme.model';
+
 import { RequireCardTypeBehaviour } from './require-card-type-behaviour.interface';
 
 export class RequireVillainGroup

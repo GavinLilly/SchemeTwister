@@ -5,6 +5,7 @@ import { SinglePlayerError } from '../errors/single-player-error';
 import { StoreBuilder } from '../store/store-builder';
 import { MockCardFactory } from '../testing/mocks/mock-card.factory';
 import { MockGameSetFactory } from '../testing/mocks/mock-game-set.factory';
+
 import { SoloBannedScheme } from './solo-banned-scheme.model';
 
 const gameSetFactory = new MockGameSetFactory();

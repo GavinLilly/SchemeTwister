@@ -5,6 +5,7 @@ import { Hero } from '../hero/hero.model';
 import { StoreBuilder } from '../store/store-builder';
 import { StoreOfStores } from '../store/store-of-stores';
 import { MockGameSetFactory } from '../testing/mocks/mock-game-set.factory';
+
 import { RequireUniqueHeroesScheme } from './require-unique-heroes-scheme.model';
 import { Scheme } from './scheme.model';
 

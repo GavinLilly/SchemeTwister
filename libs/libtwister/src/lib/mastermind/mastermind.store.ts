@@ -1,8 +1,8 @@
 import { randomize } from '../shared/utils/randomize';
-import { MastermindWithEpic } from './mastermind-with-epic.model';
-
 import { CardFactory, GetRandomOptions } from '../store/card-factory';
 import { CardStore } from '../store/card-store';
+
+import { MastermindWithEpic } from './mastermind-with-epic.model';
 import { MastermindType } from './mastermind.type';
 
 /**

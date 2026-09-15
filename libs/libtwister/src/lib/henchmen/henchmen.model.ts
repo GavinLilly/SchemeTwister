@@ -1,8 +1,9 @@
 import { SetOptional } from 'type-fest';
+
 import { CARD_TYPE } from '../constants/card-type.const';
+import { FightableCardGroup } from '../shared/fightable-card-group';
 import { Fightable } from '../shared/fightable.interface';
 
-import { FightableCardGroup } from '../shared/fightable-card-group';
 
 export interface HenchmenConfig
   extends SetOptional<Fightable, 'victoryPoints'> {

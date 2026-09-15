@@ -7,6 +7,7 @@ import { Henchmen } from '../../henchmen/henchmen.model';
 import { CardStore } from '../../store/card-store';
 import { StoreOfStores } from '../../store/store-of-stores';
 import { Scheme } from '../scheme.model';
+
 import { RequireCardTypeBehaviour } from './require-card-type-behaviour.interface';
 
 export class RequireHenchmen implements RequireCardTypeBehaviour<Henchmen> {

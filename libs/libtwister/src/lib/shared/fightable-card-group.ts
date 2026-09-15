@@ -1,6 +1,6 @@
+import { CardGroup } from './card-group';
 import { Fightable } from './fightable.interface';
 
-import { CardGroup } from './card-group';
 
 export abstract class FightableCardGroup
   extends CardGroup

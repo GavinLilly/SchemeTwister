@@ -11,9 +11,6 @@
     "importHelpers": true,
     "target": "ES2023",
     "module": "esnext",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
     "lib": [
       "dom",
       "ES2023"

@@ -2,6 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest';
 
 import { GameSet } from '../../game-set/game-set';
 import { MockGameSetFactory } from '../../testing/mocks/mock-game-set.factory';
+
 import { RequireCard } from './require-card.behaviour';
 
 describe('RequireCard', () => {

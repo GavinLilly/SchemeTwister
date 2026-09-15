@@ -1,6 +1,5 @@
 import { v4 as uuidV4 } from 'uuid';
 
-import { nameSorter } from '../shared/utils/name-sorter';
 
 import { Bystander } from '../bystander/bystander.model';
 import { CardType } from '../constants/card-type.const';
@@ -12,6 +11,7 @@ import { SchemeMinusRules } from '../scheme/scheme-minus-rules.type';
 import { SeriesMeta } from '../series/series-meta';
 import { AllCardTypes } from '../shared/all-card-types.type';
 import { NamedObject } from '../shared/named-object.interface';
+import { nameSorter } from '../shared/utils/name-sorter';
 import { VillainGroup } from '../villain-group/villain-group.model';
 
 export interface GameSetProps {

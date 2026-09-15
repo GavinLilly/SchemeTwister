@@ -3,6 +3,7 @@ import { beforeAll, describe, expect, it } from 'vitest';
 
 import { createMockGamesetMeta } from '../testing/mocks/mock.utils';
 import { VillainGroup } from '../villain-group/villain-group.model';
+
 import { MastermindWithEpic } from './mastermind-with-epic.model';
 
 const epicRegex = /^Epic?/;

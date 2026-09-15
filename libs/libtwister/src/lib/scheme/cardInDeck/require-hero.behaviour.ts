@@ -7,6 +7,7 @@ import { Hero } from '../../hero/hero.model';
 import { CardStore } from '../../store/card-store';
 import { StoreOfStores } from '../../store/store-of-stores';
 import { Scheme } from '../scheme.model';
+
 import { RequireCardTypeBehaviour } from './require-card-type-behaviour.interface';
 
 export class RequireHero implements RequireCardTypeBehaviour<Hero> {

@@ -25,6 +25,7 @@ import { PlayableObject } from '../shared/playable-object.interface';
 import { CardStore } from '../store/card-store';
 import { StoreOfStores } from '../store/store-of-stores';
 import { VillainGroup } from '../villain-group/villain-group.model';
+
 import { SchemeMinusRules } from './scheme-minus-rules.type';
 
 export interface SetupConfigWithStore extends Omit<SetupConfig, 'scheme'> {

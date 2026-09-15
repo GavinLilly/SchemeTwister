@@ -2,11 +2,11 @@ import { v4 as uuidV4 } from 'uuid';
 
 import { CARD_TYPE, CardType } from '../constants/card-type.const';
 import { GameSet } from '../game-set/game-set';
+import { CardGroup } from '../shared/card-group';
 import { ICardType } from '../shared/card-type.interface';
 import { PlayableObject } from '../shared/playable-object.interface';
 import { Team } from '../shared/team.interface';
 
-import { CardGroup } from '../shared/card-group';
 
 export interface HeroConfig extends PlayableObject, Partial<ICardType> {
   team?: Team;

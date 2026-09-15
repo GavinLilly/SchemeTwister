@@ -1,10 +1,11 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 
+import { GAME_SET_SIZE } from '../constants/game-set-size.const';
 import { LibTwister } from '../lib-twister';
+import { Series } from '../series/series.interface';
 import { MockSeriesFactory } from '../testing/mocks/mock-series.factory';
 
-import { GAME_SET_SIZE } from '../constants/game-set-size.const';
-import { Series } from '../series/series.interface';
+
 import { GameSetMap } from './game-set-map';
 
 describe('GameSetMap', () => {

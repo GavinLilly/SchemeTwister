@@ -9,6 +9,7 @@ import { StoreOfStores } from '../../store/store-of-stores';
 import { MockCardFactory } from '../../testing/mocks/mock-card.factory';
 import { MockGameSetFactory } from '../../testing/mocks/mock-game-set.factory';
 import { VillainGroup } from '../../villain-group/villain-group.model';
+
 import { RequireCardInDeckScheme } from './require-card-in-deck.scheme';
 import { RequireCardName } from './require-card-name.behaviour';
 import { RequireCard } from './require-card.behaviour';

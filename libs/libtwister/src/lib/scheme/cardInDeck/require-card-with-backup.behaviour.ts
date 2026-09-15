@@ -1,5 +1,6 @@
 import { CardGroup } from '../../shared/card-group';
 import { CardStore } from '../../store/card-store';
+
 import { RequireCardBehaviour } from './require-card-behaviour.interface';
 
 export class RequireCardWithBackup<TCard extends CardGroup>

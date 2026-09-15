@@ -1,12 +1,13 @@
+import { faker } from '@faker-js/faker';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import { CARD_TYPE } from '../constants/card-type.const';
+import { GameSet } from '../game-set/game-set';
 import { Henchmen } from '../henchmen/henchmen.model';
 import { createMockGamesetMeta } from '../testing/mocks/mock.utils';
 import { VillainGroup } from '../villain-group/villain-group.model';
 
-import { faker } from '@faker-js/faker';
-import { GameSet } from '../game-set/game-set';
+
 import { Mastermind } from './mastermind.model';
 
 describe('Mastermind', () => {

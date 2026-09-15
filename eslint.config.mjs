@@ -1,5 +1,6 @@
 import nx from '@nx/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
+import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import { importX } from 'eslint-plugin-import-x';
 import jsdoc from 'eslint-plugin-jsdoc';
 
@@ -151,6 +152,12 @@ export default [
         },
       ],
       eqeqeq: ['error', 'smart'],
+      'jsdoc/require-jsdoc': [
+        'warn',
+        {
+          publicOnly: true,
+        },
+      ],
     },
   },
   {
@@ -165,7 +172,7 @@ export default [
       '**/*.spec.tsx',
       '**/*.spec.js',
       '**/*.spec.jsx',
-      '**.test.ts',
+      '**/*.test.ts',
     ],
     rules: {
       'max-nested-callbacks': 'off',
@@ -181,4 +188,5 @@ export default [
       'import-x/no-duplicates': 'off',
     },
   },
+  eslintConfigPrettier,
 ];

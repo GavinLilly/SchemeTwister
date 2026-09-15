@@ -1,9 +1,8 @@
-import {
-  type AllCardTypes,
-  type GameSet,
-  CARD_TYPE,
-} from '@schemetwister/libtwister';
-import { describe, beforeAll, it, expect, test } from 'vitest';
+import { beforeAll, describe, expect, it, test } from 'vitest';
+
+import { CARD_TYPE } from '../constants/card-type.const';
+import { GameSet } from '../game-set/game-set';
+import { AllCardTypes } from '../shared/all-card-types.type';
 
 interface GameSetTestConfig {
   gameSet: GameSet;

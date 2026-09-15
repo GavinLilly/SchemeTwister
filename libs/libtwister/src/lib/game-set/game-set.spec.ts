@@ -1,8 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { describe, expect, it } from 'vitest';
 
-import { MockGameSetFactory } from '../testing/mocks/mock-game-set.factory';
-import { createMockSeriesMeta } from '../testing/mocks/mock.utils';
 
 import { Bystander } from '../bystander/bystander.model';
 import { CARD_TYPE } from '../constants/card-type.const';
@@ -11,7 +9,10 @@ import { Henchmen } from '../henchmen/henchmen.model';
 import { Hero } from '../hero/hero.model';
 import { Mastermind } from '../mastermind/mastermind.model';
 import { SchemeDefinition } from '../scheme/scheme-definition';
+import { MockGameSetFactory } from '../testing/mocks/mock-game-set.factory';
+import { createMockSeriesMeta } from '../testing/mocks/mock.utils';
 import { VillainGroup } from '../villain-group/villain-group.model';
+
 import { GameSet } from './game-set';
 
 describe('GameSet', () => {

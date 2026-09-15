@@ -7,6 +7,7 @@ import { FightableCardGroup } from '../shared/fightable-card-group';
 import { Fightable } from '../shared/fightable.interface';
 import { SpecialRules } from '../shared/special-rules.interface';
 import { VillainGroup } from '../villain-group/villain-group.model';
+
 import { MastermindConfig } from './mastermind-config.interface';
 
 /**

@@ -5,6 +5,7 @@ import { StoreBuilder } from '../store/store-builder';
 import { StoreOfStores } from '../store/store-of-stores';
 import { MockCardFactory } from '../testing/mocks/mock-card.factory';
 import { MockGameSetFactory } from '../testing/mocks/mock-game-set.factory';
+
 import { PlayerPicksAHeroScheme } from './player-picks-a-hero-scheme.model';
 
 describe('Player Picks a Hero Scheme', () => {

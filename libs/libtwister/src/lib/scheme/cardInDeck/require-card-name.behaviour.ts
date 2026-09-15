@@ -1,6 +1,7 @@
 import { CardGroup } from '../../shared/card-group';
 import { randomize } from '../../shared/utils/randomize';
 import { CardStore } from '../../store/card-store';
+
 import { RequireCardBehaviour } from './require-card-behaviour.interface';
 
 export class RequireCardName<TCard extends CardGroup>

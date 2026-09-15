@@ -2,6 +2,7 @@ import { Hero } from '../../hero/hero.model';
 import { Team } from '../../shared/team.interface';
 import { randomize } from '../../shared/utils/randomize';
 import { CardStore } from '../../store/card-store';
+
 import { RequireCardBehaviour } from './require-card-behaviour.interface';
 
 export class RequireTeam implements RequireCardBehaviour<Hero> {

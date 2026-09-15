@@ -8,6 +8,7 @@ import { Scheme } from '../../scheme/scheme.model';
 import { SoloBannedScheme } from '../../scheme/solo-banned-scheme.model';
 import { MockCardFactory } from '../../testing/mocks/mock-card.factory';
 import { MockGameSetFactory } from '../../testing/mocks/mock-game-set.factory';
+
 import instantiateScheme from './instantiate-scheme';
 import { randomize } from './randomize';
 

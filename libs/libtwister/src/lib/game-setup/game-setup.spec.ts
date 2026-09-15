@@ -11,6 +11,7 @@ import {
   MOCK_REQUIRE_CARD_NAME_IN_DECK_SCHEME,
 } from '../testing/mocks/game-set-with-specific-hero.mock';
 import { MockGameSetFactory } from '../testing/mocks/mock-game-set.factory';
+
 import { GameSetup } from './game-setup';
 
 const MOCK_GAMESET_FACTORY = new MockGameSetFactory();

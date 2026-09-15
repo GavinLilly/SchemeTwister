@@ -3,14 +3,13 @@ import { faker } from '@faker-js/faker';
 import { GAME_SET_SIZE } from '../../constants/game-set-size.const';
 import { GameSet } from '../../game-set/game-set';
 import { Hero } from '../../hero/hero.model';
-
-import { VillainGroup } from '../../villain-group/villain-group.model';
-
 import {
   getGameSetSize,
   IGameSetSize,
   IHeroTeamConfig,
 } from '../../shared/utils/get-game-set-size';
+import { VillainGroup } from '../../villain-group/villain-group.model';
+
 import { MockCardFactory } from './mock-card.factory';
 import {
   createMockGamesetMeta,

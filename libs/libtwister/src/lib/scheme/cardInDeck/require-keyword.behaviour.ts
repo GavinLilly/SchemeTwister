@@ -2,6 +2,7 @@ import { CardGroup } from '../../shared/card-group';
 import { Keyword } from '../../shared/keyword.interface';
 import { randomize } from '../../shared/utils/randomize';
 import { CardStore } from '../../store/card-store';
+
 import { RequireCardBehaviour } from './require-card-behaviour.interface';
 
 export class RequireKeyword<TCard extends CardGroup>

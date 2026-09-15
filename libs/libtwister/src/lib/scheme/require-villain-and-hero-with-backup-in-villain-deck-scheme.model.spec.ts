@@ -7,6 +7,7 @@ import { StoreBuilder } from '../store/store-builder';
 import { StoreOfStores } from '../store/store-of-stores';
 import { MockCardFactory } from '../testing/mocks/mock-card.factory';
 import { MockGameSetFactory } from '../testing/mocks/mock-game-set.factory';
+
 import { RequireCardWithBackup } from './cardInDeck/require-card-with-backup.behaviour';
 import { RequireCard } from './cardInDeck/require-card.behaviour';
 import { RequireVillainAndHeroWithBackupInVillainDeckScheme } from './require-villain-and-hero-with-backup-in-villain-deck-scheme.model';

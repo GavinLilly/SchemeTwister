@@ -9,6 +9,7 @@ import { StoreBuilder } from '../store/store-builder';
 import { StoreOfStores } from '../store/store-of-stores';
 import { MockCardFactory } from '../testing/mocks/mock-card.factory';
 import { MockGameSetFactory } from '../testing/mocks/mock-game-set.factory';
+
 import { SchemeMinusRules } from './scheme-minus-rules.type';
 import { Scheme } from './scheme.model';
 

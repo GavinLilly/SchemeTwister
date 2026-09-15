@@ -1,11 +1,12 @@
-import { ITeam } from '@schemetwister/libtwister';
-import { describe, it, expect, test } from 'vitest';
+import { describe, expect, it, test } from 'vitest';
+
+import { Team } from '../shared/team.interface';
 
 /**
  *
  * @param teams
  */
-export function testTeams(teams: ITeam[]) {
+export function testTeams(teams: Team[]) {
   return describe('Teams', () => {
     it('should have unique team names', () => {
       const teamNames = Object.values(teams).map((team) => team.name);

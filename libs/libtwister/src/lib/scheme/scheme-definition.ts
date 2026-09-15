@@ -1,4 +1,5 @@
 import { Constructor } from 'type-fest';
+
 import { CARD_TYPE } from '../constants/card-type.const';
 import { GameSetProps } from '../game-set/game-set';
 import { RulesModifierFunction } from '../game-setup/rules';

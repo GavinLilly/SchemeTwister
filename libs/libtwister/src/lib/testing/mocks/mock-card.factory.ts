@@ -7,9 +7,9 @@ import { MastermindWithEpic } from '../../mastermind/mastermind-with-epic.model'
 import { Mastermind } from '../../mastermind/mastermind.model';
 import { SchemeDefinition } from '../../scheme/scheme-definition';
 import { Team } from '../../shared/team.interface';
+import { capitalise } from '../../shared/utils/capitalise';
 import { VillainGroup } from '../../villain-group/villain-group.model';
 
-import { capitalise } from '../../shared/utils/capitalise';
 import {
   createMockGamesetMeta,
   createMockKeywords,

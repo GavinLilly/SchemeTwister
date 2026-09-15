@@ -4,6 +4,7 @@ import { HeroDeck } from '../game-setup/deck/hero-deck.model';
 import { NumPlayerRules } from '../game-setup/rules/num-player-rules';
 import { Hero } from '../hero/hero.model';
 import { StoreOfStores } from '../store/store-of-stores';
+
 import { Scheme } from './scheme.model';
 
 export class PlayerPicksAHeroScheme extends Scheme {

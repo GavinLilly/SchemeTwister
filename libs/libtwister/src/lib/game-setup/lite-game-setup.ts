@@ -1,16 +1,17 @@
 import { customRandom } from 'nanoid';
 import seedrandom from 'seedrandom';
 
-import { LibTwister } from '../lib-twister';
-import instantiateScheme from '../shared/utils/instantiate-scheme';
 
 import { NumPlayers } from '../constants/num-players.const';
 import { Henchmen } from '../henchmen/henchmen.model';
 import { Hero } from '../hero/hero.model';
+import { LibTwister } from '../lib-twister';
 import { Mastermind } from '../mastermind/mastermind.model';
 import { CardGroup } from '../shared/card-group';
 import { NamedObject } from '../shared/named-object.interface';
+import instantiateScheme from '../shared/utils/instantiate-scheme';
 import { VillainGroup } from '../villain-group/villain-group.model';
+
 import { AdditionalDeckConfig } from './deck/additional-deck.model';
 import { HeroDeck } from './deck/hero-deck.model';
 import { GameSetup } from './game-setup';

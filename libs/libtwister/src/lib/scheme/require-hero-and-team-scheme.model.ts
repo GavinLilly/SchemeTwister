@@ -4,11 +4,12 @@ import { NumPlayerRules } from '../game-setup/rules/num-player-rules';
 import { Hero } from '../hero/hero.model';
 import { Team } from '../shared/team.interface';
 import { StoreOfStores } from '../store/store-of-stores';
-import { SchemeMinusRules } from './scheme-minus-rules.type';
+
 
 import { RequireCardInDeckScheme } from './cardInDeck/require-card-in-deck.scheme';
 import { RequireCard } from './cardInDeck/require-card.behaviour';
 import { RequireHero } from './cardInDeck/require-hero.behaviour';
+import { SchemeMinusRules } from './scheme-minus-rules.type';
 import { Scheme } from './scheme.model';
 
 export class RequireHeroAndTeamScheme extends RequireCardInDeckScheme<Hero> {
