@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, it, test } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 
 import { CARD_TYPE } from '../constants/card-type.const';
 import { GameSet } from '../game-set/game-set';
@@ -50,7 +50,3 @@ export const testStandardSmallGameSet = (gameSet: GameSet) =>
     numMasterminds: 2,
     numSchemes: 4,
   });
-
-describe('Common tests for Game Sets', () =>
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  test('should be used for implementation', () => {}));

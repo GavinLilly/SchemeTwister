@@ -1,4 +1,4 @@
-import { describe, expect, it, test } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 import { Team } from '../shared/team.interface';
 
@@ -20,7 +20,3 @@ export function testTeams(teams: Team[]) {
     });
   });
 }
-
-describe('Common tests Teams', () =>
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  test('should be used for implementation', () => {}));

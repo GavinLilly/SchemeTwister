@@ -1,10 +1,21 @@
 import isUUID from 'validator/lib/isUUID';
-import { beforeAll, describe, expect, it, test } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 
 import { GAME_SET_SIZE } from '../constants/game-set-size.const';
 import { LibTwister } from '../lib-twister';
 import { Series } from '../series/series.interface';
 import { AllCardTypes } from '../shared/all-card-types.type';
+
+interface CustomMatchers<R = unknown> {
+  toBeUUID: () => R;
+}
+
+declare module 'vitest' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type, @typescript-eslint/no-empty-interface
+  interface Assertion<T = any> extends CustomMatchers<T> {}
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type, @typescript-eslint/no-empty-interface
+  interface AsymmetricMatchersContaining extends CustomMatchers {}
+}
 
 expect.extend({
   toBeUUID(received) {
@@ -118,7 +129,3 @@ export function testSeries(config: SeriesTestConfig) {
       expect(libTwister.selectedGameSets).toHaveLength(totalGameSetCount));
   });
 }
-
-describe('Common tests for Game Sets', () =>
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  test('should be used for implementation', () => {}));
