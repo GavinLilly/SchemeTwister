@@ -1,7 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "types": ["node"]
+    "types": ["node"],
+    "module": "esnext",
+    "moduleResolution": "bundler"
   },
   "include": [],
   "files": [],
@@ -11,6 +13,9 @@
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./tsconfig.testing.json"
     }
   ]
 }

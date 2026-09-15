@@ -1,7 +1,7 @@
 export {
   testGameSet,
   testStandardSmallGameSet,
-} from './lib/testing/gameSet.test';
+} from './lib/testing/gameSet.fixtures';
 export { MockCardFactory } from './lib/testing/mocks/mock-card.factory';
-export { testSeries } from './lib/testing/series.test';
-export { testTeams } from './lib/testing/teams.test';
+export { testSeries } from './lib/testing/series.fixtures';
+export { testTeams } from './lib/testing/teams.fixtures';
