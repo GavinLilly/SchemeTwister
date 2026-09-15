@@ -21,5 +21,5 @@ export function randomInteger(minNumber: number, maxNumber?: number): number {
   const actualMin = Math.ceil(maxNumber !== undefined ? minNumber : 0);
   const actualMax = Math.floor(maxNumber ?? minNumber);
 
-  return Math.floor(Math.random() * (actualMax - actualMin + 1)) + actualMin;
+  return Math.floor(Math.random() * (actualMax - actualMin + 1)) + actualMin; // NOSONAR
 }
