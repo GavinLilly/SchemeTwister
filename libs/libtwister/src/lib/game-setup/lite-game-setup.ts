@@ -10,10 +10,11 @@ import { Hero } from '../hero/hero.model';
 import { Mastermind } from '../mastermind/mastermind.model';
 import { CardGroup } from '../shared/card-group';
 import { NamedObject } from '../shared/named-object.interface';
-import { AdditionalDeckRules } from '../shared/rules.interface';
 import { VillainGroup } from '../villain-group/villain-group.model';
-import { AdditionalDeckConfig, HeroDeck } from './deck.interface';
+import { AdditionalDeckConfig } from './deck/additional-deck.model';
+import { HeroDeck } from './deck/hero-deck.model';
 import { GameSetup } from './game-setup';
+import { AdditionalDeckRules } from './rules/additional-deck-rules';
 
 interface LiteGameSetupConfig {
   numPlayers: number;

@@ -1,5 +1,5 @@
 import { GameSetSize } from '../constants/game-set-size.const';
-import { SeriesMeta } from '../shared/series-meta';
+import { SeriesMeta } from '../series/series-meta';
 import { GameSet } from './game-set';
 
 /**

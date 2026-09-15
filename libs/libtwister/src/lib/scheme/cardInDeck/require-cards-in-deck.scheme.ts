@@ -2,14 +2,18 @@ import { DECK_TYPE, DeckType } from '../../constants/deck-type.const';
 import {
   AdditionalDeck,
   AdditionalDeckDeckMinimal,
+} from '../../game-setup/deck/additional-deck.model';
+import {
   HeroDeck,
   HeroDeckMinimal,
+} from '../../game-setup/deck/hero-deck.model';
+import {
   VillainDeck,
   VillainDeckMinimal,
-} from '../../game-setup/deck.interface';
+} from '../../game-setup/deck/villain-deck.model';
+import { NumPlayerRules } from '../../game-setup/rules/num-player-rules';
 import { CardGroup } from '../../shared/card-group';
-import { NumPlayerRules } from '../../shared/rules.interface';
-import { StoreOfStores } from '../../stores/store-of-stores';
+import { StoreOfStores } from '../../store/store-of-stores';
 import { SchemeMinusRules } from '../scheme-minus-rules.type';
 import { Scheme } from '../scheme.model';
 import { RequireCardBehaviour } from './require-card-behaviour.interface';

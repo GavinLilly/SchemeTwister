@@ -1,8 +1,8 @@
 import { DECK_TYPE } from '../constants/deck-type.const';
-import { VillainDeck } from '../game-setup/deck.interface';
+import { VillainDeck } from '../game-setup/deck/villain-deck.model';
+import { NumPlayerRules } from '../game-setup/rules/num-player-rules';
 import { Hero } from '../hero/hero.model';
-import { NumPlayerRules } from '../shared/rules.interface';
-import { StoreOfStores } from '../stores/store-of-stores';
+import { StoreOfStores } from '../store/store-of-stores';
 import { VillainGroup } from '../villain-group/villain-group.model';
 import { SchemeMinusRules } from './scheme-minus-rules.type';
 

@@ -1,6 +1,6 @@
 import { CardGroup } from '../../shared/card-group';
 import { randomize } from '../../shared/utils/randomize';
-import { CardStore } from '../../stores/card-store';
+import { CardStore } from '../../store/card-store';
 import { RequireCardBehaviour } from './require-card-behaviour.interface';
 
 /**

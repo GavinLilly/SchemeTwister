@@ -2,11 +2,9 @@ import { Mastermind } from '../mastermind/mastermind.model';
 import { TransformingMastermind } from '../mastermind/transforming-mastermind.model';
 import { Scheme } from '../scheme/scheme.model';
 
-import {
-  AdditionalDeckConfig,
-  HeroDeck,
-  VillainDeck,
-} from '../game-setup/deck.interface';
+import { AdditionalDeckConfig } from './deck/additional-deck.model';
+import { HeroDeck } from './deck/hero-deck.model';
+import { VillainDeck } from './deck/villain-deck.model';
 
 export interface GameSetup {
   /** The number of players playing this setup */

@@ -1,8 +1,8 @@
 export { MastermindStore } from './lib/mastermind/mastermind.store';
-export { CardFactory } from './lib/stores/card-factory';
-export { CardStore } from './lib/stores/card-store';
-export { StoreBuilder } from './lib/stores/store-builder';
-export { StoreOfStores } from './lib/stores/store-of-stores';
+export { CardFactory } from './lib/store/card-factory';
+export { CardStore } from './lib/store/card-store';
+export { StoreBuilder } from './lib/store/store-builder';
+export { StoreOfStores } from './lib/store/store-of-stores';
 
 export { HeroClass } from './lib/hero/hero-class.enum';
 export { LibTwister } from './lib/lib-twister';
@@ -15,14 +15,11 @@ export { default as instantiateScheme } from './lib/shared/utils/instantiate-sch
 export { randomize } from './lib/shared/utils/randomize';
 
 export { SinglePlayerError } from './lib/errors/single-player-error';
-export {
-  GameSet,
-  GameSetProps as GameSetConfig,
-} from './lib/game-set/game-set';
+export { GameSet, GameSetProps } from './lib/game-set/game-set';
 export { GameSetMap } from './lib/game-set/game-set-map';
 export { GameSetup } from './lib/game-setup/game-setup';
 export { LiteGameSetup } from './lib/game-setup/lite-game-setup';
-export { SeriesMeta } from './lib/shared/series-meta';
+export { SeriesMeta } from './lib/series/series-meta';
 
 export { Bystander, BystanderConfig } from './lib/bystander/bystander.model';
 export { Henchmen, HenchmenConfig } from './lib/henchmen/henchmen.model';
@@ -34,6 +31,7 @@ export { MastermindWithEpic } from './lib/mastermind/mastermind-with-epic.model'
 export { Mastermind } from './lib/mastermind/mastermind.model';
 export { TransformingMastermind } from './lib/mastermind/transforming-mastermind.model';
 export {
+  OverrideScheme,
   SchemeDefinition,
   SchemeDefinitionConfig,
 } from './lib/scheme/scheme-definition';
@@ -42,21 +40,25 @@ export { VillainGroup } from './lib/villain-group/villain-group.model';
 
 export {
   AdditionalDeckDeckMinimal,
-  HeroDeckMinimal,
   AdditionalDeckConfig as IAdditionalDeck,
+} from './lib/game-setup/deck/additional-deck.model';
+export {
+  HeroDeckMinimal,
   HeroDeck as IHeroDeck,
-  VillainDeck as IVillainDeck,
+} from './lib/game-setup/deck/hero-deck.model';
+export {
+  VillainDeck,
   VillainDeckMinimal,
-} from './lib/game-setup/deck.interface';
+} from './lib/game-setup/deck/villain-deck.model';
 export { GameSetup as IGameSetup } from './lib/game-setup/game-setup.interface';
+export { NumPlayerRules as INumPlayerRules } from './lib/game-setup/rules/num-player-rules';
+export { Series as ISeries } from './lib/series/series.interface';
 export { ICardType } from './lib/shared/card-type.interface';
 export { Fightable as IFightable } from './lib/shared/fightable.interface';
 export { Keyword as IKeyword } from './lib/shared/keyword.interface';
 export { NamedObject as INamedObject } from './lib/shared/named-object.interface';
 export { Nomenclature as INomenclature } from './lib/shared/nomenclature.interface';
 export { PlayableObject as IPlayableObject } from './lib/shared/playable-object.interface';
-export { NumPlayerRules as INumPlayerRules } from './lib/shared/rules.interface';
-export { Series as ISeries } from './lib/shared/series.interface';
 export { SpecialRules as ISpecialRules } from './lib/shared/special-rules.interface';
 export { Team as ITeam } from './lib/shared/team.interface';
 

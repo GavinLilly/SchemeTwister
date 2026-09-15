@@ -1,10 +1,10 @@
 import { Constructor } from 'type-fest';
 import { CARD_TYPE } from '../constants/card-type.const';
-import { GameSet } from '../game-set/game-set';
+import { GameSetProps } from '../game-set/game-set';
+import { RulesModifierFunction } from '../game-setup/rules';
 import { Scheme } from '../scheme/scheme.model';
 import { ICardType } from '../shared/card-type.interface';
 import { Keyword } from '../shared/keyword.interface';
-import { RulesModifierFunction } from '../shared/rules';
 import { SpecialRules } from '../shared/special-rules.interface';
 
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -17,7 +17,7 @@ interface EachPlayerNumber {
 }
 /* eslint-enable @typescript-eslint/naming-convention */
 
-interface OverrideScheme {
+export interface OverrideScheme {
   schemeType: Constructor<Scheme>;
   params?: unknown[];
 }
@@ -41,7 +41,7 @@ export interface SchemeDefinitionConfig
 export class SchemeDefinition implements SpecialRules, ICardType {
   private readonly _id: string;
   private readonly _name: string;
-  private readonly _gameSet: GameSet;
+  private readonly _gameSet: GameSetProps;
   private readonly _setup: string;
   private readonly _twist: string;
   private readonly _evilWins: string;

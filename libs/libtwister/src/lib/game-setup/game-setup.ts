@@ -1,16 +1,14 @@
 import { nameSorter } from '../shared/utils/name-sorter';
 
-import {
-  AdditionalDeckConfig,
-  HeroDeck,
-  VillainDeck,
-} from '../game-setup/deck.interface';
 import { Henchmen } from '../henchmen/henchmen.model';
 import { Hero } from '../hero/hero.model';
 import { Mastermind } from '../mastermind/mastermind.model';
 import { Scheme } from '../scheme/scheme.model';
 import { Keyword } from '../shared/keyword.interface';
 import { VillainGroup } from '../villain-group/villain-group.model';
+import { AdditionalDeckConfig } from './deck/additional-deck.model';
+import { HeroDeck } from './deck/hero-deck.model';
+import { VillainDeck } from './deck/villain-deck.model';
 import { GameSetup as IGameSetup } from './game-setup.interface';
 
 type VillainAdditionalDeckCards = Henchmen | VillainGroup | Mastermind | Hero;

@@ -1,8 +1,8 @@
-import { IGameSetMeta, GAME_SET_SIZE } from '@schemetwister/libtwister';
+import { GAME_SET_SIZE, GameSetProps } from '@schemetwister/libtwister';
 
 import { marvelSeriesMeta } from '../../marvelSeriesMeta';
 
-export const META: IGameSetMeta = {
+export const META: GameSetProps = {
   id: '9adad8eb-55b4-4fbe-b6db-f6a0c35cf809',
   name: 'Heroes of Asgard',
   size: GAME_SET_SIZE.small,

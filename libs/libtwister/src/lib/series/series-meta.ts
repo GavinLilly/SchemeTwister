@@ -1,4 +1,4 @@
-import { Nomenclature } from './nomenclature.interface';
+import { Nomenclature } from '../shared/nomenclature.interface';
 
 export class SeriesMeta {
   private readonly _nomenclature: Nomenclature;

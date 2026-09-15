@@ -1,10 +1,10 @@
 import { CARD_TYPE } from '../constants/card-type.const';
 import { GameSet } from '../game-set/game-set';
+import { NumPlayerRules } from '../game-setup/rules/num-player-rules';
 import { Henchmen } from '../henchmen/henchmen.model';
 import { Hero } from '../hero/hero.model';
 import { FightableCardGroup } from '../shared/fightable-card-group';
 import { Fightable } from '../shared/fightable.interface';
-import { NumPlayerRules } from '../shared/rules.interface';
 import { SpecialRules } from '../shared/special-rules.interface';
 import { VillainGroup } from '../villain-group/villain-group.model';
 import { MastermindConfig } from './mastermind-config.interface';

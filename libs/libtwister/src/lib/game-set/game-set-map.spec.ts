@@ -4,7 +4,7 @@ import { LibTwister } from '../lib-twister';
 import { MockSeriesFactory } from '../testing/mocks/mock-series.factory';
 
 import { GAME_SET_SIZE } from '../constants/game-set-size.const';
-import { Series } from '../shared/series.interface';
+import { Series } from '../series/series.interface';
 import { GameSetMap } from './game-set-map';
 
 describe('GameSetMap', () => {

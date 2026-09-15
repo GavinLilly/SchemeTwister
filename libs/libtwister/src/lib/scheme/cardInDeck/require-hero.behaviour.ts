@@ -1,13 +1,11 @@
 import { DeckType } from '../../constants/deck-type.const';
-import {
-  AdditionalDeckDeckMinimal,
-  HeroDeckMinimal,
-  VillainDeckMinimal,
-} from '../../game-setup/deck.interface';
+import { AdditionalDeckDeckMinimal } from '../../game-setup/deck/additional-deck.model';
+import { HeroDeckMinimal } from '../../game-setup/deck/hero-deck.model';
+import { VillainDeckMinimal } from '../../game-setup/deck/villain-deck.model';
+import { NumPlayerRules } from '../../game-setup/rules/num-player-rules';
 import { Hero } from '../../hero/hero.model';
-import { NumPlayerRules } from '../../shared/rules.interface';
-import { CardStore } from '../../stores/card-store';
-import { StoreOfStores } from '../../stores/store-of-stores';
+import { CardStore } from '../../store/card-store';
+import { StoreOfStores } from '../../store/store-of-stores';
 import { Scheme } from '../scheme.model';
 import { RequireCardTypeBehaviour } from './require-card-type-behaviour.interface';
 

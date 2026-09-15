@@ -1,8 +1,8 @@
-import { IGameSetMeta, GAME_SET_SIZE } from '@schemetwister/libtwister';
+import { GAME_SET_SIZE, GameSetProps } from '@schemetwister/libtwister';
 
 import { marvelSeriesMeta } from '../../marvelSeriesMeta';
 
-export const META: IGameSetMeta = {
+export const META: GameSetProps = {
   id: '554ea673-4af1-4ad0-99ed-137672a9bfb7',
   name: 'Into the Cosmos',
   size: GAME_SET_SIZE.medium,

@@ -1,9 +1,9 @@
 import { v4 as uuidV4 } from 'uuid';
 
-import { HeroDeck } from '../game-setup/deck.interface';
+import { HeroDeck } from '../game-setup/deck/hero-deck.model';
+import { NumPlayerRules } from '../game-setup/rules/num-player-rules';
 import { Hero } from '../hero/hero.model';
-import { NumPlayerRules } from '../shared/rules.interface';
-import { StoreOfStores } from '../stores/store-of-stores';
+import { StoreOfStores } from '../store/store-of-stores';
 import { Scheme } from './scheme.model';
 
 export class PlayerPicksAHeroScheme extends Scheme {

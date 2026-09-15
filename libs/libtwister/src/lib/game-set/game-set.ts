@@ -9,9 +9,9 @@ import { Henchmen } from '../henchmen/henchmen.model';
 import { Hero } from '../hero/hero.model';
 import { Mastermind } from '../mastermind/mastermind.model';
 import { SchemeMinusRules } from '../scheme/scheme-minus-rules.type';
+import { SeriesMeta } from '../series/series-meta';
 import { AllCardTypes } from '../shared/all-card-types.type';
 import { NamedObject } from '../shared/named-object.interface';
-import { SeriesMeta } from '../shared/series-meta';
 import { VillainGroup } from '../villain-group/villain-group.model';
 
 export interface GameSetProps {

@@ -2,8 +2,8 @@ import { faker } from '@faker-js/faker';
 
 import { GAME_SET_SIZE } from '../../constants/game-set-size.const';
 import { GameSet } from '../../game-set/game-set';
+import { SeriesMeta } from '../../series/series-meta';
 import { Keyword } from '../../shared/keyword.interface';
-import { SeriesMeta } from '../../shared/series-meta';
 import { Team } from '../../shared/team.interface';
 import { capitalise } from '../../shared/utils/capitalise';
 

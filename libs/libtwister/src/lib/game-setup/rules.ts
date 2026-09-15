@@ -1,5 +1,5 @@
 import { NumPlayers, numPlayers } from '../constants/num-players.const';
-import { NumPlayerRules } from './rules.interface';
+import { NumPlayerRules } from './rules/num-player-rules';
 
 export type RulesType = Record<NumPlayers, NumPlayerRules>;
 

@@ -4,20 +4,18 @@ import { GAME_SET_SIZE } from './constants/game-set-size.const';
 import { NumPlayers } from './constants/num-players.const';
 import { GameSet } from './game-set/game-set';
 import { GameSetMap } from './game-set/game-set-map';
-import {
-  AdditionalDeckDeckMinimal,
-  HeroDeckMinimal,
-  VillainDeckMinimal,
-} from './game-setup/deck.interface';
+import { AdditionalDeckDeckMinimal } from './game-setup/deck/additional-deck.model';
+import { HeroDeckMinimal } from './game-setup/deck/hero-deck.model';
+import { VillainDeckMinimal } from './game-setup/deck/villain-deck.model';
 import { GameSetup } from './game-setup/game-setup';
 import { Henchmen } from './henchmen/henchmen.model';
 import { Hero } from './hero/hero.model';
 import { Mastermind } from './mastermind/mastermind.model';
 import { SchemeMinusRules } from './scheme/scheme-minus-rules.type';
-import { Series } from './shared/series.interface';
+import { Series } from './series/series.interface';
 import instantiateScheme from './shared/utils/instantiate-scheme';
-import { CardFactory } from './stores/card-factory';
-import { StoreOfStores } from './stores/store-of-stores';
+import { CardFactory } from './store/card-factory';
+import { StoreOfStores } from './store/store-of-stores';
 import { VillainGroup } from './villain-group/villain-group.model';
 
 export interface Blacklist {

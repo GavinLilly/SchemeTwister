@@ -4,25 +4,26 @@ import { v4 as uuidV4 } from 'uuid';
 
 import { CARD_TYPE } from '../constants/card-type.const';
 import { numPlayers } from '../constants/num-players.const';
-import { GameSet } from '../game-set/game-set';
+import { GameSet, GameSetProps } from '../game-set/game-set';
 import {
   AdditionalDeck,
   AdditionalDeckConfig,
   AdditionalDeckDeckMinimal,
-  HeroDeck,
-  VillainDeck,
-} from '../game-setup/deck.interface';
+} from '../game-setup/deck/additional-deck.model';
+import { HeroDeck } from '../game-setup/deck/hero-deck.model';
+import { VillainDeck } from '../game-setup/deck/villain-deck.model';
 import { GameSetup } from '../game-setup/game-setup.interface';
+import { Rules, RulesType } from '../game-setup/rules';
+import { AdditionalDeckRules } from '../game-setup/rules/additional-deck-rules';
+import { NumPlayerRules } from '../game-setup/rules/num-player-rules';
 import { Henchmen } from '../henchmen/henchmen.model';
 import { SetupConfig } from '../lib-twister';
 import { Mastermind } from '../mastermind/mastermind.model';
 import { CardGroup } from '../shared/card-group';
 import { Keyword } from '../shared/keyword.interface';
 import { PlayableObject } from '../shared/playable-object.interface';
-import { Rules, RulesType } from '../shared/rules';
-import { AdditionalDeckRules, NumPlayerRules } from '../shared/rules.interface';
-import { CardStore } from '../stores/card-store';
-import { StoreOfStores } from '../stores/store-of-stores';
+import { CardStore } from '../store/card-store';
+import { StoreOfStores } from '../store/store-of-stores';
 import { VillainGroup } from '../villain-group/villain-group.model';
 import { SchemeMinusRules } from './scheme-minus-rules.type';
 
@@ -40,7 +41,7 @@ export type SchemeConfig = SetOptional<SchemeMinusRules, 'specialRules'>;
 export class Scheme implements PlayableObject {
   // Meta
   private readonly _id: string;
-  private readonly _gameSet: GameSet;
+  private readonly _gameSet: GameSetProps;
   private readonly _keywords?: Keyword[] = [];
   private readonly _rules: RulesType;
 
