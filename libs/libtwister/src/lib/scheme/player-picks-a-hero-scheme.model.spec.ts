@@ -1,8 +1,8 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import { GAME_SET_SIZE } from '../constants/game-set-size.const';
-import { StoreBuilder } from '../stores/store-builder';
-import { StoreOfStores } from '../stores/store-of-stores';
+import { StoreBuilder } from '../store/store-builder';
+import { StoreOfStores } from '../store/store-of-stores';
 import { MockCardFactory } from '../testing/mocks/mock-card.factory';
 import { MockGameSetFactory } from '../testing/mocks/mock-game-set.factory';
 import { PlayerPicksAHeroScheme } from './player-picks-a-hero-scheme.model';

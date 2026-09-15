@@ -3,10 +3,9 @@ import { describe, expect, it } from 'vitest';
 import { GAME_SET_SIZE } from '../constants/game-set-size.const';
 import { Team } from '../shared/team.interface';
 import { randomize } from '../shared/utils/randomize';
-import { StoreBuilder } from '../stores/store-builder';
+import { StoreBuilder } from '../store/store-builder';
 import { MockCardFactory } from '../testing/mocks/mock-card.factory';
 import { MockGameSetFactory } from '../testing/mocks/mock-game-set.factory';
-
 import { RequireHeroAndTeamScheme } from './require-hero-and-team-scheme.model';
 
 describe('RequireHeroAndTeamScheme', () => {

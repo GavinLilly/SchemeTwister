@@ -1,9 +1,9 @@
-import { v4 as uuidV4 } from 'uuid';
+import { faker } from '@faker-js/faker';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import { Hero } from '../hero/hero.model';
-import { StoreBuilder } from '../stores/store-builder';
-import { StoreOfStores } from '../stores/store-of-stores';
+import { StoreBuilder } from '../store/store-builder';
+import { StoreOfStores } from '../store/store-of-stores';
 import { MockGameSetFactory } from '../testing/mocks/mock-game-set.factory';
 import { RequireUniqueHeroesScheme } from './require-unique-heroes-scheme.model';
 import { Scheme } from './scheme.model';
@@ -33,12 +33,16 @@ describe('RequireUniqueHeroesScheme', () => {
     const heroes: Hero[] = [];
 
     for (let i = 0; i < 7; i++) {
-      const loganHero = new Hero({ id: uuidV4(), name: 'Logan', gameSet });
+      const loganHero = new Hero({
+        id: faker.string.uuid(),
+        name: 'Logan',
+        gameSet,
+      });
       heroes.push(loganHero);
     }
 
     const randomHero = new Hero({
-      id: uuidV4(),
+      id: faker.string.uuid(),
       name: 'Hero',
       gameSet,
     });

@@ -4,8 +4,8 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import { GAME_SET_SIZE } from './constants/game-set-size.const';
 import { NumPlayers } from './constants/num-players.const';
 import { LibTwister } from './lib-twister';
+import { SeriesMeta } from './series/series-meta';
 import { Series } from './series/series.interface';
-import { SeriesMeta } from './shared/series-meta';
 import { MockGameSetFactory } from './testing/mocks/mock-game-set.factory';
 import { MockSeriesFactory } from './testing/mocks/mock-series.factory';
 

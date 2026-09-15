@@ -1,4 +1,3 @@
-import { v4 as uuidV4 } from 'uuid';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import { CARD_TYPE } from '../constants/card-type.const';
@@ -6,6 +5,7 @@ import { Henchmen } from '../henchmen/henchmen.model';
 import { createMockGamesetMeta } from '../testing/mocks/mock.utils';
 import { VillainGroup } from '../villain-group/villain-group.model';
 
+import { faker } from '@faker-js/faker';
 import { GameSet } from '../game-set/game-set';
 import { Mastermind } from './mastermind.model';
 
@@ -17,7 +17,7 @@ describe('Mastermind', () => {
     gameSet = createMockGamesetMeta();
 
     villain = new VillainGroup({
-      id: uuidV4(),
+      id: faker.string.uuid(),
       gameSet: gameSet,
       name: 'Test Villain',
     });
@@ -31,7 +31,7 @@ describe('Mastermind', () => {
         alwaysLeads: [villain],
         attackPoints: 10,
         gameSet: gameSet,
-        id: uuidV4(),
+        id: faker.string.uuid(),
         masterStrike: 'Master-strike',
         name: 'Test Mastermind',
         victoryPoints: 5,
@@ -79,7 +79,7 @@ describe('Mastermind', () => {
     beforeAll(() => {
       villain2 = new VillainGroup({
         gameSet: gameSet,
-        id: uuidV4(),
+        id: faker.string.uuid(),
         name: 'Villain 2',
       });
 
@@ -87,7 +87,7 @@ describe('Mastermind', () => {
         alwaysLeads: [villain, villain2],
         attackPoints: 5,
         gameSet: gameSet,
-        id: uuidV4(),
+        id: faker.string.uuid(),
         masterStrike: '',
         name: 'Mastermind 2',
         victoryPoints: 4,
@@ -109,7 +109,7 @@ describe('Mastermind', () => {
     beforeAll(() => {
       henchmen = new Henchmen({
         gameSet: gameSet,
-        id: uuidV4(),
+        id: faker.string.uuid(),
         name: 'Henchmen',
         attackPoints: 2,
         fight: '',
@@ -119,7 +119,7 @@ describe('Mastermind', () => {
         alwaysLeads: [villain, henchmen],
         attackPoints: 5,
         gameSet: gameSet,
-        id: uuidV4(),
+        id: faker.string.uuid(),
         masterStrike: '',
         name: 'Mastermind 2',
         victoryPoints: 4,

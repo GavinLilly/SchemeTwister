@@ -2,12 +2,11 @@ import { afterEach, beforeAll, describe, expect, it } from 'vitest';
 
 import { LibTwister } from '../lib-twister';
 import instantiateScheme from '../shared/utils/instantiate-scheme';
-import { StoreBuilder } from '../stores/store-builder';
-import { StoreOfStores } from '../stores/store-of-stores';
+import { StoreBuilder } from '../store/store-builder';
+import { StoreOfStores } from '../store/store-of-stores';
 import { MockSeriesFactory } from '../testing/mocks/mock-series.factory';
-
-import { LiteGameSetup } from '../model/lite-game-setup';
 import { GameSetup } from './game-setup';
+import { LiteGameSetup } from './lite-game-setup';
 
 const SERIES_FACTORY = new MockSeriesFactory();
 const SERIES = SERIES_FACTORY.createSeries();

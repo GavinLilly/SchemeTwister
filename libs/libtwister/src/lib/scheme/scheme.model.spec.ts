@@ -3,14 +3,13 @@ import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
 import { CARD_TYPE } from '../constants/card-type.const';
 import { NumPlayers, numPlayers } from '../constants/num-players.const';
-import { GameSetup } from '../model/game-setup';
-import { Rules } from '../shared/rules';
-import { StoreBuilder } from '../stores/store-builder';
-import { StoreOfStores } from '../stores/store-of-stores';
+import { GameSetup } from '../game-setup/game-setup';
+import { Rules } from '../game-setup/rules';
+import { StoreBuilder } from '../store/store-builder';
+import { StoreOfStores } from '../store/store-of-stores';
 import { MockCardFactory } from '../testing/mocks/mock-card.factory';
 import { MockGameSetFactory } from '../testing/mocks/mock-game-set.factory';
 import { SchemeMinusRules } from './scheme-minus-rules.type';
-
 import { Scheme } from './scheme.model';
 
 const gameSetFactory = new MockGameSetFactory();

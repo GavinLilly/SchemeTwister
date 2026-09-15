@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
+import { CARD_TYPE } from '../constants/card-type.const';
 import { MockCardFactory } from '../testing/mocks/mock-card.factory';
-import { CARD_TYPE } from './constants/card-type.const';
 
 describe('SchemeDefinition', () => {
   const cardFactory = new MockCardFactory();

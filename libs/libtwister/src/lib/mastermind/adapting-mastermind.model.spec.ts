@@ -1,4 +1,4 @@
-import { v4 as uuidV4 } from 'uuid';
+import { faker } from '@faker-js/faker';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import { createMockGamesetMeta } from '../testing/mocks/mock.utils';
@@ -13,7 +13,7 @@ describe('AdaptingMastermind', () => {
     const gameSet = createMockGamesetMeta();
 
     const villain = new VillainGroup({
-      id: uuidV4(),
+      id: faker.string.uuid(),
       gameSet: gameSet,
       name: 'Test Villain',
     });
@@ -23,7 +23,7 @@ describe('AdaptingMastermind', () => {
         alwaysLeads: [villain],
         attackPoints: 10,
         gameSet: gameSet,
-        id: uuidV4(),
+        id: faker.string.uuid(),
         name: 'Test Mastermind',
         victoryPoints: 5,
       },

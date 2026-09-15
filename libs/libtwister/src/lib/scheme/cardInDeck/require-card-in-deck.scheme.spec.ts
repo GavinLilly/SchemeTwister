@@ -2,10 +2,10 @@ import { beforeEach, describe, expect, it } from 'vitest';
 
 import { DECK_TYPE } from '../../constants/deck-type.const';
 import { GameSet } from '../../game-set/game-set';
-import { GameSetup } from '../../model/game-setup.interface';
+import { GameSetup } from '../../game-setup/game-setup.interface';
 import { randomize } from '../../shared/utils/randomize';
-import { StoreBuilder } from '../../stores/store-builder';
-import { StoreOfStores } from '../../stores/store-of-stores';
+import { StoreBuilder } from '../../store/store-builder';
+import { StoreOfStores } from '../../store/store-of-stores';
 import { MockCardFactory } from '../../testing/mocks/mock-card.factory';
 import { MockGameSetFactory } from '../../testing/mocks/mock-game-set.factory';
 import { VillainGroup } from '../../villain-group/villain-group.model';

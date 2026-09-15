@@ -1,5 +1,4 @@
-import { v4 as uuidV4 } from 'uuid';
-
+import { faker } from '@faker-js/faker';
 import { GameSet, Hero } from '@schemetwister/libtwister';
 
 import { SortByNamePipe } from './SortByName.pipe';
@@ -17,23 +16,23 @@ describe('SortByNamePipe', () => {
 
   it('should sort entries passed to it', () => {
     const hero1 = new Hero({
-      id: uuidV4(),
+      id: faker.string.uuid(),
       name: 'Hero ONE',
       gameSet: GameSet.empty(),
     });
     const hero2 = new Hero({
-      id: uuidV4(),
+      id: faker.string.uuid(),
       name: 'Hero TWO',
       gameSet: GameSet.empty(),
     });
     const hero3 = new Hero({
-      id: uuidV4(),
+      id: faker.string.uuid(),
       name: 'Hero THREE',
       gameSet: GameSet.empty(),
     });
 
     const pipe = new SortByNamePipe();
-    const sorted = pipe.transform([hero1, hero2, hero3]);
+    const sorted = pipe.transform();
 
     expect(sorted).toEqual([hero1, hero3, hero2]);
   });
