@@ -1,24 +1,24 @@
-import { NgClass, AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import { Component, OnInit, Signal, effect, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Meta } from '@angular/platform-browser';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { faCog, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faCog } from '@fortawesome/free-solid-svg-icons';
 import {
-  NgbModal,
+  NgbAccordionBody,
+  NgbAccordionButton,
+  NgbAccordionCollapse,
+  NgbAccordionDirective,
+  NgbAccordionHeader,
+  NgbAccordionItem,
+  NgbAccordionToggle,
+  NgbCollapse,
   NgbDropdown,
-  NgbDropdownToggle,
-  NgbDropdownMenu,
   NgbDropdownButtonItem,
   NgbDropdownItem,
-  NgbAccordionDirective,
-  NgbAccordionItem,
-  NgbAccordionHeader,
-  NgbAccordionToggle,
-  NgbAccordionButton,
-  NgbCollapse,
-  NgbAccordionCollapse,
-  NgbAccordionBody,
+  NgbDropdownMenu,
+  NgbDropdownToggle,
+  NgbModal,
 } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 
@@ -140,7 +140,7 @@ export class RandomizeComponent implements OnInit {
     this._store.dispatch(randomizePageActions.generateGameSetup());
 
   setNumberOfPlayers(value: string) {
-    const realValue = parseInt(value);
+    const realValue = Number.parseInt(value);
     this._store.dispatch(
       numPlayersActions.setNumberOfPlayers({
         numPlayers: realValue as NumPlayers,
