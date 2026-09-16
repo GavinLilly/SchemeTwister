@@ -2,11 +2,15 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
-import { enableProdMode, importProvidersFrom } from '@angular/core';
-import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import {
-  getFirestore,
+  enableProdMode,
+  importProvidersFrom,
+  provideZoneChangeDetection,
+} from '@angular/core';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import {
   connectFirestoreEmulator,
+  getFirestore,
   provideFirestore,
 } from '@angular/fire/firestore';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
@@ -46,6 +50,7 @@ if (environment.environmentType === EnvironmentType.PROD) {
 
 bootstrapApplication(AppComponent, {
   providers: [
+    provideZoneChangeDetection(),
     provideHttpClient(withInterceptorsFromDi()),
     provideRouter(APP_ROUTES),
     // Firebase
