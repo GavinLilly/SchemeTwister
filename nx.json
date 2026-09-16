@@ -173,7 +173,7 @@
       "!{projectRoot}/eslint.config.mjs"
     ]
   },
-  "parallel": 1,
+  "parallel": 3,
   "useInferencePlugins": false,
   "defaultBase": "main",
   "analytics": true,

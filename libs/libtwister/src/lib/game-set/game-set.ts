@@ -1,6 +1,5 @@
 import { v4 as uuidV4 } from 'uuid';
 
-
 import { Bystander } from '../bystander/bystander.model';
 import { CardType } from '../constants/card-type.const';
 import { GAME_SET_SIZE, GameSetSize } from '../constants/game-set-size.const';

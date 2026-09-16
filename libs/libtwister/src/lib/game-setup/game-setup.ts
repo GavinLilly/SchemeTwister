@@ -1,4 +1,3 @@
-
 import { Henchmen } from '../henchmen/henchmen.model';
 import { Hero } from '../hero/hero.model';
 import { Mastermind } from '../mastermind/mastermind.model';

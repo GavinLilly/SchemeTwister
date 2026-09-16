@@ -7,6 +7,6 @@
   "exports": {
     "./package.json": "./package.json",
     ".": "./src/index.js",
-    "./testing": "./src/testing.js"
+    "./testing": "./src/testing.index.js"
   }
 }
