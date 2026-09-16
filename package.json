@@ -57,11 +57,11 @@
     "zone.js": "0.15.0"
   },
   "devDependencies": {
-    "@angular-devkit/architect": "v20-lts",
-    "@angular-devkit/build-angular": "v20-lts",
-    "@angular-devkit/core": "v20-lts",
-    "@angular-devkit/schematics": "v20-lts",
-    "@angular/cli": "v20-lts",
+    "@angular-devkit/architect": "0.2102.24",
+    "@angular-devkit/build-angular": "21.2.24",
+    "@angular-devkit/core": "21.2.24",
+    "@angular-devkit/schematics": "21.2.24",
+    "@angular/cli": "21.2.24",
     "@angular/compiler-cli": "21.2.23",
     "@angular/language-service": "21.2.23",
     "@commitlint/cli": "^15.0.0",
