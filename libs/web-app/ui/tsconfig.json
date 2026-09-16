@@ -3,7 +3,8 @@
   "compilerOptions": {
     "types": ["node"],
     "target": "ES2022",
-    "module": "esnext"
+    "module": "esnext",
+    "ignoreDeprecations": "6.0"
   },
   "include": [],
   "files": [],

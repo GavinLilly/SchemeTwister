@@ -53,7 +53,10 @@
       ],
       "@schemetwister/web-app/shared": ["libs/web-app/shared/src/index.ts"],
       "@schemetwister/web-app/ui": ["libs/web-app/ui/src/index.ts"]
-    }
+    },
+    "noUncheckedSideEffectImports": false,
+    "types": ["*"],
+    "ignoreDeprecations": "6.0"
   },
   "exclude": ["node_modules", "tmp"],
   "angularCompilerOptions": {

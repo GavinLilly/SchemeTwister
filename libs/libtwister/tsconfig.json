@@ -3,7 +3,8 @@
   "compilerOptions": {
     "types": ["node"],
     "module": "esnext",
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "ignoreDeprecations": "6.0"
   },
   "include": [],
   "files": [],
