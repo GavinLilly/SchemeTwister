@@ -2,29 +2,29 @@ import { Component, Signal, inject } from '@angular/core';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import {
-  NgbAccordionDirective,
-  NgbAccordionItem,
-  NgbAccordionHeader,
-  NgbAccordionToggle,
-  NgbAccordionButton,
-  NgbCollapse,
-  NgbAccordionCollapse,
   NgbAccordionBody,
+  NgbAccordionButton,
+  NgbAccordionCollapse,
+  NgbAccordionDirective,
+  NgbAccordionHeader,
+  NgbAccordionItem,
+  NgbAccordionToggle,
+  NgbCollapse,
 } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 
 import {
   Henchmen,
   Hero,
-  IVillainDeck,
   Mastermind,
+  VillainDeck,
   VillainGroup,
 } from '@schemetwister/libtwister';
 import {
   HenchmenCardContentComponent,
-  VillaingroupCardContentComponent,
   HeroCardContentComponent,
   MastermindCardContentComponent,
+  VillaingroupCardContentComponent,
 } from '@schemetwister/web-app/ui';
 
 import { villainDeckActions } from '../+state/actions/game-setup.actions';
@@ -63,7 +63,7 @@ export class VillainDeckComponent {
     }>
   >(Store);
 
-  villainDeck: Signal<IVillainDeck> =
+  villainDeck: Signal<VillainDeck> =
     this._store.selectSignal(selectVillainDeck);
 
   lockedCards = this._store.selectSignal(selectLockedVillainDeckCards);

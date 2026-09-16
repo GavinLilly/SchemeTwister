@@ -32,4 +32,10 @@ export default [
     // Override or add rules here
     rules: {},
   },
+  {
+    files: ['**/*.fixtures.ts'],
+    rules: {
+      'max-nested-callbacks': 'off',
+    },
+  },
 ];

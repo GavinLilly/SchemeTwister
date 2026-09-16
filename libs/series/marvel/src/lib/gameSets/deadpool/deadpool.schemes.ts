@@ -1,11 +1,11 @@
 import {
-  IOverrideScheme,
+  DECK_TYPE,
+  OverrideScheme,
   RequireCardInDeckScheme,
   RequireCardName,
   RequireHero,
-  DECK_TYPE,
-  SchemeDefinition,
   RequireTeam,
+  SchemeDefinition,
 } from '@schemetwister/libtwister';
 
 import { MERCS_FOR_MONEY } from '../../teams';
@@ -13,7 +13,7 @@ import { MERCS_FOR_MONEY } from '../../teams';
 import { REVENGE } from './deadpool.keywords';
 import { META } from './deadpool.meta';
 
-const includeDeadpool: IOverrideScheme = {
+const includeDeadpool: OverrideScheme = {
   schemeType: RequireCardInDeckScheme,
   params: [new RequireCardName('deadpool'), new RequireHero(), DECK_TYPE.hero],
 };

@@ -1,8 +1,8 @@
-import { IGameSetMeta, GAME_SET_SIZE } from '@schemetwister/libtwister';
+import { GameSetProps, GAME_SET_SIZE } from '@schemetwister/libtwister';
 
 import { <%= seriesMetaClass %> } from '../../<%= seriesMetaClass %>';
 
-export const META: IGameSetMeta = {
+export const META: GameSetProps = {
   id: '<%= generateUuid() %>',
   name: '<%= name %>',
   size: GAME_SET_SIZE.<%= size %>,

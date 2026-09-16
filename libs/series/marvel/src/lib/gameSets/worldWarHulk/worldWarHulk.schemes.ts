@@ -1,19 +1,19 @@
 import {
-  IOverrideScheme,
+  DECK_TYPE,
+  OverrideScheme,
+  RequireCard,
   RequireCardInDeckScheme,
   RequireCardName,
-  RequireHero,
-  DECK_TYPE,
-  SchemeDefinition,
-  RequireCard,
   RequireHenchmen,
+  RequireHero,
+  SchemeDefinition,
 } from '@schemetwister/libtwister';
 import { CROSS_DIMENSIONAL_RAMPAGE } from '@schemetwister/series-marvel-common';
 
 import { CYTOPLASM_SPIKES } from './worldWarHulk.henchmen';
 import { META } from './worldWarHulk.meta';
 
-const requireHulkScheme: IOverrideScheme = {
+const requireHulkScheme: OverrideScheme = {
   schemeType: RequireCardInDeckScheme,
   params: [
     new RequireCardName('hulk'),

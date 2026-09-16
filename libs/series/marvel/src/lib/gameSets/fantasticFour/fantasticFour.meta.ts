@@ -1,8 +1,8 @@
-import { IGameSetMeta, GAME_SET_SIZE } from '@schemetwister/libtwister';
+import { GAME_SET_SIZE, GameSetProps } from '@schemetwister/libtwister';
 
 import { marvelSeriesMeta } from '../../marvelSeriesMeta';
 
-export const META: IGameSetMeta = {
+export const META: GameSetProps = {
   id: '8fb1c42f-41e2-4c25-ad63-b7cbdbf47972',
   name: 'Fantastic Four',
   size: GAME_SET_SIZE.small,

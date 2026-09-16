@@ -1,8 +1,8 @@
-import { IGameSetMeta, GAME_SET_SIZE } from '@schemetwister/libtwister';
+import { GAME_SET_SIZE, GameSetProps } from '@schemetwister/libtwister';
 
 import { marvelSeriesMeta } from '../../marvelSeriesMeta';
 
-export const META: IGameSetMeta = {
+export const META: GameSetProps = {
   id: 'c2174278-0111-49bf-9237-d7734a01559d',
   name: 'Annihilation',
   size: GAME_SET_SIZE.small,
