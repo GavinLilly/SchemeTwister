@@ -1,3 +1,9 @@
+## [3.21.34](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.33...v3.21.34) (2026-09-18)
+
+### Dependencies
+
+* **deps:** update to angular 21 ([3d05ad5](https://github.com/GavinLilly/SchemeTwister/commit/3d05ad5ee3db8b3c618fa23c2e8e031d161de19e))
+
 ## [3.21.33](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.32...v3.21.33) (2026-08-25)
 
 ### Dependencies
