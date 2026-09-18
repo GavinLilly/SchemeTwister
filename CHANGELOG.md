@@ -1,3 +1,9 @@
+## [3.21.35](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.34...v3.21.35) (2026-09-18)
+
+### Dependencies
+
+* **deps:** update to UUID 11 ([e163533](https://github.com/GavinLilly/SchemeTwister/commit/e163533f73f9c5ea94ad4685fc41eeb97c9815f8))
+
 ## [3.21.34](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.33...v3.21.34) (2026-09-18)
 
 ### Dependencies
