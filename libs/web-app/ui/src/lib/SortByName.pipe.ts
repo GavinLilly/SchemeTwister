@@ -4,7 +4,6 @@ import { INamedObject } from '@schemetwister/libtwister';
 
 @Pipe({
   name: 'sortByName',
-  standalone: true,
 })
 export class SortByNamePipe implements PipeTransform {
   transform(value?: INamedObject[]): INamedObject[] | undefined {

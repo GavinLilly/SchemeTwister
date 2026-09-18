@@ -5,10 +5,10 @@ import { NgbAccordionModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 
 import {
-  Mastermind,
-  CARD_TYPE,
-  TransformingMastermind,
   AdaptingMastermind,
+  CARD_TYPE,
+  Mastermind,
+  TransformingMastermind,
 } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 import {
@@ -29,14 +29,13 @@ type MastermindType = Mastermind | TransformingMastermind | AdaptingMastermind;
 
 @Component({
   selector: 'schemetwister-mastermind-card',
+  templateUrl: './mastermind-card.component.html',
+  styleUrls: ['./mastermind-card.component.scss'],
   imports: [
     MastermindCardContentComponent,
     FontAwesomeModule,
     NgbAccordionModule,
   ],
-  templateUrl: './mastermind-card.component.html',
-  styleUrls: ['./mastermind-card.component.scss'],
-  standalone: true,
 })
 export class MastermindCardComponent {
   private readonly _modalService = inject(NgbModal);

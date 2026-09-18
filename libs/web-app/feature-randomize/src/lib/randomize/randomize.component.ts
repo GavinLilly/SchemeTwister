@@ -59,6 +59,7 @@ import { VillainDeckComponent } from '../villain-deck/villain-deck.component';
     FormsModule,
     NgClass,
     AsyncPipe,
+
     // Bootstrap
     NgbDropdown,
     NgbDropdownToggle,
@@ -73,8 +74,10 @@ import { VillainDeckComponent } from '../villain-deck/villain-deck.component';
     NgbCollapse,
     NgbAccordionCollapse,
     NgbAccordionBody,
+
     // Font awesome
     FaIconComponent,
+
     // Schemetwister
     SchemeCardComponent,
     MastermindCardComponent,

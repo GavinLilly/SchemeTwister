@@ -31,7 +31,6 @@ import {
   imports: [BaseCardContentComponent, FontAwesomeModule, NgbAccordionModule],
   templateUrl: './scheme-card.component.html',
   styleUrls: ['./scheme-card.component.scss'],
-  standalone: true,
 })
 export class SchemeCardComponent {
   private readonly _modalService = inject(NgbModal);
