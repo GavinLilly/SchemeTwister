@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 import { CARD_TYPE } from '../constants/card-type.const';
 import { GameSet } from '../game-set/game-set';
 import { NumPlayerRules } from '../game-setup/rules/num-player-rules';
@@ -66,7 +68,7 @@ export class Mastermind
     return new Mastermind({
       gameSet: GameSet.empty(),
       name: 'EMPTY_MASTERMIND',
-      id: 'c3af35df-7b37-49c4-9c56-640591c94bd9',
+      id: uuidv4(),
       attackPoints: 0,
       victoryPoints: 0,
       alwaysLeads: [],
