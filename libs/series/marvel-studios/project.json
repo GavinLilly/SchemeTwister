@@ -37,6 +37,11 @@
         "outputFileName": "index.js",
         "tsConfig": "libs/series/marvel-studios/tsconfig.lib.json",
         "platform": "neutral",
+        "format": [
+          "esm",
+          "cjs"
+        ],
+        "declaration": true,
         "assets": [
           "libs/series/marvel-studios/README.md"
         ],

@@ -25,14 +25,16 @@
       "@schemetwister/schematics": [
         "tools/schemetwister-schematics/src/index.ts"
       ],
-      "@schemetwister/series-buffy": ["dist/libs/series/buffy"],
-      "@schemetwister/series-marvel": ["dist/libs/series/marvel"],
-      "@schemetwister/series-marvel-common": ["dist/libs/series/marvel-common"],
+      "@schemetwister/series-buffy": ["libs/series/buffy/src/index.ts"],
+      "@schemetwister/series-marvel": ["libs/series/marvel/src/index.ts"],
+      "@schemetwister/series-marvel-common": [
+        "libs/series/marvel-common/src/index.ts"
+      ],
       "@schemetwister/series-marvel-studios": [
-        "dist/libs/series/marvel-studios"
+        "libs/series/marvel-studios/src/index.ts"
       ],
       "@schemetwister/series-marvel-villains": [
-        "dist/libs/series/marvel-villains"
+        "libs/series/marvel-villains/src/index.ts"
       ],
       "@schemetwister/web-app-feature-view": [
         "libs/web-app/feature-view/src/index.ts"
@@ -56,6 +58,7 @@
     "types": ["*"],
     "ignoreDeprecations": "6.0"
   },
+  "include": ["./types/*.d.ts"],
   "exclude": ["node_modules", "tmp"],
   "angularCompilerOptions": {
     "strictTemplates": true

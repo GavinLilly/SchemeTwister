@@ -32,7 +32,7 @@
     id="navbarContent"
   >
     <ul ngbNav>
-      @for (link of links; track link) {
+      @for (link of links; track link.name) {
       <li ngbNavItem>
         <a ngbNavLink [routerLink]="link.link" (click)="isMenuCollapsed = true">
           {{ link.name }}
