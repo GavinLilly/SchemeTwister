@@ -58,6 +58,7 @@
     "types": ["*"],
     "ignoreDeprecations": "6.0"
   },
+  "include": ["./types/*.d.ts"],
   "exclude": ["node_modules", "tmp"],
   "angularCompilerOptions": {
     "strictTemplates": true
