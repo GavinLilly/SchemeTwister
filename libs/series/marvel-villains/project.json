@@ -17,7 +17,13 @@
             "eslint"
           ]
         }
-      ]
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/series/marvel-villains/**/*.{ts,tsx,js,jsx}",
+          "libs/series/marvel-villains/package.json"
+        ]
+      }
     },
     "build": {
       "executor": "@nx/esbuild:esbuild",
@@ -28,21 +34,21 @@
       "options": {
         "main": "libs/series/marvel-villains/src/index.ts",
         "outputPath": "dist/libs/series/marvel-villains",
-        "outputFileName": "main.js",
+        "outputFileName": "index.js",
         "tsConfig": "libs/series/marvel-villains/tsconfig.lib.json",
+        "platform": "neutral",
         "assets": [
-          {
-            "glob": "README.md",
-            "input": "libs/series/marvel-villains",
-            "output": "."
-          },
-          {
-            "glob": "*",
-            "input": "libs/series/marvel-villains/src/assets/icons/teams",
-            "output": "assets/icons/teams"
-          }
+          "libs/series/marvel-villains/README.md"
         ],
-        "platform": "neutral"
+        "esbuildOptions": {
+          "mainFields": [
+            "module",
+            "main"
+          ],
+          "loader": {
+            ".png": "dataurl"
+          }
+        }
       },
       "configurations": {
         "development": {

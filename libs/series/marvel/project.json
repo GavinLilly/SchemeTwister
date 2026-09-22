@@ -17,7 +17,13 @@
             "eslint"
           ]
         }
-      ]
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/series/marvel/**/*.{ts,tsx,js,jsx}",
+          "libs/series/marvel/package.json"
+        ]
+      }
     },
     "build": {
       "executor": "@nx/esbuild:esbuild",
@@ -28,21 +34,21 @@
       "options": {
         "main": "libs/series/marvel/src/index.ts",
         "outputPath": "dist/libs/series/marvel",
-        "outputFileName": "main.js",
+        "outputFileName": "index.js",
         "tsConfig": "libs/series/marvel/tsconfig.lib.json",
+        "platform": "neutral",
         "assets": [
-          {
-            "glob": "README.md",
-            "input": "libs/series/marvel",
-            "output": "."
-          },
-          {
-            "glob": "*",
-            "input": "libs/series/marvel/src/assets/icons/teams",
-            "output": "assets/icons/teams"
-          }
+          "libs/series/marvel/README.md"
         ],
-        "platform": "neutral"
+        "esbuildOptions": {
+          "mainFields": [
+            "module",
+            "main"
+          ],
+          "loader": {
+            ".png": "dataurl"
+          }
+        }
       },
       "configurations": {
         "development": {
