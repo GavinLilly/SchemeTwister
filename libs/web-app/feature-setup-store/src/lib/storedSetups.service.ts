@@ -33,7 +33,7 @@ export class StoredSetupsService {
   public async getLatestSetups(count = 10): Promise<IStoredGameSetup[]> {
     const latestSetupsQuery = query(
       this.setupsCollection,
-      orderBy('updated'),
+      orderBy('updated', 'desc'),
       limit(count)
     );
 
