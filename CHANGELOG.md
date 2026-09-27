@@ -1,3 +1,9 @@
+## [3.21.36](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.35...v3.21.36) (2026-09-27)
+
+### Bug Fixes
+
+* **app:** change orderBy to descending for latest setups ([459090c](https://github.com/GavinLilly/SchemeTwister/commit/459090c9ec1710c98bb25bbfaa90d7b6d393b605))
+
 ## [3.21.35](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.34...v3.21.35) (2026-09-18)
 
 ### Dependencies
