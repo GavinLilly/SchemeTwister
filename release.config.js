@@ -1,5 +1,4 @@
 /**
- * @type {import('semantic-release').GlobalConfig}
  */
 export default {
   branches: ['main'],
@@ -79,7 +78,7 @@ export default {
     [
       '@semantic-release/github',
       {
-        assets: 'dist/*.tgz',
+        assets: 'dist*.tgz',
       },
     ],
   ],
