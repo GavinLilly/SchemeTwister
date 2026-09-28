@@ -1,3 +1,9 @@
+## [3.22.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.36...v3.22.0) (2026-09-28)
+
+### Features
+
+* **app:** add series counter ([a0eb338](https://github.com/GavinLilly/SchemeTwister/commit/a0eb338bb4f44ffa8962ff205d52bcf2a28b2699))
+
 ## [3.21.36](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.35...v3.21.36) (2026-09-27)
 
 ### Bug Fixes
