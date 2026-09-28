@@ -2,12 +2,14 @@ import { Component, inject } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 
 import {
-  Mastermind,
+  GameSet,
   Henchmen,
   Hero,
-  SchemeMinusRules,
-  VillainGroup,
   INamedObject,
+  Mastermind,
+  SchemeMinusRules,
+  SeriesMeta,
+  VillainGroup,
 } from '@schemetwister/libtwister';
 import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
 
@@ -17,6 +19,7 @@ import { SERIES_REGISTER_TOKEN } from '@schemetwister/web-app/shared';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent {
+  numSeries: number;
   numGameSets: number;
   numHenchmen: number;
   numHeroes: number;
@@ -30,6 +33,7 @@ export class HomePageComponent {
 
     const allGameSets = seriesRegister.flatMap((series) => series.gameSets);
 
+    this.numSeries = HomePageComponent._getSeries(allGameSets).size;
     this.numGameSets = allGameSets.length;
     this.numHenchmen = HomePageComponent._mapReduce(
       allGameSets
@@ -74,4 +78,9 @@ export class HomePageComponent {
     gameSetCards
       .map((cards) => cards.length)
       .reduce((prev, curr) => prev + curr, 0);
+
+  private static _getSeries(gamesets: GameSet[]): Set<SeriesMeta> {
+    const allSeries = gamesets.map((gameSet) => gameSet.series);
+    return new Set(allSeries);
+  }
 }
