@@ -29,7 +29,7 @@
     "@angular/localize": "21.2.23",
     "@angular/platform-browser": "21.2.23",
     "@angular/platform-browser-dynamic": "21.2.23",
-    "@angular/router": "21.2.23",
+    "@angular/router": "21.2.24",
     "@angular/service-worker": "21.2.23",
     "@fortawesome/angular-fontawesome": "^3.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
