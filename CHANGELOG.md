@@ -1,3 +1,9 @@
+## [3.22.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.0...v3.22.1) (2026-09-30)
+
+### Dependencies
+
+* **deps:** bump ip-address from 10.5.0 to 10.7.2 ([541b87a](https://github.com/GavinLilly/SchemeTwister/commit/541b87adca2280d1e58ba3a8beb9dcc8ef8b6f98))
+
 ## [3.22.0](https://github.com/GavinLilly/SchemeTwister/compare/v3.21.36...v3.22.0) (2026-09-28)
 
 ### Features
