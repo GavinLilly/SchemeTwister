@@ -1,3 +1,9 @@
+## [3.22.2](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.1...v3.22.2) (2026-09-30)
+
+### Dependencies
+
+* **deps:** bump @angular/router from 21.2.23 to 21.2.24 ([58687e6](https://github.com/GavinLilly/SchemeTwister/commit/58687e63630e5ba33f5124db3e5cfa3691197fc3))
+
 ## [3.22.1](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.0...v3.22.1) (2026-09-30)
 
 ### Dependencies
