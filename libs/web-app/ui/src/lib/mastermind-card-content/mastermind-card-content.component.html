@@ -5,7 +5,7 @@
   </p>
   }
   <b>Always leads: </b>
-  @for (item of mastermind.alwaysLeads; track item) {
+  @for (item of mastermind.alwaysLeads; track item.id) {
   <ul>
     <li>{{ item.name }}</li>
   </ul>
@@ -13,7 +13,7 @@
   <div>
     <p><b>Victory Points: </b>{{ mastermind.victoryPoints }}</p>
     @for (adaptingMastermind of mastermind.masterminds; track
-    adaptingMastermind) {
+    adaptingMastermind.name) {
     <div>
       <hr />
       <h5>{{ adaptingMastermind.name }}</h5>

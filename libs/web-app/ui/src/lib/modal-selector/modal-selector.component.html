@@ -16,7 +16,7 @@
     (ngModelChange)="chosenItem.emit(itemSelect.value)"
   >
     <option>{{ randomText }}</option>
-    @for (item of adjustedAvailableItems; track item) {
+    @for (item of adjustedAvailableItems; track item.id) {
     <option [value]="item.id">
       {{ item.name }}
     </option>

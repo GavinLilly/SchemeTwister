@@ -19,11 +19,7 @@
           <div class="d-flex align-items-center justify-content-between">
             <button ngbAccordionButton>
               <img
-                [src]="
-                  hero.team
-                    ? '/assets/icons/teams/' + hero.team.icon
-                    : blankImage
-                "
+                [src]="hero.team ? hero.team.icon : blankImage"
                 [alt]="hero.team ? hero.team.name : 'No team'"
                 class="img-fluid"
                 id="hero-team"
