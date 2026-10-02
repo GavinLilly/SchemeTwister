@@ -1,3 +1,9 @@
+## [3.22.5](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.4...v3.22.5) (2026-10-02)
+
+### Dependencies
+
+* **deps:** bump piscina from 4.9.3 to 4.9.4 ([c8c1193](https://github.com/GavinLilly/SchemeTwister/commit/c8c11930ae1fccb0dc0d5ded1ad70f9fb765e667))
+
 ## [3.22.4](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.3...v3.22.4) (2026-10-02)
 
 ### Dependencies
