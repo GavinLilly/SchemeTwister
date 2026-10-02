@@ -1,3 +1,9 @@
+## [3.22.4](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.3...v3.22.4) (2026-10-02)
+
+### Dependencies
+
+* **deps:** bump hono from 4.13.4 to 4.13.12 ([2fadfbe](https://github.com/GavinLilly/SchemeTwister/commit/2fadfbe7fc4533a1111d50ce240f7e9912746889))
+
 ## [3.22.3](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.2...v3.22.3) (2026-10-02)
 
 ### Dependencies
