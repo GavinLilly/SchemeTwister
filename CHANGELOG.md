@@ -1,3 +1,12 @@
+## [3.22.6](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.5...v3.22.6) (2026-10-17)
+
+### Dependencies
+
+* **deps:** bump handlebars from 4.7.9 to 4.7.10 ([b1f06c1](https://github.com/GavinLilly/SchemeTwister/commit/b1f06c16e302b30af2d11893c0c7a7b254e2ab01))
+* **deps:** bump postcss-selector-parser from 7.1.5 to 7.1.6 ([686e51f](https://github.com/GavinLilly/SchemeTwister/commit/686e51f83d1dfe435b0ab3d4e3e2b8a7cb145ccd))
+* **deps:** bump shell-quote from 1.10.0 to 1.12.0 ([b02c6bd](https://github.com/GavinLilly/SchemeTwister/commit/b02c6bd0ceec7c32509c02cf79401675b0184411))
+* **deps:** bump source-map-js from 1.2.1 to 1.2.2 ([5f5972a](https://github.com/GavinLilly/SchemeTwister/commit/5f5972a9115bfb41b0c91b6689ac696cbb00c576))
+
 ## [3.22.5](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.4...v3.22.5) (2026-10-02)
 
 ### Dependencies
