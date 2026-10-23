@@ -161,7 +161,7 @@ importers:
         version: 20.0.0(@angular/core@21.2.23(@angular/compiler@21.2.23)(rxjs@7.8.1)(zone.js@0.15.0))(@ngrx/store@20.0.0(@angular/core@21.2.23(@angular/compiler@21.2.23)(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(rxjs@7.8.1)
       '@nx/angular':
         specifier: 23.2.1
-        version: 23.2.1(2b96fac746a7964241e272565a3a6ec9)
+        version: 23.2.1(b4a46ecd6e75e38f2a4e35966777c6a8)
       '@nx/devkit':
         specifier: 23.2.1
         version: 23.2.1(nx@23.2.1(@swc/core@1.16.1(@swc/helpers@0.5.23)))
@@ -200,7 +200,7 @@ importers:
         version: 23.2.1(@swc/core@1.16.1(@swc/helpers@0.5.23))
       '@schematics/angular':
         specifier: v20-lts
-        version: 20.3.39
+        version: 20.3.41
       '@swc/cli':
         specifier: ^0.8.1
         version: 0.8.1(@swc/core@1.16.1(@swc/helpers@0.5.23))(supports-color@7.2.0)
@@ -495,8 +495,8 @@ packages:
       chokidar:
         optional: true
 
-  '@angular-devkit/core@20.3.39':
-    resolution: {integrity: sha512-yPyQmWhrByhGqHSr8H1tQsJiosnllcQvneLR7IAbu9gOceShfNoQ0fRP8xdhBk5rVq3mudLFKRV3dqk+LsO73w==}
+  '@angular-devkit/core@20.3.41':
+    resolution: {integrity: sha512-zkAUfR+uH+KAOZwEAx4PAFGvdM449JoWF0JN7ViXnlSX/kNavKCZ2ZbZjeIOUiuN1KCPx81n6UbeyesmxrLudw==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     peerDependencies:
       chokidar: ^4.0.0
@@ -517,8 +517,8 @@ packages:
     resolution: {integrity: sha512-cut471ALIuZR+WyoQLFfypZDNTxwG35O7fEj6wTh65EliNISTkmZaqUOgqNjTT6xJ/YaDwZ9+CuSfTdyO0hMCg==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
 
-  '@angular-devkit/schematics@20.3.39':
-    resolution: {integrity: sha512-tnKD7YAK2sVRS2v8nermtExpUOSfHjkY/csJM0ki/a/1dy0UJ6SnKf9IJHCdlvaUx2F1YTej5TzNJGG2TWxOSg==}
+  '@angular-devkit/schematics@20.3.41':
+    resolution: {integrity: sha512-cDT/j0wI2GfQLBKws1icGZm3Nsn1SfvBd8FLqmwzMQrR9yyoopwPVCaoFHuFad1bMKO/YzW7z95bIcIEJ7wXwQ==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
 
   '@angular-devkit/schematics@21.2.24':
@@ -3842,8 +3842,8 @@ packages:
   '@rspack/lite-tapable@1.1.0':
     resolution: {integrity: sha512-E2B0JhYFmVAwdDiG14+DW0Di4Ze4Jg10Pc4/lILUrd5DRCaklduz2OvJ5HYQ6G+hd+WTzqQb3QnDNfK4yvAFYw==}
 
-  '@schematics/angular@20.3.39':
-    resolution: {integrity: sha512-SU+bP/nmrSRhgwx8M6RjfXmeuH7fLJCFonJCyPozQGCBFsPeGOJWQsX+SaygFhHTrX9XFBWNQQx7oPhotx1Yvg==}
+  '@schematics/angular@20.3.41':
+    resolution: {integrity: sha512-aAHinMqMQup5MMiXvQgTrNeHAkyFp2QJ0TfF/cNFaW01kliKAjJFJfRwM030uvIfcYDyVnG1c5V1HUFreuiYoQ==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
 
   '@schematics/angular@21.2.24':
@@ -6957,8 +6957,8 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  ip-address@10.7.2:
-    resolution: {integrity: sha512-7H/2gFSIitxc0hG3nOI1glS8QLo/EHBFFLk8vEUjXY/xu0AdL8jZ9U1IzO2PUm0d2D/ofQcAifb0g6OBkt8U7w==}
+  ip-address@10.7.4:
+    resolution: {integrity: sha512-DWBMKyeM25D70nrIiTkgQth59/G+naKOTep6huF9j+GmeK3DMD60Zvxg5d5qQnz+38AHgou6ean2LECX+lrKDg==}
     engines: {node: '>= 12'}
 
   ip-regex@2.1.0:
@@ -11286,7 +11286,7 @@ snapshots:
       rxjs: 7.8.2
       source-map: 0.7.6
 
-  '@angular-devkit/core@20.3.39':
+  '@angular-devkit/core@20.3.41':
     dependencies:
       ajv: 8.18.0
       ajv-formats: 3.0.1(ajv@8.18.0)
@@ -11314,9 +11314,9 @@ snapshots:
     transitivePeerDependencies:
       - chokidar
 
-  '@angular-devkit/schematics@20.3.39':
+  '@angular-devkit/schematics@20.3.41':
     dependencies:
-      '@angular-devkit/core': 20.3.39
+      '@angular-devkit/core': 20.3.41
       jsonc-parser: 3.3.1
       magic-string: 0.30.17
       ora: 8.2.0
@@ -11526,7 +11526,7 @@ snapshots:
       '@angular/core': 21.2.23(@angular/compiler@21.2.23)(rxjs@7.8.1)(zone.js@0.15.0)
       '@angular/platform-browser': 21.2.23(@angular/animations@21.2.23(@angular/core@21.2.23(@angular/compiler@21.2.23)(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@21.2.23(@angular/core@21.2.23(@angular/compiler@21.2.23)(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@21.2.23(@angular/compiler@21.2.23)(rxjs@7.8.1)(zone.js@0.15.0))
       '@angular/platform-browser-dynamic': 21.2.23(@angular/common@21.2.23(@angular/core@21.2.23(@angular/compiler@21.2.23)(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/compiler@21.2.23)(@angular/core@21.2.23(@angular/compiler@21.2.23)(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@21.2.23(@angular/animations@21.2.23(@angular/core@21.2.23(@angular/compiler@21.2.23)(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@21.2.23(@angular/core@21.2.23(@angular/compiler@21.2.23)(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@21.2.23(@angular/compiler@21.2.23)(rxjs@7.8.1)(zone.js@0.15.0)))
-      '@schematics/angular': 20.3.39
+      '@schematics/angular': 20.3.41
       firebase: 11.10.0
       rxfire: 6.2.0(firebase@11.10.0)(rxjs@7.8.1)
       rxjs: 7.8.1
@@ -14374,7 +14374,7 @@ snapshots:
       node-gyp: 12.4.0
       proc-log: 6.1.0
 
-  '@nx/angular@23.2.1(2b96fac746a7964241e272565a3a6ec9)':
+  '@nx/angular@23.2.1(b4a46ecd6e75e38f2a4e35966777c6a8)':
     dependencies:
       '@angular-devkit/core': 21.2.24
       '@angular-devkit/schematics': 21.2.24
@@ -14383,7 +14383,7 @@ snapshots:
       '@nx/js': 23.2.1(@babel/traverse@7.29.8(supports-color@7.2.0))(@swc/cli@0.8.1(@swc/core@1.16.1(@swc/helpers@0.5.23))(supports-color@7.2.0))(@swc/core@1.16.1(@swc/helpers@0.5.23))(nx@23.2.1(@swc/core@1.16.1(@swc/helpers@0.5.23)))(supports-color@7.2.0)
       '@nx/web': 23.2.1(db06843227adabc053f9bfdeb3c629f4)
       '@phenomnomnominal/tsquery': 6.2.0(typescript@6.0.3)
-      '@schematics/angular': 20.3.39
+      '@schematics/angular': 20.3.41
       '@typescript-eslint/type-utils': 8.68.0(eslint@9.39.5(jiti@2.4.2)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3)
       jsonc-parser: 3.3.1
       magic-string: 0.30.21
@@ -15182,10 +15182,10 @@ snapshots:
   '@rspack/lite-tapable@1.1.0':
     optional: true
 
-  '@schematics/angular@20.3.39':
+  '@schematics/angular@20.3.41':
     dependencies:
-      '@angular-devkit/core': 20.3.39
-      '@angular-devkit/schematics': 20.3.39
+      '@angular-devkit/core': 20.3.41
+      '@angular-devkit/schematics': 20.3.41
       jsonc-parser: 3.3.1
     transitivePeerDependencies:
       - chokidar
@@ -17863,7 +17863,7 @@ snapshots:
     dependencies:
       debug: 4.4.3(supports-color@7.2.0)
       express: 5.2.1(supports-color@7.2.0)
-      ip-address: 10.7.2
+      ip-address: 10.7.4
     transitivePeerDependencies:
       - supports-color
 
@@ -18930,7 +18930,7 @@ snapshots:
   install-artifact-from-github@1.8.0:
     optional: true
 
-  ip-address@10.7.2: {}
+  ip-address@10.7.4: {}
 
   ip-regex@2.1.0: {}
 
@@ -22336,7 +22336,7 @@ snapshots:
 
   socks@2.8.9:
     dependencies:
-      ip-address: 10.7.2
+      ip-address: 10.7.4
       smart-buffer: 4.2.0
 
   sort-any@4.0.7: {}
