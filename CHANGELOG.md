@@ -1,3 +1,10 @@
+## [3.22.7](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.6...v3.22.7) (2026-10-26)
+
+### Dependencies
+
+* **deps:** bump @angular/router from 21.2.24 to 21.2.25 ([08a9531](https://github.com/GavinLilly/SchemeTwister/commit/08a953118e329f8b106bed182027bb2d356c51b0))
+* **deps:** bump launch-editor from 2.14.1 to 2.14.2 ([300e7b7](https://github.com/GavinLilly/SchemeTwister/commit/300e7b7665316364417bd3b4c4e841c61ce76283))
+
 ## [3.22.6](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.5...v3.22.6) (2026-10-17)
 
 ### Dependencies
