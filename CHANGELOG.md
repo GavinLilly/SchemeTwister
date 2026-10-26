@@ -1,3 +1,9 @@
+## [3.22.8](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.7...v3.22.8) (2026-10-26)
+
+### Dependencies
+
+* **deps:** bump compression from 1.8.1 to 1.8.2 ([9f8cbe4](https://github.com/GavinLilly/SchemeTwister/commit/9f8cbe40c7593660b2da6fd8ed2ca73eb6cff743))
+
 ## [3.22.7](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.6...v3.22.7) (2026-10-26)
 
 ### Dependencies
