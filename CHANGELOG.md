@@ -1,3 +1,9 @@
+## [3.22.9](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.8...v3.22.9) (2026-10-26)
+
+### Dependencies
+
+* **deps:** bump proxy-addr from 2.0.7 to 2.0.8 ([dfd3507](https://github.com/GavinLilly/SchemeTwister/commit/dfd350795d6288c5180a54556f471c8b8d2f54ea))
+
 ## [3.22.8](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.7...v3.22.8) (2026-10-26)
 
 ### Dependencies
