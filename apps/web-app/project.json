@@ -12,56 +12,31 @@
   },
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser-esbuild",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "executor": "@angular-devkit/build-angular:application",
       "options": {
         "outputPath": "dist/apps/web-app",
         "index": "apps/web-app/src/index.html",
-        "main": "apps/web-app/src/main.ts",
-        "polyfills": "apps/web-app/src/polyfills.ts",
+        "browser": "apps/web-app/src/main.ts",
+        "polyfills": [
+          "apps/web-app/src/polyfills.ts"
+        ],
         "tsConfig": "apps/web-app/tsconfig.app.json",
         "aot": true,
         "assets": [
           "apps/web-app/src/favicon.ico",
           "apps/web-app/src/assets",
-          "apps/web-app/src/manifest.webmanifest",
-          {
-            "glob": "*",
-            "input": "libs/series/marvel/src/assets/icons/teams",
-            "output": "./assets/icons/teams"
-          },
-          {
-            "glob": "*",
-            "input": "libs/series/marvel-common/src/assets/icons/teams",
-            "output": "./assets/icons/teams"
-          },
-          {
-            "glob": "*",
-            "input": "libs/series/marvel-studios/src/assets/icons/teams",
-            "output": "./assets/icons/teams"
-          },
-          {
-            "glob": "*",
-            "input": "libs/series/marvel-villains/src/assets/icons/teams",
-            "output": "./assets/icons/teams"
-          },
-          {
-            "glob": "*",
-            "input": "libs/series/buffy/src/assets/icons/teams",
-            "output": "./assets/icons/teams"
-          }
+          "apps/web-app/src/manifest.webmanifest"
         ],
         "styles": [
           "apps/web-app/src/styles.scss"
         ],
+        "loader": {
+          ".png": "dataurl"
+        },
         "scripts": [],
         "sourceMap": true,
-        "buildOptimizer": false,
         "optimization": false,
-        "serviceWorker": true,
-        "ngswConfigPath": "apps/web-app/ngsw-config.json"
+        "serviceWorker": "apps/web-app/ngsw-config.json"
       },
       "configurations": {
         "production": {

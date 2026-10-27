@@ -3,8 +3,9 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "useDefineForClassFields": false,
-    "types": ["node"]
+    "types": []
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
+  "include": ["../../types/assets.d.ts"],
   "exclude": ["jest.config.ts"]
 }
