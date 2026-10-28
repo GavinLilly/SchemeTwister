@@ -1,3 +1,9 @@
+## [3.22.12](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.11...v3.22.12) (2026-10-28)
+
+### Dependencies
+
+* **deps:** bump morgan from 1.11.0 to 1.12.1 ([67a6733](https://github.com/GavinLilly/SchemeTwister/commit/67a673396a7bd7a1f03099441bf427d6769fea27))
+
 ## [3.22.11](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.10...v3.22.11) (2026-10-28)
 
 ### Dependencies
