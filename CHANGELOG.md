@@ -1,3 +1,9 @@
+## [3.22.13](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.12...v3.22.13) (2026-10-28)
+
+### Dependencies
+
+* **deps:** sync lockfile ([79cc846](https://github.com/GavinLilly/SchemeTwister/commit/79cc84660ea74fac9efbc8d43afb746adc177866))
+
 ## [3.22.12](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.11...v3.22.12) (2026-10-28)
 
 ### Dependencies
