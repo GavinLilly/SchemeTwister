@@ -1,3 +1,9 @@
+## [3.22.10](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.9...v3.22.10) (2026-10-28)
+
+### Dependencies
+
+* **deps:** bump serialize-javascript from 7.1.0 to 7.1.4 ([b98ac7f](https://github.com/GavinLilly/SchemeTwister/commit/b98ac7f097823a1ab1184b21698ced3811c73ca2))
+
 ## [3.22.9](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.8...v3.22.9) (2026-10-26)
 
 ### Dependencies
