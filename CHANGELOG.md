@@ -1,3 +1,9 @@
+## [3.22.11](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.10...v3.22.11) (2026-10-28)
+
+### Dependencies
+
+* **deps:** bump fast-uri from 3.1.8 to 3.1.9 ([75b0927](https://github.com/GavinLilly/SchemeTwister/commit/75b092783ee787cf10aca201f11ecfc18e46cb74))
+
 ## [3.22.10](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.9...v3.22.10) (2026-10-28)
 
 ### Dependencies
