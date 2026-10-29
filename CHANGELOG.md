@@ -1,3 +1,9 @@
+## [3.22.14](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.13...v3.22.14) (2026-10-29)
+
+### Dependencies
+
+* **deps:** bump the all group with 8 updates ([c6df606](https://github.com/GavinLilly/SchemeTwister/commit/c6df6064ab93602dd26d3597eff5e7066859bd6f))
+
 ## [3.22.13](https://github.com/GavinLilly/SchemeTwister/compare/v3.22.12...v3.22.13) (2026-10-28)
 
 ### Dependencies
