@@ -16,31 +16,31 @@
     size="20"
   >
     <option disabled>&#x2500;&#x2500; Core sets &#x2500;&#x2500;</option>
-    @for (gameSet of coreSets; track gameSet) {
+    @for (gameSet of coreSets; track gameSet.id) {
     <option [value]="gameSet">
       {{ gameSet.name }}
     </option>
     }
     <option disabled>&#x2500;&#x2500; Large sets &#x2500;&#x2500;</option>
-    @for (gameSet of lrgSets; track gameSet) {
+    @for (gameSet of lrgSets; track gameSet.id) {
     <option [value]="gameSet">
       {{ gameSet.name }}
     </option>
     } @if (medSets.length) {
     <option disabled>&#x2500;&#x2500; Medium sets &#x2500;&#x2500;</option>
-    } @for (gameSet of medSets; track gameSet) {
+    } @for (gameSet of medSets; track gameSet.id) {
     <option [value]="gameSet">
       {{ gameSet.name }}
     </option>
     }
     <option disabled>&#x2500;&#x2500; Small sets &#x2500;&#x2500;</option>
-    @for (gameSet of smlSets; track gameSet) {
+    @for (gameSet of smlSets; track gameSet.id) {
     <option [value]="gameSet">
       {{ gameSet.name }}
     </option>
     }
     <option disabled>&#x2500;&#x2500; Promo sets &#x2500;&#x2500;</option>
-    @for (gameSet of promoSets; track gameSet) {
+    @for (gameSet of promoSets; track gameSet.id) {
     <option [value]="gameSet">
       {{ gameSet.name }}
     </option>

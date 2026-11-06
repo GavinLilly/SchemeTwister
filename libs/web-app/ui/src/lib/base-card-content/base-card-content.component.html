@@ -2,7 +2,7 @@
 <p><b>Keywords</b></p>
 } @if (card.keywords) {
 <ul>
-  @for (keyword of card.keywords; track keyword) {
+  @for (keyword of card.keywords; track keyword.id) {
   <li>{{ keyword.name }}</li>
   }
 </ul>

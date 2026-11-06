@@ -1,13 +1,13 @@
-import nx from '@nx/eslint-plugin';
+import nxPlugin from '@nx/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import { importX } from 'eslint-plugin-import-x';
 import jsdoc from 'eslint-plugin-jsdoc';
 
 export default [
-  ...nx.configs['flat/base'],
-  ...nx.configs['flat/javascript'],
-  ...nx.configs['flat/typescript'],
+  ...nxPlugin.configs['flat/base'],
+  ...nxPlugin.configs['flat/javascript'],
+  ...nxPlugin.configs['flat/typescript'],
   importX.flatConfigs.recommended,
   importX.flatConfigs.typescript,
   {
@@ -43,10 +43,19 @@ export default [
   },
   {
     files: ['**/*.json'],
-    // Override or add rules here
-    rules: {},
     languageOptions: {
       parser: await import('jsonc-eslint-parser'),
+    },
+    rules: {
+      '@nx/dependency-checks': [
+        'error',
+        {
+          buildTargets: ['build'],
+          checkMissingDependencies: true,
+          checkObsoleteDependencies: true,
+          checkVersionMismatches: true,
+        },
+      ],
     },
   },
   {
